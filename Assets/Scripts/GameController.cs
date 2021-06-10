@@ -47,10 +47,21 @@ public class GameController : Reference
                 App.generalView.gameView.TutorialCanvas.enabled = false;
             }
         }
-        //El boton back regresa al menu principal
-        if (name_button == "Button Menu")
+        //El boton back regresa al menu de niveles
+        if (name_button == "Button Levels")
         {
-            //Falta la escena del menu principal
+            //Falta la escena de los niveles
+            //SceneManager.LoadScene("");
+        }
+
+        if (name_button == "Button Pay")
+        {
+            //Canjea codigo y se muestra la solucion
+        }
+
+        if (name_button == "Button MiniGames")
+        {
+            //Falta la escena de los minijuegos
             //SceneManager.LoadScene("");
         }
     }
