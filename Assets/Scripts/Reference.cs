@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Reference : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Application App
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        get 
+        {
+            return GameObject.FindObjectOfType<Application>();
+        }
     }
 }

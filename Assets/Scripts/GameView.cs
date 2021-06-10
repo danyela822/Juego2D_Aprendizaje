@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameView : MonoBehaviour
+public class GameView : Reference
 {
-    // Start is called before the first frame update
-    void Start()
+    /*
+     * Metodo que captura el nombre del boton el cual se esta pulsando
+     */
+    public void OnClickButtons(string name_button)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        App.generalController.gameController.OnClickButtons(name_button);
     }
 }
