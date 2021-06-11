@@ -65,4 +65,52 @@ public class GameController : Reference
             //SceneManager.LoadScene("");
         }
     }
+
+    /*
+     * Metodo que dibuja en la pantalla la matriz
+     */
+    public void DrawMatrix(GameObject[,] matrix, GameObject initialBlock, GameObject gameZone)
+    {
+        //Posicion inicial del bloque
+        float posStarX = initialBlock.transform.position.x;
+        float posStarY = initialBlock.transform.position.y;
+
+        //Tamaño del bloque
+        Vector2 blockSize = initialBlock.GetComponent<BoxCollider2D>().size;
+
+
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+
+                //Crear cada bloque en la escena en una posicion data.
+                //Cada bloque esta contenido en una determinada posicion de la matriz
+                matrix[i, j] = Instantiate(initialBlock, new Vector3(posStarX + (blockSize.x * j),
+                                                                      posStarY + (blockSize.y * -i),
+                                                                      0),
+                                                                      initialBlock.transform.rotation);
+
+                matrix[i,j].name = string.Format("Block[{0}][{1}]", i, j);
+
+                //Temporal - se asigna un 0 para indicar que es bloque disponible o 1 para indicar que es bloque obstaculo
+                matrix[i, j].GetComponent<Block>().SetId(UnityEngine.Random.Range(0, 2));
+
+                //Asignar la matriz al objeto de GameZone
+                matrix[i, j].transform.parent = gameZone.transform;
+
+                //Si es 0 se pinta de blanco (Azul por defecto)
+                if (matrix[i, j].GetComponent<Block>().GetID() == 0)
+                {
+                    matrix[i, j].GetComponent<SpriteRenderer>().color = Color.white;
+                }
+                //Si es 1 se pinta de negro
+                if (matrix[i, j].GetComponent<Block>().GetID() == 1)
+                {
+                    matrix[i, j].GetComponent<SpriteRenderer>().color = Color.black;
+                }
+            }
+        }
+    }
 }
