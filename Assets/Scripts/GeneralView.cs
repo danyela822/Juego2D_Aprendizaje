@@ -5,4 +5,5 @@ using UnityEngine;
 public class GeneralView : Reference
 {
     public GameView gameView;
+    public UIView UIView;
 }

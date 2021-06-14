@@ -10,26 +10,26 @@ public class UIController : Reference
         //Botones del menu principal
         if (name_button == "Button Play")
         {
-            //SceneManager.LoadScene("Categories Scene");
+            SceneManager.LoadScene("CategoriesScene");
         }
         if (name_button == "Button Settings")
         {
-            //SceneManager.LoadScene("Settings Scene");
+            SceneManager.LoadScene("SettingsScene");
         }
         if (name_button == "Button Stats")
         {
-            //SceneManager.LoadScene("Stats Scene");
+            SceneManager.LoadScene("StatsScene");
         }
         if (name_button == "Button Info")
         {
-            //SceneManager.LoadScene("Info Scene");
+            SceneManager.LoadScene("InfoScene");
         }
 
 
         //Boton de regreso (Puede servir para cualquier escena)
         if (name_button == "Button Back")
         {
-            //SceneManager.LoadScene("");
+            SceneManager.LoadScene("MainMenuScene");
         }
 
         //Botones de la vista de categorias
