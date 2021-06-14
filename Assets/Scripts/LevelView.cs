@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class LevelView : Reference
 {
+    //variable tipo text de la interfaz
     public Text category;
 
     // Start is called before the first frame update
@@ -19,8 +20,13 @@ public class LevelView : Reference
         
     }
 
-    public void changeTextCategory(string nameCategory)
+    public void ChangeTextCategory(string nameCategory)
     {
         category.text = nameCategory;
+    }
+
+    public void ChangeScene(string scene)
+    {
+        App.generalController.levelController.ChangeSceneTo(scene);
     }
 }

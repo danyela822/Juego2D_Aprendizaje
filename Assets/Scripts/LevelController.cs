@@ -48,6 +48,6 @@ public class LevelController : Reference
                 break;
         }
 
-        App.generalView.levelView.changeTextCategory(nameCategory);
+        App.generalView.levelView.ChangeTextCategory(nameCategory);
     }
 }
