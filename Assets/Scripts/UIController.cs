@@ -36,14 +36,20 @@ public class UIController : Reference
         if(name_button == "Button Begginer")
         {
             //LLamado al metodo para mostrar la escena de los niveles
+            SceneManager.LoadScene("LevelsView");       
+            App.generalController.levelController.ChangeCategory("principiante");
         }
         if (name_button == "Button Medium")
         {
             //LLamado al metodo para mostrar la escena de los niveles
+            SceneManager.LoadScene("LevelsView");
+            App.generalController.levelController.ChangeCategory("moderado");
         }
         if (name_button == "Button Advanced")
         {
             //LLamado al metodo para mostrar la escena de los niveles
+            SceneManager.LoadScene("LevelsView");
+            App.generalController.levelController.ChangeCategory("avanzado");
         }
 
         //Botones de la vista de Configuracion

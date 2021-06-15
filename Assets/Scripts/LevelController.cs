@@ -10,7 +10,7 @@ public class LevelController : Reference
     // Start is called before the first frame update
     void Start()
     {
-        
+        print("ENTRO A LEVEL CONTROLLER");
     }
 
     // Update is called once per frame

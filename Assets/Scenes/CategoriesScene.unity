@@ -186,7 +186,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 65
+    m_MaxSize: 75
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
@@ -284,7 +284,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 301523021}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1091362738}
+        m_TargetAssemblyTypeName: UIView, Assembly-CSharp
+        m_MethodName: OnClickButtons
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button Medium
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &301523021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,8 +317,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: a6e113b44ef3db3469a456f1ca5a6c10, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -437,8 +449,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8b8827e93230d1a4288e71f0557fff4c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -562,7 +574,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 65
+    m_MaxSize: 75
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
@@ -721,6 +733,8 @@ GameObject:
   - component: {fileID: 1091362733}
   - component: {fileID: 1091362738}
   - component: {fileID: 1091362737}
+  - component: {fileID: 1091362739}
+  - component: {fileID: 1091362740}
   m_Layer: 5
   m_Name: Categories Canvas
   m_TagString: Untagged
@@ -835,6 +849,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7163b51bd9b5d34a98b1f5d266364ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1091362739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091362732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b707d2b34236d944dac8ceb57b140a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1091362740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091362732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dccaf295642bb8d428b3f08ce1144f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  category: {fileID: 0}
 --- !u!1 &1371857858
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,6 +1002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
   uiController: {fileID: 1091362737}
+  levelController: {fileID: 1091362739}
 --- !u!1 &1704445743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,7 +1085,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1704445746}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1091362738}
+        m_TargetAssemblyTypeName: UIView, Assembly-CSharp
+        m_MethodName: OnClickButtons
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button Advanced
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1704445746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,8 +1118,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: a6e113b44ef3db3469a456f1ca5a6c10, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1147,7 +1199,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 65
+    m_MaxSize: 75
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
@@ -1333,6 +1385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameView: {fileID: 0}
   UIView: {fileID: 1091362738}
+  levelView: {fileID: 1091362740}
 --- !u!1 &1982939457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,7 +1468,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1982939460}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1091362738}
+        m_TargetAssemblyTypeName: UIView, Assembly-CSharp
+        m_MethodName: OnClickButtons
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button Begginer
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1982939460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1436,8 +1501,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: a6e113b44ef3db3469a456f1ca5a6c10, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

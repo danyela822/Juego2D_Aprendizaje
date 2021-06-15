@@ -6,24 +6,14 @@ using UnityEngine.UI;
 public class LevelView : Reference
 {
     //variable tipo text de la interfaz
-    public Text category;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private Text category;
 
     //metodo que recibe por parametro el nombre de la categoria
     //y lo cambia en la interfaz
     public void ChangeTextCategory(string nameCategory)
     {
+        print("ENTRO A CHANGE");
+        category = GameObject.Find("CategoryText").GetComponent<Text>();
         category.text = nameCategory;
     }
 
