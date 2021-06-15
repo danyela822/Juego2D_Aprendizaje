@@ -20,11 +20,15 @@ public class LevelView : Reference
         
     }
 
+    //metodo que recibe por parametro el nombre de la categoria
+    //y lo cambia en la interfaz
     public void ChangeTextCategory(string nameCategory)
     {
         category.text = nameCategory;
     }
 
+    //metodo que recibe por paramentro el nombre de la escena a la 
+    //que quiero cambiar y llamo al metodo del controller
     public void ChangeScene(string scene)
     {
         App.generalController.levelController.ChangeSceneTo(scene);
