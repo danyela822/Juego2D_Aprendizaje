@@ -115,7 +115,7 @@ public class GameController : Reference
                 //Si es 2 se pinta de rojo
                 else if (matrix[i, j].GetComponent<Block>().GetID() == 2)
                 {
-                    matrix[i, j].GetComponent<SpriteRenderer>().color = Color.green;
+                    matrix[i, j].GetComponent<SpriteRenderer>().color = Color.blue;
                 }
                 //Si es 3 se pinta de verde
                 else if (matrix[i, j].GetComponent<Block>().GetID() == 3)
