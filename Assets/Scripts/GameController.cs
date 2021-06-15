@@ -70,15 +70,16 @@ public class GameController : Reference
     /*
      * Metodo que dibuja en la pantalla la matriz
      */
-    public void DrawMatrix(GameObject[,] matrix, GameObject initialBlock, GameObject gameZone)
+    public void DrawMatrix(Objects[,] matrix1, GameObject initialBlock, GameObject gameZone)
     {
         //Posicion inicial del bloque
         float posStarX = initialBlock.transform.position.x;
         float posStarY = initialBlock.transform.position.y;
 
-        //Tama�o del bloque
+        //Tamanio del bloque
         Vector2 blockSize = initialBlock.GetComponent<BoxCollider2D>().size;
 
+        GameObject[,] matrix = new GameObject[matrix1.GetLength(0), matrix1.GetLength(1)];
 
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
@@ -96,7 +97,7 @@ public class GameController : Reference
                 matrix[i,j].name = string.Format("Block[{0}][{1}]", i, j);
 
                 //Temporal - se asigna un 0 para indicar que es bloque disponible o 1 para indicar que es bloque obstaculo
-                matrix[i, j].GetComponent<Block>().SetId(UnityEngine.Random.Range(0, 2));
+                matrix[i, j].GetComponent<Block>().SetId(matrix1[i,j].type);
 
                 //Asignar la matriz al objeto de GameZone
                 matrix[i, j].transform.parent = gameZone.transform;
@@ -107,9 +108,19 @@ public class GameController : Reference
                     matrix[i, j].GetComponent<SpriteRenderer>().color = Color.white;
                 }
                 //Si es 1 se pinta de negro
-                if (matrix[i, j].GetComponent<Block>().GetID() == 1)
+                else if (matrix[i, j].GetComponent<Block>().GetID() == 1)
                 {
                     matrix[i, j].GetComponent<SpriteRenderer>().color = Color.black;
+                }
+                //Si es 2 se pinta de rojo
+                else if (matrix[i, j].GetComponent<Block>().GetID() == 2)
+                {
+                    matrix[i, j].GetComponent<SpriteRenderer>().color = Color.green;
+                }
+                //Si es 3 se pinta de verde
+                else if (matrix[i, j].GetComponent<Block>().GetID() == 3)
+                {
+                    matrix[i, j].GetComponent<SpriteRenderer>().color = Color.green;
                 }
             }
         }
@@ -123,14 +134,14 @@ public class GameController : Reference
     // Indica la cantidad de filas de la matriz
     int arrayRow = 8;
     // Cantidad de columnas de la matriz
-    int arrayCol = 10;
+    int arrayCol = 6;
     // Lista en la que se va a almacenar la ruta de solicion del nivel
     List<Tuple<int, int>> route = new List<Tuple<int, int>>();
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Esta en el Start de GameController");
-        CreateLevel();
+       // CreateLevel();
     }
 
     // Update is called once per frame
@@ -139,13 +150,15 @@ public class GameController : Reference
         
     }
 
-    void CreateLevel()
+    public Objects[,] CreateLevel()
     {
         GenerateArray();
         ArrivalPoint();
         LocateSolution();
         StartPoint();
         ShowArray();
+
+        return arrayObjects;
     }
 
     // Metodo que ubica a el personaje en el punto de partida

@@ -8,10 +8,10 @@ public class GameView : Reference
     public Canvas GameCanvas, PauseCanvas, SolutionCanvas, TutorialCanvas;
 
     //Objeto que representa cada uno de los bloques que conforman la matriz
-    public GameObject InitialBlock;
+    public GameObject initialBlock;
 
     //Objeto que representa la zona del juego (Matriz)
-    public GameObject GameZone;
+    public GameObject gameZone;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class GameView : Reference
         SolutionCanvas = GameObject.Find("Solution Canvas").GetComponent<Canvas>();
         TutorialCanvas = GameObject.Find("Tutorial Canvas").GetComponent<Canvas>();
 
-        GameZone = GameObject.Find("Game Zone");
+        gameZone = GameObject.Find("Game Zone");
 
         BuildMatrix();
     }
@@ -39,9 +39,11 @@ public class GameView : Reference
     public void BuildMatrix()
     {
         //Provicional
-        GameObject [,] Matrix = new GameObject[8,6];
+        //GameObject [,] Matrix = new GameObject[8,6];
+
+        Objects[,] matrix = App.generalController.gameController.CreateLevel();
 
         //Llamada al metodo para dibujar la matriz en la escena
-        App.generalController.gameController.DrawMatrix(Matrix,InitialBlock,GameZone);
+        App.generalController.gameController.DrawMatrix(matrix,initialBlock,gameZone);
     }
 }
