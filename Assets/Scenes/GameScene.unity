@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 20620323}
   - component: {fileID: 20620322}
   m_Layer: 5
-  m_Name: Button MiniGames
+  m_Name: MiniGames Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 79995893}
   - component: {fileID: 79995892}
   m_Layer: 5
-  m_Name: Button Back
+  m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,10 +277,10 @@ RectTransform:
   m_Father: {fileID: 1377748261}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.051000003, y: 0.89552087}
-  m_AnchorMax: {x: 0.19000001, y: 0.9724792}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 125, y: -135}
+  m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &79995892
 MonoBehaviour:
@@ -335,7 +335,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Button Back
+          m_StringArgument: Back Button
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &79995893
@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 129894910}
   - component: {fileID: 129894909}
   m_Layer: 5
-  m_Name: Button Pause
+  m_Name: Pause Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -568,7 +568,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Button Pause
+          m_StringArgument: Pause Button
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &129894910
@@ -729,7 +729,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameView: {fileID: 1235144676}
   UIView: {fileID: 0}
-  levelView: {fileID: 0}
 --- !u!1 &279532152
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +780,7 @@ GameObject:
   - component: {fileID: 324735039}
   - component: {fileID: 324735038}
   m_Layer: 5
-  m_Name: Button Levels
+  m_Name: Levels Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -860,7 +859,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Button Menu
+          m_StringArgument: Levels Button
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &324735039
@@ -946,7 +945,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 1235144674}
   uiController: {fileID: 0}
-  levelController: {fileID: 0}
 --- !u!1 &432014299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,7 +1124,7 @@ GameObject:
   - component: {fileID: 629722931}
   - component: {fileID: 629722930}
   m_Layer: 5
-  m_Name: Button Up
+  m_Name: Up Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1246,7 +1244,7 @@ GameObject:
   - component: {fileID: 631796191}
   - component: {fileID: 631796190}
   m_Layer: 5
-  m_Name: Button Down
+  m_Name: Down Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1742,7 +1740,7 @@ GameObject:
   - component: {fileID: 888547577}
   - component: {fileID: 888547576}
   m_Layer: 5
-  m_Name: Text Pause
+  m_Name: Pause Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1979,7 +1977,7 @@ GameObject:
   - component: {fileID: 1164951770}
   - component: {fileID: 1164951769}
   m_Layer: 5
-  m_Name: Text Solution
+  m_Name: Solution Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2288,7 +2286,7 @@ GameObject:
   - component: {fileID: 1324063756}
   - component: {fileID: 1324063755}
   m_Layer: 5
-  m_Name: Button Help
+  m_Name: Help Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2366,7 +2364,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Button Help
+          m_StringArgument: Help Button
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1324063756
@@ -2420,7 +2418,7 @@ GameObject:
   - component: {fileID: 1336474814}
   - component: {fileID: 1336474813}
   m_Layer: 5
-  m_Name: Button Back
+  m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2499,7 +2497,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Button Back
+          m_StringArgument: Back Button
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1336474814
@@ -2551,8 +2549,9 @@ GameObject:
   - component: {fileID: 1361600101}
   - component: {fileID: 1361600103}
   - component: {fileID: 1361600102}
+  - component: {fileID: 1361600104}
   m_Layer: 5
-  m_Name: Text Movs
+  m_Name: Movs Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2598,7 +2597,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 79132f0ae48ab8544b0b5780064e6ae5, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -2619,6 +2618,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361600100}
   m_CullTransparentMesh: 1
+--- !u!114 &1361600104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361600100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 3, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1376506136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,7 +2646,7 @@ GameObject:
   - component: {fileID: 1376506139}
   - component: {fileID: 1376506138}
   m_Layer: 5
-  m_Name: Button Back
+  m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2710,7 +2724,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Button Back
+          m_StringArgument: Back Button
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1376506139
@@ -2932,7 +2946,7 @@ GameObject:
   - component: {fileID: 1544151395}
   - component: {fileID: 1544151394}
   m_Layer: 5
-  m_Name: Button Pay
+  m_Name: Pay Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3051,8 +3065,9 @@ GameObject:
   - component: {fileID: 1683561227}
   - component: {fileID: 1683561229}
   - component: {fileID: 1683561228}
+  - component: {fileID: 1683561230}
   m_Layer: 5
-  m_Name: Text Stars
+  m_Name: Stars Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3098,7 +3113,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 79132f0ae48ab8544b0b5780064e6ae5, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -3119,6 +3134,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683561226}
   m_CullTransparentMesh: 1
+--- !u!114 &1683561230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683561226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 3, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1711413360
 GameObject:
   m_ObjectHideFlags: 0
@@ -3132,7 +3162,7 @@ GameObject:
   - component: {fileID: 1711413363}
   - component: {fileID: 1711413362}
   m_Layer: 5
-  m_Name: Button Rigth
+  m_Name: Rigth Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3249,7 +3279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1717646170}
   m_Layer: 5
-  m_Name: Buttons Character
+  m_Name: Character Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3291,7 +3321,7 @@ GameObject:
   - component: {fileID: 1735048387}
   - component: {fileID: 1735048386}
   m_Layer: 5
-  m_Name: Button Left
+  m_Name: Left Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3632,7 +3662,7 @@ GameObject:
   - component: {fileID: 1859310582}
   - component: {fileID: 1859310581}
   m_Layer: 5
-  m_Name: Button Solution
+  m_Name: Solution Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3710,7 +3740,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Button Solution
+          m_StringArgument: Solution Button
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1859310582
@@ -3841,7 +3871,7 @@ GameObject:
   - component: {fileID: 1942121291}
   - component: {fileID: 1942121292}
   m_Layer: 5
-  m_Name: Buttons Menu
+  m_Name: Menu Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 424943349}
   - component: {fileID: 424943348}
   m_Layer: 5
-  m_Name: Button Back
+  m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Button Back
+          m_StringArgument: Back Button
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &424943349
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 1000471226}
   - component: {fileID: 1000471225}
   m_Layer: 5
-  m_Name: Text Time
+  m_Name: Time Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 1018020379}
   - component: {fileID: 1018020378}
   m_Layer: 5
-  m_Name: Text Levels
+  m_Name: Levels Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 1396532321}
   - component: {fileID: 1396532320}
   m_Layer: 5
-  m_Name: Text Stars
+  m_Name: Stars Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 1423152368}
   - component: {fileID: 1423152367}
   m_Layer: 5
-  m_Name: Text Stats
+  m_Name: Stats Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 1474572335}
   - component: {fileID: 1474572334}
   m_Layer: 5
-  m_Name: Text Coins
+  m_Name: Coins Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -822,7 +822,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
   uiController: {fileID: 1921618875}
-  levelController: {fileID: 0}
 --- !u!1 &1541955841
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,7 +867,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameView: {fileID: 0}
   UIView: {fileID: 1921618876}
-  levelView: {fileID: 0}
 --- !u!1 &1632029882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,6 +1032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848743376228ae543b75743ee046e7d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasCategories: {fileID: 0}
+  canvasLevels: {fileID: 0}
 --- !u!114 &1921618876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1046,6 +1046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7163b51bd9b5d34a98b1f5d266364ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  category: {fileID: 0}
 --- !u!1 &1990251636
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,4 @@ public class GeneralController : Reference
 {
     public GameController gameController;
     public UIController uiController;
-    public LevelController levelController;
-
 }

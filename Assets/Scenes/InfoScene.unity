@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 668384083}
   - component: {fileID: 668384082}
   m_Layer: 5
-  m_Name: Button Back
+  m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,8 +287,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -120}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchoredPosition: {x: 125, y: -170}
+  m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &668384082
 MonoBehaviour:
@@ -343,7 +343,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Button Back
+          m_StringArgument: Back Button
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &668384083
@@ -564,6 +564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848743376228ae543b75743ee046e7d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasCategories: {fileID: 0}
+  canvasLevels: {fileID: 0}
 --- !u!114 &1124676411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,6 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7163b51bd9b5d34a98b1f5d266364ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  category: {fileID: 0}
 --- !u!1 &1236531567
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,7 +624,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
   uiController: {fileID: 1124676410}
-  levelController: {fileID: 0}
 --- !u!1 &1551960715
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +669,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameView: {fileID: 0}
   UIView: {fileID: 1124676411}
-  levelView: {fileID: 0}
 --- !u!1 &1736856177
 GameObject:
   m_ObjectHideFlags: 0

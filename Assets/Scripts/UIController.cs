@@ -5,61 +5,103 @@ using UnityEngine.SceneManagement;
 
 public class UIController : Reference
 {
+    public Canvas canvasCategories;
+    public Canvas canvasLevels;
     public void OnClickButtons(string name_button)
     {
         //Botones del menu principal
-        if (name_button == "Button Play")
+        if (name_button == "Play Button")
         {
             SceneManager.LoadScene("CategoriesScene");
         }
-        if (name_button == "Button Settings")
+        if (name_button == "Settings Button")
         {
             SceneManager.LoadScene("SettingsScene");
         }
-        if (name_button == "Button Stats")
+        if (name_button == "Stats Button")
         {
             SceneManager.LoadScene("StatsScene");
         }
-        if (name_button == "Button Info")
+        if (name_button == "Info Button")
         {
             SceneManager.LoadScene("InfoScene");
         }
 
 
-        //Boton de regreso (Puede servir para cualquier escena)
-        if (name_button == "Button Back")
+        //Boton de regreso (Puede servir para cualquier escena menos para la escena de los niveles)
+        if (name_button == "Back Button")
+        {
+            SceneManager.LoadScene("MainMenuScene");
+        }
+
+        if (name_button == "Back Button_N")
+        {
+            canvasLevels.enabled = false;
+            canvasCategories.enabled = true;
+            App.generalView.UIView.category.text = "Categorias";
+        }
+
+        if (name_button == "Home Button")
         {
             SceneManager.LoadScene("MainMenuScene");
         }
 
         //Botones de la vista de categorias
-        if(name_button == "Button Begginer")
+        if(name_button == "Begginer Button")
         {
-            //LLamado al metodo para mostrar la escena de los niveles
-            SceneManager.LoadScene("LevelsView");       
-            App.generalController.levelController.ChangeCategory("principiante");
+            canvasCategories.enabled = false;
+            canvasLevels.enabled = true;
+            ChangeCategory("principiante");
         }
-        if (name_button == "Button Medium")
+        if (name_button == "Medium Button")
         {
-            //LLamado al metodo para mostrar la escena de los niveles
-            SceneManager.LoadScene("LevelsView");
-            App.generalController.levelController.ChangeCategory("moderado");
+            canvasCategories.enabled = false;
+            canvasLevels.enabled = true;
+            ChangeCategory("moderado");
         }
-        if (name_button == "Button Advanced")
+        if (name_button == "Advanced Button")
         {
-            //LLamado al metodo para mostrar la escena de los niveles
-            SceneManager.LoadScene("LevelsView");
-            App.generalController.levelController.ChangeCategory("avanzado");
+            canvasCategories.enabled = false;
+            canvasLevels.enabled = true;
+            ChangeCategory("avanzado");
+        }
+        if (name_button == "Random Button")
+        {
+            //Escena del nivel aleatorio
         }
 
         //Botones de la vista de Configuracion
-        if (name_button == "Button Music")
+        if (name_button == "Music Button")
         {
             //LLamar al metodo de la musica
         }
-        if (name_button == "Button Sound")
+        if (name_button == "Sound Button")
         {
             //LLamar al metodo del sonido
         }
-    }   
+    }
+    private string nameCategory;
+    public void ChangeCategory(string category)
+    {
+        nameCategory = "";
+        switch (category)
+        {
+            case "principiante":
+                nameCategory = "Principiante";
+                break;
+
+            case "moderado":
+                nameCategory = "Medio";
+                break;
+
+            case "avanzado":
+                nameCategory = "Avanzado";
+                break;
+
+            default:
+                break;
+        }
+
+        App.generalView.UIView.ChangeTextCategory(nameCategory);
+    }
 }
