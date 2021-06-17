@@ -2609,7 +2609,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mov x 300000
+  m_Text: Mov x 00
 --- !u!222 &1361600103
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3125,7 +3125,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: ' x 300000'
+  m_Text: ' x 00'
 --- !u!222 &1683561229
 CanvasRenderer:
   m_ObjectHideFlags: 0
