@@ -149,14 +149,238 @@ public class GameController : Reference
     {
         
     }
+    
+    /* Metodo encargado de verificar que la posicion donde se va a 
+    * ubicar la figura no este ya ocupada y que no se salga de los limites
+    * de la matriz
+    */
+    bool CheckFigurePosition(int posX, int posY)
+    {
+        // Verifica que no se vaya salir de los limites 
+        if(posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)
+        {
+            // Verifica si la posicion indicada esta libre
+            if(arrayObjects[posX,posY].type == 0) return true;
+        }
+        return false;
+    }
+    
+    /* Metodo que maneja la cantidad de figuras que se van a ubicar en la
+    * matriz, la posicion en la cual se va a ubicar y el tipo de figura que
+    * se debe poner
+    */
+    void FiguresQuantity (int quantity)
+    {
+        // Variable para verificar que la figura a sido ubicada
+        bool approved = false;
+        // Variable para manejar la cantidad de figuras
+        int i = quantity;
+        
+        while(i > 0)
+        {
+            // Variable que almacena la posicion en X generada aleatoriamente
+            int x = RamdonNumber(0, arrayRow);
+            // Variable que almacena la posicion en Y generada aleatoriamente
+            int y = RamdonNumber(0, arrayCol);
+            // Variable que almacena la figura que se debe ubicar generada aleatoriamente
+            int figureType = RamdonNumber(1, 8);
+            approved = Figures(x, y, figureType);
+            Debug.Log("X: "+x+" Y: "+y+" Tipo "+figureType+" Agregada: "+approved);
+            // Verifica si la figura se ubico correctamente y disminuye uno a la cantidad
+            if(approved) i--;
+        }
+    }
+    
+    /* Metodo encargado de administrar y hacer los llamados correspondientes dependiendo
+    * el tipo de figura escogido
+    */
+    bool Figures(int x, int y, int figureType)
+    {
+        // Variable que almacena si se pudo realizar la figura
+        bool approvedFigure = false;
 
+        // Condiciones encargadas de verificar que figura se debe realizar y llamar al metodo correspondiente
+        if(figureType == 1)
+        {
+           approvedFigure = Figure1(x,y);
+        }
+        else if(figureType == 2)
+        {
+            approvedFigure = Figure2(x,y);
+        }
+        else if(figureType == 3)
+        {
+            approvedFigure = Figure3(x,y);
+        }
+        else if(figureType == 4)
+        {
+            approvedFigure = Figure4(x,y);
+        }
+        else if(figureType == 5)
+        {
+            approvedFigure = Figure5(x,y);
+        }
+        else if(figureType == 6)
+        {
+            approvedFigure = Figure6(x,y);
+        }
+        else if(figureType == 7)
+        {
+            approvedFigure = Figure7(x,y);
+        }
+
+        return approvedFigure;
+    }
+    
+    // Metodo encargado de genarar la figura 1
+    bool Figure1(int x, int y)
+    {
+        // Variable donde se almacena si la figura se pudo realizar
+        bool approved = false;
+
+        // Condicion encargada de verificar que cada posicion que se debe usar para generar la figura este disponible
+        if(CheckFigurePosition(x,y) && CheckFigurePosition(x+1,y) && CheckFigurePosition(x+1,y+1) && CheckFigurePosition(x+2,y))
+        {
+            // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
+            arrayObjects[x,y].type = 1;
+            arrayObjects[x+1,y].type = 1;
+            arrayObjects[x+1,y+1].type = 1;
+            arrayObjects[x+2,y].type = 1;
+            // Como se pudo generar la figura se retorna verdadero
+            approved = true;
+        }
+        
+        return approved;
+    }
+
+    // Metodo encargado de genarar la figura 2
+    bool Figure2(int x, int y)
+    {
+        // Variable donde se almacena si la figura se pudo realizar
+        bool approved = false;
+
+        // Condicion encargada de verificar que cada posicion que se debe usar para generar la figura este disponible
+        if(CheckFigurePosition(x,y) && CheckFigurePosition(x+1,y) && CheckFigurePosition(x+1,y+1))
+        {
+            // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
+            arrayObjects[x,y].type = 1;
+            arrayObjects[x+1,y].type = 1;
+            arrayObjects[x+1,y+1].type = 1;
+            approved = true;
+        }
+
+        return approved;
+    }
+
+    // Metodo encargado de genarar la figura 3
+    bool Figure3(int x, int y)
+    {
+        // Variable donde se almacena si la figura se pudo realizar
+        bool approved = false;
+        
+        // Condicion encargada de verificar que cada posicion que se debe usar para generar la figura este disponible
+        if(CheckFigurePosition(x,y) && CheckFigurePosition(x+1,y) && CheckFigurePosition(x+2,y))
+        {
+            // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
+            arrayObjects[x,y].type = 1;
+            arrayObjects[x+1,y].type = 1;
+            arrayObjects[x+2,y].type = 1;
+            approved = true;
+        }
+        return approved;    
+    }
+
+    // Metodo encargado de genarar la figura 4
+    bool Figure4(int x, int y)
+    {
+        // Variable donde se almacena si la figura se pudo realizar
+        bool approved = false;
+
+        // Condicion encargada de verificar que cada posicion que se debe usar para generar la figura este disponible
+        if(CheckFigurePosition(x,y) && CheckFigurePosition(x,y+1) && CheckFigurePosition(x,y+2))
+        {
+            // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
+            arrayObjects[x,y].type = 1;
+            arrayObjects[x,y+1].type = 1;
+            arrayObjects[x,y+2].type = 1;
+            approved = true;
+        }
+
+        return approved;  
+    }
+
+    // Metodo encargado de genarar la figura 5
+    bool Figure5(int x, int y)
+    {
+        // Variable donde se almacena si la figura se pudo realizar
+        bool approved = false;
+
+        // Condicion encargada de verificar que cada posicion que se debe usar para generar la figura este disponible
+        if(CheckFigurePosition(x,y) && CheckFigurePosition(x+1,y) && CheckFigurePosition(x,y+1) && CheckFigurePosition(x+1,y+1))
+        {
+            // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
+            arrayObjects[x,y].type = 1;
+            arrayObjects[x+1,y].type = 1;
+            arrayObjects[x,y+1].type = 1;
+            arrayObjects[x+1,y+1].type = 1;
+            approved = true;
+        }
+
+        return approved; 
+    }
+
+    // Metodo encargado de genarar la figura 6
+    bool Figure6(int x, int y)
+    {
+        // Variable donde se almacena si la figura se pudo realizar
+        bool approved = false;
+
+        // Condicion encargada de verificar que cada posicion que se debe usar para generar la figura este disponible
+        if(CheckFigurePosition(x,y) && CheckFigurePosition(x+1,y) && CheckFigurePosition(x,y+1) && CheckFigurePosition(x,y+2))
+        {
+            // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
+            arrayObjects[x,y].type = 1;
+            arrayObjects[x+1,y].type = 1;
+            arrayObjects[x,y+1].type = 1;
+            arrayObjects[x,y+2].type = 1;
+            approved = true;
+        }
+
+        return approved; 
+    }
+
+    // Metodo encargado de genarar la figura 7
+    bool Figure7(int x, int y)
+    {
+        // Variable donde se almacena si la figura se pudo realizar
+        bool approved = false;
+
+        // Condicion encargada de verificar que cada posicion que se debe usar para generar la figura este disponible
+        if(CheckFigurePosition(x,y) && CheckFigurePosition(x+1,y-1) && CheckFigurePosition(x+1,y) && CheckFigurePosition(x+1,y+1) && CheckFigurePosition(x+2,y))
+        {
+            // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
+            arrayObjects[x,y].type = 1;
+            arrayObjects[x+1,y-1].type = 1;
+            arrayObjects[x+1,y].type = 1;
+            arrayObjects[x+1,y+1].type = 1;
+            arrayObjects[x+2,y].type = 1;
+            approved = true;
+        }
+
+        return approved; 
+    }
+    
+    // Metodo encargado de llamar todos los metodos necesarios para generar un nivel aleatorio
     public Objects[,] CreateLevel()
     {
         GenerateArray();
+        FiguresQuantity(4);
         ArrivalPoint();
         LocateSolution();
         StartPoint();
-        ShowArray();
+        //
+        //DistanciaPuntos();
+        //ShowArray();
 
         return arrayObjects;
     }
@@ -168,8 +392,7 @@ public class GameController : Reference
         int y = route[route.Count-1].Item2;
         arrayObjects[x,y].type = 3;
     }
-    /* Metodo que se encarga de crear la matriz y llamar 
-    * al metodo que la va a llenar
+    /* Metodo que se encarga de crear la matriz llenarla de 0
     */
     void GenerateArray ()
     {
@@ -179,29 +402,8 @@ public class GameController : Reference
         {
             for (int j = 0; j < arrayCol; j++)
             {
-                // Llamado al metodo que llena la matriz
-                FillArray(i,j);
+                arrayObjects [i, j] = new Objects (i, j, 0);
             }
-        }
-        // Llamado al metodo que genera aleatoriamente un punto de llegada
-        //ArrivalPoint();
-    }
-
-    /* Metodo que llena la matriz de forma aleatoria indicando
-    * si es Piso (0) o Limite (1)
-    */
-    void FillArray (int i, int j)
-    {
-        // Se verifica si la posicion que entra por parametros corresponde a un borde de la matriz
-        if(i == 0 || j == 0 || i == arrayRow-1 || j == arrayCol-1)
-        {
-            // Como corresponde a un limite se llena con el numero 1
-            arrayObjects [i, j] = new Objects (i, j, 1);
-        }
-        else
-        {
-            // Se genera un numero aleatorio entre 0 y 1 para llenar la matriz
-            arrayObjects [i, j] = new Objects (i, j, RamdonNumber(0, 2));
         }
     }
 
@@ -263,17 +465,46 @@ public class GameController : Reference
         route.Add(Tuple.Create(row, col));
         // Almacena la cantidad de movimientos a realizar
         int cantMove = minMove;
-        
-        while (cantMove > 0)
+        int maxMove = minMove+3;
+
+        while (cantMove > 0 && maxMove >= 0)
         {
             // Verifica si el movimiento se realizo y resta uno a la cantidad que se deben ejecutar
             // manda un numero aleatorio entre 1 y 4 para indicar el movimiento
             if(Move(RamdonNumber(1,5))) cantMove--;
-            //Debug.Log("Movimiento minimo = "+ cantMove);
+            
+            maxMove--;
+        }
+        int distanciaM = 5;
+        while(DistanciaPuntos() == false && distanciaM >= 0)
+        {
+            Debug.Log("No cumple con la distancia minima genero un movimiento mas");
+            Move(RamdonNumber(1,5));
+            Debug.Log("Movimiento maximo = "+ distanciaM);
+            distanciaM--;
         }
         ShowList();
         //LocateSolution();
         //ShowArray();
+    }
+
+    bool DistanciaPuntos()
+    {
+        bool aprobada = false;
+        int pfX = route[0].Item1;
+        int pfY = route[0].Item2;
+
+        int piX = route[route.Count-1].Item1;
+        int piY = route[route.Count-1].Item2;
+
+        Debug.Log("Punto FInal ("+pfX+","+pfY+") Punto Inicial ("+piX+","+piY+")");
+
+        if(piX > pfX+4 || piX < pfX-4 || piY > pfY+3 || piY < pfY-3)
+        {
+            aprobada = true;
+            Debug.Log("Correcto");
+        }
+        return aprobada;
     }
 
     /* Metodo que ubica la lista de solucion generada en la matriz 
@@ -291,7 +522,7 @@ public class GameController : Reference
             // Almacena la posicon en Y del elemento en la lista
             routeY = route[i].Item2;
             // Modifica la matriz en las posiciones indicadas
-            arrayObjects[routeX,routeY].type = 0;
+            //arrayObjects[routeX,routeY].type = 0;
         }
     }
 
@@ -352,7 +583,7 @@ public class GameController : Reference
         Tuple <int, int> move = Tuple.Create(posX, posY);
         
         // Verifica que la posicion este entre los limites
-        if(posX > 0 && posY > 0 && posX < arrayRow-1 && posY < arrayCol-1)
+        if(posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol && arrayObjects[posX, posY].type == 0)
         {
             // Verifica que la posicion ya no haya sido utilizada y agregada a la ruta de solucion
             if(!route.Contains(move))
