@@ -46,4 +46,12 @@ public class GameView : Reference
         //Llamada al metodo para dibujar la matriz en la escena
         App.generalController.gameController.DrawMatrix(matrix,initialBlock,gameZone);
     }
+
+    public void LocateSolution()
+    {
+        App.generalController.gameController.LocateSolucion();
+
+        App.generalController.gameController.DrawSolution();
+    }
+
 }
