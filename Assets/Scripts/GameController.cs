@@ -112,11 +112,6 @@ public class GameController : Reference
                 {
                     matrix[i, j].GetComponent<SpriteRenderer>().color = Color.black;
                 }
-                //Si es 2 se pinta de negro
-                else if (matrix[i, j].GetComponent<Block>().GetID() == 2)
-                {
-                    matrix[i, j].GetComponent<SpriteRenderer>().color = Color.grey;
-                }
                 //Si es 3 se pinta de verde (punto Partida)
                 else if (matrix[i, j].GetComponent<Block>().GetID() == 3)
                 {
@@ -132,6 +127,8 @@ public class GameController : Reference
     }
 
     ////////////////////////////////////////////////////////////////////CAMILA//////////////////////////////////////////////////////////////
+    
+    // Metodo encargado de Pintar la ruta de solucion
     public void DrawSolution()
     {
         App.generalView.gameView.SolutionCanvas.enabled = false;
@@ -158,6 +155,7 @@ public class GameController : Reference
     // Matriz de GameObject
     GameObject[,] matrix;
 
+    // Variables para el backtracking
     static int numSteps; // Numero de pasos para llegar de un punto a otro
     static int numLlamadas; // Numero de llamadas rercursivas;
     static Objects [,] arraySolution = null; // Camino a seguir
@@ -169,9 +167,9 @@ public class GameController : Reference
         GenerateArray();
         int [] posStart = LocatePoints();
         FiguresQuantity(5);
-        ShowArray(arrayObjects);
+        //ShowArray(arrayObjects);
         GenerateSolution(posStart[0],posStart[1]);
-        ShowArray(arrayObjects);
+        //ShowArray(arrayObjects);
         return arrayObjects;
     }
 
@@ -192,19 +190,26 @@ public class GameController : Reference
     //Metodo encargado de ubicar el punto de partida y el punto final en la matriz
     int[] LocatePoints()
     {
+        // Variables para almacenar la posicion en la que se va a ubicar el punto de partida
         int posStarX = RamdonNumber(0, arrayRow);
         int posStarY = RamdonNumber(0, arrayCol);
+
+        // Se establece en la matriz el punto de partida y se cambia el valor en type
         arrayObjects[posStarX,posStarY].type = 3;
         
+        // Arreglo encargado de almacenar la posicion del punto de partida
         int [] pos = new int[2];
-
         pos[0]=posStarX;
         pos[1]=posStarY;
 
+        // Variable encargada de verificar si se ubico un punto final (llegada) correctamente
         bool approvedFinalPoint = false;
+
+        // Variables encargadas de almacenar la posicion donde se ubica el punto final
         int posFinalX = 0;
         int posFinalY = 0;
 
+        // Condicion que termina cuando se a encontrado un punto final adecuado
         while(approvedFinalPoint == false)
         {
             posFinalX = RamdonNumber(0, arrayRow);
@@ -217,6 +222,7 @@ public class GameController : Reference
         return pos;
     }
 
+    // Metodo encargado de verificar que el punto final no quede muy cerca del punto de inicio
     bool CheckDistancePoints(int startX, int startY, int finalX, int finalY)
     {
         bool approved = false;
@@ -457,24 +463,35 @@ public class GameController : Reference
         return approved; 
     }
     
+    /* Metodo encargado de generar la ruta de solucion mas corta
+    * recibe la fila y la columna donde se ubico el punto de partida
+    */
     void GenerateSolution(int row, int col)
     {
+        // Se crea una matriz de Objetos con la cual se empieza el proceso de backtracking
+        // Esta se inicializa con una clonacion de la matriz donde ya se ubicaron los obstaculos y los puntos de partida y llegada
         Objects [,] mapa = Clone(arrayObjects);
 
+        // Se ponen las variables que se utilizaran en el backtraking en cero
         ResetVariables();
+
+        // Se hace un llamado al metodo backtracking encargado de encontrar una solucion
         Backtracking(mapa, row, col, 0);
+
+        // Si el numero de pasos es mayor a 0 esto indica que se encontro una solucion 
         if(numSteps > 0)
         {
             Debug.Log("Se encontro una solucion con "+numSteps+" pasos");
             ShowArray(arraySolution);
+            Debug.Log("Llamadas recursivas realizadas "+numLlamadas);
         }
         else
         {
             Debug.Log("No se pudo encontrar Solucion");
+            // Como no se pudo encontrar una solucion se procede a generar un nuevo nivel
             CreateLevel();
         }
-        Debug.Log("Llamadas recursivas realizadas "+numLlamadas);
-
+        
     }
     
     // Metodo Backtracking encargado de buscar la solucion mas corta para llegar de un punto a otro
