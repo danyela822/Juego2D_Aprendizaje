@@ -54,4 +54,14 @@ public class GameView : Reference
         App.generalController.gameController.DrawSolution();
     }
 
+    //DANY//
+    public void MoveCharacter(string direction)
+    {
+        App.generalController.charactersController.Move(direction);
+    }
+
+    public void NotMoveCharacter()
+    {
+        App.generalController.charactersController.NotMove();
+    }
 }
