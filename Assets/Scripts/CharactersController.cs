@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharactersController : MonoBehaviour
 {
     //Velocidad a la que se mueve el personaje
-    float speed = 3f;
+    float speed = 1f;
     //Tipo de personaje (Principal, ayudante 1 o ayudante 2)
     public int type;
     //Variable para acceder a las animaciones de los personajes
@@ -40,12 +40,18 @@ public class CharactersController : MonoBehaviour
         {
 	        move = Vector2.left;
         }
+
+        //Animacion del personaje
+        animator.SetFloat("mov_x", move.x);
+        animator.SetFloat("mov_y", move.y);
+        animator.SetBool("walking", true);
     }
 
     //Metodo que detiene el movimiento del personaje
     public void NotMove()
     {
         move = Vector3.zero;
+        animator.SetBool("walking", false);
     }
 
     //Metodo que cambia la posicion del personaje en la escena
@@ -53,5 +59,6 @@ public class CharactersController : MonoBehaviour
     {
         this.transform.position += move * speed * Time.deltaTime;
         //rigidbody2d.MovePosition(rigidbody2d.position + move * speed * Time.deltaTime);
+        
     }
 }
