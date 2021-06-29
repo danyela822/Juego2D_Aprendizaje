@@ -13,6 +13,11 @@ public class GameView : Reference
     //Objeto que representa la zona del juego (Matriz)
     public GameObject gameZone;
 
+    //Arreglo con los personajes del juego
+    public List<GameObject> allCharacters;
+    //public GameObject [] allCharacters;
+
+
     private void Awake()
     {
         GameCanvas = GameObject.Find("Game Canvas").GetComponent<Canvas>();
@@ -23,6 +28,8 @@ public class GameView : Reference
         gameZone = GameObject.Find("Game Zone");
 
         BuildMatrix();
+        App.generalController.gameController.CreateCharacters();
+        LocateCharacters();
     }
 
     /*
@@ -55,13 +62,27 @@ public class GameView : Reference
     }
 
     //DANY//
+
+    public void LocateCharacters()
+    {
+        App.generalController.gameController.SelectCharactersLevel(3, "Castle",allCharacters);
+    }
+
+    public void ActivateMovement(int type)
+    {
+        App.generalController.gameController.ActivateMovement(type);
+        //App.generalController.charactersController.ActivateMovement(type);
+    }
+
     public void MoveCharacter(string direction)
     {
-        App.generalController.charactersController.Move(direction);
+        App.generalController.gameController.Move(direction);
+        //App.generalController.charactersController.Move(direction);
     }
 
     public void NotMoveCharacter()
     {
-        App.generalController.charactersController.NotMove();
+        App.generalController.gameController.NotMove();
+        //App.generalController.charactersController.NotMove();
     }
 }

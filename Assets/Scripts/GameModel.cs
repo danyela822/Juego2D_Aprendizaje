@@ -36,3 +36,21 @@ public class Objects
         this.type = t;
     }
 }
+
+public class Character
+{
+    public string name { get; set; }
+    public string theme { get; set; }
+    public int type { get; set; }
+    public int x { get; set; }
+    public int y { get; set; }
+
+    public Character(string name, string theme, int type, int x, int y)
+    {
+        this.name = name;
+        this.theme = theme;
+        this.type = type;
+        this.x = x;
+        this.y = y;
+    }
+}

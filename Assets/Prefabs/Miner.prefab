@@ -342,7 +342,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5226046898513011812}
   - component: {fileID: 1480543847680830571}
-  - component: {fileID: 8198966029412874759}
   - component: {fileID: 1873133670}
   - component: {fileID: 5183311670495734004}
   m_Layer: 0
@@ -387,19 +386,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8198966029412874759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5226046898513011813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ad2d16dde41d74180c671002b4c2ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
 --- !u!70 &1873133670
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -410,7 +396,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.35}

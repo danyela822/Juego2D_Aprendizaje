@@ -160,12 +160,16 @@ public class GameController : Reference
     static int numLlamadas; // Numero de llamadas rercursivas;
     static Objects [,] arraySolution = null; // Camino a seguir
 
+    /////////////////////////////////////////////////////DANY///////////////////////////////////////////////////
+    int[] posStart;
+    /////////////////////////////////////////////////////DANY///////////////////////////////////////////////////
+    
 
     // Metodo encargado de llamar todos los metodos necesarios para generar un nivel aleatorio
     public Objects[,] CreateLevel()
     {
         GenerateArray();
-        int [] posStart = LocatePoints();
+        posStart = LocatePoints();
         FiguresQuantity(5);
         //ShowArray(arrayObjects);
         GenerateSolution(posStart[0],posStart[1]);
@@ -596,81 +600,217 @@ public class GameController : Reference
         Debug.Log(imprimir);
     }
 
-    ////////////////////////////////////////////////CONTROL DE LOS PERSONAJES//////////////////////////////////////
+
+    ////////////////////////////////////////////////////////PERSONAJES//////////////////////////////////////////////////
+
+    //Lista de personajes tipo GameObject que aparecen en la pantalla
+    List<GameObject> screenCharacters = new List<GameObject>();
+
+    //Lista de todos lo personajes que hay en el juego
+    List<Character> allCharacters = new List<Character>();
+
+    //Lista de los personajes que pertenecen al nivel que se esta jugando
+    List<Character> levelCharacters;
+
+    //Metodo para seleccionar los personajes que apareceran en el nivel y ubicarlos en la pantalla.
+    //Debe recibir la cantidad de persojes que apareceran, el tema (Castillo, Bosque, Oceano) y la lista de objetos de los personajes
+    public void SelectCharactersLevel(int numCharacters, string theme, List<GameObject> allCh)
+    {
+        //Inicializacion de la Lista de los personajes que seran usandos en un nivel
+        levelCharacters = new List<Character>();
+
+        print("levelCharacters: " + levelCharacters.Count);
+
+        if (numCharacters == 3)
+        {
+            for (int i = 0; i < allCharacters.Count; i++)
+            {
+                if (allCharacters[i].theme == theme)
+                {
+                    //Añadir a la lista de personajes del nivel
+                    levelCharacters.Add(new Character(allCharacters[i].name, allCharacters[i].theme, allCharacters[i].type, allCharacters[i].x, allCharacters[i].y));
+
+                    //Añadir a la lista de personajes en pantalla
+                    screenCharacters.Add(Instantiate(allCh[i], new Vector3(allCh[i].transform.position.x, allCh[i].transform.position.y, 0), allCh[i].transform.rotation));
+                }
+            }
+        }
+        else
+        {
+            int numType = RamdonNumber(2, 4);
+            for (int i = 0; i < allCharacters.Count; i++)
+            {
+                if (allCharacters[i].theme == theme && (allCharacters[i].type == 1 || allCharacters[i].type == numType))
+                {
+                    levelCharacters.Add(new Character(allCharacters[i].name, allCharacters[i].theme, allCharacters[i].type, allCharacters[i].x, allCharacters[i].y));
+
+                    screenCharacters.Add(Instantiate(allCh[i], new Vector3(allCh[i].transform.position.x, allCh[i].transform.position.y, 0), allCh[i].transform.rotation));
+                } 
+            }
+        }
+    }
+
+    //Metodo para crear todos los personajes del juego
+    public void CreateCharacters()
+    {
+        allCharacters.Add(new Character("King", "Castle", 1, posStart[0], posStart[1]));
+        allCharacters.Add(new Character("Knight", "Castle", 2, 0, 0));
+        allCharacters.Add(new Character("Miner", "Castle", 3, 0, 0));
+        allCharacters.Add(new Character("Caperucita", "Forest", 1, posStart[0], posStart[1]));
+        allCharacters.Add(new Character("Satyr", "Forest", 2, 0, 0));
+        allCharacters.Add(new Character("Robin Hood", "Forest", 3, 0, 0));
+    }
+
+
+    //Variable para controlar la posicion del personaje en la escena
+    Vector2 move;
+
+    //Variable para acceder a las animaciones de los personajes
+    Animator animator;
+
+    //Variable para controlar el movimiento del personaje en la escena
+    Rigidbody2D rigidbody2d;
 
     //Velocidad a la que se mueve el personaje
     float speed = 1f;
-    //Tipo de personaje (Principal, ayudante 1 o ayudante 2)
-    public int type;
-    //Variable para acceder a las animaciones de los personajes
-    Animator animator;
-    //Variable para controlar el movimiento del personaje en la escena
-    Vector3 move;
 
-    Rigidbody2D rigidbody2d;
+    //Variables para controlar el acceso a los movimientos del personaje
+    bool walkAllDirection = false;
+    bool walkUpDown = false;
+    bool walkRightLeft = false;
 
-    private void Update()
+    //Metodo para activar el movimiento determinado de un personaje especifico
+    public void ActivateMovement(int type)
     {
-        /*if(Input.touchCount>0)
+        switch (type)
         {
-            print("ENTRO");
-            Touch toque = Input.GetTouch(0);
-            print(toque.position.x);
-            print(toque.position.y);
-        }*/
+            case 1:
+                //Activar componentes para los personajes que caminan en todas direcciones
+                ActivateComponents(type);       
+                
+                //Activar movimiento en todas la direcciones
+                walkAllDirection = true;
+                break;
+            case 2:
+                //Activar componentes para los personajes que caminan hacia arriba y hacia abajo
+                ActivateComponents(type);
+                
+                //Activar movimiento hacia arriba y hacia abajo
+                walkUpDown = true;
+                walkRightLeft = false;
+                walkAllDirection = false;
+                break;
+            case 3:
+                //Activar componentes para los personajes que caminan hacia la derecha y hacia la izquierda
+                ActivateComponents(type);
+
+                //Activar movimiento hacia la derecha y hacia la izquierda
+                walkRightLeft = true;
+                walkUpDown = false;
+                walkAllDirection = false;
+                break;
+            default:
+                break;
+        }
     }
 
-    public void TouchCharacter(string name_chraracter)
+    //Metodo para activar los componentes que permiten el movimiento de los personajes
+    void ActivateComponents(int type)
     {
-        print("ENTRO A TOUCH: "+name_chraracter);
-        /*animator = GameObject.Find(name_chraracter).GetComponent<Animator>();
-        rigidbody2d = GetComponent<Rigidbody2D>();*/
+        for (int i = 0; i < levelCharacters.Count; i++)
+        {
+            //Buscar los personajes del nivel por su tema
+            if (levelCharacters[i].type == type)
+            {
+                //Activar el rigibody y animator del personaje
+                rigidbody2d = screenCharacters[i].GetComponent<Rigidbody2D>();
+                animator = screenCharacters[i].GetComponent<Animator>();
+            }
+        }
     }
-
-    /*void Awake()
-    {
-        animator = GetComponent<Animator>();
-        rigidbody2d = GetComponent<Rigidbody2D>();
-    }*/
 
     //Metodo que indica hacia que direccion debe moverse el personaje
     public void Move(string direction)
     {
+        //Verficar que se esta mandando una direccion para mover al personaje
+        if(direction!=null)
+        {
+            if (walkAllDirection == true)
+            {
+                MoveUpDown(direction);
+                MoveRightLeft(direction);
+            }
+            else if (walkUpDown == true)
+            {
+                MoveUpDown(direction);
+            }
+            else if (walkRightLeft == true)
+            {
+                MoveRightLeft(direction);
+            }
+        }
+    }
+
+    //Metodo para mover al personaje de arriba a abajo
+    void MoveUpDown(string direction)
+    {
         if (direction == "up")
         {
             move = Vector2.up;
+
+            //Activar animaciones del personaje
+            animator.SetFloat("mov_y", move.y);
+            animator.SetBool("walking", true);
         }
         else if (direction == "down")
         {
             move = Vector2.down;
+
+            //Activar animaciones del personaje
+            animator.SetFloat("mov_y", move.y);
+            animator.SetBool("walking", true);
         }
-        else if (direction == "right")
+    }
+
+    //Metodo para mover al personaje de izquierda a deracha
+    void MoveRightLeft(string direction)
+    {
+        if (direction == "right")
         {
             move = Vector2.right;
+
+            //Activar animaciones del personaje
+            animator.SetFloat("mov_x", move.x);
+            animator.SetBool("walking", true);
         }
         else if (direction == "left")
         {
             move = Vector2.left;
-        }
 
-        //Animacion del personaje
-        animator.SetFloat("mov_x", move.x);
-        animator.SetFloat("mov_y", move.y);
-        animator.SetBool("walking", true);
+            //Activar animaciones del personaje
+            animator.SetFloat("mov_x", move.x);
+            animator.SetBool("walking", true);
+        }
     }
 
     //Metodo que detiene el movimiento del personaje
     public void NotMove()
     {
-        move = Vector3.zero;
-        animator.SetBool("walking", false);
+        //Verificar que el animator del personaje esta activo
+        if(animator!=null)
+        {
+            move = Vector2.zero;
+            animator.SetBool("walking", false);
+        }
     }
 
     //Metodo que cambia la posicion del personaje en la escena
     void FixedUpdate()
     {
-        this.transform.position += move * speed * Time.deltaTime;
-        //rigidbody2d.MovePosition(rigidbody2d.position + move * speed * Time.deltaTime);
+        //Verificar que el rigibody del personaje esta activo
+        if (rigidbody2d != null)
+        {
+            rigidbody2d.MovePosition(rigidbody2d.position + move * speed * Time.deltaTime);
+        }       
     }
-
 }
