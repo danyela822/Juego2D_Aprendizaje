@@ -2320,7 +2320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dad3f6bac0380f42b69247b8a19d507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
 --- !u!114 &1235144676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2346,8 +2345,6 @@ MonoBehaviour:
   - {fileID: 1287312408748537240, guid: 9c49a981a86105145898308436953f2f, type: 3}
   - {fileID: 4119969355953505904, guid: f5afcccb5a8521949aeb3f7b3e8718be, type: 3}
   - {fileID: 7659793250584423556, guid: 692723204c75b0f43bc8e671566e8059, type: 3}
-=======
->>>>>>> 6721b66a6d4ee73b59005b58e2fa3fcfe4addd65
 --- !u!1 &1275134828
 GameObject:
   m_ObjectHideFlags: 0
