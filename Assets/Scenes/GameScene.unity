@@ -945,7 +945,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 1235144674}
   uiController: {fileID: 0}
-  charactersController: {fileID: 0}
 --- !u!1 &432014299
 GameObject:
   m_ObjectHideFlags: 0
