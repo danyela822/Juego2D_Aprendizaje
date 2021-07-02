@@ -18,6 +18,8 @@ public class GameView : Reference
     //public GameObject [] allCharacters;
 
 
+    public static GameView gameView;
+    
     private void Awake()
     {
         GameCanvas = GameObject.Find("Game Canvas").GetComponent<Canvas>();
@@ -48,8 +50,8 @@ public class GameView : Reference
         //Provicional
         //GameObject [,] Matrix = new GameObject[8,6];
 
-        Objects[,] matrix = App.generalController.gameController.CreateLevel();
-
+        //Objects[,] matrix = App.generalController.gameController.LevelData("Begginer");
+        Objects[,] matrix = App.generalController.gameController.ReturnArray();
         //Llamada al metodo para dibujar la matriz en la escena
         App.generalController.gameController.DrawMatrix(matrix,initialBlock,gameZone);
     }
