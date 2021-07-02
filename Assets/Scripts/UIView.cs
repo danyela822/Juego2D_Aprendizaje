@@ -19,4 +19,10 @@ public class UIView : Reference
         category = GameObject.Find("Category Text").GetComponent<Text>();
         category.text = nameCategory;
     }
+
+    public string NameCategory()
+    {
+        category = GameObject.Find("Category Text").GetComponent<Text>();
+        return category.text;
+    }
 }

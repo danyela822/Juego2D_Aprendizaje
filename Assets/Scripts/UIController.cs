@@ -68,6 +68,16 @@ public class UIController : Reference
         if (name_button == "Random Button")
         {
             //Escena del nivel aleatorio
+            SceneManager.LoadScene("GameScene");
+            App.generalController.gameController.RamdonLevel();
+        }
+
+        //Botones de Niveles
+        if(name_button == "Level Button")
+        {
+            SceneManager.LoadScene("GameScene");
+            string categoryName = App.generalView.UIView.NameCategory();
+            App.generalController.gameController.LevelData(categoryName);
         }
 
         //Botones de la vista de Configuracion

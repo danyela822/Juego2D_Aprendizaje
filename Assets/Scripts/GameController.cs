@@ -128,6 +128,9 @@ public class GameController : Reference
 
     ////////////////////////////////////////////////////////////////////CAMILA//////////////////////////////////////////////////////////////
     
+    //
+    public static GameController gameController;
+
     // Metodo encargado de Pintar la ruta de solucion
     public void DrawSolution()
     {
@@ -157,24 +160,82 @@ public class GameController : Reference
 
     // Variables para el backtracking
     static int numSteps; // Numero de pasos para llegar de un punto a otro
-    static int numLlamadas; // Numero de llamadas rercursivas;
+    static int numLlamadas; // Numero de llamadas rercursivas
     static Objects [,] arraySolution = null; // Camino a seguir
 
-
-    // Metodo encargado de llamar todos los metodos necesarios para generar un nivel aleatorio
-    public Objects[,] CreateLevel()
+    void Awake()
     {
-        GenerateArray();
-        int [] posStart = LocatePoints();
-        FiguresQuantity(5);
-        //ShowArray(arrayObjects);
-        GenerateSolution(posStart[0],posStart[1]);
-        //ShowArray(arrayObjects);
+        if(gameController == null)
+        {
+            gameController = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (gameController != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
+    public Objects[,] ReturnArray ()
+    {
         return arrayObjects;
     }
 
+    public void RamdonLevel()
+    {
+        int ramdonCategory = RamdonNumber(1,4);
+        string category = "";
+        
+        if(ramdonCategory == 1) category = "Principiante";
+        
+        else if (ramdonCategory == 2) category = "Medio";
+        
+        else if(ramdonCategory == 3) category = "Avanzado";
+
+        LevelData(category);
+    }
+    public void LevelData(string category)
+    {
+        int figuresQuantity = 0;
+        int figureTypeMin = 0;
+        int figureTypeMax = 0;
+        if(category == "Principiante")
+        {
+            figuresQuantity = RamdonNumber(3,6);
+            figureTypeMin = 1;
+            figureTypeMax = 4;
+        }
+        else if(category == "Medio")
+        {
+            figuresQuantity = RamdonNumber(3,6);
+            figureTypeMin = 3;
+            figureTypeMax = 6;
+        }
+        else if(category == "Avanzado")
+        {
+            figuresQuantity = RamdonNumber(3,6);
+            figureTypeMin = 5;
+            figureTypeMax = 8;
+        }
+
+        CreateLevel(category, figuresQuantity, figureTypeMin, figureTypeMax);
+        
+    }
+
+    // Metodo encargado de llamar todos los metodos necesarios para generar un nivel aleatorio
+    public void CreateLevel(string category, int figuresQuantity, int figureTypeMin, int figureTypeMax)
+    {
+        GenerateArray();
+        int [] posStart = LocatePoints();
+        FiguresQuantity(figuresQuantity, figureTypeMin, figureTypeMax);
+        //ShowArray(arrayObjects);
+        GenerateSolution(category, posStart[0],posStart[1]);
+        //ShowArray(arrayObjects);
+        
+    }
+
     // Metodo que se encarga de crear la matriz llenarla de 0
-    void GenerateArray ()
+    public void GenerateArray ()
     {
         arrayObjects = new Objects [arrayRow, arrayCol];
 
@@ -185,6 +246,8 @@ public class GameController : Reference
                 arrayObjects [i, j] = new Objects (i, j, 0);
             }
         }
+
+        ShowArray(arrayObjects);
     }
 
     //Metodo encargado de ubicar el punto de partida y el punto final en la matriz
@@ -227,7 +290,7 @@ public class GameController : Reference
     {
         bool approved = false;
 
-        if(finalX > startX+4 || finalX < startX-4 || finalY > startY+3 || finalY < startY-3)
+        if((finalX > startX+4 || finalX < startX-4) || (finalY > startY+3 || finalY < startY-3))
         {
             approved = true;
         }
@@ -263,7 +326,7 @@ public class GameController : Reference
     * matriz, la posicion en la cual se va a ubicar y el tipo de figura que
     * se debe poner
     */
-    void FiguresQuantity (int quantity)
+    void FiguresQuantity (int quantity, int figureTypeMin, int figureTypeMax)
     {
         // Variable para verificar que la figura a sido ubicada
         bool approved = false;
@@ -277,7 +340,7 @@ public class GameController : Reference
             // Variable que almacena la posicion en Y generada aleatoriamente
             int y = RamdonNumber(0, arrayCol);
             // Variable que almacena la figura que se debe ubicar generada aleatoriamente
-            int figureType = RamdonNumber(1, 8);
+            int figureType = RamdonNumber(figureTypeMin, figureTypeMax);
             approved = Figures(x, y, figureType);
             // Verifica si la figura se ubico correctamente y disminuye uno a la cantidad
             if(approved) i--;
@@ -330,24 +393,40 @@ public class GameController : Reference
     {
         // Variable donde se almacena si la figura se pudo realizar
         bool approved = false;
-
+        
         // Condicion encargada de verificar que cada posicion que se debe usar para generar la figura este disponible
-        if(CheckFigurePosition(x,y) && CheckFigurePosition(x+1,y) && CheckFigurePosition(x+1,y+1) && CheckFigurePosition(x+2,y))
+        if(CheckFigurePosition(x,y) && CheckFigurePosition(x+1,y) && CheckFigurePosition(x+2,y))
         {
             // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
             arrayObjects[x,y].type = 1;
             arrayObjects[x+1,y].type = 1;
-            arrayObjects[x+1,y+1].type = 1;
             arrayObjects[x+2,y].type = 1;
-            // Como se pudo generar la figura se retorna verdadero
             approved = true;
         }
-        
-        return approved;
+        return approved;    
     }
-
+    
     // Metodo encargado de genarar la figura 2
     bool Figure2(int x, int y)
+    {
+        // Variable donde se almacena si la figura se pudo realizar
+        bool approved = false;
+
+        // Condicion encargada de verificar que cada posicion que se debe usar para generar la figura este disponible
+        if(CheckFigurePosition(x,y) && CheckFigurePosition(x,y+1) && CheckFigurePosition(x,y+2))
+        {
+            // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
+            arrayObjects[x,y].type = 1;
+            arrayObjects[x,y+1].type = 1;
+            arrayObjects[x,y+2].type = 1;
+            approved = true;
+        }
+
+        return approved;  
+    }
+   
+    // Metodo encargado de genarar la figura 3
+     bool Figure3(int x, int y)
     {
         // Variable donde se almacena si la figura se pudo realizar
         bool approved = false;
@@ -365,45 +444,8 @@ public class GameController : Reference
         return approved;
     }
 
-    // Metodo encargado de genarar la figura 3
-    bool Figure3(int x, int y)
-    {
-        // Variable donde se almacena si la figura se pudo realizar
-        bool approved = false;
-        
-        // Condicion encargada de verificar que cada posicion que se debe usar para generar la figura este disponible
-        if(CheckFigurePosition(x,y) && CheckFigurePosition(x+1,y) && CheckFigurePosition(x+2,y))
-        {
-            // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
-            arrayObjects[x,y].type = 1;
-            arrayObjects[x+1,y].type = 1;
-            arrayObjects[x+2,y].type = 1;
-            approved = true;
-        }
-        return approved;    
-    }
-
     // Metodo encargado de genarar la figura 4
     bool Figure4(int x, int y)
-    {
-        // Variable donde se almacena si la figura se pudo realizar
-        bool approved = false;
-
-        // Condicion encargada de verificar que cada posicion que se debe usar para generar la figura este disponible
-        if(CheckFigurePosition(x,y) && CheckFigurePosition(x,y+1) && CheckFigurePosition(x,y+2))
-        {
-            // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
-            arrayObjects[x,y].type = 1;
-            arrayObjects[x,y+1].type = 1;
-            arrayObjects[x,y+2].type = 1;
-            approved = true;
-        }
-
-        return approved;  
-    }
-
-    // Metodo encargado de genarar la figura 5
-    bool Figure5(int x, int y)
     {
         // Variable donde se almacena si la figura se pudo realizar
         bool approved = false;
@@ -422,6 +464,27 @@ public class GameController : Reference
         return approved; 
     }
 
+    // Metodo encargado de genarar la figura 5
+    bool Figure5(int x, int y)
+    {
+        // Variable donde se almacena si la figura se pudo realizar
+        bool approved = false;
+
+        // Condicion encargada de verificar que cada posicion que se debe usar para generar la figura este disponible
+        if(CheckFigurePosition(x,y) && CheckFigurePosition(x+1,y) && CheckFigurePosition(x+1,y+1) && CheckFigurePosition(x+2,y))
+        {
+            // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
+            arrayObjects[x,y].type = 1;
+            arrayObjects[x+1,y].type = 1;
+            arrayObjects[x+1,y+1].type = 1;
+            arrayObjects[x+2,y].type = 1;
+            // Como se pudo generar la figura se retorna verdadero
+            approved = true;
+        }
+        
+        return approved;
+    }
+    
     // Metodo encargado de genarar la figura 6
     bool Figure6(int x, int y)
     {
@@ -466,17 +529,17 @@ public class GameController : Reference
     /* Metodo encargado de generar la ruta de solucion mas corta
     * recibe la fila y la columna donde se ubico el punto de partida
     */
-    void GenerateSolution(int row, int col)
+    void GenerateSolution(string category, int row, int col)
     {
         // Se crea una matriz de Objetos con la cual se empieza el proceso de backtracking
         // Esta se inicializa con una clonacion de la matriz donde ya se ubicaron los obstaculos y los puntos de partida y llegada
-        Objects [,] mapa = Clone(arrayObjects);
+        Objects [,] map = Clone(arrayObjects);
 
         // Se ponen las variables que se utilizaran en el backtraking en cero
         ResetVariables();
 
         // Se hace un llamado al metodo backtracking encargado de encontrar una solucion
-        Backtracking(mapa, row, col, 0);
+        Backtracking(map, row, col, 0);
 
         // Si el numero de pasos es mayor a 0 esto indica que se encontro una solucion 
         if(numSteps > 0)
@@ -489,7 +552,8 @@ public class GameController : Reference
         {
             Debug.Log("No se pudo encontrar Solucion");
             // Como no se pudo encontrar una solucion se procede a generar un nuevo nivel
-            CreateLevel();
+            //CreateLevel();
+            LevelData(category);
         }
         
     }
@@ -542,7 +606,7 @@ public class GameController : Reference
         {
             for (int j = 0; j < arrayCol; j++)
             {
-                arrayClone[i,j] = new Objects(array[i,j].x, array[i,j].y, array[i,j].type) ;
+                arrayClone[i,j] = new Objects(array[i,j].x, array[i,j].y, array[i,j].type);
             }
         }
         return arrayClone;
