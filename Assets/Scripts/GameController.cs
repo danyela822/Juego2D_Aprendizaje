@@ -683,7 +683,7 @@ public class GameController : Reference
         //Inicializacion de la Lista de los personajes que seran usandos en un nivel
         levelCharacters = new List<Character>();
 
-        print("levelCharacters: " + levelCharacters.Count);
+
 
         if (numCharacters == 3)
         {
@@ -693,6 +693,7 @@ public class GameController : Reference
                 {
                     //Añadir a la lista de personajes del nivel
                     levelCharacters.Add(new Character(allCharacters[i].name, allCharacters[i].theme, allCharacters[i].type, allCharacters[i].x, allCharacters[i].y));
+                    print("levelCharacters: " + i+ " "+ levelCharacters[i].name);
 
                     //Añadir a la lista de personajes en pantalla
                     screenCharacters.Add(Instantiate(allCh[i], new Vector3(allCh[i].transform.position.x, allCh[i].transform.position.y, 0), allCh[i].transform.rotation));
@@ -717,12 +718,15 @@ public class GameController : Reference
     //Metodo para crear todos los personajes del juego
     public void CreateCharacters()
     {
-        allCharacters.Add(new Character("King", "Castle", 1, posStart[0], posStart[1]));
+        allCharacters.Add(new Character("King", "Castle", 1, 0, 0));
         allCharacters.Add(new Character("Knight", "Castle", 2, 0, 0));
         allCharacters.Add(new Character("Miner", "Castle", 3, 0, 0));
-        allCharacters.Add(new Character("Caperucita", "Forest", 1, posStart[0], posStart[1]));
+        allCharacters.Add(new Character("Caperucita", "Forest", 1, 0, 0));
         allCharacters.Add(new Character("Satyr", "Forest", 2, 0, 0));
         allCharacters.Add(new Character("Robin Hood", "Forest", 3, 0, 0));
+        allCharacters.Add(new Character("Pirate", "Sea", 1, 0, 0));
+        allCharacters.Add(new Character("Fish", "Sea", 2, 0, 0));
+        allCharacters.Add(new Character("Ghost", "Sea", 3, 0, 0));
     }
 
 
@@ -789,6 +793,7 @@ public class GameController : Reference
                 //Activar el rigibody y animator del personaje
                 rigidbody2d = screenCharacters[i].GetComponent<Rigidbody2D>();
                 animator = screenCharacters[i].GetComponent<Animator>();
+                
             }
         }
     }
@@ -821,6 +826,8 @@ public class GameController : Reference
         if (direction == "up")
         {
             move = Vector2.up;
+
+
 
             //Activar animaciones del personaje
             animator.SetFloat("mov_y", move.y);
@@ -874,7 +881,8 @@ public class GameController : Reference
         //Verificar que el rigibody del personaje esta activo
         if (rigidbody2d != null)
         {
-            rigidbody2d.MovePosition(rigidbody2d.position + move * speed * Time.deltaTime);
-        }       
+           print("Position: "+rigidbody2d.position + move * speed);
+           rigidbody2d.MovePosition(rigidbody2d.position + move * speed * Time.deltaTime);
+        }
     }
 }

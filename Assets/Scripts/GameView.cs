@@ -50,7 +50,7 @@ public class GameView : Reference
         //Provicional
         //GameObject [,] Matrix = new GameObject[8,6];
 
-        //Objects[,] matrix = App.generalController.gameController.LevelData("Begginer");
+        //App.generalController.gameController.LevelData("Principiante");
         Objects[,] matrix = App.generalController.gameController.ReturnArray();
         //Llamada al metodo para dibujar la matriz en la escena
         App.generalController.gameController.DrawMatrix(matrix,initialBlock,gameZone);
