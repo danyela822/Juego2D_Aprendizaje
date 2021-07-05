@@ -51,11 +51,21 @@ public class BoardSequence : MonoBehaviour
         {
             for (int j = 0; j < y1; j++)
             {
-                if(i == 0 && j == 0)
+                if(i == 0 )
                 {
                     GameObject newImage = Instantiate(currentImage,
-                    new Vector3(startX + (offset.x * j), startY
-                    + (offset.y * -i), 0), currentImage.transform.rotation);
+                    new Vector3(startX + ((offset.x + 0.2f) * j), startY
+                    + (offset.y * -i ), 0), currentImage.transform.rotation);
+
+                    newImage.name = string.Format("Image[{0}][{1}]0", i, j);
+                    images[i, j] = newImage;
+                }
+               
+                else
+                {
+                    GameObject newImage = Instantiate(currentImage,
+                    new Vector3(startX + ((offset.x + 0.2f) * j), startY
+                    + (offset.y * -i - 1.1f), 0), currentImage.transform.rotation);
 
                     newImage.name = string.Format("Image[{0}][{1}]0", i, j);
                     images[i, j] = newImage;
