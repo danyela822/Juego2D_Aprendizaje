@@ -468,9 +468,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c3c4a557a631909a50fe2b493a15f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs: []
-  x1: 2
-  y1: 3
+  prefabs:
+  - {fileID: 21300000, guid: 67bdb2f3f89b6f9729ed03dbb8292936, type: 3}
+  - {fileID: 21300000, guid: 19af69ceffe1891948fabd87c6720304, type: 3}
+  - {fileID: 21300000, guid: 500dbe778f4c5671d8b3859389189953, type: 3}
+  - {fileID: 21300000, guid: 2f6ebb578efa9fd44b12374afc508eb8, type: 3}
+  - {fileID: 21300000, guid: 34110ee46f44bba5c9e869a4cfa27f4f, type: 3}
+  - {fileID: 21300000, guid: 6dffd785e8b92d96080074c8ccc64bf9, type: 3}
+  - {fileID: 21300000, guid: 2e97c93884d024781b9ca0110d95b102, type: 3}
+  - {fileID: 21300000, guid: 68cb3d5f436cc4e9a8c14c8175a925c5, type: 3}
+  - {fileID: 21300000, guid: 473d843fd98824d5691d437bf3dd8c60, type: 3}
+  - {fileID: 21300000, guid: 274673a7c2289474aa82bf8db6ada60c, type: 3}
+  - {fileID: 21300000, guid: adf4df72db7264007a5d878256e2e61b, type: 3}
+  - {fileID: 21300000, guid: 32f7706bb2c6949d0b794df47ab637d2, type: 3}
+  - {fileID: 21300000, guid: 7a945f8213aad43afa2148ca53bcd422, type: 3}
+  - {fileID: 21300000, guid: fe05f114b44e54c6a9986aa0131435a7, type: 3}
+  - {fileID: 21300000, guid: 9b4c2d42fbb7d41c1a66cbe9c0a809f8, type: 3}
   currentImage: {fileID: 1957476222979594727, guid: 16dcec28583275033bd8abed12f48827, type: 3}
 --- !u!4 &742664203
 Transform:

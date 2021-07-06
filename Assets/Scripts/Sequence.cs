@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sequence : MonoBehaviour
 {
     //id del la imagen de la secuencia
-    public int id;
+    public string id;
 
     //imagen con que voy a comparar si escoge bien o no 
     private Sequence sequenceToCompare = null;
