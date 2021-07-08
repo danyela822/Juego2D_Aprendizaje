@@ -19,13 +19,9 @@ public class MiniGameView : Reference
     //Imagen para representar una incognita y para representar el acertijo
     public Image riddleImage, solutionImage, loseImage;
 
-    //Variable que servira para cambiar el sprite de la imagen del acertijo
-    Sprite sprite;
-
     //Variable para mostrar si la opcion elegida fue o no la correcta
     public GameObject winPanel, losePanel;
-    //Acertijo
-    Acertijo a;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,7 +62,7 @@ public class MiniGameView : Reference
         losePanel = GameObject.Find("Lose Panel");
         losePanel.SetActive(false);
 
-        App.generalController.miniGame2Controller.CargarAcertijos();
+        App.generalController.miniGame2Controller.LoadRiddles();
     }
     public void CheckAnswer(GameObject respuesta)
     {

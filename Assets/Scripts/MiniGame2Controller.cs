@@ -4,41 +4,45 @@ using UnityEngine;
 
 public class MiniGame2Controller : Reference
 {
-    Acertijo a;
-    public void CargarAcertijos()
+    Riddle riddle;
+    public void LoadRiddles()
     {
+        //Crear los acertijos 
         App.generalModel.miniGameModel.CreateRiddles();
-        int num = Random.Range(0, 34);
-        
-        a = App.generalModel.miniGameModel.riddlesList[num];
 
-        App.generalView.miniGameView.riddleText.text = a.riddle;
+        //Seleccionar un numero aleatorio entre cero y la cantidad total de acertijos
+        int index = Random.Range(0, 34);
+
+        //Seleccionar un acertijo de la lista creada anteriormente
+        riddle = App.generalModel.miniGameModel.riddlesList[index];
+
+        //Asignar el enunciado del acertijo al texto de la vista
+        App.generalView.miniGameView.riddleText.text = riddle.Text;
 
         int cont = 0;
-        int r = 0;
         bool op_0 = true, op_1 = true, op_2 = true;
 
         while (cont < 3)
         {
-            r = Random.Range(0, 3);
-            string nom = "Option_"+r+" Button";
-            print("R: " + r);
+            index = Random.Range(0, 3);
+            string nom = "Option_"+ index + " Button";
+            print("R: " + index);
             
             if (nom == App.generalView.miniGameView.option0.name && op_0 == true)
             {
-                App.generalView.miniGameView.text0.text = a.options[r].ToString();
+                App.generalView.miniGameView.text0.text = riddle.Options[index].ToString();
                 op_0 = false;
                 cont++;
             }
             else if (nom == App.generalView.miniGameView.option1.name && op_1 == true)
             {
-                App.generalView.miniGameView.text1.text = a.options[r].ToString();
+                App.generalView.miniGameView.text1.text = riddle.Options[index].ToString();
                 op_1 = false;
                 cont++;
             }
             else if (nom == App.generalView.miniGameView.option2.name && op_2 == true)
             {
-                App.generalView.miniGameView.text2.text = a.options[r].ToString();
+                App.generalView.miniGameView.text2.text = riddle.Options[index].ToString();
                 op_2 = false;
                 cont++;
             }
@@ -46,14 +50,15 @@ public class MiniGame2Controller : Reference
     }
     public void CheckAnswer(string answer)
     {
-        Debug.Log("ENVIO: "+answer+" LA QUE HAY: "+a.answer);
-        if(answer == a.answer)
+        Debug.Log("ENVIO: "+answer+" LA QUE HAY: "+ riddle.Answer);
+        if(answer == riddle.Answer)
         {
             App.generalView.miniGameView.winPanel.SetActive(true);
 
             print("CORRECTO");
 
-            Sprite sprite = App.generalModel.miniGameModel.LoadSprite(a.image);
+            //Variable que servira para cambiar el sprite de la imagen del acertijo
+            Sprite sprite = App.generalModel.miniGameModel.LoadSprite(riddle.Image);
 
 
             print("IMAGEN: " + sprite);
@@ -61,7 +66,7 @@ public class MiniGame2Controller : Reference
             App.generalView.miniGameView.solutionImage.sprite = sprite;
 
             App.generalView.miniGameView.solutionText.enabled = true;
-            App.generalView.miniGameView.solutionText.text =  "Correcto, la respuesta es: " + a.answer;
+            App.generalView.miniGameView.solutionText.text =  "Correcto, la respuesta es: " + riddle.Answer;
 
             App.generalView.miniGameView.riddleImage.enabled = false;
         }

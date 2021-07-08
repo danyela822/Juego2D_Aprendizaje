@@ -6,7 +6,7 @@ using System.IO;
 public class MiniGameModel : Reference
 {
     //Lista de los acertijos del minijuego
-    public List<Acertijo> riddlesList = new List<Acertijo>();
+    public List<Riddle> riddlesList = new List<Riddle>();
 
     //Metodo que lee un archivo de texto que contine los acertijos que se almacenaran en una lista
     public void CreateRiddles()
@@ -60,8 +60,8 @@ public class MiniGameModel : Reference
                 number++;
 
                 //Se guarda el acertijo con su numero, enunciado, respuesta, opciones, direcion de la imagen y dificultad
-                riddlesList.Add(new Acertijo(number, riddle, answer, options, "Acertijos/" + number, 0));
-                Debug.Log("Num: "+number+" Enun: "+riddle+" Resp: "+answer+" Opts: "+options[0]+" , "+options[1]+" , "+options[2]+" Adress: Acertijos / " + number + "dif: "+0);
+                riddlesList.Add(new Riddle(number, riddle, answer, options, "Acertijos/" + number, 0));
+
                 //Se inicia nuevamente el array de opciones
                 options = new ArrayList();
 
@@ -75,27 +75,28 @@ public class MiniGameModel : Reference
         //Cerrar el archivo
         reader.Close();
     }
+    //Metodo que recibe una direccion de una imagen especifica y retorna un sprite
     public Sprite LoadSprite(string image)
     {
         return Resources.Load<Sprite>(image);
     }
 }
-public class Acertijo
+public class Riddle
 {
-    public int number { get; set; }
-    public string riddle { get; set; }
-    public string answer { get; set; }
-    public ArrayList options { get; set; }
-    public string image { get; set; }
-    public int difficulty { get; set; }
+    public int Number { get; set; }
+    public string Text { get; set; }
+    public string Answer { get; set; }
+    public ArrayList Options { get; set; }
+    public string Image { get; set; }
+    public int Difficulty { get; set; }
 
-    public Acertijo(int number, string riddle, string answer, ArrayList options, string image, int difficulty)
+    public Riddle(int number, string text, string answer, ArrayList options, string image, int difficulty)
     {
-        this.number = number;
-        this.riddle = riddle;
-        this.answer = answer;
-        this.options = options;
-        this.image = image;
-        this.difficulty = difficulty;
+        Number = number;
+        Text = text;
+        Answer = answer;
+        Options = options;
+        Image = image;
+        Difficulty = difficulty;
     }
 }

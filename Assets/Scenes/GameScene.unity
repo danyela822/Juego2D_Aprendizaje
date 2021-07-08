@@ -264,7 +264,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 20620323}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11157062}
+        m_TargetAssemblyTypeName: GameView, Assembly-CSharp
+        m_MethodName: OnClickButtons
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MiniGamesScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &20620323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,6 +800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameView: {fileID: 11157062}
   UIView: {fileID: 0}
+  miniGameView: {fileID: 0}
 --- !u!1 &279532152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 1235144674}
   uiController: {fileID: 0}
+  miniGame2Controller: {fileID: 0}
 --- !u!1 &432014299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,6 +1740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameModel: {fileID: 1235144675}
+  miniGameModel: {fileID: 0}
 --- !u!1 &760644347
 GameObject:
   m_ObjectHideFlags: 0
