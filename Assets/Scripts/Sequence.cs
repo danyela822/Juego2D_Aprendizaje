@@ -22,6 +22,8 @@ public class Sequence : MonoBehaviour
         if (compare == this.id)
         {
             Debug.Log("Esta carajada dio a la primera");
+            SequenceController.sharedInstance.ChangeCorrectImage();
+
         }else
         {
             Debug.Log("No dio a la primera :(");

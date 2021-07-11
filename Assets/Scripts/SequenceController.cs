@@ -20,7 +20,7 @@ public class SequenceController : MonoBehaviour
     //lista de las posibles soulciones a la secuencia
     private List<GameObject> matches;
     //matriz de imagenes
-    private GameObject [,] images;
+    public GameObject [,] images;
     //tamaño de matriz de las imagenes de secuencia
     private int x1, y1;
     //variable que se utiliza como boceto para la creacion de la matriz
@@ -79,6 +79,7 @@ public class SequenceController : MonoBehaviour
                     newImage = Instantiate(currentImage,
                     new Vector3(startX + ((offset.x + 0.2f) * j), startY
                     + (offset.y * -i - 1.1f), 0), currentImage.transform.rotation);
+                    images[i, j] = newImage;
 
                 }
                 else if(i == 1 && j == 1)
@@ -115,6 +116,7 @@ public class SequenceController : MonoBehaviour
 
                     }
 
+                    //nos aseguramos que se agregue el id de la correcta
                     int num = CheckNumbers(1);
 
                     if(i == 0 && j == 1){
@@ -242,6 +244,15 @@ public class SequenceController : MonoBehaviour
             }
         }
         return num;      
+    }
+
+    //Metodo que pinta la respuesta correcta luego de que le jugador
+    //la seleccione
+    public void ChangeCorrectImage(){
+
+        Sprite aux = correctAnswer.GetComponent<SpriteRenderer>().sprite;
+        images[1, 2].GetComponent<SpriteRenderer>().sprite = aux;
+
     }
 }
 
