@@ -61,10 +61,12 @@ public class SequenceController : MonoBehaviour
         images = new GameObject[x1, y1];
 
         //float startX = this.transform.position.x;
-        float startX = -1.71f;
+
+        float startX = currentImage.transform.position.x;
 
         //float startY = this.transform.position.y;
-        float startY = 2.02f;
+
+        float startY = currentImage.transform.position.y;
 
         string auxName;
 
@@ -77,8 +79,9 @@ public class SequenceController : MonoBehaviour
                 if(i == x1 - 1 && j == y1 - 1)
                 {
                     newImage = Instantiate(currentImage,
-                    new Vector3(startX + ((offset.x + 0.2f) * j), startY
-                    + (offset.y * -i - 1.1f), 0), currentImage.transform.rotation);
+                    new Vector3(startX + ((offset.x) * j), startY
+                    + (offset.y * -i - 1f), 0), currentImage.transform.rotation);
+
                     images[i, j] = newImage;
 
                 }
@@ -87,8 +90,8 @@ public class SequenceController : MonoBehaviour
                     Sprite spriteAux = images[0, 0].GetComponent<SpriteRenderer>().sprite;
 
                     newImage = Instantiate(currentImage,
-                    new Vector3(startX + ((offset.x + 0.2f) * j), startY
-                    + (offset.y * -i - 1.1f), 0), currentImage.transform.rotation);
+                    new Vector3(startX + ((offset.x) * j), startY
+                    + (offset.y * -i - 1f), 0), currentImage.transform.rotation);
 
                     newImage.GetComponent<SpriteRenderer>().sprite = spriteAux;
 
@@ -104,15 +107,15 @@ public class SequenceController : MonoBehaviour
                     if(i == 0 )
                     {
                         newImage = Instantiate(currentImage,
-                        new Vector3(startX + ((offset.x + 0.2f) * j), startY
+                        new Vector3(startX + ((offset.x) * j), startY
                         + (offset.y * -i ), 0), currentImage.transform.rotation);
 
                     }
                     else
                     {
                         newImage = Instantiate(currentImage,
-                        new Vector3(startX + ((offset.x + 0.2f) * j), startY
-                        + (offset.y * -i - 1.1f), 0), currentImage.transform.rotation);
+                        new Vector3(startX + ((offset.x) * j), startY
+                        + (offset.y * -i - 1f), 0), currentImage.transform.rotation);
 
                     }
 
@@ -149,15 +152,14 @@ public class SequenceController : MonoBehaviour
         matches = new List<GameObject>();
         GameObject newImage;
 
-        float startX = -1.77f;
+        float startX = -1.7f;
 
-        float startY = -3.96f;
+        float startY = -4f;
 
         for (int i = 0; i < y1; i++)
         {
             newImage = Instantiate(currentImage,
-            new Vector3(startX + ((offset.x + 0.2f) * i), startY
-            + (offset.y * -0.05f ), 0), currentImage.transform.rotation);
+            new Vector3(startX + ((offset.x + 0.2f) * i), startY, 0), currentImage.transform.rotation);
 
             if (i != 0){
 
