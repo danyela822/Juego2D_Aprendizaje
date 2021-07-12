@@ -19,33 +19,39 @@ public class MiniGame2Controller : Reference
         //Asignar el enunciado del acertijo al texto de la vista
         App.generalView.miniGameView.riddleText.text = riddle.Text;
 
-        int cont = 0;
-        bool op_0 = true, op_1 = true, op_2 = true;
+        //int cont = 0;
+        //bool op_0 = true, op_1 = true, op_2 = true;
+        //int aux = -1;
 
-        while (cont < 3)
+        index = Random.Range(0, 3);
+        /*while (cont < 3)
         {
-            index = Random.Range(0, 3);
-            string nom = "Option_"+ index + " Button";
+
+            string nom = "Option_" + index + " Button";
             print("R: " + index);
-            
-            if (nom == App.generalView.miniGameView.option0.name && op_0 == true)
+
+            if (nom == App.generalView.miniGameView.riddleButtons[0].name && op_0 == true)
             {
-                App.generalView.miniGameView.text0.text = riddle.Options[index].ToString();
+                App.generalView.miniGameView.riddleTextButtons[0].text = riddle.Options[index].ToString();
                 op_0 = false;
                 cont++;
             }
-            else if (nom == App.generalView.miniGameView.option1.name && op_1 == true)
+            else if (nom == App.generalView.miniGameView.riddleButtons[0].name && op_1 == true)
             {
                 App.generalView.miniGameView.text1.text = riddle.Options[index].ToString();
                 op_1 = false;
                 cont++;
             }
-            else if (nom == App.generalView.miniGameView.option2.name && op_2 == true)
+            else if (nom == App.generalView.miniGameView.riddleButtons[0].name && op_2 == true)
             {
                 App.generalView.miniGameView.text2.text = riddle.Options[index].ToString();
                 op_2 = false;
                 cont++;
             }
+        }*/
+        for (int i = 0; i < riddle.Options.Count; i++)
+        {
+            App.generalView.miniGameView.riddleTextButtons[i].text = riddle.Options[i].ToString();
         }
     }
     public void CheckAnswer(string answer)
@@ -53,7 +59,8 @@ public class MiniGame2Controller : Reference
         Debug.Log("ENVIO: "+answer+" LA QUE HAY: "+ riddle.Answer);
         if(answer == riddle.Answer)
         {
-            App.generalView.miniGameView.winPanel.SetActive(true);
+            //Canvas winCanvas = GameObject.Find("Win Canvas").GetComponent<Canvas>();
+            App.generalView.miniGameView.winCanvas.enabled = true;
 
             print("CORRECTO");
 
@@ -62,19 +69,14 @@ public class MiniGame2Controller : Reference
 
 
             print("IMAGEN: " + sprite);
-            App.generalView.miniGameView.solutionImage.enabled = true;
+
             App.generalView.miniGameView.solutionImage.sprite = sprite;
 
-            App.generalView.miniGameView.solutionText.enabled = true;
             App.generalView.miniGameView.solutionText.text =  "Correcto, la respuesta es: " + riddle.Answer;
-
-            App.generalView.miniGameView.riddleImage.enabled = false;
         }
         else
         {
-            App.generalView.miniGameView.losePanel.SetActive(true);
-            App.generalView.miniGameView.loseImage.enabled = true;
-            App.generalView.miniGameView.loseText.enabled = true;
+            App.generalView.miniGameView.loseCanvas.enabled = true;
         }
     }
 }

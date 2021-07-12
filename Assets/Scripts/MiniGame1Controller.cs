@@ -156,9 +156,9 @@ public class MiniGame1Controller : Reference
         matches = new List<GameObject>();
         GameObject newImage;
 
-        float startX = -1.7f;
+        //float startX = -1.7f;
 
-        float startY = -4f;
+        //float startY = -4f;
 
         for (int i = 0; i < y1; i++)
         {
