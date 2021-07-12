@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class MiniGameView : Reference
 {
+    //Variables para la vista del MiniJuego 1
+
+    //Botones para elegir una de las posibles opciones de la secuencia
+    public Text option0S, option1S, option2S;
+
+    public List<Button> sequenceButtons;
+    public List<Text> sequenceText;
+
     //Variables para la vista del MiniJuego 2
 
     //Texto del enunciado del acertijo, texto de la solucion y texto de fallo
@@ -27,7 +35,7 @@ public class MiniGameView : Reference
     {
         if (this.name == "Mini Juego 1 Canvas")
         {
-            
+            MiniGame1();
         }
         else if (this.name == "Mini Juego 2 Canvas")
         {
@@ -38,8 +46,13 @@ public class MiniGameView : Reference
 
         }
     }
-    
-    void MiniGame2()
+
+    void MiniGame1()
+    {
+
+    }
+
+        void MiniGame2()
     {
         riddleText = GameObject.Find("Riddle Text").GetComponent<Text>();
         solutionText = GameObject.Find("Solution Text").GetComponent<Text>();
@@ -64,9 +77,9 @@ public class MiniGameView : Reference
 
         App.generalController.miniGame2Controller.LoadRiddles();
     }
-    public void CheckAnswer(GameObject respuesta)
+    public void CheckAnswer(GameObject text)
     {
-        string answer = respuesta.GetComponent<Text>().text;
+        string answer = text.GetComponent<Text>().text;
         App.generalController.miniGame2Controller.CheckAnswer(answer);
     }
     public void Back()
@@ -75,5 +88,11 @@ public class MiniGameView : Reference
         solution_imagen.enabled = false;
         solution.enabled = false;
         riddle.enabled = true;*/
+    }
+
+    public void CheckAnswerSequence(GameObject text)
+    {
+        string answer = text.GetComponent<Text>().text;
+        App.generalController.miniGame1Controller.CheckAnswerSequence(answer);
     }
 }

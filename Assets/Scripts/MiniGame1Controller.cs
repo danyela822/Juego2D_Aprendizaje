@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SequenceController : MonoBehaviour
+public class MiniGame1Controller : Reference
 {
     //creamos un singleton
-    public static SequenceController sharedInstance;
+    public static MiniGame1Controller sharedInstance;
     //lista que tiene las imagenes que van a tomar los objetos
     public List <Sprite> prefabs = new List<Sprite>();
     //lista auxiliar la cual es utilizada para verificar que no se
@@ -29,6 +29,8 @@ public class SequenceController : MonoBehaviour
     private Sequence sequence;
     //objeto en el cual se almacena la solucion correcta
     public GameObject correctAnswer;
+    //
+    public string c;
     private Vector2 offset ;
 
  
@@ -51,7 +53,8 @@ public class SequenceController : MonoBehaviour
     }
 
     //metodo que crea y pinta la secuencia principal
-    private void CreateMatrix (Vector2 offset){
+    private void CreateMatrix (Vector2 offset)
+    {
 
         possibleNumber = new List<int>();
 
@@ -141,6 +144,7 @@ public class SequenceController : MonoBehaviour
         }
 
         correctAnswer = images[0, 1];
+        c = correctAnswer.GetComponent<Sequence>().id;
         CreateMatches(offset);
 
     }
@@ -158,9 +162,11 @@ public class SequenceController : MonoBehaviour
 
         for (int i = 0; i < y1; i++)
         {
-            newImage = Instantiate(currentImage,
-            new Vector3(startX + ((offset.x + 0.2f) * i), startY, 0), currentImage.transform.rotation);
 
+            newImage = Instantiate(currentImage,
+            new Vector3(-3 , -6, 0), currentImage.transform.rotation);
+
+            newImage.GetComponent<SpriteRenderer>().sprite = null;
             if (i != 0){
 
                 CheckNumbers(2);
@@ -168,7 +174,6 @@ public class SequenceController : MonoBehaviour
             matches.Add(newImage);
             
         }
-
         PaintMatrix();
     }
 
@@ -205,6 +210,11 @@ public class SequenceController : MonoBehaviour
             matches[i].GetComponent<Sequence>().type = true;
         }
 
+        for (int i = 0; i < matches.Count; i++)
+        {
+            App.generalView.miniGameView.sequenceButtons[i].image.sprite = matches[i].GetComponent<SpriteRenderer>().sprite;
+            App.generalView.miniGameView.sequenceText[i].text = matches[i].GetComponent<Sequence>().id;
+        }
     }
 
     //metodo que verifica que en ninguna de las dos secuencias se repita un objeto
@@ -255,6 +265,20 @@ public class SequenceController : MonoBehaviour
         Sprite aux = correctAnswer.GetComponent<SpriteRenderer>().sprite;
         images[1, 2].GetComponent<SpriteRenderer>().sprite = aux;
 
+    }
+
+    public void CheckAnswerSequence(string answer)
+    {
+        if (answer == c)
+        {
+            Debug.Log("Esta carajada dio a la primera");
+            ChangeCorrectImage();
+
+        }
+        else
+        {
+            Debug.Log("No dio a la primera :(");
+        }
     }
 }
 

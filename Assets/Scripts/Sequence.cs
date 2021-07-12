@@ -14,15 +14,15 @@ public class Sequence : MonoBehaviour
     public bool type;
 
     //metodo que permite comparar el objeto seleccionado con la respuesta correcta
-    private void SelectSequence(){
+   /* private void SelectSequence(){
 
         sequenceToCompare = gameObject.GetComponent<Sequence>();
-        string compare = SequenceController.sharedInstance.correctAnswer.GetComponent<Sequence>().id;
+        string compare = MiniGame1Controller.sharedInstance.correctAnswer.GetComponent<Sequence>().id;
 
         if (compare == this.id)
         {
             Debug.Log("Esta carajada dio a la primera");
-            SequenceController.sharedInstance.ChangeCorrectImage();
+            MiniGame1Controller.sharedInstance.ChangeCorrectImage();
 
         }else
         {
@@ -44,6 +44,6 @@ public class Sequence : MonoBehaviour
 
         }
 
-    }
+    }*/
 
 }

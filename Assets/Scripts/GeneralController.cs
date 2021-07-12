@@ -7,4 +7,5 @@ public class GeneralController : Reference
     public GameController gameController;
     public UIController uiController;
     public MiniGame2Controller miniGame2Controller;
+    public MiniGame1Controller miniGame1Controller;
 }
