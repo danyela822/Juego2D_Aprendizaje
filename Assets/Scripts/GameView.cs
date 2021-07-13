@@ -58,7 +58,7 @@ public class GameView : Reference
 
     public void MiniGame()
     {
-        SceneManager.LoadScene("MiniGamesScene");
+        SceneManager.LoadScene("MiniGame3Scene");
     }
 
     public void DrawSolution()
