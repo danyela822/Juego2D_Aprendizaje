@@ -36,7 +36,7 @@ public class MiniGame1Controller : Reference
  
 
     // Start is called before the first frame update
-    void Start()
+    public void MiniGame1()
     {
         if (sharedInstance  == null)
         {
@@ -49,7 +49,7 @@ public class MiniGame1Controller : Reference
         //de las imagenes de la secuencia
         offset = currentImage.GetComponent<BoxCollider2D>().size;
 
-        CreateMatrix(offset);;
+        CreateMatrix(offset);
     }
 
     //metodo que crea y pinta la secuencia principal

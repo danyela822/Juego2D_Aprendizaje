@@ -14,10 +14,6 @@ public class MiniGame3Controller : Reference
     string result = "";
     
     Color backgroundColor = new Color(255,255,255,255);
-    void Start()
-    {
-        ReadCSV();
-    }
 
     public string Category(int age)
     {
@@ -37,8 +33,9 @@ public class MiniGame3Controller : Reference
         return type;
     }
     
-    void ReadCSV()
+    public void ReadCSV()
     {
+        print("Leer archivo");
         string[] lines = File.ReadAllLines("Assets/Files/Operations.csv"); 
 
         foreach(var line in lines)
@@ -71,7 +68,7 @@ public class MiniGame3Controller : Reference
         result = choose[1];
 
         int index = Array.IndexOf(choose,";");
-
+        
         ExerciseType(index, choose.Length-1);
 
         for (int i = 0; i < listText.Count; i++)

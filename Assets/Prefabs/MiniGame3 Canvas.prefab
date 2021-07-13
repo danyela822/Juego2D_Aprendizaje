@@ -638,7 +638,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 546201673453976354}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MiniGameView, Assembly-CSharp
         m_MethodName: OnclickButton
         m_Mode: 2
@@ -772,7 +772,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 546201673453976354}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MiniGameView, Assembly-CSharp
         m_MethodName: OnclickButton
         m_Mode: 2
@@ -1434,7 +1434,6 @@ GameObject:
   - component: {fileID: 546201673453976350}
   - component: {fileID: 546201673453976345}
   - component: {fileID: 546201673453976349}
-  - component: {fileID: 546201673453976354}
   m_Layer: 5
   m_Name: MiniGame3 Canvas
   m_TagString: Untagged
@@ -1538,53 +1537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60bc8d0ededd69409a24438ccd6b728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &546201673453976354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546201673453976344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f71ae2a469f53fb4e9c4ef79dc13f2f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  question: {fileID: 0}
-  easyText:
-  - {fileID: 546201674056111353}
-  - {fileID: 546201673796113696}
-  - {fileID: 546201673179594063}
-  - {fileID: 546201674402861343}
-  - {fileID: 546201674224741509}
-  easyButton:
-  - {fileID: 546201673311709200}
-  - {fileID: 546201674694293685}
-  - {fileID: 546201674573403107}
-  - {fileID: 546201674314832686}
-  - {fileID: 546201673646862169}
-  listText:
-  - {fileID: 546201674071108755}
-  - {fileID: 546201674089465461}
-  - {fileID: 546201672912373834}
-  - {fileID: 546201673481245737}
-  - {fileID: 546201673307158451}
-  - {fileID: 546201673902877610}
-  - {fileID: 546201672815859382}
-  listButton:
-  - {fileID: 546201674712714833}
-  - {fileID: 546201674090712671}
-  - {fileID: 546201674383255294}
-  - {fileID: 546201673309030972}
-  - {fileID: 546201673821151715}
-  - {fileID: 546201672787079948}
-  - {fileID: 546201673757576159}
-  listOptions:
-  - {fileID: 546201672944017395}
-  - {fileID: 546201673263753868}
-  - {fileID: 546201674226529852}
-  - {fileID: 546201673677871959}
-  miniGame3Canvas: {fileID: 546201673453976351}
 --- !u!1 &546201673481245739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,7 +2326,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 546201673453976354}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MiniGameView, Assembly-CSharp
         m_MethodName: OnclickButton
         m_Mode: 2
@@ -3367,7 +3319,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 546201673453976354}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MiniGameView, Assembly-CSharp
         m_MethodName: OnclickButton
         m_Mode: 2

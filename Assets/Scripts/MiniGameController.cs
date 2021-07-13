@@ -5,29 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class MiniGameController : Reference
 {
+    public MiniGame1Controller miniGame1Controller;
+    public MiniGame2Controller miniGame2Controller;
     public MiniGame3Controller miniGame3Controller;
-
-   
 
     void Start()
     {
-        int typeMiniGame = App.generalController.gameController.RamdonNumber(1,4);
-        print("Mini Juego "+typeMiniGame);
-        GenerateMiniGame(3);
+        GenerateMiniGame();
     }
 
-    void GenerateMiniGame(int type)
+    void GenerateMiniGame()
     {
-        if(type == 1)
+        int typeMiniGame = App.generalController.gameController.RamdonNumber(1,4);
+        
+        if(typeMiniGame == 1)
         {
-
+            App.generalView.miniGameView.MiniGame1();
+            App.generalView.miniGameView.miniGame1Canvas.enabled = true;
         }
-        else if(type == 2)
+        else if(typeMiniGame == 2)
         {
-           
+            App.generalView.miniGameView.MiniGame2();
+            App.generalView.miniGameView.miniGame2Canvas.enabled = true;
         }
-        else if(type == 3)
+        else if(typeMiniGame == 3)
         {
+            App.generalView.miniGameView.MiniGame3();
             App.generalView.miniGameView.miniGame3Canvas.enabled = true;
         }
     }

@@ -27,9 +27,9 @@ public class MiniGameModel : Reference
         string line;
 
         //Pasar la ruta del archivo y el nombre del archivo al constructor de StreamReader
-        StreamReader reader = new StreamReader("D:/Unity/Juego2D_Aprendizaje/Assets/Files/Acertijos.txt");
+        StreamReader reader = new StreamReader("Assets/Files/Acertijos.txt");
 
-        //Leer la primera línea de texto
+        //Leer la primera lï¿½nea de texto
         line = reader.ReadLine();
 
         //Continuar leyendo hasta llegar al final del archivo
@@ -69,7 +69,7 @@ public class MiniGameModel : Reference
                 riddle = "";
             }
 
-            //Leer la siguente línea de texto
+            //Leer la siguente lï¿½nea de texto
             line = reader.ReadLine();
         }
         //Cerrar el archivo

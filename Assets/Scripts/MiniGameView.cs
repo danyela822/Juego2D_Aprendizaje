@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class MiniGameView : Reference
 {
+    public Canvas miniGame1Canvas;
+    public Canvas miniGame2Canvas;
+    public Canvas miniGame3Canvas;
+    
     public Text question;
     public List<Text> easyText = new List<Text>();
     public List<Button> easyButton = new List<Button>();
@@ -13,19 +17,28 @@ public class MiniGameView : Reference
     public List<Text> listOptions = new List<Text>();
     
     // Canvas de minigame
-    public Canvas miniGame3Canvas;
+    
     
     // Start is called before the first frame update
     
-    void Start()
+    /*void Start()
     {
         MiniGame3();
-    }
-    
-    void MiniGame3()
+    }*/
+    public void MiniGame1()
     {
-        string type = App.generalController.miniGameController.miniGame3Controller.Category(9);
+        App.generalController.miniGameController.miniGame1Controller.MiniGame1();
+    }
 
+    public void MiniGame2()
+    {
+        App.generalController.miniGameController.miniGame2Controller.LoadRiddles();
+    }
+    public void MiniGame3()
+    {
+        App.generalController.miniGameController.miniGame3Controller.ReadCSV();
+        string type = App.generalController.miniGameController.miniGame3Controller.Category(7);
+        print("Mini game view MINIGAME3 type "+type);
         if(type == "1")
         {
             LoadOperation(type, easyText, easyButton);
@@ -35,7 +48,7 @@ public class MiniGameView : Reference
             LoadOperation(type, listText, listButton);
         }
     }
-    
+ 
     public void Question()
     {
         question = GameObject.Find("Question").GetComponent<Text>();
@@ -46,9 +59,20 @@ public class MiniGameView : Reference
         App.generalController.miniGameController.miniGame3Controller.LoadOperation(type, textList, buttonList);
     }
 
-    public void OnclickButton(Text option)
+    public void CheckAnswerMiniGame1(GameObject text)
+    {
+        string answer = text.GetComponent<Text>().text;
+        App.generalController.miniGameController.miniGame1Controller.CheckAnswerSequence(answer);
+    }
+    public void CheckAnswerMiniGame2(GameObject text)
+    {
+        string answer = text.GetComponent<Text>().text;
+        App.generalController.miniGameController.miniGame2Controller.CheckAnswer(answer);
+    }
+    public void CheckAnswerMiniGame3(Text option)
     {
         App.generalController.miniGameController.miniGame3Controller.CheckAnswer(option.text);
+    }
     //Variables para la vista del MiniJuego 1
 
     //Botones para elegir una de las posibles opciones de la secuencia
@@ -78,21 +102,5 @@ public class MiniGameView : Reference
     //Variable para mostrar si la opcion elegida fue o no la correcta
     //public GameObject winPanel, losePanel;
 
-    // Start is called before the first frame update
-    /*void Start()
-    {
-        App.generalController.miniGame2Controller.LoadRiddles();
-    }*/
-
-    public void CheckAnswer(GameObject text)
-    {
-        string answer = text.GetComponent<Text>().text;
-        App.generalController.miniGame2Controller.CheckAnswer(answer);
-    }
-
-    public void CheckAnswerSequence(GameObject text)
-    {
-        string answer = text.GetComponent<Text>().text;
-        App.generalController.miniGame1Controller.CheckAnswerSequence(answer);
-    }
+    
 }
