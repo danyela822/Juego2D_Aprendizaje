@@ -63,7 +63,7 @@ public class GameController : Reference
         if (name_button == "MiniGames Button")
         {
             //Falta la escena de los minijuegos
-            //SceneManager.LoadScene("");
+            //SceneManager.LoadScene("MiniGamesScene");
         }
     }
 
