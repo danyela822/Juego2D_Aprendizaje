@@ -111,6 +111,7 @@ public class GameController : Reference
                 else if (matrix[i, j].GetComponent<Block>().GetID() == 1)
                 {
                     matrix[i, j].GetComponent<SpriteRenderer>().color = Color.black;
+                    matrix[i, j].gameObject.layer = 6;
                 }
                 //Si es 3 se pinta de verde (punto Partida)
                 else if (matrix[i, j].GetComponent<Block>().GetID() == 3)
