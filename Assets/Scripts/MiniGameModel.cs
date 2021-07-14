@@ -27,7 +27,7 @@ public class MiniGameModel : Reference
         string line;
 
         //Pasar la ruta del archivo y el nombre del archivo al constructor de StreamReader
-        StreamReader reader = new StreamReader("Assets/Files/Acertijos.txt");
+        StreamReader reader = new StreamReader("Assets/Resources/Files/Riddles.txt");
 
         //Leer la primera l�nea de texto
         line = reader.ReadLine();
@@ -60,7 +60,7 @@ public class MiniGameModel : Reference
                 number++;
 
                 //Se guarda el acertijo con su numero, enunciado, respuesta, opciones, direcion de la imagen y dificultad
-                riddlesList.Add(new Riddle(number, riddle, answer, options, "Acertijos/" + number, 0));
+                riddlesList.Add(new Riddle(number, riddle, answer, options, "Riddles/" + number, 0));
 
                 //Se inicia nuevamente el array de opciones
                 options = new ArrayList();

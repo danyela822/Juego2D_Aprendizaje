@@ -134,33 +134,9 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1265043298}
-    - target: {fileID: 3472546486749328330, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CheckAnswerMiniGame2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472546486813052025, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472546486813052025, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472546486813052025, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3472546487116767777, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
       propertyPath: m_Name
       value: Mini Game 2 Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472546487116767777, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472546487116767788, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3472546487116767789, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
       propertyPath: m_Pivot.x
@@ -250,24 +226,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1265043298}
-    - target: {fileID: 3472546487513586494, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CheckAnswerMiniGame2
-      objectReference: {fileID: 0}
     - target: {fileID: 3472546487984592306, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1265043298}
-    - target: {fileID: 3472546487984592306, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CheckAnswerMiniGame2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3891824784780121487, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 669647257, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
 --- !u!114 &300050505 stripped
 MonoBehaviour:
@@ -636,7 +599,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: df9be07827def45438516120da142677, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40bfc17d2f345fb4db790e4ecb2472f8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1483,7 +1446,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a659cdf07744db04786ca6d3824f3ce0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e78fb8e4b69ac714aa0239fb350aa02f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1646,7 +1609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 546201673453976344, guid: 6305e806c379424438e8662cf88fbbda, type: 3}
       propertyPath: m_Name
-      value: Mini Game3 Canvas
+      value: Mini Game 3 Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 546201673453976348, guid: 6305e806c379424438e8662cf88fbbda, type: 3}
       propertyPath: m_Pivot.x

@@ -36,7 +36,7 @@ public class MiniGame3Controller : Reference
     public void ReadCSV()
     {
         print("Leer archivo");
-        string[] lines = File.ReadAllLines("Assets/Files/Operations.csv"); 
+        string[] lines = File.ReadAllLines("Assets/Resources/Files/Operations.csv"); 
 
         foreach(var line in lines)
         {
