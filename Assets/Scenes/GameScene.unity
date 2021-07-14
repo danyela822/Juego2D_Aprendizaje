@@ -152,17 +152,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 850971efba86a1940b0e6592a8f2d83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameCanvas: {fileID: 0}
-  PauseCanvas: {fileID: 0}
-  SolutionCanvas: {fileID: 0}
-  TutorialCanvas: {fileID: 0}
+  GameCanvas: {fileID: 1855194863}
+  PauseCanvas: {fileID: 725189106}
+  SolutionCanvas: {fileID: 121478410}
+  TutorialCanvas: {fileID: 1377748260}
   initialBlock: {fileID: 3841077332538666641, guid: 2df12237de8668b49a415bcf284d8601, type: 3}
-  gameZone: {fileID: 0}
+  gameZone: {fileID: 2092890268}
   allCharacters:
   - {fileID: 4118735692597169461, guid: 5936ca89d357aea4189e1b9f91b1a565, type: 3}
   - {fileID: 60639632843628944, guid: 92b79e336a8af764c89fef497bc78488, type: 3}
   - {fileID: 5226046898513011813, guid: 21567c5b0500c904fb41edaa7b1d9624, type: 3}
-  - {fileID: 8117952023913498864, guid: 9c49a981a86105145898308436953f2f, type: 3}
+  - {fileID: 6922579855801452078, guid: 0eae39b04d42fa541bb5252baa7977a7, type: 3}
   - {fileID: 4119969355953505904, guid: f5afcccb5a8521949aeb3f7b3e8718be, type: 3}
   - {fileID: 7659793250584423556, guid: 692723204c75b0f43bc8e671566e8059, type: 3}
   - {fileID: 7713033859203691810, guid: f6d2e650cd07bb96ca290b94fac8df4b, type: 3}
@@ -794,7 +794,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159724138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 903.9668, y: 936.21625, z: -332.44086}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

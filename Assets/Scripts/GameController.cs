@@ -157,7 +157,7 @@ public class GameController : Reference
     // Cantidad de columnas de la matriz
     int arrayCol = 6;
     // Matriz de GameObject
-    static GameObject[,] matrix;
+    public  GameObject[,] matrix;
 
     // Variables para el backtracking
     static int numSteps; // Numero de pasos para llegar de un punto a otro

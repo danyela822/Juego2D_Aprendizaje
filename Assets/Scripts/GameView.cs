@@ -22,12 +22,12 @@ public class GameView : Reference
     
     private void Awake()
     {
-        GameCanvas = GameObject.Find("Game Canvas").GetComponent<Canvas>();
+        /*GameCanvas = GameObject.Find("Game Canvas").GetComponent<Canvas>();
         PauseCanvas = GameObject.Find("Pause Canvas").GetComponent<Canvas>();
         SolutionCanvas = GameObject.Find("Solution Canvas").GetComponent<Canvas>();
         TutorialCanvas = GameObject.Find("Tutorial Canvas").GetComponent<Canvas>();
 
-        gameZone = GameObject.Find("Game Zone");
+        gameZone = GameObject.Find("Game Zone");*/
 
         BuildMatrix();
         
@@ -71,8 +71,9 @@ public class GameView : Reference
 
     public void LocateCharacters()
     {
-        App.generalController.charactersController.CreateCharacters();
-        App.generalController.charactersController.SelectCharactersLevel(3, "Castle", allCharacters);
+        GameObject [,] matrix = App.generalController.gameController.matrix;
+        App.generalController.charactersController.CreateCharacters(matrix);
+        App.generalController.charactersController.SelectCharactersLevel(3, "Sea", allCharacters);
     }
 
     public void ActivateMovement(int type)
