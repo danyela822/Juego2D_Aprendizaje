@@ -168,6 +168,9 @@ MonoBehaviour:
   - {fileID: 7713033859203691810, guid: f6d2e650cd07bb96ca290b94fac8df4b, type: 3}
   - {fileID: 1141932815209199160, guid: 030ffb7344b693c80b41809bf1ff58e4, type: 3}
   - {fileID: 2193376517202322739, guid: a69a570e0d168667b96c20fb75c954f1, type: 3}
+  character_1: {fileID: 1833599818}
+  character_2: {fileID: 2107229021}
+  character_3: {fileID: 1541485736}
 --- !u!4 &11157063
 Transform:
   m_ObjectHideFlags: 0
@@ -5449,6 +5452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642fa1d50e7cb574289b04fabf0595a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberSteps: 0
 --- !u!114 &1235144675
 MonoBehaviour:
   m_ObjectHideFlags: 0

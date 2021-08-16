@@ -145,6 +145,7 @@ public class GameController : Reference
                     matrix[i, j].GetComponent<SpriteRenderer>().sprite = lockMatrix[i, j];
 
                     matrix[i, j].gameObject.layer = 6;
+                    matrix[i, j].GetComponent<Collider2D>().isTrigger = false;
                 }
                 //Si es 3 se pinta de verde (punto Partida)
                 else if (matrix[i, j].GetComponent<Block>().GetID() == 3)
@@ -162,8 +163,15 @@ public class GameController : Reference
         }
     }
 
+    public int numberSteps = 0;
+    public void countSteps()
+    {
+
+    }
+
+
     ////////////////////////////////////////////////////////////////////CAMILA//////////////////////////////////////////////////////////////
-    
+
     //
     public static GameController gameController;
     

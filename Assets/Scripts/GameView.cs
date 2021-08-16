@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameView : Reference
 {
     //Declaracion de los canvas que contiene la vista del juego
@@ -21,6 +22,10 @@ public class GameView : Reference
     //private string[] themes = {"Castle", "Forest", "Sea"};
 
     //private string theme;
+
+    //Botones para especificar que personaje se va a mover
+
+    public Button character_1, character_2, character_3;
 
     public static GameView gameView;
     
@@ -79,7 +84,7 @@ public class GameView : Reference
     {
         GameObject [,] matrix = App.generalController.gameController.matrix;
         App.generalController.charactersController.CreateCharacters(matrix);
-        App.generalController.charactersController.SelectCharactersLevel(3, "Castle", allCharacters);
+        App.generalController.charactersController.SelectCharactersLevel(2, "Castle", allCharacters);
     }
 
     public void ActivateMovement(int type)

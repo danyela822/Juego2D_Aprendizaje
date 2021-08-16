@@ -39,6 +39,16 @@ public class CharactersController : Reference
         else
         {
             int numType = App.generalController.gameController.RamdonNumber(2, 4);
+            print("NUMERO DEL PERSONAJE: " + numType);
+            if(numType == 2)
+            {
+                App.generalView.gameView.character_3.interactable = false;
+            }
+            else
+            {
+                App.generalView.gameView.character_2.interactable = false;
+            }
+           
             for (int i = 0; i < allCharacters.Count; i++)
             {
                 if (allCharacters[i].theme == theme && (allCharacters[i].type == 1 || allCharacters[i].type == numType))
@@ -145,7 +155,6 @@ public class CharactersController : Reference
             if (levelCharacters[i].type == type)
             {
                 //Activar el rigibody y animator del personaje
-                print("ACTIVAR COMPONENTES DE: "+levelCharacters[i].nameCharacter);
                 rigidbody2d = screenCharacters[i].GetComponent<Rigidbody2D>();
                 animator = screenCharacters[i].GetComponent<Animator>();
                 
@@ -180,16 +189,16 @@ public class CharactersController : Reference
     {
         if (direction == "up")
         {
-            move = Vector2.up;
-            
+            move = new Vector2(0,4);
+            print("MOVE: " + move);
             //Activar animaciones del personaje
             animator.SetFloat("mov_y", move.y);
             animator.SetBool("walking", true);
         }
         else if (direction == "down")
         {
-            move = Vector2.down;
-
+            move = new Vector2(0, -4);
+            print("MOVE: " + move);
             //Activar animaciones del personaje
             animator.SetFloat("mov_y", move.y);
             animator.SetBool("walking", true);
@@ -201,7 +210,7 @@ public class CharactersController : Reference
     {
         if (direction == "right")
         {
-            move = Vector2.right;
+            move = new Vector2(4,0);
 
             //Activar animaciones del personaje
             animator.SetFloat("mov_x", move.x);
@@ -209,7 +218,7 @@ public class CharactersController : Reference
         }
         else if (direction == "left")
         {
-            move = Vector2.left;
+            move = new Vector2(-4,0);
 
             //Activar animaciones del personaje
             animator.SetFloat("mov_x", move.x);
@@ -234,8 +243,9 @@ public class CharactersController : Reference
         //Verificar que el rigibody del personaje esta activo
         if (rigidbody2d != null)
         {
-           print("Position: "+rigidbody2d.position + move * speed);
+
            rigidbody2d.MovePosition(rigidbody2d.position + move * speed * Time.deltaTime);
         }
     }
+
 }
