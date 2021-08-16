@@ -17,6 +17,10 @@ public class GameView : Reference
     public List<GameObject> allCharacters;
     //public GameObject [] allCharacters;
 
+    //Posibles temas del juego
+    //private string[] themes = {"Castle", "Forest", "Sea"};
+
+    //private string theme;
 
     public static GameView gameView;
     
@@ -28,6 +32,8 @@ public class GameView : Reference
         TutorialCanvas = GameObject.Find("Tutorial Canvas").GetComponent<Canvas>();
 
         gameZone = GameObject.Find("Game Zone");*/
+
+        //theme = themes[Random.Range(0, 3)];
 
         BuildMatrix();
         
@@ -53,7 +59,7 @@ public class GameView : Reference
         //App.generalController.gameController.LevelData("Principiante");
         Objects[,] matrix = App.generalController.gameController.ReturnArray();
         //Llamada al metodo para dibujar la matriz en la escena
-        App.generalController.gameController.DrawMatrix(matrix,initialBlock,gameZone);
+        App.generalController.gameController.DrawMatrix(matrix,initialBlock,gameZone,"Castle");
     }
 
     public void MiniGame()
@@ -73,7 +79,7 @@ public class GameView : Reference
     {
         GameObject [,] matrix = App.generalController.gameController.matrix;
         App.generalController.charactersController.CreateCharacters(matrix);
-        App.generalController.charactersController.SelectCharactersLevel(3, "Sea", allCharacters);
+        App.generalController.charactersController.SelectCharactersLevel(3, "Castle", allCharacters);
     }
 
     public void ActivateMovement(int type)
