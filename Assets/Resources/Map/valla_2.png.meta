@@ -1,0 +1,1284 @@
+fileFormatVersion: 2
+guid: 410a9b6e9ba540245b7ace43be7f51ea
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5467701680712931818
+    second: valla_2_0
+  - first:
+      213: 8269820579746603917
+    second: valla_2_1
+  - first:
+      213: 6515225721308273284
+    second: valla_2_2
+  - first:
+      213: 2220868131101486183
+    second: valla_2_3
+  - first:
+      213: 33170371367220057
+    second: valla_2_4
+  - first:
+      213: 8028986998996132993
+    second: valla_2_5
+  - first:
+      213: -7902203545406866327
+    second: valla_2_6
+  - first:
+      213: -5222312529357234881
+    second: valla_2_7
+  - first:
+      213: -2942951580941668532
+    second: valla_2_8
+  - first:
+      213: 5804727756824871962
+    second: valla_2_9
+  - first:
+      213: 869933017432183339
+    second: valla_2_10
+  - first:
+      213: 2740403839354860370
+    second: valla_2_11
+  - first:
+      213: -7659287776386350215
+    second: valla_2_12
+  - first:
+      213: 7600981828548287108
+    second: valla_2_13
+  - first:
+      213: -7641606892878771241
+    second: valla_2_14
+  - first:
+      213: 6537610220486770426
+    second: valla_2_15
+  - first:
+      213: -1088934766458349577
+    second: valla_2_16
+  - first:
+      213: -1739974638431902144
+    second: valla_2_17
+  - first:
+      213: -33488002761737074
+    second: valla_2_18
+  - first:
+      213: -5883641580473133410
+    second: valla_2_19
+  - first:
+      213: 1293732227845746768
+    second: valla_2_20
+  - first:
+      213: 3688291800172918612
+    second: valla_2_21
+  - first:
+      213: -5436557738922724563
+    second: valla_2_22
+  - first:
+      213: 4247812835560097316
+    second: valla_2_23
+  - first:
+      213: -4336460213009221933
+    second: valla_2_24
+  - first:
+      213: -8356784491157888994
+    second: valla_2_25
+  - first:
+      213: 8693439873983032006
+    second: valla_2_26
+  - first:
+      213: -4631389032408846049
+    second: valla_2_27
+  - first:
+      213: -2147541916880084754
+    second: valla_2_28
+  - first:
+      213: 2968400423715240958
+    second: valla_2_29
+  - first:
+      213: 1766874972750031374
+    second: valla_2_30
+  - first:
+      213: -3245353163053415893
+    second: valla_2_31
+  - first:
+      213: -8395617387534976458
+    second: valla_2_32
+  - first:
+      213: 5185623061128070341
+    second: valla_2_33
+  - first:
+      213: 5079967037437091452
+    second: valla_2_34
+  - first:
+      213: 4910374079562006034
+    second: valla_2_35
+  - first:
+      213: -2243358662599772252
+    second: valla_2_36
+  - first:
+      213: -3351921309222729060
+    second: valla_2_37
+  - first:
+      213: -6265235706403420293
+    second: valla_2_38
+  - first:
+      213: 6979456590270010397
+    second: valla_2_39
+  - first:
+      213: -9197867582062896558
+    second: valla_2_40
+  - first:
+      213: -2563290978661171448
+    second: valla_2_41
+  - first:
+      213: 7486367198705491565
+    second: valla_2_42
+  - first:
+      213: -4751078039961403140
+    second: valla_2_43
+  - first:
+      213: -5854450312085446645
+    second: valla_2_44
+  - first:
+      213: 8625203546078755377
+    second: valla_2_45
+  - first:
+      213: -1912012443313944676
+    second: valla_2_46
+  - first:
+      213: 8248262892934387354
+    second: valla_2_47
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 95
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: valla_2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 476
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 616ac4f5a42de14b0800000000000000
+      internalID: -5467701680712931818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_1
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 476
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d83e20c700e44c270800000000000000
+      internalID: 8269820579746603917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_2
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 476
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48a511e364bba6a50800000000000000
+      internalID: 6515225721308273284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_3
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 476
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76c2a4f6ccb12de10800000000000000
+      internalID: 2220868131101486183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_4
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 476
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 953396ae648d57000800000000000000
+      internalID: 33170371367220057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_5
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 476
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 184e46dd221bc6f60800000000000000
+      internalID: 8028986998996132993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 412
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96cf03d3ebbb55290800000000000000
+      internalID: -7902203545406866327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_7
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 412
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3d179d6c6e9687b0800000000000000
+      internalID: -5222312529357234881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_8
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 412
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4f2cca21298827d0800000000000000
+      internalID: -2942951580941668532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_9
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 412
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a14856bd3298e8050800000000000000
+      internalID: 5804727756824871962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_10
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 412
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b22dd62687f921c00800000000000000
+      internalID: 869933017432183339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_11
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 412
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 253fcd9c5ced70620800000000000000
+      internalID: 2740403839354860370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 348
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9730008195eb4b590800000000000000
+      internalID: -7659287776386350215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_13
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 348
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ad1da83bc1c7960800000000000000
+      internalID: 7600981828548287108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_14
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 348
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dbc8c4940f83f590800000000000000
+      internalID: -7641606892878771241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_15
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 348
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afeb3189bd14aba50800000000000000
+      internalID: 6537610220486770426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_16
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 348
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f75dad699353e0f0800000000000000
+      internalID: -1088934766458349577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_17
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 348
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 046e31ef84e5ad7e0800000000000000
+      internalID: -1739974638431902144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 284
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8c3623c6d6098ff0800000000000000
+      internalID: -33488002761737074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_19
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 284
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e965e2ac72b195ea0800000000000000
+      internalID: -5883641580473133410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_20
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 284
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05078335b9244f110800000000000000
+      internalID: 1293732227845746768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_21
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 284
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 457fa41d9d17f2330800000000000000
+      internalID: 3688291800172918612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_22
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 284
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d233c926a877d84b0800000000000000
+      internalID: -5436557738922724563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_23
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 284
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42687ef944343fa30800000000000000
+      internalID: 4247812835560097316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 220
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d678fc696cc1d3c0800000000000000
+      internalID: -4336460213009221933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_25
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 220
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e106a0c08ccb60c80800000000000000
+      internalID: -8356784491157888994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_26
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 220
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6caa9fc618d45a870800000000000000
+      internalID: 8693439873983032006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_27
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 220
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1171a296300abfb0800000000000000
+      internalID: -4631389032408846049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_28
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 220
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee0e91831066232e0800000000000000
+      internalID: -2147541916880084754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_29
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 220
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efb7aa64570e13920800000000000000
+      internalID: 2968400423715240958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 156
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a2b492d63358810800000000000000
+      internalID: 1766874972750031374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_31
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 156
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b22c2892e7036f2d0800000000000000
+      internalID: -3245353163053415893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_32
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 156
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63a72e9c776cc7b80800000000000000
+      internalID: -8395617387534976458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_33
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 156
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c4cc9113b807f740800000000000000
+      internalID: 5185623061128070341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_34
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 156
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7e91211b1baf7640800000000000000
+      internalID: 5079967037437091452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_35
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 156
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21e34968537252440800000000000000
+      internalID: 4910374079562006034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 92
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a7f1f3ae2dfdd0e0800000000000000
+      internalID: -2243358662599772252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_37
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 92
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9a87b814559b71d0800000000000000
+      internalID: -3351921309222729060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_38
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 92
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b770bb5d1596d09a0800000000000000
+      internalID: -6265235706403420293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_39
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 92
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d149d444ac20cd060800000000000000
+      internalID: 6979456590270010397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_40
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 92
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25a5f00aa2c9a5080800000000000000
+      internalID: -9197867582062896558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_41
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 92
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80fffe09f6c5d6cd0800000000000000
+      internalID: -2563290978661171448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 28
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6e1af08d4be4e760800000000000000
+      internalID: 7486367198705491565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_43
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 28
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf001f7e1b7c01eb0800000000000000
+      internalID: -4751078039961403140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_44
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 28
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b00e8f89570d0cea0800000000000000
+      internalID: -5854450312085446645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_45
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 28
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13ab6774de0e2b770800000000000000
+      internalID: 8625203546078755377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_46
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 28
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c97452620da2775e0800000000000000
+      internalID: -1912012443313944676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valla_2_47
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 28
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a96d3636667b77270800000000000000
+      internalID: 8248262892934387354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

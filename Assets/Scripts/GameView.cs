@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameView : Reference
 {
     //Declaracion de los canvas que contiene la vista del juego
@@ -18,17 +19,27 @@ public class GameView : Reference
     public List<GameObject> allCharacters;
     //public GameObject [] allCharacters;
 
+    //Posibles temas del juego
+    //private string[] themes = {"Castle", "Forest", "Sea"};
+
+    //private string theme;
+
+    //Botones para especificar que personaje se va a mover
+
+    public Button character_1, character_2, character_3;
 
     public static GameView gameView;
     
     private void Awake()
     {
-        GameCanvas = GameObject.Find("Game Canvas").GetComponent<Canvas>();
+        /*GameCanvas = GameObject.Find("Game Canvas").GetComponent<Canvas>();
         PauseCanvas = GameObject.Find("Pause Canvas").GetComponent<Canvas>();
         SolutionCanvas = GameObject.Find("Solution Canvas").GetComponent<Canvas>();
         TutorialCanvas = GameObject.Find("Tutorial Canvas").GetComponent<Canvas>();
 
-        gameZone = GameObject.Find("Game Zone");
+        gameZone = GameObject.Find("Game Zone");*/
+
+        //theme = themes[Random.Range(0, 3)];
 
         PointsLevel();
 
@@ -65,7 +76,7 @@ public class GameView : Reference
         //App.generalController.gameController.LevelData("Principiante");
         Objects[,] matrix = App.generalController.gameController.ReturnArray();
         //Llamada al metodo para dibujar la matriz en la escena
-        App.generalController.gameController.DrawMatrix(matrix,initialBlock,gameZone);
+        App.generalController.gameController.DrawMatrix(matrix,initialBlock,gameZone,"Castle");
     }
 
     public void MiniGame()
@@ -88,11 +99,13 @@ public class GameView : Reference
 
 
     //DANY//
-
+    //Variable para determinar la cantidad de personajes
+    public int numCharacteres = 2;
     public void LocateCharacters()
     {
-        App.generalController.charactersController.CreateCharacters();
-        App.generalController.charactersController.SelectCharactersLevel(3, "Castle", allCharacters);
+        GameObject [,] matrix = App.generalController.gameController.matrix;
+        App.generalController.charactersController.CreateCharacters(matrix);
+        App.generalController.charactersController.SelectCharactersLevel(numCharacteres, "Castle", allCharacters);
     }
 
     public void ActivateMovement(int type)

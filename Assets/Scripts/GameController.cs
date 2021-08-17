@@ -16,6 +16,7 @@ public class GameController : Reference
         if(name_button == "Pause Button")
         {
             App.generalView.gameView.PauseCanvas.enabled = true;
+            countSteps();
         }
         //El boton help abre el tutorial del juego
         if (name_button == "Help Button")
@@ -70,7 +71,7 @@ public class GameController : Reference
     /*
      * Metodo que dibuja en la pantalla la matriz
      */
-    public void DrawMatrix(Objects[,] matrix1, GameObject initialBlock, GameObject gameZone)
+    public void DrawMatrix(Objects[,] matrix1, GameObject initialBlock, GameObject gameZone, string theme)
     {
         //Posicion inicial del bloque
         float posStarX = initialBlock.transform.position.x;
@@ -79,7 +80,33 @@ public class GameController : Reference
         //Tamanio del bloque
         Vector2 blockSize = initialBlock.GetComponent<BoxCollider2D>().size;
 
+        //Matriz de objetos que representara el mapa en la pantalla
         matrix = new GameObject[matrix1.GetLength(0), matrix1.GetLength(1)];
+
+        //Matrices que contienen los sprites para llenar el mapa
+        Sprite[,] floorMatrix = new Sprite[8, 6];
+        Sprite[,] lockMatrix = new Sprite[8, 6];
+
+        Sprite[] spriteslist, spriteslist2;
+        
+
+        if(theme == "Castle")
+        {
+            spriteslist = Resources.LoadAll<Sprite>("Map/dirt");
+            spriteslist2 = Resources.LoadAll<Sprite>("Map/valla_2");
+        }
+        else if (theme == "Forest")
+        {
+            spriteslist = Resources.LoadAll<Sprite>("Map/grass");
+            spriteslist2 = Resources.LoadAll<Sprite>("Map/rocks");
+        }
+        else
+        {
+            spriteslist = Resources.LoadAll<Sprite>("Map/sand");
+            spriteslist2 = Resources.LoadAll<Sprite>("Map/water");
+        }
+
+        int index = 0;
 
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
@@ -102,29 +129,70 @@ public class GameController : Reference
                 //Asignar la matriz al objeto de GameZone
                 matrix[i, j].transform.parent = gameZone.transform;
 
+
+                floorMatrix[i,j] = spriteslist[index];
+                lockMatrix[i, j] = spriteslist2[index];
+
+                index += 1;
+
                 //Si es 0 se pinta de blanco (Azul por defecto)
                 if (matrix[i, j].GetComponent<Block>().GetID() == 0)
                 {
-                    matrix[i, j].GetComponent<SpriteRenderer>().color = Color.white;
+                    matrix[i, j].GetComponent<SpriteRenderer>().sprite = floorMatrix[i, j];
                 }
                 //Si es 1 se pinta de negro
                 else if (matrix[i, j].GetComponent<Block>().GetID() == 1)
                 {
-                    matrix[i, j].GetComponent<SpriteRenderer>().color = Color.black;
+                    matrix[i, j].GetComponent<SpriteRenderer>().sprite = lockMatrix[i, j];
+
+                    matrix[i, j].gameObject.layer = 6;
+                    matrix[i, j].GetComponent<Collider2D>().isTrigger = false;
                 }
                 //Si es 3 se pinta de verde (punto Partida)
                 else if (matrix[i, j].GetComponent<Block>().GetID() == 3)
                 {
-                    matrix[i, j].GetComponent<SpriteRenderer>().color = Color.green;
+                    matrix[i, j].GetComponent<SpriteRenderer>().sprite = floorMatrix[i, j];
+                        matrix[i, j].GetComponent<SpriteRenderer>().color = Color.green;
                 }
                 //Si es 4 se pinta de azul (Puntp Llegada)
                 else if (matrix[i, j].GetComponent<Block>().GetID() == 4)
                 {
+                    matrix[i, j].GetComponent<SpriteRenderer>().sprite = floorMatrix[i, j];
                     matrix[i, j].GetComponent<SpriteRenderer>().color = Color.blue;
                 }
             }
         }
     }
+
+    //Variable para almacenar los pasos que da el jugador en la partida
+    public int numberSteps = 0;
+    //Metodo para contar los pasos que dio el jugador en la partida
+    public int countSteps()
+    {
+        //Ciclo que recorrer toda la matriz para obtener los pasos que dio el jugador sobre cada una de las casillas
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                //Sumar los pasos de cada casilla en una sola variable
+                numberSteps += matrix[i, j].GetComponent<Block>().getNumVisited();
+            }
+        }
+        //Eliminar los pasos que da el personaje sobre la casilla donde es ubicado al inicio de la partida
+        if(App.generalView.gameView.numCharacteres == 2)
+        {
+            print("DOS PERSONAJEES: " + numberSteps);
+            numberSteps = numberSteps - 2;
+        }
+        else
+        {
+            print("TRES PERSONAJEES: " + numberSteps);
+            numberSteps = numberSteps - 3;
+        }
+        print("TOTAL: " + numberSteps);
+        return numberSteps;
+    }
+   
 
     ////////////////////////////////////////////////////////////////////CAMILA//////////////////////////////////////////////////////////////
     
@@ -194,7 +262,7 @@ public class GameController : Reference
     // Cantidad de columnas de la matriz
     int arrayCol = 6;
     // Matriz de GameObject
-    static GameObject[,] matrix;
+    public  GameObject[,] matrix;
 
     // Variables para el backtracking
     static int numSteps; // Numero de pasos para llegar de un punto a otro

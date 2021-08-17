@@ -19,48 +19,76 @@ public class CharactersController : Reference
         //Inicializacion de la Lista de los personajes que seran usandos en un nivel
         levelCharacters = new List<Character>();
 
-
-
         if (numCharacters == 3)
         {
             for (int i = 0; i < allCharacters.Count; i++)
             {
                 if (allCharacters[i].theme == theme)
                 {
+                    print("levelCharacters: " + i + " " + allCharacters[i].nameCharacter + "x: " + allCharacters[i].x + " y: " + allCharacters[i].y);
                     //Añadir a la lista de personajes del nivel
-                    levelCharacters.Add(new Character(allCharacters[i].name, allCharacters[i].theme, allCharacters[i].type, allCharacters[i].x, allCharacters[i].y));
-                    print("levelCharacters: " + i+ " "+ levelCharacters[i].name);
+                    levelCharacters.Add(new Character(allCharacters[i].nameCharacter, allCharacters[i].theme, allCharacters[i].type, allCharacters[i].x, allCharacters[i].y));
+                   
 
                     //Añadir a la lista de personajes en pantalla
-                    screenCharacters.Add(Instantiate(allCh[i], new Vector3(allCh[i].transform.position.x, allCh[i].transform.position.y, 0), allCh[i].transform.rotation));
+                    screenCharacters.Add(Instantiate(allCh[i], new Vector3(allCharacters[i].x,allCharacters[i].y, 0), allCh[i].transform.rotation));
+                   
                 }
             }
         }
         else
         {
             int numType = App.generalController.gameController.RamdonNumber(2, 4);
+            print("NUMERO DEL PERSONAJE: " + numType);
+            if(numType == 2)
+            {
+                App.generalView.gameView.character_3.interactable = false;
+            }
+            else
+            {
+                App.generalView.gameView.character_2.interactable = false;
+            }
+           
             for (int i = 0; i < allCharacters.Count; i++)
             {
                 if (allCharacters[i].theme == theme && (allCharacters[i].type == 1 || allCharacters[i].type == numType))
                 {
-                    levelCharacters.Add(new Character(allCharacters[i].name, allCharacters[i].theme, allCharacters[i].type, allCharacters[i].x, allCharacters[i].y));
+                    levelCharacters.Add(new Character(allCharacters[i].nameCharacter, allCharacters[i].theme, allCharacters[i].type, allCharacters[i].x, allCharacters[i].y));
 
-                    screenCharacters.Add(Instantiate(allCh[i], new Vector3(allCh[i].transform.position.x, allCh[i].transform.position.y, 0), allCh[i].transform.rotation));
+                    screenCharacters.Add(Instantiate(allCh[i], new Vector3(allCharacters[i].x, allCharacters[i].y, 0), allCh[i].transform.rotation));
                 } 
             }
         }
     }
 
     //Metodo para crear todos los personajes del juego
-    public void CreateCharacters()
+    public void CreateCharacters(GameObject [,] matrix)
     {
-        allCharacters.Add(new Character("King", "Castle", 1, 0, 0));
+        float x;
+        float y;
+        float x1 = 0;
+        float y1 = 0;
+        for(int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for(int j = 0; j < matrix.GetLength(1); j++)
+            {
+                if(matrix[i,j].GetComponent<Block>().GetID() == 3)
+                {
+                    x = (matrix[i, j].GetComponent<BoxCollider2D>().size.x)/2;
+                    y = (matrix[i, j].GetComponent<BoxCollider2D>().size.y)/2;
+                    x1 = matrix[i, j].transform.position.x;
+                    y1 = matrix[i, j].transform.position.y;
+                }
+            }
+        }
+
+        allCharacters.Add(new Character("King", "Castle", 1, x1, y1));
         allCharacters.Add(new Character("Knight", "Castle", 2, 0, 0));
         allCharacters.Add(new Character("Miner", "Castle", 3, 0, 0));
-        allCharacters.Add(new Character("Caperucita", "Forest", 1, 0, 0));
+        allCharacters.Add(new Character("Caperucita Roja", "Forest", 1, x1, y1));
         allCharacters.Add(new Character("Satyr", "Forest", 2, 0, 0));
         allCharacters.Add(new Character("Robin Hood", "Forest", 3, 0, 0));
-        allCharacters.Add(new Character("Pirate", "Sea", 1, 0, 0));
+        allCharacters.Add(new Character("Pirate", "Sea", 1, x1, y1));
         allCharacters.Add(new Character("Fish", "Sea", 2, 0, 0));
         allCharacters.Add(new Character("Ghost", "Sea", 3, 0, 0));
     }
@@ -161,16 +189,16 @@ public class CharactersController : Reference
     {
         if (direction == "up")
         {
-            move = Vector2.up;
-            
+            move = new Vector2(0,4);
+            print("MOVE: " + move);
             //Activar animaciones del personaje
             animator.SetFloat("mov_y", move.y);
             animator.SetBool("walking", true);
         }
         else if (direction == "down")
         {
-            move = Vector2.down;
-
+            move = new Vector2(0, -4);
+            print("MOVE: " + move);
             //Activar animaciones del personaje
             animator.SetFloat("mov_y", move.y);
             animator.SetBool("walking", true);
@@ -182,7 +210,7 @@ public class CharactersController : Reference
     {
         if (direction == "right")
         {
-            move = Vector2.right;
+            move = new Vector2(4,0);
 
             //Activar animaciones del personaje
             animator.SetFloat("mov_x", move.x);
@@ -190,7 +218,7 @@ public class CharactersController : Reference
         }
         else if (direction == "left")
         {
-            move = Vector2.left;
+            move = new Vector2(-4,0);
 
             //Activar animaciones del personaje
             animator.SetFloat("mov_x", move.x);
@@ -215,8 +243,9 @@ public class CharactersController : Reference
         //Verificar que el rigibody del personaje esta activo
         if (rigidbody2d != null)
         {
-           print("Position: "+rigidbody2d.position + move * speed);
+
            rigidbody2d.MovePosition(rigidbody2d.position + move * speed * Time.deltaTime);
         }
     }
+
 }

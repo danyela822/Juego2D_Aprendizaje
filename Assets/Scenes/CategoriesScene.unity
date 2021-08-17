@@ -1046,6 +1046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
+    - target: {fileID: 5537816766817973946, guid: 10d7d1dc006ac2746b126d7f4bc06a0e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10d7d1dc006ac2746b126d7f4bc06a0e, type: 3}
 --- !u!1 &379738782
@@ -3295,6 +3299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642fa1d50e7cb574289b04fabf0595a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberSteps: 0
 --- !u!114 &1246642074
 MonoBehaviour:
   m_ObjectHideFlags: 0
