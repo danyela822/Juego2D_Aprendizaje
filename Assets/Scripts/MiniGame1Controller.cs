@@ -33,18 +33,18 @@ public class MiniGame1Controller : Reference
     public string c;
     private Vector2 offset ;
 
- 
-
     // Start is called before the first frame update
+
     public void MiniGame1()
     {
-        if (sharedInstance  == null)
+        /*if (sharedInstance  == null)
         {
             sharedInstance = this;
         }   
         else{
             Destroy(gameObject);
-        }
+        }*/
+
         //vector que me permite obtener las dimensiones para colocar cada una
         //de las imagenes de la secuencia
         offset = currentImage.GetComponent<BoxCollider2D>().size;
@@ -85,6 +85,9 @@ public class MiniGame1Controller : Reference
                     new Vector3(startX + ((offset.x) * j), startY
                     + (offset.y * -i - 1f), 0), currentImage.transform.rotation);
 
+                    
+                    newImage.tag = "Sequence";
+
                     images[i, j] = newImage;
 
                 }
@@ -102,6 +105,9 @@ public class MiniGame1Controller : Reference
                     newImage.GetComponent<Sequence>().id = auxName;
 
                     newImage.GetComponent<Sequence>().type = false;
+
+                    newImage.tag = "Sequence";
+
                     images[i, j] = newImage;
 
                 }
@@ -113,12 +119,18 @@ public class MiniGame1Controller : Reference
                         new Vector3(startX + ((offset.x) * j), startY
                         + (offset.y * -i ), 0), currentImage.transform.rotation);
 
+                        
+                        newImage.tag = "Sequence";
+
                     }
                     else
                     {
                         newImage = Instantiate(currentImage,
                         new Vector3(startX + ((offset.x) * j), startY
                         + (offset.y * -i - 1f), 0), currentImage.transform.rotation);
+
+                        
+                        newImage.tag = "Sequence";
 
                     }
 
@@ -137,6 +149,7 @@ public class MiniGame1Controller : Reference
                     newImage.GetComponent<Sequence>().id = auxName;
 
                     newImage.GetComponent<Sequence>().type = false;
+                    
                     images[i, j] = newImage;
                 }
                 
@@ -167,6 +180,9 @@ public class MiniGame1Controller : Reference
             new Vector3(-3 , -6, 0), currentImage.transform.rotation);
 
             newImage.GetComponent<SpriteRenderer>().sprite = null;
+
+            
+            newImage.tag = "Sequence";
             if (i != 0){
 
                 CheckNumbers(2);
@@ -269,16 +285,20 @@ public class MiniGame1Controller : Reference
 
     public void CheckAnswerSequence(string answer)
     {
+        bool answerResult = false;
         if (answer == c)
         {
             Debug.Log("Esta carajada dio a la primera");
             ChangeCorrectImage();
-
+            answerResult = true;
+            
         }
         else
         {
             Debug.Log("No dio a la primera :(");
+            
         }
+        App.generalView.miniGameView.SolutionCanvas(answerResult);
     }
 }
 

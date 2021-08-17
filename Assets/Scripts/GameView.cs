@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class GameView : Reference
 {
@@ -29,9 +30,20 @@ public class GameView : Reference
 
         gameZone = GameObject.Find("Game Zone");
 
+        PointsLevel();
+
         BuildMatrix();
         
         LocateCharacters();
+    }
+
+    public void PointsLevel()
+    {
+        Text cointsText = GameObject.Find("Coins Text").GetComponent<Text>();
+        Text solutionTickets = GameObject.Find("SolutionTickets Text").GetComponent<Text>();
+
+        cointsText.text = " x " + 10;//App.generalModel.gameModel.totalPoints;
+        solutionTickets.text = " x " + App.generalModel.gameModel.GetTickets();
     }
 
     /*
@@ -63,7 +75,15 @@ public class GameView : Reference
 
     public void DrawSolution()
     {
-        App.generalController.gameController.DrawSolution();
+
+        if( App.generalModel.gameModel.GetTickets() > 0)
+        {
+            App.generalController.gameController.DrawSolution();
+            PointsLevel();
+        }
+        else{
+            print("no tienes tickets de solucion");
+        }
     }
 
 

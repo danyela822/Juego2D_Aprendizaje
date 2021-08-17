@@ -4,16 +4,43 @@ using UnityEngine;
 
 public class GameModel : Reference
 {
+    int solutionTickets;
+    int totalPoints;
+
     // Start is called before the first frame update
-    void Start()
+    public void IncreaseTickets()
     {
-        
+        SetTickets(GetTickets()+1);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DecraseTickets()
     {
+        if(GetTickets() > 0)
+        {
+            SetTickets(GetTickets()-1);
+        }
         
+    }
+    public int GetTickets()
+    {
+        solutionTickets = PlayerPrefs.GetInt("SolutionTickets", 0);
+        return solutionTickets;
+    }
+    public void SetTickets(int valor)
+    {
+        PlayerPrefs.SetInt("SolutionTickets", valor);
+    }
+
+    // Puntos
+    public int GetPoints()
+    {
+        totalPoints = PlayerPrefs.GetInt("TotalPoints", 0);
+        return totalPoints;
+    }
+
+    public void SetPoints(int valor)
+    {
+        PlayerPrefs.SetInt("TotalPoints", valor);
     }
 }
 

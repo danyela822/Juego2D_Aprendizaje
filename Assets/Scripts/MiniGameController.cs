@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MiniGameController : Reference
 {
@@ -14,10 +15,11 @@ public class MiniGameController : Reference
         GenerateMiniGame();
     }
 
-    void GenerateMiniGame()
+    public void GenerateMiniGame()
     {
+        DropClone();
         int typeMiniGame = App.generalController.gameController.RamdonNumber(1,4);
-        
+        App.generalView.miniGameView.EnabledCanvasMiniGames();
         if(typeMiniGame == 1)
         {
             App.generalView.miniGameView.MiniGame1();
@@ -35,20 +37,39 @@ public class MiniGameController : Reference
         }
     }
 
-    public void CorrectAnswer(bool answer)
+    public void DropClone()
     {
-        if(answer == true)
-        {
-            print("Respuesta correcta desde MiniGameController");
-            SceneManager.LoadScene("GameScene");
-            App.generalController.gameController.LocateSolucion();
+        GameObject[] sequenceClone = GameObject.FindGameObjectsWithTag("Sequence");
 
+        for (int i = 0; i < sequenceClone.Length; i++)
+        {
+            Destroy(sequenceClone[i]);
+        }
+    }
+
+    public void OptionSolution(Text optionText)
+    {
+        if(optionText.text == "Volver al Juego Principal")
+        {
+            
+            //App.generalModel.gameModel.solutionTickets++;
+            SceneManager.LoadScene("GameScene");
+            
+            //App.generalController.gameController.LocateSolucion();
+            App.generalController.gameController.IncreaseTickets();
+            
         }
         else
         {
-            print("Respuesta incorrecta desde MiniGameController");
-            SceneManager.LoadScene("GameScene");
+            App.generalView.miniGameView.SetActiveCanvas();
+            GenerateMiniGame();
         }
+        
+    }
+
+    public void ReturnGame()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 
     int RamdonNumber (int min, int max)

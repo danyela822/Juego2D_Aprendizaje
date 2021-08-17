@@ -128,12 +128,49 @@ public class GameController : Reference
 
     ////////////////////////////////////////////////////////////////////CAMILA//////////////////////////////////////////////////////////////
     
+    //Metodos para calcular los puntajes y etc
+
+    public void IncreaseTickets ()
+    {
+        App.generalModel.gameModel.IncreaseTickets();
+    }
+
+    public void PointsLevel (int totalStarts)
+    {
+        int pointsForStart = 10;
+        int pointsLevel = totalStarts*pointsForStart;
+
+    }
+
+    public void Coints(int totalSteps)
+    {
+        //Si los pasos realizados por el usuario son menor o igual a los pasos del algoritmo tiene 3 estrellas
+        //Si los pasos realizados por el usuario son mayores a los pasos del algoritmo por maximo 3 pasos son 2 estrellas
+        //Si son mayores por mas de 3 pasos extras tiene una estrella
+        if(totalSteps <= numSteps)
+        {
+
+        }
+        else if(totalSteps > numSteps && totalSteps <= numSteps+3)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+
+
     //
     public static GameController gameController;
     
     // Metodo encargado de Pintar la ruta de solucion
     public void DrawSolution()
     {
+        LocateSolucion();
+        App.generalModel.gameModel.DecraseTickets();
         App.generalView.gameView.SolutionCanvas.enabled = false;
         
         for (int i = 0; i < matrix.GetLength(0); i++)
@@ -431,7 +468,7 @@ public class GameController : Reference
     }
    
     // Metodo encargado de genarar la figura 3
-     bool Figure3(int x, int y)
+    bool Figure3(int x, int y)
     {
         // Variable donde se almacena si la figura se pudo realizar
         bool approved = false;

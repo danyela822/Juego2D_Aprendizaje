@@ -5,6 +5,7 @@ using UnityEngine;
 public class MiniGame2Controller : Reference
 {
     Riddle riddle;
+
     public void LoadRiddles()
     {
         //Crear los acertijos 
@@ -57,8 +58,10 @@ public class MiniGame2Controller : Reference
     public void CheckAnswer(string answer)
     {
         Debug.Log("ENVIO: "+answer+" LA QUE HAY: "+ riddle.Answer);
+        bool answerResult = false;
         if(answer == riddle.Answer)
         {
+            answerResult = true;
             //Canvas winCanvas = GameObject.Find("Win Canvas").GetComponent<Canvas>();
             App.generalView.miniGameView.winCanvas.enabled = true;
 
@@ -78,5 +81,6 @@ public class MiniGame2Controller : Reference
         {
             App.generalView.miniGameView.loseCanvas.enabled = true;
         }
+        App.generalView.miniGameView.SolutionCanvas(answerResult);
     }
 }

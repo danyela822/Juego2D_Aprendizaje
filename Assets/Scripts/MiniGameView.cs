@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class MiniGameView : Reference
 {
+    public GameObject canvas1;
     public Canvas miniGame1Canvas;
     public Canvas miniGame2Canvas;
     public Canvas miniGame3Canvas;
-    
+    public Canvas solutionCanvas;
+    public Text solutionTextCanvas, optionText; 
+    public GameObject gameButton;
     public Text question;
     public List<Text> easyText = new List<Text>();
     public List<Button> easyButton = new List<Button>();
@@ -16,15 +19,39 @@ public class MiniGameView : Reference
     public List<Button> listButton = new List<Button>();
     public List<Text> listOptions = new List<Text>();
     
-    // Canvas de minigame
-    
-    
-    // Start is called before the first frame update
-    
-    /*void Start()
+
+    //Panel de solucion
+
+    public void SolutionCanvas (bool answerResult)
     {
-        MiniGame3();
-    }*/
+        solutionCanvas.enabled = true;
+        if(answerResult)
+        {
+            solutionTextCanvas.text = "Respuesta correcta. Indique que desea hacer";
+            optionText.text = "Volver al Juego Principal";
+            gameButton.SetActive(false);
+        }
+        else{
+            solutionTextCanvas.text = "Respuesta incorrecta. Indique que desea hacer";
+            optionText.text = "Realizar MiniJuego";
+        }
+    }
+
+    public void SetActiveCanvas()
+    {
+        solutionCanvas.enabled = false;
+    }
+
+    public void EnabledCanvasMiniGames()
+    {
+        miniGame1Canvas.enabled = false;
+        miniGame2Canvas.enabled = false;
+        miniGame3Canvas.enabled = false;
+        loseCanvas.enabled = false;
+        winCanvas.enabled = false;
+    }
+
+    // Activacion de los mini jugos
     public void MiniGame1()
     {
         App.generalController.miniGameController.miniGame1Controller.MiniGame1();
@@ -48,7 +75,8 @@ public class MiniGameView : Reference
             LoadOperation(type, listText, listButton);
         }
     }
- 
+    
+    //Metodos utilizados en MiniGame3Controller
     public void Question()
     {
         question = GameObject.Find("Question").GetComponent<Text>();
@@ -59,6 +87,7 @@ public class MiniGameView : Reference
         App.generalController.miniGameController.miniGame3Controller.LoadOperation(type, textList, buttonList);
     }
 
+    //Metodos que se activan por referencia desde la vista miniGames en las opciones de cada canvas
     public void CheckAnswerMiniGame1(GameObject text)
     {
         string answer = text.GetComponent<Text>().text;

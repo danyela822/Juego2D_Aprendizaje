@@ -11,7 +11,10 @@ public class MiniGame3Controller : Reference
     static List<string[]> operationsType1 = new List<string[]>();
     static List<string[]> operationsType2 = new List<string[]>();
     static List<string[]> operationsType3 = new List<string[]>();
+
+    List<Text> listTextFinal = new List<Text>();
     string result = "";
+    int indexOption = 0;
     
     Color backgroundColor = new Color(255,255,255,255);
 
@@ -59,6 +62,8 @@ public class MiniGame3Controller : Reference
     
     public void LoadOperation(string type, List<Text> listText, List<Button> listButton)
     {
+        listTextFinal = listText;
+
         List<string[]> operations = SelectList(type);
 
         int position = RamdonNumber(0, operations.Count);
@@ -67,17 +72,18 @@ public class MiniGame3Controller : Reference
 
         result = choose[1];
 
-        int index = Array.IndexOf(choose,";");
+        indexOption = Array.IndexOf(choose,";");
         
-        ExerciseType(index, choose.Length-1);
+        ExerciseType(indexOption, choose.Length-1);
 
         for (int i = 0; i < listText.Count; i++)
         {
             listText[i].text = choose[i+2];
+            listButton[i].image.color = new Color(255,255,255,0);
         }
 
-        listText[index-2].text = " ";
-        listButton[index-2].image.color = backgroundColor;
+        listText[indexOption-2].text = " ";
+        listButton[indexOption-2].image.color = backgroundColor;
     }
 
     List<string[]> SelectList(string type)
@@ -182,9 +188,10 @@ public class MiniGame3Controller : Reference
         if(answer == result)
         {
             answerResult = true;
+            listTextFinal[indexOption-2].text = result;
         }
-        App.generalController.miniGameController.CorrectAnswer(answerResult);
-
+        //App.generalController.miniGameController.CorrectAnswer(answerResult);
+        App.generalView.miniGameView.SolutionCanvas(answerResult);
     }
     // Metodo que desordena una lista
     List<string> RamdonList(List<string> listP)
