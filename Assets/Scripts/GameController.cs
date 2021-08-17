@@ -16,6 +16,7 @@ public class GameController : Reference
         if(name_button == "Pause Button")
         {
             App.generalView.gameView.PauseCanvas.enabled = true;
+            countSteps();
         }
         //El boton help abre el tutorial del juego
         if (name_button == "Help Button")
@@ -163,12 +164,35 @@ public class GameController : Reference
         }
     }
 
+    //Variable para almacenar los pasos que da el jugador en la partida
     public int numberSteps = 0;
-    public void countSteps()
+    //Metodo para contar los pasos que dio el jugador en la partida
+    public int countSteps()
     {
-
+        //Ciclo que recorrer toda la matriz para obtener los pasos que dio el jugador sobre cada una de las casillas
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                //Sumar los pasos de cada casilla en una sola variable
+                numberSteps += matrix[i, j].GetComponent<Block>().getNumVisited();
+            }
+        }
+        //Eliminar los pasos que da el personaje sobre la casilla donde es ubicado al inicio de la partida
+        if(App.generalView.gameView.numCharacteres == 2)
+        {
+            print("DOS PERSONAJEES: " + numberSteps);
+            numberSteps = numberSteps - 2;
+        }
+        else
+        {
+            print("TRES PERSONAJEES: " + numberSteps);
+            numberSteps = numberSteps - 3;
+        }
+        print("TOTAL: " + numberSteps);
+        return numberSteps;
     }
-
+   
 
     ////////////////////////////////////////////////////////////////////CAMILA//////////////////////////////////////////////////////////////
 

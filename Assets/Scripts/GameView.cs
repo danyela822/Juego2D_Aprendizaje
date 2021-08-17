@@ -79,12 +79,13 @@ public class GameView : Reference
 
 
     //DANY//
-
+    //Variable para determinar la cantidad de personajes
+    public int numCharacteres = 2;
     public void LocateCharacters()
     {
         GameObject [,] matrix = App.generalController.gameController.matrix;
         App.generalController.charactersController.CreateCharacters(matrix);
-        App.generalController.charactersController.SelectCharactersLevel(2, "Castle", allCharacters);
+        App.generalController.charactersController.SelectCharactersLevel(numCharacteres, "Castle", allCharacters);
     }
 
     public void ActivateMovement(int type)
