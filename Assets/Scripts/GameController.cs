@@ -85,25 +85,32 @@ public class GameController : Reference
 
         //Matrices que contienen los sprites para llenar el mapa
         Sprite[,] floorMatrix = new Sprite[8, 6];
-        Sprite[,] lockMatrix = new Sprite[8, 6];
+        Sprite[] spriteslist;
 
-        Sprite[] spriteslist, spriteslist2;
-        
+        //Sprite que contiene los obstaculos estaticos del mapa
+        Sprite lockBlock;
 
-        if(theme == "Castle")
+        //Sprite que contiene la meta del mapa
+        Sprite winBlock;
+
+
+        if (theme == "Castle")
         {
             spriteslist = Resources.LoadAll<Sprite>("Map/dirt");
-            spriteslist2 = Resources.LoadAll<Sprite>("Map/valla_2");
+            lockBlock = (Sprite)Resources.Load<Sprite>("Map/fence");
+            winBlock = (Sprite)Resources.Load<Sprite>("Map/fence");
         }
         else if (theme == "Forest")
         {
             spriteslist = Resources.LoadAll<Sprite>("Map/grass");
-            spriteslist2 = Resources.LoadAll<Sprite>("Map/rocks");
+            lockBlock = (Sprite)Resources.Load<Sprite>("Map/rock");
+            winBlock = (Sprite)Resources.Load<Sprite>("Map/house");
         }
         else
         {
             spriteslist = Resources.LoadAll<Sprite>("Map/sand");
-            spriteslist2 = Resources.LoadAll<Sprite>("Map/water");
+            lockBlock = (Sprite)Resources.Load<Sprite>("Map/algae");
+            winBlock = (Sprite)Resources.Load<Sprite>("Map/fence");
         }
 
         int index = 0;
@@ -131,7 +138,6 @@ public class GameController : Reference
 
 
                 floorMatrix[i,j] = spriteslist[index];
-                lockMatrix[i, j] = spriteslist2[index];
 
                 index += 1;
 
@@ -143,10 +149,9 @@ public class GameController : Reference
                 //Si es 1 se pinta de negro
                 else if (matrix[i, j].GetComponent<Block>().GetID() == 1)
                 {
-                    matrix[i, j].GetComponent<SpriteRenderer>().sprite = lockMatrix[i, j];
-
+                    matrix[i, j].GetComponent<SpriteRenderer>().sprite = lockBlock;
                     matrix[i, j].gameObject.layer = 6;
-                    matrix[i, j].GetComponent<Collider2D>().isTrigger = false;
+                    //matrix[i, j].GetComponent<Collider2D>().isTrigger = false;
                 }
                 //Si es 3 se pinta de verde (punto Partida)
                 else if (matrix[i, j].GetComponent<Block>().GetID() == 3)
@@ -157,8 +162,8 @@ public class GameController : Reference
                 //Si es 4 se pinta de azul (Puntp Llegada)
                 else if (matrix[i, j].GetComponent<Block>().GetID() == 4)
                 {
-                    matrix[i, j].GetComponent<SpriteRenderer>().sprite = floorMatrix[i, j];
-                    matrix[i, j].GetComponent<SpriteRenderer>().color = Color.blue;
+                    matrix[i, j].GetComponent<SpriteRenderer>().sprite = winBlock;
+                    //matrix[i, j].GetComponent<SpriteRenderer>().color = Color.blue;
                 }
             }
         }

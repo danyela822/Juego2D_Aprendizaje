@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class CharactersController : Reference
 {
@@ -184,42 +185,99 @@ public class CharactersController : Reference
         }
     }
 
+    bool isWalking;
+    private Vector2 starPos,nextPos;
+    float timeToMove = 0.1f;
+    float elapsedTime = 0;
+    private IEnumerator MovePlayer(Vector2 direction)
+    {
+        print("ENTRO A LA CORUTINA");
+        isWalking = true;
+
+        //float elapsedTime = 0;
+
+        starPos = rigidbody2d.position;
+        nextPos = starPos + direction;
+
+        print("START POS: "+starPos);
+        print("NEXT POS: "+nextPos);
+        while (elapsedTime < timeToMove)
+        {
+            
+            Vector2 dir = nextPos - starPos;
+            RaycastHit2D hit = Physics2D.Raycast(starPos, dir, dir.sqrMagnitude,6);
+            elapsedTime += Time.deltaTime;
+
+            // Se verifica mediante un raycast que no se interponga nada al movimiento.
+            if (hit.collider == null)
+            {
+                Vector3 position = Vector3.Lerp(starPos, nextPos, (elapsedTime / timeToMove));
+                rigidbody2d.position = position;
+                
+                if (!isWalking)
+                { isWalking = true; }
+            }
+            else
+            {
+                Debug.LogError("There is an obstacle, the player can't move");
+                nextPos = starPos;
+            }
+        }
+        yield return null;
+        
+        rigidbody2d.position = nextPos;
+        isWalking = false;
+    }
+    Vector2 direction_1;
     //Metodo para mover al personaje de arriba a abajo
     void MoveUpDown(string direction)
     {
-        if (direction == "up")
+
+        if (direction == "up" && isWalking == false)
         {
-            move = new Vector2(0,4);
+            direction_1 = new Vector2(0, 0.67f);
+            move = new Vector2(0, 0.67f);
+            //StartCoroutine(MovePlayer(move));
+            //StopCoroutine("MovePlayer");
+            //move = new Vector2(0, 0.67f);
+            //move = Vector3.MoveTowards(transform.position,new Vector3(0,4,0),0f);
             print("MOVE: " + move);
             //Activar animaciones del personaje
             animator.SetFloat("mov_y", move.y);
             animator.SetBool("walking", true);
         }
-        else if (direction == "down")
+        else if (direction == "down" && isWalking == false)
         {
-            move = new Vector2(0, -4);
+            direction_1 = new Vector2(0, -0.67f);
+            move = new Vector2(0, -0.67f);
+            //StartCoroutine(MovePlayer(move));
+            //StopCoroutine("MovePlayer");
             print("MOVE: " + move);
             //Activar animaciones del personaje
             animator.SetFloat("mov_y", move.y);
             animator.SetBool("walking", true);
+
         }
     }
-
     //Metodo para mover al personaje de izquierda a deracha
     void MoveRightLeft(string direction)
     {
-        if (direction == "right")
+        if (direction == "right" && isWalking == false)
         {
-            move = new Vector2(4,0);
-
+            direction_1 = new Vector2(0.67f,0);
+            move = new Vector2(0.67f,0);
+            //StartCoroutine(MovePlayer(move));
+            //StopCoroutine("MovePlayer");
             //Activar animaciones del personaje
             animator.SetFloat("mov_x", move.x);
             animator.SetBool("walking", true);
         }
-        else if (direction == "left")
+        else if (direction == "left" && isWalking == false)
         {
-            move = new Vector2(-4,0);
-
+            direction_1 = new Vector2(-0.67f, 0);
+            move = new Vector2(-0.67f,0);
+            //StartCoroutine(MovePlayer(move));
+            //StopCoroutine("MovePlayer");
             //Activar animaciones del personaje
             animator.SetFloat("mov_x", move.x);
             animator.SetBool("walking", true);
@@ -229,6 +287,7 @@ public class CharactersController : Reference
     //Metodo que detiene el movimiento del personaje
     public void NotMove()
     {
+        print("LEVANTO BOTON: "+animator.isInitialized);
         //Verificar que el animator del personaje esta activo
         if(animator!=null)
         {
@@ -237,6 +296,63 @@ public class CharactersController : Reference
         }
     }
 
+    public LayerMask obstacleMask;
+
+    public bool isTochingTheObstacle()
+    {
+        Debug.DrawRay(rigidbody2d.position, Vector2.down * 0.4f, Color.red);
+        Debug.DrawRay(rigidbody2d.position, Vector2.up * 0.4f, Color.red);
+        Debug.DrawRay(rigidbody2d.position, Vector2.right * 0.4f, Color.red);
+        Debug.DrawRay(rigidbody2d.position, Vector2.left * 0.4f, Color.red);
+
+        if (Physics2D.Raycast(rigidbody2d.position, Vector2.down, 0.4f, obstacleMask) || Physics2D.Raycast(rigidbody2d.position, Vector2.up, 0.4f, obstacleMask) 
+            || Physics2D.Raycast(rigidbody2d.position, Vector2.right, 0.4f, obstacleMask) || Physics2D.Raycast(rigidbody2d.position, Vector2.left, 0.4f, obstacleMask))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+        /*if (Physics2D.Raycast(rigidbody2d.position,Vector2.down, 0.4f, obstacleMask))
+        {
+            return 1;
+        }
+        else if(Physics2D.Raycast(rigidbody2d.position, Vector2.up, 0.4f, obstacleMask))
+        {
+            return 2;
+        }
+        else if(Physics2D.Raycast(rigidbody2d.position, Vector2.right, 0.4f, obstacleMask))
+        {
+            return 3;
+        }
+        else if(Physics2D.Raycast(rigidbody2d.position, Vector2.left, 0.4f, obstacleMask))
+        {
+            return 4;
+        }
+        else
+        {
+            return 0;
+        }*/
+
+    }
+    IEnumerator MoveI(Vector2 newPosI)
+    {
+        isWalking = true;
+
+        while((newPosI - rigidbody2d.position).sqrMagnitude > Mathf.Epsilon)
+        {
+            rigidbody2d.position = Vector2.MoveTowards(rigidbody2d.position, newPosI,speed * Time.fixedDeltaTime);
+            yield return null;
+        }
+        rigidbody2d.position = newPosI;
+        isWalking = false;
+    }
+
+    Vector2 movement;
+    Vector3 moveToPosition;
+
     //Metodo que cambia la posicion del personaje en la escena
     void FixedUpdate()
     {
@@ -244,7 +360,141 @@ public class CharactersController : Reference
         if (rigidbody2d != null)
         {
 
-           rigidbody2d.MovePosition(rigidbody2d.position + move * speed * Time.deltaTime);
+            if(!isWalking)
+            {
+                movement.x = CrossPlatformInputManager.GetAxis("Horizontal");
+                movement.y = CrossPlatformInputManager.GetAxis("Vertical");
+
+                if (movement.x > 0)
+                {
+                    movement.x = 0.77f;
+                    movement.y = 0;
+                    print("X: " + movement.x + " Y: " + movement.y);
+                }
+                else if (movement.x < 0)
+                {
+                    movement.x = -0.77f;
+                    movement.y = 0;
+                    print("X: " + movement.x + " Y: " + movement.y);
+                }
+
+                if (movement.y > 0)
+                {
+                    movement.x = 0;
+                    movement.y = 0.67f;
+                }
+                else if(movement.y < 0)
+                {
+                    movement.x = 0;
+                    movement.y = -0.67f;
+                }
+
+
+               if (movement != Vector2.zero)
+               {
+                    print("TOCO: " + isTochingTheObstacle());
+                    moveToPosition = rigidbody2d.position + new Vector2(movement.x, movement.y);
+
+                    if (!isTochingTheObstacle())
+                    {
+                        StartCoroutine(MoveI(moveToPosition));
+                    }
+                    else
+                    {
+                        moveToPosition = rigidbody2d.position;
+                    }
+                }
+
+                
+                /*if(isTochingTheObstacle() == 1)
+                {
+                    moveToPosition = rigidbody2d.position + new Vector2(movement.x,0.67f);
+                    StartCoroutine(MoveI(moveToPosition));
+                }
+                else if (isTochingTheObstacle() == 2)
+                {
+                    moveToPosition = rigidbody2d.position + new Vector2(movement.x,-0.67f);
+                    StartCoroutine(MoveI(moveToPosition));
+                }
+                else if (isTochingTheObstacle() == 3)
+                {
+                    moveToPosition = rigidbody2d.position + new Vector2(-0.77f, movement.y);
+                    StartCoroutine(MoveI(moveToPosition));
+                }
+                else if (isTochingTheObstacle() == 4)
+                {
+                    moveToPosition = rigidbody2d.position + new Vector2(0.77f, movement.y);
+                    StartCoroutine(MoveI(moveToPosition));
+                }
+                else
+                {
+                    moveToPosition = rigidbody2d.position + new Vector2(movement.x, movement.y);
+                    StartCoroutine(MoveI(moveToPosition));
+                }*/
+
+               
+            }
+
+            
+
+
+
+
+
+
+            // rigidbody2d.MovePosition(rigidbody2d.position + move * speed * Time.deltaTime);
+
+            //starPos = rigidbody2d.position;
+            //nextPos = starPos + direction_1;
+
+            //Vector3 position = Vector3.Lerp(starPos, nextPos, (elapsedTime / timeToMove));
+            //rigidbody2d.position = Vector3.MoveTowards(starPos, nextPos, Time.deltaTime * speed);
+            //elapsedTime += Time.deltaTime;
+            //rigidbody2d.position = position;            
+
+            //movement.x = CrossPlatformInputManager.GetAxis("Horizontal");
+            //movement.y = CrossPlatformInputManager.GetAxis("Vertical");
+
+            /*
+            // Si el jugador está quieto.
+            if (starPos == nextPos)
+            {
+                isWalking = false;
+            }
+
+            // Si el jugador quiere moverse y no está caminando.
+            // Se calcula la posición futura.
+            if (horizontalMovement != 0 && !isWalking)
+            {
+                nextPos += Vector2.right * horizontalMovement;
+            }
+            else if (verticalMovement != 0 && !isWalking)
+            {
+                nextPos += Vector2.up * verticalMovement;
+            }
+
+            // Si la posición futura es distinta de la actual es porque el jugador quiere mover al personaje...
+            if (nextPos != starPos)
+            {
+                print("SI ES DIFERENTE. NEXT: "+nextPos+" START: "+starPos);
+
+                Vector2 dir = nextPos - starPos;
+                RaycastHit2D hit = Physics2D.Raycast(starPos, dir, dir.sqrMagnitude, 6);
+
+                // Se verifica mediante un raycast que no se interponga nada al movimiento.
+                if (hit.collider == null)
+                {
+                    rigidbody2d.position = Vector3.MoveTowards(starPos, nextPos, Time.deltaTime * speed);
+                    if (!isWalking) 
+                    { isWalking = true; }
+                }
+                else
+                {
+                    Debug.LogError("There is an obstacle, the player can't move");
+                    nextPos = starPos;
+                }
+            }
+            */
         }
     }
 

@@ -64,7 +64,7 @@ public class GameView : Reference
         //App.generalController.gameController.LevelData("Principiante");
         Objects[,] matrix = App.generalController.gameController.ReturnArray();
         //Llamada al metodo para dibujar la matriz en la escena
-        App.generalController.gameController.DrawMatrix(matrix,initialBlock,gameZone,"Castle");
+        App.generalController.gameController.DrawMatrix(matrix,initialBlock,gameZone, "Forest");
     }
 
     public void MiniGame()
@@ -85,7 +85,7 @@ public class GameView : Reference
     {
         GameObject [,] matrix = App.generalController.gameController.matrix;
         App.generalController.charactersController.CreateCharacters(matrix);
-        App.generalController.charactersController.SelectCharactersLevel(numCharacteres, "Castle", allCharacters);
+        App.generalController.charactersController.SelectCharactersLevel(numCharacteres, "Forest", allCharacters);
     }
 
     public void ActivateMovement(int type)
