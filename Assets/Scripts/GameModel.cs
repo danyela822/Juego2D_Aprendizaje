@@ -1,11 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameModel : Reference
 {
     int solutionTickets;
     int totalPoints;
+
+    //Para las estadisticas
+
+    float totalTime;
+    int totalStars;
+
+    void Update()
+    {
+        if(SceneManager.GetActiveScene().name == "GameScene" || SceneManager.GetActiveScene().name == "MiniGamesScene")
+        {
+            totalTime += GetTime();
+            totalTime += Time.deltaTime;
+            SetTime(totalTime);
+        }
+    }
+
+    public float GetTime()
+    {
+        totalTime = PlayerPrefs.GetFloat("TotalTime", 0);
+        return totalTime;
+    }
+
+    public void SetTime(float time)
+    {
+        PlayerPrefs.SetFloat("TotalTime", time);
+    }
+
+    public int GetTotalStars()
+    {
+        totalStars = PlayerPrefs.GetInt("TotalStars", 0);
+        return totalStars;
+    }
+
+    public void SetTotalStars(float stars)
+    {
+        PlayerPrefs.GetFloat("TotalStars", stars);
+    }
 
     // Start is called before the first frame update
     public void IncreaseTickets()

@@ -7,6 +7,7 @@ public class UIView : Reference
 {
     //variable tipo text de la interfaz
     public Text category;
+
     public void OnClickButtons(string name_button)
     {
         App.generalController.uiController.OnClickButtons(name_button);

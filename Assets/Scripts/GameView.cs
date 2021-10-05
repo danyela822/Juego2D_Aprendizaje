@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 public class GameView : Reference
 {
     //Declaracion de los canvas que contiene la vista del juego
-    public Canvas GameCanvas, PauseCanvas, SolutionCanvas, TutorialCanvas;
+    public Canvas GameCanvas, PauseCanvas, SolutionCanvas, TutorialCanvas, WinCanvas;
 
     //Objeto que representa cada uno de los bloques que conforman la matriz
     public GameObject initialBlock;
@@ -41,6 +40,8 @@ public class GameView : Reference
 
         //theme = themes[Random.Range(0, 3)];
 
+        
+
         PointsLevel();
 
         BuildMatrix();
@@ -53,10 +54,18 @@ public class GameView : Reference
         Text cointsText = GameObject.Find("Coins Text").GetComponent<Text>();
         Text solutionTickets = GameObject.Find("SolutionTickets Text").GetComponent<Text>();
 
-        cointsText.text = " x " + 10;//App.generalModel.gameModel.totalPoints;
+        cointsText.text = " x " + App.generalModel.gameModel.GetPoints();
         solutionTickets.text = " x " + App.generalModel.gameModel.GetTickets();
     }
 
+    public void ActivateWinCanvas(int totalStars)
+    {
+        Image imageWin = GameObject.Find("ImageStars").GetComponent<Image>();
+
+        imageWin.sprite = Resources.Load<Sprite>("Stars/" + totalStars);
+
+        WinCanvas.enabled = true;
+    }
     /*
      * Metodo que captura el nombre del boton el cual se esta pulsando
      */

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Block : MonoBehaviour
+public class Block : Reference
 {
     private int id;
     public bool visited = false;
@@ -25,6 +25,7 @@ public class Block : MonoBehaviour
     {
         return this.numVisited;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (numVisited == 0 && visited == false)
@@ -33,6 +34,10 @@ public class Block : MonoBehaviour
             visited = true;
         }
         numVisited += 1;
-        print("ENTRO: " + numVisited + " A ESTE PISO");
+
+        if(this.id == 4)
+        {
+            App.generalController.gameController.PuntoFinal();
+        }
     }
 }

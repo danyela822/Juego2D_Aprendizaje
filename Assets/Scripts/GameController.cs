@@ -196,6 +196,14 @@ public class GameController : Reference
 
     ////////////////////////////////////////////////////////////////////CAMILA//////////////////////////////////////////////////////////////
     
+    public void PuntoFinal()
+    {
+        int totalSteps = countSteps();
+        
+        int totalStars = Coints(totalSteps);
+
+        PointsLevel(totalStars);
+    }
     //Metodos para calcular los puntajes y etc
 
     public void IncreaseTickets ()
@@ -203,30 +211,37 @@ public class GameController : Reference
         App.generalModel.gameModel.IncreaseTickets();
     }
 
-    public void PointsLevel (int totalStarts)
+    public void PointsLevel (int totalStars)
     {
-        int pointsForStart = 10;
-        int pointsLevel = totalStarts*pointsForStart;
+        int pointsPerStar = 10;
+        int pointsLevel = totalStars*pointsPerStar;
 
+        App.generalModel.gameModel.SetPoints( App.generalModel.gameModel.GetPoints()+pointsLevel);
+
+        App.generalView.gameView.ActivateWinCanvas(totalStars);
+
+        print("Tiempo total "+App.generalModel.gameModel.GetTime());
     }
 
-    public void Coints(int totalSteps)
+    public int Coints(int totalSteps)
     {
+        int totalStars = 0;
         //Si los pasos realizados por el usuario son menor o igual a los pasos del algoritmo tiene 3 estrellas
         //Si los pasos realizados por el usuario son mayores a los pasos del algoritmo por maximo 3 pasos son 2 estrellas
         //Si son mayores por mas de 3 pasos extras tiene una estrella
         if(totalSteps <= numSteps)
         {
-
+            totalStars = 3;
         }
         else if(totalSteps > numSteps && totalSteps <= numSteps+3)
         {
-
+            totalStars = 2;
         }
         else
         {
-
+            totalStars = 1;
         }
+        return totalStars;
     }
 
 
@@ -335,6 +350,7 @@ public class GameController : Reference
     // Metodo encargado de llamar todos los metodos necesarios para generar un nivel aleatorio
     public void CreateLevel(string category, int figuresQuantity, int figureTypeMin, int figureTypeMax)
     {
+        
         GenerateArray();
         posStart = LocatePoints();
         FiguresQuantity(figuresQuantity, figureTypeMin, figureTypeMax);
