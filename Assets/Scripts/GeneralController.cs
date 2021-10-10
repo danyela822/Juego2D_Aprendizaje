@@ -8,4 +8,5 @@ public class GeneralController : Reference
     public UIController uiController;
     public MiniGameController miniGameController;
     public CharactersController charactersController;
+    public ClassificationGameController classificationGameController;
 }
