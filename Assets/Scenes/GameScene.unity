@@ -775,6 +775,7 @@ MonoBehaviour:
   gameView: {fileID: 11157062}
   UIView: {fileID: 0}
   miniGameView: {fileID: 0}
+  classificationGameView: {fileID: 0}
 --- !u!1 &201536646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1203,7 @@ MonoBehaviour:
   uiController: {fileID: 0}
   miniGameController: {fileID: 0}
   charactersController: {fileID: 159724139}
+  classificationGameController: {fileID: 0}
 --- !u!1 &432014299
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,7 +2641,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799804606}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -5355,14 +5357,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11157062}
         m_TargetAssemblyTypeName: GameView, Assembly-CSharp
-        m_MethodName: MiniGame
-        m_Mode: 1
+        m_MethodName: OnClickButtons
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Back Button
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1770533061

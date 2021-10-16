@@ -7,19 +7,23 @@ public class ClassificationGameController : Reference
 {
     Sprite[,] allPictures;
     string[] allTexts;
+    List<string[]> allAnswers;
     int number = -1;
+    List<string>  choises;
     private void Start()
     {
         //Selecionar una carpeta al azar
-        number = Random.Range(0, 4);
+        number = Random.Range(0, 9);
         LoadPictures();
         PutPictures();
         LoadTexts();
         PutText();
+        LoadAnswers();
+        choises = new List<string>();
     }
     public void LoadPictures()
     {
-        allPictures = new Sprite[4, 16];
+        allPictures = new Sprite[9, 16];
 
         for (int i = 0; i < allPictures.GetLength(0); i++)
         {
@@ -54,7 +58,7 @@ public class ClassificationGameController : Reference
         string line;
         line = reader.ReadLine();
 
-        allTexts = new string[4];
+        allTexts = new string[9];
         int index = 0;
         //Continuar leyendo hasta llegar al final del archivo
         while (line != null)
@@ -77,7 +81,6 @@ public class ClassificationGameController : Reference
     public void PutText()
     {
         string text = SelectText(number);
-        Debug.Log("TEXT: " + text);
         App.generalView.classificationGameView.text.text = text;
     }
     public void PutPictures()
@@ -87,6 +90,69 @@ public class ClassificationGameController : Reference
         for (int i = 0; i < pictures.Count; i++)
         {
             App.generalView.classificationGameView.buttons[i].image.sprite = pictures[i];
+        }
+    }
+    public List<string[]> GetAnswers()
+    {
+        return allAnswers;
+    }
+    public void LoadAnswers()
+    {
+        StreamReader reader = new StreamReader("Assets/Resources/Files/correct_sets.txt");
+
+        //string para almacenar linea a linea el contenido del texto
+        string line;
+        line = reader.ReadLine();
+
+        allAnswers = new List<string[]>();
+
+        //Continuar leyendo hasta llegar al final del archivo
+        while (line != null)
+        {
+            char separator = ',';
+            string[] values = line.Split(separator);
+            allAnswers.Add(values);
+            line = reader.ReadLine();        
+        }
+    }
+    public string[] SelectAnswers(int number)
+    {
+        string[] correctAnsers = GetAnswers()[number];
+        return correctAnsers;
+    }
+    public void saveChoise(string choise)
+    {
+        choises.Add(choise);
+    }
+    public bool CheckAnswer()
+    {
+        string[] answers = SelectAnswers(number);
+        for (int i = 0; i < answers.Length; i++)
+        {
+            Debug.Log("R: " + answers[i]);
+        }
+        int count = 0;
+        if (choises.Count == answers.Length)
+        {
+            for (int i = 0; i < answers.Length; i++)
+            {
+                if (choises.Contains(answers[i]))
+                {
+                    count++;
+                }
+            }
+            if(count == answers.Length)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
         }
     }
     public List<Sprite> ChangeOrderList (Sprite[] list)

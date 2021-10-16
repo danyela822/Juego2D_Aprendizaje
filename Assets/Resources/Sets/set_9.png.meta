@@ -1,55 +1,55 @@
 fileFormatVersion: 2
-guid: 4d67a1867f688bb4088f1ba0944f766a
+guid: 7a23285fa2601a246a670281011c6cd2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3980520408682763379
-    second: canguro
+      213: 4397779503961168323
+    second: aeroplano
   - first:
-      213: 5624636286473636210
-    second: "ping\xFCino"
+      213: 6092720442589707407
+    second: auto
   - first:
-      213: -109618028346817482
-    second: unicornio
+      213: -8916315848426312271
+    second: autobus
   - first:
-      213: -5389123701454281731
-    second: lemur
+      213: 7407614500982743836
+    second: balsa
   - first:
-      213: 6600420926776970257
-    second: elefante
+      213: 3587902254046856713
+    second: avion
   - first:
-      213: 2122476993563842608
-    second: pulpo
+      213: -6490023812825243971
+    second: barco
   - first:
-      213: 1677152069048625016
-    second: foco
+      213: -6208017243666713193
+    second: bicicleta
   - first:
-      213: 1859217568692262211
-    second: tortuga
+      213: 5905514944268673440
+    second: canoa
   - first:
-      213: 553972437445041131
-    second: tigre
+      213: -1947141912440634325
+    second: camioneta
   - first:
-      213: -3674048665428062876
-    second: leopardo
+      213: 1667688446787198872
+    second: dirigible
   - first:
-      213: 3402879178881616075
-    second: sepientre
+      213: 4614585321186312470
+    second: globo aerostatico
   - first:
-      213: 1638947987056462048
-    second: mono
+      213: -840227142718236048
+    second: velero
   - first:
-      213: 8358170963437523446
-    second: loro
+      213: -775640821250330005
+    second: moto
   - first:
-      213: 5967487969815262353
-    second: oso polar
+      213: 4782798794939304305
+    second: taxi
   - first:
-      213: 7951018642113939084
-    second: rana
+      213: -4799005090766014128
+    second: tren
   - first:
-      213: 6036247214636734786
-    second: conejo
+      213: -7467071094715623604
+    second: yate
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,12 +163,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: canguro
+      name: aeroplano
       rect:
         serializedVersion: 2
-        x: 0
-        y: 543
-        width: 141
+        x: 2
+        y: 608
+        width: 158
         height: 148
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -177,20 +177,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8b654b27c952c8c0800000000000000
-      internalID: -3980520408682763379
+      spriteID: 3c9591e882d080d30800000000000000
+      internalID: 4397779503961168323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "ping\xFCino"
+      name: auto
       rect:
         serializedVersion: 2
-        x: 181
-        y: 534
-        width: 122
-        height: 157
+        x: 198
+        y: 589
+        width: 184
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,20 +198,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2798806e6e8be0e40800000000000000
-      internalID: 5624636286473636210
+      spriteID: f8cf15046f0bd8450800000000000000
+      internalID: 6092720442589707407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: unicornio
+      name: autobus
       rect:
         serializedVersion: 2
-        x: 349
-        y: 567
-        width: 115
-        height: 133
+        x: 426
+        y: 600
+        width: 178
+        height: 148
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,229 +219,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 634c867ebfe8a7ef0800000000000000
-      internalID: -109618028346817482
+      spriteID: 1bd2d5df9f1e24480800000000000000
+      internalID: -8916315848426312271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lemur
+      name: balsa
       rect:
         serializedVersion: 2
-        x: 488
-        y: 571
-        width: 136
-        height: 133
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df3ed2cdb8cf535b0800000000000000
-      internalID: -5389123701454281731
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: elefante
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 369
-        width: 142
-        height: 145
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11c8894ccd7699b50800000000000000
-      internalID: 6600420926776970257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pulpo
-      rect:
-        serializedVersion: 2
-        x: 169
-        y: 369
-        width: 155
-        height: 137
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 038df4d849d847d10800000000000000
-      internalID: 2122476993563842608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: foco
-      rect:
-        serializedVersion: 2
-        x: 354
-        y: 371
-        width: 142
-        height: 147
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87764fdbbe0764710800000000000000
-      internalID: 1677152069048625016
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tortuga
-      rect:
-        serializedVersion: 2
-        x: 510
-        y: 389
-        width: 173
-        height: 104
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 345511637844dc910800000000000000
-      internalID: 1859217568692262211
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tigre
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 217
-        width: 114
-        height: 134
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bebd44d2ffa10b700800000000000000
-      internalID: 553972437445041131
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: leopardo
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 204
-        width: 163
-        height: 147
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 46d89a96438230dc0800000000000000
-      internalID: -3674048665428062876
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sepientre
-      rect:
-        serializedVersion: 2
-        x: 340
-        y: 217
-        width: 125
-        height: 134
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc8cfce7594793f20800000000000000
-      internalID: 3402879178881616075
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mono
-      rect:
-        serializedVersion: 2
-        x: 491
-        y: 217
-        width: 114
-        height: 134
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e887ddb286beb610800000000000000
-      internalID: 1638947987056462048
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: loro
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 117
-        height: 197
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f19daf25303ef370800000000000000
-      internalID: 8358170963437523446
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: oso polar
-      rect:
-        serializedVersion: 2
-        x: 153
-        y: 11
-        width: 165
+        x: 654
+        y: 587
+        width: 140
         height: 166
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -450,20 +240,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 194714201b6c0d250800000000000000
-      internalID: 5967487969815262353
+      spriteID: c13eb1434222dc660800000000000000
+      internalID: 7407614500982743836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rana
+      name: avion
       rect:
         serializedVersion: 2
-        x: 359
-        y: 22
-        width: 127
-        height: 138
+        x: 0
+        y: 437
+        width: 158
+        height: 149
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -471,20 +261,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c86c5b52451b75e60800000000000000
-      internalID: 7951018642113939084
+      spriteID: 906494d271acac130800000000000000
+      internalID: 3587902254046856713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: conejo
+      name: barco
       rect:
         serializedVersion: 2
-        x: 526
-        y: 20
-        width: 138
-        height: 152
+        x: 206
+        y: 420
+        width: 163
+        height: 157
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -492,8 +282,218 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2491ddc3cde05c350800000000000000
-      internalID: 6036247214636734786
+      spriteID: dbe99b45abdcee5a0800000000000000
+      internalID: -6490023812825243971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bicicleta
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 424
+        width: 165
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 795feb75531b8d9a0800000000000000
+      internalID: -6208017243666713193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: canoa
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 389
+        width: 145
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a125e49d8a94f150800000000000000
+      internalID: 5905514944268673440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: camioneta
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 244
+        width: 178
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2483bd3fbc5af4e0800000000000000
+      internalID: -1947141912440634325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirigible
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 261
+        width: 164
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89f16ca7ec1d42710800000000000000
+      internalID: 1667688446787198872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: globo aerostatico
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 225
+        width: 148
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 611ca0786ec4a0040800000000000000
+      internalID: 4614585321186312470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: velero
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 191
+        width: 180
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a53ab8dd9e654f0800000000000000
+      internalID: -840227142718236048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 64
+        width: 145
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b62f41858ce5c35f0800000000000000
+      internalID: -775640821250330005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: taxi
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 55
+        width: 232
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1790684e92aef5240800000000000000
+      internalID: 4782798794939304305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tren
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 25
+        width: 149
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 059b991db42866db0800000000000000
+      internalID: -4799005090766014128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yate
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 0
+        width: 181
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4753eec662af5890800000000000000
+      internalID: -7467071094715623604
       vertices: []
       indices: 
       edges: []

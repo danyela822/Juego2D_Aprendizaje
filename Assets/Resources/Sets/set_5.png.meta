@@ -1,55 +1,55 @@
 fileFormatVersion: 2
-guid: 4d67a1867f688bb4088f1ba0944f766a
+guid: c792dcd595a299c4c98eb60c3c42bd07
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3980520408682763379
-    second: canguro
+      213: 4454673505696001914
+    second: sandalias
   - first:
-      213: 5624636286473636210
-    second: "ping\xFCino"
+      213: 6396240308493219240
+    second: gafas
   - first:
-      213: -109618028346817482
-    second: unicornio
+      213: 7019232655923962503
+    second: sombrilla
   - first:
-      213: -5389123701454281731
-    second: lemur
+      213: 6176852416140952864
+    second: salva vidas
   - first:
-      213: 6600420926776970257
-    second: elefante
+      213: 5931321308406866053
+    second: cohete
   - first:
-      213: 2122476993563842608
-    second: pulpo
+      213: 9171767508734811126
+    second: manzana
   - first:
-      213: 1677152069048625016
-    second: foco
+      213: -7675582507488337760
+    second: flor
   - first:
-      213: 1859217568692262211
-    second: tortuga
+      213: -2905474307218657584
+    second: frascos
   - first:
-      213: 553972437445041131
-    second: tigre
+      213: -2225561054658942083
+    second: osito
   - first:
-      213: -3674048665428062876
-    second: leopardo
+      213: 7442078766442156031
+    second: sol
   - first:
-      213: 3402879178881616075
-    second: sepientre
+      213: 9047374677838719114
+    second: cuaderno
   - first:
-      213: 1638947987056462048
-    second: mono
+      213: -246291565818734597
+    second: pelota
   - first:
-      213: 8358170963437523446
-    second: loro
+      213: -2325671483676649837
+    second: palmera
   - first:
-      213: 5967487969815262353
-    second: oso polar
+      213: -7276721278539614486
+    second: careta
   - first:
-      213: 7951018642113939084
-    second: rana
+      213: 3248988678325840108
+    second: auto
   - first:
-      213: 6036247214636734786
-    second: conejo
+      213: 6203336625155008199
+    second: avion
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,13 +163,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: canguro
+      name: sandalias
       rect:
         serializedVersion: 2
         x: 0
-        y: 543
-        width: 141
-        height: 148
+        y: 795
+        width: 208
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,20 +177,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8b654b27c952c8c0800000000000000
-      internalID: -3980520408682763379
+      spriteID: a7faa5993fd22dd30800000000000000
+      internalID: 4454673505696001914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "ping\xFCino"
+      name: gafas
       rect:
         serializedVersion: 2
-        x: 181
-        y: 534
-        width: 122
-        height: 157
+        x: 271
+        y: 867
+        width: 263
+        height: 184
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,20 +198,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2798806e6e8be0e40800000000000000
-      internalID: 5624636286473636210
+      spriteID: 8a5f5cdfba204c850800000000000000
+      internalID: 6396240308493219240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: unicornio
+      name: sombrilla
       rect:
         serializedVersion: 2
-        x: 349
-        y: 567
-        width: 115
-        height: 133
+        x: 593
+        y: 827
+        width: 221
+        height: 224
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,20 +219,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 634c867ebfe8a7ef0800000000000000
-      internalID: -109618028346817482
+      spriteID: 7826b2c39e2596160800000000000000
+      internalID: 7019232655923962503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lemur
+      name: salva vidas
       rect:
         serializedVersion: 2
-        x: 488
-        y: 571
-        width: 136
-        height: 133
+        x: 872
+        y: 849
+        width: 205
+        height: 202
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,187 +240,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df3ed2cdb8cf535b0800000000000000
-      internalID: -5389123701454281731
+      spriteID: 025481ecb8698b550800000000000000
+      internalID: 6176852416140952864
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: elefante
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 369
-        width: 142
-        height: 145
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11c8894ccd7699b50800000000000000
-      internalID: 6600420926776970257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pulpo
-      rect:
-        serializedVersion: 2
-        x: 169
-        y: 369
-        width: 155
-        height: 137
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 038df4d849d847d10800000000000000
-      internalID: 2122476993563842608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: foco
-      rect:
-        serializedVersion: 2
-        x: 354
-        y: 371
-        width: 142
-        height: 147
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87764fdbbe0764710800000000000000
-      internalID: 1677152069048625016
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tortuga
-      rect:
-        serializedVersion: 2
-        x: 510
-        y: 389
-        width: 173
-        height: 104
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 345511637844dc910800000000000000
-      internalID: 1859217568692262211
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tigre
+      name: cohete
       rect:
         serializedVersion: 2
         x: 0
-        y: 217
-        width: 114
-        height: 134
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bebd44d2ffa10b700800000000000000
-      internalID: 553972437445041131
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: leopardo
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 204
-        width: 163
-        height: 147
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 46d89a96438230dc0800000000000000
-      internalID: -3674048665428062876
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sepientre
-      rect:
-        serializedVersion: 2
-        x: 340
-        y: 217
-        width: 125
-        height: 134
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc8cfce7594793f20800000000000000
-      internalID: 3402879178881616075
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mono
-      rect:
-        serializedVersion: 2
-        x: 491
-        y: 217
-        width: 114
-        height: 134
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e887ddb286beb610800000000000000
-      internalID: 1638947987056462048
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: loro
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 117
+        y: 546
+        width: 180
         height: 197
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -429,19 +261,124 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f19daf25303ef370800000000000000
-      internalID: 8358170963437523446
+      spriteID: 580eb44fd49405250800000000000000
+      internalID: 5931321308406866053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oso polar
+      name: manzana
       rect:
         serializedVersion: 2
-        x: 153
-        y: 11
-        width: 165
+        x: 286
+        y: 576
+        width: 179
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fb9b9084f9a84f70800000000000000
+      internalID: 9171767508734811126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flor
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 561
+        width: 179
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a0a4fc506ada7590800000000000000
+      internalID: -7675582507488337760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frascos
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 558
+        width: 231
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0de253ee28eada7d0800000000000000
+      internalID: -2905474307218657584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: osito
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 271
+        width: 162
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7b2c1723083d11e0800000000000000
+      internalID: -2225561054658942083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sol
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 267
+        width: 216
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fff03405533974760800000000000000
+      internalID: 7442078766442156031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cuaderno
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 301
+        width: 198
         height: 166
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -450,20 +387,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 194714201b6c0d250800000000000000
-      internalID: 5967487969815262353
+      spriteID: a88e07e955bbe8d70800000000000000
+      internalID: 9047374677838719114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rana
+      name: pelota
       rect:
         serializedVersion: 2
-        x: 359
-        y: 22
-        width: 127
-        height: 138
+        x: 860
+        y: 267
+        width: 204
+        height: 202
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -471,20 +408,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c86c5b52451b75e60800000000000000
-      internalID: 7951018642113939084
+      spriteID: bf71334302ff49cf0800000000000000
+      internalID: -246291565818734597
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: conejo
+      name: palmera
       rect:
         serializedVersion: 2
-        x: 526
-        y: 20
-        width: 138
-        height: 152
+        x: 0
+        y: 0
+        width: 237
+        height: 239
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -492,8 +429,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2491ddc3cde05c350800000000000000
-      internalID: 6036247214636734786
+      spriteID: 39692378b1e89bfd0800000000000000
+      internalID: -2325671483676649837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: careta
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 2
+        width: 267
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae6be170d84e30b90800000000000000
+      internalID: -7276721278539614486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: auto
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 16
+        width: 239
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce8a0e23df9b61d20800000000000000
+      internalID: 3248988678325840108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avion
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 52
+        width: 215
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c6e88c3bcda61650800000000000000
+      internalID: 6203336625155008199
       vertices: []
       indices: 
       edges: []
