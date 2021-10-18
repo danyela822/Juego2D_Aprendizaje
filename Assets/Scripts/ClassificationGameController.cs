@@ -13,7 +13,7 @@ public class ClassificationGameController : Reference
     private void Start()
     {
         //Selecionar una carpeta al azar
-        number = Random.Range(0, 9);
+        number = 9;
         LoadPictures();
         PutPictures();
         LoadTexts();
@@ -23,7 +23,7 @@ public class ClassificationGameController : Reference
     }
     public void LoadPictures()
     {
-        allPictures = new Sprite[9, 16];
+        allPictures = new Sprite[10, 16];
 
         for (int i = 0; i < allPictures.GetLength(0); i++)
         {
@@ -58,7 +58,7 @@ public class ClassificationGameController : Reference
         string line;
         line = reader.ReadLine();
 
-        allTexts = new string[9];
+        allTexts = new string[10];
         int index = 0;
         //Continuar leyendo hasta llegar al final del archivo
         while (line != null)
@@ -127,10 +127,6 @@ public class ClassificationGameController : Reference
     public bool CheckAnswer()
     {
         string[] answers = SelectAnswers(number);
-        for (int i = 0; i < answers.Length; i++)
-        {
-            Debug.Log("R: " + answers[i]);
-        }
         int count = 0;
         if (choises.Count == answers.Length)
         {
@@ -138,7 +134,9 @@ public class ClassificationGameController : Reference
             {
                 if (choises.Contains(answers[i]))
                 {
+                    Debug.Log("R: " + answers[i]);
                     count++;
+                    Debug.Log("COUNT: " + count);
                 }
             }
             if(count == answers.Length)

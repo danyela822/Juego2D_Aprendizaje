@@ -35,7 +35,6 @@ public class ClassificationGameView : Reference
     }
     public void activatedPanel(GameObject panel)
     {
-        Debug.Log(panel.GetComponent<Image>().name);
         panel.GetComponent<Image>().enabled = true;
     }
     public void CheckAnswer()

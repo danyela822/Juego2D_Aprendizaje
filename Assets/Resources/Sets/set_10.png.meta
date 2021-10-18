@@ -1,55 +1,55 @@
 fileFormatVersion: 2
-guid: 070c443c05805be44839875375e2c087
+guid: 80af50851d0ed6144a2eb738c2c4364d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6697797145661698192
-    second: cruz
+      213: 2864977535551872477
+    second: rojo
   - first:
-      213: 4340876743886790078
-    second: hexagono
+      213: 7015102838018008653
+    second: amarillo
   - first:
-      213: 303721189318080968
-    second: cubo
+      213: 7437612069084044863
+    second: azul
   - first:
-      213: 1466519685607561986
-    second: pentagono
+      213: -6579081942884177172
+    second: aguamarina
   - first:
-      213: -3930392401274174586
-    second: triangulo rectangulo
+      213: 8185588812350208355
+    second: verde
   - first:
-      213: 8332619216174954679
-    second: paralelogramo
+      213: 4677860806627210714
+    second: fucsia
   - first:
-      213: -6191490422612851199
-    second: cilindro
+      213: -1727185010361184311
+    second: purpura
   - first:
-      213: 1296012177583088097
-    second: flecha
+      213: -1826862115502867151
+    second: naranja
   - first:
-      213: 2197964918647459155
-    second: corazon
+      213: -780444946460754946
+    second: negro
   - first:
-      213: -6963212718806548862
-    second: estrella
+      213: 3477438167126509283
+    second: gris
   - first:
-      213: -8506086647190004483
-    second: circulo
+      213: 4587100877431055195
+    second: rosa
   - first:
-      213: 7821612597662828610
-    second: cuadrado
+      213: 7809230220990195906
+    second: cafe
   - first:
-      213: -2782024667966483491
-    second: rombo
+      213: 1388808333131507609
+    second: dorado
   - first:
-      213: 4087889729665955585
-    second: trapecio
+      213: 73045169888848739
+    second: lila
   - first:
-      213: -387727905435291991
-    second: equis
+      213: 6534113695650824945
+    second: plateado
   - first:
-      213: 2073225297685902992
-    second: triangulo
+      213: -8769748974807861168
+    second: blanco
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,337 +163,337 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cruz
+      name: rojo
       rect:
         serializedVersion: 2
-        x: 0
-        y: 503
-        width: 108
-        height: 101
+        x: 9
+        y: 678
+        width: 171
+        height: 189
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07f85338bf4ac03a0800000000000000
-      internalID: -6697797145661698192
+      spriteID: ddd1b08a3e172c720800000000000000
+      internalID: 2864977535551872477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hexagono
+      name: amarillo
       rect:
         serializedVersion: 2
-        x: 145
-        y: 487
-        width: 122
-        height: 113
+        x: 217
+        y: 678
+        width: 171
+        height: 189
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebd502d4664ed3c30800000000000000
-      internalID: 4340876743886790078
+      spriteID: d46e5e21dd6aa5160800000000000000
+      internalID: 7015102838018008653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cubo
+      name: azul
       rect:
         serializedVersion: 2
-        x: 311
-        y: 484
-        width: 117
-        height: 112
+        x: 427
+        y: 678
+        width: 171
+        height: 189
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c9301000d8073400800000000000000
-      internalID: 303721189318080968
+      spriteID: f3e99ea45c4b73760800000000000000
+      internalID: 7437612069084044863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pentagono
+      name: aguamarina
       rect:
         serializedVersion: 2
-        x: 483
-        y: 484
-        width: 108
-        height: 109
+        x: 635
+        y: 678
+        width: 171
+        height: 189
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20b91c452ef1a5410800000000000000
-      internalID: 1466519685607561986
+      spriteID: ceaa33694d762b4a0800000000000000
+      internalID: -6579081942884177172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: triangulo rectangulo
+      name: verde
       rect:
         serializedVersion: 2
-        x: 0
-        y: 348
-        width: 95
-        height: 101
+        x: 9
+        y: 458
+        width: 171
+        height: 190
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68388266fe07479c0800000000000000
-      internalID: -3930392401274174586
+      spriteID: 369bb8dd7ad099170800000000000000
+      internalID: 8185588812350208355
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: paralelogramo
+      name: fucsia
       rect:
         serializedVersion: 2
-        x: 133
-        y: 344
-        width: 110
-        height: 102
+        x: 217
+        y: 458
+        width: 171
+        height: 190
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b8b3bc670963a370800000000000000
-      internalID: 8332619216174954679
+      spriteID: ad5bcb78e991be040800000000000000
+      internalID: 4677860806627210714
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cilindro
+      name: purpura
       rect:
         serializedVersion: 2
-        x: 311
-        y: 336
-        width: 81
-        height: 113
+        x: 427
+        y: 458
+        width: 171
+        height: 190
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1068de9b348631aa0800000000000000
-      internalID: -6191490422612851199
+      spriteID: 9cfca04526ec708e0800000000000000
+      internalID: -1727185010361184311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flecha
+      name: naranja
       rect:
         serializedVersion: 2
-        x: 459
-        y: 335
-        width: 122
-        height: 93
+        x: 635
+        y: 458
+        width: 171
+        height: 190
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e1ab6d753c5cf110800000000000000
-      internalID: 1296012177583088097
+      spriteID: 13d35d7c59ea5a6e0800000000000000
+      internalID: -1826862115502867151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: corazon
+      name: negro
       rect:
         serializedVersion: 2
-        x: 0
-        y: 182
-        width: 114
-        height: 111
+        x: 9
+        y: 218
+        width: 171
+        height: 190
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35d80ccb27db08e10800000000000000
-      internalID: 2197964918647459155
+      spriteID: efb3577c47d4b25f0800000000000000
+      internalID: -780444946460754946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: estrella
+      name: gris
       rect:
         serializedVersion: 2
-        x: 151
-        y: 184
-        width: 118
-        height: 114
+        x: 217
+        y: 218
+        width: 171
+        height: 190
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28ebd08cce2bd5f90800000000000000
-      internalID: -6963212718806548862
+      spriteID: 3e606f7b697524030800000000000000
+      internalID: 3477438167126509283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: circulo
+      name: rosa
       rect:
         serializedVersion: 2
-        x: 320
-        y: 166
-        width: 113
-        height: 116
+        x: 427
+        y: 218
+        width: 171
+        height: 190
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfcdb85f24f44f980800000000000000
-      internalID: -8506086647190004483
+      spriteID: b53292cc1f7a8af30800000000000000
+      internalID: 4587100877431055195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cuadrado
+      name: cafe
       rect:
         serializedVersion: 2
-        x: 488
-        y: 175
-        width: 101
-        height: 102
+        x: 635
+        y: 218
+        width: 171
+        height: 190
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 248c9668733fb8c60800000000000000
-      internalID: 7821612597662828610
+      spriteID: 2c8ad5bc285ff5c60800000000000000
+      internalID: 7809230220990195906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rombo
+      name: dorado
       rect:
         serializedVersion: 2
-        x: 0
+        x: 9
         y: 0
-        width: 126
-        height: 127
+        width: 171
+        height: 189
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd3db75ed434469d0800000000000000
-      internalID: -2782024667966483491
+      spriteID: 997e76d12d9064310800000000000000
+      internalID: 1388808333131507609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trapecio
+      name: lila
       rect:
         serializedVersion: 2
-        x: 154
-        y: 22
-        width: 123
-        height: 96
+        x: 217
+        y: 0
+        width: 171
+        height: 189
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 107f4b1fc0a1bb830800000000000000
-      internalID: 4087889729665955585
+      spriteID: 36b68cbe132830100800000000000000
+      internalID: 73045169888848739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: equis
+      name: plateado
       rect:
         serializedVersion: 2
-        x: 320
-        y: 4
-        width: 92
-        height: 107
+        x: 427
+        y: 0
+        width: 171
+        height: 189
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9aee50736838e9af0800000000000000
-      internalID: -387727905435291991
+      spriteID: 1f2484779c5ddaa50800000000000000
+      internalID: 6534113695650824945
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: triangulo
+      name: blanco
       rect:
         serializedVersion: 2
-        x: 455
-        y: 9
-        width: 111
-        height: 101
+        x: 635
+        y: 0
+        width: 171
+        height: 189
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 096fbef7c6395cc10800000000000000
-      internalID: 2073225297685902992
+      spriteID: 0583b3385c79b4680800000000000000
+      internalID: -8769748974807861168
       vertices: []
       indices: 
       edges: []

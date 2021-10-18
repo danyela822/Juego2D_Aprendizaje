@@ -4,6 +4,7 @@ elefante,lemur,leopardo,loro,mono,serpientre,tigre
 cuaderno,libros,calculadora,escuadra,globo terraqueo,pinturas,tijeras
 sandalias,gafas,sombrilla,salvavidas,palmera,careta,pelota,sol
 manzana,naranja,uva,cereza,pera,fresa,sandia
-tomate,pepino,piña,ajo,brocoli,zanahoria
-trapecio,cuadrado,rectangulo,paralelogramo,rombo
+tomate,pepino,ajo,brocoli,zanahoria
+trapecio,cuadrado,paralelogramo,rombo
 balsa,barco,canoa,velero,yate
+amarillo,azul,rojo
