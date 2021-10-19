@@ -13,7 +13,7 @@ public class ClassificationGameController : Reference
     private void Start()
     {
         //Selecionar una carpeta al azar
-        number = 9;
+        number = Random.Range(0,9);
         LoadPictures();
         PutPictures();
         LoadTexts();
@@ -81,7 +81,7 @@ public class ClassificationGameController : Reference
     public void PutText()
     {
         string text = SelectText(number);
-        App.generalView.classificationGameView.text.text = text;
+        App.generalView.classificationGameView.statement.text = text;
     }
     public void PutPictures()
     {

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ClassificationGameView : Reference
 {
     public Button [] buttons;
-    public Text text;
+    public Text statement;
     public GameObject choise;
     public GameObject box;
     public Canvas startCanvas;
@@ -42,7 +42,7 @@ public class ClassificationGameView : Reference
         bool isWin = App.generalController.classificationGameController.CheckAnswer();
         if (isWin)
         {
-            Debug.Log("GANO");
+            App.generalView.menuGamesView.WinCanvas.enabled = true;
         }
         else
         {

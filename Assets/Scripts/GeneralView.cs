@@ -8,4 +8,5 @@ public class GeneralView : Reference
     public UIView UIView;
     public MiniGameView miniGameView;
     public ClassificationGameView classificationGameView;
+    public MenuGamesView menuGamesView;
 }
