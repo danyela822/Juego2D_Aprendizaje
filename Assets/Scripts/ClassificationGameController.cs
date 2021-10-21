@@ -52,7 +52,7 @@ public class ClassificationGameController : Reference
     }
     public void LoadTexts()
     {
-        StreamReader reader = new StreamReader("Assets/Resources/Files/statements.txt");
+        StreamReader reader = new StreamReader("Assets/Resources/Files/statements_sets.txt");
 
         //string para almacenar linea a linea el contenido del texto
         string line;

@@ -26,7 +26,9 @@ public class ClassificationGameView : Reference
         App.generalController.classificationGameController.saveChoise(nameButton);
 
         GameObject texto = Instantiate(choise, new Vector3(choise.transform.position.x, choise.transform.position.y+(100*i),0),choise.transform.rotation);
+       
         i++;
+
         texto.GetComponent<Text>().text = nameButton.ToUpper();
 
         texto.transform.SetParent(box.transform);
