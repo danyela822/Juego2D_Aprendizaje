@@ -28,4 +28,8 @@ public class CharacteristicsGameView : Reference
             Debug.Log("PERDIO");
         }
     }
+    public void StartGame()
+    {
+        startCanvas.GetComponent<Canvas>().enabled = false;
+    }
 }

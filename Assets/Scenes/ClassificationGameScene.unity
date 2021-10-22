@@ -3267,7 +3267,7 @@ GameObject:
   - component: {fileID: 536565032}
   - component: {fileID: 536565031}
   m_Layer: 5
-  m_Name: Start Canvas
+  m_Name: StartCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4457,6 +4457,7 @@ MonoBehaviour:
   miniGameController: {fileID: 0}
   charactersController: {fileID: 0}
   classificationGameController: {fileID: 497167839}
+  characteristicsGameController: {fileID: 0}
   menuGamesController: {fileID: 497167842}
 --- !u!1 &923487686
 GameObject:
@@ -6266,6 +6267,7 @@ MonoBehaviour:
   UIView: {fileID: 0}
   miniGameView: {fileID: 0}
   classificationGameView: {fileID: 497167838}
+  characteristicsGameView: {fileID: 0}
   menuGamesView: {fileID: 497167841}
 --- !u!1 &1564096328
 GameObject:
