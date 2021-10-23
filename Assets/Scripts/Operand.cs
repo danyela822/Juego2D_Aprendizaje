@@ -2,22 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Operand : MonoBehaviour
+public class Operand 
 {
-    public int value;
-
+    public int valueOperand;
+    //operador = 1 resta
+    //operador = 2 suma
     public int operatorValue;
 
+    public int numImage;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public Operand(int valueOperand, int operatorValue){
+        this.valueOperand = valueOperand;
+        this.operatorValue = operatorValue;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public int OperatorValue{
+        get{
+            return operatorValue;
+        }
+
+        set{
+
+            operatorValue = value;
+        }
     }
+
+    public int ValueOperand{
+        get{
+            return valueOperand;
+        }
+
+        set{
+            valueOperand = value;
+        }
+    }
+    //PENDIENDTE LOS GET Y SET
+    //NO ESTOY SEGURA SI LOS NECESITOs
 }

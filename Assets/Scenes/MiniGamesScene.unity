@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mini Game 2 Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3472546487116767777, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3472546487116767789, guid: f87d21904ebeefd49bbb2c16c25e0821, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1405,6 +1409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642fa1d50e7cb574289b04fabf0595a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberSteps: 0
 --- !u!114 &1288622127
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -47,7 +47,6 @@ public class ThinkingGame : MonoBehaviour
 
         CreatListAleatoriaNumbers(1);
         CreatListAleatoriaNumbers(2);
-        CreatListAleatoriaNumbers(3);
         //PaintMatches();
         CreateFirstRow();
         CreateSecondRow();
@@ -200,21 +199,11 @@ public class ThinkingGame : MonoBehaviour
             {
                 CheckRepeatNumbers(1);
 
-            }else if(aux == 2){
+            }else {
 
                 CheckRepeatNumbers(2);
 
-            }else{
-
-                if(i<7){
-
-                    int num = Random.Range(0, 1);
-                    signs.Add(num);
-                        
-                }
-
             }
-            Debug.Log(i);
                 
         }                                                   
         
@@ -259,10 +248,13 @@ public class ThinkingGame : MonoBehaviour
         // {
         //     textList[0].text = "" + signs[i];
         // }
-
-        for (int i = 0; i < signs.Count; i++)
+        int aux;
+        for (int i = 0; i < 7; i++)
         {
-            Debug.Log(signs[i]);
+            aux = Random.Range(0, 2);
+
+            Debug.Log(aux);
+
         }
 
     }
