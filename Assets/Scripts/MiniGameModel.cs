@@ -29,7 +29,7 @@ public class MiniGameModel : Reference
         //Pasar la ruta del archivo y el nombre del archivo al constructor de StreamReader
         StreamReader reader = new StreamReader("Assets/Resources/Files/Riddles.txt");
 
-        //Leer la primera l�nea de texto
+        //Leer la primera linea de texto
         line = reader.ReadLine();
 
         //Continuar leyendo hasta llegar al final del archivo
