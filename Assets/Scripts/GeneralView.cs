@@ -9,5 +9,5 @@ public class GeneralView : Reference
     public MiniGameView miniGameView;
     public ClassificationGameView classificationGameView;
     public CharacteristicsGameView characteristicsGameView;
-    public MenuGamesView menuGamesView;
+    public GameOptionsView gameOptionsView;
 }

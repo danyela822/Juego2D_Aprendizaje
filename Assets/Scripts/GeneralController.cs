@@ -10,5 +10,5 @@ public class GeneralController : Reference
     public CharactersController charactersController;
     public ClassificationGameController classificationGameController;
     public CharacteristicsGameController characteristicsGameController;
-    public MenuGamesController menuGamesController;
+    public GameOptionsController gameOptionsController;
 }

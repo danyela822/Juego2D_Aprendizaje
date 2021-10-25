@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuGamesView : Reference
+public class GameOptionsView: Reference
 {
     //Declaracion de los canvas que contiene la vista del juego
     public Canvas GameCanvas, PauseCanvas, SolutionCanvas, TutorialCanvas, WinCanvas;

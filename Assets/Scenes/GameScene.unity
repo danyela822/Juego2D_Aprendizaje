@@ -547,7 +547,8 @@ MonoBehaviour:
   UIView: {fileID: 0}
   miniGameView: {fileID: 0}
   classificationGameView: {fileID: 0}
-  menuGamesView: {fileID: 0}
+  characteristicsGameView: {fileID: 0}
+  gameOptionsView: {fileID: 0}
 --- !u!1 &279532152
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +636,8 @@ MonoBehaviour:
   miniGameController: {fileID: 0}
   charactersController: {fileID: 159724139}
   classificationGameController: {fileID: 0}
-  menuGamesController: {fileID: 0}
+  characteristicsGameController: {fileID: 0}
+  gameOptionsController: {fileID: 0}
 --- !u!1 &452231934
 GameObject:
   m_ObjectHideFlags: 0
@@ -3840,6 +3842,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8719087763221402256, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719087763221402257, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

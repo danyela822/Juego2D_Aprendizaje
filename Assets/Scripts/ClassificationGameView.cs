@@ -82,7 +82,7 @@ public class ClassificationGameView : Reference
         if (isWin)
         {
             //Activar el canvas de ganar
-            App.generalView.menuGamesView.WinCanvas.enabled = true;
+            App.generalView.gameOptionsView.WinCanvas.enabled = true;
         }
         else
         {

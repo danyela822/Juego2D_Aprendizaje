@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuGamesController : Reference
+public class GameOptionsController : Reference
 {
 
 }
