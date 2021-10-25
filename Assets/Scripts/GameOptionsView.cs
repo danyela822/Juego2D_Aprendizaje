@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOptionsView: Reference
 {
@@ -27,11 +28,8 @@ public class GameOptionsView: Reference
     {
         SolutionCanvas.enabled = false;
     }
-    public void BackGameLeves(string levelsMenu)
+    public void BackGameLeves()
     {
-        if (levelsMenu == "Classification Game")
-        {
-            //Regresar a la escena de niveles del juego de clasificacion
-        }
+        SceneManager.LoadScene("GamesMenuScene");
     }
 }

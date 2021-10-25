@@ -734,7 +734,7 @@ MonoBehaviour:
   charactersController: {fileID: 0}
   classificationGameController: {fileID: 0}
   characteristicsGameController: {fileID: 414755305}
-  menuGamesController: {fileID: 414755303}
+  gameOptionsController: {fileID: 414755303}
 --- !u!1001 &268605441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -757,6 +757,14 @@ PrefabInstance:
     - target: {fileID: 8719087761553174494, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MenuGamesView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719087762279940957, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 414755302}
+    - target: {fileID: 8719087762279940957, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackGameLeves
       objectReference: {fileID: 0}
     - target: {fileID: 8719087763221402252, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
       propertyPath: m_Name
@@ -3386,7 +3394,7 @@ MonoBehaviour:
   miniGameView: {fileID: 0}
   classificationGameView: {fileID: 0}
   characteristicsGameView: {fileID: 414755304}
-  menuGamesView: {fileID: 414755302}
+  gameOptionsView: {fileID: 414755302}
 --- !u!1001 &2099579568
 PrefabInstance:
   m_ObjectHideFlags: 0

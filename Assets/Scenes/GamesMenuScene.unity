@@ -421,14 +421,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 70
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: JUEGO
+  m_Text: Nombre del Juego 6
 --- !u!222 &21035779
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -579,14 +579,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 70
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: JUEGO
+  m_Text: Nombre del Juego 2
 --- !u!222 &122547823
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -658,14 +658,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 70
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: JUEGO
+  m_Text: Nombre del Juego 8
 --- !u!222 &239649140
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -744,7 +744,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nombre del Juego
+  m_Text: Nombre del Juego 1
 --- !u!222 &427008298
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -753,6 +753,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427008295}
   m_CullTransparentMesh: 1
+--- !u!1 &482339883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 482339884}
+  - component: {fileID: 482339886}
+  - component: {fileID: 482339885}
+  m_Layer: 0
+  m_Name: Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &482339884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482339883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -724.6716, y: 1029.4971, z: -65.42695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &482339885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482339883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43bdbea4ae79b1a4d8d8574c83f9ddf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 16823256}
+  games:
+  - {fileID: 1369040418}
+  - {fileID: 2125975658}
+  - {fileID: 1993814388}
+  - {fileID: 1725062986}
+  - {fileID: 1247209571}
+  - {fileID: 801562548}
+  - {fileID: 2121139796}
+  - {fileID: 1808185071}
+  tiempo: 0.5
+--- !u!114 &482339886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482339883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141524f1e4112ee43b492bec08eb5305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &520946312
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,14 +1025,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 70
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: JUEGO
+  m_Text: Nombre del Juego 3
 --- !u!222 &706046767
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -986,7 +1053,6 @@ GameObject:
   - component: {fileID: 781277371}
   - component: {fileID: 781277370}
   - component: {fileID: 781277369}
-  - component: {fileID: 781277373}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1080,20 +1146,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &781277373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781277368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 141524f1e4112ee43b492bec08eb5305, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 16823256}
-  tiempo: 0.5
 --- !u!1 &800396233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,14 +1209,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 70
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: JUEGO
+  m_Text: Nombre del Juego 4
 --- !u!222 &800396236
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1185,7 +1237,7 @@ GameObject:
   - component: {fileID: 801562551}
   - component: {fileID: 801562550}
   m_Layer: 5
-  m_Name: GamePanel3
+  m_Name: GamePanel6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2409,7 +2461,7 @@ GameObject:
   - component: {fileID: 1247209574}
   - component: {fileID: 1247209573}
   m_Layer: 5
-  m_Name: GamePanel4
+  m_Name: GamePanel5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2638,7 +2690,7 @@ GameObject:
   - component: {fileID: 1369040421}
   - component: {fileID: 1369040420}
   m_Layer: 5
-  m_Name: GamePanel8
+  m_Name: GamePanel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3152,14 +3204,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 70
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: JUEGO
+  m_Text: Nombre del Juego 5
 --- !u!222 &1552658077
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3406,9 +3458,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 781277373}
-        m_TargetAssemblyTypeName: GamesMenuController, Assembly-CSharp
-        m_MethodName: onClick2
+      - m_Target: {fileID: 482339885}
+        m_TargetAssemblyTypeName: GamesMenuView, Assembly-CSharp
+        m_MethodName: MoveToLeft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3544,7 +3596,7 @@ GameObject:
   - component: {fileID: 1725062989}
   - component: {fileID: 1725062988}
   m_Layer: 5
-  m_Name: GamePanel5
+  m_Name: GamePanel4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3985,14 +4037,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 70
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: JUEGO
+  m_Text: Nombre del Juego 7
 --- !u!222 &1786964847
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4092,7 +4144,7 @@ GameObject:
   - component: {fileID: 1808185074}
   - component: {fileID: 1808185073}
   m_Layer: 5
-  m_Name: GamePanel1
+  m_Name: GamePanel8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4319,7 +4371,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1927200759}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 482339885}
+        m_TargetAssemblyTypeName: GamesMenuView, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1927200759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4520,9 +4584,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 781277373}
-        m_TargetAssemblyTypeName: GamesMenuController, Assembly-CSharp
-        m_MethodName: onClick
+      - m_Target: {fileID: 482339885}
+        m_TargetAssemblyTypeName: GamesMenuView, Assembly-CSharp
+        m_MethodName: MoveToRigth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4582,7 +4646,7 @@ GameObject:
   - component: {fileID: 1993814391}
   - component: {fileID: 1993814390}
   m_Layer: 5
-  m_Name: GamePanel6
+  m_Name: GamePanel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4888,7 +4952,7 @@ GameObject:
   - component: {fileID: 2121139799}
   - component: {fileID: 2121139798}
   m_Layer: 5
-  m_Name: GamePanel2
+  m_Name: GamePanel7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4966,7 +5030,7 @@ GameObject:
   - component: {fileID: 2125975661}
   - component: {fileID: 2125975660}
   m_Layer: 5
-  m_Name: GamePanel7
+  m_Name: GamePanel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

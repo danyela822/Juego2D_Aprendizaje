@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 8719087761553174493}
   - component: {fileID: 8719087761553174494}
   m_Layer: 5
-  m_Name: Back Button
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,9 +201,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameView, Assembly-CSharp
-        m_MethodName: OnClickButtons
-        m_Mode: 5
+        m_TargetAssemblyTypeName: MenuGamesView, Assembly-CSharp
+        m_MethodName: HidePauseCanvas
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 8719087762279940956}
   - component: {fileID: 8719087762279940957}
   m_Layer: 5
-  m_Name: Levels Button
+  m_Name: LevelsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -486,15 +486,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameView, Assembly-CSharp
-        m_MethodName: OnClickButtons
-        m_Mode: 5
+        m_TargetAssemblyTypeName: GameOptionsView, Assembly-CSharp
+        m_MethodName: BackGameLeves
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Levels Button
+          m_StringArgument: Classification Game
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &8719087762457612472
@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 8719087762806668186}
   - component: {fileID: 8719087762806668187}
   m_Layer: 5
-  m_Name: Pause Text
+  m_Name: PauseText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -720,7 +720,7 @@ RectTransform:
   m_GameObject: {fileID: 8719087763221402252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8719087761675894760}
   - {fileID: 8719087761699263467}
@@ -739,7 +739,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8719087763221402252}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
