@@ -20,8 +20,9 @@ public class GamesMenuView : MonoBehaviour
     }
     public void MoveToRigth()
     {
-        float newPos = (menu.transform.position.x) + 890f;
-        if (newPos >= -3115f && newPos <= 3655f)
+        float newPos = (menu.transform.position.x) - 1080f;
+        
+        if (newPos >= -7020f)
         {
             Debug.Log("NEW D: " + newPos);
             menu.position = new Vector3(newPos, menu.position.y, 0);
@@ -29,32 +30,34 @@ public class GamesMenuView : MonoBehaviour
     }
     public void MoveToLeft()
     {
-        float newPos = (menu.transform.position.x) - 890f;
-        if (newPos >= -3115f)
+        float newPos = (menu.transform.position.x) + 1080;
+
+        if (newPos <= 540f)
         {
-            menu.position = new Vector3(newPos, menu.position.y, 0);
             Debug.Log("NEW I: " + newPos);
+            menu.position = new Vector3(newPos, menu.position.y, 0);
         }
     }
 
     public void Play()
     {
+        //Optimizar la lista de los nombres del juego con una lista
         for(int i = 0; i < games.Length; i++)
         {
             float x = games[i].transform.position.x;
             string nombre = games[i].name;
-            Debug.Log("X: " + x + " nombre: "+nombre);
+
             if(x == 540f)
             {
                 Debug.Log("ENTRO: "+nombre);
                 string nombreJuego = games[i].GetComponentInChildren<Text>().text;
                 Debug.Log("NOMBRE DEL JUEGO: " + nombreJuego);
 
-                if (nombreJuego == "Nombre del Juego 1")
+                if (nombreJuego == "Descubre el conjunto")
                 {
                     SceneManager.LoadScene("ClassificationGameScene");
                 }
-                else if (nombreJuego == "Nombre del Juego 2")
+                else if (nombreJuego == "Desifra el elemento")
                 {
                     SceneManager.LoadScene("CharacteristicsGameScene");
                 }
@@ -68,6 +71,5 @@ public class GamesMenuView : MonoBehaviour
                 }
             }
         }
-        //public RectTransform subMenu = GameObject.Find("Ga").transform.position
     }
 }
