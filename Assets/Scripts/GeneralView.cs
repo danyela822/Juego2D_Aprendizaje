@@ -10,4 +10,5 @@ public class GeneralView : Reference
     public ClassificationGameView classificationGameView;
     public CharacteristicsGameView characteristicsGameView;
     public GameOptionsView gameOptionsView;
+    public GamesMenuView gamesMenuView;
 }

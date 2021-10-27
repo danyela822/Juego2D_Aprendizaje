@@ -2,74 +2,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class GamesMenuView : MonoBehaviour
+public class GamesMenuView : Reference
 {
+    //Menu del juego
     public RectTransform menu;
-    public GameObject [] games;
-    float posFinal;
-    bool abrirMenu = true;
-    public float tiempo = 0.5f;
-    // Start is called before the first frame update
+    
+    //Variable para guardar el nombre de cada panel que posee los juegos
+    string gamePanelName;
+
+    //Variable que almacena la posicion inicial del menu en el eje X
+    float initialPosition;
+
+    //Variable que almacena la nueva posicion que se indique por el jugador
+    float nextPosition;
+
+    //Variable para cambiar el panel del juego con el movimiento de izquierda o derecha
+    int cont = 1;
     void Start()
     {
-        posFinal = menu.transform.position.x;
-        Debug.Log("POSICION INICIAL: " + posFinal);
-        menu.position = new Vector3(posFinal, menu.position.y, 0);
+        //Posicion en inicial del menu
+        initialPosition = menu.transform.position.x;
+        //Panel que se muestra por defecto al cargar la escena
+        gamePanelName = "GamePanel1";
+        //Ubicar el panel en la posicion inicial
+        menu.position = new Vector3(initialPosition, menu.position.y, 0);
     }
+    /*
+     * Metodo para mover a la derecha el menu de juegos
+     */
     public void MoveToRigth()
     {
-        float newPos = (menu.transform.position.x) - 1080f;
+        //Calcular la nueva posicion del menu
+        nextPosition = (menu.transform.position.x) - 1080f;
         
-        if (newPos >= -7020f)
+        //La nueva posicion debe ser mayor a -7020 para evitar mostrar paneles vacios
+        if (nextPosition >= -7020f)
         {
-            Debug.Log("NEW D: " + newPos);
-            menu.position = new Vector3(newPos, menu.position.y, 0);
+            //Aumentar el valor del contador
+            cont++;
+
+            //Obtener el nombre del panel del juego
+            gamePanelName = "GamePanel" + cont;
+
+            //Ubicar el panel en la nueva posicion (Hacia la derecha)
+            menu.position = new Vector3(nextPosition, menu.position.y, 0);
         }
     }
+    /*
+     * Metodo para mover a la derecha el menu de juegos
+     */
     public void MoveToLeft()
     {
-        float newPos = (menu.transform.position.x) + 1080;
+        //Calcular la nueva posicion del menu
+        nextPosition = (menu.transform.position.x) + 1080;
 
-        if (newPos <= 540f)
+        //La nueva posicion debe ser menor a 540  para evitar mostrar paneles vacios
+        if (nextPosition <= 540f)
         {
-            Debug.Log("NEW I: " + newPos);
-            menu.position = new Vector3(newPos, menu.position.y, 0);
+            //Disminuir el valor del contador
+            cont--;
+
+            //Obtener el nombre del panel del juego
+            gamePanelName = "GamePanel" + cont;
+
+            //Ubicar el panel en la nueva posicion (Hacia la izquierda)
+            menu.position = new Vector3(nextPosition, menu.position.y, 0);
         }
     }
-
+    /*
+     * Metodo obtener el nombre del juego a ejecutar
+     */
     public void Play()
     {
-        //Optimizar la lista de los nombres del juego con una lista
-        for(int i = 0; i < games.Length; i++)
-        {
-            float x = games[i].transform.position.x;
-            string nombre = games[i].name;
+        //Obtener el nombre del juego que esta en la pantalla
+        string gameName = GameObject.Find(gamePanelName).GetComponentInChildren<Text>().text;
 
-            if(x == 540f)
-            {
-                Debug.Log("ENTRO: "+nombre);
-                string nombreJuego = games[i].GetComponentInChildren<Text>().text;
-                Debug.Log("NOMBRE DEL JUEGO: " + nombreJuego);
-
-                if (nombreJuego == "Descubre el conjunto")
-                {
-                    SceneManager.LoadScene("ClassificationGameScene");
-                }
-                else if (nombreJuego == "Desifra el elemento")
-                {
-                    SceneManager.LoadScene("CharacteristicsGameScene");
-                }
-                else if (nombreJuego == "Nombre del Juego 3")
-                {
-
-                }
-                else if(nombreJuego == "Nombre del Juego 4")
-                {
-
-                }
-            }
-        }
+        //Enviar el nombre del juego para mostrar su escena correspondiente
+        App.generalController.gamesMenuController.Play(gameName);
     }
 }

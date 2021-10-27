@@ -1010,7 +1010,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1430248189}
@@ -1393,7 +1393,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 567761462}
@@ -2138,7 +2138,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2036580660}
@@ -4234,7 +4234,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1956989975}
@@ -4407,6 +4407,7 @@ MonoBehaviour:
   classificationGameController: {fileID: 497167839}
   characteristicsGameController: {fileID: 0}
   gameOptionsController: {fileID: 497167842}
+  gamesMenuController: {fileID: 0}
 --- !u!1 &923487686
 GameObject:
   m_ObjectHideFlags: 0
@@ -4659,7 +4660,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 527664614}
@@ -6217,6 +6218,7 @@ MonoBehaviour:
   classificationGameView: {fileID: 497167838}
   characteristicsGameView: {fileID: 0}
   gameOptionsView: {fileID: 497167841}
+  gamesMenuView: {fileID: 0}
 --- !u!1 &1564096328
 GameObject:
   m_ObjectHideFlags: 0
@@ -6521,7 +6523,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2116360169}
@@ -6667,7 +6669,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 42245499}
@@ -6889,7 +6891,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 79152452}
@@ -7176,7 +7178,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 508506084}
@@ -7477,7 +7479,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 923487686}
@@ -7623,7 +7625,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1871147863}
@@ -8226,7 +8228,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 46716603}
@@ -8447,7 +8449,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 853043730}
@@ -8893,7 +8895,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2065038517}
@@ -9118,7 +9120,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 497167838}
         m_TargetAssemblyTypeName: ClassificationGameView, Assembly-CSharp
-        m_MethodName: activatedPanel
+        m_MethodName: ActivatedPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 321646748}

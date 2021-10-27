@@ -11,4 +11,5 @@ public class GeneralController : Reference
     public ClassificationGameController classificationGameController;
     public CharacteristicsGameController characteristicsGameController;
     public GameOptionsController gameOptionsController;
+    public GamesMenuController gamesMenuController;
 }

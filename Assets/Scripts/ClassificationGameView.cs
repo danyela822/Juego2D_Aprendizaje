@@ -23,10 +23,6 @@ public class ClassificationGameView : Reference
     //Variable para aumentar la posicion en Y de los elementos que se agregan a la lista
     int i = 0;
     
-    private void Awake()
-    {
-        
-    }
     /*
     * Metodo que captura el boton que oprimio el jugador y captura el nombre de la imagen que posee ese boton
     */
@@ -67,7 +63,7 @@ public class ClassificationGameView : Reference
     /*
     * Metodo para activar un panel en cada boton seleccionado
     */
-    public void activatedPanel(GameObject panel)
+    public void ActivatedPanel(GameObject panel)
     {
         panel.GetComponent<Image>().enabled = true;
     }

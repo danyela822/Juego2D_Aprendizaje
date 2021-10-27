@@ -735,6 +735,7 @@ MonoBehaviour:
   classificationGameController: {fileID: 0}
   characteristicsGameController: {fileID: 414755305}
   gameOptionsController: {fileID: 414755303}
+  gamesMenuController: {fileID: 0}
 --- !u!1001 &268605441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3263,7 +3264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1934397264
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3395,6 +3396,7 @@ MonoBehaviour:
   classificationGameView: {fileID: 0}
   characteristicsGameView: {fileID: 414755304}
   gameOptionsView: {fileID: 414755302}
+  gamesMenuView: {fileID: 0}
 --- !u!1001 &2099579568
 PrefabInstance:
   m_ObjectHideFlags: 0
