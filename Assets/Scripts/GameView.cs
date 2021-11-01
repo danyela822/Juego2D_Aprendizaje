@@ -80,11 +80,12 @@ public class GameView : Reference
 
     //DANY//
     //Variable para determinar la cantidad de personajes
-    public int numCharacteres = 2;
+    public int numCharacteres = 3;
     public void LocateCharacters()
     {
-        GameObject [,] matrix = App.generalController.gameController.matrix;
-        App.generalController.charactersController.CreateCharacters(matrix);
+        GameObject [,] drawedMatrix = App.generalController.gameController.matrix;
+        Objects[,] logicMatrix = App.generalController.gameController.ReturnArray();
+        App.generalController.charactersController.CreateCharacters(drawedMatrix);
         App.generalController.charactersController.SelectCharactersLevel(numCharacteres, "Forest", allCharacters);
     }
 
@@ -100,6 +101,6 @@ public class GameView : Reference
 
     public void NotMoveCharacter()
     {
-        App.generalController.charactersController.NotMove();
+       // App.generalController.charactersController.NotMove();
     }
 }

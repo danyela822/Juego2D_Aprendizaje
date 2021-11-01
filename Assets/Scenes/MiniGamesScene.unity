@@ -1052,6 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642fa1d50e7cb574289b04fabf0595a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberSteps: 0
 --- !u!114 &1288622127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,18 +1182,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1265043298}
-    - target: {fileID: 6039388215762184441, guid: 49bc42bcc328ef14d9035870154c46cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CheckAnswerMiniGame1
-      objectReference: {fileID: 0}
     - target: {fileID: 6039388216385147146, guid: 49bc42bcc328ef14d9035870154c46cb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1265043298}
-    - target: {fileID: 6039388216385147146, guid: 49bc42bcc328ef14d9035870154c46cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CheckAnswerMiniGame1
-      objectReference: {fileID: 0}
     - target: {fileID: 6039388216765149708, guid: 49bc42bcc328ef14d9035870154c46cb, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1289,12 +1282,7 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1265043298}
-    - target: {fileID: 6039388217228540518, guid: 49bc42bcc328ef14d9035870154c46cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CheckAnswerMiniGame1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6039388216765149707, guid: 49bc42bcc328ef14d9035870154c46cb, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49bc42bcc328ef14d9035870154c46cb, type: 3}
 --- !u!223 &1521858775 stripped
 Canvas:

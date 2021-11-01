@@ -16,7 +16,7 @@ public class MiniGameController : Reference
 
     void GenerateMiniGame()
     {
-        int typeMiniGame = App.generalController.gameController.RamdonNumber(1,4);
+        int typeMiniGame = 1;//App.generalController.gameController.RamdonNumber(1,4);
         
         if(typeMiniGame == 1)
         {
