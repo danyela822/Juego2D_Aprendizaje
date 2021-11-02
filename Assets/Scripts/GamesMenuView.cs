@@ -77,7 +77,6 @@ public class GamesMenuView : Reference
     {
         //Obtener el nombre del juego que esta en la pantalla
         string gameName = GameObject.Find(gamePanelName).GetComponentInChildren<Text>().text;
-
         //Enviar el nombre del juego para mostrar su escena correspondiente
         App.generalController.gamesMenuController.Play(gameName);
     }
