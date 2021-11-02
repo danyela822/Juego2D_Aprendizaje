@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Operand 
 {
-    public int valueOperand;
     //operador = 1 resta
     //operador = 2 suma
+    public int valueOperand;
     public int operatorValue;
 
 

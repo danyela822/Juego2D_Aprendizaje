@@ -8,17 +8,25 @@ public class Structure : MonoBehaviour
     //------------------------ variables interfaz --------------------//
     //lista de los posibles sprites que seran utilizados
     public List <Sprite> images = new List<Sprite>();
+    //objeto que contiene el prefab
     public GameObject objectRow;
     Vector2 size;
     int aux;
+    //lista que permite colocar las imagenes
     List<Icon> icons = new List<Icon>();
     List<int> valueReapetIcon = new List<int>();
+    //lista que me pinta los signos de las operaciones
     public List<Text> listText = new List<Text>();
     List<int> signs = new List<int>();
+    //lista que muestra los resultados de las operaciones
     public List<Text> resultsText = new List<Text>();
-    public List<int> results = new List<int>();
+    //lista que tiene los resultaods a pintar
+    List<int> results = new List<int>();
+    //lista de botones donde el usuario selecciona la respuesta correcta
     public List<Button> answerButtons = new List<Button>();
+    //lista que contienen las respuestas a mostrar en desorden
     List<int> possibleAnswer = new List<int>();
+    //varibale que almacena la respuesta correcta
     int correctAnswer;
     int levels = 4;
     int initial = 8;
@@ -39,10 +47,9 @@ public class Structure : MonoBehaviour
         Debug.Log(OwnToString());
         GetResult();
         FillAnswer();
-        Debug.Log(OwnToString());
-
     }
 
+    //Metodo que contruye la estructura del juego 
     public void Build (int numLevels, int numInitial){
 
         int numBase = 2;
@@ -69,6 +76,7 @@ public class Structure : MonoBehaviour
 
     //-----------------------------------------------------------------------//
 
+    //metodo que obtiene los resultados para pintarlos
     public void GetResult(){
 
         foreach (Operation op in operationes){
@@ -238,9 +246,9 @@ public class Structure : MonoBehaviour
             for(int i = 0; i < operation.operands.Count; i++){
                 sign = operation.operands[i].operatorValue;
                 signs.Add(sign);
-                PaintSigns();
             }
         }
+        PaintSigns();
     }
 
     public void PaintSigns(){
