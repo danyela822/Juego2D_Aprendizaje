@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Icon : MonoBehaviour
+public class Icon 
 {
     //valor que equivale al valor del objeto
     public int idValue;
@@ -10,15 +10,30 @@ public class Icon : MonoBehaviour
     //valor que equivale id de la imagen 
     public int idIcon;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public Icon(int idValue, int idIcon){
+        this.idValue = idValue;
+        this.idIcon = idIcon;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public int IdValue{
+
+        get{
+            return idValue;
+        }
+
+        set{
+            idValue = value;
+        }
+    }
+
+    public int IdIcon{
+
+        get{
+            return idIcon;
+        }
+
+        set{
+            idIcon = value;
+        }
     }
 }

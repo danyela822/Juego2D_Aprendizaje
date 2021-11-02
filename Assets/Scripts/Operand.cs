@@ -9,7 +9,6 @@ public class Operand
     //operador = 2 suma
     public int operatorValue;
 
-    public int numImage;
 
     public Operand(int valueOperand, int operatorValue){
         this.valueOperand = valueOperand;
@@ -36,6 +35,7 @@ public class Operand
             valueOperand = value;
         }
     }
+
     //PENDIENDTE LOS GET Y SET
     //NO ESTOY SEGURA SI LOS NECESITOs
 }

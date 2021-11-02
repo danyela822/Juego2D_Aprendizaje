@@ -8,6 +8,7 @@ public class Operation
     public int resultado;
     int possible_num = 20;
     List<int> globalUsed = new List<int>();
+
     
 
     public Operation(int numberOperands, List<int> numUsed){
@@ -16,17 +17,14 @@ public class Operation
         operands = new List<Operand>();
         Build(numberOperands, numUsed);
         resultado = DoOperation();
-        OwnToString();
 
     }
 
     //contructor que permite realizar la primera operacion
-    public Operation(int numberOperands, List<int> numUsed, int initialValue){
-        
+    public Operation(int numberOperands, List<int> numUsed, int initialValue){   
         operands = new List<Operand>();
         Build(numberOperands, numUsed, initialValue);
         resultado = DoOperation();
-        OwnToString();
     }
 
     public void Build (int numberOperands, List<int> integersUsed){
@@ -40,7 +38,7 @@ public class Operation
                 AddOperand(new Operand(value, 0));               
             }
             else{
-                int usedValue = GetUsedValue();
+                int usedValue = GetUsedValue();  
                 RemoveUsed(usedValue);
                 int sign = Random.Range(1, 3);
                 AddOperand(new Operand(usedValue, sign));
@@ -67,21 +65,20 @@ public class Operation
     private int GetUsedValue (){
         bool noFound = true;
         int tentativeReturn = 0;
-        while (noFound)
-        {
+        while (noFound){
             int i = Random.Range(0, globalUsed.Count);
             tentativeReturn = globalUsed[i];
             if(!ContainsValue(tentativeReturn)) noFound = false;     
         }
-
         return tentativeReturn;
     }
 
     public bool ContainsValue (int value){
+        bool a = false;
         foreach (Operand operand in operands){
-            if (operand.valueOperand == value) return true;
+            if (operand.valueOperand == value) a = true;
         }
-        return false;
+        return a;
     }
 
     public int GetNewValue(){
@@ -100,7 +97,7 @@ public class Operation
     public void RemoveUsed(int valToRem){
         for (int i = 0; i < globalUsed.Count; i++){
             if (globalUsed[i] == valToRem){
-                globalUsed.Remove(i);
+                globalUsed.RemoveAt(i);
                 break;
             }
         }
@@ -143,28 +140,30 @@ public class Operation
     }
     public List<Operand> AddAllOp(){
 
-         List<Operand> a = new List<Operand>();
-
-        foreach (Operand p in operands)
-        {
+        List<Operand> a = new List<Operand>();
+        foreach (Operand p in operands){
             a.Add(p);
         }
-
         return a;
     }
 
     public List<int> AddAllInt(List<int> numbers){
 
         List<int> aux = new List<int>();
-
-        foreach (int num in numbers)
-        {
+        foreach (int num in numbers){
             aux.Add(num);
         }
-
         return aux;
-
     }
+
+    public string imprimirUsados(){
+        string cadena = "";
+        foreach (int num in globalUsed){
+            cadena += num;
+        }
+        return cadena;
+    }
+
     public List<Operand> Operands{
         get{
             return operands;
