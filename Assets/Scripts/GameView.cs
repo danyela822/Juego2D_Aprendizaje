@@ -31,15 +31,8 @@ public class GameView : Reference
     
     private void Awake()
     {
-        /*GameCanvas = GameObject.Find("Game Canvas").GetComponent<Canvas>();
-        PauseCanvas = GameObject.Find("Pause Canvas").GetComponent<Canvas>();
-        SolutionCanvas = GameObject.Find("Solution Canvas").GetComponent<Canvas>();
-        TutorialCanvas = GameObject.Find("Tutorial Canvas").GetComponent<Canvas>();
-
-        gameZone = GameObject.Find("Game Zone");*/
-
         //theme = themes[Random.Range(0, 3)];
-
+        //LLamar al metodo que construye la matriz logica y visual
         BuildMatrix();
         
         LocateCharacters();
@@ -63,6 +56,7 @@ public class GameView : Reference
 
         //App.generalController.gameController.LevelData("Principiante");
         Objects[,] matrix = App.generalController.gameController.ReturnArray();
+
         //Llamada al metodo para dibujar la matriz en la escena
         App.generalController.gameController.DrawMatrix(matrix,initialBlock,gameZone, "Forest");
     }
@@ -80,13 +74,12 @@ public class GameView : Reference
 
     //DANY//
     //Variable para determinar la cantidad de personajes
-    public int numCharacteres = 3;
+    public int numCharacteres = 2;
     public void LocateCharacters()
     {
         GameObject [,] drawedMatrix = App.generalController.gameController.matrix;
-        Objects[,] logicMatrix = App.generalController.gameController.ReturnArray();
-        App.generalController.charactersController.CreateCharacters(drawedMatrix);
-        App.generalController.charactersController.SelectCharactersLevel(numCharacteres, "Forest", allCharacters);
+        App.generalController.charactersController.CreateCharacters(drawedMatrix,"Forest");
+        App.generalController.charactersController.SelectCharactersLevel(numCharacteres,allCharacters);
     }
 
     public void ActivateMovement(int type)
@@ -99,8 +92,4 @@ public class GameView : Reference
         App.generalController.charactersController.Move(direction);
     }
 
-    public void NotMoveCharacter()
-    {
-       // App.generalController.charactersController.NotMove();
-    }
 }

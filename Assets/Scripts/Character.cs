@@ -11,8 +11,9 @@ public class Character
     public float y { get; set; }
     public int posArrayX { get; set; }
     public int posArrayY { get; set; }
+    public int numCharacter { get; set; }
 
-    public Character(string nameCharacter, string theme, int type, float x, float y,int posArrayX, int posArrayY)
+    public Character(string nameCharacter, string theme, int type, float x, float y,int posArrayX, int posArrayY, int numCharacter)
     {
         this.nameCharacter = nameCharacter;
         this.theme = theme;
@@ -21,5 +22,6 @@ public class Character
         this.y = y;
         this.posArrayX = posArrayX;
         this.posArrayY = posArrayY;
+        this.numCharacter = numCharacter;
     }
 }
