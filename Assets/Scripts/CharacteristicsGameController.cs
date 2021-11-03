@@ -5,13 +5,16 @@ using System.IO;
 public class CharacteristicsGameController : Reference
 {
     //Matriz para guardar todos los conjuntos de imagenes del juego
-    Sprite[,] allPictures;
+    static List<Sprite[]> allImages;
+    //Sprite[,] allPictures;
 
     //Array para guardar todos los enunciados del juego
-    string[] allTexts;
+    static List<string> texts;
+    //string[] allTexts;
 
     //Array para guardar todas las respuestas del juego
-    string[] allAnswers;
+    static List<string> answers;
+    //string[] allAnswers;
 
     //Numero para acceder a un conjunto de imagenes en especifico
     int number;
@@ -19,50 +22,99 @@ public class CharacteristicsGameController : Reference
     //String para almacenar la respuesta que dio el jugador
     string answer;
 
+    //Objeto que contiene los scripts del juego
+    public static CharacteristicsGameController gameController;
+    void Awake()
+    {
+        if (gameController == null)
+        {
+            gameController = this;
+            DontDestroyOnLoad(gameObject);
+
+            allImages = new List<Sprite[]>();
+            texts = new List<string>();
+            answers = new List<string>();
+
+            //Cargar todas las imagenes
+            LoadPictures();
+
+            PutPictures();
+
+            //Cargar todos los enunciados
+            LoadTexts();
+
+            PutText();
+
+            //Cargar todas las respuestas
+            LoadAnswers();
+        }
+        else if (gameController != this)
+        {
+            Destroy(gameObject);
+            Debug.Log("DES: ");
+            Debug.Log("LISTA: " + allImages.Count);
+            number = Random.Range(0, allImages.Count);
+            Debug.Log("NUMERO: " + number);
+            PutPictures();
+            PutText();
+        }
+    }
     private void Start()
     {
         //Numero random para seleccionar un conjunto de imagenes
-        number = Random.Range(0, 2);
-        
+        number = Random.Range(0, allImages.Count);
+        Debug.Log("NUMERO: " + number);
         //Cargar todas las imagenes
-        LoadPictures();
+        //LoadPictures();
         
         //Ubicar en la pantalla las imagenes seleccionadas
         PutPictures();
        
         //Cargar todos los enunciados
-        LoadTexts();
+        //LoadTexts();
        
         //Ubicar el enunciado en la pantalla
         PutText();
 
         //Cargar todas las respuestas
-        LoadAnswers();
+        //LoadAnswers();
     }
     /*
     * Metodo para cargar y guardar todas la imagnes que necesita el juego
     */
     public void LoadPictures()
     {
-        allPictures = new Sprite[2, 4];
+        /*allPictures = new Sprite[4, 4];
 
         for (int i = 0; i < allPictures.GetLength(0); i++)
         {
             //Cargar y guardar un set de imagenes en un array
             Sprite[] spriteslist = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + (i + 1));
+            
 
             for (int j = 0; j < allPictures.GetLength(1); j++)
             {
                 //Guardar cada set de imagenes en la matriz. La matriz contiene todos los sets de imagenes que requiere el juego
                 allPictures[i, j] = spriteslist[j];
             }
+        }*/
+        int setOfImages = 4;
+        //allImages = new List<Sprite[]>();
+        for (int i = 1; i <= setOfImages; i++)
+        {
+            //Cargar y guardar un set de imagenes en un array
+            Sprite[] spriteslist = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + (i));
+            allImages.Add(spriteslist);
+            Debug.Log(allImages[i - 1]);
         }
+        
     }
     /*
     * Metodo que permite seleccionar un conjunto de imagenes en especifico de todas la imagenes que hay guardadas en una matriz
     */
     public Sprite[] SelectPictures(int number)
     {
+        /*
         //Obtener todos los sets de imagenes
         Sprite[,] pictures = allPictures;
 
@@ -75,6 +127,11 @@ public class CharacteristicsGameController : Reference
             selectedPictures[j] = pictures[number, j];
         }
         return selectedPictures;
+        */
+        //List<Sprite[]> images = allImages;
+        Sprite[] selectedImages = allImages[number];
+        return selectedImages;
+
     }
     /*
     * Metodo para ubicar todas las imagenes seleccionas en la pantalla
@@ -105,18 +162,18 @@ public class CharacteristicsGameController : Reference
         line = reader.ReadLine();
 
         //Array que guardara todos los enunciados
-        allTexts = new string[2];
-
+        //allTexts = new string[4];
+        //texts = new List<string>();
         //Variable para acceder a cada posicion del array
-        int index = 0;
+        //int index = 0;
 
         //Continuar leyendo hasta llegar al final del archivo
         while (line != null)
         {
             //Guardar cada linea del archivo de texto en una posicion diferente del array
-            allTexts[index] = line;
-            index++;
-
+            //allTexts[index] = line;
+            //index++;
+            texts.Add(line);
             //Leer la siguiente linea de texto
             line = reader.ReadLine();
         }
@@ -127,7 +184,7 @@ public class CharacteristicsGameController : Reference
     public string SelectText(int number)
     {
         //Obtener todos los enunciados
-        string[] texts = allTexts;
+        //string[] texts = allTexts;
 
         //Seleccionar un enunciado en especifico
         return texts[number];
@@ -158,18 +215,18 @@ public class CharacteristicsGameController : Reference
         line = reader.ReadLine();
 
         //Variable para acceder a cada posicion del array
-        int index = 0;
+        //int index = 0;
 
         //Array que guardara todas las respuestas
-        allAnswers = new string[2];
-
+        //allAnswers = new string[4];
+        //answers = new List<string>();
         //Continuar leyendo hasta llegar al final del archivo
         while (line != null)
         {
             //Guardar cada linea del archivo de texto en una posicion diferente del array
-            allAnswers[index] = line;
-            index++;
-
+            //allAnswers[index] = line;
+            //index++;
+            answers.Add(line);
             //Leer una nueva linea
             line = reader.ReadLine();
         }
@@ -188,8 +245,11 @@ public class CharacteristicsGameController : Reference
     public bool CheckAnswer()
     {
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
-        if (answer == allAnswers[number])
+        if (answer == answers[number])
         {
+            allImages.RemoveAt(number);
+            texts.RemoveAt(number);
+            answers.RemoveAt(number);
             return true;
         }
         //De lo contrario pierde

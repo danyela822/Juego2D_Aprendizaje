@@ -36,7 +36,7 @@ public class CharacteristicsGameView : Reference
         if (isWin)
         {
             //Activar el canvas de ganar
-            App.generalView.gameOptionsView.WinCanvas.enabled = true;
+            //App.generalView.gameOptionsView.WinCanvas.enabled = true;
             Debug.Log("GANO");
         }
         else
