@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 public class CharacteristicsGameController : Reference
 {
@@ -8,11 +9,11 @@ public class CharacteristicsGameController : Reference
     static List<Sprite[]> allImages;
     //Sprite[,] allPictures;
 
-    //Array para guardar todos los enunciados del juego
+    //Lista para guardar todos los enunciados del juego
     static List<string> texts;
     //string[] allTexts;
 
-    //Array para guardar todas las respuestas del juego
+    //Lista para guardar todas las respuestas del juego
     static List<string> answers;
     //string[] allAnswers;
 
@@ -22,7 +23,10 @@ public class CharacteristicsGameController : Reference
     //String para almacenar la respuesta que dio el jugador
     string answer;
 
-    //Objeto que contiene los scripts del juego
+    //Variable que indica cuando desactivar el boton de play
+    //public bool enableButton;
+
+    //Objeto que contiene el controlador del juego
     public static CharacteristicsGameController gameController;
     void Awake()
     {
@@ -31,50 +35,69 @@ public class CharacteristicsGameController : Reference
             gameController = this;
             DontDestroyOnLoad(gameObject);
 
+            //Instaciar Lista que guardara todas las imagenes
             allImages = new List<Sprite[]>();
+
+            //Instaciar Lista que guardara todos los enunciados
             texts = new List<string>();
+
+            //Instaciar Lista que guardara todas las respuestas
             answers = new List<string>();
 
-            //Cargar todas las imagenes
-            LoadPictures();
+            //Numero random para seleccionar un conjunto de imagenes
+            number = Random.Range(0, allImages.Count);
 
-            PutPictures();
+            //Cargar todas las imagenes (Solo una vez)
+            LoadImages();
 
-            //Cargar todos los enunciados
+            //Ubicar en la pantalla las imagenes seleccionadas
+            PutImages();
+
+            //Cargar todos los enunciados (Solo una vez)
             LoadTexts();
 
+            //Ubicar el enunciado en la pantalla
             PutText();
 
-            //Cargar todas las respuestas
+            //Cargar todas las respuestas (Solo una vez)
             LoadAnswers();
         }
-        else if (gameController != this)
+        else if (gameController != this && allImages.Count>0)
         {
+            //Destruir el objeto
             Destroy(gameObject);
-            Debug.Log("DES: ");
-            Debug.Log("LISTA: " + allImages.Count);
+
+            //Numero random para seleccionar un conjunto de imagenes
             number = Random.Range(0, allImages.Count);
-            Debug.Log("NUMERO: " + number);
-            PutPictures();
+
+            //Ubicar el enunciado en la pantalla
+            PutImages();
+
+            //Ubicar el enunciado en la pantalla
             PutText();
+        }
+        else
+        {
+            Debug.Log("LISTA VACIA");
+            SceneManager.LoadScene("GamesMenuScene");
         }
     }
     private void Start()
     {
         //Numero random para seleccionar un conjunto de imagenes
-        number = Random.Range(0, allImages.Count);
-        Debug.Log("NUMERO: " + number);
+        //number = Random.Range(0, allImages.Count);
+        //Debug.Log("NUMERO: " + number);
         //Cargar todas las imagenes
         //LoadPictures();
         
         //Ubicar en la pantalla las imagenes seleccionadas
-        PutPictures();
+        //PutPictures();
        
         //Cargar todos los enunciados
         //LoadTexts();
        
         //Ubicar el enunciado en la pantalla
-        PutText();
+        //PutText();
 
         //Cargar todas las respuestas
         //LoadAnswers();
@@ -82,7 +105,7 @@ public class CharacteristicsGameController : Reference
     /*
     * Metodo para cargar y guardar todas la imagnes que necesita el juego
     */
-    public void LoadPictures()
+    public void LoadImages()
     {
         /*allPictures = new Sprite[4, 4];
 
@@ -98,53 +121,30 @@ public class CharacteristicsGameController : Reference
                 allPictures[i, j] = spriteslist[j];
             }
         }*/
+
+        //Numero de conjuntos de imagenes
         int setOfImages = 4;
-        //allImages = new List<Sprite[]>();
         for (int i = 1; i <= setOfImages; i++)
         {
             //Cargar y guardar un set de imagenes en un array
             Sprite[] spriteslist = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + (i));
+
+            //Guardar el array de imagenes en la lista
             allImages.Add(spriteslist);
-            Debug.Log(allImages[i - 1]);
         }
-        
-    }
-    /*
-    * Metodo que permite seleccionar un conjunto de imagenes en especifico de todas la imagenes que hay guardadas en una matriz
-    */
-    public Sprite[] SelectPictures(int number)
-    {
-        /*
-        //Obtener todos los sets de imagenes
-        Sprite[,] pictures = allPictures;
-
-        //Array que guardara las imagenes seleccionadas para un nivel
-        Sprite[] selectedPictures = new Sprite[pictures.GetLength(1)];
-
-        for (int j = 0; j < pictures.GetLength(1); j++)
-        {
-            //Guardar cada imagen del set selecionado en el array
-            selectedPictures[j] = pictures[number, j];
-        }
-        return selectedPictures;
-        */
-        //List<Sprite[]> images = allImages;
-        Sprite[] selectedImages = allImages[number];
-        return selectedImages;
-
     }
     /*
     * Metodo para ubicar todas las imagenes seleccionas en la pantalla
     */
-    public void PutPictures()
+    public void PutImages()
     {
         //Lista que guardara las imagenes seleccionadas pero cambiando su orden dentro de la lista
-        List<Sprite> pictures = ChangeOrderList(SelectPictures(number));
+        List<Sprite> images = ChangeOrderList(allImages[number]);
 
-        for (int i = 0; i < pictures.Count; i++)
+        for (int i = 0; i < images.Count; i++)
         {
             //Asignar a cada boton de la vista una imagen diferente
-            App.generalView.characteristicsGameView.buttons[i].image.sprite = pictures[i];
+            App.generalView.characteristicsGameView.buttons[i].image.sprite = images[i];
         }
     }
     /*
@@ -179,23 +179,12 @@ public class CharacteristicsGameController : Reference
         }
     }
     /*
-    * Metodo que permite seleccionar un enunciado en especifico de todos los enunciados guardados para mostrarlo en la pantalla
-    */
-    public string SelectText(int number)
-    {
-        //Obtener todos los enunciados
-        //string[] texts = allTexts;
-
-        //Seleccionar un enunciado en especifico
-        return texts[number];
-    }
-    /*
     * Metodo para ubicar el texto en la pantalla del jugador
     */
     public void PutText()
     {
         //Obtener un enunciado en especifico
-        string text = SelectText(number);
+        string text = texts[number];
 
         //Asignar el enunciado seleccionado al texto de la vista
         App.generalView.characteristicsGameView.statement.text = text;
@@ -250,6 +239,12 @@ public class CharacteristicsGameController : Reference
             allImages.RemoveAt(number);
             texts.RemoveAt(number);
             answers.RemoveAt(number);
+            /*if(allImages.Count == 0)
+            {
+                enableButton = true;
+                Debug.Log("LISTA VACIA");
+                //App.generalView.gamesMenuView.playButtons[1].enabled=false;
+            }*/
             return true;
         }
         //De lo contrario pierde

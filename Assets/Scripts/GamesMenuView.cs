@@ -7,7 +7,10 @@ public class GamesMenuView : Reference
 {
     //Menu del juego
     public RectTransform menu;
-    
+
+    //Botones para iniciar cada juego
+    public List<Button> playButtons;
+
     //Variable para guardar el nombre de cada panel que posee los juegos
     string gamePanelName;
 
@@ -19,6 +22,7 @@ public class GamesMenuView : Reference
 
     //Variable para cambiar el panel del juego con el movimiento de izquierda o derecha
     int cont = 1;
+
     void Start()
     {
         //Posicion en inicial del menu

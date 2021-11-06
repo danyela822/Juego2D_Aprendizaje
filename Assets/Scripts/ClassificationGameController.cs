@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 
 public class ClassificationGameController : Reference
 {
     //Matriz para guardar todos los conjuntos de imagenes del juego
-    Sprite[,] allPictures;
+    static List<Sprite[]> allImages;
+    //Sprite[,] allPictures;
 
     //Array para guardar todos los enunciados del juego
-    string[] allTexts;
+    static List<string> texts;
+    //string[] allTexts;
 
     //Lista para guardar todos los conjuntos de respuestas del juego
-    List<string[]> allAnswers;
+    static List<string[]> allAnswers;
+    //List<string[]> allAnswers;
 
     //Numero para acceder a un conjunto de imagenes en especifico
     int number;
@@ -20,16 +24,78 @@ public class ClassificationGameController : Reference
     //Lista para almacenar las opciones seleccionadas por el jugador
     List<string>  choises;
 
-    private void Start()
+    //Objeto que contiene el controlador del juego
+    public static ClassificationGameController gameController;
+    void Awake()
+    {
+        if (gameController == null)
+        {
+            gameController = this;
+            DontDestroyOnLoad(gameObject);
+
+            //Instaciar Lista que guardara todas las imagenes
+            allImages = new List<Sprite[]>();
+
+            //Instaciar Lista que guardara todos los enunciados
+            texts = new List<string>();
+
+            //Instaciar Lista que guardara todas las respuestas
+            allAnswers = new List<string[]>();
+
+            //Numero random para seleccionar un conjunto de imagenes
+            number = Random.Range(0, allImages.Count);
+
+            //Cargar todas las imagenes (Solo una vez)
+            LoadImages();
+
+            //Ubicar en la pantalla las imagenes seleccionadas
+            PutImages();
+
+            //Cargar todos los enunciados (Solo una vez)
+            LoadTexts();
+
+            //Ubicar el enunciado en la pantalla
+            PutText();
+
+            //Cargar todas las respuestas (Solo una vez)
+            LoadAnswers();
+
+            //Variable para guardar las opciones marcadas por el jugador
+            choises = new List<string>();
+        }
+        else if (gameController != this && allImages.Count > 0)
+        {
+            //Destruir el objeto
+            Destroy(gameObject);
+
+            //Numero random para seleccionar un conjunto de imagenes
+            number = Random.Range(0, allImages.Count);
+
+            //Ubicar el enunciado en la pantalla
+            PutImages();
+
+            //Ubicar el enunciado en la pantalla
+            PutText();
+
+            //Variable para guardar las opciones marcadas por el jugador
+            choises = new List<string>();
+        }
+        else
+        {
+            Debug.Log("LISTA VACIA");
+            SceneManager.LoadScene("GamesMenuScene");
+        }
+    }
+    /*private void Start()
     {
         //Numero random para seleccionar un conjunto de imagenes
         number = Random.Range(0,9);
-       
+
         //Cargar todas las imagenes
-        LoadPictures();
-        
+        LoadImages();
+
         //Ubicar en la pantalla las imagenes seleccionadas
-        PutPictures();
+        PutImages();
         
         //Cargar todos los enunciados
         LoadTexts();
@@ -42,13 +108,13 @@ public class ClassificationGameController : Reference
         
         //Variable para guardar las opciones marcadas por el jugador
         choises = new List<string>();
-    }
+    }*/
     /*
     * Metodo para cargar y guardar todas la imagnes que necesita el juego
     */
-    public void LoadPictures()
+    public void LoadImages()
     {
-        allPictures = new Sprite[10, 16];
+        /*allPictures = new Sprite[10, 16];
 
         for (int i = 0; i < allPictures.GetLength(0); i++)
         {
@@ -60,16 +126,37 @@ public class ClassificationGameController : Reference
                 //Guardar cada set de imagenes en la matriz. La matriz contiene todos los sets de imagenes que requiere el juego
                 allPictures[i,j] = spriteslist[j];
             }            
+        }*/
+
+        //Numero de conjuntos de imagenes
+        int setOfImages = 10;
+        for (int i = 1; i <= setOfImages; i++)
+        {
+            //Cargar y guardar un set de imagenes en un array
+            Sprite[] spriteslist = Resources.LoadAll<Sprite>("Sets/set_" + (i));
+
+            //Guardar el array de imagenes en la lista
+            allImages.Add(spriteslist);
         }
     }
-    public Sprite[,] getPictures()
+    /*
+    * Metodo para ubicar todas las imagenes seleccionas en la pantalla
+    */
+    public void PutImages()
     {
-        return allPictures;
+        //Lista que guardara las imagenes seleccionadas pero cambiando su orden dentro de la lista
+        List<Sprite> pictures = ChangeOrderList(allImages[number]);
+
+        for (int i = 0; i < pictures.Count; i++)
+        {
+            //Asignar a cada boton de la vista una imagen diferente
+            App.generalView.classificationGameView.buttons[i].image.sprite = pictures[i];
+        }
     }
     /*
     * Metodo que permite seleccionar un conjunto de imagenes en especifico de todas la imagenes que hay guardadas en una matriz
     */
-    public Sprite[] SelectPictures(int number)
+    /*public Sprite[] SelectPictures(int number)
     {
         //Obtener todos los sets de imagenes
         Sprite[,] pictures = getPictures();
@@ -83,7 +170,7 @@ public class ClassificationGameController : Reference
             selectedPictures[j] = pictures[number, j];
         }
         return selectedPictures;
-    }
+    }*/
     /*
     * Metodo para cargar todos los enunciados que deben acompañar a cada nivel
     */
@@ -99,36 +186,20 @@ public class ClassificationGameController : Reference
         line = reader.ReadLine();
 
         //Array que guardara todos los enunciados
-        allTexts = new string[10];
+        //allTexts = new string[10];
 
         //Variable para acceder a cada posicion del array
-        int index = 0;
+        //int index = 0;
 
-        //Continuar leyendo hasta llegar al final del archivo
         while (line != null)
         {
             //Guardar cada linea del archivo de texto en una posicion diferente del array
-            allTexts[index] = line;
-            index++;
-            
+            //allTexts[index] = line;
+            //index++;
+            texts.Add(line);
             //Leer la siguiente linea de texto
             line = reader.ReadLine();
         }
-    }
-    public string[] getTexts()
-    {
-        return allTexts;
-    }
-    /*
-    * Metodo que permite seleccionar un enunciado en especifico de todos los enunciados guardados para mostrarlo en la pantalla
-    */
-    public string SelectText(int number)
-    {
-        //Obtener todos los enunciados
-        string[] texts = getTexts();
-
-        //Seleccionar un enunciado en especifico
-        return texts[number];
     }
     /*
     * Metodo para ubicar el texto en la pantalla del jugador
@@ -136,29 +207,31 @@ public class ClassificationGameController : Reference
     public void PutText()
     {
         //Obtener un enunciado en especifico
-        string text = SelectText(number);
+        string text = texts[number];
 
         //Asignar el enunciado seleccionado al texto de la vista
         App.generalView.classificationGameView.statement.text = text;
     }
-    /*
-    * Metodo para ubicar todas las imagenes seleccionas en la pantalla
-    */
-    public void PutPictures()
+    /*public string[] getTexts()
     {
-        //Lista que guardara las imagenes seleccionadas pero cambiando su orden dentro de la lista
-        List<Sprite> pictures = ChangeOrderList(SelectPictures(number));
+        return allTexts;
+    }*/
+    /*
+    * Metodo que permite seleccionar un enunciado en especifico de todos los enunciados guardados para mostrarlo en la pantalla
+    */
+    /*public string SelectText(int number)
+    {
+        //Obtener todos los enunciados
+        string[] texts = getTexts();
 
-        for (int i = 0; i < pictures.Count; i++)
-        {
-            //Asignar a cada boton de la vista una imagen diferente
-            App.generalView.classificationGameView.buttons[i].image.sprite = pictures[i];
-        }
-    }
-    public List<string[]> GetAnswers()
+        //Seleccionar un enunciado en especifico
+        return texts[number];
+    }*/
+
+    /*public List<string[]> GetAnswers()
     {
         return allAnswers;
-    }
+    }*/
     /*
     * Metodo para cargar y guardar las respuestas de cada nivel
     */
@@ -174,7 +247,7 @@ public class ClassificationGameController : Reference
         line = reader.ReadLine();
 
         //Lista que guardara cada set de respuestas correctas
-        allAnswers = new List<string[]>();
+        //allAnswers = new List<string[]>();
 
         //Continuar leyendo hasta llegar al final del archivo
         while (line != null)
@@ -192,12 +265,12 @@ public class ClassificationGameController : Reference
     /*
     * Metodo que permite seleccionar las respuestas correctas de un conjunto en especifico
     */
-    public string[] SelectAnswers(int number)
+    /*public string[] SelectAnswers(int number)
     {
         //Obtener las respuestas de un conjunto especifico
         string[] correctAnsers = GetAnswers()[number];
         return correctAnsers;
-    }
+    }*/
     /*
     * Metodo para guardar en una lista cada opcion seleccionada por el jugador
     */
@@ -212,7 +285,7 @@ public class ClassificationGameController : Reference
     public bool CheckAnswer()
     {
         //Obtener un conjunto de respuestas en especifico
-        string[] answers = SelectAnswers(number);
+        string[] answers = allAnswers[number];
 
         //Variable para contar cada acierto del jugador
         int count = 0;
@@ -235,6 +308,9 @@ public class ClassificationGameController : Reference
             //el juegador gana el juego
             if(count == answers.Length)
             {
+                allImages.RemoveAt(number);
+                texts.RemoveAt(number);
+                allAnswers.RemoveAt(number);
                 return true;
             }
             //De lo contrario, pierde

@@ -14,6 +14,8 @@ public class CharacteristicsGameView : Reference
     //Canvas que muestra el contenido inicial del juego
     public Canvas startCanvas;
 
+    //Color del boton cuando se presiona
+    public Color color;
     /*
     * Metodo que captura el boton que oprimio el jugador y captura el nombre de la imagen que posee ese boton
     */
@@ -21,6 +23,19 @@ public class CharacteristicsGameView : Reference
     {
         //Nombre de la imagen que tiene el boton
         string nameImage = button.image.sprite.name;
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            //Cambiar el color del boton seleccionado
+            if(button.name == buttons[i].name)
+            {
+                button.image.color = color;
+            }
+            else
+            {
+                buttons[i].image.color = Color.white;
+            }
+        }
 
         //Guardar el nombre de la imagen
         App.generalController.characteristicsGameController.SaveOption(nameImage);
@@ -36,8 +51,7 @@ public class CharacteristicsGameView : Reference
         if (isWin)
         {
             //Activar el canvas de ganar
-            //App.generalView.gameOptionsView.WinCanvas.enabled = true;
-            Debug.Log("GANO");
+            App.generalView.gameOptionsView.WinCanvas.enabled = true;
         }
         else
         {
