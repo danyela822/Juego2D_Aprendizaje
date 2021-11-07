@@ -10,4 +10,8 @@ public class GeneralController : Reference
     public CharactersController charactersController;
 
     public ConnectedGameController connectedGameController;
+    public ClassificationGameController classificationGameController;
+    public CharacteristicsGameController characteristicsGameController;
+    public GameOptionsController gameOptionsController;
+    public GamesMenuController gamesMenuController;
 }

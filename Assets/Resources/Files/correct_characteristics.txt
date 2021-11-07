@@ -1,0 +1,4 @@
+casa_3
+triangulo
+balon_4
+auto_4
