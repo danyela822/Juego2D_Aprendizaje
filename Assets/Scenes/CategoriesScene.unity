@@ -3814,13 +3814,9 @@ MonoBehaviour:
   uiController: {fileID: 1091362737}
   miniGameController: {fileID: 0}
   charactersController: {fileID: 0}
-<<<<<<< HEAD
-  connectedGameController: {fileID: 1246642075}
-=======
   classificationGameController: {fileID: 0}
   characteristicsGameController: {fileID: 0}
   gameOptionsController: {fileID: 0}
->>>>>>> daniela_games
 --- !u!1 &1453961991
 GameObject:
   m_ObjectHideFlags: 0
@@ -4731,13 +4727,9 @@ MonoBehaviour:
   gameView: {fileID: 0}
   UIView: {fileID: 1091362738}
   miniGameView: {fileID: 0}
-<<<<<<< HEAD
-  connectedGameView: {fileID: 0}
-=======
   classificationGameView: {fileID: 0}
   characteristicsGameView: {fileID: 0}
   gameOptionsView: {fileID: 0}
->>>>>>> daniela_games
 --- !u!1 &1935950547
 GameObject:
   m_ObjectHideFlags: 0
