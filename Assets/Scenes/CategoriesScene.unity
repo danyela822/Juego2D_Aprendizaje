@@ -3280,6 +3280,7 @@ GameObject:
   - component: {fileID: 1246642076}
   - component: {fileID: 1246642073}
   - component: {fileID: 1246642074}
+  - component: {fileID: 1246642075}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -3310,6 +3311,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6dad3f6bac0380f42b69247b8a19d507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1246642075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246642072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152272389dcece641aee84063d522404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1246642076
@@ -3801,6 +3814,7 @@ MonoBehaviour:
   uiController: {fileID: 1091362737}
   miniGameController: {fileID: 0}
   charactersController: {fileID: 0}
+  connectedGameController: {fileID: 1246642075}
 --- !u!1 &1453961991
 GameObject:
   m_ObjectHideFlags: 0
@@ -4711,6 +4725,7 @@ MonoBehaviour:
   gameView: {fileID: 0}
   UIView: {fileID: 1091362738}
   miniGameView: {fileID: 0}
+  connectedGameView: {fileID: 0}
 --- !u!1 &1935950547
 GameObject:
   m_ObjectHideFlags: 0

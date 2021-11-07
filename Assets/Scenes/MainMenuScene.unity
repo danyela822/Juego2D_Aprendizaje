@@ -1728,6 +1728,7 @@ MonoBehaviour:
   uiController: {fileID: 1436182245}
   miniGameController: {fileID: 0}
   charactersController: {fileID: 0}
+  game1Controller: {fileID: 0}
 --- !u!4 &1350288086
 Transform:
   m_ObjectHideFlags: 0
@@ -1962,6 +1963,7 @@ MonoBehaviour:
   gameView: {fileID: 0}
   UIView: {fileID: 1436182246}
   miniGameView: {fileID: 0}
+  game1View: {fileID: 0}
 --- !u!4 &1678825048
 Transform:
   m_ObjectHideFlags: 0

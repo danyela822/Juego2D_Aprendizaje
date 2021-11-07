@@ -8,6 +8,9 @@ TextureImporter:
   - first:
       213: 4154103713308910578
     second: fence
+  - first:
+      213: 6437738476519406127
+    second: cuadro
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -158,6 +161,27 @@ TextureImporter:
       bones: []
       spriteID: 2f3a8ef515756a930800000000000000
       internalID: 4154103713308910578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cuadro
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 178
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2abdc92901775950800000000000000
+      internalID: 6437738476519406127
       vertices: []
       indices: 
       edges: []
