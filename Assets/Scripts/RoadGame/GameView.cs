@@ -113,8 +113,8 @@ public class GameView : Reference
     public void LocateCharacters()
     {
         GameObject [,] matrix = App.generalController.gameController.matrix;
-        App.generalController.charactersController.CreateCharacters(matrix);
-        App.generalController.charactersController.SelectCharactersLevel(numCharacteres, "Castle", allCharacters);
+        App.generalController.charactersController.CreateCharacters(matrix,"Castle");
+        App.generalController.charactersController.SelectCharactersLevel(numCharacteres,allCharacters);
     }
 
     public void ActivateMovement(int type)
@@ -125,10 +125,5 @@ public class GameView : Reference
     public void MoveCharacter(string direction)
     {
         App.generalController.charactersController.Move(direction);
-    }
-
-    public void NotMoveCharacter()
-    {
-        App.generalController.charactersController.NotMove();
     }
 }

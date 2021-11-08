@@ -437,7 +437,7 @@ public class GameController : Reference
     * ubicar la figura no este ya ocupada y que no se salga de los limites
     * de la matriz
     */
-    bool CheckFigurePosition(int posX, int posY)
+    public bool CheckFigurePosition(int posX, int posY)
     {
         // Verifica que no se vaya salir de los limites 
         if(posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)

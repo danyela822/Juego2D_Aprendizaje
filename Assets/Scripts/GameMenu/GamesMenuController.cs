@@ -29,7 +29,8 @@ public class GamesMenuController : Reference
 
                 break;
 
-            case "Nombre del Juego 5":
+            case "Encuentra el camino":
+                SceneManager.LoadScene("CategoriesScene");
 
                 break;
 

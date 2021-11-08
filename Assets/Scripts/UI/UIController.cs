@@ -49,11 +49,11 @@ public class UIController : Reference
         //Botones de la vista de categorias
         if(name_button == "Begginer Button")
         {
-            SceneManager.LoadScene("ConnectedGameScene");
-            App.generalController.connectedGameController.CreateLevel();
-            /*canvasCategories.enabled = false;
+            //SceneManager.LoadScene("ConnectedGameScene");
+            //App.generalController.connectedGameController.CreateLevel();
+            canvasCategories.enabled = false;
             canvasLevels.enabled = true;
-            ChangeCategory("principiante");*/
+            ChangeCategory("principiante");
         }
         if (name_button == "Medium Button")
         {

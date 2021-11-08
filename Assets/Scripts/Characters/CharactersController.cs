@@ -4,43 +4,31 @@ using UnityEngine;
 
 public class CharactersController : Reference
 {
+    //Lista de todos los personajes que pueden estar en un nivel
+    List<Character> characters = new List<Character>();
+
+    //Lista de los personajes que aparecen en la pantalla
     List<GameObject> screenCharacters = new List<GameObject>();
 
-    //Lista de todos lo personajes que hay en el juego
-    List<Character> allCharacters = new List<Character>();
-
-    //Lista de los personajes que pertenecen al nivel que se esta jugando
-    List<Character> levelCharacters;
-
     //Metodo para seleccionar los personajes que apareceran en el nivel y ubicarlos en la pantalla.
-    //Debe recibir la cantidad de persojes que apareceran, el tema (Castillo, Bosque, Oceano) y la lista de objetos de los personajes
-    public void SelectCharactersLevel(int numCharacters, string theme, List<GameObject> allCh)
+    //Debe recibir la cantidad de persojes que apareceran y la lista de objetos de los personajes
+    public void SelectCharactersLevel(int numCharacters, List<GameObject> allCh)
     {
-        //Inicializacion de la Lista de los personajes que seran usandos en un nivel
-        levelCharacters = new List<Character>();
-
+        //Si son 3 personajes, se añaden a la lista y se ubican en la pantalla
         if (numCharacters == 3)
         {
-            for (int i = 0; i < allCharacters.Count; i++)
+            for (int i = 0; i < characters.Count; i++)
             {
-                if (allCharacters[i].theme == theme)
-                {
-                    print("levelCharacters: " + i + " " + allCharacters[i].nameCharacter + "x: " + allCharacters[i].x + " y: " + allCharacters[i].y);
-                    //Añadir a la lista de personajes del nivel
-                    levelCharacters.Add(new Character(allCharacters[i].nameCharacter, allCharacters[i].theme, allCharacters[i].type, allCharacters[i].x, allCharacters[i].y));
-                   
-
-                    //Añadir a la lista de personajes en pantalla
-                    screenCharacters.Add(Instantiate(allCh[i], new Vector3(allCharacters[i].x,allCharacters[i].y, 0), allCh[i].transform.rotation));
-                   
-                }
+                //Añadir a la lista de personajes en pantalla     
+                screenCharacters.Add(Instantiate(allCh[characters[i].numCharacter], new Vector3(characters[i].x, characters[i].y, 0), allCh[characters[i].numCharacter].transform.rotation));
             }
         }
+        //Si son 2, se añade el principal y se elige al azar cual de los 2 restantes se ubica
         else
         {
             int numType = App.generalController.gameController.RamdonNumber(2, 4);
             print("NUMERO DEL PERSONAJE: " + numType);
-            if(numType == 2)
+            if (numType == 2)
             {
                 App.generalView.gameView.character_3.interactable = false;
             }
@@ -48,63 +36,67 @@ public class CharactersController : Reference
             {
                 App.generalView.gameView.character_2.interactable = false;
             }
-           
-            for (int i = 0; i < allCharacters.Count; i++)
-            {
-                if (allCharacters[i].theme == theme && (allCharacters[i].type == 1 || allCharacters[i].type == numType))
-                {
-                    levelCharacters.Add(new Character(allCharacters[i].nameCharacter, allCharacters[i].theme, allCharacters[i].type, allCharacters[i].x, allCharacters[i].y));
 
-                    screenCharacters.Add(Instantiate(allCh[i], new Vector3(allCharacters[i].x, allCharacters[i].y, 0), allCh[i].transform.rotation));
-                } 
+            for (int i = 0; i < characters.Count; i++)
+            {
+                if (characters[i].type == 1 || characters[i].type == numType)
+                {
+                    //Añadir a la lista de personajes en pantalla     
+                    screenCharacters.Add(Instantiate(allCh[characters[i].numCharacter], new Vector3(characters[i].x, characters[i].y, 0), allCh[characters[i].numCharacter].transform.rotation));
+                }
             }
         }
     }
 
     //Metodo para crear todos los personajes del juego
-    public void CreateCharacters(GameObject [,] matrix)
+    public void CreateCharacters(GameObject[,] drawdMatrix, string theme)
     {
-        float x;
-        float y;
-        float x1 = 0;
-        float y1 = 0;
-        for(int i = 0; i < matrix.GetLength(0); i++)
+        //Variables para capturar las posiciones de la matriz logica
+        int posArrayX = 0;
+        int posArrayY = 0;
+
+        //Variables para capturar las posiciones de la matriz visual
+        float posX = 0;
+        float posY = 0;
+
+        for (int i = 0; i < drawdMatrix.GetLength(0); i++)
         {
-            for(int j = 0; j < matrix.GetLength(1); j++)
+            for (int j = 0; j < drawdMatrix.GetLength(1); j++)
             {
-                if(matrix[i,j].GetComponent<Block>().GetID() == 3)
+                //Se recorre la matriz para saber en que pocicion esta el inicio y poder ubicar al personaje principal en esa casilla
+                if (drawdMatrix[i, j].GetComponent<Block>().GetID() == 3)
                 {
-                    x = (matrix[i, j].GetComponent<BoxCollider2D>().size.x)/2;
-                    y = (matrix[i, j].GetComponent<BoxCollider2D>().size.y)/2;
-                    x1 = matrix[i, j].transform.position.x;
-                    y1 = matrix[i, j].transform.position.y;
+                    posArrayX = i;
+                    posArrayY = j;
+                    Debug.Log("INICIAL X: " + posArrayX + " INICIAL Y: " + posArrayY);
+                    posX = drawdMatrix[i, j].transform.position.x;
+                    posY = drawdMatrix[i, j].transform.position.y;
                 }
             }
         }
 
-        allCharacters.Add(new Character("King", "Castle", 1, x1, y1));
-        allCharacters.Add(new Character("Knight", "Castle", 2, 0, 0));
-        allCharacters.Add(new Character("Miner", "Castle", 3, 0, 0));
-        allCharacters.Add(new Character("Caperucita Roja", "Forest", 1, x1, y1));
-        allCharacters.Add(new Character("Satyr", "Forest", 2, 0, 0));
-        allCharacters.Add(new Character("Robin Hood", "Forest", 3, 0, 0));
-        allCharacters.Add(new Character("Pirate", "Sea", 1, x1, y1));
-        allCharacters.Add(new Character("Fish", "Sea", 2, 0, 0));
-        allCharacters.Add(new Character("Ghost", "Sea", 3, 0, 0));
+        switch (theme)
+        {
+            case "Castle":
+                characters.Add(new Character("King", "Castle", 1, posX, posY, posArrayX, posArrayY, 0));
+                characters.Add(new Character("Knight", "Castle", 2, posX, posY, posArrayX, posArrayY, 1));
+                characters.Add(new Character("Miner", "Castle", 3, posX, posY, posArrayX, posArrayY, 2));
+                break;
+            case "Forest":
+                characters.Add(new Character("Caperucita Roja", "Forest", 1, posX, posY, posArrayX, posArrayY, 3));
+                characters.Add(new Character("Satyr", "Forest", 2, posX, posY, posArrayX, posArrayY, 4));
+                characters.Add(new Character("Robin Hood", "Forest", 3, posX, posY, posArrayX, posArrayY, 5));
+                break;
+            case "Sea":
+                characters.Add(new Character("Pirate", "Sea", 1, posX, posY, posArrayX, posArrayY, 6));
+                characters.Add(new Character("Fish", "Sea", 2, posX, posY, posArrayX, posArrayY, 7));
+                characters.Add(new Character("Ghost", "Sea", 3, posX, posY, posArrayX, posArrayY, 8));
+                break;
+        }
     }
-
-
-    //Variable para controlar la posicion del personaje en la escena
-    Vector2 move;
 
     //Variable para acceder a las animaciones de los personajes
     Animator animator;
-
-    //Variable para controlar el movimiento del personaje en la escena
-    Rigidbody2D rigidbody2d;
-
-    //Velocidad a la que se mueve el personaje
-    float speed = 1f;
 
     //Variables para controlar el acceso a los movimientos del personaje
     bool walkAllDirection = false;
@@ -118,15 +110,15 @@ public class CharactersController : Reference
         {
             case 1:
                 //Activar componentes para los personajes que caminan en todas direcciones
-                ActivateComponents(type);       
-                
+                ActivateComponents(type);
+
                 //Activar movimiento en todas la direcciones
                 walkAllDirection = true;
                 break;
             case 2:
                 //Activar componentes para los personajes que caminan hacia arriba y hacia abajo
                 ActivateComponents(type);
-                
+
                 //Activar movimiento hacia arriba y hacia abajo
                 walkUpDown = true;
                 walkRightLeft = false;
@@ -145,19 +137,21 @@ public class CharactersController : Reference
                 break;
         }
     }
-
+    Transform characterTransform;
+    Character character;
     //Metodo para activar los componentes que permiten el movimiento de los personajes
     void ActivateComponents(int type)
     {
-        for (int i = 0; i < levelCharacters.Count; i++)
+        for (int i = 0; i < characters.Count; i++)
         {
             //Buscar los personajes del nivel por su tema
-            if (levelCharacters[i].type == type)
+
+            if (characters[i].type == type)
             {
                 //Activar el rigibody y animator del personaje
-                rigidbody2d = screenCharacters[i].GetComponent<Rigidbody2D>();
-                animator = screenCharacters[i].GetComponent<Animator>();
-                
+                character = characters[i];
+                characterTransform = screenCharacters[i].transform;
+                //animator = screenCharacters[i].GetComponent<Animator>();
             }
         }
     }
@@ -166,7 +160,7 @@ public class CharactersController : Reference
     public void Move(string direction)
     {
         //Verficar que se esta mandando una direccion para mover al personaje
-        if(direction!=null)
+        if (direction != null)
         {
             if (walkAllDirection == true)
             {
@@ -187,65 +181,59 @@ public class CharactersController : Reference
     //Metodo para mover al personaje de arriba a abajo
     void MoveUpDown(string direction)
     {
+
         if (direction == "up")
         {
-            move = new Vector2(0,4);
-            print("MOVE: " + move);
-            //Activar animaciones del personaje
-            animator.SetFloat("mov_y", move.y);
-            animator.SetBool("walking", true);
+            if (App.generalController.gameController.CheckFigurePosition(character.posArrayX - 1, character.posArrayY))
+            {
+                characterTransform.position = characterTransform.position + vectorUp;
+                character.posArrayX = character.posArrayX - 1;
+                Debug.Log("POS CHARACTER DESPUES DE UP X: " + character.posArrayX + " Y: " + character.posArrayY);
+            }
         }
         else if (direction == "down")
         {
-            move = new Vector2(0, -4);
-            print("MOVE: " + move);
-            //Activar animaciones del personaje
-            animator.SetFloat("mov_y", move.y);
-            animator.SetBool("walking", true);
+            if (App.generalController.gameController.CheckFigurePosition(character.posArrayX + 1, character.posArrayY))
+            {
+                characterTransform.position = characterTransform.position + vectorDown;
+                character.posArrayX = character.posArrayX + 1;
+                Debug.Log("POS CHARACTER DESPUES DE DOWN X: " + character.posArrayX + " Y: " + character.posArrayY);
+            }
         }
     }
-
     //Metodo para mover al personaje de izquierda a deracha
     void MoveRightLeft(string direction)
     {
         if (direction == "right")
         {
-            move = new Vector2(4,0);
-
-            //Activar animaciones del personaje
-            animator.SetFloat("mov_x", move.x);
-            animator.SetBool("walking", true);
+            if (App.generalController.gameController.CheckFigurePosition(character.posArrayX, character.posArrayY + 1))
+            {
+                characterTransform.position = characterTransform.position + vectorRigth;
+                character.posArrayY = character.posArrayY + 1;
+                Debug.Log("POS CHARACTER DESPUES DE RIGTH X: " + character.posArrayX + " Y: " + character.posArrayY);
+            }
         }
         else if (direction == "left")
         {
-            move = new Vector2(-4,0);
-
-            //Activar animaciones del personaje
-            animator.SetFloat("mov_x", move.x);
-            animator.SetBool("walking", true);
+            if (App.generalController.gameController.CheckFigurePosition(character.posArrayX, character.posArrayY - 1))
+            {
+                characterTransform.position = characterTransform.position + vectorLetf;
+                character.posArrayY = character.posArrayY - 1;
+                Debug.Log("POS CHARACTER DESPUES DE LEFT X: " + character.posArrayX + " Y: " + character.posArrayY);
+            }
         }
     }
 
-    //Metodo que detiene el movimiento del personaje
-    public void NotMove()
+    Vector3 vectorUp;
+    Vector3 vectorDown;
+    Vector3 vectorRigth;
+    Vector3 vectorLetf;
+
+    private void Start()
     {
-        //Verificar que el animator del personaje esta activo
-        if(animator!=null)
-        {
-            move = Vector2.zero;
-            animator.SetBool("walking", false);
-        }
+        vectorUp = new Vector3(0, 0.67f, 0);
+        vectorDown = new Vector3(0, -0.67f, 0);
+        vectorRigth = new Vector3(0.77f, 0, 0);
+        vectorLetf = new Vector3(-0.77f, 0, 0);
     }
-
-    //Metodo que cambia la posicion del personaje en la escena
-    void FixedUpdate()
-    {
-        //Verificar que el rigibody del personaje esta activo
-        if (rigidbody2d != null)
-        {
-
-           rigidbody2d.MovePosition(rigidbody2d.position + move * speed * Time.deltaTime);
-        }
-    }
-
 }

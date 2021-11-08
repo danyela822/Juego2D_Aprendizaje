@@ -32,12 +32,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ConnectedGameScene.unity
     guid: 5c8e15df75de48f4bbd67eb37889d4a8
-    path: Assets/Scenes/GamesMenuScene.unity
-    guid: e2d90f304d2577e4bae32075e325e0a6
   - enabled: 1
     path: Assets/Scenes/ClassificationGameScene.unity
     guid: cf32ed1ce73622f4c98578f856a8058e
   - enabled: 1
     path: Assets/Scenes/CharacteristicsGameScene.unity
     guid: 9806a661460df954f951857d3855d48b
+  - enabled: 1
+    path: Assets/Scenes/GamesMenuScene.unity
+    guid: e2d90f304d2577e4bae32075e325e0a6
   m_configObjects: {}
