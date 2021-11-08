@@ -957,7 +957,7 @@ GameObject:
   - component: {fileID: 327005862}
   - component: {fileID: 327005863}
   m_Layer: 0
-  m_Name: General Model
+  m_Name: GeneralModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3279,7 +3279,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1246642076}
   - component: {fileID: 1246642073}
-  - component: {fileID: 1246642074}
   - component: {fileID: 1246642075}
   m_Layer: 0
   m_Name: Game
@@ -3301,18 +3300,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberSteps: 0
---- !u!114 &1246642074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1246642072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dad3f6bac0380f42b69247b8a19d507, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1246642075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3778,7 +3765,7 @@ GameObject:
   - component: {fileID: 1446023836}
   - component: {fileID: 1446023837}
   m_Layer: 0
-  m_Name: General Controller
+  m_Name: GeneralController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3814,9 +3801,11 @@ MonoBehaviour:
   uiController: {fileID: 1091362737}
   miniGameController: {fileID: 0}
   charactersController: {fileID: 0}
+  connectedGameController: {fileID: 1246642075}
   classificationGameController: {fileID: 0}
   characteristicsGameController: {fileID: 0}
   gameOptionsController: {fileID: 0}
+  gamesMenuController: {fileID: 0}
 --- !u!1 &1453961991
 GameObject:
   m_ObjectHideFlags: 0
@@ -4692,7 +4681,7 @@ GameObject:
   - component: {fileID: 1868264998}
   - component: {fileID: 1868264999}
   m_Layer: 0
-  m_Name: General View
+  m_Name: GeneralView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4727,9 +4716,11 @@ MonoBehaviour:
   gameView: {fileID: 0}
   UIView: {fileID: 1091362738}
   miniGameView: {fileID: 0}
+  connectedGameView: {fileID: 0}
   classificationGameView: {fileID: 0}
   characteristicsGameView: {fileID: 0}
   gameOptionsView: {fileID: 0}
+  gamesMenuView: {fileID: 0}
 --- !u!1 &1935950547
 GameObject:
   m_ObjectHideFlags: 0
