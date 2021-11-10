@@ -10,7 +10,7 @@ public class Operation
     List<int> globalUsed = new List<int>();
 
     
-
+    //contructor que permite realizar las demas operacions
     public Operation(int numberOperands, List<int> numUsed){
 
         globalUsed = AddAllInt(numUsed);
@@ -27,6 +27,7 @@ public class Operation
         resultado = DoOperation();
     }
 
+    //metodo que contruye las operaciones diferente a la primera
     public void Build (int numberOperands, List<int> integersUsed){
         //0perador 0 => no hay operador porque es el ultimo elemento
         //Operador 1 => resta
@@ -47,6 +48,7 @@ public class Operation
         }
     }
 
+    //metodo que permite la construccion de la primera operacion
     public void Build (int numberOperands, List<int> integersUsed, int initialValue){
 
         for (int i = 0; i < numberOperands; i++){
@@ -62,6 +64,9 @@ public class Operation
             }
         }
     }
+
+    //metodo que permite obtenes un valor ya usado en lso 
+    //operandos
     private int GetUsedValue (){
         bool noFound = true;
         int tentativeReturn = 0;
@@ -73,6 +78,8 @@ public class Operation
         return tentativeReturn;
     }
 
+    //metodo que permite saber si la lista ya tiene 
+    //los valores random hallados
     public bool ContainsValue (int value){
         bool a = false;
         foreach (Operand operand in operands){
@@ -81,6 +88,8 @@ public class Operation
         return a;
     }
 
+    //metodo que pemrite obtener valores nuevos para
+    //los operandos
     public int GetNewValue(){
         bool noFound = true;
         int ret = 0;
@@ -94,6 +103,8 @@ public class Operation
         return ret;
     }
 
+    //metodo que pemrite eliminar enteros de la lista global
+    //optimizando codigo
     public void RemoveUsed(int valToRem){
         for (int i = 0; i < globalUsed.Count; i++){
             if (globalUsed[i] == valToRem){
@@ -103,6 +114,7 @@ public class Operation
         }
     }
 
+    //metodo que pemrite agragar operandos
     public void AddOperand(Operand op){
         operands.Add(op);
     }
@@ -122,6 +134,8 @@ public class Operation
         return ret + resultado + ")";
     }
 
+    //metodo que pemrite realizar la operacion y 
+    //poder obtener el resultado
     public int DoOperation(){
         List<Operand> aux = AddAllOp();
         int ret = aux[0].valueOperand;
@@ -138,6 +152,9 @@ public class Operation
         }
         return ret;
     }
+
+    //metodo que permite copiar un lista de operandos
+    //en otra
     public List<Operand> AddAllOp(){
 
         List<Operand> a = new List<Operand>();
@@ -147,6 +164,7 @@ public class Operation
         return a;
     }
 
+    //metodo que pemrite copiar un array enteros en otro 
     public List<int> AddAllInt(List<int> numbers){
 
         List<int> aux = new List<int>();
@@ -156,13 +174,6 @@ public class Operation
         return aux;
     }
 
-    public string imprimirUsados(){
-        string cadena = "";
-        foreach (int num in globalUsed){
-            cadena += num;
-        }
-        return cadena;
-    }
 
     public List<Operand> Operands{
         get{

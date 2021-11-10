@@ -15,6 +15,8 @@ public class AdditionGameView : Reference
     public List<Text> resultsText = new List<Text>();
 
 
+    //metodo que recibe la repsuesta del usuario y verifica si es 
+    //la correcta
     public void CheckAnswer(GameObject text){
 
         string answer = text.GetComponent<Text>().text;

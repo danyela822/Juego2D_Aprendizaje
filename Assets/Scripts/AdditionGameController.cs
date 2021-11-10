@@ -29,8 +29,6 @@ public class AdditionGameController : Reference{
     public GameObject objectRow;
     //variable que me almacena el tamaño del objeto principal
     Vector2 size;
-    // //lista que muestra los resultados de las operaciones
-    // public List<Text> resultsText = new List<Text>();
 
 
 
@@ -61,6 +59,8 @@ public class AdditionGameController : Reference{
         GetImage();
     }
 
+    //metodo que permite a partir de cada una de las operaciones
+    //genera un id y verificar si esta repetido 
     public void GetImage(){
         
         int aux = 0;
@@ -86,6 +86,8 @@ public class AdditionGameController : Reference{
         CreateTable();
     }
 
+    //Metodo que genera numeros aleatorio
+    //que son utilizados como id en la imagenes
     public int GetValueImage(){
 
         int value = 0;
@@ -99,6 +101,8 @@ public class AdditionGameController : Reference{
         return value;
     }
 
+    //metodo que verifica si el valor que se hallo, ya se encuentra en la lista
+    //si lo esta, genera uno nuevo
     public bool CheckRepeated(int value){
         bool condition = false;
         foreach (int num in valueReapetIcon){
@@ -107,6 +111,8 @@ public class AdditionGameController : Reference{
         return condition;
     }
 
+    //metodo que verifica si dentro de la lista de iconos
+    //se repite un numero y si lo hay, esa posicion toma dicho valor
     public int GetValueImageRepeat(int value){
         
         int aux = 0;
@@ -118,6 +124,7 @@ public class AdditionGameController : Reference{
         return aux;
     }
 
+    //metodo que crea la estructura visual del juego 
     public void CreateTable(){
 
         int cont = 0;
@@ -202,6 +209,8 @@ public class AdditionGameController : Reference{
         GetSign();
     }
 
+    //metodo que recorre la lista de operaciones y obtiene
+    //los simbolos de "+" o "-"
     public void GetSign(){
         int sign = 0;
         foreach (Operation operation in operationes){
@@ -213,6 +222,8 @@ public class AdditionGameController : Reference{
         PaintSigns();
     }
 
+    //metodo que coloca en la interzas los simbolos hallados en el 
+    //metodo getsign
     public void PaintSigns(){
 
         App.generalView.additionGameView.principalText.text =  "=   " + initial;
@@ -228,6 +239,9 @@ public class AdditionGameController : Reference{
         }
     }
 
+    //metodo que almacena en una lista las posibles respuestas
+    //que tiene el usuario para escoge
+    //halladas aleatoriamente
     private void FillAnswer(){
 
         possibleAnswer.Add(correctAnswer);
@@ -245,6 +259,8 @@ public class AdditionGameController : Reference{
         PaintAnswer();
     }
 
+    //metodo que a partir de las lista de las posibles respuestas
+    //las desordena 
     private List<int> RandomList(){
 
         List<int> list = possibleAnswer;
@@ -257,6 +273,7 @@ public class AdditionGameController : Reference{
         return aux;       
     }
 
+    //metodo coloca en los botones las posibles respuestas
     private void PaintAnswer(){
 
         List<int> randomResult = RandomList();
@@ -267,6 +284,8 @@ public class AdditionGameController : Reference{
 
     }
 
+    //metodo que verifica que la repsuesta que escogio el usuario
+    //sea la correcta
     public void CheckAnswer(string text){
 
         int auxAnswer = int.Parse(text);
@@ -277,16 +296,18 @@ public class AdditionGameController : Reference{
         }
     }
 
-    //metodo que obtiene los resultados para pintarlos
+    //metodo que almacena los resultados para luego ser puestos en 
+    //la interfax
     public void GetResult(){
 
         foreach (Operation op in operationes){
             results.Add(op.resultado);
         }
-
         PaintResult();
     }
 
+    //metodo que permite colocar los resultados que cada una de las operaciones
+    //en la pantalla
     void PaintResult(){
 
         for (int i = 0; i < App.generalView.additionGameView.resultsText.Count; i++){

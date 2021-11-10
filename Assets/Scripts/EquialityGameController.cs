@@ -70,7 +70,8 @@ public class EquialityGameController : Reference{
         }
     }
 
-    //metodo que permite obtenes un valor nuevo para las figuras
+    //metodo que permite obtenes un id nuevo para
+    //las iguras nuevas
     private int GetNewValue(){
 
         bool noFound = true;
@@ -85,7 +86,7 @@ public class EquialityGameController : Reference{
         return ret;
     }
 
-    //metodo que permite verificar que no exista un valor repetido de las
+    //metodo que permite verificar que no exista un id repetido de las
     //figuras
     private bool ContainsValue(int value){
 
@@ -101,7 +102,7 @@ public class EquialityGameController : Reference{
     }
 
     //me permite obtener los id de cada figura,
-    //para luego poder pintarlos
+    //para luego poder colocarlos en la pantalla
     private void GetNum(){
 
         numPaint = new List<int>();
@@ -215,6 +216,8 @@ public class EquialityGameController : Reference{
 
     }
 
+    //metodo que verifica si la respuesta que da el usuario 
+    //es la correcta 
     public void CheckAnswer(string text){
 
         int auxAnswer = int.Parse(text);
