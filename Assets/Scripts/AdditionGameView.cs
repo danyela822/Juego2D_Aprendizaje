@@ -14,17 +14,6 @@ public class AdditionGameView : Reference
     //lista que muestra los resultados de las operaciones
     public List<Text> resultsText = new List<Text>();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void CheckAnswer(GameObject text){
 

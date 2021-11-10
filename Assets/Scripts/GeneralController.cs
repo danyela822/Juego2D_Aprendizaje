@@ -9,4 +9,5 @@ public class GeneralController : Reference
     public MiniGameController miniGameController;
     public CharactersController charactersController;
     public AdditionGameController additionGameController;
+    public EquialityGameController equialityGameController;
 }

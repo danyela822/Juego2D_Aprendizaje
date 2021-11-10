@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AdditionGameController : Reference
-{
+public class AdditionGameController : Reference{
 
     //lista que contienen las respuestas a mostrar en desorden
     List<int> possibleAnswer = new List<int>();
@@ -84,7 +83,6 @@ public class AdditionGameController : Reference
             }
         }
         correctAnswer = icons[icons.Count -1].idValue;
-        Debug.Log("respuesta " +correctAnswer);
         CreateTable();
     }
 
@@ -272,8 +270,7 @@ public class AdditionGameController : Reference
     public void CheckAnswer(string text){
 
         int auxAnswer = int.Parse(text);
-        if (auxAnswer == correctAnswer)
-        {
+        if (auxAnswer == correctAnswer){
             Debug.Log("You win");
         }else{
             Debug.Log("You lose");
