@@ -37,7 +37,7 @@ public class Block : Reference
 
         if(this.id == 4)
         {
-            App.generalController.gameController.PuntoFinal();
+            App.generalController.roadGameController.PuntoFinal();
         }
     }
 }

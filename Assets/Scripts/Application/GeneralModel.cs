@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class GeneralModel : Reference
 {
-    public GameModel gameModel;
+    public RoadGameModel roadGameModel;
     public MiniGameModel miniGameModel;
 }

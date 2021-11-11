@@ -71,7 +71,7 @@ public class UIController : Reference
         {
             //Escena del nivel aleatorio
             SceneManager.LoadScene("GameScene");
-            App.generalController.gameController.RamdonLevel();
+            App.generalController.roadGameController.RamdonLevel();
         }
 
         //Botones de Niveles
@@ -79,7 +79,7 @@ public class UIController : Reference
         {
             SceneManager.LoadScene("GameScene");
             string categoryName = App.generalView.UIView.NameCategory();
-            App.generalController.gameController.LevelData(categoryName);
+            App.generalController.roadGameController.LevelData(categoryName);
         }
 
         //Botones de la vista de Configuracion

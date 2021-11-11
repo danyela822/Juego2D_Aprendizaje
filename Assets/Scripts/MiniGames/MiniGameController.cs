@@ -18,7 +18,7 @@ public class MiniGameController : Reference
     public void GenerateMiniGame()
     {
         DropClone();
-        int typeMiniGame = App.generalController.gameController.RamdonNumber(1,4);
+        int typeMiniGame = App.generalController.roadGameController.RamdonNumber(1,4);
         App.generalView.miniGameView.EnabledCanvasMiniGames();
         if(typeMiniGame == 1)
         {
@@ -56,7 +56,7 @@ public class MiniGameController : Reference
             SceneManager.LoadScene("GameScene");
             
             //App.generalController.gameController.LocateSolucion();
-            App.generalController.gameController.IncreaseTickets();
+            App.generalController.roadGameController.IncreaseTickets();
             
         }
         else

@@ -989,7 +989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67bc68385469b4f42b9a07f3dc7edba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameModel: {fileID: 0}
+  roadGameModel: {fileID: 0}
   miniGameModel: {fileID: 0}
 --- !u!1001 &358505227
 PrefabInstance:
@@ -3281,7 +3281,7 @@ GameObject:
   - component: {fileID: 1246642073}
   - component: {fileID: 1246642075}
   m_Layer: 0
-  m_Name: Game
+  m_Name: RoadGameController
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3299,6 +3299,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642fa1d50e7cb574289b04fabf0595a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialBlock: {fileID: 3841077332538666641, guid: 2df12237de8668b49a415bcf284d8601, type: 3}
+  gameZone: {fileID: 0}
+  allCharacters:
+  - {fileID: 6722971471061990026, guid: d73fd922a530c554d995a0908ecfb0a8, type: 3}
+  - {fileID: 4517522398623900893, guid: 92b79e336a8af764c89fef497bc78488, type: 3}
+  - {fileID: 2181775977188121685, guid: 21567c5b0500c904fb41edaa7b1d9624, type: 3}
+  - {fileID: 2037574967590626182, guid: 3ba27dd0f1d4d6b4d930f064a4a8bf9b, type: 3}
+  - {fileID: 4998412285296920203, guid: 31d5920917345d24ca093cd4fb2fd3b2, type: 3}
+  - {fileID: 2875466769601512696, guid: 22ebc323fe243974cb6cd8b4ec0cb534, type: 3}
+  - {fileID: 1400496980843421686, guid: f6d2e650cd07bb96ca290b94fac8df4b, type: 3}
+  - {fileID: 8885949182490939067, guid: ea7654dd09c0edd4eaeac46a86ac7552, type: 3}
+  - {fileID: 7534904627378053283, guid: a69a570e0d168667b96c20fb75c954f1, type: 3}
   numberSteps: 0
 --- !u!114 &1246642075
 MonoBehaviour:
@@ -3797,7 +3809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71196a58f4460e841ac290335eafc87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 1246642073}
+  roadGameController: {fileID: 1246642073}
   uiController: {fileID: 1091362737}
   miniGameController: {fileID: 0}
   charactersController: {fileID: 0}
@@ -4713,7 +4725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423cef89004f83b49a8bcb3b097adde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameView: {fileID: 0}
+  roadGameView: {fileID: 0}
   UIView: {fileID: 1091362738}
   miniGameView: {fileID: 0}
   connectedGameView: {fileID: 0}

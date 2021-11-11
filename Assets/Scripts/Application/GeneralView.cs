@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GeneralView : Reference
 {
-    public GameView gameView;
+    public RoadGameView roadGameView;
     public UIView UIView;
     public MiniGameView miniGameView;
     public ConnectedGameView connectedGameView;

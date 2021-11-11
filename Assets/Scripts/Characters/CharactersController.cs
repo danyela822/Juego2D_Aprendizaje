@@ -7,49 +7,48 @@ public class CharactersController : Reference
     //Lista de todos los personajes que pueden estar en un nivel
     List<Character> characters = new List<Character>();
 
-    //Lista de los personajes que aparecen en la pantalla
+    //Lista de todos los personajes que aparecen en la pantalla
     List<GameObject> screenCharacters = new List<GameObject>();
+
+    //
+    Transform characterTransform;
+
+    //
+    Character character;
+
+    //Variables para controlar el acceso a los movimientos del personaje
+    bool walkAllDirection = false;
+    bool walkUpDown = false;
+    bool walkRightLeft = false;
+
+    Vector3 vectorUp;
+    Vector3 vectorDown;
+    Vector3 vectorRigth;
+    Vector3 vectorLetf;
+
+    private void Start()
+    {
+        vectorUp = new Vector3(0, 0.67f, 0);
+        vectorDown = new Vector3(0, -0.67f, 0);
+        vectorRigth = new Vector3(0.77f, 0, 0);
+        vectorLetf = new Vector3(-0.77f, 0, 0);
+    }
 
     //Metodo para seleccionar los personajes que apareceran en el nivel y ubicarlos en la pantalla.
     //Debe recibir la cantidad de persojes que apareceran y la lista de objetos de los personajes
-    public void SelectCharactersLevel(int numCharacters, List<GameObject> allCh)
+    public void SelectCharactersLevel(List<GameObject> allCh)
     {
-        //Si son 3 personajes, se añaden a la lista y se ubican en la pantalla
-        if (numCharacters == 3)
+        Debug.Log("CHARACTERS: " + characters.Count);
+        Debug.Log("allCh: " + allCh.Count);
+        for (int i = 0; i < characters.Count; i++)
         {
-            for (int i = 0; i < characters.Count; i++)
-            {
-                //Añadir a la lista de personajes en pantalla     
-                screenCharacters.Add(Instantiate(allCh[characters[i].numCharacter], new Vector3(characters[i].x, characters[i].y, 0), allCh[characters[i].numCharacter].transform.rotation));
-            }
-        }
-        //Si son 2, se añade el principal y se elige al azar cual de los 2 restantes se ubica
-        else
-        {
-            int numType = App.generalController.gameController.RamdonNumber(2, 4);
-            print("NUMERO DEL PERSONAJE: " + numType);
-            if (numType == 2)
-            {
-                App.generalView.gameView.character_3.interactable = false;
-            }
-            else
-            {
-                App.generalView.gameView.character_2.interactable = false;
-            }
-
-            for (int i = 0; i < characters.Count; i++)
-            {
-                if (characters[i].type == 1 || characters[i].type == numType)
-                {
-                    //Añadir a la lista de personajes en pantalla     
-                    screenCharacters.Add(Instantiate(allCh[characters[i].numCharacter], new Vector3(characters[i].x, characters[i].y, 0), allCh[characters[i].numCharacter].transform.rotation));
-                }
-            }
+            //Añadir a la lista de personajes en pantalla     
+            screenCharacters.Add(Instantiate(allCh[characters[i].numCharacter], new Vector3(characters[i].x, characters[i].y, 0), allCh[characters[i].numCharacter].transform.rotation));
         }
     }
 
     //Metodo para crear todos los personajes del juego
-    public void CreateCharacters(GameObject[,] drawdMatrix, string theme)
+    public void CreateCharacters(string theme, int numCharacters)
     {
         //Variables para capturar las posiciones de la matriz logica
         int posArrayX = 0;
@@ -59,18 +58,21 @@ public class CharactersController : Reference
         float posX = 0;
         float posY = 0;
 
-        for (int i = 0; i < drawdMatrix.GetLength(0); i++)
+        GameObject [,] drawnMatrix = App.generalController.roadGameController.GetMatrix();
+        Objects [,] logicMatrix = App.generalController.roadGameController.ReturnArray();
+
+        for (int i = 0; i < logicMatrix.GetLength(0); i++)
         {
-            for (int j = 0; j < drawdMatrix.GetLength(1); j++)
+            for (int j = 0; j < logicMatrix.GetLength(1); j++)
             {
                 //Se recorre la matriz para saber en que pocicion esta el inicio y poder ubicar al personaje principal en esa casilla
-                if (drawdMatrix[i, j].GetComponent<Block>().GetID() == 3)
+                if (logicMatrix[i, j].type == 3)
                 {
                     posArrayX = i;
                     posArrayY = j;
                     Debug.Log("INICIAL X: " + posArrayX + " INICIAL Y: " + posArrayY);
-                    posX = drawdMatrix[i, j].transform.position.x;
-                    posY = drawdMatrix[i, j].transform.position.y;
+                    posX = drawnMatrix[i, j].transform.position.x;
+                    posY = drawnMatrix[i, j].transform.position.y;
                 }
             }
         }
@@ -78,30 +80,84 @@ public class CharactersController : Reference
         switch (theme)
         {
             case "Castle":
-                characters.Add(new Character("King", "Castle", 1, posX, posY, posArrayX, posArrayY, 0));
-                characters.Add(new Character("Knight", "Castle", 2, posX, posY, posArrayX, posArrayY, 1));
-                characters.Add(new Character("Miner", "Castle", 3, posX, posY, posArrayX, posArrayY, 2));
+                if(numCharacters == 3)
+                {
+                    characters.Add(new Character("King", "Castle", 1, posX, posY, posArrayX, posArrayY, 0));
+                    characters.Add(new Character("Knight", "Castle", 2, posX, posY, posArrayX, posArrayY, 1));
+                    characters.Add(new Character("Miner", "Castle", 3, posX, posY, posArrayX, posArrayY, 2));
+                }
+                else
+                {
+                    characters.Add(new Character("King", "Castle", 1, posX, posY, posArrayX, posArrayY, 0));
+
+                    int numType = Random.Range(2, 4);
+
+                    if (numType == 2)
+                    {
+                        characters.Add(new Character("Knight", "Castle", 2, posX, posY, posArrayX, posArrayY, 1));
+                        App.generalView.roadGameView.character_3.interactable = false;
+                    }
+                    else
+                    {
+                        characters.Add(new Character("Miner", "Castle", 3, posX, posY, posArrayX, posArrayY, 2));
+                        App.generalView.roadGameView.character_2.interactable = false;
+                    }
+                }
+
                 break;
             case "Forest":
-                characters.Add(new Character("Caperucita Roja", "Forest", 1, posX, posY, posArrayX, posArrayY, 3));
-                characters.Add(new Character("Satyr", "Forest", 2, posX, posY, posArrayX, posArrayY, 4));
-                characters.Add(new Character("Robin Hood", "Forest", 3, posX, posY, posArrayX, posArrayY, 5));
+                if (numCharacters == 3)
+                {
+                    characters.Add(new Character("LittleRedRidingHood", "Forest", 1, posX, posY, posArrayX, posArrayY, 3));
+                    characters.Add(new Character("Centaur", "Forest", 2, posX, posY, posArrayX, posArrayY, 4));
+                    characters.Add(new Character("RobinHood", "Forest", 3, posX, posY, posArrayX, posArrayY, 5));
+                }
+                else
+                {
+                    characters.Add(new Character("LittleRedRidingHood", "Forest", 1, posX, posY, posArrayX, posArrayY, 3));
+
+                    int numType = Random.Range(2, 4);
+
+                    if (numType == 2)
+                    {
+                        characters.Add(new Character("Centaur", "Forest", 2, posX, posY, posArrayX, posArrayY, 4));
+                        App.generalView.roadGameView.character_3.interactable = false;
+                    }
+                    else
+                    {
+                        characters.Add(new Character("RobinHood", "Forest", 3, posX, posY, posArrayX, posArrayY, 5));
+                        App.generalView.roadGameView.character_2.interactable = false;
+                    }
+                }
+
                 break;
             case "Sea":
-                characters.Add(new Character("Pirate", "Sea", 1, posX, posY, posArrayX, posArrayY, 6));
-                characters.Add(new Character("Fish", "Sea", 2, posX, posY, posArrayX, posArrayY, 7));
-                characters.Add(new Character("Ghost", "Sea", 3, posX, posY, posArrayX, posArrayY, 8));
+                if (numCharacters == 3)
+                {
+                    characters.Add(new Character("Pirate", "Sea", 1, posX, posY, posArrayX, posArrayY, 6));
+                    characters.Add(new Character("Fish", "Sea", 2, posX, posY, posArrayX, posArrayY, 7));
+                    characters.Add(new Character("Ghost", "Sea", 3, posX, posY, posArrayX, posArrayY, 8));
+                }
+                else
+                {
+                    characters.Add(new Character("Pirate", "Sea", 1, posX, posY, posArrayX, posArrayY, 6));
+
+                    int numType = Random.Range(2,4);
+
+                    if (numType == 2)
+                    {
+                        characters.Add(new Character("Fish", "Sea", 2, posX, posY, posArrayX, posArrayY, 7));
+                        App.generalView.roadGameView.character_3.interactable = false;
+                    }
+                    else
+                    {
+                        characters.Add(new Character("Ghost", "Sea", 3, posX, posY, posArrayX, posArrayY, 8));
+                        App.generalView.roadGameView.character_2.interactable = false;
+                    }
+                }
                 break;
         }
     }
-
-    //Variable para acceder a las animaciones de los personajes
-    Animator animator;
-
-    //Variables para controlar el acceso a los movimientos del personaje
-    bool walkAllDirection = false;
-    bool walkUpDown = false;
-    bool walkRightLeft = false;
 
     //Metodo para activar el movimiento determinado de un personaje especifico
     public void ActivateMovement(int type)
@@ -111,14 +167,12 @@ public class CharactersController : Reference
             case 1:
                 //Activar componentes para los personajes que caminan en todas direcciones
                 ActivateComponents(type);
-
                 //Activar movimiento en todas la direcciones
                 walkAllDirection = true;
                 break;
             case 2:
                 //Activar componentes para los personajes que caminan hacia arriba y hacia abajo
                 ActivateComponents(type);
-
                 //Activar movimiento hacia arriba y hacia abajo
                 walkUpDown = true;
                 walkRightLeft = false;
@@ -127,7 +181,6 @@ public class CharactersController : Reference
             case 3:
                 //Activar componentes para los personajes que caminan hacia la derecha y hacia la izquierda
                 ActivateComponents(type);
-
                 //Activar movimiento hacia la derecha y hacia la izquierda
                 walkRightLeft = true;
                 walkUpDown = false;
@@ -137,21 +190,17 @@ public class CharactersController : Reference
                 break;
         }
     }
-    Transform characterTransform;
-    Character character;
+
     //Metodo para activar los componentes que permiten el movimiento de los personajes
     void ActivateComponents(int type)
     {
         for (int i = 0; i < characters.Count; i++)
         {
-            //Buscar los personajes del nivel por su tema
-
+            //Activar el transform y animator del personaje
             if (characters[i].type == type)
             {
-                //Activar el rigibody y animator del personaje
                 character = characters[i];
                 characterTransform = screenCharacters[i].transform;
-                //animator = screenCharacters[i].GetComponent<Animator>();
             }
         }
     }
@@ -184,7 +233,7 @@ public class CharactersController : Reference
 
         if (direction == "up")
         {
-            if (App.generalController.gameController.CheckFigurePosition(character.posArrayX - 1, character.posArrayY))
+            if (App.generalController.roadGameController.CheckFigurePosition(character.posArrayX - 1, character.posArrayY))
             {
                 characterTransform.position = characterTransform.position + vectorUp;
                 character.posArrayX = character.posArrayX - 1;
@@ -193,7 +242,7 @@ public class CharactersController : Reference
         }
         else if (direction == "down")
         {
-            if (App.generalController.gameController.CheckFigurePosition(character.posArrayX + 1, character.posArrayY))
+            if (App.generalController.roadGameController.CheckFigurePosition(character.posArrayX + 1, character.posArrayY))
             {
                 characterTransform.position = characterTransform.position + vectorDown;
                 character.posArrayX = character.posArrayX + 1;
@@ -206,7 +255,7 @@ public class CharactersController : Reference
     {
         if (direction == "right")
         {
-            if (App.generalController.gameController.CheckFigurePosition(character.posArrayX, character.posArrayY + 1))
+            if (App.generalController.roadGameController.CheckFigurePosition(character.posArrayX, character.posArrayY + 1))
             {
                 characterTransform.position = characterTransform.position + vectorRigth;
                 character.posArrayY = character.posArrayY + 1;
@@ -215,25 +264,12 @@ public class CharactersController : Reference
         }
         else if (direction == "left")
         {
-            if (App.generalController.gameController.CheckFigurePosition(character.posArrayX, character.posArrayY - 1))
+            if (App.generalController.roadGameController.CheckFigurePosition(character.posArrayX, character.posArrayY - 1))
             {
                 characterTransform.position = characterTransform.position + vectorLetf;
                 character.posArrayY = character.posArrayY - 1;
                 Debug.Log("POS CHARACTER DESPUES DE LEFT X: " + character.posArrayX + " Y: " + character.posArrayY);
             }
         }
-    }
-
-    Vector3 vectorUp;
-    Vector3 vectorDown;
-    Vector3 vectorRigth;
-    Vector3 vectorLetf;
-
-    private void Start()
-    {
-        vectorUp = new Vector3(0, 0.67f, 0);
-        vectorDown = new Vector3(0, -0.67f, 0);
-        vectorRigth = new Vector3(0.77f, 0, 0);
-        vectorLetf = new Vector3(-0.77f, 0, 0);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GeneralController : Reference
 {
-    public GameController gameController;
+    public RoadGameController roadGameController;
     public UIController uiController;
     public MiniGameController miniGameController;
     public CharactersController charactersController;
