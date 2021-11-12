@@ -38,8 +38,6 @@ public class CharactersController : Reference
     //Debe recibir la cantidad de persojes que apareceran y la lista de objetos de los personajes
     public void SelectCharactersLevel(List<GameObject> allCh)
     {
-        Debug.Log("CHARACTERS: " + characters.Count);
-        Debug.Log("allCh: " + allCh.Count);
         for (int i = 0; i < characters.Count; i++)
         {
             //Añadir a la lista de personajes en pantalla     
@@ -61,6 +59,10 @@ public class CharactersController : Reference
         GameObject [,] drawnMatrix = App.generalController.roadGameController.GetMatrix();
         Objects [,] logicMatrix = App.generalController.roadGameController.ReturnArray();
 
+        //TEMPORAL
+        int posArrayX1 = 0, posArrayY1 = 0, posArrayX2 = 0, posArrayY2 = 0;
+        float posX1 = 0, posY1 = 0, posX2 = 0, posY2 = 0;
+
         for (int i = 0; i < logicMatrix.GetLength(0); i++)
         {
             for (int j = 0; j < logicMatrix.GetLength(1); j++)
@@ -70,12 +72,35 @@ public class CharactersController : Reference
                 {
                     posArrayX = i;
                     posArrayY = j;
-                    Debug.Log("INICIAL X: " + posArrayX + " INICIAL Y: " + posArrayY);
+                    
                     posX = drawnMatrix[i, j].transform.position.x;
                     posY = drawnMatrix[i, j].transform.position.y;
+                    Debug.Log("P1 Array -> X: " + posArrayX + " Y: " + posArrayY + " Transform -> X: " + posX + "Y: " + posY);
                 }
             }
         }
+
+        //TEMPORAL
+        do
+        {
+            posArrayX1 = Random.Range(0, logicMatrix.GetLength(0));
+            posArrayY1 = Random.Range(0, logicMatrix.GetLength(1));
+
+            posX1 = drawnMatrix[posArrayX1, posArrayY1].transform.position.x;
+            posY1 = drawnMatrix[posArrayX1, posArrayY1].transform.position.y;
+
+        } while (logicMatrix[posArrayX1, posArrayY1].type > 0);
+        Debug.Log("P2 Array -> X: " + posArrayX1 + " Y: " + posArrayY1 + " Transform -> X: " + posX1 + "Y: " + posY1);
+        do
+        {
+            posArrayX2 = Random.Range(0, logicMatrix.GetLength(0));
+            posArrayY2 = Random.Range(0, logicMatrix.GetLength(1));
+
+            posX2 = drawnMatrix[posArrayX2, posArrayY2].transform.position.x;
+            posY2 = drawnMatrix[posArrayX2, posArrayY2].transform.position.y;
+
+        } while (logicMatrix[posArrayX2, posArrayY2].type > 0);
+        Debug.Log("P3 Array -> X: " + posArrayX2 + " Y: " + posArrayY2 + " Transform -> X: " + posX2 + "Y: " + posY2);
 
         switch (theme)
         {
@@ -83,8 +108,8 @@ public class CharactersController : Reference
                 if(numCharacters == 3)
                 {
                     characters.Add(new Character("King", "Castle", 1, posX, posY, posArrayX, posArrayY, 0));
-                    characters.Add(new Character("Knight", "Castle", 2, posX, posY, posArrayX, posArrayY, 1));
-                    characters.Add(new Character("Miner", "Castle", 3, posX, posY, posArrayX, posArrayY, 2));
+                    characters.Add(new Character("Knight", "Castle", 2, posX1, posY1, posArrayX1, posArrayY1, 1));
+                    characters.Add(new Character("Miner", "Castle", 3, posX2, posY2, posArrayX2, posArrayY2, 2));
                 }
                 else
                 {
@@ -94,12 +119,12 @@ public class CharactersController : Reference
 
                     if (numType == 2)
                     {
-                        characters.Add(new Character("Knight", "Castle", 2, posX, posY, posArrayX, posArrayY, 1));
+                        characters.Add(new Character("Knight", "Castle", 2, posX1, posY1, posArrayX1, posArrayY1, 1));
                         App.generalView.roadGameView.character_3.interactable = false;
                     }
                     else
                     {
-                        characters.Add(new Character("Miner", "Castle", 3, posX, posY, posArrayX, posArrayY, 2));
+                        characters.Add(new Character("Miner", "Castle", 3, posX2, posY2, posArrayX2, posArrayY2, 2));
                         App.generalView.roadGameView.character_2.interactable = false;
                     }
                 }
@@ -237,7 +262,7 @@ public class CharactersController : Reference
             {
                 characterTransform.position = characterTransform.position + vectorUp;
                 character.posArrayX = character.posArrayX - 1;
-                Debug.Log("POS CHARACTER DESPUES DE UP X: " + character.posArrayX + " Y: " + character.posArrayY);
+                //Debug.Log("POS CHARACTER UP X: " + character.posArrayX + " Y: " + character.posArrayY);
             }
         }
         else if (direction == "down")
@@ -246,7 +271,7 @@ public class CharactersController : Reference
             {
                 characterTransform.position = characterTransform.position + vectorDown;
                 character.posArrayX = character.posArrayX + 1;
-                Debug.Log("POS CHARACTER DESPUES DE DOWN X: " + character.posArrayX + " Y: " + character.posArrayY);
+                //Debug.Log("POS CHARACTER DOWN X: " + character.posArrayX + " Y: " + character.posArrayY);
             }
         }
     }
@@ -259,7 +284,7 @@ public class CharactersController : Reference
             {
                 characterTransform.position = characterTransform.position + vectorRigth;
                 character.posArrayY = character.posArrayY + 1;
-                Debug.Log("POS CHARACTER DESPUES DE RIGTH X: " + character.posArrayX + " Y: " + character.posArrayY);
+                //Debug.Log("POS CHARACTER RIGTH X: " + character.posArrayX + " Y: " + character.posArrayY);
             }
         }
         else if (direction == "left")
@@ -268,7 +293,7 @@ public class CharactersController : Reference
             {
                 characterTransform.position = characterTransform.position + vectorLetf;
                 character.posArrayY = character.posArrayY - 1;
-                Debug.Log("POS CHARACTER DESPUES DE LEFT X: " + character.posArrayX + " Y: " + character.posArrayY);
+                //Debug.Log("POS CHARACTER LEFT X: " + character.posArrayX + " Y: " + character.posArrayY);
             }
         }
     }

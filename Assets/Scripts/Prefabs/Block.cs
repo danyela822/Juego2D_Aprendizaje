@@ -30,10 +30,11 @@ public class Block : Reference
     {
         if (numVisited == 0 && visited == false)
         {
-
             visited = true;
         }
         numVisited += 1;
+
+        Debug.Log("Paso numero: " + numVisited);
 
         if(this.id == 4)
         {

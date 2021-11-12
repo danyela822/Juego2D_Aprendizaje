@@ -17,9 +17,6 @@ public class ClassificationGameView : Reference
     //Objeto de contendra la lista de nombres de los elementos seleccionados
     public GameObject box;
 
-    //Canvas que muestra el contenido inicial del juego
-    public Canvas startCanvas;
-
     //Variable para aumentar la posicion en Y de los elementos que se agregan a la lista
     int i = 0;
     
@@ -91,6 +88,6 @@ public class ClassificationGameView : Reference
     */
     public void StartGame()
     {
-        startCanvas.GetComponent<Canvas>().enabled = false;
+        App.generalView.gameOptionsView.TutorialCanvas.enabled = false;
     }
 }

@@ -11,9 +11,6 @@ public class CharacteristicsGameView : Reference
     //Texto para mostrar el eunciado del juego
     public Text statement;
 
-    //Canvas que muestra el contenido inicial del juego
-    public Canvas startCanvas;
-
     //Color del boton cuando se presiona
     public Color color;
     /*
@@ -64,6 +61,6 @@ public class CharacteristicsGameView : Reference
      */
     public void StartGame()
     {
-        startCanvas.GetComponent<Canvas>().enabled = false;
+        App.generalView.gameOptionsView.TutorialCanvas.enabled = false;
     }
 }

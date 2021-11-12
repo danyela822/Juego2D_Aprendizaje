@@ -29,55 +29,16 @@ public class RoadGameController : Reference
      */
     public void OnClickButtons(string name_button)
     {
-        //El boton pause abre el canvas del menu de pause
-        if(name_button == "Pause Button")
-        {
-            App.generalView.roadGameView.PauseCanvas.enabled = true;
-            countSteps();
-        }
-        //El boton help abre el tutorial del juego
-        if (name_button == "Help Button")
-        {
-            //App.generalView.roadGameView.TutorialCanvas.enabled = true;
-        }
-        //El boton solution abre un canvas para ir a los minijuegos
-        if (name_button == "Solution Button")
-        {
-            App.generalView.roadGameView.SolutionCanvas.enabled = true;
-        }
-
-        ////////////////////////////////// Botones del menu de pausa, tutorial y solucion ////////////////////////////////
-
-        //El boton back regresa a la partida
-        if (name_button == "Back Button")
-        {
-            if (App.generalView.roadGameView.PauseCanvas.enabled == true)
-            {
-                App.generalView.roadGameView.PauseCanvas.enabled = false;
-            }
-
-            if (App.generalView.roadGameView.SolutionCanvas.enabled == true)
-            {
-                App.generalView.roadGameView.SolutionCanvas.enabled = false;
-            }
-
-            /*if (App.generalView.roadGameView.TutorialCanvas.enabled == true)
-            {
-                App.generalView.roadGameView.TutorialCanvas.enabled = false;
-            }*/
-        }
         //El boton back regresa al menu de niveles
         if (name_button == "Levels Button")
         {
             //Cargar escena de los niveles
             SceneManager.LoadScene("CategoriesScene");
         }
-
         if (name_button == "Pay Button")
         {
             //Canjea codigo y se muestra la solucion
         }
-
         if (name_button == "MiniGames Button")
         {
             //Falta la escena de los minijuegos
@@ -130,7 +91,7 @@ public class RoadGameController : Reference
                 matrix[i,j].name = string.Format("Block[{0}][{1}]", i, j);
 
                 //Temporal - se asigna un 0 para indicar que es bloque disponible o 1 para indicar que es bloque obstaculo
-                //matrix[i, j].GetComponent<Block>().SetId(matrix1[i,j].type);
+                matrix[i, j].GetComponent<Block>().SetId(matrix1[i,j].type);
 
                 //Asignar la matriz al objeto de GameZone
                 matrix[i, j].transform.parent = gameZone.transform;
@@ -162,10 +123,13 @@ public class RoadGameController : Reference
                 }
             }
         }
-
-        App.generalController.charactersController.CreateCharacters(theme,Random.Range(2,4));
+        numCharacters = Random.Range(2, 4);
+        App.generalController.charactersController.CreateCharacters(theme, numCharacters);
         App.generalController.charactersController.SelectCharactersLevel(allCharacters);
     }
+
+    //
+    int numCharacters = 0;
 
     //Variable para almacenar los pasos que da el jugador en la partida
     public int numberSteps = 0;
@@ -182,15 +146,15 @@ public class RoadGameController : Reference
             }
         }
         //Eliminar los pasos que da el personaje sobre la casilla donde es ubicado al inicio de la partida
-        if(App.generalView.roadGameView.numCharacteres == 2)
+        if(numCharacters == 2)
         {
             print("DOS PERSONAJEES: " + numberSteps);
-            numberSteps = numberSteps - 2;
+            numberSteps = numberSteps - 3;
         }
         else
         {
             print("TRES PERSONAJEES: " + numberSteps);
-            numberSteps = numberSteps - 3;
+            numberSteps = numberSteps - 4;
         }
         print("TOTAL: " + numberSteps);
         return numberSteps;
@@ -221,8 +185,8 @@ public class RoadGameController : Reference
 
         App.generalModel.roadGameModel.SetPoints( App.generalModel.roadGameModel.GetPoints()+pointsLevel);
 
-        App.generalView.roadGameView.ActivateWinCanvas(totalStars);
-
+        //App.generalView.roadGameView.ActivateWinCanvas(totalStars);
+        App.generalView.gameOptionsView.ShowWinCanvas(totalStars);
         print("Tiempo total "+App.generalModel.roadGameModel.GetTime());
     }
 
@@ -255,7 +219,7 @@ public class RoadGameController : Reference
     {
         LocateSolucion();
         App.generalModel.roadGameModel.DecraseTickets();
-        App.generalView.roadGameView.SolutionCanvas.enabled = false;
+        App.generalView.gameOptionsView.SolutionCanvas.enabled = false;
         
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
