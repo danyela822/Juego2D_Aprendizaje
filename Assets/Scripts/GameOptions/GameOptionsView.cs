@@ -26,7 +26,7 @@ public class GameOptionsView: Reference
     {
         //Image imageWin = GameObject.Find("ImageStars").GetComponent<Image>();
 
-        imageWin.sprite = Resources.Load<Sprite>("Stars/" + totalStars);
+        imageWin.sprite = App.generalModel.roadGameModel.GetStartsImage(totalStars);
 
         WinCanvas.enabled = true;
     }

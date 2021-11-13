@@ -16,16 +16,11 @@ public class RoadGameView : Reference
         isGameStarted = true;
         PointsLevel();
     }
-
     public void PointsLevel()
     {
-        /*Text cointsText = GameObject.Find("Coins Text").GetComponent<Text>();
-        Text solutionTickets = GameObject.Find("SolutionTickets Text").GetComponent<Text>();*/
-
         cointsText.text = " x " + App.generalModel.roadGameModel.GetPoints();
         solutionTickets.text = " x " + App.generalModel.roadGameModel.GetTickets();
     }
-
     /*public void ActivateWinCanvas(int totalStars)
     {
         Image imageWin = GameObject.Find("ImageStars").GetComponent<Image>();
@@ -37,19 +32,16 @@ public class RoadGameView : Reference
     /*
      * Metodo que captura el nombre del boton el cual se esta pulsando
      */
-    public void OnClickButtons(string name_button)
+    /*public void OnClickButtons(string name_button)
     {
         App.generalController.roadGameController.OnClickButtons(name_button);
-    }
-
+    }*/
     public void MiniGame()
     {
         SceneManager.LoadScene("MiniGamesScene");
     }
-
     public void DrawSolution()
     {
-
         if( App.generalModel.roadGameModel.GetTickets() > 0)
         {
             App.generalController.roadGameController.DrawSolution();
@@ -59,12 +51,10 @@ public class RoadGameView : Reference
             print("no tienes tickets de solucion");
         }
     }
-
     public void ActivateMovement(int type)
     {
         App.generalController.charactersController.ActivateMovement(type);
     }
-
     public void MoveCharacter(string direction)
     {
         App.generalController.charactersController.Move(direction);

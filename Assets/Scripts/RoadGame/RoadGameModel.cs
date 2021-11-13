@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RoadGameModel : Reference
 {
@@ -13,19 +14,6 @@ public class RoadGameModel : Reference
     float totalTime;
     int totalStars;
 
-    /*public static RoadGameModel gameModel;
-    private void Awake()
-    {
-        if (gameModel == null)
-        {
-            gameModel = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (gameModel != this)
-        {
-            Destroy(gameObject);
-        }
-    }*/
     void Update()
     {
         if(SceneManager.GetActiveScene().name == "GameScene" || SceneManager.GetActiveScene().name == "MiniGamesScene")
@@ -58,6 +46,11 @@ public class RoadGameModel : Reference
         PlayerPrefs.GetFloat("TotalStars", stars);
     }
 
+    public Sprite GetStartsImage(int totalStarts)
+    {
+        Sprite startsImage = Resources.Load<Sprite>("Stars/" + totalStarts);
+        return startsImage;
+    }
     // Start is called before the first frame update
     public void IncreaseTickets()
     {

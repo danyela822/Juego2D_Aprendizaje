@@ -26,6 +26,8 @@ public class ClassificationGameController : Reference
 
     //Objeto que contiene el controlador del juego
     public static ClassificationGameController gameController;
+    
+    
     void Awake()
     {
         if (gameController == null)
@@ -86,63 +88,17 @@ public class ClassificationGameController : Reference
             SceneManager.LoadScene("GamesMenuScene");
         }
     }
-    /*private void Start()
-    {
-        //Numero random para seleccionar un conjunto de imagenes
-        number = Random.Range(0,9);
-
-        //Cargar todas las imagenes
-        LoadImages();
-
-        //Ubicar en la pantalla las imagenes seleccionadas
-        PutImages();
-        
-        //Cargar todos los enunciados
-        LoadTexts();
-        
-        //Ubicar el enunciado en la pantalla
-        PutText();
-        
-        //Cargar todas las respuestas
-        LoadAnswers();
-        
-        //Variable para guardar las opciones marcadas por el jugador
-        choises = new List<string>();
-    }*/
     /*
     * Metodo para cargar y guardar todas la imagnes que necesita el juego
     */
-    public void LoadImages()
+    void LoadImages()
     {
-        /*allPictures = new Sprite[10, 16];
-
-        for (int i = 0; i < allPictures.GetLength(0); i++)
-        {
-            //Cargar y guardar un set de imagenes en un array
-            Sprite[] spriteslist = Resources.LoadAll<Sprite>("Sets/set_"+(i+1));
-
-            for (int j = 0; j < allPictures.GetLength(1); j++)
-            {
-                //Guardar cada set de imagenes en la matriz. La matriz contiene todos los sets de imagenes que requiere el juego
-                allPictures[i,j] = spriteslist[j];
-            }            
-        }*/
-
-        //Numero de conjuntos de imagenes
-        int setOfImages = 10;
-        for (int i = 1; i <= setOfImages; i++)
-        {
-            //Cargar y guardar un set de imagenes en un array
-            Sprite[] spriteslist = Resources.LoadAll<Sprite>("Sets/set_" + (i));
-
-            //Guardar el array de imagenes en la lista
-            allImages.Add(spriteslist);
-        }
+        allImages = App.generalModel.classificationGameModel.LoadImages();
     }
     /*
     * Metodo para ubicar todas las imagenes seleccionas en la pantalla
     */
-    public void PutImages()
+    void PutImages()
     {
         //Lista que guardara las imagenes seleccionadas pero cambiando su orden dentro de la lista
         List<Sprite> pictures = ChangeOrderList(allImages[number]);
@@ -154,57 +110,16 @@ public class ClassificationGameController : Reference
         }
     }
     /*
-    * Metodo que permite seleccionar un conjunto de imagenes en especifico de todas la imagenes que hay guardadas en una matriz
-    */
-    /*public Sprite[] SelectPictures(int number)
-    {
-        //Obtener todos los sets de imagenes
-        Sprite[,] pictures = getPictures();
-
-        //Array que guardara las imagenes seleccionadas para un nivel
-        Sprite[] selectedPictures = new Sprite[pictures.GetLength(1)];
-
-        for (int j = 0; j < pictures.GetLength(1); j++)
-        {
-            //Guardar cada imagen del set selecionado en el array
-            selectedPictures[j] = pictures[number, j];
-        }
-        return selectedPictures;
-    }*/
-    /*
     * Metodo para cargar todos los enunciados que deben acompañar a cada nivel
     */
-    public void LoadTexts()
+    void LoadTexts()
     {
-        //Pasar la ruta del archivo y el nombre del archivo que contiene los enunciados requeridos para cada nivel
-        StreamReader reader = new StreamReader("Assets/Resources/Files/statements_sets.txt");
-
-        //string para almacenar linea a linea el contenido del texto
-        string line;
-
-        //Leer la primera linea de texto
-        line = reader.ReadLine();
-
-        //Array que guardara todos los enunciados
-        //allTexts = new string[10];
-
-        //Variable para acceder a cada posicion del array
-        //int index = 0;
-
-        while (line != null)
-        {
-            //Guardar cada linea del archivo de texto en una posicion diferente del array
-            //allTexts[index] = line;
-            //index++;
-            texts.Add(line);
-            //Leer la siguiente linea de texto
-            line = reader.ReadLine();
-        }
+        texts = App.generalModel.classificationGameModel.LoadTexts();
     }
     /*
     * Metodo para ubicar el texto en la pantalla del jugador
     */
-    public void PutText()
+    void PutText()
     {
         //Obtener un enunciado en especifico
         string text = texts[number];
@@ -212,65 +127,13 @@ public class ClassificationGameController : Reference
         //Asignar el enunciado seleccionado al texto de la vista
         App.generalView.classificationGameView.statement.text = text;
     }
-    /*public string[] getTexts()
-    {
-        return allTexts;
-    }*/
-    /*
-    * Metodo que permite seleccionar un enunciado en especifico de todos los enunciados guardados para mostrarlo en la pantalla
-    */
-    /*public string SelectText(int number)
-    {
-        //Obtener todos los enunciados
-        string[] texts = getTexts();
-
-        //Seleccionar un enunciado en especifico
-        return texts[number];
-    }*/
-
-    /*public List<string[]> GetAnswers()
-    {
-        return allAnswers;
-    }*/
     /*
     * Metodo para cargar y guardar las respuestas de cada nivel
     */
-    public void LoadAnswers()
+    void LoadAnswers()
     {
-        //Pasar la ruta del archivo y el nombre del archivo que contiene las respuestas requeridas para cada nivel
-        StreamReader reader = new StreamReader("Assets/Resources/Files/correct_sets.txt");
-
-        //string para almacenar linea a linea el contenido del texto
-        string line;
-
-        //Leer la primera linea de texto
-        line = reader.ReadLine();
-
-        //Lista que guardara cada set de respuestas correctas
-        //allAnswers = new List<string[]>();
-
-        //Continuar leyendo hasta llegar al final del archivo
-        while (line != null)
-        {
-            //Array que guarda las respuestas de un set
-            string[] values = line.Split(',');
-
-            //Guardar cada set de respuestas en la lista
-            allAnswers.Add(values);
-
-            //Leer una nueva linea
-            line = reader.ReadLine();        
-        }
+        allAnswers = App.generalModel.classificationGameModel.LoadAnswers();
     }
-    /*
-    * Metodo que permite seleccionar las respuestas correctas de un conjunto en especifico
-    */
-    /*public string[] SelectAnswers(int number)
-    {
-        //Obtener las respuestas de un conjunto especifico
-        string[] correctAnsers = GetAnswers()[number];
-        return correctAnsers;
-    }*/
     /*
     * Metodo para guardar en una lista cada opcion seleccionada por el jugador
     */
@@ -328,7 +191,7 @@ public class ClassificationGameController : Reference
     /*
     * Metodo que permite desordenar la lista de imagenes seleccionada
     */
-    public List<Sprite> ChangeOrderList (Sprite[] list)
+    List<Sprite> ChangeOrderList (Sprite[] list)
     {
         List<Sprite> originalList = new List<Sprite>();
 

@@ -27,7 +27,7 @@ public class RoadGameController : Reference
      * Metodo determina que accion realizar al oprimir un bot�n
      * en la interfaz de la vista del juego
      */
-    public void OnClickButtons(string name_button)
+    /*public void OnClickButtons(string name_button)
     {
         //El boton back regresa al menu de niveles
         if (name_button == "Levels Button")
@@ -44,7 +44,7 @@ public class RoadGameController : Reference
             //Falta la escena de los minijuegos
             //SceneManager.LoadScene("MiniGamesScene");
         }
-    }
+    }*/
 
     /*
      * Metodo que dibuja en la pantalla la matriz
