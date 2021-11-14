@@ -127,6 +127,8 @@ public class AdditionGameController : Reference{
     //metodo que crea la estructura visual del juego 
     public void CreateTable(){
 
+        GameObject gameZone = GameObject.Find("GameZone");
+
         int cont = 0;
         int aux = 2;
 
@@ -134,42 +136,38 @@ public class AdditionGameController : Reference{
         GameObject newOption;
         float x, y;
 
-        firstOption = Instantiate(objectRow,
-                    new Vector3(-1.421f, 2.121f, 0), objectRow.transform.rotation);
+        firstOption = Instantiate(objectRow,new Vector3(-1, 1.85f, 0), objectRow.transform.rotation);
 
         Sprite spriteFirst = images[icons[0].idIcon];
         firstOption.GetComponent<SpriteRenderer>().sprite = spriteFirst;
 
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < levels; i++){
 
             switch (i){
                 case 0:
 
-                    x = -2.31f; y = 0.63f;
+                    x = -2; y = 0.63f;
                     for (int j = 0; j < 2; j++){
-                        newOption = Instantiate(objectRow,
-                            new Vector3(x +(size.x * (j-(0.3f*j))), 
-                            y, 0), objectRow.transform.rotation);
+
+                        newOption = Instantiate(objectRow, new Vector3(x +(size.x * j), y, 0), objectRow.transform.rotation);
 
                         Sprite sprite = images[icons[j].idIcon];
                         newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-
-                        cont+=1;
+                        newOption.transform.parent = gameZone.transform;
+                        cont +=1;
                     }
                     aux+=1;
                 break;
 
                 case 1:
                     //int cont = aux - 1;
-                    x = -2.26f; y = -0.27f;
+                    x = -2; y = -0.27f;
                     for (int j = 0; j < 3; j++){
-                        newOption = Instantiate(objectRow,
-                            new Vector3(x +(size.x * (j-(0.3f*j))), 
-                            y, 0), objectRow.transform.rotation);
+                        newOption = Instantiate(objectRow, new Vector3(x + (size.x * j), y, 0), objectRow.transform.rotation);
 
                         Sprite sprite = images[icons[cont].idIcon];
                         newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-
+                        newOption.transform.parent = gameZone.transform;
                         cont += 1;
                     }
                     aux+=1;
@@ -177,30 +175,26 @@ public class AdditionGameController : Reference{
 
                 case 2:
 
-                    x = -2.21f; y = -1.17f;
+                    x = -2; y = -1.17f;
                     for (int j = 0; j < 4; j++){
-                        newOption = Instantiate(objectRow,
-                            new Vector3(x +(size.x * (j-(0.3f*j))), 
-                            y, 0), objectRow.transform.rotation);
+                        newOption = Instantiate(objectRow,new Vector3(x + (size.x * j), y, 0), objectRow.transform.rotation);
 
                         Sprite sprite = images[icons[cont].idIcon];
                         newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-
+                        newOption.transform.parent = gameZone.transform;
                         cont += 1;
                     }
                     aux+=1;
                 break;
 
                 default:
-                    x = -2.21f; y = -2.09f;
+                    x = -2; y = -2.09f;
                     for (int j = 0; j < 5; j++){
-                        newOption = Instantiate(objectRow,
-                            new Vector3(x +(size.x * (j-(0.3f*j))), 
-                            y, 0), objectRow.transform.rotation);
+                        newOption = Instantiate(objectRow,new Vector3(x + (size.x * j), y, 0), objectRow.transform.rotation);
 
                         Sprite sprite = images[icons[cont].idIcon];
                         newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-
+                        newOption.transform.parent = gameZone.transform;
                         cont += 1;
                     }
                 break;
