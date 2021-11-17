@@ -13,6 +13,16 @@ public class CharacteristicsGameView : Reference
 
     //Color del boton cuando se presiona
     public Color color;
+
+    //Boton seleccionado
+    Button selectedButton;
+
+    //Canvas que indica que debe seleccionar una opcion antes de verificar
+    //public Canvas warningCanvas;
+
+    //Numero de intentos que tiene el jugador para ganar el juego
+    int attempts = 2;
+
     /*
     * Metodo que captura el boton que oprimio el jugador y captura el nombre de la imagen que posee ese boton
     */
@@ -27,6 +37,7 @@ public class CharacteristicsGameView : Reference
             if(button.name == buttons[i].name)
             {
                 button.image.color = color;
+                selectedButton = button;
             }
             else
             {
@@ -42,19 +53,52 @@ public class CharacteristicsGameView : Reference
     */
     public void CheckAnswer()
     {
-        //Determinar si el jugador gano o perdio
-        bool isWin = App.generalController.characteristicsGameController.CheckAnswer();
-
-        if (isWin)
+        if (selectedButton == null)
         {
-            //Activar el canvas de ganar
-            App.generalView.gameOptionsView.WinCanvas.enabled = true;
+            App.generalView.gameOptionsView.ShowWarningCanvas();
         }
         else
         {
-            //Activar el canvas de perder
-            Debug.Log("PERDIO");
-        }
+            selectedButton.image.color = Color.white;
+            selectedButton.interactable = false;
+            //Determinar si el jugador gano o perdio
+            //bool isWin = App.generalController.characteristicsGameController.CheckAnswer();
+
+            int numberStars = App.generalController.characteristicsGameController.CheckAnswer();
+
+            /*if (isWin)
+            {
+                //Activar el canvas de ganar
+                App.generalView.gameOptionsView.WinCanvas.enabled = true;
+            }
+            else
+            {
+                //Activar el canvas de perder
+                Debug.Log("PERDIO");
+            }*/
+
+            if (numberStars == 3)
+            {
+                App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
+            }
+            else if (numberStars == 2)
+            {
+                App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
+            }
+            else if (numberStars == 1)
+            {
+                App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
+            }
+            else if(numberStars == -1)
+            {
+                App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
+                attempts--;
+            }
+            else
+            {
+                App.generalView.gameOptionsView.ShowLoseCanvas();
+            }
+        }        
     }
     /*
      * Metodo que oculta el canvas inicial del juego
@@ -62,5 +106,9 @@ public class CharacteristicsGameView : Reference
     public void StartGame()
     {
         App.generalView.gameOptionsView.TutorialCanvas.enabled = false;
+    }
+    public void HideWarningCanvas()
+    {
+        App.generalView.gameOptionsView.HideWarningCanvas();
     }
 }

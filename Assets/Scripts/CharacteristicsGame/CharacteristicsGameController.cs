@@ -19,6 +19,9 @@ public class CharacteristicsGameController : Reference
     //String para almacenar la respuesta que dio el jugador
     string answer;
 
+    //Numero para indicar el numero de veces que verifica la respuesta correcta
+    public int counter;
+
     //Objeto que contiene el controlador del juego
     public static CharacteristicsGameController gameController;
     
@@ -134,8 +137,9 @@ public class CharacteristicsGameController : Reference
     /*
     * Metodo para verificar si la respuesta final de jugador es correcta o incorrecta
     */
-    public bool CheckAnswer()
+    public int CheckAnswer()
     {
+        counter++;
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
         if (answer == answers[number])
         {
@@ -148,12 +152,31 @@ public class CharacteristicsGameController : Reference
                 Debug.Log("LISTA VACIA");
                 //App.generalView.gamesMenuView.playButtons[1].enabled=false;
             }*/
-            return true;
+            //return true;
+
+            if(counter == 1)
+            {
+                return 3;
+            }
+            else if(counter == 2)
+            {
+                return 2;
+            }
+            else 
+            {
+                return 1;
+            }
         }
-        //De lo contrario pierde
         else
         {
-            return false;
+            if (counter == 3)
+            {
+                return 0;
+            }
+            else
+            {
+                return -1;
+            }
         }
     }
     /*

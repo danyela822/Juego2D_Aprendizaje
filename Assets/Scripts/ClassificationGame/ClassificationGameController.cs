@@ -24,6 +24,9 @@ public class ClassificationGameController : Reference
     //Lista para almacenar las opciones seleccionadas por el jugador
     List<string>  choises;
 
+    //Numero para indicar el numero de veces que verifica la respuesta correcta
+    public int counter;
+
     //Objeto que contiene el controlador del juego
     public static ClassificationGameController gameController;
     
@@ -158,80 +161,58 @@ public class ClassificationGameController : Reference
     /*
     * Metodo para verificar si la respuesta final de jugador es correcta o incorrecta
     */
-    public int CheckAnswer(int counter)
+    public int CheckAnswer()
     {
+        counter++;
+
         //Obtener un conjunto de respuestas en especifico
         string[] answers = allAnswers[number];
 
         //Variable para contar cada acierto del jugador
         int numberRightAnswers = 0;
 
-        int numberStars;
-
-        Debug.Log("Tamaño lista: "+answers.Length);
-        Debug.Log("Tamaño lista/2: " + answers.Length/2);
-        Debug.Log("Tamaño lista/2-1: " + (answers.Length /( 2)-1));
-        //Si la cantidad de opciones seleccionas por el jugador es igual a la cantidad de respuestas
-        //se procede a verificar cada una de las opciones ingresadas
-        //if (choises.Count == answers.Length)
-        //{
         for (int i = 0; i < answers.Length; i++)
+        {
+            //Por cada elemento en el array de opciones igual al de respuestas aumenta el contador de aciertos
+            if (choises.Contains(answers[i]))
             {
-                //Por cada elemento en el array de opciones igual al de respuestas aumenta el contador de aciertos
-                if (choises.Contains(answers[i]))
-                {
-                    Debug.Log("R: " + answers[i]);
-                    numberRightAnswers++;
-                    Debug.Log("COUNT: " + numberRightAnswers);
-                }
+                Debug.Log("R: " + answers[i]);
+                numberRightAnswers++;
+                Debug.Log("COUNT: " + numberRightAnswers);
             }
+        }
             //Si el contador de aciertos es igual al tamaño del array de respuestas
             //el juegador gana el juego
-            if(numberRightAnswers == answers.Length && counter == numberRightAnswers)
+            if(numberRightAnswers == answers.Length)
             {
                 allImages.RemoveAt(number);
                 texts.RemoveAt(number);
                 allAnswers.RemoveAt(number);
-                numberStars = 3;
-                /*if(counter == numberRightAnswers)
+                if (counter == 1)
                 {
-                    numberStars = 3;
+                    return 3;
                 }
-                else if(counter >= (numberRightAnswers+3))
+                else if (counter == 2)
                 {
-                    numberStars = 2;
+                    return 2;
                 }
                 else
                 {
-                    numberStars = 1;
-                }*/
+                    return 1;
+                }
+            
             }
-            else if (numberRightAnswers >= answers.Length / 2 && counter <= numberRightAnswers+2)
+        else
+        {
+            if (counter == 3)
             {
-                allImages.RemoveAt(number);
-                texts.RemoveAt(number);
-                allAnswers.RemoveAt(number);
-                numberStars = 2;
+                return 0;
             }
-            else if ((numberRightAnswers > 0 && numberRightAnswers < (answers.Length/ 2)) && counter >= numberRightAnswers+3)
-            {
-                allImages.RemoveAt(number);
-                texts.RemoveAt(number);
-                allAnswers.RemoveAt(number);
-                numberStars = 1;
-            }
-            //De lo contrario, pierde
             else
             {
-                numberStars = 0;
+                return -1;
             }
-        //}
-        //Si la cantidad de opciones no es igual a la cantidad de respuestas no se puede verificar
-        //else
-        //{
-          //  numberStars = 0;
-        //}
-        return numberStars;
+        }
     }
     /*
     * Metodo que permite desordenar la lista de imagenes seleccionada

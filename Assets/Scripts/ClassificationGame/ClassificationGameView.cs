@@ -33,6 +33,9 @@ public class ClassificationGameView : Reference
     //Variable para contar la cantidad de veces que se presionan los botones
     int counter = 0;
 
+    //Numero de intentos que tiene el jugador para ganar el juego
+    int attempts = 2;
+
     void Start()
     {
         items = new List<GameObject>();
@@ -138,29 +141,36 @@ public class ClassificationGameView : Reference
     */
     public void CheckAnswer()
     {
-        //Determinar si el jugador gano o perdio
-        int numberStars = App.generalController.classificationGameController.CheckAnswer(counter);
-
-        if (numberStars == 3)
+        if (items.Count == 0)
         {
-            //Activar el canvas de ganar
-            //App.generalView.gameOptionsView.WinCanvas.enabled = true;
-            App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
-        }
-        else if(numberStars == 2)
-        {
-            //App.generalView.gameOptionsView.WinCanvas.enabled = true;
-            App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
-        }
-        else if (numberStars == 1)
-        {
-            //App.generalView.gameOptionsView.WinCanvas.enabled = true;
-            App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
+            App.generalView.gameOptionsView.ShowWarningCanvas();
         }
         else
         {
-            //Activar el canvas de perder
-            Debug.Log("PERDIO");
+            //Determinar si el jugador gano o perdio
+            int numberStars = App.generalController.classificationGameController.CheckAnswer();
+
+            if (numberStars == 3)
+            {
+                App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
+            }
+            else if (numberStars == 2)
+            {
+                App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
+            }
+            else if (numberStars == 1)
+            {
+                App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
+            }
+            else if (numberStars == -1)
+            {
+                App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
+                attempts--;
+            }
+            else
+            {
+                App.generalView.gameOptionsView.ShowLoseCanvas();
+            }
         }
     }
     /*
