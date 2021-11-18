@@ -23,6 +23,14 @@ public class GamesMenuView : Reference
     //Variable para cambiar el panel del juego con el movimiento de izquierda o derecha
     int cont = 1;
 
+    //
+    public List<Slider> progressBars;
+
+    //
+    public List<Text> pointsTexts;
+
+    //
+    public List<Text> starsTexts;
     void Start()
     {
         //Posicion en inicial del menu
@@ -31,6 +39,7 @@ public class GamesMenuView : Reference
         gamePanelName = "GamePanel1";
         //Ubicar el panel en la posicion inicial
         menu.position = new Vector3(initialPosition, menu.position.y, 0);
+        ShowPoints();
     }
     /*
      * Metodo para mover a la derecha el menu de juegos
@@ -83,5 +92,25 @@ public class GamesMenuView : Reference
         string gameName = GameObject.Find(gamePanelName).GetComponentInChildren<Text>().text;
         //Enviar el nombre del juego para mostrar su escena correspondiente
         App.generalController.gamesMenuController.Play(gameName);
+    }
+    public void ShowPoints()
+    {
+        //starsTexts[0].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
+        starsTexts[1].text = "X "+App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
+        /*starsTexts[2].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
+        starsTexts[3].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
+        starsTexts[4].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
+        starsTexts[5].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
+        starsTexts[6].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
+        starsTexts[7].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();*/
+
+        //pointsTexts[0].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
+        pointsTexts[1].text = "X "+App.generalModel.characteristicsGameModel.GetPoints().ToString();
+        /*pointsTexts[2].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
+        pointsTexts[3].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
+        pointsTexts[4].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
+        pointsTexts[5].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
+        pointsTexts[6].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
+        pointsTexts[7].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();*/
     }
 }

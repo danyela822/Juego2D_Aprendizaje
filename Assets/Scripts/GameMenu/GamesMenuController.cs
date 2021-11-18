@@ -51,4 +51,8 @@ public class GamesMenuController : Reference
                 break;
         }
     }
+    public void GetPointsGame()
+    {
+        int points = App.generalModel.characteristicsGameModel.GetPoints();
+    }
 }

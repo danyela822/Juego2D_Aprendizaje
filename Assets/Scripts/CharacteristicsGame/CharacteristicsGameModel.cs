@@ -5,6 +5,14 @@ using System.IO;
 
 public class CharacteristicsGameModel : Reference
 {
+    int totalStars;
+    int totalPoints;
+
+    private void Start()
+    {
+        //PlayerPrefs.DeleteAll();
+    }
+
     /*
     * Metodo para cargar y guardar todas la imagnes que necesita el juego
     */
@@ -77,5 +85,39 @@ public class CharacteristicsGameModel : Reference
         }
 
         return answers;
+    }
+    /*
+     * 
+     */
+    public int GetTotalStars()
+    {
+        totalStars = PlayerPrefs.GetInt("TotalStarsGame2", 0);
+        Debug.Log("STARS HASTA AHORA: " + totalStars);
+        return totalStars;
+    }
+    /*
+     * 
+     */
+    public void SetTotalStars(int stars)
+    {
+        PlayerPrefs.SetInt("TotalStarsGame2", stars);
+        Debug.Log("STARS EN SET: " + stars);
+    }
+    /*
+     * 
+     */
+    public int GetPoints()
+    {
+        totalPoints = PlayerPrefs.GetInt("TotalPointsGame2", 0);
+        Debug.Log("PUNTOS HASTA AHORA: "+totalPoints);
+        return totalPoints;
+    }
+    /*
+     * 
+     */
+    public void SetPoints(int valor)
+    {
+        PlayerPrefs.SetInt("TotalPointsGame2", valor);
+        Debug.Log("PUNTOS EN SET: " + valor);
     }
 }
