@@ -24,41 +24,35 @@ public class CharacteristicsGameController : Reference
 
     //Objeto que contiene el controlador del juego
     public static CharacteristicsGameController gameController;
-    
-    
+
+    public Prueba p;
     void Awake()
     {
         if (gameController == null)
         {
             gameController = this;
             DontDestroyOnLoad(gameObject);
-
+            p.Load("P");
+            //Cargar todas las imagenes (Solo una vez)
             //Instaciar Lista que guardara todas las imagenes
-            allImages = new List<Sprite[]>();
+            allImages = App.generalModel.characteristicsGameModel.LoadImages();
 
+            //Cargar todos los enunciados (Solo una vez)
             //Instaciar Lista que guardara todos los enunciados
-            texts = new List<string>();
+            texts = App.generalModel.characteristicsGameModel.LoadTexts();
 
+            //Cargar todas las respuestas (Solo una vez)
             //Instaciar Lista que guardara todas las respuestas
-            answers = new List<string>();
+            answers = App.generalModel.characteristicsGameModel.LoadAnswers();
 
             //Numero random para seleccionar un conjunto de imagenes
             number = Random.Range(0, allImages.Count);
 
-            //Cargar todas las imagenes (Solo una vez)
-            LoadImages();
-
             //Ubicar en la pantalla las imagenes seleccionadas
-            PutImages();
-
-            //Cargar todos los enunciados (Solo una vez)
-            LoadTexts();
+            //PutImages();
 
             //Ubicar el enunciado en la pantalla
-            PutText();
-
-            //Cargar todas las respuestas (Solo una vez)
-            LoadAnswers();
+            //PutText();
         }
         else if (gameController != this && allImages.Count>0)
         {
@@ -81,13 +75,6 @@ public class CharacteristicsGameController : Reference
         }
     }
     /*
-    * Metodo para cargar y guardar todas la imagnes que necesita el juego
-    */
-    public void LoadImages()
-    {
-        allImages = App.generalModel.characteristicsGameModel.LoadImages();
-    }
-    /*
     * Metodo para ubicar todas las imagenes seleccionas en la pantalla
     */
     public void PutImages()
@@ -102,13 +89,6 @@ public class CharacteristicsGameController : Reference
         }
     }
     /*
-    * Metodo para cargar todos los enunciados que deben acompañar a cada nivel
-    */
-    public void LoadTexts()
-    {
-        texts = App.generalModel.characteristicsGameModel.LoadTexts();
-    }
-    /*
     * Metodo para ubicar el texto en la pantalla del jugador
     */
     public void PutText()
@@ -118,13 +98,6 @@ public class CharacteristicsGameController : Reference
 
         //Asignar el enunciado seleccionado al texto de la vista
         App.generalView.characteristicsGameView.statement.text = text;
-    }
-    /*
-    * Metodo para cargar y guardar las respuestas de cada nivel
-    */
-    public void LoadAnswers()
-    {
-        answers = App.generalModel.characteristicsGameModel.LoadAnswers();
     }
     /*
     * Metodo para guardar la opcion elegida por el jugador
@@ -146,6 +119,12 @@ public class CharacteristicsGameController : Reference
             allImages.RemoveAt(number);
             texts.RemoveAt(number);
             answers.RemoveAt(number);
+
+            App.generalModel.characteristicsGameModel.p.lista.RemoveAt(number);
+            App.generalModel.characteristicsGameModel.p.l.RemoveAt(0);
+            App.generalModel.characteristicsGameModel.p.Save("P");
+
+
             /*if(allImages.Count == 0)
             {
                 enableButton = true;
@@ -154,7 +133,7 @@ public class CharacteristicsGameController : Reference
             }*/
             //return true;
 
-            if(counter == 1)
+            if (counter == 1)
             {
                 App.generalModel.characteristicsGameModel.SetPoints(App.generalModel.characteristicsGameModel.GetPoints() + 30);
                 App.generalModel.characteristicsGameModel.SetTotalStars(App.generalModel.characteristicsGameModel.GetTotalStars() + 3);

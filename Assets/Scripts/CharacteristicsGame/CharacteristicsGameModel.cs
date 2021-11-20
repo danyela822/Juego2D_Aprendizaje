@@ -7,10 +7,12 @@ public class CharacteristicsGameModel : Reference
 {
     int totalStars;
     int totalPoints;
+    public Prueba p;
 
     private void Start()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
+        //p.Load("P");
     }
 
     /*
@@ -29,7 +31,14 @@ public class CharacteristicsGameModel : Reference
 
             //Guardar el array de imagenes en la lista
             allImages.Add(spriteslist);
+
+            p.lista.Add(spriteslist);
+
         }
+        p.numero +=1;
+        Debug.Log("NUMERO: " + p.numero);
+        p.Save("P");
+        Debug.Log("NUMERO: " + p.numero);
         return allImages;
     }
     /*
@@ -92,7 +101,7 @@ public class CharacteristicsGameModel : Reference
     public int GetTotalStars()
     {
         totalStars = PlayerPrefs.GetInt("TotalStarsGame2", 0);
-        Debug.Log("STARS HASTA AHORA: " + totalStars);
+        //Debug.Log("STARS HASTA AHORA: " + totalStars);
         return totalStars;
     }
     /*
@@ -101,7 +110,7 @@ public class CharacteristicsGameModel : Reference
     public void SetTotalStars(int stars)
     {
         PlayerPrefs.SetInt("TotalStarsGame2", stars);
-        Debug.Log("STARS EN SET: " + stars);
+        //Debug.Log("STARS EN SET: " + stars);
     }
     /*
      * 
@@ -109,7 +118,7 @@ public class CharacteristicsGameModel : Reference
     public int GetPoints()
     {
         totalPoints = PlayerPrefs.GetInt("TotalPointsGame2", 0);
-        Debug.Log("PUNTOS HASTA AHORA: "+totalPoints);
+        //Debug.Log("PUNTOS HASTA AHORA: "+totalPoints);
         return totalPoints;
     }
     /*
@@ -118,6 +127,6 @@ public class CharacteristicsGameModel : Reference
     public void SetPoints(int valor)
     {
         PlayerPrefs.SetInt("TotalPointsGame2", valor);
-        Debug.Log("PUNTOS EN SET: " + valor);
+        //Debug.Log("PUNTOS EN SET: " + valor);
     }
 }

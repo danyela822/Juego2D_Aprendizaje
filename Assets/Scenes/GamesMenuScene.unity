@@ -8521,7 +8521,7 @@ MonoBehaviour:
   charactersController: {fileID: 0}
   connectedGameController: {fileID: 346605344}
   classificationGameController: {fileID: 0}
-  characteristicsGameController: {fileID: 0}
+  characteristicsGameController: {fileID: 2139363791}
   gameOptionsController: {fileID: 0}
   gamesMenuController: {fileID: 482339886}
 --- !u!4 &1549906134
@@ -11058,6 +11058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2139363790}
   - component: {fileID: 2139363789}
+  - component: {fileID: 2139363791}
   m_Layer: 0
   m_Name: CharacteristicsGame
   m_TagString: Untagged
@@ -11077,6 +11078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a65dc1c14a22642a812ac918b3c049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p: {fileID: 11400000, guid: 37f739450760c664993d811a223f26bf, type: 2}
 --- !u!4 &2139363790
 Transform:
   m_ObjectHideFlags: 0
@@ -11091,3 +11093,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2139363791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139363788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37a60153b62bc24fa3d3030ad118ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter: 0
+  p: {fileID: 11400000, guid: 37f739450760c664993d811a223f26bf, type: 2}

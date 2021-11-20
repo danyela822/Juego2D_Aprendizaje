@@ -1146,6 +1146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter: 0
+  p: {fileID: 11400000, guid: 37f739450760c664993d811a223f26bf, type: 2}
 --- !u!4 &414755306
 Transform:
   m_ObjectHideFlags: 0
@@ -2180,6 +2181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a65dc1c14a22642a812ac918b3c049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p: {fileID: 11400000, guid: 37f739450760c664993d811a223f26bf, type: 2}
 --- !u!4 &1018726329
 Transform:
   m_ObjectHideFlags: 0
