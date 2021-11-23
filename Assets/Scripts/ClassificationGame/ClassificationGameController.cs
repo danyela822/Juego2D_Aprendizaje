@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using System.Linq;
 
 public class ClassificationGameController : Reference
 {
@@ -39,31 +40,30 @@ public class ClassificationGameController : Reference
             DontDestroyOnLoad(gameObject);
 
             //Instaciar Lista que guardara todas las imagenes
-            allImages = new List<Sprite[]>();
+            allImages = App.generalModel.classificationGameModel.LoadImages();
 
             //Instaciar Lista que guardara todos los enunciados
-            texts = new List<string>();
+            texts = App.generalModel.classificationGameModel.LoadTexts();
 
             //Instaciar Lista que guardara todas las respuestas
-            allAnswers = new List<string[]>();
-
+            allAnswers = App.generalModel.classificationGameModel.LoadAnswers();
             //Numero random para seleccionar un conjunto de imagenes
-            number = Random.Range(0, allImages.Count);
+            //number = Random.Range(0, allImages.Count);
 
             //Cargar todas las imagenes (Solo una vez)
-            LoadImages();
+            //LoadImages();
 
             //Ubicar en la pantalla las imagenes seleccionadas
-            PutImages();
+            //PutImages();
 
             //Cargar todos los enunciados (Solo una vez)
-            LoadTexts();
+            //LoadTexts();
 
             //Ubicar el enunciado en la pantalla
-            PutText();
+            //PutText();
 
             //Cargar todas las respuestas (Solo una vez)
-            LoadAnswers();
+            //LoadAnswers();
 
             //Variable para guardar las opciones marcadas por el jugador
             choises = new List<string>();
@@ -73,30 +73,27 @@ public class ClassificationGameController : Reference
             //Destruir el objeto
             Destroy(gameObject);
 
-            //Numero random para seleccionar un conjunto de imagenes
-            number = Random.Range(0, allImages.Count);
+            if (gameObject.scene.name == "ClassificationGameScene")
+            { 
+                //Numero random para seleccionar un conjunto de imagenes
+                number = Random.Range(0, allImages.Count);
 
-            //Ubicar el enunciado en la pantalla
-            PutImages();
+                //Ubicar el enunciado en la pantalla
+                PutImages();
 
-            //Ubicar el enunciado en la pantalla
-            PutText();
+                //Ubicar el enunciado en la pantalla
+                PutText();
 
-            //Variable para guardar las opciones marcadas por el jugador
-            choises = new List<string>();
+                //Variable para guardar las opciones marcadas por el jugador
+                choises = new List<string>();
+            }
+
         }
         else
         {
             Debug.Log("LISTA VACIA");
-            SceneManager.LoadScene("GamesMenuScene");
+            //SceneManager.LoadScene("GamesMenuScene");
         }
-    }
-    /*
-    * Metodo para cargar y guardar todas la imagnes que necesita el juego
-    */
-    void LoadImages()
-    {
-        allImages = App.generalModel.classificationGameModel.LoadImages();
     }
     /*
     * Metodo para ubicar todas las imagenes seleccionas en la pantalla
@@ -113,13 +110,6 @@ public class ClassificationGameController : Reference
         }
     }
     /*
-    * Metodo para cargar todos los enunciados que deben acompañar a cada nivel
-    */
-    void LoadTexts()
-    {
-        texts = App.generalModel.classificationGameModel.LoadTexts();
-    }
-    /*
     * Metodo para ubicar el texto en la pantalla del jugador
     */
     void PutText()
@@ -131,13 +121,6 @@ public class ClassificationGameController : Reference
         App.generalView.classificationGameView.statement.text = text;
     }
     /*
-    * Metodo para cargar y guardar las respuestas de cada nivel
-    */
-    void LoadAnswers()
-    {
-        allAnswers = App.generalModel.classificationGameModel.LoadAnswers();
-    }
-    /*
     * Metodo para guardar en una lista cada opcion seleccionada por el jugador
     */
     public void SaveChoise(string choise,bool pressed)
@@ -146,7 +129,7 @@ public class ClassificationGameController : Reference
         {
             //Guardar cada opcion en la lista
             choises.Add(choise);
-            Debug.Log("SE AÑADIO A LA LISTA: "+choise);
+            //Debug.Log("SE AÑADIO A LA LISTA: "+choise);
         }
     }
     public void DeleteChoise(string choise, bool pressed)
@@ -155,7 +138,7 @@ public class ClassificationGameController : Reference
         {
             //Eliminar la opcion de la lista
             choises.Remove(choise);
-            Debug.Log("SE ELIMINO DE LA LISTA: " + choise);
+            //Debug.Log("SE ELIMINO DE LA LISTA: " + choise);
         }
     }
     /*
@@ -168,40 +151,46 @@ public class ClassificationGameController : Reference
         //Obtener un conjunto de respuestas en especifico
         string[] answers = allAnswers[number];
 
-        //Variable para contar cada acierto del jugador
-        int numberRightAnswers = 0;
-
-        for (int i = 0; i < answers.Length; i++)
+        if(answers.Length == choises.Count)
         {
-            //Por cada elemento en el array de opciones igual al de respuestas aumenta el contador de aciertos
-            if (choises.Contains(answers[i]))
-            {
-                Debug.Log("R: " + answers[i]);
-                numberRightAnswers++;
-                Debug.Log("COUNT: " + numberRightAnswers);
-            }
-        }
-            //Si el contador de aciertos es igual al tamaño del array de respuestas
-            //el juegador gana el juego
-            if(numberRightAnswers == answers.Length)
+            var result = answers.Except(choises);
+            if (result.Count() == 0)
             {
                 allImages.RemoveAt(number);
                 texts.RemoveAt(number);
                 allAnswers.RemoveAt(number);
+
                 if (counter == 1)
                 {
+                    App.generalModel.classificationGameModel.SetPoints(App.generalModel.classificationGameModel.GetPoints() + 30);
+                    App.generalModel.classificationGameModel.SetTotalStars(App.generalModel.classificationGameModel.GetTotalStars() + 3);
                     return 3;
                 }
                 else if (counter == 2)
                 {
+                    App.generalModel.classificationGameModel.SetPoints(App.generalModel.classificationGameModel.GetPoints() + 20);
+                    App.generalModel.classificationGameModel.SetTotalStars(App.generalModel.classificationGameModel.GetTotalStars() + 2);
                     return 2;
                 }
                 else
                 {
+                    App.generalModel.classificationGameModel.SetPoints(App.generalModel.classificationGameModel.GetPoints() + 10);
+                    App.generalModel.classificationGameModel.SetTotalStars(App.generalModel.classificationGameModel.GetTotalStars() + 1);
                     return 1;
                 }
-            
             }
+            else
+            {
+                if (counter == 3)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
         else
         {
             if (counter == 3)

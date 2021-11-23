@@ -31,6 +31,29 @@ public class GamesMenuView : Reference
 
     //
     public List<Text> starsTexts;
+
+
+    public static GamesMenuView gamesMenuView;
+
+    /*private void Awake()
+    {
+        if (gamesMenuView == null)
+        {
+            gamesMenuView = this;
+            DontDestroyOnLoad(gameObject);
+            //Posicion en inicial del menu
+            initialPosition = menu.transform.position.x;
+            //Panel que se muestra por defecto al cargar la escena
+            gamePanelName = "GamePanel1";
+            //Ubicar el panel en la posicion inicial
+            menu.position = new Vector3(initialPosition, menu.position.y, 0);
+
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }*/
     void Start()
     {
         //Posicion en inicial del menu
@@ -40,6 +63,7 @@ public class GamesMenuView : Reference
         //Ubicar el panel en la posicion inicial
         menu.position = new Vector3(initialPosition, menu.position.y, 0);
         ShowPoints();
+        //verificarBoton();
     }
     /*
      * Metodo para mover a la derecha el menu de juegos
@@ -47,10 +71,9 @@ public class GamesMenuView : Reference
     public void MoveToRigth()
     {
         //Calcular la nueva posicion del menu
-        nextPosition = (menu.transform.position.x) - 1080f;
-        
+        nextPosition = (menu.transform.position.x) - (initialPosition*2);
         //La nueva posicion debe ser mayor a -7020 para evitar mostrar paneles vacios
-        if (nextPosition >= -7020f)
+        if (gamePanelName != "GamePanel8")
         {
             //Aumentar el valor del contador
             cont++;
@@ -68,10 +91,10 @@ public class GamesMenuView : Reference
     public void MoveToLeft()
     {
         //Calcular la nueva posicion del menu
-        nextPosition = (menu.transform.position.x) + 1080;
+        nextPosition = (menu.transform.position.x) + (initialPosition * 2);
 
         //La nueva posicion debe ser menor a 540  para evitar mostrar paneles vacios
-        if (nextPosition <= 540f)
+        if (gamePanelName != "GamePanel1")
         {
             //Disminuir el valor del contador
             cont--;
@@ -95,8 +118,8 @@ public class GamesMenuView : Reference
     }
     public void ShowPoints()
     {
-        //starsTexts[0].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
-        starsTexts[1].text = "X "+App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
+        starsTexts[0].text = "X " + App.generalModel.classificationGameModel.GetTotalStars().ToString();
+        starsTexts[1].text = "X " + App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
         /*starsTexts[2].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
         starsTexts[3].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
         starsTexts[4].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
@@ -104,13 +127,22 @@ public class GamesMenuView : Reference
         starsTexts[6].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
         starsTexts[7].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();*/
 
-        //pointsTexts[0].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
-        pointsTexts[1].text = "X "+App.generalModel.characteristicsGameModel.GetPoints().ToString();
+        pointsTexts[0].text = "X " + App.generalModel.classificationGameModel.GetPoints().ToString(); ;
+        pointsTexts[1].text = "X " + App.generalModel.characteristicsGameModel.GetPoints().ToString();
         /*pointsTexts[2].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
         pointsTexts[3].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
         pointsTexts[4].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
         pointsTexts[5].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
         pointsTexts[6].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
         pointsTexts[7].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();*/
+    }
+    public void verificarBoton()
+    {
+        Debug.Log("verificarBoton: "+ App.generalController.characteristicsGameController.GetButton());
+        if (App.generalController.characteristicsGameController.GetButton())
+        {
+            playButtons[1].enabled = false;
+            Debug.Log("ENTRO: " + playButtons[1].name);
+        }
     }
 }

@@ -12,7 +12,7 @@ public class UIController : Reference
         //Botones del menu principal
         if (name_button == "Play Button")
         {
-            SceneManager.LoadScene("CategoriesScene");
+            SceneManager.LoadScene("GamesMenuScene");
         }
         if (name_button == "Settings Button")
         {

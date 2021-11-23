@@ -25,14 +25,14 @@ public class CharacteristicsGameController : Reference
     //Objeto que contiene el controlador del juego
     public static CharacteristicsGameController gameController;
 
-    public Prueba p;
+    //public Prueba p;
     void Awake()
     {
         if (gameController == null)
         {
             gameController = this;
             DontDestroyOnLoad(gameObject);
-            p.Load("P");
+            //p.Load("P");
             //Cargar todas las imagenes (Solo una vez)
             //Instaciar Lista que guardara todas las imagenes
             allImages = App.generalModel.characteristicsGameModel.LoadImages();
@@ -46,32 +46,43 @@ public class CharacteristicsGameController : Reference
             answers = App.generalModel.characteristicsGameModel.LoadAnswers();
 
             //Numero random para seleccionar un conjunto de imagenes
-            number = Random.Range(0, allImages.Count);
+            //number = Random.Range(0, allImages.Count);
 
             //Ubicar en la pantalla las imagenes seleccionadas
             //PutImages();
 
             //Ubicar el enunciado en la pantalla
             //PutText();
+            // && gameObject.scene.name == "CharacteristicsGameScene"
+            //Debug.Log("SCENE EN MENU: " + gameObject.scene.name);
         }
-        else if (gameController != this && allImages.Count>0)
+        else if (gameController != this && allImages.Count > 0)
         {
+            //Debug.Log("SCENE: " + gameObject.scene.name);
             //Destruir el objeto
             Destroy(gameObject);
 
-            //Numero random para seleccionar un conjunto de imagenes
-            number = Random.Range(0, allImages.Count);
+            //Ubicar el enunciado en la pantalla
+            //PutImages();
 
             //Ubicar el enunciado en la pantalla
-            PutImages();
+            //PutText();
+            if(gameObject.scene.name == "CharacteristicsGameScene")
+            {
+                //Numero random para seleccionar un conjunto de imagenes
+                number = Random.Range(0, allImages.Count);
 
-            //Ubicar el enunciado en la pantalla
-            PutText();
+                //Ubicar el enunciado en la pantalla
+                PutImages();
+
+                //Ubicar el enunciado en la pantalla
+                PutText();
+            }
         }
         else
         {
             Debug.Log("LISTA VACIA");
-            SceneManager.LoadScene("GamesMenuScene");
+            //SceneManager.LoadScene("GamesMenuScene");
         }
     }
     /*
@@ -110,6 +121,7 @@ public class CharacteristicsGameController : Reference
     /*
     * Metodo para verificar si la respuesta final de jugador es correcta o incorrecta
     */
+    bool enableButton = false;
     public int CheckAnswer()
     {
         counter++;
@@ -119,18 +131,18 @@ public class CharacteristicsGameController : Reference
             allImages.RemoveAt(number);
             texts.RemoveAt(number);
             answers.RemoveAt(number);
+            //App.generalModel.characteristicsGameModel.p.lista.RemoveAt(number);
+            //App.generalModel.characteristicsGameModel.p.l.RemoveAt(0);
+            //App.generalModel.characteristicsGameModel.p.Save("P");
 
-            App.generalModel.characteristicsGameModel.p.lista.RemoveAt(number);
-            App.generalModel.characteristicsGameModel.p.l.RemoveAt(0);
-            App.generalModel.characteristicsGameModel.p.Save("P");
 
-
-            /*if(allImages.Count == 0)
+            if(allImages.Count == 0)
             {
                 enableButton = true;
-                Debug.Log("LISTA VACIA");
+                Debug.Log("enableButton: "+enableButton);
                 //App.generalView.gamesMenuView.playButtons[1].enabled=false;
-            }*/
+            }
+                            
             //return true;
 
             if (counter == 1)
@@ -187,5 +199,10 @@ public class CharacteristicsGameController : Reference
         }
 
         return newList;
+    }
+
+    public bool GetButton()
+    {
+        return enableButton;
     }
 }

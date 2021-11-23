@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 
 public class CharacteristicsGameModel : Reference
 {
     int totalStars;
     int totalPoints;
-    public Prueba p;
+    //public Prueba p;
 
     private void Start()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         //p.Load("P");
     }
 
@@ -32,13 +31,13 @@ public class CharacteristicsGameModel : Reference
             //Guardar el array de imagenes en la lista
             allImages.Add(spriteslist);
 
-            p.lista.Add(spriteslist);
+            //p.lista.Add(spriteslist);
 
         }
-        p.numero +=1;
-        Debug.Log("NUMERO: " + p.numero);
-        p.Save("P");
-        Debug.Log("NUMERO: " + p.numero);
+        //p.numero +=1;
+        //Debug.Log("NUMERO: " + p.numero);
+        //p.Save("P");
+        //Debug.Log("NUMERO: " + p.numero);
         return allImages;
     }
     /*
@@ -49,21 +48,32 @@ public class CharacteristicsGameModel : Reference
         List<string> texts = new List<string>();
 
         //Pasar la ruta del archivo y el nombre del archivo que contiene los enunciados requeridos para cada nivel
-        StreamReader reader = new StreamReader("Assets/Resources/Files/statements_characteristics.txt");
-
+        //StreamReader reader = new StreamReader("Assets/Resources/Files/statements_characteristics.txt");
+        //Object s = Resources.Load("Files/statements_characteristics.txt");
+        TextAsset textAsset = Resources.Load("Files/statements_characteristics") as TextAsset;
+   
+        //texts.Add(s.Split('\n')[0]);
+        //string[] cadena = s.Split('\n');
+        //reader = new StreamReader(Resources.Load("Files/statements_characteristics.txt"));
+     
         //string para almacenar linea a linea el contenido del texto
-        string line;
+        //string line;
 
         //Leer la primera linea de texto
-        line = reader.ReadLine();
+        //line = reader.ReadLine();
 
         //Continuar leyendo hasta llegar al final del archivo
-        while (line != null)
+        /*while (line != null)
         {
             //Guardar cada linea del archivo de texto en una posicion diferente de la lista
             texts.Add(line);
             //Leer la siguiente linea de texto
             line = reader.ReadLine();
+        }*/
+        string text = textAsset.text;
+        for (int i = 0; i < 4; i++)
+        {
+            texts.Add(text.Split('\n')[i]);
         }
 
         return texts;
@@ -76,23 +86,28 @@ public class CharacteristicsGameModel : Reference
         List<string> answers = new List<string>();
 
         //Pasar la ruta del archivo y el nombre del archivo que contiene las respuestas requeridas para cada nivel
-        StreamReader reader = new StreamReader("Assets/Resources/Files/correct_characteristics.txt");
-
+        //StreamReader reader = new StreamReader("Assets/Resources/Files/correct_characteristics.txt");
+        TextAsset textAsset = Resources.Load("Files/correct_characteristics") as TextAsset;
         //string para almacenar linea a linea el contenido del texto
-        string line;
+        //string line;
 
         //Leer la primera linea de texto
-        line = reader.ReadLine();
+        //line = reader.ReadLine();
 
         //Continuar leyendo hasta llegar al final del archivo
-        while (line != null)
+        /*while (line != null)
         {
             //Guardar cada linea del archivo de texto en una posicion diferente de la lista
             answers.Add(line);
             //Leer una nueva linea
             line = reader.ReadLine();
-        }
+        }*/
 
+        string answer = textAsset.text;
+        for (int i = 0; i < 4; i++)
+        {
+            answers.Add(answer.Split(',')[i]);
+        }
         return answers;
     }
     /*

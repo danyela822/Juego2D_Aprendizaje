@@ -436,10 +436,10 @@ RectTransform:
   m_Father: {fileID: 1445706208}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -815}
-  m_SizeDelta: {x: 700, y: 150}
+  m_AnchorMin: {x: 0, y: 0.06552084}
+  m_AnchorMax: {x: 1, y: 0.12179167}
+  m_AnchoredPosition: {x: 0, y: -52.5}
+  m_SizeDelta: {x: -230, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &91974956
 MonoBehaviour:
@@ -1146,7 +1146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter: 0
-  p: {fileID: 11400000, guid: 37f739450760c664993d811a223f26bf, type: 2}
 --- !u!4 &414755306
 Transform:
   m_ObjectHideFlags: 0
@@ -1967,10 +1966,10 @@ RectTransform:
   m_Father: {fileID: 1445706208}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -283}
-  m_SizeDelta: {x: 850, y: 850}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.3965417}
+  m_AnchoredPosition: {x: 0, y: 157.5}
+  m_SizeDelta: {x: -225, y: 315}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &974043193
 MonoBehaviour:
@@ -1993,7 +1992,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 400, y: 400}
-  m_Spacing: {x: 30, y: 30}
+  m_Spacing: {x: 40, y: 45}
   m_Constraint: 1
   m_ConstraintCount: 2
 --- !u!1 &978509972
@@ -2066,8 +2065,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Tengo mi techo triangular y no poseo ninguna ventana circular. \xBFCu\xE1l
-    casa soy?"
+  m_Text: 
 --- !u!222 &978509975
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2181,7 +2179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a65dc1c14a22642a812ac918b3c049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p: {fileID: 11400000, guid: 37f739450760c664993d811a223f26bf, type: 2}
 --- !u!4 &1018726329
 Transform:
   m_ObjectHideFlags: 0
@@ -2317,10 +2314,10 @@ RectTransform:
   m_Father: {fileID: 1445706208}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 402}
-  m_SizeDelta: {x: 900, y: 450}
+  m_AnchorMin: {x: 0, y: 0.592}
+  m_AnchorMax: {x: 1, y: 0.8265835}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -180, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1234445343
 MonoBehaviour:
@@ -2438,7 +2435,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 65
+    m_MaxSize: 75
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
@@ -3486,10 +3483,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3867,6 +3864,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MistakeCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6844951109735139308, guid: a2287e0ccb0fba24fa2d2daad4be0fe4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6844951109735139309, guid: a2287e0ccb0fba24fa2d2daad4be0fe4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4051,6 +4052,22 @@ PrefabInstance:
     - target: {fileID: 7410350241342354834, guid: ed9f7c48febb42f42bccfe8cbf177d80, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410350241342354835, guid: ed9f7c48febb42f42bccfe8cbf177d80, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410350241342354924, guid: ed9f7c48febb42f42bccfe8cbf177d80, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410350241342354924, guid: ed9f7c48febb42f42bccfe8cbf177d80, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410350241342354924, guid: ed9f7c48febb42f42bccfe8cbf177d80, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 7410350241342354926, guid: ed9f7c48febb42f42bccfe8cbf177d80, type: 3}
       propertyPath: m_Name

@@ -7,7 +7,7 @@ public class GamesMenuController : Reference
 {
     public void Play(string gameName)
     {
-        Debug.Log("Nombre del juego: " + gameName);
+        //Debug.Log("Nombre del juego: " + gameName);
 
         switch (gameName)
         {

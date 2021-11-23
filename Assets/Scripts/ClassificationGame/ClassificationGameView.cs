@@ -67,7 +67,7 @@ public class ClassificationGameView : Reference
             App.generalController.classificationGameController.SaveChoise(nameImage, checkArray[buttonNumber]);
 
             counter++;
-            Debug.Log("Presiono: " + counter);
+            //Debug.Log("Presiono: " + counter);
             checkArray[buttonNumber] = false;
         }
         else

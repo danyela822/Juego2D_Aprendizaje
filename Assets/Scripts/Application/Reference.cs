@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Reference : MonoBehaviour
 {
-    public Application App
+    public App App
     {
         get 
         {
-            return GameObject.FindObjectOfType<Application>();
+            return GameObject.FindObjectOfType<App>();
         }
     }
 }

@@ -414,7 +414,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &20652494
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -568,8 +568,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roadGameModel: {fileID: 0}
   miniGameModel: {fileID: 0}
-  characteristicsGameModel: {fileID: 2139363789}
-  classificationGameModel: {fileID: 0}
+  characteristicsGameModel: {fileID: 922245990}
+  classificationGameModel: {fileID: 1450249641}
 --- !u!4 &33455100
 Transform:
   m_ObjectHideFlags: 0
@@ -578,7 +578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33455098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 418.53082, y: 717.9445, z: -161.80898}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1228,7 +1228,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &115377566
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1586,7 +1586,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &210051964
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1779,7 +1779,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &249804572
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2432,6 +2432,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421668003}
   m_CullTransparentMesh: 1
+--- !u!1 &421962365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 421962367}
+  - component: {fileID: 421962366}
+  m_Layer: 0
+  m_Name: ClassificationGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &421962366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421962365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f86c6da6587c5942be2fe24cf996a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter: 0
+--- !u!4 &421962367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421962365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 469.0718, y: 1197.2693, z: -2920.282}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &427008295
 GameObject:
   m_ObjectHideFlags: 0
@@ -2696,7 +2740,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &465212670
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3018,7 +3062,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &497886441
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3542,7 +3586,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &596794604
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4008,7 +4052,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &709962746
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5288,6 +5332,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918301864}
   m_CullTransparentMesh: 1
+--- !u!1 &922245989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 922245991}
+  - component: {fileID: 922245990}
+  m_Layer: 0
+  m_Name: CharacteristicsGameModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &922245990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922245989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a65dc1c14a22642a812ac918b3c049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &922245991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922245989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &943524855
 GameObject:
   m_ObjectHideFlags: 0
@@ -6380,7 +6467,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &1120471182
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6823,7 +6910,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &1211643922
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7755,6 +7842,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410848973}
   m_CullTransparentMesh: 1
+--- !u!1 &1450249639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1450249640}
+  - component: {fileID: 1450249641}
+  m_Layer: 0
+  m_Name: ClassificationGameModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1450249640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450249639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 469.0718, y: 1197.2693, z: -2920.282}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1450249641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450249639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ec42625506630438830f536205fe8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1461811848
 GameObject:
   m_ObjectHideFlags: 0
@@ -8010,7 +8140,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &1479611105
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8520,7 +8650,7 @@ MonoBehaviour:
   miniGameController: {fileID: 0}
   charactersController: {fileID: 0}
   connectedGameController: {fileID: 346605344}
-  classificationGameController: {fileID: 0}
+  classificationGameController: {fileID: 421962366}
   characteristicsGameController: {fileID: 2139363791}
   gameOptionsController: {fileID: 0}
   gamesMenuController: {fileID: 482339886}
@@ -8532,7 +8662,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549906132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 418.53082, y: 717.9445, z: -161.80898}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8820,7 +8950,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &1574456415
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8899,7 +9029,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &1594941079
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10535,7 +10665,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 5
+  m_Text: X 0
 --- !u!222 &1992250796
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11057,7 +11187,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2139363790}
-  - component: {fileID: 2139363789}
   - component: {fileID: 2139363791}
   m_Layer: 0
   m_Name: CharacteristicsGame
@@ -11066,19 +11195,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2139363789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2139363788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93a65dc1c14a22642a812ac918b3c049, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  p: {fileID: 11400000, guid: 37f739450760c664993d811a223f26bf, type: 2}
 --- !u!4 &2139363790
 Transform:
   m_ObjectHideFlags: 0
@@ -11106,4 +11222,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter: 0
-  p: {fileID: 11400000, guid: 37f739450760c664993d811a223f26bf, type: 2}
