@@ -36,7 +36,7 @@ public class CharacteristicsGameController : Reference
             //Cargar todas las imagenes (Solo una vez)
             //Instaciar Lista que guardara todas las imagenes
             allImages = App.generalModel.characteristicsGameModel.LoadImages();
-            Debug.Log("TAMAÑO LISTA IMAGENES: " + allImages.Count);
+            //Debug.Log("TAMAÑO LISTA IMAGENES: " + allImages.Count);
             //Cargar todos los enunciados (Solo una vez)
             //Instaciar Lista que guardara todos los enunciados
             texts = App.generalModel.characteristicsGameModel.LoadTexts();
@@ -133,7 +133,7 @@ public class CharacteristicsGameController : Reference
             answers.RemoveAt(number);
             //App.generalModel.characteristicsGameModel.p.lista.RemoveAt(number);
             Debug.Log("ELIMINAR: " + number);
-            App.generalModel.characteristicsGameModel.p.l.RemoveAt(number);
+            App.generalModel.characteristicsGameModel.p.characteristicsGameList.RemoveAt(number);
             App.generalModel.characteristicsGameModel.p.Save("P");
 
 

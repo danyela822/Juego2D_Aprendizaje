@@ -6,10 +6,13 @@ public class ClassificationGameModel : Reference
 {
     int totalStars;
     int totalPoints;
+    int createList;
+    public Prueba q;
 
     private void Start()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
+        q.Load("Q");
     }
 
     /*
@@ -19,17 +22,38 @@ public class ClassificationGameModel : Reference
     {
         List<Sprite[]> allImages = new List<Sprite[]>();
 
-        //Numero de conjuntos de imagenes
-        int setOfImages = 10;
-        for (int i = 1; i <= setOfImages; i++)
+        if (GetList() == 0)
         {
-            //Cargar y guardar un set de imagenes en un array
-            Sprite[] spriteslist = Resources.LoadAll<Sprite>("Sets/set_" + (i));
-
-            //Guardar el array de imagenes en la lista
-            allImages.Add(spriteslist);
+            Debug.Log("CREAR LISTA CLASIFICATION: " + GetList());
+            for (int j = 0; j < 10; j++)
+            {
+                Debug.Log("ENTRO A LLENAR LISTA CLASIFICATION");
+                q.classificationGameList.Add(j);
+            }
+            SetList(1);
+            Debug.Log("CAMBIO DE LISTA CLASIFICATION: " + GetList());
         }
 
+        //Numero de conjuntos de imagenes
+        int setOfImages = 10;
+        for (int i = 0; i < setOfImages; i++)
+        {
+            if (q.classificationGameList.Contains(i))
+            {
+                //Cargar y guardar un set de imagenes en un array
+                Sprite[] spriteslist = Resources.LoadAll<Sprite>("Sets/set_" + (i + 1));
+
+                //Guardar el array de imagenes en la lista
+                allImages.Add(spriteslist);
+            }
+            //Cargar y guardar un set de imagenes en un array
+            //Sprite[] spriteslist = Resources.LoadAll<Sprite>("Sets/set_" + (i+1));
+
+            //Guardar el array de imagenes en la lista
+            //allImages.Add(spriteslist);
+        }
+        Debug.Log("LISTA DE NUMEROS EN CLASIFICATION: " + q.classificationGameList.Count);
+        q.Save("Q");
         return allImages;
     }
     /*
@@ -145,5 +169,20 @@ public class ClassificationGameModel : Reference
     {
         PlayerPrefs.SetInt("TotalPointsGame1", valor);
         //Debug.Log("PUNTOS EN SET: " + valor);
+    }
+    /*
+    * 
+    */
+    public int GetList()
+    {
+        createList = PlayerPrefs.GetInt("ListClasi", 0);
+        return createList;
+    }
+    /*
+     * 
+     */
+    public void SetList(int value)
+    {
+        PlayerPrefs.SetInt("ListClasi", value);
     }
 }

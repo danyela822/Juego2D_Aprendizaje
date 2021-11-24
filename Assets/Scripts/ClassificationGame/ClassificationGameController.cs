@@ -159,6 +159,7 @@ public class ClassificationGameController : Reference
                 allImages.RemoveAt(number);
                 texts.RemoveAt(number);
                 allAnswers.RemoveAt(number);
+                App.generalModel.classificationGameModel.q.classificationGameList.RemoveAt(number);
 
                 if (counter == 1)
                 {

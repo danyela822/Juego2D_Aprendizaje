@@ -11,7 +11,7 @@ public class CharacteristicsGameModel : Reference
 
     private void Start()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         p.Load("P");
     }
 
@@ -28,7 +28,7 @@ public class CharacteristicsGameModel : Reference
             for (int j = 0; j < 4; j++)
             {
                 Debug.Log("ENTRO A LLENAR LISTA");
-                p.l.Add(j);
+                p.characteristicsGameList.Add(j);
             }
             SetList(1);
             Debug.Log("CAMBIO DE LISTA: " + GetList());
@@ -39,7 +39,7 @@ public class CharacteristicsGameModel : Reference
             int setOfImages = 4;
         for (int i = 0; i < setOfImages; i++)
         {
-            if (p.l.Contains(i))
+            if (p.characteristicsGameList.Contains(i))
             {
                     //Cargar y guardar un set de imagenes en un array
                     Sprite[] spriteslist = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + (i+1));
@@ -58,7 +58,7 @@ public class CharacteristicsGameModel : Reference
 
         }
         //p.numero +=1;
-        Debug.Log("LISTA DE NUMEROS EN CHARACTERISTICS: " + p.l.Count);
+        Debug.Log("LISTA DE NUMEROS EN CHARACTERISTICS: " + p.characteristicsGameList.Count);
         p.Save("P");
         //Debug.Log("NUMERO: " + p.numero);
         return allImages;
@@ -96,7 +96,7 @@ public class CharacteristicsGameModel : Reference
         string text = textAsset.text;
         for (int i = 0; i < 4; i++)
         {
-            if (p.l.Contains(i))
+            if (p.characteristicsGameList.Contains(i))
             {
                 texts.Add(text.Split('\n')[i]);
             }
@@ -132,7 +132,7 @@ public class CharacteristicsGameModel : Reference
         string answer = textAsset.text;
         for (int i = 0; i < 4; i++)
         {
-            if (p.l.Contains(i))
+            if (p.characteristicsGameList.Contains(i))
             {
                 answers.Add(answer.Split(',')[i]);
             }

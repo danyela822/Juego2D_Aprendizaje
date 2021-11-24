@@ -9,7 +9,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class Prueba : ScriptableObject
 {
     //public List<Sprite[]> lista = new List<Sprite[]>();
-    public List<int> l;
+    public List<int> classificationGameList;
+    public List<int> characteristicsGameList;
     public int numero;
 
     public void Save(string fileName = null)
@@ -23,7 +24,8 @@ public class Prueba : ScriptableObject
         br.Serialize(file, json);
 
         Debug.Log("SE CREO ARCHIVO: " + file.Name + ": " + File.Exists(GetPath(fileName)));
-        Debug.Log("LISTA EN GUARDAR: " + l.Count);
+        Debug.Log("LISTACLAS EN GUARDAR: " + classificationGameList.Count);
+        Debug.Log("LISTACHA EN GUARDAR: " + characteristicsGameList.Count);
         file.Close();
     }
 
@@ -36,7 +38,8 @@ public class Prueba : ScriptableObject
             FileStream file = File.Open(GetPath(fileName), FileMode.Open);
 
             JsonUtility.FromJsonOverwrite((string)br.Deserialize(file), this);
-            Debug.Log("LISTA EN CARGAR: " + l.Count);
+            Debug.Log("LISTACLAS EN CARGAR: " + classificationGameList.Count);
+            Debug.Log("LISTACHA EN CARGAR: " + characteristicsGameList.Count);
             file.Close();
         }
         else
