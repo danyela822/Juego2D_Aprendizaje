@@ -6,12 +6,13 @@ public class CharacteristicsGameModel : Reference
 {
     int totalStars;
     int totalPoints;
-    //public Prueba p;
+    int createList;
+    public Prueba p;
 
     private void Start()
     {
         //PlayerPrefs.DeleteAll();
-        //p.Load("P");
+        p.Load("P");
     }
 
     /*
@@ -21,22 +22,44 @@ public class CharacteristicsGameModel : Reference
     {
         List<Sprite[]> allImages = new List<Sprite[]>();
 
-        //Numero de conjuntos de imagenes
-        int setOfImages = 4;
-        for (int i = 1; i <= setOfImages; i++)
+        if(GetList()==0)
         {
+            Debug.Log("CREAR LISTA: " + GetList());
+            for (int j = 0; j < 4; j++)
+            {
+                Debug.Log("ENTRO A LLENAR LISTA");
+                p.l.Add(j);
+            }
+            SetList(1);
+            Debug.Log("CAMBIO DE LISTA: " + GetList());
+        }
+
+
+            //Numero de conjuntos de imagenes
+            int setOfImages = 4;
+        for (int i = 0; i < setOfImages; i++)
+        {
+            if (p.l.Contains(i))
+            {
+                    //Cargar y guardar un set de imagenes en un array
+                    Sprite[] spriteslist = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + (i+1));
+
+                    //Guardar el array de imagenes en la lista
+                    allImages.Add(spriteslist);
+            }
+            
             //Cargar y guardar un set de imagenes en un array
-            Sprite[] spriteslist = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + (i));
+            //Sprite[] spriteslist = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + (i));
 
             //Guardar el array de imagenes en la lista
-            allImages.Add(spriteslist);
+            //allImages.Add(spriteslist);
 
             //p.lista.Add(spriteslist);
 
         }
         //p.numero +=1;
-        //Debug.Log("NUMERO: " + p.numero);
-        //p.Save("P");
+        Debug.Log("LISTA DE NUMEROS EN CHARACTERISTICS: " + p.l.Count);
+        p.Save("P");
         //Debug.Log("NUMERO: " + p.numero);
         return allImages;
     }
@@ -73,7 +96,10 @@ public class CharacteristicsGameModel : Reference
         string text = textAsset.text;
         for (int i = 0; i < 4; i++)
         {
-            texts.Add(text.Split('\n')[i]);
+            if (p.l.Contains(i))
+            {
+                texts.Add(text.Split('\n')[i]);
+            }
         }
 
         return texts;
@@ -106,7 +132,10 @@ public class CharacteristicsGameModel : Reference
         string answer = textAsset.text;
         for (int i = 0; i < 4; i++)
         {
-            answers.Add(answer.Split(',')[i]);
+            if (p.l.Contains(i))
+            {
+                answers.Add(answer.Split(',')[i]);
+            }
         }
         return answers;
     }
@@ -143,5 +172,20 @@ public class CharacteristicsGameModel : Reference
     {
         PlayerPrefs.SetInt("TotalPointsGame2", valor);
         //Debug.Log("PUNTOS EN SET: " + valor);
+    }
+    /*
+     * 
+     */
+    public int GetList()
+    {
+        createList = PlayerPrefs.GetInt("List", 0);
+        return createList;
+    }
+    /*
+     * 
+     */
+    public void SetList(int value)
+    {
+        PlayerPrefs.SetInt("List", value);
     }
 }

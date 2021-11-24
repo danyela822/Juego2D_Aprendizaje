@@ -1112,6 +1112,11 @@ MonoBehaviour:
   SolutionCanvas: {fileID: 1252647030}
   TutorialCanvas: {fileID: 0}
   WinCanvas: {fileID: 523713626}
+  LoseCanvas: {fileID: 0}
+  MistakeCanvas: {fileID: 0}
+  WarningCanvas: {fileID: 0}
+  imageWin: {fileID: 0}
+  textMistake: {fileID: 0}
 --- !u!4 &633315277
 Transform:
   m_ObjectHideFlags: 0
@@ -1263,7 +1268,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 924513935}
     m_Modifications:
     - target: {fileID: 7112673240060928968, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112673240060928968, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112673240060928968, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7112673240060928968, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
@@ -1271,12 +1284,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 633315276}
     - target: {fileID: 7112673240060928968, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 633315275}
+    - target: {fileID: 7112673240060928968, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112673240060928968, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowPauseCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 7112673240060928968, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112673240060928968, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameOptionsView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112673240060928968, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameOptionsController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112673240060928968, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112673240060928968, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7112673240060928983, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1893,16 +1930,48 @@ PrefabInstance:
     m_TransformParent: {fileID: 924513935}
     m_Modifications:
     - target: {fileID: 8719087761553174494, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719087761553174494, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719087761553174494, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 633315276}
+    - target: {fileID: 8719087761553174494, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 633315275}
+    - target: {fileID: 8719087761553174494, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8719087761553174494, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: HidePauseCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 8719087761553174494, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719087761553174494, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameOptionsView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719087761553174494, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameOptionsController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719087761553174494, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719087761553174494, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8719087762279940957, guid: fe82e265d6c576c45bc8b2e02146dda1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2591,7 +2660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71196a58f4460e841ac290335eafc87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
+  roadGameController: {fileID: 0}
   uiController: {fileID: 0}
   miniGameController: {fileID: 0}
   charactersController: {fileID: 0}
@@ -2680,7 +2749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423cef89004f83b49a8bcb3b097adde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameView: {fileID: 0}
+  roadGameView: {fileID: 0}
   UIView: {fileID: 0}
   miniGameView: {fileID: 0}
   connectedGameView: {fileID: 491338388}
@@ -2901,8 +2970,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67bc68385469b4f42b9a07f3dc7edba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameModel: {fileID: 0}
+  roadGameModel: {fileID: 0}
   miniGameModel: {fileID: 0}
+  characteristicsGameModel: {fileID: 0}
+  classificationGameModel: {fileID: 0}
 --- !u!4 &2076699099
 Transform:
   m_ObjectHideFlags: 0

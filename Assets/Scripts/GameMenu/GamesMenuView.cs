@@ -116,6 +116,10 @@ public class GamesMenuView : Reference
         //Enviar el nombre del juego para mostrar su escena correspondiente
         App.generalController.gamesMenuController.Play(gameName);
     }
+    public void BackToMainMenu()
+    {
+        App.generalController.gamesMenuController.BackToMainMenu();
+    }
     public void ShowPoints()
     {
         starsTexts[0].text = "X " + App.generalModel.classificationGameModel.GetTotalStars().ToString();

@@ -26,6 +26,10 @@ public class UIController : Reference
         {
             SceneManager.LoadScene("InfoScene");
         }
+        if (name_button == "Exit Button")
+        {
+            Application.Quit();
+        }
 
 
         //Boton de regreso (Puede servir para cualquier escena menos para la escena de los niveles)
