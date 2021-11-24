@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74da6101dbe06c24ab721b91b1ed4f35, type: 3}
   m_Name: Prueba nueva
   m_EditorClassIdentifier: 
-  classificationGameList: 
+  classificationGameList: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
   characteristicsGameList: 
   numero: 0
