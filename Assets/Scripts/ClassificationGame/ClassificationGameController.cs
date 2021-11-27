@@ -40,33 +40,44 @@ public class ClassificationGameController : Reference
             DontDestroyOnLoad(gameObject);
 
             //Instaciar Lista que guardara todas las imagenes
-            allImages = App.generalModel.classificationGameModel.LoadImages();
+            //allImages = App.generalModel.classificationGameModel.LoadImages();
+            App.generalModel.classificationGameModel.LoadImages();
+            allImages = App.generalModel.classificationGameModel.GetListImages();
+            //Debug.Log("allImages en controller: "+allImages.Count);
 
             //Instaciar Lista que guardara todos los enunciados
-            texts = App.generalModel.classificationGameModel.LoadTexts();
+            //texts = App.generalModel.classificationGameModel.LoadTexts();
+            App.generalModel.classificationGameModel.LoadTexts();
+            texts = App.generalModel.classificationGameModel.GetListTexts();
+            //Debug.Log("texts en controller: " + texts.Count);
 
             //Instaciar Lista que guardara todas las respuestas
-            allAnswers = App.generalModel.classificationGameModel.LoadAnswers();
+            //allAnswers = App.generalModel.classificationGameModel.LoadAnswers();
+            App.generalModel.classificationGameModel.LoadAnswers();
+            allAnswers = App.generalModel.classificationGameModel.GetListAnswers();
+            //Debug.Log("allAnswers en controller: " + allAnswers.Count);
+            
             //Numero random para seleccionar un conjunto de imagenes
-            //number = Random.Range(0, allImages.Count);
-
+            number = Random.Range(0, allImages.Count);
+            Debug.Log("NUMERO RANDOM: " + number);
             //Cargar todas las imagenes (Solo una vez)
             //LoadImages();
 
             //Ubicar en la pantalla las imagenes seleccionadas
-            //PutImages();
+            PutImages();
 
             //Cargar todos los enunciados (Solo una vez)
             //LoadTexts();
 
             //Ubicar el enunciado en la pantalla
-            //PutText();
+            PutText();
 
             //Cargar todas las respuestas (Solo una vez)
             //LoadAnswers();
 
             //Variable para guardar las opciones marcadas por el jugador
             choises = new List<string>();
+            
         }
         else if (gameController != this && allImages.Count > 0)
         {
@@ -77,6 +88,7 @@ public class ClassificationGameController : Reference
             { 
                 //Numero random para seleccionar un conjunto de imagenes
                 number = Random.Range(0, allImages.Count);
+                Debug.Log("NUMERO RANDOM: " + number);
 
                 //Ubicar el enunciado en la pantalla
                 PutImages();
@@ -156,10 +168,20 @@ public class ClassificationGameController : Reference
             var result = answers.Except(choises);
             if (result.Count() == 0)
             {
+                Debug.Log("TAMAÑO TUPLA: " + App.generalModel.classificationGameModel.GetTupla().Count);
+                string s = App.generalModel.classificationGameModel.GetTupla()[number].Item1;
+                var t = new System.Tuple<string, Sprite[]>(s, allImages[number]);
+                Debug.Log("ITEM A BORRAR: " + s);
                 allImages.RemoveAt(number);
                 texts.RemoveAt(number);
                 allAnswers.RemoveAt(number);
-                App.generalModel.classificationGameModel.q.classificationGameList.RemoveAt(number);
+                App.generalModel.classificationGameModel.q.classificationGameList.Remove(s);
+
+                App.generalModel.classificationGameModel.GetTupla().Remove(t);
+                Debug.Log("LISTA DE IMAGENES MODELO: "+App.generalModel.classificationGameModel.GetListImages().Count);
+                Debug.Log("TAMAÑO TUPLA: " + App.generalModel.classificationGameModel.GetTupla().Count);
+                //App.generalModel.classificationGameModel.q.listaSprites.RemoveAt(0);
+                App.generalModel.classificationGameModel.q.Save("P");
 
                 if (counter == 1)
                 {

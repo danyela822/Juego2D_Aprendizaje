@@ -24,14 +24,13 @@ public class CharacteristicsGameModel : Reference
 
         if(GetList()==0)
         {
-            Debug.Log("CREAR LISTA: " + GetList());
+            Debug.Log("CREAR LISTA CHARA: " + GetList());
             for (int j = 0; j < 4; j++)
             {
-                Debug.Log("ENTRO A LLENAR LISTA");
                 p.characteristicsGameList.Add(j);
             }
             SetList(1);
-            Debug.Log("CAMBIO DE LISTA: " + GetList());
+            Debug.Log("CAMBIO DE LISTA CHARA: " + GetList());
         }
 
 

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GamesMenuController : Reference
 {
+    public Prueba p;
     public void Play(string gameName)
     {
         //Debug.Log("Nombre del juego: " + gameName);
@@ -12,13 +13,19 @@ public class GamesMenuController : Reference
         switch (gameName)
         {
             case "Descubre el conjunto":
-                SceneManager.LoadScene("ClassificationGameScene");
+                if(p.classificationGameList.Count==0)
+                {
+                    App.generalView.gamesMenuView.playButtons[0].interactable = false;
+                }
+                else
+                {
+                    SceneManager.LoadScene("ClassificationGameScene");
+                }
                 break;
 
             case "Desifra el elemento":
                 SceneManager.LoadScene("CharacteristicsGameScene");
                 break;
-
             case "Nombre del Juego 3":
                 
                 break;
