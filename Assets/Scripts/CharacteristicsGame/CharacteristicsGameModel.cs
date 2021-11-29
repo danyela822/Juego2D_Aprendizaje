@@ -1,9 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacteristicsGameModel : Reference
 {
+    static List<Sprite[]> allImages;
+    static List<string> texts;
+    static List<string> answers;
+
     int totalStars;
     int totalPoints;
     int createList;
@@ -11,32 +16,34 @@ public class CharacteristicsGameModel : Reference
 
     private void Start()
     {
-        PlayerPrefs.DeleteAll();
         p.Load("P");
+        Debug.Log("TAMAÑO LISTA Characteristics: " + p.characteristicsGameList.Count);
+        //Debug.Log("TAMAÑO LISTA SPRITES ANTES: "+q.listaSprites.Count);
+        if (GetList() == 0)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                p.characteristicsGameList.Add("characteristics_" + (j + 1));
+                // Debug.Log("TAMAÑO: " + q.classificationGameList.Count);
+            }
+            SetList(1);
+            Debug.Log("CAMBIO DE LISTA Characteristics: " + GetList());
+            App.generalView.gamesMenuView.playButtons[1].enabled = true;
+            p.Save("P");
+        }
     }
 
     /*
     * Metodo para cargar y guardar todas la imagnes que necesita el juego
     */
-    public List<Sprite[]> LoadImages()
+    public void LoadImages()
     {
-        List<Sprite[]> allImages = new List<Sprite[]>();
+        allImages = new List<Sprite[]>();
 
-        if(GetList()==0)
-        {
-            Debug.Log("CREAR LISTA CHARA: " + GetList());
-            for (int j = 0; j < 4; j++)
-            {
-                p.characteristicsGameList.Add(j);
-            }
-            SetList(1);
-            Debug.Log("CAMBIO DE LISTA CHARA: " + GetList());
-        }
+        //Numero de conjuntos de imagenes
+        int setOfImages = 6;
 
-
-            //Numero de conjuntos de imagenes
-            int setOfImages = 4;
-        for (int i = 0; i < setOfImages; i++)
+        /*for (int i = 0; i < setOfImages; i++)
         {
             if (p.characteristicsGameList.Contains(i))
             {
@@ -55,87 +62,110 @@ public class CharacteristicsGameModel : Reference
 
             //p.lista.Add(spriteslist);
 
+        }*/
+        int numero = 1;
+
+        while (numero <= setOfImages)
+        {
+            if (p.characteristicsGameList.Contains("characteristics_" + numero))
+            {
+                //Cargar y guardar un set de imagenes en un array
+                Sprite[] spriteslist = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + (numero));
+
+                //sprites.Add(new Tuple<string, Sprite[]>("characteristics__" + numero, spriteslist));
+
+                //Guardar el array de imagenes en la lista
+                allImages.Add(spriteslist);
+            }
+            numero++;
         }
-        //p.numero +=1;
+
         Debug.Log("LISTA DE NUMEROS EN CHARACTERISTICS: " + p.characteristicsGameList.Count);
         p.Save("P");
         //Debug.Log("NUMERO: " + p.numero);
-        return allImages;
+        //return allImages;
     }
     /*
     * Metodo para cargar todos los enunciados que deben acompañar a cada nivel
     */
-    public List<string> LoadTexts()
+    public void LoadTexts()
     {
-        List<string> texts = new List<string>();
+        texts = new List<string>();
 
         //Pasar la ruta del archivo y el nombre del archivo que contiene los enunciados requeridos para cada nivel
-        //StreamReader reader = new StreamReader("Assets/Resources/Files/statements_characteristics.txt");
-        //Object s = Resources.Load("Files/statements_characteristics.txt");
         TextAsset textAsset = Resources.Load("Files/statements_characteristics") as TextAsset;
-   
-        //texts.Add(s.Split('\n')[0]);
-        //string[] cadena = s.Split('\n');
-        //reader = new StreamReader(Resources.Load("Files/statements_characteristics.txt"));
-     
-        //string para almacenar linea a linea el contenido del texto
-        //string line;
 
-        //Leer la primera linea de texto
-        //line = reader.ReadLine();
+        int numero = 0;
 
-        //Continuar leyendo hasta llegar al final del archivo
-        /*while (line != null)
-        {
-            //Guardar cada linea del archivo de texto en una posicion diferente de la lista
-            texts.Add(line);
-            //Leer la siguiente linea de texto
-            line = reader.ReadLine();
-        }*/
         string text = textAsset.text;
-        for (int i = 0; i < 4; i++)
+
+        while (numero < 6)
+        {
+            if (p.characteristicsGameList.Contains("characteristics_" + (numero + 1)))
+            {
+                texts.Add(text.Split('\n')[numero]);
+                //Debug.Log("TEXTS: " + texts[i]);
+            }
+            numero++;
+        }
+
+        
+        /*for (int i = 0; i < 4; i++)
         {
             if (p.characteristicsGameList.Contains(i))
             {
                 texts.Add(text.Split('\n')[i]);
             }
-        }
+        }*/
 
-        return texts;
+        //return texts;
     }
     /*
     * Metodo para cargar y guardar las respuestas de cada nivel
     */
-    public List<string> LoadAnswers()
+    public void LoadAnswers()
     {
-        List<string> answers = new List<string>();
+        answers = new List<string>();
 
         //Pasar la ruta del archivo y el nombre del archivo que contiene las respuestas requeridas para cada nivel
-        //StreamReader reader = new StreamReader("Assets/Resources/Files/correct_characteristics.txt");
         TextAsset textAsset = Resources.Load("Files/correct_characteristics") as TextAsset;
-        //string para almacenar linea a linea el contenido del texto
-        //string line;
-
-        //Leer la primera linea de texto
-        //line = reader.ReadLine();
-
-        //Continuar leyendo hasta llegar al final del archivo
-        /*while (line != null)
-        {
-            //Guardar cada linea del archivo de texto en una posicion diferente de la lista
-            answers.Add(line);
-            //Leer una nueva linea
-            line = reader.ReadLine();
-        }*/
 
         string answer = textAsset.text;
-        for (int i = 0; i < 4; i++)
+
+        int numero = 0;
+
+        while (numero < 6)
+        {
+            if (p.characteristicsGameList.Contains("characteristics_" + (numero + 1)))
+            {
+                answers.Add(answer.Split(',')[numero]);
+                //Debug.Log("TEXTS: " + texts[i]);
+            }
+            numero++;
+        }
+
+        /*for (int i = 0; i < 4; i++)
         {
             if (p.characteristicsGameList.Contains(i))
             {
                 answers.Add(answer.Split(',')[i]);
             }
-        }
+        }*/
+        //return answers;
+    }
+    /*
+     * 
+     */
+    public List<Sprite[]> GetListImages()
+    {
+        return allImages;
+    }
+    public List<string> GetListTexts()
+    {
+        return texts;
+    }
+    public List<string> GetListAnswers()
+    {
         return answers;
     }
     /*
@@ -177,7 +207,7 @@ public class CharacteristicsGameModel : Reference
      */
     public int GetList()
     {
-        createList = PlayerPrefs.GetInt("List", 0);
+        createList = PlayerPrefs.GetInt("CharacteristicsList", 0);
         return createList;
     }
     /*
@@ -185,6 +215,6 @@ public class CharacteristicsGameModel : Reference
      */
     public void SetList(int value)
     {
-        PlayerPrefs.SetInt("List", value);
+        PlayerPrefs.SetInt("CharacteristicsList", value);
     }
 }

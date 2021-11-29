@@ -11,6 +11,9 @@ public class GamesMenuView : Reference
     //Botones para iniciar cada juego
     public List<Button> playButtons;
 
+    //Canvas de terminar
+    public Canvas finishedCanvas;
+
     //Variable para guardar el nombre de cada panel que posee los juegos
     string gamePanelName;
 
@@ -63,7 +66,6 @@ public class GamesMenuView : Reference
         //Ubicar el panel en la posicion inicial
         menu.position = new Vector3(initialPosition, menu.position.y, 0);
         ShowPoints();
-        //verificarBoton();
     }
     /*
      * Metodo para mover a la derecha el menu de juegos
@@ -140,13 +142,11 @@ public class GamesMenuView : Reference
         pointsTexts[6].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
         pointsTexts[7].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();*/
     }
-    public void verificarBoton()
+    /*
+     * 
+     */
+    public void HideFinishedCanvas()
     {
-        Debug.Log("verificarBoton: "+ App.generalController.characteristicsGameController.GetButton());
-        if (App.generalController.characteristicsGameController.GetButton())
-        {
-            playButtons[1].enabled = false;
-            Debug.Log("ENTRO: " + playButtons[1].name);
-        }
+        finishedCanvas.enabled = false;
     }
 }

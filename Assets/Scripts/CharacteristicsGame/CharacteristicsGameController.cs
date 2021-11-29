@@ -35,24 +35,37 @@ public class CharacteristicsGameController : Reference
             //p.Load("P");
             //Cargar todas las imagenes (Solo una vez)
             //Instaciar Lista que guardara todas las imagenes
-            allImages = App.generalModel.characteristicsGameModel.LoadImages();
-            //Debug.Log("TAMAÑO LISTA IMAGENES: " + allImages.Count);
+            //allImages = App.generalModel.characteristicsGameModel.LoadImages();
+
+            App.generalModel.characteristicsGameModel.LoadImages();
+            allImages = App.generalModel.characteristicsGameModel.GetListImages();
+            Debug.Log("TAMAÑO LISTA IMAGENES: " + allImages.Count);
+
             //Cargar todos los enunciados (Solo una vez)
             //Instaciar Lista que guardara todos los enunciados
-            texts = App.generalModel.characteristicsGameModel.LoadTexts();
+            //texts = App.generalModel.characteristicsGameModel.LoadTexts();
+
+            App.generalModel.characteristicsGameModel.LoadTexts();
+            texts = App.generalModel.characteristicsGameModel.GetListTexts();
+            Debug.Log("TAMAÑO LISTA TEXTOS: " + texts.Count);
 
             //Cargar todas las respuestas (Solo una vez)
             //Instaciar Lista que guardara todas las respuestas
-            answers = App.generalModel.characteristicsGameModel.LoadAnswers();
+            //answers = App.generalModel.characteristicsGameModel.LoadAnswers();
+
+            App.generalModel.characteristicsGameModel.LoadAnswers();
+            answers = App.generalModel.characteristicsGameModel.GetListAnswers();
+            Debug.Log("TAMAÑO LISTA RESPUESTAS: " + answers.Count);
 
             //Numero random para seleccionar un conjunto de imagenes
-            //number = Random.Range(0, allImages.Count);
+            number = Random.Range(0, allImages.Count);
+            Debug.Log("NUMERO RANDOM: " + number);
 
             //Ubicar en la pantalla las imagenes seleccionadas
-            //PutImages();
+            PutImages();
 
             //Ubicar el enunciado en la pantalla
-            //PutText();
+            PutText();
             // && gameObject.scene.name == "CharacteristicsGameScene"
             //Debug.Log("SCENE EN MENU: " + gameObject.scene.name);
         }
@@ -71,6 +84,7 @@ public class CharacteristicsGameController : Reference
             {
                 //Numero random para seleccionar un conjunto de imagenes
                 number = Random.Range(0, allImages.Count);
+                Debug.Log("NUMERO RANDOM: " + number);
 
                 //Ubicar el enunciado en la pantalla
                 PutImages();
@@ -121,7 +135,7 @@ public class CharacteristicsGameController : Reference
     /*
     * Metodo para verificar si la respuesta final de jugador es correcta o incorrecta
     */
-    bool enableButton = false;
+    //bool enableButton = false;
     public int CheckAnswer()
     {
         counter++;
@@ -131,20 +145,12 @@ public class CharacteristicsGameController : Reference
             allImages.RemoveAt(number);
             texts.RemoveAt(number);
             answers.RemoveAt(number);
-            //App.generalModel.characteristicsGameModel.p.lista.RemoveAt(number);
+
             Debug.Log("ELIMINAR: " + number);
             App.generalModel.characteristicsGameModel.p.characteristicsGameList.RemoveAt(number);
             App.generalModel.characteristicsGameModel.p.Save("P");
 
-
-            if(allImages.Count == 0)
-            {
-                enableButton = true;
-                Debug.Log("enableButton: "+enableButton);
-                //App.generalView.gamesMenuView.playButtons[1].enabled=false;
-            }
-                            
-            //return true;
+            Debug.Log("LISTA DE IMAGENES MODELO: " + App.generalModel.characteristicsGameModel.GetListImages().Count);
 
             if (counter == 1)
             {
@@ -202,8 +208,4 @@ public class CharacteristicsGameController : Reference
         return newList;
     }
 
-    public bool GetButton()
-    {
-        return enableButton;
-    }
 }

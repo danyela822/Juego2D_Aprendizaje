@@ -10,9 +10,10 @@ public class SettingsController : Reference
     public void ResetValues()
     {
         PlayerPrefs.DeleteAll();
-        Debug.Log("ESTADO LIST: " + PlayerPrefs.GetInt("ListClasi", 0));
+        Debug.Log("ESTADO LIST: " + PlayerPrefs.GetInt("ClassificationList", 0));
+        Debug.Log("ESTADO LIST: " + PlayerPrefs.GetInt("CharacteristicsList", 0));
         q.classificationGameList = new List<string>();
-        //q.listaSprites = new List<Sprite[]>();
+        q.characteristicsGameList = new List<string>();
         File.Delete("C:/Users/Daniela/AppData/LocalLow/DefaultCompany/Juego2D_Aprendizaje/P.data");
         SceneManager.LoadScene("MainMenuScene");
     }

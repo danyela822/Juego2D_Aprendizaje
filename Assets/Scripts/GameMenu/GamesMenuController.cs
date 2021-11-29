@@ -16,15 +16,23 @@ public class GamesMenuController : Reference
                 if(p.classificationGameList.Count==0)
                 {
                     App.generalView.gamesMenuView.playButtons[0].interactable = false;
+                    App.generalView.gamesMenuView.finishedCanvas.enabled = true;
                 }
                 else
                 {
                     SceneManager.LoadScene("ClassificationGameScene");
                 }
                 break;
-
             case "Desifra el elemento":
-                SceneManager.LoadScene("CharacteristicsGameScene");
+                if (p.characteristicsGameList.Count == 0)
+                {
+                    App.generalView.gamesMenuView.playButtons[1].interactable = false;
+                    App.generalView.gamesMenuView.finishedCanvas.enabled = true;
+                }
+                else
+                {
+                    SceneManager.LoadScene("CharacteristicsGameScene");
+                }
                 break;
             case "Nombre del Juego 3":
                 
@@ -64,6 +72,6 @@ public class GamesMenuController : Reference
     }
     public void GetPointsGame()
     {
-        int points = App.generalModel.characteristicsGameModel.GetPoints();
+        //int points = App.generalModel.characteristicsGameModel.GetPoints();
     }
 }

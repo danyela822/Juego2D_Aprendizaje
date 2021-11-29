@@ -168,19 +168,13 @@ public class ClassificationGameController : Reference
             var result = answers.Except(choises);
             if (result.Count() == 0)
             {
-                Debug.Log("TAMAÑO TUPLA: " + App.generalModel.classificationGameModel.GetTupla().Count);
-                string s = App.generalModel.classificationGameModel.GetTupla()[number].Item1;
-                var t = new System.Tuple<string, Sprite[]>(s, allImages[number]);
-                Debug.Log("ITEM A BORRAR: " + s);
+                Debug.Log("ELIMINAR: " + number);
                 allImages.RemoveAt(number);
                 texts.RemoveAt(number);
                 allAnswers.RemoveAt(number);
-                App.generalModel.classificationGameModel.q.classificationGameList.Remove(s);
 
-                App.generalModel.classificationGameModel.GetTupla().Remove(t);
+                App.generalModel.classificationGameModel.q.classificationGameList.RemoveAt(number);
                 Debug.Log("LISTA DE IMAGENES MODELO: "+App.generalModel.classificationGameModel.GetListImages().Count);
-                Debug.Log("TAMAÑO TUPLA: " + App.generalModel.classificationGameModel.GetTupla().Count);
-                //App.generalModel.classificationGameModel.q.listaSprites.RemoveAt(0);
                 App.generalModel.classificationGameModel.q.Save("P");
 
                 if (counter == 1)
