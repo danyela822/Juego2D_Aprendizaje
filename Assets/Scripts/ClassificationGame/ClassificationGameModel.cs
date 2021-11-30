@@ -9,30 +9,30 @@ public class ClassificationGameModel : Reference
     int totalStars;
     int totalPoints;
     int createList;
-    public Prueba q;
+    public FileLists file;
 
     private void Start()
     {
-        q.Load("P");
-        Debug.Log("TAMAÑO LISTA CLASIFICACION: " + q.classificationGameList.Count);
+        file.Load("P");
+        Debug.Log("TAMAÑO LISTA CLASIFICACION: " + file.classificationGameList.Count);
         //Debug.Log("TAMAÑO LISTA SPRITES ANTES: "+q.listaSprites.Count);
         if (GetList() == 0)
         {
             for (int j = 0; j < 10; j++)
             {
-                q.classificationGameList.Add("set_"+(j +1));
+                file.classificationGameList.Add("set_"+(j +1));
                // Debug.Log("TAMAÑO: " + q.classificationGameList.Count);
             }
             SetList(1);
             Debug.Log("CAMBIO DE LISTA CLASSIFICATION: " + GetList());
             App.generalView.gamesMenuView.playButtons[0].enabled = true;
-            q.Save("P");
+            file.Save("P");
         }
     }
     /*
     * Metodo para cargar y guardar todas la imagnes que necesita el juego
     */
-    public void LoadImages()
+    public List<Sprite[]> LoadImages()
     {
         allImages = new List<Sprite[]>();
 
@@ -40,12 +40,10 @@ public class ClassificationGameModel : Reference
 
         while (numero <= 10)
         {
-            if (q.classificationGameList.Contains("set_"+numero))
+            if (file.classificationGameList.Contains("set_"+numero))
             {
                 //Cargar y guardar un set de imagenes en un array
                 Sprite[] spriteslist = Resources.LoadAll<Sprite>("Sets/set_" + (numero));
-
-                //sprites.Add(new Tuple<string, Sprite[]>("set_" + numero, spriteslist));
                
                 //Guardar el array de imagenes en la lista
                 allImages.Add(spriteslist);
@@ -53,18 +51,17 @@ public class ClassificationGameModel : Reference
             numero++;
         }
 
-        q.Save("P");
-        //return allImages;
+        file.Save("P");
+        return allImages;
     }
     /*
     * Metodo para cargar todos los enunciados que deben acompañar a cada nivel
     */
-    public void LoadTexts()
+    public List<string> LoadTexts()
     {
         texts = new List<string>();
 
         //Pasar la ruta del archivo y el nombre del archivo que contiene los enunciados requeridos para cada nivel
-
         TextAsset textAsset = Resources.Load("Files/statements_sets") as TextAsset;
 
         string text = textAsset.text;
@@ -73,19 +70,18 @@ public class ClassificationGameModel : Reference
 
         while (numero < 10)
         {
-            if (q.classificationGameList.Contains("set_"+(numero +1)))
+            if (file.classificationGameList.Contains("set_"+(numero +1)))
             {
                 texts.Add(text.Split('\n')[numero]);
-                //Debug.Log("TEXTS: " + texts[i]);
             }
             numero++;
         }
-        //return texts;
+        return texts;
     }
     /*
     * Metodo para cargar y guardar las respuestas de cada nivel
     */
-    public void LoadAnswers()
+    public List<string[]> LoadAnswers()
     {
         allAnswers = new List<string[]>();
 
@@ -107,14 +103,14 @@ public class ClassificationGameModel : Reference
             {
                 values2[j].TrimEnd('.');
             }
-            if (q.classificationGameList.Contains("set_" + (numero + 1)))
+            if (file.classificationGameList.Contains("set_" + (numero + 1)))
             {
                 allAnswers.Add(values2);
             }
             numero++;
         }
 
-        //return allAnswers;
+        return allAnswers;
     }
     /*
     * 
@@ -165,23 +161,4 @@ public class ClassificationGameModel : Reference
     {
         PlayerPrefs.SetInt("ClassificationList", value);
     }
-    /*
-     * 
-     */
-    public List<Sprite[]> GetListImages()
-    {
-        return allImages;
-    }
-    public List<string> GetListTexts()
-    {
-        return texts;
-    }
-    public List<string[]> GetListAnswers()
-    {
-        return allAnswers;
-    }
-    /*public List<Tuple<string, Sprite[]>> GetTupla()
-    {
-        return sprites;
-    }*/
 }

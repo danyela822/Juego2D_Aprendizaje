@@ -12,67 +12,45 @@ public class CharacteristicsGameModel : Reference
     int totalStars;
     int totalPoints;
     int createList;
-    public Prueba p;
+    public FileLists file;
 
     private void Start()
     {
-        p.Load("P");
-        Debug.Log("TAMAÑO LISTA Characteristics: " + p.characteristicsGameList.Count);
+        file.Load("P");
+        Debug.Log("TAMAÑO LISTA Characteristics: " + file.characteristicsGameList.Count);
         //Debug.Log("TAMAÑO LISTA SPRITES ANTES: "+q.listaSprites.Count);
         if (GetList() == 0)
         {
             for (int j = 0; j < 6; j++)
             {
-                p.characteristicsGameList.Add("characteristics_" + (j + 1));
+                file.characteristicsGameList.Add("characteristics_" + (j + 1));
                 // Debug.Log("TAMAÑO: " + q.classificationGameList.Count);
             }
             SetList(1);
             Debug.Log("CAMBIO DE LISTA Characteristics: " + GetList());
             App.generalView.gamesMenuView.playButtons[1].enabled = true;
-            p.Save("P");
+            file.Save("P");
         }
     }
 
     /*
     * Metodo para cargar y guardar todas la imagnes que necesita el juego
     */
-    public void LoadImages()
+    public List<Sprite[]> LoadImages()
     {
         allImages = new List<Sprite[]>();
 
         //Numero de conjuntos de imagenes
         int setOfImages = 6;
 
-        /*for (int i = 0; i < setOfImages; i++)
-        {
-            if (p.characteristicsGameList.Contains(i))
-            {
-                    //Cargar y guardar un set de imagenes en un array
-                    Sprite[] spriteslist = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + (i+1));
-
-                    //Guardar el array de imagenes en la lista
-                    allImages.Add(spriteslist);
-            }
-            
-            //Cargar y guardar un set de imagenes en un array
-            //Sprite[] spriteslist = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + (i));
-
-            //Guardar el array de imagenes en la lista
-            //allImages.Add(spriteslist);
-
-            //p.lista.Add(spriteslist);
-
-        }*/
         int numero = 1;
 
         while (numero <= setOfImages)
         {
-            if (p.characteristicsGameList.Contains("characteristics_" + numero))
+            if (file.characteristicsGameList.Contains("characteristics_" + numero))
             {
                 //Cargar y guardar un set de imagenes en un array
                 Sprite[] spriteslist = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + (numero));
-
-                //sprites.Add(new Tuple<string, Sprite[]>("characteristics__" + numero, spriteslist));
 
                 //Guardar el array de imagenes en la lista
                 allImages.Add(spriteslist);
@@ -80,15 +58,14 @@ public class CharacteristicsGameModel : Reference
             numero++;
         }
 
-        Debug.Log("LISTA DE NUMEROS EN CHARACTERISTICS: " + p.characteristicsGameList.Count);
-        p.Save("P");
-        //Debug.Log("NUMERO: " + p.numero);
-        //return allImages;
+        Debug.Log("LISTA DE NUMEROS EN CHARACTERISTICS: " + file.characteristicsGameList.Count);
+        file.Save("P");
+        return allImages;
     }
     /*
     * Metodo para cargar todos los enunciados que deben acompañar a cada nivel
     */
-    public void LoadTexts()
+    public List<string> LoadTexts()
     {
         texts = new List<string>();
 
@@ -101,29 +78,19 @@ public class CharacteristicsGameModel : Reference
 
         while (numero < 6)
         {
-            if (p.characteristicsGameList.Contains("characteristics_" + (numero + 1)))
+            if (file.characteristicsGameList.Contains("characteristics_" + (numero + 1)))
             {
                 texts.Add(text.Split('\n')[numero]);
                 //Debug.Log("TEXTS: " + texts[i]);
             }
             numero++;
         }
-
-        
-        /*for (int i = 0; i < 4; i++)
-        {
-            if (p.characteristicsGameList.Contains(i))
-            {
-                texts.Add(text.Split('\n')[i]);
-            }
-        }*/
-
-        //return texts;
+        return texts;
     }
     /*
     * Metodo para cargar y guardar las respuestas de cada nivel
     */
-    public void LoadAnswers()
+    public List<string> LoadAnswers()
     {
         answers = new List<string>();
 
@@ -136,36 +103,13 @@ public class CharacteristicsGameModel : Reference
 
         while (numero < 6)
         {
-            if (p.characteristicsGameList.Contains("characteristics_" + (numero + 1)))
+            if (file.characteristicsGameList.Contains("characteristics_" + (numero + 1)))
             {
                 answers.Add(answer.Split(',')[numero]);
                 //Debug.Log("TEXTS: " + texts[i]);
             }
             numero++;
         }
-
-        /*for (int i = 0; i < 4; i++)
-        {
-            if (p.characteristicsGameList.Contains(i))
-            {
-                answers.Add(answer.Split(',')[i]);
-            }
-        }*/
-        //return answers;
-    }
-    /*
-     * 
-     */
-    public List<Sprite[]> GetListImages()
-    {
-        return allImages;
-    }
-    public List<string> GetListTexts()
-    {
-        return texts;
-    }
-    public List<string> GetListAnswers()
-    {
         return answers;
     }
     /*

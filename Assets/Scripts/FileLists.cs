@@ -1,12 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-[CreateAssetMenu(fileName = "Prueba nueva", menuName = "Herramientas/prueba", order = 0)]
+[CreateAssetMenu(fileName = "FileLists", menuName = "Herramientas/fileLists", order = 0)]
 [System.Serializable]
-public class Prueba : ScriptableObject
+public class FileLists : ScriptableObject
 {
     public List<string> classificationGameList;
     public List<string> characteristicsGameList;
@@ -22,8 +21,8 @@ public class Prueba : ScriptableObject
         br.Serialize(file, json);
 
         Debug.Log("SE CREO ARCHIVO: " + file.Name + ": " + File.Exists(GetPath(fileName)));
-        //Debug.Log("LISTA CLASIFICACION EN GUARDAR: " + classificationGameList.Count);
-        Debug.Log("LISTACHA EN GUARDAR: " + characteristicsGameList.Count);
+        Debug.Log("LISTA CLASIFICACION EN GUARDAR: " + classificationGameList.Count);
+        Debug.Log("LISTA CHARACTERISTICS EN GUARDAR: " + characteristicsGameList.Count);
         file.Close();
     }
 
@@ -36,8 +35,8 @@ public class Prueba : ScriptableObject
             FileStream file = File.Open(GetPath(fileName), FileMode.Open);
 
             JsonUtility.FromJsonOverwrite((string)br.Deserialize(file), this);
-            //Debug.Log("LISTA CLASIFICACION EN CARGAR: " + classificationGameList.Count);
-            Debug.Log("LISTACHA EN CARGAR: " + characteristicsGameList.Count);
+            Debug.Log("LISTA CLASIFICACION EN CARGAR: " + classificationGameList.Count);
+            Debug.Log("LISTA CHARACTERISTICS EN CARGAR: " + characteristicsGameList.Count);
             file.Close();
         }
         else

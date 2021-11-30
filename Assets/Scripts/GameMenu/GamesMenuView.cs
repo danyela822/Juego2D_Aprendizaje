@@ -75,7 +75,7 @@ public class GamesMenuView : Reference
         //Calcular la nueva posicion del menu
         nextPosition = (menu.transform.position.x) - (initialPosition*2);
         //La nueva posicion debe ser mayor a -7020 para evitar mostrar paneles vacios
-        if (gamePanelName != "GamePanel8")
+        if (gamePanelName != "GamePanel9")
         {
             //Aumentar el valor del contador
             cont++;

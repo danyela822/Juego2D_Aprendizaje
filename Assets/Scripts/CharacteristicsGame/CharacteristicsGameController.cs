@@ -16,88 +16,31 @@ public class CharacteristicsGameController : Reference
     //Numero para acceder a un conjunto de imagenes en especifico
     int number;
 
-    //String para almacenar la respuesta que dio el jugador
-    string answer;
-
     //Numero para indicar el numero de veces que verifica la respuesta correcta
     public int counter;
 
     //Objeto que contiene el controlador del juego
     public static CharacteristicsGameController gameController;
 
-    //public Prueba p;
-    void Awake()
+    private void Start()
     {
-        if (gameController == null)
-        {
-            gameController = this;
-            DontDestroyOnLoad(gameObject);
-            //p.Load("P");
-            //Cargar todas las imagenes (Solo una vez)
-            //Instaciar Lista que guardara todas las imagenes
-            //allImages = App.generalModel.characteristicsGameModel.LoadImages();
+        //Instaciar Lista que guardara todas las imagenes
+        allImages = App.generalModel.characteristicsGameModel.LoadImages();
 
-            App.generalModel.characteristicsGameModel.LoadImages();
-            allImages = App.generalModel.characteristicsGameModel.GetListImages();
-            Debug.Log("TAMAÑO LISTA IMAGENES: " + allImages.Count);
+        //Instaciar Lista que guardara todos los enunciados
+        texts = App.generalModel.characteristicsGameModel.LoadTexts();
 
-            //Cargar todos los enunciados (Solo una vez)
-            //Instaciar Lista que guardara todos los enunciados
-            //texts = App.generalModel.characteristicsGameModel.LoadTexts();
+        //Instaciar Lista que guardara todas las respuestas
+        answers = App.generalModel.characteristicsGameModel.LoadAnswers();
 
-            App.generalModel.characteristicsGameModel.LoadTexts();
-            texts = App.generalModel.characteristicsGameModel.GetListTexts();
-            Debug.Log("TAMAÑO LISTA TEXTOS: " + texts.Count);
+        //Numero random para seleccionar un conjunto de imagenes
+        number = Random.Range(0, allImages.Count);
 
-            //Cargar todas las respuestas (Solo una vez)
-            //Instaciar Lista que guardara todas las respuestas
-            //answers = App.generalModel.characteristicsGameModel.LoadAnswers();
+        //Ubicar en la pantalla las imagenes seleccionadas
+        PutImages();
 
-            App.generalModel.characteristicsGameModel.LoadAnswers();
-            answers = App.generalModel.characteristicsGameModel.GetListAnswers();
-            Debug.Log("TAMAÑO LISTA RESPUESTAS: " + answers.Count);
-
-            //Numero random para seleccionar un conjunto de imagenes
-            number = Random.Range(0, allImages.Count);
-            Debug.Log("NUMERO RANDOM: " + number);
-
-            //Ubicar en la pantalla las imagenes seleccionadas
-            PutImages();
-
-            //Ubicar el enunciado en la pantalla
-            PutText();
-            // && gameObject.scene.name == "CharacteristicsGameScene"
-            //Debug.Log("SCENE EN MENU: " + gameObject.scene.name);
-        }
-        else if (gameController != this && allImages.Count > 0)
-        {
-            //Debug.Log("SCENE: " + gameObject.scene.name);
-            //Destruir el objeto
-            Destroy(gameObject);
-
-            //Ubicar el enunciado en la pantalla
-            //PutImages();
-
-            //Ubicar el enunciado en la pantalla
-            //PutText();
-            if(gameObject.scene.name == "CharacteristicsGameScene")
-            {
-                //Numero random para seleccionar un conjunto de imagenes
-                number = Random.Range(0, allImages.Count);
-                Debug.Log("NUMERO RANDOM: " + number);
-
-                //Ubicar el enunciado en la pantalla
-                PutImages();
-
-                //Ubicar el enunciado en la pantalla
-                PutText();
-            }
-        }
-        else
-        {
-            Debug.Log("LISTA VACIA");
-            //SceneManager.LoadScene("GamesMenuScene");
-        }
+        //Ubicar el enunciado en la pantalla
+        PutText();
     }
     /*
     * Metodo para ubicar todas las imagenes seleccionas en la pantalla
@@ -125,32 +68,23 @@ public class CharacteristicsGameController : Reference
         App.generalView.characteristicsGameView.statement.text = text;
     }
     /*
-    * Metodo para guardar la opcion elegida por el jugador
-    */
-    public void SaveOption(string selectedOption)
-    {
-        //Guardar la opcion seleccionada como la respuesta del jugador
-        answer = selectedOption;
-    }
-    /*
     * Metodo para verificar si la respuesta final de jugador es correcta o incorrecta
     */
-    //bool enableButton = false;
-    public int CheckAnswer()
+    public int CheckAnswer(string selectedOption)
     {
         counter++;
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
-        if (answer == answers[number])
+        if (selectedOption == answers[number])
         {
             allImages.RemoveAt(number);
             texts.RemoveAt(number);
             answers.RemoveAt(number);
 
             Debug.Log("ELIMINAR: " + number);
-            App.generalModel.characteristicsGameModel.p.characteristicsGameList.RemoveAt(number);
-            App.generalModel.characteristicsGameModel.p.Save("P");
+            App.generalModel.characteristicsGameModel.file.characteristicsGameList.RemoveAt(number);
+            App.generalModel.characteristicsGameModel.file.Save("P");
 
-            Debug.Log("LISTA DE IMAGENES MODELO: " + App.generalModel.characteristicsGameModel.GetListImages().Count);
+            //Debug.Log("LISTA DE IMAGENES MODELO: " + App.generalModel.characteristicsGameModel.GetListImages().Count);
 
             if (counter == 1)
             {

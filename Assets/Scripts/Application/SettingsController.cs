@@ -6,15 +6,15 @@ using System.IO;
 
 public class SettingsController : Reference
 {
-    public Prueba q;
+    public FileLists file;
     public void ResetValues()
     {
         PlayerPrefs.DeleteAll();
-        Debug.Log("ESTADO LIST: " + PlayerPrefs.GetInt("ClassificationList", 0));
-        Debug.Log("ESTADO LIST: " + PlayerPrefs.GetInt("CharacteristicsList", 0));
-        q.classificationGameList = new List<string>();
-        q.characteristicsGameList = new List<string>();
-        File.Delete("C:/Users/Daniela/AppData/LocalLow/DefaultCompany/Juego2D_Aprendizaje/P.data");
+        Debug.Log("ESTADO ClassificationList: " + PlayerPrefs.GetInt("ClassificationList", 0));
+        Debug.Log("ESTADO CharacteristicsList: " + PlayerPrefs.GetInt("CharacteristicsList", 0));
+        file.classificationGameList = new List<string>();
+        file.characteristicsGameList = new List<string>();
+        File.Delete(file.GetPath("P"));
         SceneManager.LoadScene("MainMenuScene");
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GamesMenuController : Reference
 {
-    public Prueba p;
+    public FileLists file;
     public void Play(string gameName)
     {
         //Debug.Log("Nombre del juego: " + gameName);
@@ -13,7 +13,7 @@ public class GamesMenuController : Reference
         switch (gameName)
         {
             case "Descubre el conjunto":
-                if(p.classificationGameList.Count==0)
+                if(file.classificationGameList.Count==0)
                 {
                     App.generalView.gamesMenuView.playButtons[0].interactable = false;
                     App.generalView.gamesMenuView.finishedCanvas.enabled = true;
@@ -24,7 +24,7 @@ public class GamesMenuController : Reference
                 }
                 break;
             case "Desifra el elemento":
-                if (p.characteristicsGameList.Count == 0)
+                if (file.characteristicsGameList.Count == 0)
                 {
                     App.generalView.gamesMenuView.playButtons[1].interactable = false;
                     App.generalView.gamesMenuView.finishedCanvas.enabled = true;

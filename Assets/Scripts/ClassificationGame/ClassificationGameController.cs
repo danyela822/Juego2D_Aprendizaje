@@ -9,15 +9,12 @@ public class ClassificationGameController : Reference
 {
     //Matriz para guardar todos los conjuntos de imagenes del juego
     static List<Sprite[]> allImages;
-    //Sprite[,] allPictures;
 
     //Array para guardar todos los enunciados del juego
     static List<string> texts;
-    //string[] allTexts;
 
     //Lista para guardar todos los conjuntos de respuestas del juego
     static List<string[]> allAnswers;
-    //List<string[]> allAnswers;
 
     //Numero para acceder a un conjunto de imagenes en especifico
     int number;
@@ -30,82 +27,29 @@ public class ClassificationGameController : Reference
 
     //Objeto que contiene el controlador del juego
     public static ClassificationGameController gameController;
-    
-    
-    void Awake()
+
+    private void Start()
     {
-        if (gameController == null)
-        {
-            gameController = this;
-            DontDestroyOnLoad(gameObject);
+        //Instaciar Lista que guardara todas las imagenes
+        allImages = App.generalModel.classificationGameModel.LoadImages();
 
-            //Instaciar Lista que guardara todas las imagenes
-            //allImages = App.generalModel.classificationGameModel.LoadImages();
-            App.generalModel.classificationGameModel.LoadImages();
-            allImages = App.generalModel.classificationGameModel.GetListImages();
-            //Debug.Log("allImages en controller: "+allImages.Count);
+        //Instaciar Lista que guardara todos los enunciados
+        texts = App.generalModel.classificationGameModel.LoadTexts();
 
-            //Instaciar Lista que guardara todos los enunciados
-            //texts = App.generalModel.classificationGameModel.LoadTexts();
-            App.generalModel.classificationGameModel.LoadTexts();
-            texts = App.generalModel.classificationGameModel.GetListTexts();
-            //Debug.Log("texts en controller: " + texts.Count);
+        //Instaciar Lista que guardara todas las respuestas
+        allAnswers = App.generalModel.classificationGameModel.LoadAnswers();
 
-            //Instaciar Lista que guardara todas las respuestas
-            //allAnswers = App.generalModel.classificationGameModel.LoadAnswers();
-            App.generalModel.classificationGameModel.LoadAnswers();
-            allAnswers = App.generalModel.classificationGameModel.GetListAnswers();
-            //Debug.Log("allAnswers en controller: " + allAnswers.Count);
-            
-            //Numero random para seleccionar un conjunto de imagenes
-            number = Random.Range(0, allImages.Count);
-            Debug.Log("NUMERO RANDOM: " + number);
-            //Cargar todas las imagenes (Solo una vez)
-            //LoadImages();
+        //Numero random para seleccionar un conjunto de imagenes
+        number = Random.Range(0, allImages.Count);
 
-            //Ubicar en la pantalla las imagenes seleccionadas
-            PutImages();
+        //Ubicar en la pantalla las imagenes seleccionadas
+        PutImages();
 
-            //Cargar todos los enunciados (Solo una vez)
-            //LoadTexts();
+        //Ubicar el enunciado en la pantalla
+        PutText();
 
-            //Ubicar el enunciado en la pantalla
-            PutText();
-
-            //Cargar todas las respuestas (Solo una vez)
-            //LoadAnswers();
-
-            //Variable para guardar las opciones marcadas por el jugador
-            choises = new List<string>();
-            
-        }
-        else if (gameController != this && allImages.Count > 0)
-        {
-            //Destruir el objeto
-            Destroy(gameObject);
-
-            if (gameObject.scene.name == "ClassificationGameScene")
-            { 
-                //Numero random para seleccionar un conjunto de imagenes
-                number = Random.Range(0, allImages.Count);
-                Debug.Log("NUMERO RANDOM: " + number);
-
-                //Ubicar el enunciado en la pantalla
-                PutImages();
-
-                //Ubicar el enunciado en la pantalla
-                PutText();
-
-                //Variable para guardar las opciones marcadas por el jugador
-                choises = new List<string>();
-            }
-
-        }
-        else
-        {
-            Debug.Log("LISTA VACIA");
-            //SceneManager.LoadScene("GamesMenuScene");
-        }
+        //Variable para guardar las opciones marcadas por el jugador
+        choises = new List<string>();
     }
     /*
     * Metodo para ubicar todas las imagenes seleccionas en la pantalla
@@ -173,9 +117,10 @@ public class ClassificationGameController : Reference
                 texts.RemoveAt(number);
                 allAnswers.RemoveAt(number);
 
-                App.generalModel.classificationGameModel.q.classificationGameList.RemoveAt(number);
-                Debug.Log("LISTA DE IMAGENES MODELO: "+App.generalModel.classificationGameModel.GetListImages().Count);
-                App.generalModel.classificationGameModel.q.Save("P");
+                App.generalModel.classificationGameModel.file.classificationGameList.RemoveAt(number);
+
+                //Debug.Log("LISTA DE IMAGENES MODELO: "+App.generalModel.classificationGameModel.GetListImages().Count);
+                App.generalModel.classificationGameModel.file.Save("P");
 
                 if (counter == 1)
                 {
