@@ -23,7 +23,7 @@ public class GamesMenuController : Reference
                     SceneManager.LoadScene("ClassificationGameScene");
                 }
                 break;
-            case "Desifra el elemento":
+            case "¿Quien soy?":
                 if (file.characteristicsGameList.Count == 0)
                 {
                     App.generalView.gamesMenuView.playButtons[1].interactable = false;
