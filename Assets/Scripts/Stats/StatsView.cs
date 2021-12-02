@@ -11,6 +11,8 @@ public class StatsView : Reference
 
     public Image leagueImage;
 
+    public List<Sprite> leagueImages;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +22,22 @@ public class StatsView : Reference
     void ShowTotalStars()
     {
         int stars = App.generalController.statsController.GetTotalStars();
-        //int stars = PlayerPrefs.GetInt("TotalStarsGame1", 0) + PlayerPrefs.GetInt("TotalStarsGame2", 0); ;
         starsText.text = stars.ToString();
     }
     void ShowLeague()
     {
         string league = App.generalController.statsController.GetLeague();
+
         leagueText.text = league;
+
+        for(int i = 0; i < leagueImages.Count; i++)
+        {
+            Sprite currentImage = leagueImages[i];
+            if (currentImage.name == league.ToLower())
+            {
+                leagueImage.sprite = currentImage;
+            }
+        }
+
     }
 }

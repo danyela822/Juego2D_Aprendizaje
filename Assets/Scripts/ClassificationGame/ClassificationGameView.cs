@@ -30,9 +30,6 @@ public class ClassificationGameView : Reference
     //Lista de items que aparecen en la pantalla al seleccionar un boton
     List<GameObject> items;
 
-    //Variable para contar la cantidad de veces que se presionan los botones
-    int counter = 0;
-
     //Numero de intentos que tiene el jugador para ganar el juego
     int attempts = 2;
 
@@ -66,7 +63,6 @@ public class ClassificationGameView : Reference
             //Guardar el nombre de la imagen de la lista
             App.generalController.classificationGameController.SaveChoise(nameImage, checkArray[buttonNumber]);
 
-            counter++;
             //Debug.Log("Presiono: " + counter);
             checkArray[buttonNumber] = false;
         }

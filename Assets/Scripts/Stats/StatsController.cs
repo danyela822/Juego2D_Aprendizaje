@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class StatsController : Reference
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     public string GetLeague()
     {
         string league = "";
+
         int stars = GetTotalStars();
 
-        if (stars > 15 && stars <= 35)
+        if (stars >= 15 && stars < 45)
         {
             league = "Hierro";
         }
-        else if (stars > 35 && stars <= 55)
+        else if (stars >=45 && stars < 85)
+        {
+            league = "Bronce";
+        }
+        else if (stars >= 85 && stars < 145)
         {
             league = "Plata";
         }
-        else if (stars > 55 && stars <= 75)
+        else if (stars >= 145 && stars < 215)
         {
             league = "Oro";
         }
-        else if (stars > 75 && stars <= 100)
+        else if (stars >= 215)
         {
             league = "Diamante";
         }

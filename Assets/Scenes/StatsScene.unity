@@ -3285,6 +3285,12 @@ MonoBehaviour:
   starsText: {fileID: 193527803}
   leagueText: {fileID: 1240177875}
   leagueImage: {fileID: 827963881}
+  leagueImages:
+  - {fileID: 21300000, guid: c40e65656ecb93a4bbfef162b755fcf0, type: 3}
+  - {fileID: 21300000, guid: 9bfdc1e97fdb6214189e89280ca4f56a, type: 3}
+  - {fileID: 21300000, guid: 06ecfeec4600b3b47aaa3d1319c01f11, type: 3}
+  - {fileID: 21300000, guid: d7f7d7d9b15ef644fb74a68a9e8c6c81, type: 3}
+  - {fileID: 21300000, guid: 3d912560a8a63e74585bb7347524ea87, type: 3}
 --- !u!114 &965692670
 MonoBehaviour:
   m_ObjectHideFlags: 0
