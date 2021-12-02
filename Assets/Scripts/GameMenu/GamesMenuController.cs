@@ -49,8 +49,8 @@ public class GamesMenuController : Reference
 
                 break;
 
-            case "Nombre del Juego 6":
-
+            case "Union e Interseccion":
+                SceneManager.LoadScene("SetsGameScene");
                 break;
 
             case "Nombre del Juego 7":
