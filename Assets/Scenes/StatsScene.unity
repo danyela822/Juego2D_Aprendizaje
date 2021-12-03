@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1095525345}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.2615337
+  m_Size: 0.25724906
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3267,21 +3267,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkListLogros:
-  - {fileID: 2060979680}
-  - {fileID: 950207303}
-  - {fileID: 885205039}
-  - {fileID: 854813178}
-  - {fileID: 1720523852}
-  - {fileID: 2087523240}
-  - {fileID: 1171662593}
-  - {fileID: 1841475244}
-  - {fileID: 246720474}
-  - {fileID: 1471693143}
-  - {fileID: 927110051}
-  - {fileID: 168183234}
-  - {fileID: 523253229}
-  - {fileID: 1242405645}
-  - {fileID: 1986501058}
+  - {fileID: 1413330532}
+  - {fileID: 1537026744}
+  - {fileID: 1309510420}
+  - {fileID: 1847412513}
+  - {fileID: 1152700903}
+  - {fileID: 2136425083}
+  - {fileID: 1643699073}
+  - {fileID: 1108113365}
+  - {fileID: 1331486265}
+  - {fileID: 1827681576}
+  - {fileID: 659707459}
+  - {fileID: 893693373}
+  - {fileID: 371460131}
+  - {fileID: 1207696049}
+  - {fileID: 375503853}
   starsText: {fileID: 193527803}
   leagueText: {fileID: 1240177875}
   leagueImage: {fileID: 827963881}

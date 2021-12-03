@@ -22,6 +22,15 @@ public class CharacteristicsGameController : Reference
     //Objeto que contiene el controlador del juego
     public static CharacteristicsGameController gameController;
 
+    //Numero para saber cuantas veces ha ganado 3 estrella
+    int countPerfectWins = 0;
+
+    //Numero de veces que ha jugado
+    int countPlay = 0;
+
+    //numero que cuenta las veces que ha completado niveles sin errores
+    int countPerfectGame = 0;
+
     private void Start()
     {
         //Instaciar Lista que guardara todas las imagenes
@@ -72,6 +81,13 @@ public class CharacteristicsGameController : Reference
     */
     public int CheckAnswer(string selectedOption)
     {
+        if (PlayerPrefs.GetInt("PlayGame2", 0) == 0)
+        {
+            countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
+            PlayerPrefs.SetInt("PlayOneLevel", countPlay);
+            Debug.Log("Jugo: " + countPlay);
+            PlayerPrefs.SetInt("PlayGame2", 1);
+        }
         counter++;
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
         if (selectedOption == answers[number])
@@ -90,18 +106,33 @@ public class CharacteristicsGameController : Reference
             {
                 App.generalModel.characteristicsGameModel.SetPoints(App.generalModel.characteristicsGameModel.GetPoints() + 30);
                 App.generalModel.characteristicsGameModel.SetTotalStars(App.generalModel.characteristicsGameModel.GetTotalStars() + 3);
+
+                //Veces que ha ganado 3 estrellas
+                countPerfectWins = PlayerPrefs.GetInt("GetThreeStars2", 0) + 1;
+                Debug.Log("GANO 3 ESTRELLAS: " + countPerfectWins);
+                PlayerPrefs.SetInt("GetThreeStars2", countPerfectWins);
+
+                //Veces que ha ganadi sin errores
+                countPerfectGame = PlayerPrefs.GetInt("PerfectGame2", 0) + 1;
+                Debug.Log("Lleva: " + countPerfectGame);
+                PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
+
                 return 3;
             }
             else if(counter == 2)
             {
                 App.generalModel.characteristicsGameModel.SetPoints(App.generalModel.characteristicsGameModel.GetPoints() + 20);
                 App.generalModel.characteristicsGameModel.SetTotalStars(App.generalModel.characteristicsGameModel.GetTotalStars() + 2);
+                countPerfectGame = 0;
+                PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
                 return 2;
             }
             else 
             {
                 App.generalModel.characteristicsGameModel.SetPoints(App.generalModel.characteristicsGameModel.GetPoints() + 10);
                 App.generalModel.characteristicsGameModel.SetTotalStars(App.generalModel.characteristicsGameModel.GetTotalStars() + 1);
+                countPerfectGame = 0;
+                PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
                 return 1;
             }
         }

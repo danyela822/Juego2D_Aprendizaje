@@ -135,7 +135,12 @@ public class CharacteristicsGameModel : Reference
     public int GetPoints()
     {
         totalPoints = PlayerPrefs.GetInt("TotalPointsGame2", 0);
-        //Debug.Log("PUNTOS HASTA AHORA: "+totalPoints);
+        Debug.Log("PUNTOS HASTA AHORA CHARACTERISTICS: "+totalPoints);
+        if (totalPoints >= 200 && PlayerPrefs.GetInt("GamePoints2", 0) == 0)
+        {
+            PlayerPrefs.SetInt("GamePoints2", 1);
+            PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
+        }
         return totalPoints;
     }
     /*

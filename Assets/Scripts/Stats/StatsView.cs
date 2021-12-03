@@ -18,6 +18,7 @@ public class StatsView : Reference
     {
         ShowTotalStars();
         ShowLeague();
+        CheckAchievements();
     }
     void ShowTotalStars()
     {
@@ -39,5 +40,15 @@ public class StatsView : Reference
             }
         }
 
+    }
+    public void CheckAchievements()
+    {
+        for (int i = 0; i < checkListLogros.Count; i++)
+        {
+            if (App.generalController.statsController.CheckAchievements(i) == true)
+            {
+                checkListLogros[i].GetComponent<Image>().enabled = true;
+            }
+        }
     }
 }

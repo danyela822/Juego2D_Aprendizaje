@@ -135,7 +135,12 @@ public class ClassificationGameModel : Reference
     public int GetPoints()
     {
         totalPoints = PlayerPrefs.GetInt("TotalPointsGame1", 0);
-        //Debug.Log("PUNTOS HASTA AHORA: "+totalPoints);
+        //Debug.Log("PUNTOS HASTA AHORA CLASSIFICATION: "+totalPoints);
+        if(totalPoints >= 200 && PlayerPrefs.GetInt("GamePoints1",0) == 0)
+        {
+            PlayerPrefs.SetInt("GamePoints1", 1);
+            PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
+        }
         return totalPoints;
     }
     /*

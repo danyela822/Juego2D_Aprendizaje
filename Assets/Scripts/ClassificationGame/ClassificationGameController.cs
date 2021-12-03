@@ -28,6 +28,15 @@ public class ClassificationGameController : Reference
     //Objeto que contiene el controlador del juego
     public static ClassificationGameController gameController;
 
+    //Numero para saber cuantas veces ha ganado 3 estrella
+    int countPerfectWins = 0;
+
+    //Numero de veces que ha jugado
+    int countPlay = 0;
+
+    //numero que cuenta las veces que ha completado niveles sin errores
+    int countPerfectGame = 0;
+
     private void Start()
     {
         //Instaciar Lista que guardara todas las imagenes
@@ -102,7 +111,16 @@ public class ClassificationGameController : Reference
     */
     public int CheckAnswer()
     {
+
         counter++;
+        if (PlayerPrefs.GetInt("PlayGame1", 0) == 0)
+        {
+            countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
+            PlayerPrefs.SetInt("PlayOneLevel", countPlay);
+            Debug.Log("Jugo: " + countPlay);
+            PlayerPrefs.SetInt("PlayGame1", 1);
+        }
+
 
         //Obtener un conjunto de respuestas en especifico
         string[] answers = allAnswers[number];
@@ -112,6 +130,7 @@ public class ClassificationGameController : Reference
             var result = answers.Except(choises);
             if (result.Count() == 0)
             {
+
                 Debug.Log("ELIMINAR: " + number);
                 allImages.RemoveAt(number);
                 texts.RemoveAt(number);
@@ -126,18 +145,33 @@ public class ClassificationGameController : Reference
                 {
                     App.generalModel.classificationGameModel.SetPoints(App.generalModel.classificationGameModel.GetPoints() + 30);
                     App.generalModel.classificationGameModel.SetTotalStars(App.generalModel.classificationGameModel.GetTotalStars() + 3);
+
+                    //Veces que ha ganado 3 estrellas
+                    countPerfectWins = PlayerPrefs.GetInt("GetThreeStars1", 0) + 1;
+                    Debug.Log("GANO 3 ESTRELLAS: " + countPerfectWins);
+                    PlayerPrefs.SetInt("GetThreeStars1", countPerfectWins);
+
+                    //Veces que ha ganadi sin errores
+                    countPerfectGame = PlayerPrefs.GetInt("PerfectGame1", 0) + 1;
+                    Debug.Log("Lleva: " + countPerfectGame);
+                    PlayerPrefs.SetInt("PerfectGame1", countPerfectGame);
+
                     return 3;
                 }
                 else if (counter == 2)
                 {
                     App.generalModel.classificationGameModel.SetPoints(App.generalModel.classificationGameModel.GetPoints() + 20);
                     App.generalModel.classificationGameModel.SetTotalStars(App.generalModel.classificationGameModel.GetTotalStars() + 2);
+                    countPerfectGame = 0;
+                    PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
                     return 2;
                 }
                 else
                 {
                     App.generalModel.classificationGameModel.SetPoints(App.generalModel.classificationGameModel.GetPoints() + 10);
                     App.generalModel.classificationGameModel.SetTotalStars(App.generalModel.classificationGameModel.GetTotalStars() + 1);
+                    countPerfectGame = 0;
+                    PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
                     return 1;
                 }
             }
