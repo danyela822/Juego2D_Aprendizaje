@@ -12,9 +12,11 @@ public class SettingsController : Reference
         PlayerPrefs.DeleteAll();
         Debug.Log("ESTADO ClassificationList: " + PlayerPrefs.GetInt("ClassificationList", 0));
         Debug.Log("ESTADO CharacteristicsList: " + PlayerPrefs.GetInt("CharacteristicsList", 0));
+        Debug.Log("ESTADO AchievementsList: " + PlayerPrefs.GetInt("AchievementsList", 0));
         file.classificationGameList = new List<string>();
         file.characteristicsGameList = new List<string>();
+        file.achievementsList = new List<int>();
         File.Delete(file.GetPath("P"));
-        SceneManager.LoadScene("MainMenuScene");
+        //SceneManager.LoadScene("MainMenuScene");
     }
 }

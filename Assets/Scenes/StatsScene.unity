@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1095525345}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.25724906
+  m_Size: 0.2615337
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2308,6 +2308,7 @@ MonoBehaviour:
   miniGameModel: {fileID: 0}
   characteristicsGameModel: {fileID: 0}
   classificationGameModel: {fileID: 0}
+  statsModel: {fileID: 965692671}
 --- !u!1 &659707459
 GameObject:
   m_ObjectHideFlags: 0
@@ -3233,6 +3234,7 @@ GameObject:
   - component: {fileID: 965692668}
   - component: {fileID: 965692670}
   - component: {fileID: 965692669}
+  - component: {fileID: 965692671}
   m_Layer: 0
   m_Name: Stats
   m_TagString: Untagged
@@ -3303,6 +3305,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4f4ecc3072d4042b314dd256f7b533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &965692671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965692667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa51b567cabdaf4b83221225682945b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  file: {fileID: 11400000, guid: 83f75b461f443af4ebe2b0eb4a4d15b8, type: 2}
 --- !u!1 &994622067
 GameObject:
   m_ObjectHideFlags: 0

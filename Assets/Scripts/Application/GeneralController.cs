@@ -15,5 +15,6 @@ public class GeneralController : Reference
     public GameOptionsController gameOptionsController;
     public GamesMenuController gamesMenuController;
 
+    public SettingsController settingsController;
     public StatsController statsController;
 }

@@ -9,6 +9,7 @@ public class FileLists : ScriptableObject
 {
     public List<string> classificationGameList;
     public List<string> characteristicsGameList;
+    public List<int> achievementsList;
 
     public void Save(string fileName = null)
     {
@@ -23,6 +24,7 @@ public class FileLists : ScriptableObject
         Debug.Log("SE CREO ARCHIVO: " + file.Name + ": " + File.Exists(GetPath(fileName)));
         Debug.Log("LISTA CLASIFICACION EN GUARDAR: " + classificationGameList.Count);
         Debug.Log("LISTA CHARACTERISTICS EN GUARDAR: " + characteristicsGameList.Count);
+        Debug.Log("LISTA LOGROS EN GUARDAR: " + achievementsList.Count);
         file.Close();
     }
 
@@ -37,6 +39,7 @@ public class FileLists : ScriptableObject
             JsonUtility.FromJsonOverwrite((string)br.Deserialize(file), this);
             Debug.Log("LISTA CLASIFICACION EN CARGAR: " + classificationGameList.Count);
             Debug.Log("LISTA CHARACTERISTICS EN CARGAR: " + characteristicsGameList.Count);
+            Debug.Log("LISTA LOGROS EN CARGAR: " + achievementsList.Count);
             file.Close();
         }
         else

@@ -8,4 +8,5 @@ public class GeneralModel : Reference
     public MiniGameModel miniGameModel;
     public CharacteristicsGameModel characteristicsGameModel;
     public ClassificationGameModel classificationGameModel;
+    public StatsModel statsModel;
 }

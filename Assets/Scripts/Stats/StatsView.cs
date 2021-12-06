@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +12,6 @@ public class StatsView : Reference
 
     public List<Sprite> leagueImages;
 
-    // Start is called before the first frame update
     void Start()
     {
         ShowTotalStars();
@@ -22,8 +20,7 @@ public class StatsView : Reference
     }
     void ShowTotalStars()
     {
-        int stars = App.generalController.statsController.GetTotalStars();
-        starsText.text = stars.ToString();
+        starsText.text = App.generalController.statsController.GetTotalStars().ToString();
     }
     void ShowLeague()
     {
@@ -45,10 +42,10 @@ public class StatsView : Reference
     {
         for (int i = 0; i < checkListLogros.Count; i++)
         {
-            if (App.generalController.statsController.CheckAchievements(i) == true)
+            if (!(App.generalController.statsController.GetAchievementsList().Contains(i)))
             {
                 checkListLogros[i].GetComponent<Image>().enabled = true;
-            }
+            }    
         }
     }
 }
