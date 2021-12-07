@@ -283,19 +283,15 @@ public class MiniGame1Controller : Reference
 
     }
 
-    public void CheckAnswerSequence(string answer)
-    {
+    public void CheckAnswerSequence(string answer){
+        
         bool answerResult = false;
-        if (answer == c)
-        {
-            Debug.Log("Esta carajada dio a la primera");
+        if (answer == c){
             ChangeCorrectImage();
             answerResult = true;
             
         }
-        else
-        {
-            Debug.Log("No dio a la primera :(");
+        else{
             
         }
         App.generalView.miniGameView.SolutionCanvas(answerResult);
