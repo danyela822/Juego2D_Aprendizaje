@@ -43,7 +43,7 @@ public class ClassificationGameModel : Reference
             if (file.classificationGameList.Contains("set_"+numero))
             {
                 //Cargar y guardar un set de imagenes en un array
-                Sprite[] spriteslist = Resources.LoadAll<Sprite>("Sets/set_" + (numero));
+                Sprite[] spriteslist = Resources.LoadAll<Sprite>("Classification/set_" + (numero));
                
                 //Guardar el array de imagenes en la lista
                 allImages.Add(spriteslist);

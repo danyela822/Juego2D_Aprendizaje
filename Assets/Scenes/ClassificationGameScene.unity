@@ -1795,7 +1795,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 5f522972a44961149b15e2cb649b8d8f, type: 3}
+    m_Font: {fileID: 12800000, guid: 88f7612abb9979c4b963a752ee983fe3, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -3500,7 +3500,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1b5f6405a09b817469d815f58db673a5, type: 3}
+    m_Font: {fileID: 12800000, guid: ce7161d24ef503444a736b9caf37792c, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -4079,6 +4079,10 @@ MonoBehaviour:
   characteristicsGameController: {fileID: 0}
   gameOptionsController: {fileID: 335305799}
   gamesMenuController: {fileID: 0}
+  settingsController: {fileID: 0}
+  statsController: {fileID: 0}
+  additionGameController: {fileID: 0}
+  equialityGameController: {fileID: 0}
 --- !u!1 &923487686
 GameObject:
   m_ObjectHideFlags: 0
@@ -5191,6 +5195,7 @@ MonoBehaviour:
   miniGameModel: {fileID: 0}
   characteristicsGameModel: {fileID: 0}
   classificationGameModel: {fileID: 1911148524}
+  statsModel: {fileID: 0}
 --- !u!1 &1367954198
 GameObject:
   m_ObjectHideFlags: 0
@@ -5985,6 +5990,9 @@ MonoBehaviour:
   characteristicsGameView: {fileID: 0}
   gameOptionsView: {fileID: 335305798}
   gamesMenuView: {fileID: 0}
+  statsView: {fileID: 0}
+  additionGameView: {fileID: 0}
+  equialityGameView: {fileID: 0}
 --- !u!1 &1564096328
 GameObject:
   m_ObjectHideFlags: 0

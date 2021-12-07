@@ -218,7 +218,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1b5f6405a09b817469d815f58db673a5, type: 3}
+    m_Font: {fileID: 12800000, guid: ce7161d24ef503444a736b9caf37792c, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -297,7 +297,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1b5f6405a09b817469d815f58db673a5, type: 3}
+    m_Font: {fileID: 12800000, guid: ce7161d24ef503444a736b9caf37792c, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -554,7 +554,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1b5f6405a09b817469d815f58db673a5, type: 3}
+    m_Font: {fileID: 12800000, guid: ce7161d24ef503444a736b9caf37792c, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -1117,7 +1117,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: da7bcbdc7c217d744b0b7639bf742831, type: 3}
+    m_Font: {fileID: 12800000, guid: c4bbfbbaf67ab3847b40d1f4f0fb1695, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -1518,7 +1518,10 @@ MonoBehaviour:
   characteristicsGameController: {fileID: 0}
   gameOptionsController: {fileID: 0}
   gamesMenuController: {fileID: 0}
+  settingsController: {fileID: 0}
   statsController: {fileID: 0}
+  additionGameController: {fileID: 0}
+  equialityGameController: {fileID: 0}
 --- !u!4 &1350288086
 Transform:
   m_ObjectHideFlags: 0
@@ -1781,8 +1784,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Browly
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2ac1f4d965f5120408a8effca0d46753, type: 2}
-  m_sharedMaterial: {fileID: -6458998839064955722, guid: 2ac1f4d965f5120408a8effca0d46753, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c6b509cdf0eb4d541bdb86a001204e69, type: 2}
+  m_sharedMaterial: {fileID: -6458998839064955722, guid: c6b509cdf0eb4d541bdb86a001204e69, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1894,6 +1897,8 @@ MonoBehaviour:
   gameOptionsView: {fileID: 0}
   gamesMenuView: {fileID: 0}
   statsView: {fileID: 0}
+  additionGameView: {fileID: 0}
+  equialityGameView: {fileID: 0}
 --- !u!4 &1678825048
 Transform:
   m_ObjectHideFlags: 0
@@ -1966,7 +1971,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1b5f6405a09b817469d815f58db673a5, type: 3}
+    m_Font: {fileID: 12800000, guid: ce7161d24ef503444a736b9caf37792c, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -2089,7 +2094,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1b5f6405a09b817469d815f58db673a5, type: 3}
+    m_Font: {fileID: 12800000, guid: ce7161d24ef503444a736b9caf37792c, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1

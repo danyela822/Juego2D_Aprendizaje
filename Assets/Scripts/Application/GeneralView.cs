@@ -6,7 +6,6 @@ public class GeneralView : Reference
 {
     public RoadGameView roadGameView;
     public UIView UIView;
-    public MiniGameView miniGameView;
     public ConnectedGameView connectedGameView;
     public ClassificationGameView classificationGameView;
     public CharacteristicsGameView characteristicsGameView;
@@ -14,4 +13,7 @@ public class GeneralView : Reference
     public GamesMenuView gamesMenuView;
 
     public StatsView statsView;
+
+    public AdditionGameView additionGameView;
+    public EquialityGameView equialityGameView;
 }

@@ -6,7 +6,6 @@ public class GeneralController : Reference
 {
     public RoadGameController roadGameController;
     public UIController uiController;
-    public MiniGameController miniGameController;
     public CharactersController charactersController;
 
     public ConnectedGameController connectedGameController;
@@ -17,4 +16,7 @@ public class GeneralController : Reference
 
     public SettingsController settingsController;
     public StatsController statsController;
+
+    public AdditionGameController additionGameController;
+    public EquialityGameController equialityGameController;
 }
