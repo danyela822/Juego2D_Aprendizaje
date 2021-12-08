@@ -34,8 +34,8 @@ public class GamesMenuController : Reference
                     SceneManager.LoadScene("CharacteristicsGameScene");
                 }
                 break;
-            case "Nombre del Juego 3":
-                
+            case "Sigue la secuencia":
+                SceneManager.LoadScene("SequenceGameScene");
                 break;
 
             case "Conectados":

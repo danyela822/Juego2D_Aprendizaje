@@ -54,7 +54,7 @@ public class StructureSequence : MonoBehaviour
     void CreateTableGame(){
 
         float x = -1.8f;
-        float y = 1.93f;
+        float y = 1.6f;
         GameObject sequence;
         int cont = 0;
         int aux = 0;
@@ -63,7 +63,7 @@ public class StructureSequence : MonoBehaviour
             for (int j = 0; j < 4; j++){
 
                 //sequence = Instantiate(objectRow,new Vector3(x + (size.x * (j-(0.15f*j))), y - (size.y * (i+(0.05f*i))), 0), objectRow.transform.rotation);
-                sequence = Instantiate(objectRow, new Vector3(x + ((size.x-0.25f) *j), y - (size.y * (i + (0.05f * i))), 0), objectRow.transform.rotation);
+                sequence = Instantiate(objectRow, new Vector3(x + ((size.x-0.25f) *j), y - (size.y *i), 0), objectRow.transform.rotation);
 
                 if (cont < 6){
                     sequence.GetComponent<SpriteRenderer>().sprite = sprites[iconNumber[cont]];
