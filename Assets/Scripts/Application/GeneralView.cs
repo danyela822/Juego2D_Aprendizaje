@@ -12,8 +12,12 @@ public class GeneralView : Reference
     public GameOptionsView gameOptionsView;
     public GamesMenuView gamesMenuView;
 
+<<<<<<< HEAD
     public StatsView statsView;
 
     public AdditionGameView additionGameView;
     public EquialityGameView equialityGameView;
+=======
+    public SetsGameView setsGameView;
+>>>>>>> mini_juegos
 }
