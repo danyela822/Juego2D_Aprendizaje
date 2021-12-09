@@ -176,4 +176,13 @@ public class ClassificationGameView : Reference
     {
         App.generalView.gameOptionsView.TutorialCanvas.enabled = false;
     }
+
+    public void Click()
+    {
+        Debug.Log("ENTRO A CLICK");
+    }
+    public void UnClick()
+    {
+        Debug.Log("ENTRO A UNCLICK");
+    }
 }

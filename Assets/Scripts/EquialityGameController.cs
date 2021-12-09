@@ -119,15 +119,13 @@ public class EquialityGameController : Reference{
 
         GameObject option;
         
-        float y = 1.27f;
-        float x = -1.55f; ;
+        float y = 1.25f;
+        float x = -1.5f;
         int aux = 0;
         for (int i = 0; i < 4; i++){
             for (int j = 0; j < 2; j++){
                 
-                option = Instantiate(objRow, 
-                    new Vector3(x + (size.x * (j+(0.65f*j))), 
-                    y - (size.y * (i-(0.3f*i))), 0), objRow.transform.rotation);
+                option = Instantiate(objRow,new Vector3(x + (2.3f*j),y - (0.9f*i), 0), objRow.transform.rotation);
 
                 Sprite sprite = images[numPaint[aux]];
                 option.GetComponent<SpriteRenderer>().sprite = sprite;
@@ -136,14 +134,16 @@ public class EquialityGameController : Reference{
         }
 
         GameObject firstOption = Instantiate(objRow,
-        new Vector3(-0.95f, -3.14f, 0), objRow.transform.rotation);
+        new Vector3(0f, -2.4f, 0), objRow.transform.rotation);
         Sprite spriteF = images[numPaint[numPaint.Count - 1]];
         firstOption.GetComponent<SpriteRenderer>().sprite = spriteF;
+        firstOption.transform.localScale = new Vector3(0.45f,0.45f,0);
 
         GameObject lastOption = Instantiate(objRow,
-        new Vector3(2.0f, -3.2f, 0), objRow.transform.rotation);
+        new Vector3(1f, -3.08f, 0), objRow.transform.rotation);
         Sprite spriteL = images[numPaint[0]];
         lastOption.GetComponent<SpriteRenderer>().sprite = spriteL;
+        lastOption.transform.localScale = new Vector3(0.45f, 0.45f, 0);
     }
 
 
