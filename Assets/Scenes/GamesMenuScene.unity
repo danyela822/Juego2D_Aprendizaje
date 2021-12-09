@@ -9384,13 +9384,10 @@ MonoBehaviour:
   characteristicsGameView: {fileID: 0}
   gameOptionsView: {fileID: 0}
   gamesMenuView: {fileID: 482339885}
-<<<<<<< HEAD
   statsView: {fileID: 0}
   additionGameView: {fileID: 0}
   equialityGameView: {fileID: 0}
-=======
   setsGameView: {fileID: 0}
->>>>>>> mini_juegos
 --- !u!4 &1519675955
 Transform:
   m_ObjectHideFlags: 0
@@ -9667,14 +9664,11 @@ MonoBehaviour:
   characteristicsGameController: {fileID: 2139363791}
   gameOptionsController: {fileID: 0}
   gamesMenuController: {fileID: 482339886}
-<<<<<<< HEAD
   settingsController: {fileID: 0}
   statsController: {fileID: 0}
   additionGameController: {fileID: 0}
   equialityGameController: {fileID: 0}
-=======
   setsGameController: {fileID: 0}
->>>>>>> mini_juegos
 --- !u!4 &1549906134
 Transform:
   m_ObjectHideFlags: 0

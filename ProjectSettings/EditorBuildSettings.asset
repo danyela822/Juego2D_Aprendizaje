@@ -42,7 +42,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GamesMenuScene.unity
     guid: e2d90f304d2577e4bae32075e325e0a6
   - enabled: 1
-<<<<<<< HEAD
     path: Assets/Scenes/SequenceGameScene.unity
     guid: 0da16685267f7e5a8b7fa011367902a6
   - enabled: 1
@@ -51,8 +50,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AdditionGameScene.unity
     guid: 2fb995b0b0b7a235f86433f1c7763048
-=======
     path: Assets/Scenes/SetsGameScene.unity
     guid: e22989b3538ebbf41bfc9e3378ea4a96
->>>>>>> mini_juegos
   m_configObjects: {}
