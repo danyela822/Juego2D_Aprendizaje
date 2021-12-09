@@ -44,4 +44,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SequenceGameScene.unity
     guid: 0da16685267f7e5a8b7fa011367902a6
+  - enabled: 1
+    path: Assets/Scenes/EquialityGameScene.unity
+    guid: 336c95d7def1f8a7fb1c6cb14ba5f083
+  - enabled: 1
+    path: Assets/Scenes/AdditionGameScene.unity
+    guid: 2fb995b0b0b7a235f86433f1c7763048
   m_configObjects: {}

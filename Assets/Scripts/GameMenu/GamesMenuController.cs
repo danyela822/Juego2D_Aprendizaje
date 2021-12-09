@@ -49,15 +49,18 @@ public class GamesMenuController : Reference
 
                 break;
 
-            case "Nombre del Juego 6":
-
+            case "Desifra el operando":
+                SceneManager.LoadScene("AdditionGameScene");
                 break;
 
-            case "Nombre del Juego 7":
-
+            case "Juego de equivalencias":
+                SceneManager.LoadScene("EquialityGameScene");
                 break;
 
             case "Nombre del Juego 8":
+
+                break;
+            case "Nombre del Juego 9":
 
                 break;
 

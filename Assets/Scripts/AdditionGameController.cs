@@ -136,7 +136,7 @@ public class AdditionGameController : Reference{
         GameObject newOption;
         float x, y;
 
-        firstOption = Instantiate(objectRow,new Vector3(-1, 1.85f, 0), objectRow.transform.rotation);
+        firstOption = Instantiate(objectRow,new Vector3(-1, 1.5f, 0), objectRow.transform.rotation);
 
         Sprite spriteFirst = images[icons[0].idIcon];
         firstOption.GetComponent<SpriteRenderer>().sprite = spriteFirst;
