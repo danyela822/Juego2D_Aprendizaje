@@ -14,13 +14,12 @@ public class GeneralController : Reference
     public GameOptionsController gameOptionsController;
     public GamesMenuController gamesMenuController;
 
-<<<<<<< HEAD
     public SettingsController settingsController;
     public StatsController statsController;
 
     public AdditionGameController additionGameController;
     public EquialityGameController equialityGameController;
-=======
+
     public SetsGameController setsGameController;
->>>>>>> mini_juegos
+
 }

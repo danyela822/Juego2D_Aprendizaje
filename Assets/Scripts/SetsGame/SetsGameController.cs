@@ -123,22 +123,22 @@ public class SetsGameController : Reference
 
     public void LoadText ()
     {
-        string title;
+        //string title;
         string message;
-
-        if(isUnion)
+        if (isUnion)
         {
-            title = "Unión";
-            message = "Realice la unión entre las cartas presentadas y elija la respuesta correcta";
+            //title = "Unión";
+            message = "Unión\n\nRealice la unión entre las cartas presentadas y elija la respuesta correcta";
 
         }
         else
         {
-            title = "Intersección";
-            message = "Realice la intersección entre las cartas presentadas y elija la respuesta correcta";
+            //title = "Intersección";
+            message = "Intersección\n\nRealice la intersección entre las cartas presentadas y elija la respuesta correcta";
         }
-        App.generalView.setsGameView.title.text = title;
+        //App.generalView.setsGameView.title.text = title;
         App.generalView.setsGameView.message.text = message;
+
     }
 
     public void CheckAnswer(string answer)
@@ -165,9 +165,10 @@ public class SetsGameController : Reference
         }
         else{
 
-            string messageLose = "Lo siento :( la respuesta  no es correcta \n le quedan "+numberTry+ " intentos";
-            App.generalView.setsGameView.messageLoseCanvas.text = messageLose;
-            App.generalView.setsGameView.tryCanvas.enabled = true;  
+            //string messageLose = "Lo siento :( la respuesta  no es correcta \n le quedan "+numberTry+ " intentos";
+            //App.generalView.setsGameView.messageLoseCanvas.text = messageLose;
+            App.generalView.gameOptionsView.ShowMistakeCanvas(numberTry);
+            //App.generalView.setsGameView.tryCanvas.enabled = true;  
         }
 
         

@@ -2684,7 +2684,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Juego de las cartas
+  m_Text: Union e Interseccion
 --- !u!222 &427008298
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4344,7 +4344,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Union e Interseccion
+  m_Text: Desifra el operando
 --- !u!222 &706046767
 CanvasRenderer:
   m_ObjectHideFlags: 0

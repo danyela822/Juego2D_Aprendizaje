@@ -23,7 +23,7 @@ public class GamesMenuController : Reference
                     SceneManager.LoadScene("ClassificationGameScene");
                 }
                 break;
-            case "�Quien soy?":
+            case "Quien soy?":
                 if (file.characteristicsGameList.Count == 0)
                 {
                     App.generalView.gamesMenuView.playButtons[1].interactable = false;
@@ -51,7 +51,8 @@ public class GamesMenuController : Reference
 
             case "Desifra el operando":
                 SceneManager.LoadScene("AdditionGameScene");
-                
+                break;
+
             case "Union e Interseccion":
                 SceneManager.LoadScene("SetsGameScene");
                 break;
@@ -63,10 +64,6 @@ public class GamesMenuController : Reference
             case "Nombre del Juego 8":
 
                 break;
-            case "Nombre del Juego 9":
-
-                break;
-
             default:
                 Debug.Log("Escena no encontrada");
                 break;
