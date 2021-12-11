@@ -19,7 +19,7 @@ public class GeneralController : Reference
 
     public AdditionGameController additionGameController;
     public EquialityGameController equialityGameController;
-
+    public SequenceGameController sequenceGameController;
+    
     public SetsGameController setsGameController;
-
 }

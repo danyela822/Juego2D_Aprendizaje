@@ -16,5 +16,6 @@ public class GeneralView : Reference
 
     public AdditionGameView additionGameView;
     public EquialityGameView equialityGameView;
+    public SequenceGameView sequenceGameView;
     public SetsGameView setsGameView;
 }
