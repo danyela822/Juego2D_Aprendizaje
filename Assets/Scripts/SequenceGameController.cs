@@ -90,8 +90,8 @@ public class SequenceGameController : Reference{
     //metodo que crea el tablero de la escena a partir de una matriz
     void CreateTableGame(){
 
-        float x = -1.83f;
-        float y = 1.93f;
+        float x = -1.8f;
+        float y = 1.6f;
         GameObject sequence;
         int cont = 0;
         int aux = 0;
@@ -100,10 +100,8 @@ public class SequenceGameController : Reference{
             for (int j = 0; j < 4; j++){
 
                 //se crea la base de todos los game objects del tablero de juego
-                sequence = Instantiate(objectRow, 
-                    new Vector3(x + (size.x * (j-(0.15f*j))), 
-                    y - (size.y * (i+(0.05f*i))), 0), objectRow.transform.rotation);    
-                
+                sequence = Instantiate(objectRow, new Vector3(x + ((size.x - 0.25f) * j), y - (size.y * i), 0), objectRow.transform.rotation);
+
                 //se le asigna la imagen a los primeros 6 game object
                 if (cont < 6){
                     sequence.GetComponent<SpriteRenderer>().sprite = sprites[iconNumber[cont]];

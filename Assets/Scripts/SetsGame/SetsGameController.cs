@@ -160,8 +160,11 @@ public class SetsGameController : Reference
         numberTry--;
         if(numberTry == 0)
         {
-            App.generalView.setsGameView.correctAnswer.sprite = correctAnswer;
-            App.generalView.setsGameView.loseCanvas.enabled = true;
+            //App.generalView.setsGameView.correctAnswer.sprite = correctAnswer;
+            //App.generalView.setsGameView.loseCanvas.enabled = true;
+
+            App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
+            App.generalView.gameOptionsView.ShowLoseCanvas();
         }
         else{
 

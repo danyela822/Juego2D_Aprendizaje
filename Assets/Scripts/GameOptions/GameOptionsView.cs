@@ -12,6 +12,8 @@ public class GameOptionsView: Reference
 
     public Image imageWin;
 
+    public Image correctAnswer;
+
     public Text textMistake;
     public void ShowPauseCanvas()
     {

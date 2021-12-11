@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class CharacteristicsGameView : Reference
     public Text statement;
 
     //Numero de intentos que tiene el jugador para ganar el juego
-    int attempts = 2;
+    //int attempts = 2;
 
     /*
     * Metodo que captura el nombre de la imagen que posee un boton y activa el canvas de ganar, perder o volver a intentar
@@ -23,8 +24,8 @@ public class CharacteristicsGameView : Reference
         string nameImage = button.image.sprite.name;
 
         button.interactable = false;
-
-        int numberStars = App.generalController.characteristicsGameController.CheckAnswer(nameImage);
+        App.generalController.characteristicsGameController.CheckAnswer(nameImage);
+        /*int numberStars = App.generalController.characteristicsGameController.CheckAnswer(nameImage);
 
         if (numberStars == 3)
         {
@@ -46,7 +47,7 @@ public class CharacteristicsGameView : Reference
         else
         {
             App.generalView.gameOptionsView.ShowLoseCanvas();
-        }
+        }*/
     }
     /*
      * Metodo que oculta el canvas inicial del juego

@@ -13,6 +13,8 @@ public class CharacteristicsGameController : Reference
     //Lista para guardar todas las respuestas del juego
     static List<string> answers;
 
+    List<Sprite> images;
+
     //Numero para acceder a un conjunto de imagenes en especifico
     int number;
 
@@ -30,6 +32,9 @@ public class CharacteristicsGameController : Reference
 
     //numero que cuenta las veces que ha completado niveles sin errores
     int countPerfectGame = 0;
+
+    //Numero de intentos que tiene el jugador para ganar el juego
+    int attempts = 3;
 
     private void Start()
     {
@@ -57,7 +62,7 @@ public class CharacteristicsGameController : Reference
     public void PutImages()
     {
         //Lista que guardara las imagenes seleccionadas pero cambiando su orden dentro de la lista
-        List<Sprite> images = ChangeOrderList(allImages[number]);
+        images = ChangeOrderList(allImages[number]);
 
         for (int i = 0; i < images.Count; i++)
         {
@@ -79,7 +84,7 @@ public class CharacteristicsGameController : Reference
     /*
     * Metodo para verificar si la respuesta final de jugador es correcta o incorrecta
     */
-    public int CheckAnswer(string selectedOption)
+    public void CheckAnswer(string selectedOption)
     {
         if (PlayerPrefs.GetInt("PlayGame2", 0) == 0)
         {
@@ -117,7 +122,8 @@ public class CharacteristicsGameController : Reference
                 Debug.Log("Lleva: " + countPerfectGame);
                 PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
 
-                return 3;
+                App.generalView.gameOptionsView.ShowWinCanvas(3);
+                //return 3;
             }
             else if(counter == 2)
             {
@@ -125,7 +131,8 @@ public class CharacteristicsGameController : Reference
                 App.generalModel.characteristicsGameModel.SetTotalStars(App.generalModel.characteristicsGameModel.GetTotalStars() + 2);
                 countPerfectGame = 0;
                 PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
-                return 2;
+                App.generalView.gameOptionsView.ShowWinCanvas(2);
+                //return 2;
             }
             else 
             {
@@ -133,19 +140,41 @@ public class CharacteristicsGameController : Reference
                 App.generalModel.characteristicsGameModel.SetTotalStars(App.generalModel.characteristicsGameModel.GetTotalStars() + 1);
                 countPerfectGame = 0;
                 PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
-                return 1;
+                App.generalView.gameOptionsView.ShowWinCanvas(1);
+                //return 1;
             }
         }
         else
         {
-            if (counter == 3)
+            CheckAttempt();
+            /*if (counter == 3)
             {
                 return 0;
             }
             else
             {
+                CheckAttempt();
                 return -1;
-            }
+            }*/
+        }
+    }
+    void CheckAttempt()
+    {
+        attempts--;
+        if (attempts == 0)
+        {
+            //App.generalView.setsGameView.correctAnswer.sprite = correctAnswer;
+            //App.generalView.setsGameView.loseCanvas.enabled = true;
+            //Sprite correctAnswer = images.
+            App.generalView.gameOptionsView.correctAnswer.sprite = images[number];
+            App.generalView.gameOptionsView.ShowLoseCanvas();
+        }
+        else
+        {
+            //string messageLose = "Lo siento :( la respuesta  no es correcta \n le quedan "+numberTry+ " intentos";
+            //App.generalView.setsGameView.messageLoseCanvas.text = messageLose;
+            App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
+            //App.generalView.setsGameView.tryCanvas.enabled = true;  
         }
     }
     /*
