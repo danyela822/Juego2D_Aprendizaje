@@ -10,4 +10,5 @@ public class GeneralController : Reference
     public CharactersController charactersController;
     public AdditionGameController additionGameController;
     public EquialityGameController equialityGameController;
+    public SequenceGameController sequenceGameController;
 }

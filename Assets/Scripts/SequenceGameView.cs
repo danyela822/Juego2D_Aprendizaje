@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SequenceGameView : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class SequenceGameView : Reference{
+
+    //lista de los botones de la interfaz
+    public List<Button> buttons = new List<Button>();
+
+    public void CheckAnswer(){
+
+        App.generalController.sequenceGameController.CheckAnswerForUser();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void AnswerForUser(GameObject text){
+
+        string answer = text.GetComponent<Text>().text;
+        App.generalController.sequenceGameController.AnswerForUser(answer);
+    }
+
+    public void ActivePanel(GameObject panel){
+
+        App.generalController.sequenceGameController.ActivePanel(panel);
     }
 }
