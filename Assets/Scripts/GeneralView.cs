@@ -9,4 +9,5 @@ public class GeneralView : Reference
     public MiniGameView miniGameView;
     public AdditionGameView additionGameView;
     public EquialityGameView equialityGameView;
+    public SequenceGameView sequenceGameView;
 }
