@@ -4,52 +4,52 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 5715262693434267175
-    second: cohete
-  - first:
-      213: 15175948666278425
-    second: oso
+    second: sandalias
   - first:
       213: -7984650514927106603
-    second: globo terraqueo
+    second: gafas
   - first:
       213: -652735724712649012
-    second: sonajero
+    second: parasol
   - first:
       213: 4400297754787593727
-    second: pinturas
+    second: salvavidas
   - first:
       213: 1736625712464800165
-    second: chupete
+    second: cohete
   - first:
       213: -797085288795954885
-    second: cuaderno
+    second: manzana
   - first:
       213: -145509045271336389
-    second: libros
+    second: flor
   - first:
       213: 1509707417312548458
-    second: calculadora
-  - first:
-      213: -1952214655060959134
-    second: auto
+    second: recipientes
   - first:
       213: 3040315111622683524
-    second: sol
+    second: oso
   - first:
       213: -1022524563062397425
-    second: tijeras
+    second: sol
   - first:
       213: -6122592601291618726
-    second: bus
+    second: cuaderno
   - first:
       213: -3767563218118316656
-    second: estrella
+    second: pelota
   - first:
       213: -1699143479581932904
-    second: escuadra
+    second: palmera
   - first:
       213: -3902070682947536205
-    second: cama
+    second: careta
+  - first:
+      213: 2107145049864635376
+    second: auto
+  - first:
+      213: 4404903290932096266
+    second: avion
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,15 +163,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cohete
+      name: sandalias
       rect:
         serializedVersion: 2
         x: 0
-        y: 701
-        width: 158
-        height: 160
+        y: 795
+        width: 208
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,36 +184,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oso
+      name: gafas
       rect:
         serializedVersion: 2
-        x: 196
-        y: 667
-        width: 138
-        height: 189
+        x: 271
+        y: 867
+        width: 263
+        height: 184
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9121265e17ae53000800000000000000
-      internalID: 15175948666278425
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: globo terraqueo
-      rect:
-        serializedVersion: 2
-        x: 380
-        y: 670
-        width: 146
-        height: 197
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -226,15 +205,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sonajero
+      name: parasol
       rect:
         serializedVersion: 2
-        x: 560
-        y: 638
-        width: 143
-        height: 207
+        x: 593
+        y: 827
+        width: 221
+        height: 224
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -247,15 +226,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pinturas
+      name: salvavidas
       rect:
         serializedVersion: 2
-        x: 1
-        y: 455
-        width: 236
-        height: 160
+        x: 872
+        y: 849
+        width: 205
+        height: 202
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -268,15 +247,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chupete
+      name: cohete
       rect:
         serializedVersion: 2
-        x: 266
-        y: 448
-        width: 159
-        height: 182
+        x: 0
+        y: 546
+        width: 180
+        height: 197
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -289,15 +268,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cuaderno
+      name: manzana
       rect:
         serializedVersion: 2
-        x: 461
-        y: 431
-        width: 184
-        height: 196
+        x: 286
+        y: 576
+        width: 179
+        height: 214
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -310,15 +289,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: libros
+      name: flor
       rect:
         serializedVersion: 2
-        x: 660
-        y: 438
-        width: 138
-        height: 174
+        x: 522
+        y: 561
+        width: 179
+        height: 185
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -331,15 +310,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: calculadora
+      name: recipientes
       rect:
         serializedVersion: 2
-        x: 15
-        y: 238
-        width: 113
-        height: 194
+        x: 796
+        y: 559
+        width: 229
+        height: 177
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -352,36 +331,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: auto
+      name: oso
       rect:
         serializedVersion: 2
-        x: 163
-        y: 265
-        width: 203
-        height: 155
+        x: 0
+        y: 271
+        width: 162
+        height: 219
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 260a7cf4d1758e4e0800000000000000
-      internalID: -1952214655060959134
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sol
-      rect:
-        serializedVersion: 2
-        x: 403
-        y: 213
-        width: 192
-        height: 188
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -394,15 +352,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tijeras
+      name: sol
       rect:
         serializedVersion: 2
-        x: 624
-        y: 215
-        width: 159
-        height: 193
+        x: 253
+        y: 267
+        width: 216
+        height: 229
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -415,15 +373,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bus
+      name: cuaderno
       rect:
         serializedVersion: 2
-        x: 0
-        y: 38
-        width: 229
-        height: 160
+        x: 578
+        y: 301
+        width: 198
+        height: 166
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -436,15 +394,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: estrella
+      name: pelota
       rect:
         serializedVersion: 2
-        x: 235
-        y: 4
-        width: 191
-        height: 199
+        x: 860
+        y: 267
+        width: 204
+        height: 202
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -457,15 +415,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: escuadra
+      name: palmera
       rect:
         serializedVersion: 2
-        x: 449
-        y: 3
-        width: 159
-        height: 176
+        x: 0
+        y: 0
+        width: 237
+        height: 239
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -478,15 +436,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cama
+      name: careta
       rect:
         serializedVersion: 2
-        x: 619
-        y: 0
-        width: 188
-        height: 185
+        x: 309
+        y: 2
+        width: 267
+        height: 227
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -494,6 +452,48 @@ TextureImporter:
       bones: []
       spriteID: 3ba327e436f09d9c0800000000000000
       internalID: -3902070682947536205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: auto
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 16
+        width: 239
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f3876b32451e3d10800000000000000
+      internalID: 2107145049864635376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avion
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 52
+        width: 215
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0de4f5743c512d30800000000000000
+      internalID: 4404903290932096266
       vertices: []
       indices: 
       edges: []

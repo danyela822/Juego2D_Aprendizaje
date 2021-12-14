@@ -7,7 +7,6 @@ public class CharacteristicsGameModel : Reference
 {
     static List<Sprite[]> allImages;
     static List<string> texts;
-    static List<string> answers;
 
     int totalStars;
     int totalPoints;
@@ -86,31 +85,6 @@ public class CharacteristicsGameModel : Reference
             numero++;
         }
         return texts;
-    }
-    /*
-    * Metodo para cargar y guardar las respuestas de cada nivel
-    */
-    public List<string> LoadAnswers()
-    {
-        answers = new List<string>();
-
-        //Pasar la ruta del archivo y el nombre del archivo que contiene las respuestas requeridas para cada nivel
-        TextAsset textAsset = Resources.Load("Files/correct_characteristics") as TextAsset;
-
-        string answer = textAsset.text;
-
-        int numero = 0;
-
-        while (numero < 6)
-        {
-            if (file.characteristicsGameList.Contains("characteristics_" + (numero + 1)))
-            {
-                answers.Add(answer.Split(',')[numero]);
-                //Debug.Log("TEXTS: " + texts[i]);
-            }
-            numero++;
-        }
-        return answers;
     }
     /*
      * 

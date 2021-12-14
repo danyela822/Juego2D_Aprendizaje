@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.IO;
 
 public class SettingsController : Reference
@@ -13,7 +12,7 @@ public class SettingsController : Reference
         Debug.Log("ESTADO ClassificationList: " + PlayerPrefs.GetInt("ClassificationList", 0));
         Debug.Log("ESTADO CharacteristicsList: " + PlayerPrefs.GetInt("CharacteristicsList", 0));
         Debug.Log("ESTADO AchievementsList: " + PlayerPrefs.GetInt("AchievementsList", 0));
-        file.classificationGameList = new List<string>();
+        file.classificationGameList = new List<int>();
         file.characteristicsGameList = new List<string>();
         file.achievementsList = new List<int>();
         File.Delete(file.GetPath("P"));

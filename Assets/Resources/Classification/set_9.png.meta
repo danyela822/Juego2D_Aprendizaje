@@ -4,52 +4,52 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 4397779503961168323
-    second: aeroplano
+    second: rojo
   - first:
       213: 6092720442589707407
-    second: auto
+    second: amarillo
   - first:
       213: -8916315848426312271
-    second: autobus
+    second: azul
   - first:
       213: 7407614500982743836
-    second: balsa
+    second: aguamarina
   - first:
       213: 3587902254046856713
-    second: avion
+    second: verde
   - first:
       213: -6490023812825243971
-    second: barco
+    second: fucsia
   - first:
       213: -6208017243666713193
-    second: bicicleta
+    second: violeta
   - first:
       213: 5905514944268673440
-    second: canoa
+    second: naranja
   - first:
       213: -1947141912440634325
-    second: camioneta
+    second: negro
   - first:
       213: 1667688446787198872
-    second: dirigible
+    second: gris
   - first:
       213: 4614585321186312470
-    second: globo aerostatico
+    second: rosa
   - first:
       213: -840227142718236048
-    second: velero
+    second: cafe
   - first:
       213: -775640821250330005
-    second: moto
+    second: dorado
   - first:
       213: 4782798794939304305
-    second: taxi
+    second: lila
   - first:
       213: -4799005090766014128
-    second: tren
+    second: plateado
   - first:
       213: -7467071094715623604
-    second: yate
+    second: blanco
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,13 +163,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: aeroplano
+      name: rojo
       rect:
         serializedVersion: 2
-        x: 2
-        y: 608
-        width: 158
-        height: 148
+        x: 9
+        y: 678
+        width: 171
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,13 +184,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: auto
+      name: amarillo
       rect:
         serializedVersion: 2
-        x: 198
-        y: 589
-        width: 184
-        height: 159
+        x: 217
+        y: 678
+        width: 171
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,13 +205,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: autobus
+      name: azul
       rect:
         serializedVersion: 2
-        x: 426
-        y: 600
-        width: 178
-        height: 148
+        x: 427
+        y: 678
+        width: 171
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,13 +226,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: balsa
+      name: aguamarina
       rect:
         serializedVersion: 2
-        x: 654
-        y: 587
-        width: 140
-        height: 166
+        x: 635
+        y: 678
+        width: 171
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,13 +247,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: avion
+      name: verde
       rect:
         serializedVersion: 2
-        x: 0
-        y: 437
-        width: 158
-        height: 149
+        x: 9
+        y: 458
+        width: 171
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,13 +268,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barco
+      name: fucsia
       rect:
         serializedVersion: 2
-        x: 206
-        y: 420
-        width: 163
-        height: 157
+        x: 217
+        y: 458
+        width: 171
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,13 +289,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bicicleta
+      name: violeta
       rect:
         serializedVersion: 2
-        x: 416
-        y: 424
-        width: 165
-        height: 143
+        x: 427
+        y: 458
+        width: 171
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,13 +310,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: canoa
+      name: naranja
       rect:
         serializedVersion: 2
-        x: 630
-        y: 389
-        width: 145
-        height: 165
+        x: 635
+        y: 458
+        width: 171
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,13 +331,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: camioneta
+      name: negro
       rect:
         serializedVersion: 2
-        x: 2
-        y: 244
-        width: 178
-        height: 148
+        x: 9
+        y: 218
+        width: 171
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,13 +352,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirigible
+      name: gris
       rect:
         serializedVersion: 2
-        x: 219
-        y: 261
-        width: 164
-        height: 142
+        x: 217
+        y: 218
+        width: 171
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,13 +373,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: globo aerostatico
+      name: rosa
       rect:
         serializedVersion: 2
-        x: 439
-        y: 225
-        width: 148
-        height: 166
+        x: 427
+        y: 218
+        width: 171
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,13 +394,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: velero
+      name: cafe
       rect:
         serializedVersion: 2
-        x: 609
-        y: 191
-        width: 180
-        height: 173
+        x: 635
+        y: 218
+        width: 171
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,13 +415,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto
+      name: dorado
       rect:
         serializedVersion: 2
-        x: 2
-        y: 64
-        width: 145
-        height: 148
+        x: 9
+        y: 0
+        width: 171
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -436,13 +436,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: taxi
+      name: lila
       rect:
         serializedVersion: 2
-        x: 175
-        y: 55
-        width: 232
-        height: 165
+        x: 217
+        y: 0
+        width: 171
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -457,13 +457,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tren
+      name: plateado
       rect:
         serializedVersion: 2
-        x: 441
-        y: 25
-        width: 149
-        height: 170
+        x: 427
+        y: 0
+        width: 171
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -478,13 +478,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: yate
+      name: blanco
       rect:
         serializedVersion: 2
-        x: 611
+        x: 635
         y: 0
-        width: 181
-        height: 173
+        width: 171
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

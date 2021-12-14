@@ -10,10 +10,10 @@ TextureImporter:
     second: casa_2
   - first:
       213: 1599751760513119565
-    second: casa_3
+    second: correct
   - first:
       213: 3533492149011507671
-    second: casa_4
+    second: casa_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -169,7 +169,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: casa_3
+      name: correct
       rect:
         serializedVersion: 2
         x: 2
@@ -190,7 +190,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: casa_4
+      name: casa_3
       rect:
         serializedVersion: 2
         x: 356

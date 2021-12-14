@@ -4,52 +4,52 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -6697797145661698192
-    second: cruz
+    second: aeroplano
   - first:
       213: 4340876743886790078
-    second: hexagono
+    second: auto
   - first:
       213: 303721189318080968
-    second: cubo
+    second: autobus
   - first:
       213: 1466519685607561986
-    second: pentagono
+    second: balsa
   - first:
       213: -3930392401274174586
-    second: triangulo rectangulo
+    second: avion
   - first:
       213: 8332619216174954679
-    second: paralelogramo
+    second: barco
   - first:
       213: -6191490422612851199
-    second: cilindro
+    second: bicicleta
   - first:
       213: 1296012177583088097
-    second: flecha
+    second: canoa
   - first:
       213: 2197964918647459155
-    second: corazon
+    second: camioneta
   - first:
       213: -6963212718806548862
-    second: estrella
+    second: dirigible
   - first:
       213: -8506086647190004483
-    second: circulo
+    second: globo aerostatico
   - first:
       213: 7821612597662828610
-    second: cuadrado
+    second: velero
   - first:
       213: -2782024667966483491
-    second: rombo
+    second: moto
   - first:
       213: 4087889729665955585
-    second: trapecio
+    second: taxi
   - first:
       213: -387727905435291991
-    second: equis
+    second: tren
   - first:
       213: 2073225297685902992
-    second: triangulo
+    second: yate
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,15 +163,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cruz
+      name: aeroplano
       rect:
         serializedVersion: 2
-        x: 0
-        y: 503
-        width: 108
-        height: 101
+        x: 2
+        y: 608
+        width: 158
+        height: 148
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,15 +184,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hexagono
+      name: auto
       rect:
         serializedVersion: 2
-        x: 145
-        y: 487
-        width: 122
-        height: 113
+        x: 198
+        y: 589
+        width: 184
+        height: 159
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,15 +205,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cubo
+      name: autobus
       rect:
         serializedVersion: 2
-        x: 311
-        y: 484
-        width: 117
-        height: 112
+        x: 426
+        y: 600
+        width: 178
+        height: 148
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -226,15 +226,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pentagono
+      name: balsa
       rect:
         serializedVersion: 2
-        x: 483
-        y: 484
-        width: 108
-        height: 109
+        x: 654
+        y: 587
+        width: 140
+        height: 166
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -247,15 +247,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: triangulo rectangulo
+      name: avion
       rect:
         serializedVersion: 2
         x: 0
-        y: 348
-        width: 95
-        height: 101
+        y: 437
+        width: 158
+        height: 149
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -268,15 +268,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: paralelogramo
+      name: barco
       rect:
         serializedVersion: 2
-        x: 133
-        y: 344
-        width: 110
-        height: 102
+        x: 206
+        y: 420
+        width: 163
+        height: 157
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -289,15 +289,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cilindro
+      name: bicicleta
       rect:
         serializedVersion: 2
-        x: 311
-        y: 336
-        width: 81
-        height: 113
+        x: 416
+        y: 424
+        width: 165
+        height: 143
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -310,15 +310,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flecha
+      name: canoa
       rect:
         serializedVersion: 2
-        x: 459
-        y: 335
-        width: 122
-        height: 93
+        x: 630
+        y: 389
+        width: 145
+        height: 165
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -331,15 +331,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: corazon
+      name: camioneta
       rect:
         serializedVersion: 2
-        x: 0
-        y: 182
-        width: 114
-        height: 111
+        x: 2
+        y: 244
+        width: 178
+        height: 148
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -352,15 +352,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: estrella
+      name: dirigible
       rect:
         serializedVersion: 2
-        x: 151
-        y: 184
-        width: 118
-        height: 114
+        x: 219
+        y: 261
+        width: 164
+        height: 142
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -373,15 +373,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: circulo
+      name: globo aerostatico
       rect:
         serializedVersion: 2
-        x: 320
-        y: 166
-        width: 113
-        height: 116
+        x: 439
+        y: 225
+        width: 148
+        height: 166
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -394,15 +394,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cuadrado
+      name: velero
       rect:
         serializedVersion: 2
-        x: 488
-        y: 175
-        width: 101
-        height: 102
+        x: 609
+        y: 191
+        width: 180
+        height: 173
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -415,15 +415,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rombo
+      name: moto
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 126
-        height: 127
+        x: 2
+        y: 64
+        width: 145
+        height: 148
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -436,15 +436,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trapecio
+      name: taxi
       rect:
         serializedVersion: 2
-        x: 154
-        y: 22
-        width: 123
-        height: 96
+        x: 175
+        y: 55
+        width: 232
+        height: 165
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -457,15 +457,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: equis
+      name: tren
       rect:
         serializedVersion: 2
-        x: 320
-        y: 4
-        width: 92
-        height: 107
+        x: 441
+        y: 25
+        width: 149
+        height: 170
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -478,15 +478,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: triangulo
+      name: yate
       rect:
         serializedVersion: 2
-        x: 455
-        y: 9
-        width: 111
-        height: 101
+        x: 611
+        y: 0
+        width: 181
+        height: 173
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

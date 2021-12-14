@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ClassificationGameModel : Reference
 {
-    static List<Sprite[]> allImages;
-    static List<string> texts;
-    static List<string[]> allAnswers;
+    static Sprite[] images;
+    static string statement;
+    static string[] answers;
 
     int totalStars;
     int totalPoints;
@@ -20,7 +20,7 @@ public class ClassificationGameModel : Reference
         {
             for (int j = 0; j < 10; j++)
             {
-                file.classificationGameList.Add("set_"+(j +1));
+                file.classificationGameList.Add(j);
                // Debug.Log("TAMAÑO: " + q.classificationGameList.Count);
             }
             SetList(1);
@@ -32,85 +32,69 @@ public class ClassificationGameModel : Reference
     /*
     * Metodo para cargar y guardar todas la imagnes que necesita el juego
     */
-    public List<Sprite[]> LoadImages()
+    public Sprite[] LoadImages(int numero)
     {
-        allImages = new List<Sprite[]>();
-
-        int numero = 1;
-
-        while (numero <= 10)
+        if (file.classificationGameList.Contains(numero))
         {
-            if (file.classificationGameList.Contains("set_"+numero))
-            {
-                //Cargar y guardar un set de imagenes en un array
-                Sprite[] spriteslist = Resources.LoadAll<Sprite>("Classification/set_" + (numero));
-               
-                //Guardar el array de imagenes en la lista
-                allImages.Add(spriteslist);
-            }
-            numero++;
+            //Cargar y guardar un set de imagenes en un array
+            images = Resources.LoadAll<Sprite>("Classification/set_" + (numero));
         }
-
         file.Save("P");
-        return allImages;
+        return images;
     }
     /*
     * Metodo para cargar todos los enunciados que deben acompañar a cada nivel
     */
-    public List<string> LoadTexts()
+    public string LoadTexts(int numero)
     {
-        texts = new List<string>();
-
         //Pasar la ruta del archivo y el nombre del archivo que contiene los enunciados requeridos para cada nivel
         TextAsset textAsset = Resources.Load("Files/statements_sets") as TextAsset;
 
         string text = textAsset.text;
-
-        int numero = 0;
-
-        while (numero < 10)
+        if (file.classificationGameList.Contains(numero))
         {
-            if (file.classificationGameList.Contains("set_"+(numero +1)))
-            {
-                texts.Add(text.Split('\n')[numero]);
-            }
-            numero++;
+            statement = text.Split('\n')[numero];
         }
-        return texts;
+        return statement;
     }
     /*
     * Metodo para cargar y guardar las respuestas de cada nivel
     */
-    public List<string[]> LoadAnswers()
+    public string[] LoadAnswers(int numero)
     {
-        allAnswers = new List<string[]>();
-
         //Pasar la ruta del archivo y el nombre del archivo que contiene las respuestas requeridas para cada nivel
         TextAsset textAsset = Resources.Load("Files/correct_sets") as TextAsset;
 
-        string answers = textAsset.text;
+        string allAnswers = textAsset.text;
         string[] values;
         string[] values2;
 
-        int numero = 0;
 
-        while (numero < 10)
+        if (file.classificationGameList.Contains(numero))
         {
-            values = answers.Split('.');
+            values = allAnswers.Split('.');
             values2 = values[numero].Split(',');
 
             for (int j = 0; j < values2.Length; j++)
             {
                 values2[j].TrimEnd('.');
             }
-            if (file.classificationGameList.Contains("set_" + (numero + 1)))
-            {
-                allAnswers.Add(values2);
-            }
-            numero++;
+            answers = values2;
         }
 
-        return allAnswers;
+        return answers;
+    }
+    public Sprite LoadAnswerImages(int num)
+    {
+        Sprite correctAnswers = null;
+
+        Debug.Log("CARGAR RESPUESTA DE SET: " + num);
+        if (file.classificationGameList.Contains(num))
+        {
+            Debug.Log("ENTRO A CARGAR RESPUESTA CORRECTA");
+            correctAnswers = Resources.Load<Sprite>("Classification/Correct_sets/correct_set_" + num);
+        }
+        return correctAnswers;
     }
     /*
     * 

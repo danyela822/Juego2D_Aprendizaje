@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 public class CharacteristicsGameController : Reference
 {
     //Matriz para guardar todos los conjuntos de imagenes del juego
@@ -9,9 +7,6 @@ public class CharacteristicsGameController : Reference
 
     //Lista para guardar todos los enunciados del juego
     static List<string> texts;
-
-    //Lista para guardar todas las respuestas del juego
-    static List<string> answers;
 
     List<Sprite> images;
 
@@ -36,6 +31,9 @@ public class CharacteristicsGameController : Reference
     //Numero de intentos que tiene el jugador para ganar el juego
     int attempts = 3;
 
+    //Imagen de la respuesta correcta
+    Sprite correctAnswer;
+
     private void Start()
     {
         //Instaciar Lista que guardara todas las imagenes
@@ -43,9 +41,6 @@ public class CharacteristicsGameController : Reference
 
         //Instaciar Lista que guardara todos los enunciados
         texts = App.generalModel.characteristicsGameModel.LoadTexts();
-
-        //Instaciar Lista que guardara todas las respuestas
-        answers = App.generalModel.characteristicsGameModel.LoadAnswers();
 
         //Numero random para seleccionar un conjunto de imagenes
         number = Random.Range(0, allImages.Count);
@@ -68,6 +63,12 @@ public class CharacteristicsGameController : Reference
         {
             //Asignar a cada boton de la vista una imagen diferente
             App.generalView.characteristicsGameView.buttons[i].image.sprite = images[i];
+
+            //Capturar la imagen que corresponde a la respuesta correcta
+            if (images[i].name == "correct")
+            {
+                correctAnswer = images[i];
+            }
         }
     }
     /*
@@ -95,11 +96,10 @@ public class CharacteristicsGameController : Reference
         }
         counter++;
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
-        if (selectedOption == answers[number])
+        if (selectedOption == "correct")
         {
             allImages.RemoveAt(number);
             texts.RemoveAt(number);
-            answers.RemoveAt(number);
 
             Debug.Log("ELIMINAR: " + number);
             App.generalModel.characteristicsGameModel.file.characteristicsGameList.RemoveAt(number);
@@ -123,7 +123,6 @@ public class CharacteristicsGameController : Reference
                 PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
 
                 App.generalView.gameOptionsView.ShowWinCanvas(3);
-                //return 3;
             }
             else if(counter == 2)
             {
@@ -132,7 +131,6 @@ public class CharacteristicsGameController : Reference
                 countPerfectGame = 0;
                 PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
                 App.generalView.gameOptionsView.ShowWinCanvas(2);
-                //return 2;
             }
             else 
             {
@@ -141,21 +139,11 @@ public class CharacteristicsGameController : Reference
                 countPerfectGame = 0;
                 PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
                 App.generalView.gameOptionsView.ShowWinCanvas(1);
-                //return 1;
             }
         }
         else
         {
             CheckAttempt();
-            /*if (counter == 3)
-            {
-                return 0;
-            }
-            else
-            {
-                CheckAttempt();
-                return -1;
-            }*/
         }
     }
     void CheckAttempt()
@@ -163,18 +151,12 @@ public class CharacteristicsGameController : Reference
         attempts--;
         if (attempts == 0)
         {
-            //App.generalView.setsGameView.correctAnswer.sprite = correctAnswer;
-            //App.generalView.setsGameView.loseCanvas.enabled = true;
-            //Sprite correctAnswer = images.
-            App.generalView.gameOptionsView.correctAnswer.sprite = images[number];
+            App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
             App.generalView.gameOptionsView.ShowLoseCanvas();
         }
         else
         {
-            //string messageLose = "Lo siento :( la respuesta  no es correcta \n le quedan "+numberTry+ " intentos";
-            //App.generalView.setsGameView.messageLoseCanvas.text = messageLose;
             App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
-            //App.generalView.setsGameView.tryCanvas.enabled = true;  
         }
     }
     /*

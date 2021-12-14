@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 [System.Serializable]
 public class FileLists : ScriptableObject
 {
-    public List<string> classificationGameList;
+    public List<int> classificationGameList;
     public List<string> characteristicsGameList;
     public List<int> achievementsList;
 

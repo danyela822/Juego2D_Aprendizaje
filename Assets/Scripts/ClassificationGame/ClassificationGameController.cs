@@ -7,14 +7,14 @@ using System.Linq;
 
 public class ClassificationGameController : Reference
 {
-    //Matriz para guardar todos los conjuntos de imagenes del juego
-    static List<Sprite[]> allImages;
+    //Array para guardar el conjunto de imagenes del juego
+    static Sprite[] images;
 
-    //Array para guardar todos los enunciados del juego
-    static List<string> texts;
+    //String para guardar un enunciado del juego
+    static string statement;
 
-    //Lista para guardar todos los conjuntos de respuestas del juego
-    static List<string[]> allAnswers;
+    //Array para guardar las respuesta de respuestas del juego
+    static string[] answers;
 
     //Numero para acceder a un conjunto de imagenes en especifico
     int number;
@@ -37,19 +37,33 @@ public class ClassificationGameController : Reference
     //numero que cuenta las veces que ha completado niveles sin errores
     int countPerfectGame = 0;
 
+    //Numero de intentos que tiene el jugador para ganar el juego
+    int attempts = 3;
+
+    public FileLists file;
     private void Start()
     {
-        //Instaciar Lista que guardara todas las imagenes
-        allImages = App.generalModel.classificationGameModel.LoadImages();
-
-        //Instaciar Lista que guardara todos los enunciados
-        texts = App.generalModel.classificationGameModel.LoadTexts();
-
-        //Instaciar Lista que guardara todas las respuestas
-        allAnswers = App.generalModel.classificationGameModel.LoadAnswers();
-
         //Numero random para seleccionar un conjunto de imagenes
-        number = Random.Range(0, allImages.Count);
+        number = Random.Range(0, 10);
+        bool centinela = true;
+        while(centinela)
+        {
+            if (file.classificationGameList.Contains(number))
+            {
+                //Instaciar Lista que guardara todas las imagenes
+                images = App.generalModel.classificationGameModel.LoadImages(number);
+                //Instaciar Lista que guardara todos los enunciados
+                statement = App.generalModel.classificationGameModel.LoadTexts(number);
+                //Instaciar Lista que guardara todas las respuestas
+                answers = App.generalModel.classificationGameModel.LoadAnswers(number);
+                centinela = false;
+            }
+            else
+            {
+                number = Random.Range(0, 10);
+            }          
+        }
+        Debug.Log("ELIMINAR: " + number);
 
         //Ubicar en la pantalla las imagenes seleccionadas
         PutImages();
@@ -66,7 +80,7 @@ public class ClassificationGameController : Reference
     void PutImages()
     {
         //Lista que guardara las imagenes seleccionadas pero cambiando su orden dentro de la lista
-        List<Sprite> pictures = ChangeOrderList(allImages[number]);
+        List<Sprite> pictures = ChangeOrderList(images);
 
         for (int i = 0; i < pictures.Count; i++)
         {
@@ -79,11 +93,8 @@ public class ClassificationGameController : Reference
     */
     void PutText()
     {
-        //Obtener un enunciado en especifico
-        string text = texts[number];
-
         //Asignar el enunciado seleccionado al texto de la vista
-        App.generalView.classificationGameView.statement.text = text;
+        App.generalView.classificationGameView.statement.text = statement;
     }
     /*
     * Metodo para guardar en una lista cada opcion seleccionada por el jugador
@@ -109,7 +120,7 @@ public class ClassificationGameController : Reference
     /*
     * Metodo para verificar si la respuesta final de jugador es correcta o incorrecta
     */
-    public int CheckAnswer()
+    public void CheckAnswer()
     {
 
         counter++;
@@ -121,24 +132,12 @@ public class ClassificationGameController : Reference
             PlayerPrefs.SetInt("PlayGame1", 1);
         }
 
-
-        //Obtener un conjunto de respuestas en especifico
-        string[] answers = allAnswers[number];
-
-        if(answers.Length == choises.Count)
+        if (answers.Length == choises.Count)
         {
             var result = answers.Except(choises);
             if (result.Count() == 0)
             {
-
-                Debug.Log("ELIMINAR: " + number);
-                allImages.RemoveAt(number);
-                texts.RemoveAt(number);
-                allAnswers.RemoveAt(number);
-
-                App.generalModel.classificationGameModel.file.classificationGameList.RemoveAt(number);
-
-                //Debug.Log("LISTA DE IMAGENES MODELO: "+App.generalModel.classificationGameModel.GetListImages().Count);
+                App.generalModel.classificationGameModel.file.classificationGameList.Remove(number);
                 App.generalModel.classificationGameModel.file.Save("P");
 
                 if (counter == 1)
@@ -155,8 +154,7 @@ public class ClassificationGameController : Reference
                     countPerfectGame = PlayerPrefs.GetInt("PerfectGame1", 0) + 1;
                     Debug.Log("Lleva: " + countPerfectGame);
                     PlayerPrefs.SetInt("PerfectGame1", countPerfectGame);
-
-                    return 3;
+                    App.generalView.gameOptionsView.ShowWinCanvas(3);
                 }
                 else if (counter == 2)
                 {
@@ -164,7 +162,7 @@ public class ClassificationGameController : Reference
                     App.generalModel.classificationGameModel.SetTotalStars(App.generalModel.classificationGameModel.GetTotalStars() + 2);
                     countPerfectGame = 0;
                     PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
-                    return 2;
+                    App.generalView.gameOptionsView.ShowWinCanvas(2);
                 }
                 else
                 {
@@ -172,31 +170,30 @@ public class ClassificationGameController : Reference
                     App.generalModel.classificationGameModel.SetTotalStars(App.generalModel.classificationGameModel.GetTotalStars() + 1);
                     countPerfectGame = 0;
                     PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
-                    return 1;
+                    App.generalView.gameOptionsView.ShowWinCanvas(1);
                 }
             }
             else
             {
-                if (counter == 3)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return -1;
-                }
+                CheckAttempt();
             }
         }
         else
         {
-            if (counter == 3)
-            {
-                return 0;
-            }
-            else
-            {
-                return -1;
-            }
+            CheckAttempt();
+        }
+    }
+    void CheckAttempt()
+    {
+        attempts--;
+        if (attempts == 0)
+        {
+            App.generalView.gameOptionsView.correctAnswer.sprite = App.generalModel.classificationGameModel.LoadAnswerImages(number);
+            App.generalView.gameOptionsView.ShowLoseCanvas();
+        }
+        else
+        {
+            App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
         }
     }
     /*

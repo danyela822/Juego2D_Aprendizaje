@@ -12,9 +12,6 @@ public class CharacteristicsGameView : Reference
     //Texto para mostrar el eunciado del juego
     public Text statement;
 
-    //Numero de intentos que tiene el jugador para ganar el juego
-    //int attempts = 2;
-
     /*
     * Metodo que captura el nombre de la imagen que posee un boton y activa el canvas de ganar, perder o volver a intentar
     */
@@ -23,31 +20,10 @@ public class CharacteristicsGameView : Reference
         //Nombre de la imagen que tiene el boton
         string nameImage = button.image.sprite.name;
 
+        //Desactivar el boton que se ha presionado
         button.interactable = false;
-        App.generalController.characteristicsGameController.CheckAnswer(nameImage);
-        /*int numberStars = App.generalController.characteristicsGameController.CheckAnswer(nameImage);
 
-        if (numberStars == 3)
-        {
-            App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
-        }
-        else if (numberStars == 2)
-        {
-            App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
-        }
-        else if (numberStars == 1)
-        {
-            App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
-        }
-        else if (numberStars == -1)
-        {
-            App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
-            attempts--;
-        }
-        else
-        {
-            App.generalView.gameOptionsView.ShowLoseCanvas();
-        }*/
+        App.generalController.characteristicsGameController.CheckAnswer(nameImage);
     }
     /*
      * Metodo que oculta el canvas inicial del juego

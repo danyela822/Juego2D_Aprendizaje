@@ -4,52 +4,52 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -3570828775386159294
-    second: manzana
+    second: cruz
   - first:
       213: -6398566401284722792
-    second: sandwitch
+    second: hexagono
   - first:
       213: -6632797441485799371
-    second: pollo
+    second: cubo
   - first:
       213: 7925938010280255925
-    second: tomate
+    second: pentagono
   - first:
       213: -3411193770045516504
-    second: pepino
+    second: triangulo rectangulo
   - first:
       213: -413765739537769895
-    second: dulce
+    second: paralelogramo
   - first:
       213: -5284943578464222530
-    second: "pi\xF1a"
+    second: cilindro
   - first:
       213: -8705034020923199526
-    second: ajo
+    second: flecha
   - first:
       213: -3210490098022447899
-    second: caramelo
+    second: corazon
   - first:
       213: -4215746843647681994
-    second: galleta
+    second: estrella
   - first:
       213: -6301745145104115310
-    second: pizza
+    second: circulo
   - first:
       213: 4145440368246857168
-    second: fresa
+    second: cuadrado
   - first:
       213: 3273095158370543621
-    second: papa
+    second: rombo
   - first:
       213: 5136739447358144566
-    second: brocoli
+    second: trapecio
   - first:
       213: -141486797005990210
-    second: limon
+    second: x
   - first:
       213: 8584825200786958544
-    second: zanahoria
+    second: triangulo
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,13 +163,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: manzana
+      name: cruz
       rect:
         serializedVersion: 2
-        x: 2
-        y: 917
-        width: 190
-        height: 219
+        x: 0
+        y: 503
+        width: 108
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,13 +184,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sandwitch
+      name: hexagono
       rect:
         serializedVersion: 2
-        x: 265
-        y: 958
-        width: 187
-        height: 179
+        x: 145
+        y: 487
+        width: 122
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,13 +205,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pollo
+      name: cubo
       rect:
         serializedVersion: 2
-        x: 513
-        y: 961
-        width: 202
-        height: 176
+        x: 311
+        y: 484
+        width: 117
+        height: 112
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,13 +226,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tomate
+      name: pentagono
       rect:
         serializedVersion: 2
-        x: 788
-        y: 968
-        width: 191
-        height: 168
+        x: 483
+        y: 484
+        width: 108
+        height: 109
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,13 +247,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pepino
+      name: triangulo rectangulo
       rect:
         serializedVersion: 2
-        x: 19
-        y: 598
-        width: 139
-        height: 266
+        x: 0
+        y: 348
+        width: 95
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,13 +268,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dulce
+      name: paralelogramo
       rect:
         serializedVersion: 2
-        x: 232
-        y: 668
-        width: 232
-        height: 137
+        x: 133
+        y: 344
+        width: 110
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,13 +289,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "pi\xF1a"
+      name: cilindro
       rect:
         serializedVersion: 2
-        x: 554
-        y: 637
-        width: 169
-        height: 267
+        x: 311
+        y: 336
+        width: 81
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,13 +310,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ajo
+      name: flecha
       rect:
         serializedVersion: 2
-        x: 798
-        y: 665
-        width: 206
-        height: 209
+        x: 459
+        y: 335
+        width: 122
+        height: 93
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,13 +331,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: caramelo
+      name: corazon
       rect:
         serializedVersion: 2
         x: 0
-        y: 305
-        width: 134
-        height: 254
+        y: 182
+        width: 114
+        height: 111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,13 +352,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: galleta
+      name: estrella
       rect:
         serializedVersion: 2
-        x: 256
-        y: 391
-        width: 215
-        height: 165
+        x: 151
+        y: 184
+        width: 118
+        height: 114
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,13 +373,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pizza
+      name: circulo
       rect:
         serializedVersion: 2
-        x: 552
-        y: 359
-        width: 188
-        height: 205
+        x: 320
+        y: 166
+        width: 113
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,13 +394,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fresa
+      name: cuadrado
       rect:
         serializedVersion: 2
-        x: 810
-        y: 390
-        width: 181
-        height: 214
+        x: 488
+        y: 175
+        width: 101
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,13 +415,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: papa
+      name: rombo
       rect:
         serializedVersion: 2
         x: 0
-        y: 92
-        width: 233
-        height: 148
+        y: 0
+        width: 126
+        height: 127
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -436,13 +436,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: brocoli
+      name: trapecio
       rect:
         serializedVersion: 2
-        x: 279
-        y: 72
-        width: 177
-        height: 238
+        x: 154
+        y: 22
+        width: 123
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -457,13 +457,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: limon
+      name: x
       rect:
         serializedVersion: 2
-        x: 553
-        y: 105
-        width: 211
-        height: 177
+        x: 320
+        y: 4
+        width: 92
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -478,13 +478,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zanahoria
+      name: triangulo
       rect:
         serializedVersion: 2
-        x: 845
-        y: 7
-        width: 204
-        height: 340
+        x: 455
+        y: 9
+        width: 111
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

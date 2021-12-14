@@ -3,53 +3,53 @@ guid: faeaf7a8259a02f4cb4476f9c3eaae18
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4679489028334051304
+      213: -8746842200279654653
     second: tigre
   - first:
-      213: 90203852942862570
-    second: serpiente
-  - first:
-      213: -8502617416159834019
-    second: rana
-  - first:
-      213: -4546365679364336122
-    second: gorila
-  - first:
-      213: -9072210000488994975
-    second: buho
-  - first:
-      213: -1104722488228382341
-    second: burro
-  - first:
-      213: 483176769233475837
-    second: mono
-  - first:
-      213: -2589929401604082437
+      213: 6615473487158562289
     second: gato
   - first:
-      213: -155320571719930320
+      213: -3779900582254170045
     second: perro
   - first:
-      213: 6602626091502447730
-    second: canguro
+      213: -5672201343642644606
+    second: buho
   - first:
-      213: 3777290508742839008
-    second: "ping\xFCino"
+      213: 1810914371392598741
+    second: oso
   - first:
-      213: 5118652825969181828
-    second: conejo
+      213: -8867685487856734574
+    second: cangrejo
   - first:
-      213: 2601135941116277806
-    second: rinoceronte
+      213: 27959484727728504
+    second: delfin
   - first:
-      213: -6894145168524978096
-    second: hipopotamo
+      213: -4828305031764699520
+    second: jirafa
   - first:
-      213: 735323733566135715
-    second: oso polar
+      213: 2308954694831011320
+    second: elefante
   - first:
-      213: 3966769510852530675
-    second: ciervo
+      213: -9206945761871560534
+    second: cerdo
+  - first:
+      213: 2453810722898214637
+    second: unicornio
+  - first:
+      213: -7761023778355103957
+    second: caballito de mar
+  - first:
+      213: -152084498066917626
+    second: dinosaurio
+  - first:
+      213: -7730196173615443653
+    second: pato
+  - first:
+      213: 5675319591547485176
+    second: mariposa
+  - first:
+      213: 7525301497223272324
+    second: pez
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -167,9 +167,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 463
-        width: 95
-        height: 114
+        y: 632
+        width: 142
+        height: 154
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,134 +177,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ef50307a72e0f040800000000000000
-      internalID: 4679489028334051304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: serpiente
-      rect:
-        serializedVersion: 2
-        x: 114
-        y: 463
-        width: 114
-        height: 114
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae8e7042de7704100800000000000000
-      internalID: 90203852942862570
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rana
-      rect:
-        serializedVersion: 2
-        x: 244
-        y: 463
-        width: 107
-        height: 114
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d505eb04282a00a80800000000000000
-      internalID: -8502617416159834019
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gorila
-      rect:
-        serializedVersion: 2
-        x: 372
-        y: 444
-        width: 96
-        height: 133
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6061676908018e0c0800000000000000
-      internalID: -4546365679364336122
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buho
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 312
-        width: 95
-        height: 114
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1676b193219091280800000000000000
-      internalID: -9072210000488994975
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: burro
-      rect:
-        serializedVersion: 2
-        x: 94
-        y: 312
-        width: 114
-        height: 114
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b79f2c100cc3ba0f0800000000000000
-      internalID: -1104722488228382341
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mono
-      rect:
-        serializedVersion: 2
-        x: 207
-        y: 312
-        width: 96
-        height: 114
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df8d1ed26b694b600800000000000000
-      internalID: 483176769233475837
+      spriteID: 30f5fe19c59fc9680800000000000000
+      internalID: -8746842200279654653
       vertices: []
       indices: 
       edges: []
@@ -313,10 +187,10 @@ TextureImporter:
       name: gato
       rect:
         serializedVersion: 2
-        x: 313
-        y: 312
-        width: 95
-        height: 114
+        x: 181
+        y: 628
+        width: 188
+        height: 155
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -324,8 +198,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf47c086ee8be0cd0800000000000000
-      internalID: -2589929401604082437
+      spriteID: 1fdc9171612eecb50800000000000000
+      internalID: 6615473487158562289
       vertices: []
       indices: 
       edges: []
@@ -334,10 +208,10 @@ TextureImporter:
       name: perro
       rect:
         serializedVersion: 2
-        x: 0
-        y: 179
-        width: 95
-        height: 115
+        x: 401
+        y: 620
+        width: 138
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -345,20 +219,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03ea25053c038ddf0800000000000000
-      internalID: -155320571719930320
+      spriteID: 340b27c72781b8bc0800000000000000
+      internalID: -3779900582254170045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: canguro
+      name: buho
       rect:
         serializedVersion: 2
-        x: 98
-        y: 153
-        width: 133
-        height: 141
+        x: 570
+        y: 607
+        width: 154
+        height: 161
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -366,62 +240,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27caab0b27d31ab50800000000000000
-      internalID: 6602626091502447730
+      spriteID: 28fcfa93eea4841b0800000000000000
+      internalID: -5672201343642644606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "ping\xFCino"
-      rect:
-        serializedVersion: 2
-        x: 249
-        y: 157
-        width: 107
-        height: 137
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ea421b64b1ab6430800000000000000
-      internalID: 3777290508742839008
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: conejo
-      rect:
-        serializedVersion: 2
-        x: 371
-        y: 154
-        width: 96
-        height: 133
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 484417c10ab190740800000000000000
-      internalID: 5118652825969181828
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rinoceronte
+      name: oso
       rect:
         serializedVersion: 2
         x: 0
-        y: 36
-        width: 140
-        height: 107
+        y: 426
+        width: 125
+        height: 158
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -429,20 +261,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e24bcb66b57191420800000000000000
-      internalID: 2601135941116277806
+      spriteID: 5d27181b609a12910800000000000000
+      internalID: 1810914371392598741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hipopotamo
+      name: cangrejo
       rect:
         serializedVersion: 2
-        x: 147
-        y: 10
-        width: 126
-        height: 114
+        x: 197
+        y: 439
+        width: 162
+        height: 143
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -450,20 +282,167 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 058d718fe731350a0800000000000000
-      internalID: -6894145168524978096
+      spriteID: 29ea9642807afe480800000000000000
+      internalID: -8867685487856734574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oso polar
+      name: delfin
       rect:
         serializedVersion: 2
-        x: 280
+        x: 409
+        y: 411
+        width: 150
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8799c43d005536000800000000000000
+      internalID: 27959484727728504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jirafa
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 407
+        width: 89
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0861f62b72a6efcb0800000000000000
+      internalID: -4828305031764699520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elefante
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 202
+        width: 131
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f57fd3cf0e0b0020800000000000000
+      internalID: 2308954694831011320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerdo
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 205
+        width: 171
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa08b5d2c9b5a3080800000000000000
+      internalID: -9206945761871560534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unicornio
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 186
+        width: 168
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dee74640adfad0220800000000000000
+      internalID: 2453810722898214637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: caballito de mar
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 188
+        width: 91
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b27b8c54efd4b4490800000000000000
+      internalID: -7761023778355103957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurio
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 180
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 607b0ec64ffa3edf0800000000000000
+      internalID: -152084498066917626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pato
+      rect:
+        serializedVersion: 2
+        x: 207
         y: 0
-        width: 126
-        height: 134
+        width: 123
+        height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -471,20 +450,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ad9f1e2a05643a00800000000000000
-      internalID: 735323733566135715
+      spriteID: b3151935983d8b490800000000000000
+      internalID: -7730196173615443653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ciervo
+      name: mariposa
       rect:
         serializedVersion: 2
-        x: 416
-        y: 13
-        width: 102
-        height: 125
+        x: 387
+        y: 19
+        width: 181
+        height: 110
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -492,8 +471,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f117307adbcc0730800000000000000
-      internalID: 3966769510852530675
+      spriteID: 8fbb0017919c2ce40800000000000000
+      internalID: 5675319591547485176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pez
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 13
+        width: 169
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48755b947dd3f6860800000000000000
+      internalID: 7525301497223272324
       vertices: []
       indices: 
       edges: []

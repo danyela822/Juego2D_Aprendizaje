@@ -9387,6 +9387,7 @@ MonoBehaviour:
   statsView: {fileID: 0}
   additionGameView: {fileID: 0}
   equialityGameView: {fileID: 0}
+  sequenceGameView: {fileID: 0}
   setsGameView: {fileID: 0}
 --- !u!4 &1519675955
 Transform:
@@ -9668,6 +9669,7 @@ MonoBehaviour:
   statsController: {fileID: 0}
   additionGameController: {fileID: 0}
   equialityGameController: {fileID: 0}
+  sequenceGameController: {fileID: 0}
   setsGameController: {fileID: 0}
 --- !u!4 &1549906134
 Transform:

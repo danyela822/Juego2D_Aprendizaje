@@ -30,9 +30,6 @@ public class ClassificationGameView : Reference
     //Lista de items que aparecen en la pantalla al seleccionar un boton
     List<GameObject> items;
 
-    //Numero de intentos que tiene el jugador para ganar el juego
-    int attempts = 2;
-
     void Start()
     {
         items = new List<GameObject>();
@@ -144,9 +141,10 @@ public class ClassificationGameView : Reference
         else
         {
             //Determinar si el jugador gano o perdio
-            int numberStars = App.generalController.classificationGameController.CheckAnswer();
+            App.generalController.classificationGameController.CheckAnswer();
+            //int numberStars = App.generalController.classificationGameController.CheckAnswer();
 
-            if (numberStars == 3)
+            /*if (numberStars == 3)
             {
                 App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
             }
@@ -166,7 +164,7 @@ public class ClassificationGameView : Reference
             else
             {
                 App.generalView.gameOptionsView.ShowLoseCanvas();
-            }
+            }*/
         }
     }
     /*

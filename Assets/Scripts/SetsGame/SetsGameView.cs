@@ -28,6 +28,7 @@ public class SetsGameView : Reference
         //Nombre de la imagen que tiene el boton
         string nameImage = button.image.sprite.name;
 
+        //Desactivar el boton que se ha presionado
         button.interactable = false;
 
         //Guardar el nombre de la imagen
