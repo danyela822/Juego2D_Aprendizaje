@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 public class ClassificationGameModel : Reference
 {
@@ -8,27 +7,8 @@ public class ClassificationGameModel : Reference
 
     int totalStars;
     int totalPoints;
-    int createList;
     public FileLists file;
 
-    private void Start()
-    {
-        file.Load("P");
-        Debug.Log("TAMAÑO LISTA CLASIFICACION: " + file.classificationGameList.Count);
-        //Debug.Log("TAMAÑO LISTA SPRITES ANTES: "+q.listaSprites.Count);
-        if (GetList() == 0)
-        {
-            for (int j = 0; j < 10; j++)
-            {
-                file.classificationGameList.Add(j);
-               // Debug.Log("TAMAÑO: " + q.classificationGameList.Count);
-            }
-            SetList(1);
-            Debug.Log("CAMBIO DE LISTA CLASSIFICATION: " + GetList());
-            App.generalView.gamesMenuView.playButtons[0].enabled = true;
-            file.Save("P");
-        }
-    }
     /*
     * Metodo para cargar y guardar todas la imagnes que necesita el juego
     */
@@ -134,20 +114,5 @@ public class ClassificationGameModel : Reference
     {
         PlayerPrefs.SetInt("TotalPointsGame1", valor);
         //Debug.Log("PUNTOS EN SET: " + valor);
-    }
-    /*
-    * 
-    */
-    public int GetList()
-    {
-        createList = PlayerPrefs.GetInt("ClassificationList", 0);
-        return createList;
-    }
-    /*
-     * 
-     */
-    public void SetList(int value)
-    {
-        PlayerPrefs.SetInt("ClassificationList", value);
     }
 }

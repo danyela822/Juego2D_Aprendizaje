@@ -38,25 +38,6 @@ public class GamesMenuView : Reference
 
     public static GamesMenuView gamesMenuView;
 
-    /*private void Awake()
-    {
-        if (gamesMenuView == null)
-        {
-            gamesMenuView = this;
-            DontDestroyOnLoad(gameObject);
-            //Posicion en inicial del menu
-            initialPosition = menu.transform.position.x;
-            //Panel que se muestra por defecto al cargar la escena
-            gamePanelName = "GamePanel1";
-            //Ubicar el panel en la posicion inicial
-            menu.position = new Vector3(initialPosition, menu.position.y, 0);
-
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }*/
     void Start()
     {
         //Posicion en inicial del menu

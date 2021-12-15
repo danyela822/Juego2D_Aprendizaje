@@ -4,16 +4,16 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -7759437408760961834
-    second: auto_1
+    second: correct
   - first:
       213: -533786546797707026
-    second: auto_2
+    second: queso
   - first:
       213: -2762498640475868369
-    second: auto_3
+    second: hamburguesa
   - first:
       213: 68932966449837946
-    second: correct
+    second: pizza
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,15 +127,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: auto_1
+      name: correct
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 245
-        width: 322
-        height: 227
+        width: 216
+        height: 178
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,15 +148,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: auto_2
+      name: queso
       rect:
         serializedVersion: 2
-        x: 339
+        x: 264
         y: 245
-        width: 322
-        height: 227
+        width: 216
+        height: 178
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -169,15 +169,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: auto_3
+      name: hamburguesa
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 322
-        height: 227
+        width: 216
+        height: 178
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -190,15 +190,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: correct
+      name: pizza
       rect:
         serializedVersion: 2
-        x: 339
-        y: 0
-        width: 322
-        height: 227
+        x: 268
+        y: 7
+        width: 210
+        height: 162
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

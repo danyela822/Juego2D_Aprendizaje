@@ -8,7 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class FileLists : ScriptableObject
 {
     public List<int> classificationGameList;
-    public List<string> characteristicsGameList;
+    public List<int> characteristicsGameList;
     public List<int> achievementsList;
 
     public void Save(string fileName = null)

@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.IO;
 using System.Linq;
 
 public class ClassificationGameController : Reference
@@ -40,7 +37,6 @@ public class ClassificationGameController : Reference
     //Numero de intentos que tiene el jugador para ganar el juego
     int attempts = 3;
 
-    public FileLists file;
     private void Start()
     {
         //Numero random para seleccionar un conjunto de imagenes
@@ -48,7 +44,7 @@ public class ClassificationGameController : Reference
         bool centinela = true;
         while(centinela)
         {
-            if (file.classificationGameList.Contains(number))
+            if (App.generalModel.classificationGameModel.file.classificationGameList.Contains(number))
             {
                 //Instaciar Lista que guardara todas las imagenes
                 images = App.generalModel.classificationGameModel.LoadImages(number);
@@ -80,12 +76,12 @@ public class ClassificationGameController : Reference
     void PutImages()
     {
         //Lista que guardara las imagenes seleccionadas pero cambiando su orden dentro de la lista
-        List<Sprite> pictures = ChangeOrderList(images);
+        List<Sprite> newList = ChangeOrderList(images);
 
-        for (int i = 0; i < pictures.Count; i++)
+        for (int i = 0; i < newList.Count; i++)
         {
             //Asignar a cada boton de la vista una imagen diferente
-            App.generalView.classificationGameView.buttons[i].image.sprite = pictures[i];
+            App.generalView.classificationGameView.buttons[i].image.sprite = newList[i];
         }
     }
     /*
@@ -128,7 +124,7 @@ public class ClassificationGameController : Reference
         {
             countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
             PlayerPrefs.SetInt("PlayOneLevel", countPlay);
-            Debug.Log("Jugo: " + countPlay);
+            Debug.Log("A Jugado: " + countPlay);
             PlayerPrefs.SetInt("PlayGame1", 1);
         }
 

@@ -4,16 +4,16 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 803059592392217716
-    second: correct
+    second: ciclovia
   - first:
       213: 1425512642357296914
-    second: queso
+    second: motociclista
   - first:
       213: -7916012094497316789
-    second: hamburguesa
+    second: giro
   - first:
       213: -2168904044808863750
-    second: pizza
+    second: correct
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,15 +127,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: correct
+      name: ciclovia
       rect:
         serializedVersion: 2
         x: 0
-        y: 245
-        width: 216
-        height: 178
+        y: 663
+        width: 532
+        height: 531
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,15 +148,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queso
+      name: motociclista
       rect:
         serializedVersion: 2
-        x: 264
-        y: 245
-        width: 216
-        height: 178
+        x: 724
+        y: 663
+        width: 531
+        height: 531
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -169,15 +169,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hamburguesa
+      name: giro
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 216
-        height: 178
+        x: 12
+        y: 11
+        width: 566
+        height: 551
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -190,15 +190,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pizza
+      name: correct
       rect:
         serializedVersion: 2
-        x: 268
-        y: 7
-        width: 210
-        height: 162
+        x: 686
+        y: 9
+        width: 575
+        height: 549
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

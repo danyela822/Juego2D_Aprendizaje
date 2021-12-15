@@ -5,86 +5,60 @@ using UnityEngine;
 
 public class CharacteristicsGameModel : Reference
 {
-    static List<Sprite[]> allImages;
-    static List<string> texts;
+    static Sprite[] images;
+    static string statement;
+
+    public static List<int> listaDeGuardado;
 
     int totalStars;
     int totalPoints;
-    int createList;
     public FileLists file;
 
-    private void Start()
+    /*private void Start()
     {
         file.Load("P");
-        Debug.Log("TAMAÑO LISTA Characteristics: " + file.characteristicsGameList.Count);
-        //Debug.Log("TAMAÑO LISTA SPRITES ANTES: "+q.listaSprites.Count);
+        //Debug.Log("TAMAÑO LISTA Characteristics: " + file.characteristicsGameList.Count);
         if (GetList() == 0)
         {
             for (int j = 0; j < 6; j++)
             {
-                file.characteristicsGameList.Add("characteristics_" + (j + 1));
-                // Debug.Log("TAMAÑO: " + q.classificationGameList.Count);
+                file.characteristicsGameList.Add(j);
             }
+            listaDeGuardado = file.characteristicsGameList;
+            Debug.Log("LISTA DE GUARDADO " + listaDeGuardado.Count);
             SetList(1);
-            Debug.Log("CAMBIO DE LISTA Characteristics: " + GetList());
+            //Debug.Log("CAMBIO DE LISTA Characteristics: " + GetList());
             App.generalView.gamesMenuView.playButtons[1].enabled = true;
             file.Save("P");
         }
-    }
-
+    }*/
     /*
     * Metodo para cargar y guardar todas la imagnes que necesita el juego
     */
-    public List<Sprite[]> LoadImages()
+    public Sprite[] LoadImages(int numero)
     {
-        allImages = new List<Sprite[]>();
-
-        //Numero de conjuntos de imagenes
-        int setOfImages = 6;
-
-        int numero = 1;
-
-        while (numero <= setOfImages)
+        if (file.characteristicsGameList.Contains(numero))
         {
-            if (file.characteristicsGameList.Contains("characteristics_" + numero))
-            {
-                //Cargar y guardar un set de imagenes en un array
-                Sprite[] spriteslist = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + (numero));
-
-                //Guardar el array de imagenes en la lista
-                allImages.Add(spriteslist);
-            }
-            numero++;
+            //Cargar y guardar un set de imagenes en un array
+            images = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + numero);
         }
-
-        Debug.Log("LISTA DE NUMEROS EN CHARACTERISTICS: " + file.characteristicsGameList.Count);
-        file.Save("P");
-        return allImages;
+        return images;
     }
     /*
     * Metodo para cargar todos los enunciados que deben acompañar a cada nivel
     */
-    public List<string> LoadTexts()
+    public string LoadTexts(int numero)
     {
-        texts = new List<string>();
-
         //Pasar la ruta del archivo y el nombre del archivo que contiene los enunciados requeridos para cada nivel
         TextAsset textAsset = Resources.Load("Files/statements_characteristics") as TextAsset;
 
-        int numero = 0;
-
         string text = textAsset.text;
 
-        while (numero < 6)
+        if (file.characteristicsGameList.Contains(numero))
         {
-            if (file.characteristicsGameList.Contains("characteristics_" + (numero + 1)))
-            {
-                texts.Add(text.Split('\n')[numero]);
-                //Debug.Log("TEXTS: " + texts[i]);
-            }
-            numero++;
+            statement = text.Split('\n')[numero];
         }
-        return texts;
+        return statement;
     }
     /*
      * 
@@ -109,7 +83,6 @@ public class CharacteristicsGameModel : Reference
     public int GetPoints()
     {
         totalPoints = PlayerPrefs.GetInt("TotalPointsGame2", 0);
-        Debug.Log("PUNTOS HASTA AHORA CHARACTERISTICS: "+totalPoints);
         if (totalPoints >= 200 && PlayerPrefs.GetInt("GamePoints2", 0) == 0)
         {
             PlayerPrefs.SetInt("GamePoints2", 1);
@@ -124,20 +97,5 @@ public class CharacteristicsGameModel : Reference
     {
         PlayerPrefs.SetInt("TotalPointsGame2", valor);
         //Debug.Log("PUNTOS EN SET: " + valor);
-    }
-    /*
-     * 
-     */
-    public int GetList()
-    {
-        createList = PlayerPrefs.GetInt("CharacteristicsList", 0);
-        return createList;
-    }
-    /*
-     * 
-     */
-    public void SetList(int value)
-    {
-        PlayerPrefs.SetInt("CharacteristicsList", value);
     }
 }

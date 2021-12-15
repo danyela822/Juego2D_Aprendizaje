@@ -42,7 +42,7 @@ public class StatsView : Reference
     {
         for (int i = 0; i < checkListLogros.Count; i++)
         {
-            if (!(App.generalController.statsController.GetAchievementsList().Contains(i)))
+            if (!(App.generalController.statsController.GetAchievementsList(i).Contains(i)))
             {
                 checkListLogros[i].GetComponent<Image>().enabled = true;
             }    

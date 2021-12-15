@@ -10,8 +10,8 @@ public class StatsController : Reference
     {
         return App.generalModel.statsModel.GetTotalStars();
     }
-    public List<int> GetAchievementsList()
+    public List<int> GetAchievementsList(int number)
     {
-        return App.generalModel.statsModel.CheckAchievements();
+        return App.generalModel.statsModel.CheckAchievements(number);
     }
 }

@@ -3,12 +3,10 @@ using UnityEngine;
 public class CharacteristicsGameController : Reference
 {
     //Matriz para guardar todos los conjuntos de imagenes del juego
-    static List<Sprite[]> allImages;
+    static Sprite[] images;
 
     //Lista para guardar todos los enunciados del juego
-    static List<string> texts;
-
-    List<Sprite> images;
+    static string statement;
 
     //Numero para acceder a un conjunto de imagenes en especifico
     int number;
@@ -36,15 +34,28 @@ public class CharacteristicsGameController : Reference
 
     private void Start()
     {
-        //Instaciar Lista que guardara todas las imagenes
-        allImages = App.generalModel.characteristicsGameModel.LoadImages();
-
-        //Instaciar Lista que guardara todos los enunciados
-        texts = App.generalModel.characteristicsGameModel.LoadTexts();
-
         //Numero random para seleccionar un conjunto de imagenes
-        number = Random.Range(0, allImages.Count);
+        number = Random.Range(0, 6);
 
+        bool centinela = true;
+        while (centinela)
+        {
+            if (App.generalModel.characteristicsGameModel.file.characteristicsGameList.Contains(number))
+            {
+                //Instaciar Lista que guardara todas las imagenes
+                images = App.generalModel.characteristicsGameModel.LoadImages(number);
+
+                //Instaciar Lista que guardara todos los enunciados
+                statement = App.generalModel.characteristicsGameModel.LoadTexts(number);
+
+                centinela = false;
+            }
+            else
+            {
+                number = Random.Range(0, 6);
+            }
+        }
+        Debug.Log("ELIMINAR: " + number);
         //Ubicar en la pantalla las imagenes seleccionadas
         PutImages();
 
@@ -57,17 +68,17 @@ public class CharacteristicsGameController : Reference
     public void PutImages()
     {
         //Lista que guardara las imagenes seleccionadas pero cambiando su orden dentro de la lista
-        images = ChangeOrderList(allImages[number]);
+        List<Sprite> newList = ChangeOrderList(images);
 
-        for (int i = 0; i < images.Count; i++)
+        for (int i = 0; i < newList.Count; i++)
         {
             //Asignar a cada boton de la vista una imagen diferente
-            App.generalView.characteristicsGameView.buttons[i].image.sprite = images[i];
+            App.generalView.characteristicsGameView.buttons[i].image.sprite = newList[i];
 
             //Capturar la imagen que corresponde a la respuesta correcta
-            if (images[i].name == "correct")
+            if (newList[i].name == "correct")
             {
-                correctAnswer = images[i];
+                correctAnswer = newList[i];
             }
         }
     }
@@ -76,11 +87,8 @@ public class CharacteristicsGameController : Reference
     */
     public void PutText()
     {
-        //Obtener un enunciado en especifico
-        string text = texts[number];
-
         //Asignar el enunciado seleccionado al texto de la vista
-        App.generalView.characteristicsGameView.statement.text = text;
+        App.generalView.characteristicsGameView.statement.text = statement;
     }
     /*
     * Metodo para verificar si la respuesta final de jugador es correcta o incorrecta
@@ -91,21 +99,15 @@ public class CharacteristicsGameController : Reference
         {
             countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
             PlayerPrefs.SetInt("PlayOneLevel", countPlay);
-            Debug.Log("Jugo: " + countPlay);
+            Debug.Log("A Jugado: " + countPlay);
             PlayerPrefs.SetInt("PlayGame2", 1);
         }
         counter++;
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
         if (selectedOption == "correct")
         {
-            allImages.RemoveAt(number);
-            texts.RemoveAt(number);
-
-            Debug.Log("ELIMINAR: " + number);
-            App.generalModel.characteristicsGameModel.file.characteristicsGameList.RemoveAt(number);
+            App.generalModel.characteristicsGameModel.file.characteristicsGameList.Remove(number);
             App.generalModel.characteristicsGameModel.file.Save("P");
-
-            //Debug.Log("LISTA DE IMAGENES MODELO: " + App.generalModel.characteristicsGameModel.GetListImages().Count);
 
             if (counter == 1)
             {
