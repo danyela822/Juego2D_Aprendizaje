@@ -30,6 +30,8 @@ public class AdditionGameController : Reference{
     //variable que me almacena el tamaño del objeto principal
     Vector2 size;
 
+    //variable que me indica en que nivel se encuentra el usuario 
+    int levelPosition = 3;
 
 
     // Start is called before the first frame update
@@ -124,82 +126,177 @@ public class AdditionGameController : Reference{
         return aux;
     }
 
+    //nivel uno 
+    //x = -2 y = 1.07
+
+    //nivel dos 
+    //x = -2 y = 0.99
+
+    //nivel tres
+    //x = -2 y = 2.25
+    //distancia de 1.26
+
     //metodo que crea la estructura visual del juego 
     public void CreateTable(){
-
-        GameObject gameZone = GameObject.Find("GameZone");
-
-        int cont = 0;
-        int aux = 2;
 
         GameObject firstOption;
         GameObject newOption;
         float x, y;
+        int firstLevel = 2;
+        int secondLevel = 3;
+        int thirdLevel = 4;
+        int cont = 2;
+        int auxImage = 0;
 
-        firstOption = Instantiate(objectRow,new Vector3(-1, 1.5f, 0), objectRow.transform.rotation);
 
-        Sprite spriteFirst = images[icons[0].idIcon];
-        firstOption.GetComponent<SpriteRenderer>().sprite = spriteFirst;
+        switch (levelPosition){
+            
+            case 1:
 
-        for (int i = 0; i < levels; i++){
+                firstOption = Instantiate(objectRow,new Vector3(-2, 1.07f, 0), objectRow.transform.rotation);
+                
+                x = -2; y = -0.1f;
 
-            switch (i){
-                case 0:
+                for (int i = 0; i < firstLevel; i++){
 
-                    x = -2; y = 0.63f;
-                    for (int j = 0; j < 2; j++){
+                    for (int j = 0; j < cont; j++){
 
-                        newOption = Instantiate(objectRow, new Vector3(x +(size.x * j), y, 0), objectRow.transform.rotation);
+                        newOption = Instantiate(objectRow, new Vector3(x +(size.x * j), y - (size.y*i), 0), objectRow.transform.rotation);
 
-                        Sprite sprite = images[icons[j].idIcon];
+                        Sprite sprite = images[icons[auxImage].idIcon];
                         newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-                        newOption.transform.parent = gameZone.transform;
-                        cont +=1;
+
+                        auxImage += 1;
+                        
                     }
-                    aux+=1;
-                break;
+                    cont+= 1;
+                    
+                }
 
-                case 1:
-                    //int cont = aux - 1;
-                    x = -2; y = -0.27f;
-                    for (int j = 0; j < 3; j++){
-                        newOption = Instantiate(objectRow, new Vector3(x + (size.x * j), y, 0), objectRow.transform.rotation);
+            break;
 
-                        Sprite sprite = images[icons[cont].idIcon];
+            case 2:
+
+                firstOption = Instantiate(objectRow,new Vector3(-2, 0.99f, 0), objectRow.transform.rotation);
+                
+                x = -2; y = -0.1f;
+
+                for (int i = 0; i < secondLevel; i++){
+
+                    for (int j = 0; j < cont; j++){
+
+                        newOption = Instantiate(objectRow, new Vector3(x +(size.x * j), y - (size.y*i), 0), objectRow.transform.rotation);
+
+                        Sprite sprite = images[icons[auxImage].idIcon];
                         newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-                        newOption.transform.parent = gameZone.transform;
-                        cont += 1;
+
+                        auxImage += 1;
+                        
                     }
-                    aux+=1;
-                break;
+                    cont+= 1;
+                    
+                }
+            break;
+            case 3:
 
-                case 2:
+                firstOption = Instantiate(objectRow,new Vector3(-2, 1.5f, 0), objectRow.transform.rotation);
+                
+                x = -2; y = 0.7f;
 
-                    x = -2; y = -1.17f;
-                    for (int j = 0; j < 4; j++){
-                        newOption = Instantiate(objectRow,new Vector3(x + (size.x * j), y, 0), objectRow.transform.rotation);
+                for (int i = 0; i < thirdLevel; i++){
 
-                        Sprite sprite = images[icons[cont].idIcon];
+                    for (int j = 0; j < cont; j++){
+
+                        newOption = Instantiate(objectRow, new Vector3(x +(size.x * j), y - (size.y*i), 0), objectRow.transform.rotation);
+                        
+                        Sprite sprite = images[icons[auxImage].idIcon];
                         newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-                        newOption.transform.parent = gameZone.transform;
-                        cont += 1;
-                    }
-                    aux+=1;
-                break;
 
-                default:
-                    x = -2; y = -2.09f;
-                    for (int j = 0; j < 5; j++){
-                        newOption = Instantiate(objectRow,new Vector3(x + (size.x * j), y, 0), objectRow.transform.rotation);
-
-                        Sprite sprite = images[icons[cont].idIcon];
-                        newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-                        newOption.transform.parent = gameZone.transform;
-                        cont += 1;
+                        auxImage += 1;
+                        
                     }
-                break;
-            }       
+                    cont+= 1;
+                    
+                }
+            break;
+            default:
+            break;
         }
+
+
+        // GameObject gameZone = GameObject.Find("GameZone");
+
+        // int cont = 0;
+        // int aux = 2;
+
+        // GameObject firstOption;
+        // GameObject newOption;
+        // float x, y;
+
+        // firstOption = Instantiate(objectRow,new Vector3(-1, 1.5f, 0), objectRow.transform.rotation);
+
+        // Sprite spriteFirst = images[icons[0].idIcon];
+        // firstOption.GetComponent<SpriteRenderer>().sprite = spriteFirst;
+
+        // for (int i = 0; i < levels; i++){
+
+        //     switch (i){
+        //         case 0:
+
+        //             x = -2; y = 0.63f;
+        //             for (int j = 0; j < 2; j++){
+
+        //                 newOption = Instantiate(objectRow, new Vector3(x +(size.x * j), y, 0), objectRow.transform.rotation);
+
+        //                 Sprite sprite = images[icons[j].idIcon];
+        //                 newOption.GetComponent<SpriteRenderer>().sprite = sprite;
+        //                 newOption.transform.parent = gameZone.transform;
+        //                 cont +=1;
+        //             }
+        //             aux+=1;
+        //         break;
+
+        //         case 1:
+        //             //int cont = aux - 1;
+        //             x = -2; y = -0.27f;
+        //             for (int j = 0; j < 3; j++){
+        //                 newOption = Instantiate(objectRow, new Vector3(x + (size.x * j), y, 0), objectRow.transform.rotation);
+
+        //                 Sprite sprite = images[icons[cont].idIcon];
+        //                 newOption.GetComponent<SpriteRenderer>().sprite = sprite;
+        //                 newOption.transform.parent = gameZone.transform;
+        //                 cont += 1;
+        //             }
+        //             aux+=1;
+        //         break;
+
+        //         case 2:
+
+        //             x = -2; y = -1.17f;
+        //             for (int j = 0; j < 4; j++){
+        //                 newOption = Instantiate(objectRow,new Vector3(x + (size.x * j), y, 0), objectRow.transform.rotation);
+
+        //                 Sprite sprite = images[icons[cont].idIcon];
+        //                 newOption.GetComponent<SpriteRenderer>().sprite = sprite;
+        //                 newOption.transform.parent = gameZone.transform;
+        //                 cont += 1;
+        //             }
+        //             aux+=1;
+        //         break;
+
+        //         default:
+        //             x = -2; y = -2.09f;
+        //             for (int j = 0; j < 5; j++){
+        //                 newOption = Instantiate(objectRow,new Vector3(x + (size.x * j), y, 0), objectRow.transform.rotation);
+
+        //                 Sprite sprite = images[icons[cont].idIcon];
+        //                 newOption.GetComponent<SpriteRenderer>().sprite = sprite;
+        //                 newOption.transform.parent = gameZone.transform;
+        //                 cont += 1;
+        //             }
+        //         break;
+        //     }       
+        // }
         GetSign();
     }
 

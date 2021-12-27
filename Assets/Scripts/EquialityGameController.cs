@@ -122,6 +122,7 @@ public class EquialityGameController : Reference{
         float y = 1.25f;
         float x = -1.5f;
         int aux = 0;
+        
         for (int i = 0; i < 4; i++){
             for (int j = 0; j < 2; j++){
                 

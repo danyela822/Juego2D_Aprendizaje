@@ -1338,7 +1338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.15352085}
   m_AnchorMax: {x: 1, y: 0.25800002}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -4, y: -18}
   m_SizeDelta: {x: -80, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1080751378
@@ -2035,6 +2035,8 @@ MonoBehaviour:
   statsView: {fileID: 0}
   additionGameView: {fileID: 1787065382}
   equialityGameView: {fileID: 0}
+  sequenceGameView: {fileID: 0}
+  setsGameView: {fileID: 0}
 --- !u!4 &1348617992
 Transform:
   m_ObjectHideFlags: 0
@@ -2515,6 +2517,8 @@ MonoBehaviour:
   statsController: {fileID: 0}
   additionGameController: {fileID: 1787065383}
   equialityGameController: {fileID: 0}
+  sequenceGameController: {fileID: 0}
+  setsGameController: {fileID: 0}
 --- !u!4 &1578427936
 Transform:
   m_ObjectHideFlags: 0
@@ -2818,6 +2822,7 @@ MonoBehaviour:
   MistakeCanvas: {fileID: 0}
   WarningCanvas: {fileID: 0}
   imageWin: {fileID: 0}
+  correctAnswer: {fileID: 0}
   textMistake: {fileID: 0}
 --- !u!114 &1657985007
 MonoBehaviour:
