@@ -10,14 +10,14 @@ public class EquialityGameController : Reference{
     List<Figure> figures;
     //lista que evita tener numeros repetidos en los objetos
     List<int> usedIntegers;
-
-
     //lista de sprite que se utilizan 
     public List<Sprite> images;
     //permite almacenar los id de las figuras izquierda derecha
-    List<int> numPaint;
+    List<int> numPaint = new List<int>();
     //objeto que contiene el prefab
     public GameObject objRow;
+    //objeto que contiene el prefab del signo
+    public GameObject objSing;
     //tamaño que tiene el prefab
     Vector2 size;
     //variable que almacena la respuesta correcta
@@ -28,18 +28,61 @@ public class EquialityGameController : Reference{
     //lista que almacena los numeros que se muestran como posible
     //respuestas del juego
     List<int> possibleAnswerGame = new List<int>();
+    //valores que son utilizados como iconos
+    List<int> usedIcons = new List<int>();
 
+
+    //nivel en que esta el usuario 
+    int levelUser = 2;
+    int level = 0;
+
+    float y;
+    float x;
+
+    float signX;
+    float signY;
 
     // Start is called before the first frame update
     void Start(){
 
         size = objRow.GetComponent<BoxCollider2D>().size;
 
+        
+        switch (levelUser){
+            
+            case 1: 
+                level = 2;
+                y = 0.35f;
+                x = -1.5f;
+                signX = -0.7f;
+                signY = 0.33f;
+            break;
+
+            case 2:
+                level = 3;
+                y = 0.6f;
+                x = -1.5f;
+                signX = -0.7f;
+                signY = 0.33f;
+            break;
+
+            default:
+                level = 4;
+                y = 1.25f;
+                x = -1.5f;
+                signX = -0.7f;
+                signY = 1.23f;
+            break;
+        }
+
         usedIntegers = new List<int>();
-        Buid(4);
+        Buid(level);
+        Debug.Log(PrintText());
+        //Debug.Log(PrintNumbers());
+        GetNumOperation();
         GetNum();
         DrawTable();
-        PaintNum();
+        //PaintNum();
         FillAnswer();
     }
 
@@ -53,21 +96,39 @@ public class EquialityGameController : Reference{
                 case 0:
                     int principal = Random.Range(1, NUM_POSIBLES);
                     usedIntegers.Add(principal);
+
                     int value = Random.Range(1, 4);
                     int figure = GetNewValue();
                     usedIntegers.Add(figure);
+
                     AddFigure(new Figure(principal, value, figure));
                     break;
 
                 default:
                     int valueP = usedIntegers[usedIntegers.Count -1];
+
                     int val = Random.Range(1, 4);
                     int fig = GetNewValue();
                     usedIntegers.Add(fig);
+ 
                     AddFigure(new Figure(valueP, val, fig));
                     break;
             }
         }
+    }
+
+    private int GetValueIcon(){
+       
+        bool noFound = true;
+        int ret = 0;
+        while(noFound){
+            int value = Random.Range(0, 10);
+            if (!ContainsValueIcons(value)){
+                noFound = false;
+                ret = value;
+            }
+        }
+        return ret;
     }
 
     //metodo que permite obtenes un id nuevo para
@@ -84,6 +145,14 @@ public class EquialityGameController : Reference{
             }
         }
         return ret;
+    }
+
+    private bool ContainsValueIcons(int value){
+
+        for (int i = 0; i < usedIcons.Count; i++){
+            if (usedIcons[i] == value) return true;
+        }
+        return false;
     }
 
     //metodo que permite verificar que no exista un id repetido de las
@@ -105,12 +174,26 @@ public class EquialityGameController : Reference{
     //para luego poder colocarlos en la pantalla
     private void GetNum(){
 
-        numPaint = new List<int>();
+        // numPaint = new List<int>();
         
         foreach (Figure figure in figures){
             numPaint.Add(figure.principal);
-            numPaint.Add(figure.fig);
+            for (int i = 0; i < figure.valueC; i++){
+                numPaint.Add(figure.fig);
+            }
+            
         }
+    }
+    
+    private string PrintNumbers(){
+
+        GetNum();
+        string res = "";
+        for (int i = 0; i < numPaint.Count; i++){
+            res += numPaint[i];
+        }
+        
+        return res;
     }
 
 
@@ -118,19 +201,35 @@ public class EquialityGameController : Reference{
     private void DrawTable(){
 
         GameObject option;
+        GameObject sign;
         
-        float y = 1.25f;
-        float x = -1.5f;
-        int aux = 0;
-        
-        for (int i = 0; i < 4; i++){
-            for (int j = 0; j < 2; j++){
-                
-                option = Instantiate(objRow,new Vector3(x + (2.3f*j),y - (0.9f*i), 0), objRow.transform.rotation);
+        int icon = 0;
 
-                Sprite sprite = images[numPaint[aux]];
-                option.GetComponent<SpriteRenderer>().sprite = sprite;
-                aux++;
+        for (int i = 0; i < level; i++){
+
+            int k = numOperation[i] + 1;
+            int j = 0;
+            
+            sign = Instantiate(objSing,new Vector3(signX, signY - (0.9f*i), 0), objRow.transform.rotation);
+            //sign.GetComponentInChildren<Text>().text = " = ";
+            
+
+            while(j != k){
+        
+                if(j == 1){
+                    option = Instantiate(objRow,new Vector3(x + (1.6f*j),y - (0.9f*i), 0), objRow.transform.rotation);
+                    Sprite sprite = images[numPaint[icon]];
+                    option.GetComponent<SpriteRenderer>().sprite = sprite;
+                    
+                }else{
+                    //option = Instantiate(objRow,new Vector3(x + (1.2f*j),y - (0.9f*i), 0), objRow.transform.rotation);
+                    option = Instantiate(objRow,new Vector3(x + ((size.x - 0.08f) * j),y - (0.9f*i), 0), objRow.transform.rotation);  
+                    Sprite sprite = images[numPaint[icon]];
+                    option.GetComponent<SpriteRenderer>().sprite = sprite;  
+                } 
+                
+                icon += 1;
+                j +=1 ;
             }
         }
 
@@ -152,6 +251,7 @@ public class EquialityGameController : Reference{
     //respuesta correcta
     void GetNumOperation(){
 
+        //lista que obtiene la cantidad que se va a tener de cada figura
         numOperation = new List<int>();
         correctAnswerGame = 1;
 
@@ -161,15 +261,6 @@ public class EquialityGameController : Reference{
         }
     }
 
-    //metodo que pemrite colocar los valores que son obtenidos 
-    //de cada figura
-    private void PaintNum(){
-
-        GetNumOperation();
-        for (int i = 0; i < numOperation.Count; i++){
-            App.generalView.equialityGameView.listTextNum[i].text = "" + numOperation[i];
-        }
-    }
 
     //metodo que pemrite obtener numeros aleatorios que seran opcion
     //de respusta a la solucion del problema 
@@ -227,6 +318,17 @@ public class EquialityGameController : Reference{
         }else{
             Debug.Log("You lose");
         }
+    }
+
+    public string PrintText(){
+
+        string res = "";
+        foreach (Figure fig in figures){
+            res += "figuraUno " + fig.principal + " cantidad " +
+            fig.valueC + " figuraDos " + fig.fig + "\n";
+        }
+
+        return res;
     }
 
 }
