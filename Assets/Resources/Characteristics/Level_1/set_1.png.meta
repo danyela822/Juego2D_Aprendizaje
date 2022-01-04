@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 79dba4ff4dd73884f9e262aa3c25f3ad
+guid: 4ff33963f53aaf7408b4132bc3322bc4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 803059592392217716
-    second: ciclovia
+      213: 6615473487158562289
+    second: aeropuesto
   - first:
-      213: 1425512642357296914
-    second: motociclista
+      213: -3779900582254170045
+    second: discapacitados
   - first:
-      213: -7916012094497316789
-    second: giro
+      213: -5672201343642644606
+    second: precausion
   - first:
-      213: -2168904044808863750
+      213: 1810914371392598741
     second: correct
   externalObjects: {}
   serializedVersion: 11
@@ -127,13 +127,55 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ciclovia
+      name: aeropuesto
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 285
+        width: 255
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fdc9171612eecb50800000000000000
+      internalID: 6615473487158562289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: discapacitados
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 283
+        width: 264
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 340b27c72781b8bc0800000000000000
+      internalID: -3779900582254170045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: precausion
       rect:
         serializedVersion: 2
         x: 0
-        y: 663
-        width: 532
-        height: 531
+        y: 0
+        width: 265
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,50 +183,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 474120ac17a052b00800000000000000
-      internalID: 803059592392217716
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: motociclista
-      rect:
-        serializedVersion: 2
-        x: 724
-        y: 663
-        width: 531
-        height: 531
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 21ff88e023078c310800000000000000
-      internalID: 1425512642357296914
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: giro
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 11
-        width: 566
-        height: 551
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b40aacdd0fca42290800000000000000
-      internalID: -7916012094497316789
+      spriteID: 28fcfa93eea4841b0800000000000000
+      internalID: -5672201343642644606
       vertices: []
       indices: 
       edges: []
@@ -193,10 +193,10 @@ TextureImporter:
       name: correct
       rect:
         serializedVersion: 2
-        x: 686
-        y: 9
-        width: 575
-        height: 549
+        x: 280
+        y: 0
+        width: 268
+        height: 268
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,8 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aff7249334186e1e0800000000000000
-      internalID: -2168904044808863750
+      spriteID: 5d27181b609a12910800000000000000
+      internalID: 1810914371392598741
       vertices: []
       indices: 
       edges: []

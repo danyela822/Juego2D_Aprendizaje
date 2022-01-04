@@ -8,7 +8,7 @@ public class Files : Reference
         file.Load("P");
         if (PlayerPrefs.GetInt("CreateLists", 0) == 0)
         {
-            for (int j = 0; j < 6; j++)
+            for (int j = 0; j < 5; j++)
             {
                 file.characteristicsGameList.Add(j);
             }
@@ -21,6 +21,7 @@ public class Files : Reference
                 file.achievementsList.Add(j);
             }
             PlayerPrefs.SetInt("CreateLists", 1);
+            PlayerPrefs.SetInt("Level", 1);
             Debug.Log("CAMBIO DE CreateLists: " + PlayerPrefs.GetInt("CreateLists", 0));
             file.Save("P");
         }

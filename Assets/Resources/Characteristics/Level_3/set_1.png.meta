@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 6332df1b380288a4ba1629c34f2cfc0d
+guid: e0870a37113001f4eb77393e15d5a755
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7759437408760961834
+      213: -8746842200279654653
+    second: senial 1
+  - first:
+      213: 6615473487158562289
     second: correct
   - first:
-      213: -533786546797707026
-    second: queso
+      213: -3779900582254170045
+    second: senial 2
   - first:
-      213: -2762498640475868369
-    second: hamburguesa
-  - first:
-      213: 68932966449837946
-    second: pizza
+      213: -5672201343642644606
+    second: senial 3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,13 +127,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+      name: senial 1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 292
+        width: 250
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30f5fe19c59fc9680800000000000000
+      internalID: -8746842200279654653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: correct
       rect:
         serializedVersion: 2
-        x: 0
-        y: 245
-        width: 216
-        height: 178
+        x: 315
+        y: 288
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,41 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d4ece9b9c0f05490800000000000000
-      internalID: -7759437408760961834
+      spriteID: 1fdc9171612eecb50800000000000000
+      internalID: 6615473487158562289
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queso
-      rect:
-        serializedVersion: 2
-        x: 264
-        y: 245
-        width: 216
-        height: 178
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ee08d3cb6fb9798f0800000000000000
-      internalID: -533786546797707026
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hamburguesa
+      name: senial 2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 216
-        height: 178
+        width: 265
+        height: 265
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f23bfe17f12a9a9d0800000000000000
-      internalID: -2762498640475868369
+      spriteID: 340b27c72781b8bc0800000000000000
+      internalID: -3779900582254170045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pizza
+      name: senial 3
       rect:
         serializedVersion: 2
-        x: 268
-        y: 7
-        width: 210
-        height: 162
+        x: 293
+        y: 75
+        width: 281
+        height: 186
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,8 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a777e82fa26e4f000800000000000000
-      internalID: 68932966449837946
+      spriteID: 28fcfa93eea4841b0800000000000000
+      internalID: -5672201343642644606
       vertices: []
       indices: 
       edges: []

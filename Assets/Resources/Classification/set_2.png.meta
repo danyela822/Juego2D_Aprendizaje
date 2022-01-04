@@ -4,52 +4,52 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 544899849579671817
-    second: canguro
-  - first:
-      213: 5419204961664293245
-    second: "ping\xFCino"
-  - first:
-      213: 4654664176943327601
-    second: unicornio
-  - first:
-      213: 6810852082326285050
-    second: lemur
-  - first:
-      213: -1211137548109222303
-    second: elefante
-  - first:
-      213: 5056060201654977598
-    second: pulpo
-  - first:
-      213: 5801920921263870569
-    second: foca
-  - first:
-      213: -7294278029811757408
-    second: tortuga
-  - first:
-      213: -7847858294579158120
     second: tigre
   - first:
+      213: 5419204961664293245
+    second: cangrejo
+  - first:
+      213: 4654664176943327601
+    second: pulpo
+  - first:
+      213: 6810852082326285050
+    second: pez
+  - first:
+      213: -1211137548109222303
+    second: oso
+  - first:
+      213: 5056060201654977598
+    second: caballito de mar
+  - first:
+      213: 5801920921263870569
+    second: lobo
+  - first:
+      213: -7294278029811757408
+    second: tiburon
+  - first:
+      213: -7847858294579158120
+    second: elefante
+  - first:
       213: -893052522553866762
-    second: leopardo
+    second: rinoceronte
   - first:
       213: 3780388233548886112
-    second: serpiente
+    second: delfin
   - first:
       213: -784689150663347352
-    second: mono
+    second: estrella de mar
   - first:
       213: -170398245884233880
-    second: loro
+    second: panda
   - first:
       213: -6519647156311662118
-    second: oso polar
+    second: serpiente
   - first:
       213: 9191391668089007599
-    second: rana
+    second: conejo
   - first:
       213: 2526081212175219624
-    second: conejo
+    second: mono
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,13 +163,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: canguro
+      name: tigre
       rect:
         serializedVersion: 2
         x: 0
-        y: 543
-        width: 141
-        height: 148
+        y: 761
+        width: 171
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,13 +184,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "ping\xFCino"
+      name: cangrejo
       rect:
         serializedVersion: 2
-        x: 181
-        y: 534
-        width: 122
-        height: 157
+        x: 207
+        y: 761
+        width: 172
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,13 +205,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: unicornio
+      name: pulpo
       rect:
         serializedVersion: 2
-        x: 349
-        y: 567
-        width: 115
-        height: 133
+        x: 415
+        y: 758
+        width: 195
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,13 +226,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lemur
+      name: pez
       rect:
         serializedVersion: 2
-        x: 488
-        y: 571
-        width: 136
-        height: 133
+        x: 635
+        y: 793
+        width: 175
+        height: 157
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,13 +247,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: elefante
+      name: oso
       rect:
         serializedVersion: 2
-        x: 6
-        y: 369
-        width: 142
-        height: 145
+        x: 0
+        y: 523
+        width: 169
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,13 +268,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulpo
+      name: caballito de mar
       rect:
         serializedVersion: 2
-        x: 169
-        y: 369
-        width: 155
-        height: 137
+        x: 200
+        y: 539
+        width: 111
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,13 +289,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: foca
+      name: lobo
       rect:
         serializedVersion: 2
-        x: 354
-        y: 371
-        width: 142
-        height: 147
+        x: 359
+        y: 506
+        width: 195
+        height: 217
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,13 +310,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tortuga
+      name: tiburon
       rect:
         serializedVersion: 2
-        x: 510
-        y: 389
-        width: 173
-        height: 104
+        x: 598
+        y: 525
+        width: 229
+        height: 199
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,13 +331,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tigre
+      name: elefante
       rect:
         serializedVersion: 2
         x: 0
-        y: 217
-        width: 114
-        height: 134
+        y: 278
+        width: 201
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,13 +352,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: leopardo
+      name: rinoceronte
       rect:
         serializedVersion: 2
-        x: 140
-        y: 204
-        width: 163
-        height: 147
+        x: 257
+        y: 281
+        width: 225
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,13 +373,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: serpiente
+      name: delfin
       rect:
         serializedVersion: 2
-        x: 340
-        y: 217
-        width: 125
-        height: 134
+        x: 522
+        y: 280
+        width: 159
+        height: 198
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,13 +394,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mono
+      name: estrella de mar
       rect:
         serializedVersion: 2
-        x: 491
-        y: 217
-        width: 114
-        height: 134
+        x: 731
+        y: 279
+        width: 197
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,13 +415,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: loro
+      name: panda
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 117
-        height: 197
+        y: 20
+        width: 153
+        height: 194
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -436,13 +436,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oso polar
+      name: serpiente
       rect:
         serializedVersion: 2
-        x: 153
-        y: 11
-        width: 165
-        height: 166
+        x: 206
+        y: 8
+        width: 199
+        height: 194
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -457,13 +457,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rana
+      name: conejo
       rect:
         serializedVersion: 2
-        x: 359
-        y: 22
-        width: 127
-        height: 138
+        x: 454
+        y: 13
+        width: 154
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -478,13 +478,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: conejo
+      name: mono
       rect:
         serializedVersion: 2
-        x: 526
-        y: 20
-        width: 138
-        height: 152
+        x: 671
+        y: 0
+        width: 182
+        height: 206
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

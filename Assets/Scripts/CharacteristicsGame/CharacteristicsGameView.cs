@@ -12,6 +12,8 @@ public class CharacteristicsGameView : Reference
     //Texto para mostrar el eunciado del juego
     public Text statement;
 
+    public Canvas transition;
+
     /*
     * Metodo que captura el nombre de la imagen que posee un boton y activa el canvas de ganar, perder o volver a intentar
     */

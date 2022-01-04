@@ -46,7 +46,18 @@ public class GameOptionsView: Reference
     public void ShowMistakeCanvas(int counter)
     {
         MistakeCanvas.enabled = true;
-        textMistake.text = "Upss.. Has fallado. Te quedan " + counter + " intento(s)";
+        string text;
+
+        if (counter == 1)
+        {
+            text = "Ya estas cerca, vamos!";
+        }
+        else
+        {
+            text = "Intentalo de nuevo. ¡Tu puedes!";
+        }
+        //textMistake.text = "Upss.. Has fallado. Te quedan " + counter + " intento(s)";
+        textMistake.text = text;
 
     }
     public void HideMistakeCanvas()

@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 6b37f265194f54c4e9c0024da2c24a7f
+guid: c1b937b90f4b18c4cb8cabd4d6292fc2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3426761320715232217
-    second: circulo
+      213: 9140414335302644891
+    second: paralelogramo
   - first:
-      213: 3298799240422304394
+      213: 233821924069750955
+    second: pentagono
+  - first:
+      213: 5547161279818691088
     second: correct
   - first:
-      213: 1599751760513119565
-    second: cuadrado
-  - first:
-      213: 3533492149011507671
-    second: rombo
+      213: 7814987534957010427
+    second: triangulo
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: circulo
+      name: paralelogramo
       rect:
         serializedVersion: 2
-        x: 0
-        y: 20
-        width: 128
-        height: 141
+        x: 3
+        y: 208
+        width: 182
+        height: 184
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d3a743f34d4e8f20800000000000000
-      internalID: 3426761320715232217
+      spriteID: b943a93f86649de70800000000000000
+      internalID: 9140414335302644891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pentagono
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 209
+        width: 186
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba830e41dc3be3300800000000000000
+      internalID: 233821924069750955
       vertices: []
       indices: 
       edges: []
@@ -151,10 +172,10 @@ TextureImporter:
       name: correct
       rect:
         serializedVersion: 2
-        x: 198
-        y: 29
-        width: 129
-        height: 122
+        x: 3
+        y: 2
+        width: 184
+        height: 182
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8a23be6e60b7cd20800000000000000
-      internalID: 3298799240422304394
+      spriteID: 012f46b3bc97bfc40800000000000000
+      internalID: 5547161279818691088
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cuadrado
+      name: triangulo
       rect:
         serializedVersion: 2
-        x: 406
-        y: 24
-        width: 121
-        height: 132
+        x: 214
+        y: 0
+        width: 182
+        height: 184
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,29 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d45b03610c5733610800000000000000
-      internalID: 1599751760513119565
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rombo
-      rect:
-        serializedVersion: 2
-        x: 572
-        y: 1
-        width: 167
-        height: 167
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d96676636c790130800000000000000
-      internalID: 3533492149011507671
+      spriteID: bfdd739e1c9647c60800000000000000
+      internalID: 7814987534957010427
       vertices: []
       indices: 
       edges: []

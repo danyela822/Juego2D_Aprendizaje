@@ -4,7 +4,7 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -6697797145661698192
-    second: aeroplano
+    second: helicoptero
   - first:
       213: 4340876743886790078
     second: auto
@@ -16,7 +16,7 @@ TextureImporter:
     second: balsa
   - first:
       213: -3930392401274174586
-    second: avion
+    second: tractor
   - first:
       213: 8332619216174954679
     second: barco
@@ -163,13 +163,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: aeroplano
+      name: helicoptero
       rect:
         serializedVersion: 2
-        x: 2
-        y: 608
-        width: 158
-        height: 148
+        x: 0
+        y: 859
+        width: 255
+        height: 227
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,10 +187,10 @@ TextureImporter:
       name: auto
       rect:
         serializedVersion: 2
-        x: 198
-        y: 589
-        width: 184
-        height: 159
+        x: 283
+        y: 941
+        width: 217
+        height: 145
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,10 +208,10 @@ TextureImporter:
       name: autobus
       rect:
         serializedVersion: 2
-        x: 426
-        y: 600
-        width: 178
-        height: 148
+        x: 533
+        y: 913
+        width: 216
+        height: 169
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,10 +229,10 @@ TextureImporter:
       name: balsa
       rect:
         serializedVersion: 2
-        x: 654
-        y: 587
-        width: 140
-        height: 166
+        x: 817
+        y: 874
+        width: 155
+        height: 212
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,13 +247,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: avion
+      name: tractor
       rect:
         serializedVersion: 2
         x: 0
-        y: 437
-        width: 158
-        height: 149
+        y: 595
+        width: 236
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,10 +271,10 @@ TextureImporter:
       name: barco
       rect:
         serializedVersion: 2
-        x: 206
-        y: 420
-        width: 163
-        height: 157
+        x: 291
+        y: 648
+        width: 201
+        height: 196
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,10 +292,10 @@ TextureImporter:
       name: bicicleta
       rect:
         serializedVersion: 2
-        x: 416
-        y: 424
-        width: 165
-        height: 143
+        x: 577
+        y: 662
+        width: 195
+        height: 158
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,10 +313,10 @@ TextureImporter:
       name: canoa
       rect:
         serializedVersion: 2
-        x: 630
-        y: 389
-        width: 145
-        height: 165
+        x: 841
+        y: 641
+        width: 143
+        height: 193
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,10 +334,10 @@ TextureImporter:
       name: camioneta
       rect:
         serializedVersion: 2
-        x: 2
-        y: 244
-        width: 178
-        height: 148
+        x: 0
+        y: 344
+        width: 217
+        height: 165
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,10 +355,10 @@ TextureImporter:
       name: dirigible
       rect:
         serializedVersion: 2
-        x: 219
-        y: 261
-        width: 164
-        height: 142
+        x: 307
+        y: 371
+        width: 180
+        height: 169
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,10 +376,10 @@ TextureImporter:
       name: globo aerostatico
       rect:
         serializedVersion: 2
-        x: 439
-        y: 225
-        width: 148
-        height: 166
+        x: 547
+        y: 379
+        width: 154
+        height: 208
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,10 +397,10 @@ TextureImporter:
       name: velero
       rect:
         serializedVersion: 2
-        x: 609
-        y: 191
-        width: 180
-        height: 173
+        x: 763
+        y: 334
+        width: 235
+        height: 234
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,10 +418,10 @@ TextureImporter:
       name: moto
       rect:
         serializedVersion: 2
-        x: 2
-        y: 64
-        width: 145
-        height: 148
+        x: 0
+        y: 102
+        width: 206
+        height: 187
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,10 +439,10 @@ TextureImporter:
       name: taxi
       rect:
         serializedVersion: 2
-        x: 175
-        y: 55
-        width: 232
-        height: 165
+        x: 233
+        y: 102
+        width: 288
+        height: 196
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -460,10 +460,10 @@ TextureImporter:
       name: tren
       rect:
         serializedVersion: 2
-        x: 441
-        y: 25
-        width: 149
-        height: 170
+        x: 577
+        y: 91
+        width: 159
+        height: 199
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -481,10 +481,10 @@ TextureImporter:
       name: yate
       rect:
         serializedVersion: 2
-        x: 611
-        y: 0
-        width: 181
-        height: 173
+        x: 789
+        y: 97
+        width: 209
+        height: 197
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

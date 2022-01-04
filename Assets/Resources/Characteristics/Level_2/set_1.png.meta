@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: a13d35792c918934b8135b4bf632cf1b
+guid: bf087b7d9a4198d49972ac5ae5250a19
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3605414353600059495
-    second: casa_1
+      213: -8746842200279654653
+    second: ciclovia
   - first:
-      213: -6578688983699372894
-    second: casa_2
+      213: 6615473487158562289
+    second: motoristas
   - first:
-      213: 41337277237985304
+      213: -3779900582254170045
+    second: giro derecha
+  - first:
+      213: -5672201343642644606
     second: correct
-  - first:
-      213: 2748985111088734979
-    second: casa_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: casa_1
+      name: ciclovia
       rect:
         serializedVersion: 2
         x: 0
-        y: 282
-        width: 298
-        height: 201
+        y: 283
+        width: 264
+        height: 265
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7681d669041090230800000000000000
-      internalID: 3605414353600059495
+      spriteID: 30f5fe19c59fc9680800000000000000
+      internalID: -8746842200279654653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: casa_2
+      name: motoristas
       rect:
         serializedVersion: 2
-        x: 358
-        y: 282
-        width: 299
-        height: 201
+        x: 286
+        y: 283
+        width: 262
+        height: 265
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,8 +162,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a4c2d6893dc3b4a0800000000000000
-      internalID: -6578688983699372894
+      spriteID: 1fdc9171612eecb50800000000000000
+      internalID: 6615473487158562289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: giro derecha
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 5
+        width: 255
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 340b27c72781b8bc0800000000000000
+      internalID: -3779900582254170045
       vertices: []
       indices: 
       edges: []
@@ -172,10 +193,10 @@ TextureImporter:
       name: correct
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 295
-        height: 228
+        x: 286
+        y: 4
+        width: 260
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,29 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81080cdd80cd29000800000000000000
-      internalID: 41337277237985304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: casa_3
-      rect:
-        serializedVersion: 2
-        x: 356
-        y: 0
-        width: 301
-        height: 236
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 303284fc46b562620800000000000000
-      internalID: 2748985111088734979
+      spriteID: 28fcfa93eea4841b0800000000000000
+      internalID: -5672201343642644606
       vertices: []
       indices: 
       edges: []

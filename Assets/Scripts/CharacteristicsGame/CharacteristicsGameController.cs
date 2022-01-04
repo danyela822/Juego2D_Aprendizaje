@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class CharacteristicsGameController : Reference
 {
     //Matriz para guardar todos los conjuntos de imagenes del juego
@@ -32,10 +34,36 @@ public class CharacteristicsGameController : Reference
     //Imagen de la respuesta correcta
     Sprite correctAnswer;
 
+    int level = 0;
+    //static int set = PlayerPrefs.GetInt("Set", 0);
+    int set = 0;
+
     private void Start()
     {
-        //Numero random para seleccionar un conjunto de imagenes
-        number = Random.Range(0, 6);
+
+        if (PlayerPrefs.GetInt("Level", 0) == 1)
+        {
+            //Numero random para seleccionar un conjunto de imagenes
+            number = Random.Range(0, 5);
+            level = PlayerPrefs.GetInt("Level", 0);
+            PlayerPrefs.SetInt("Set", number);
+        }
+        else
+        {
+            App.generalView.characteristicsGameView.StartGame();
+            level = PlayerPrefs.GetInt("Level", 0);
+        }
+
+        Debug.Log("EMPEZO EL JUEGO EN EL NIVEL: " + level + " Y CON NUMERO RANDOM: " + number);
+
+        if (level != 1)
+        {
+            set = PlayerPrefs.GetInt("Set", 0);
+            number = set;
+            Debug.Log("ES EL NIVEL: "+level);
+            Debug.Log("SET: " + set);
+            Debug.Log("NUMERO RANDOM: " + number);
+        }
 
         bool centinela = true;
         while (centinela)
@@ -43,16 +71,16 @@ public class CharacteristicsGameController : Reference
             if (App.generalModel.characteristicsGameModel.file.characteristicsGameList.Contains(number))
             {
                 //Instaciar Lista que guardara todas las imagenes
-                images = App.generalModel.characteristicsGameModel.LoadImages(number);
+                images = App.generalModel.characteristicsGameModel.LoadImages(number,level);
 
                 //Instaciar Lista que guardara todos los enunciados
-                statement = App.generalModel.characteristicsGameModel.LoadTexts(number);
+                statement = App.generalModel.characteristicsGameModel.LoadTexts(number,level);
 
                 centinela = false;
             }
             else
             {
-                number = Random.Range(0, 6);
+                number = Random.Range(0, 5);
             }
         }
         Debug.Log("ELIMINAR: " + number);
@@ -95,21 +123,49 @@ public class CharacteristicsGameController : Reference
     */
     public void CheckAnswer(string selectedOption)
     {
+        //Verificar si ya jugo un nivel de este juego
         if (PlayerPrefs.GetInt("PlayGame2", 0) == 0)
         {
             countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
             PlayerPrefs.SetInt("PlayOneLevel", countPlay);
             Debug.Log("A Jugado: " + countPlay);
-            PlayerPrefs.SetInt("PlayGame2", 1);
+            PlayerPrefs.SetInt("PlayGame2", countPlay);
         }
         counter++;
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
         if (selectedOption == "correct")
         {
-            App.generalModel.characteristicsGameModel.file.characteristicsGameList.Remove(number);
-            App.generalModel.characteristicsGameModel.file.Save("P");
+            //Si ya paso el nivel 1 puede pasar al 2
+            if (PlayerPrefs.GetInt("Level", 0) == 1)
+            {
+                Debug.Log("PASO A NIVEL 2");
+                PlayerPrefs.SetInt("Level", 2);
 
-            if (counter == 1)
+                App.generalView.characteristicsGameView.transition.enabled = true;
+
+
+            }
+            //Si ya paso el nivel 2 puede pasar al 3
+            else if (PlayerPrefs.GetInt("Level", 0) == 2)
+            {
+                Debug.Log("PASO A NIVEL 3");
+                App.generalView.characteristicsGameView.transition.enabled = true;
+                PlayerPrefs.SetInt("Level", 3);
+                
+            }
+            //Si ya termino los 3 niveles de ese Set, se comienza de nuevo
+            else if(PlayerPrefs.GetInt("Level", 0) == 3)
+            {
+                Debug.Log("Termino los 3");
+                App.generalModel.characteristicsGameModel.file.characteristicsGameList.Remove(number);
+                App.generalModel.characteristicsGameModel.file.Save("P");
+                PlayerPrefs.SetInt("Level", 1);
+            }
+
+            //App.generalModel.characteristicsGameModel.file.characteristicsGameList.Remove(number);
+            //App.generalModel.characteristicsGameModel.file.Save("P");
+
+            /*if (counter == 1)
             {
                 App.generalModel.characteristicsGameModel.SetPoints(App.generalModel.characteristicsGameModel.GetPoints() + 30);
                 App.generalModel.characteristicsGameModel.SetTotalStars(App.generalModel.characteristicsGameModel.GetTotalStars() + 3);
@@ -141,7 +197,7 @@ public class CharacteristicsGameController : Reference
                 countPerfectGame = 0;
                 PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
                 App.generalView.gameOptionsView.ShowWinCanvas(1);
-            }
+            }*/
         }
         else
         {
@@ -186,4 +242,9 @@ public class CharacteristicsGameController : Reference
         return newList;
     }
 
+    public void Continius()
+    {
+        App.generalView.characteristicsGameView.transition.enabled = false;
+        SceneManager.LoadScene("CharacteristicsGameScene");
+    }
 }

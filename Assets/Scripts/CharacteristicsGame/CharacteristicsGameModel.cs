@@ -35,22 +35,22 @@ public class CharacteristicsGameModel : Reference
     /*
     * Metodo para cargar y guardar todas la imagnes que necesita el juego
     */
-    public Sprite[] LoadImages(int numero)
+    public Sprite[] LoadImages(int numero,int level)
     {
         if (file.characteristicsGameList.Contains(numero))
         {
             //Cargar y guardar un set de imagenes en un array
-            images = Resources.LoadAll<Sprite>("Characteristics/characteristics_" + numero);
+            images = Resources.LoadAll<Sprite>("Characteristics/Level_"+level+"/set_" + numero);
         }
         return images;
     }
     /*
     * Metodo para cargar todos los enunciados que deben acompañar a cada nivel
     */
-    public string LoadTexts(int numero)
+    public string LoadTexts(int numero,int level)
     {
         //Pasar la ruta del archivo y el nombre del archivo que contiene los enunciados requeridos para cada nivel
-        TextAsset textAsset = Resources.Load("Files/statements_characteristics") as TextAsset;
+        TextAsset textAsset = Resources.Load("Files/Characteristics/Texts/characteristics_level_"+level) as TextAsset;
 
         string text = textAsset.text;
 

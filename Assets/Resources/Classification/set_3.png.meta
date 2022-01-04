@@ -7,49 +7,49 @@ TextureImporter:
     second: cohete
   - first:
       213: 5624636286473636210
-    second: oso
+    second: arbol
   - first:
       213: -109618028346817482
     second: globo terraqueo
   - first:
       213: -5389123701454281731
-    second: sonagero
-  - first:
-      213: 6600420926776970257
-    second: pinturas
-  - first:
-      213: 2122476993563842608
-    second: chupete
-  - first:
-      213: 1677152069048625016
-    second: cuaderno
-  - first:
-      213: 1859217568692262211
-    second: libros
-  - first:
-      213: 553972437445041131
-    second: calculadora
-  - first:
-      213: -3674048665428062876
-    second: auto
-  - first:
-      213: 3402879178881616075
-    second: sol
-  - first:
-      213: 1638947987056462048
-    second: tijeras
-  - first:
-      213: 8358170963437523446
-    second: bus
-  - first:
-      213: 5967487969815262353
-    second: estrella
-  - first:
-      213: 7951018642113939084
-    second: escuadra
+    second: lapices
   - first:
       213: 6036247214636734786
-    second: cama
+    second: pinturas
+  - first:
+      213: -3558287185679513606
+    second: licuadora
+  - first:
+      213: 6008217306870998649
+    second: cuaderno
+  - first:
+      213: -1771170364694726246
+    second: libros
+  - first:
+      213: 1559736082835267238
+    second: calculadora
+  - first:
+      213: 3678800884389869556
+    second: auto
+  - first:
+      213: -3638214038171534144
+    second: moto
+  - first:
+      213: -3094572856600367337
+    second: tijeras
+  - first:
+      213: 3774837128588357839
+    second: semaforo
+  - first:
+      213: 7342326766755235687
+    second: bicicleta
+  - first:
+      213: 7033573004626618931
+    second: microondas
+  - first:
+      213: -3960878768805722051
+    second: regla
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -167,11 +167,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 701
-        width: 158
-        height: 160
+        y: 779
+        width: 163
+        height: 163
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,15 +184,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oso
+      name: arbol
       rect:
         serializedVersion: 2
-        x: 196
-        y: 667
-        width: 138
-        height: 189
+        x: 189
+        y: 743
+        width: 158
+        height: 199
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,12 +208,12 @@ TextureImporter:
       name: globo terraqueo
       rect:
         serializedVersion: 2
-        x: 380
-        y: 670
-        width: 146
-        height: 197
+        x: 396
+        y: 710
+        width: 166
+        height: 232
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -226,15 +226,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sonagero
+      name: lapices
       rect:
         serializedVersion: 2
-        x: 560
-        y: 638
-        width: 143
-        height: 207
+        x: 609
+        y: 718
+        width: 208
+        height: 223
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -250,40 +250,40 @@ TextureImporter:
       name: pinturas
       rect:
         serializedVersion: 2
-        x: 1
-        y: 455
-        width: 236
-        height: 160
+        x: 9
+        y: 469
+        width: 244
+        height: 184
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11c8894ccd7699b50800000000000000
-      internalID: 6600420926776970257
+      spriteID: 2491ddc3cde05c350800000000000000
+      internalID: 6036247214636734786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chupete
+      name: licuadora
       rect:
         serializedVersion: 2
-        x: 266
-        y: 448
-        width: 159
-        height: 182
+        x: 289
+        y: 456
+        width: 142
+        height: 218
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 038df4d849d847d10800000000000000
-      internalID: 2122476993563842608
+      spriteID: af78fb048ac6e9ec0800000000000000
+      internalID: -3558287185679513606
       vertices: []
       indices: 
       edges: []
@@ -292,19 +292,19 @@ TextureImporter:
       name: cuaderno
       rect:
         serializedVersion: 2
-        x: 461
-        y: 431
-        width: 184
-        height: 196
+        x: 491
+        y: 499
+        width: 188
+        height: 164
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87764fdbbe0764710800000000000000
-      internalID: 1677152069048625016
+      spriteID: 9766665cec9716350800000000000000
+      internalID: 6008217306870998649
       vertices: []
       indices: 
       edges: []
@@ -313,19 +313,19 @@ TextureImporter:
       name: libros
       rect:
         serializedVersion: 2
-        x: 660
-        y: 438
-        width: 138
-        height: 174
+        x: 750
+        y: 483
+        width: 152
+        height: 186
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 345511637844dc910800000000000000
-      internalID: 1859217568692262211
+      spriteID: a99fba7ffe98b67e0800000000000000
+      internalID: -1771170364694726246
       vertices: []
       indices: 
       edges: []
@@ -334,19 +334,19 @@ TextureImporter:
       name: calculadora
       rect:
         serializedVersion: 2
-        x: 15
-        y: 238
-        width: 113
+        x: 0
+        y: 239
+        width: 112
         height: 194
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bebd44d2ffa10b700800000000000000
-      internalID: 553972437445041131
+      spriteID: 6ae51c814bb45a510800000000000000
+      internalID: 1559736082835267238
       vertices: []
       indices: 
       edges: []
@@ -355,40 +355,40 @@ TextureImporter:
       name: auto
       rect:
         serializedVersion: 2
-        x: 163
-        y: 265
-        width: 203
-        height: 155
+        x: 212
+        y: 226
+        width: 226
+        height: 195
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46d89a96438230dc0800000000000000
-      internalID: -3674048665428062876
+      spriteID: 4f77379c9e9bd0330800000000000000
+      internalID: 3678800884389869556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sol
+      name: moto
       rect:
         serializedVersion: 2
-        x: 403
-        y: 213
-        width: 192
-        height: 188
+        x: 513
+        y: 219
+        width: 222
+        height: 243
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc8cfce7594793f20800000000000000
-      internalID: 3402879178881616075
+      spriteID: 0cc32fdbb97728dc0800000000000000
+      internalID: -3638214038171534144
       vertices: []
       indices: 
       edges: []
@@ -397,103 +397,103 @@ TextureImporter:
       name: tijeras
       rect:
         serializedVersion: 2
-        x: 624
-        y: 215
-        width: 159
-        height: 193
+        x: 772
+        y: 231
+        width: 136
+        height: 182
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e887ddb286beb610800000000000000
-      internalID: 1638947987056462048
+      spriteID: 71fe4c6f16edd05d0800000000000000
+      internalID: -3094572856600367337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bus
+      name: semaforo
       rect:
         serializedVersion: 2
         x: 0
-        y: 38
-        width: 229
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f19daf25303ef370800000000000000
-      internalID: 8358170963437523446
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: estrella
-      rect:
-        serializedVersion: 2
-        x: 235
-        y: 4
-        width: 191
-        height: 199
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 194714201b6c0d250800000000000000
-      internalID: 5967487969815262353
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: escuadra
-      rect:
-        serializedVersion: 2
-        x: 449
-        y: 3
-        width: 159
-        height: 176
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c86c5b52451b75e60800000000000000
-      internalID: 7951018642113939084
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cama
-      rect:
-        serializedVersion: 2
-        x: 619
         y: 0
-        width: 188
-        height: 185
+        width: 146
+        height: 205
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2491ddc3cde05c350800000000000000
-      internalID: 6036247214636734786
+      spriteID: fc0f6765e5ae26430800000000000000
+      internalID: 3774837128588357839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bicicleta
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 0
+        width: 194
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 767c9450b4f25e560800000000000000
+      internalID: 7342326766755235687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: microondas
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 15
+        width: 203
+        height: 183
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33aeb8ad1654c9160800000000000000
+      internalID: 7033573004626618931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: regla
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 25
+        width: 143
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d38c2f2deb12809c0800000000000000
+      internalID: -3960878768805722051
       vertices: []
       indices: 
       edges: []
