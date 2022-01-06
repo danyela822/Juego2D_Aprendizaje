@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class StatsController : Reference
 {
@@ -13,5 +14,9 @@ public class StatsController : Reference
     public List<int> GetAchievementsList(int number)
     {
         return App.generalModel.statsModel.CheckAchievements(number);
+    }
+    public Sprite GetLeagueImage(string league)
+    {
+        return App.generalModel.statsModel.LoadLeagueImage(league);
     }
 }

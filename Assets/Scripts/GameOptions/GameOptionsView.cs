@@ -14,7 +14,7 @@ public class GameOptionsView: Reference
 
     public Image correctAnswer;
 
-    public Text textMistake;
+    public Text mistakeText, winText;
     public void ShowPauseCanvas()
     {
         PauseCanvas.enabled = true;
@@ -27,12 +27,31 @@ public class GameOptionsView: Reference
     {
         TutorialCanvas.enabled = true;
     }
+    public void HideTutorialCanvas()
+    {
+        TutorialCanvas.enabled = false;
+    }
     public void ShowWinCanvas(int totalStars)
     {
         //Image imageWin = GameObject.Find("ImageStars").GetComponent<Image>();
 
         imageWin.sprite = App.generalModel.roadGameModel.GetStartsImage(totalStars);
 
+        string text;
+
+        if (totalStars == 1)
+        {
+            text = "Sigue adelante";
+        }
+        else if (totalStars == 2)
+        {
+            text = "¡Muy Bien!";
+        }
+        else
+        {
+            text = "¡Excelente!";
+        }
+        winText.text = text;
         WinCanvas.enabled = true;
     }
     public void HidePauseCanvas()
@@ -56,8 +75,8 @@ public class GameOptionsView: Reference
         {
             text = "Intentalo de nuevo. ¡Tu puedes!";
         }
-        //textMistake.text = "Upss.. Has fallado. Te quedan " + counter + " intento(s)";
-        textMistake.text = text;
+        //mistakeText.text = "Upss.. Has fallado. Te quedan " + counter + " intento(s)";
+        mistakeText.text = text;
 
     }
     public void HideMistakeCanvas()

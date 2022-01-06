@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1095525345}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.25566804
+  m_Size: 0.2615337
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2748,7 +2748,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2876683207865183928, guid: 37ed023f8ac1a904aa92b5dde0f0ffd6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef3f7501e3859da44827afb97b578c91, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3267,7 +3267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38144392922e82a4fa3f422c797e8c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkListLogros:
+  checkAchievementsList:
   - {fileID: 1413330532}
   - {fileID: 1537026744}
   - {fileID: 1309510420}
@@ -3285,7 +3285,7 @@ MonoBehaviour:
   - {fileID: 375503853}
   starsText: {fileID: 193527803}
   leagueText: {fileID: 1240177875}
-  leagueImage: {fileID: 827963881}
+  imageLeague: {fileID: 827963881}
   leagueImages:
   - {fileID: 21300000, guid: c40e65656ecb93a4bbfef162b755fcf0, type: 3}
   - {fileID: 21300000, guid: 9bfdc1e97fdb6214189e89280ca4f56a, type: 3}
@@ -5917,6 +5917,8 @@ MonoBehaviour:
   statsController: {fileID: 965692670}
   additionGameController: {fileID: 0}
   equialityGameController: {fileID: 0}
+  sequenceGameController: {fileID: 0}
+  setsGameController: {fileID: 0}
 --- !u!1 &1537026744
 GameObject:
   m_ObjectHideFlags: 0
@@ -6045,6 +6047,8 @@ MonoBehaviour:
   statsView: {fileID: 965692669}
   additionGameView: {fileID: 0}
   equialityGameView: {fileID: 0}
+  sequenceGameView: {fileID: 0}
+  setsGameView: {fileID: 0}
 --- !u!1 &1543058676
 GameObject:
   m_ObjectHideFlags: 0
@@ -6753,7 +6757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 450, y: -934.15985}
+  m_AnchoredPosition: {x: 450, y: -934.1598}
   m_SizeDelta: {x: 900, y: 2530}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1748374201

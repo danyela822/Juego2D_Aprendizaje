@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,9 +11,10 @@ public class CharacteristicsGameView : Reference
 
     public Canvas transition;
 
-    /*
-    * Metodo que captura el nombre de la imagen que posee un boton y activa el canvas de ganar, perder o volver a intentar
-    */
+    /// <summary>
+    /// Metodo que captura el nombre de la imagen que posee un boton para su posterior analisis
+    /// </summary>
+    /// <param name="button">Boton seleccionado</param>
     public void CheckAnswer(Button button)
     {
         //Nombre de la imagen que tiene el boton
@@ -25,17 +23,24 @@ public class CharacteristicsGameView : Reference
         //Desactivar el boton que se ha presionado
         button.interactable = false;
 
+        //Verificar si la respuesta es correcta
         App.generalController.characteristicsGameController.CheckAnswer(nameImage);
     }
-    /*
-     * Metodo que oculta el canvas inicial del juego
-     */
-    public void StartGame()
+    /// <summary>
+    /// Metodo que reestablece los valores iniciales del juego a nivel visual
+    /// </summary>
+    public void RePlayGame()
     {
-        App.generalView.gameOptionsView.TutorialCanvas.enabled = false;
-    }
-    public void HideWarningCanvas()
-    {
-        App.generalView.gameOptionsView.HideWarningCanvas();
+        //Ocultar el canvas que indica que perdio
+        App.generalView.gameOptionsView.HideLoseCanvas();
+
+        //Activar nuevamente todos los botones
+        foreach (Button button in buttons)
+        {
+            button.interactable = true;
+        }
+
+        //Reestablecer la cantidad de intentos
+        App.generalController.characteristicsGameController.RestartAttempts();
     }
 }
