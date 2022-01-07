@@ -12,6 +12,8 @@ public class EquialityGameController : Reference{
     List<int> usedIntegers;
     //lista de sprite que se utilizan 
     public List<Sprite> images;
+    //
+    public Sprite equialitySprite;
     //permite almacenar los id de las figuras izquierda derecha
     List<int> numPaint = new List<int>();
     //objeto que contiene el prefab
@@ -28,12 +30,10 @@ public class EquialityGameController : Reference{
     //lista que almacena los numeros que se muestran como posible
     //respuestas del juego
     List<int> possibleAnswerGame = new List<int>();
-    //valores que son utilizados como iconos
-    List<int> usedIcons = new List<int>();
 
 
     //nivel en que esta el usuario 
-    int levelUser = 2;
+    int levelUser = 3;
     int level = 0;
 
     float y;
@@ -46,8 +46,19 @@ public class EquialityGameController : Reference{
     void Start(){
 
         size = objRow.GetComponent<BoxCollider2D>().size;
+        ChangeLevel();
 
-        
+        usedIntegers = new List<int>();
+        Buid(level);
+        Debug.Log(PrintText());
+        GetNumOperation();
+        GetNum();
+        DrawTable();
+        FillAnswer();
+    }
+
+    void ChangeLevel(){
+
         switch (levelUser){
             
             case 1: 
@@ -63,7 +74,7 @@ public class EquialityGameController : Reference{
                 y = 0.6f;
                 x = -1.5f;
                 signX = -0.7f;
-                signY = 0.33f;
+                signY = 0.63f;
             break;
 
             default:
@@ -75,15 +86,6 @@ public class EquialityGameController : Reference{
             break;
         }
 
-        usedIntegers = new List<int>();
-        Buid(level);
-        Debug.Log(PrintText());
-        //Debug.Log(PrintNumbers());
-        GetNumOperation();
-        GetNum();
-        DrawTable();
-        //PaintNum();
-        FillAnswer();
     }
 
     //metodo que pemrite la construccion de cada uno de los niveles
@@ -117,20 +119,6 @@ public class EquialityGameController : Reference{
         }
     }
 
-    private int GetValueIcon(){
-       
-        bool noFound = true;
-        int ret = 0;
-        while(noFound){
-            int value = Random.Range(0, 10);
-            if (!ContainsValueIcons(value)){
-                noFound = false;
-                ret = value;
-            }
-        }
-        return ret;
-    }
-
     //metodo que permite obtenes un id nuevo para
     //las iguras nuevas
     private int GetNewValue(){
@@ -145,14 +133,6 @@ public class EquialityGameController : Reference{
             }
         }
         return ret;
-    }
-
-    private bool ContainsValueIcons(int value){
-
-        for (int i = 0; i < usedIcons.Count; i++){
-            if (usedIcons[i] == value) return true;
-        }
-        return false;
     }
 
     //metodo que permite verificar que no exista un id repetido de las
@@ -210,8 +190,8 @@ public class EquialityGameController : Reference{
             int k = numOperation[i] + 1;
             int j = 0;
             
-            sign = Instantiate(objSing,new Vector3(signX, signY - (0.9f*i), 0), objRow.transform.rotation);
-            //sign.GetComponentInChildren<Text>().text = " = ";
+            sign = Instantiate(objSing,new Vector3(signX, signY - (0.9f*i), 0), objSing.transform.rotation);
+            sign.GetComponent<SpriteRenderer>().sprite = equialitySprite;
             
 
             while(j != k){

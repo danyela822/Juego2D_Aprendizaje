@@ -11,6 +11,12 @@ public class AdditionGameController : Reference{
     List<int> results = new List<int>();
     //lista de los posibles sprites que seran utilizados
     public List <Sprite> images = new List<Sprite>();
+
+    public Sprite signPlus;
+
+    public Sprite signLess;
+
+    public Sprite signEquals;
     //lista que permite colocar las imagenes
     List<Icon> icons = new List<Icon>();
     //lista que contiene id de iconos que permite que no se repitan
@@ -19,30 +25,70 @@ public class AdditionGameController : Reference{
     List<Operation> operationes = new List<Operation>();
     //lista de los signos que se van a pintar
     List<int> signs = new List<int>();
-    //numero de niveles
-    int levels = 4;
     //numero incial para las operaciones
     int initial = 8;
     //varibale que almacena la respuesta correcta
     int correctAnswer;
     //objeto que contiene el prefab
     public GameObject objectRow;
+
+    public GameObject objectSign;
     //variable que me almacena el tamaño del objeto principal
     Vector2 size;
 
-    //variable que me indica en que nivel se encuentra el usuario 
-    int levelPosition = 3;
+    Vector2 sizeSign;
+
+    float y;
+    float x;
+
+    float signX;
+    float signY;
+
+    int levelUser = 2;
+    int level = 0;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        size = objectRow.GetComponent<BoxCollider2D>().size;
+        sizeSign = objectSign.GetComponent<BoxCollider2D>().size;
 
-        Build(levels, initial);
+        size = objectRow.GetComponent<BoxCollider2D>().size;
+        chooseLevel();
+        Build(level, initial);
         //Debug.Log(OwnToString());
         GetResult();
         FillAnswer();
+       
+    }
+
+    void chooseLevel(){
+        switch (levelUser){
+            case 1: 
+                level = 2;
+                y = -0.1f;
+                x = -2f;
+                signX = -1.51f;
+                signY = -0.06f;
+            break;
+
+            case 2:
+                level = 3;
+                y = 0.1f;
+                x = -2f;
+                signX = -1.44f;
+                signY = 0.04f;
+            break;
+
+            default:
+                level = 4;
+                y = 0.7f;
+                x = -2f;
+                signX = -1.44f;
+                signY = 0.73f;
+            break;
+            
+        }
     }
 
    //Metodo que contruye la estructura del juego 
@@ -85,6 +131,8 @@ public class AdditionGameController : Reference{
             }
         }
         correctAnswer = icons[icons.Count -1].idValue;
+        
+        GetSign();
         CreateTable();
     }
 
@@ -126,178 +174,54 @@ public class AdditionGameController : Reference{
         return aux;
     }
 
-    //nivel uno 
-    //x = -2 y = 1.07
-
-    //nivel dos 
-    //x = -2 y = 0.99
-
-    //nivel tres
-    //x = -2 y = 2.25
-    //distancia de 1.26
 
     //metodo que crea la estructura visual del juego 
     public void CreateTable(){
 
         GameObject firstOption;
+        GameObject sign;
         GameObject newOption;
-        float x, y;
-        int firstLevel = 2;
-        int secondLevel = 3;
-        int thirdLevel = 4;
+
         int cont = 2;
         int auxImage = 0;
+        int auxSign = 0;
+        
+        firstOption = Instantiate(objectRow,new Vector3(-2, 1.3f, 0), objectRow.transform.rotation);
 
-
-        switch (levelPosition){
-            
-            case 1:
-
-                firstOption = Instantiate(objectRow,new Vector3(-2, 1.07f, 0), objectRow.transform.rotation);
-                
-                x = -2; y = -0.1f;
-
-                for (int i = 0; i < firstLevel; i++){
-
-                    for (int j = 0; j < cont; j++){
-
-                        newOption = Instantiate(objectRow, new Vector3(x +(size.x * j), y - (size.y*i), 0), objectRow.transform.rotation);
-
-                        Sprite sprite = images[icons[auxImage].idIcon];
-                        newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-
-                        auxImage += 1;
-                        
-                    }
-                    cont+= 1;
+        for (int i = 0; i < level; i++){
                     
-                }
+            for (int j = 0; j < cont; j++){
 
-            break;
+                newOption = Instantiate(objectRow, new Vector3(x + ((size.x - 0.35f) * j), y - ((size.y - 0.5f)*i), 0), objectRow.transform.rotation);
 
-            case 2:
+                Sprite sprite = images[icons[auxImage].idIcon];
+                newOption.GetComponent<SpriteRenderer>().sprite = sprite;
 
-                firstOption = Instantiate(objectRow,new Vector3(-2, 0.99f, 0), objectRow.transform.rotation);
-                
-                x = -2; y = -0.1f;
+                auxImage += 1;
 
-                for (int i = 0; i < secondLevel; i++){
 
-                    for (int j = 0; j < cont; j++){
+                sign = Instantiate(objectSign, new Vector3(signX +((sizeSign.x - 0.35f)* j), signY - ((sizeSign.y + 0.1f) * i), 0), objectSign.transform.rotation);
 
-                        newOption = Instantiate(objectRow, new Vector3(x +(size.x * j), y - (size.y*i), 0), objectRow.transform.rotation);
-
-                        Sprite sprite = images[icons[auxImage].idIcon];
-                        newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-
-                        auxImage += 1;
+                switch (signs[auxSign]){
+                                
+                    case 1: 
+                        sign.GetComponent<SpriteRenderer>().sprite = signLess;
+                    break;
+                    case 2:
+                        sign.GetComponent<SpriteRenderer>().sprite = signPlus;
+                    break;
+                    default:
+                        sign.GetComponent<SpriteRenderer>().sprite = signEquals;
+                    break;
+                } 
+                auxSign++;
                         
-                    }
-                    cont+= 1;
+            }
+            cont+= 1;
                     
-                }
-            break;
-            case 3:
-
-                firstOption = Instantiate(objectRow,new Vector3(-2, 1.5f, 0), objectRow.transform.rotation);
-                
-                x = -2; y = 0.7f;
-
-                for (int i = 0; i < thirdLevel; i++){
-
-                    for (int j = 0; j < cont; j++){
-
-                        newOption = Instantiate(objectRow, new Vector3(x +(size.x * j), y - (size.y*i), 0), objectRow.transform.rotation);
-                        
-                        Sprite sprite = images[icons[auxImage].idIcon];
-                        newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-
-                        auxImage += 1;
-                        
-                    }
-                    cont+= 1;
-                    
-                }
-            break;
-            default:
-            break;
         }
 
-
-        // GameObject gameZone = GameObject.Find("GameZone");
-
-        // int cont = 0;
-        // int aux = 2;
-
-        // GameObject firstOption;
-        // GameObject newOption;
-        // float x, y;
-
-        // firstOption = Instantiate(objectRow,new Vector3(-1, 1.5f, 0), objectRow.transform.rotation);
-
-        // Sprite spriteFirst = images[icons[0].idIcon];
-        // firstOption.GetComponent<SpriteRenderer>().sprite = spriteFirst;
-
-        // for (int i = 0; i < levels; i++){
-
-        //     switch (i){
-        //         case 0:
-
-        //             x = -2; y = 0.63f;
-        //             for (int j = 0; j < 2; j++){
-
-        //                 newOption = Instantiate(objectRow, new Vector3(x +(size.x * j), y, 0), objectRow.transform.rotation);
-
-        //                 Sprite sprite = images[icons[j].idIcon];
-        //                 newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-        //                 newOption.transform.parent = gameZone.transform;
-        //                 cont +=1;
-        //             }
-        //             aux+=1;
-        //         break;
-
-        //         case 1:
-        //             //int cont = aux - 1;
-        //             x = -2; y = -0.27f;
-        //             for (int j = 0; j < 3; j++){
-        //                 newOption = Instantiate(objectRow, new Vector3(x + (size.x * j), y, 0), objectRow.transform.rotation);
-
-        //                 Sprite sprite = images[icons[cont].idIcon];
-        //                 newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-        //                 newOption.transform.parent = gameZone.transform;
-        //                 cont += 1;
-        //             }
-        //             aux+=1;
-        //         break;
-
-        //         case 2:
-
-        //             x = -2; y = -1.17f;
-        //             for (int j = 0; j < 4; j++){
-        //                 newOption = Instantiate(objectRow,new Vector3(x + (size.x * j), y, 0), objectRow.transform.rotation);
-
-        //                 Sprite sprite = images[icons[cont].idIcon];
-        //                 newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-        //                 newOption.transform.parent = gameZone.transform;
-        //                 cont += 1;
-        //             }
-        //             aux+=1;
-        //         break;
-
-        //         default:
-        //             x = -2; y = -2.09f;
-        //             for (int j = 0; j < 5; j++){
-        //                 newOption = Instantiate(objectRow,new Vector3(x + (size.x * j), y, 0), objectRow.transform.rotation);
-
-        //                 Sprite sprite = images[icons[cont].idIcon];
-        //                 newOption.GetComponent<SpriteRenderer>().sprite = sprite;
-        //                 newOption.transform.parent = gameZone.transform;
-        //                 cont += 1;
-        //             }
-        //         break;
-        //     }       
-        // }
-        GetSign();
+        
     }
 
     //metodo que recorre la lista de operaciones y obtiene
@@ -310,7 +234,7 @@ public class AdditionGameController : Reference{
                 signs.Add(sign);
             }
         }
-        PaintSigns();
+        //PaintSigns();
     }
 
     //metodo que coloca en la interzas los simbolos hallados en el 
@@ -394,7 +318,7 @@ public class AdditionGameController : Reference{
         foreach (Operation op in operationes){
             results.Add(op.resultado);
         }
-        PaintResult();
+        //PaintResult();
     }
 
     //metodo que permite colocar los resultados que cada una de las operaciones
