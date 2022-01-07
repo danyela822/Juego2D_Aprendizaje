@@ -13,6 +13,13 @@ public class SequenceGameController : Reference{
     Vector2 size;
     //lista publica que contiene los sprites del juego
     public List<Sprite> sprites = new List<Sprite>();
+
+    //lista publica que contiene los sprites del juego nivel 1
+    public List<Sprite> spritesLevelOne = new List<Sprite>();
+
+    //lista publica que contiene los sprites del juego nivel 1
+    public List<Sprite> spritesLevelTwo = new List<Sprite>();
+
     //lista que contiene la respuesta correcta a cada escenario
     List<int> correctListAnswer = new List<int>();
     //lista que contiene las posibles respuestas que tiene el 
@@ -44,6 +51,8 @@ public class SequenceGameController : Reference{
     //activados
     int contToUnPaint = 0;
 
+    int levelUser = 2;
+
 
     // Start is called before the first frame update
     void Start(){
@@ -65,10 +74,30 @@ public class SequenceGameController : Reference{
     // seran utilizados para la seleccion de imagenes
     void CreateListIcon(){
 
-        for (int i = 0; i < 6; i++){
-            int value = GetContainsNumber();
-            iconNumber.Add(value);
+        switch (levelUser){
+            
+            case 1:
+                for (int i = 0; i < 4; i++){
+                    int value = GetContainsNumber();
+                    iconNumber.Add(value);
+                }
+            break;
+
+            case 2:
+                for (int i = 0; i < 6; i++){
+                    int value = GetContainsNumber();
+                    iconNumber.Add(value);
+                }
+            break;
+
+            default:
+                for (int i = 0; i < 6; i++){
+                    int value = GetContainsNumber();
+                    iconNumber.Add(value);
+                }
+            break;
         }
+
         
     }
 
@@ -77,10 +106,19 @@ public class SequenceGameController : Reference{
     //retorna el numero a almacenar
     int GetContainsNumber(){
 
+        int num = 0;
+        if (levelUser == 1){
+            num = 8;
+        }else if(levelUser == 2){
+            num = 12;
+        }else{
+            num = 22;
+        }
+
         bool condition = true;
         int number = 0;
         while(condition){
-            number = Random.Range(0, 10);
+            number = Random.Range(0, num);
             if (!iconNumber.Contains(number)) condition = false;
         }
 
@@ -93,41 +131,134 @@ public class SequenceGameController : Reference{
         float x = -1.8f;
         float y = 1.6f;
         GameObject sequence;
-        int cont = 0;
-        int aux = 0;
+        // int cont = 0;
+        // int aux = 0;
 
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 4; j++){
 
-                //se crea la base de todos los game objects del tablero de juego
                 sequence = Instantiate(objectRow, new Vector3(x + ((size.x - 0.25f) * j), y - (size.y * i), 0), objectRow.transform.rotation);
 
-                //se le asigna la imagen a los primeros 6 game object
-                if (cont < 6){
-                    sequence.GetComponent<SpriteRenderer>().sprite = sprites[iconNumber[cont]];
-                    cont++;
-                }
-
-                //se le asigna la imagen a los dos primeros game objects que se
-                //repiten, los demas quedan en blanco
-                else if (cont == 6 && aux < 2){
-                    sequence.GetComponent<SpriteRenderer>().sprite = sprites[iconNumber[aux]];
-                    aux ++;
-                }
                 options[i,j] = sequence;
             }
             
         }
 
+        PaintTable();
+
+    }
+
+    void PaintTable(){
+
+        int cont = 0;
+        int aux = 0;
+        
+        switch (levelUser){
+
+            case 1: 
+                for (int i = 0; i < 3; i++){
+                    for (int j = 0; j < 4; j++){
+                        if (cont < 4){
+                            options[i,j].GetComponent<SpriteRenderer>().sprite = spritesLevelOne[iconNumber[cont]];
+                            cont++;
+                        }
+
+                        else if (i == 1 && j == 0){
+                            options[i,j].GetComponent<SpriteRenderer>().sprite = spritesLevelOne[iconNumber[0]];
+                        }
+
+                        else if (i == 2){
+                            cont = 0;
+                            options[i,j].GetComponent<SpriteRenderer>().sprite = spritesLevelOne[iconNumber[cont]];
+                            cont ++;
+                        }
+                    }
+                    
+                }
+            break;
+
+            case 2:
+
+                for (int i = 0; i < 3; i++){
+                    for (int j = 0; j < 4; j++){
+
+                        //se le asigna la imagen a los primeros 6 game object
+                        if (cont < 6){
+
+                            options[i,j].GetComponent<SpriteRenderer>().sprite = spritesLevelTwo[iconNumber[cont]];
+                            cont++;
+                        }
+
+                        //se le asigna la imagen a los dos primeros game objects que se
+                        //repiten, los demas quedan en blanco
+                        else if (i == 1 && j > 1 && aux < 2){
+                            options[i,j].GetComponent<SpriteRenderer>().sprite = spritesLevelTwo[iconNumber[aux]];
+                            aux ++;
+                        }
+
+                        //se le asigna la imagen a los dos primeros game objects que se
+                        //repiten, los demas quedan en blanco
+                        else if (i == 2 && j > 1){
+                            cont = 4;
+                            options[i,j].GetComponent<SpriteRenderer>().sprite = spritesLevelTwo[iconNumber[cont]];
+                            cont ++;
+                        }     
+                    }
+                }
+               
+
+            break;
+
+            default:
+
+                for (int i = 0; i < 3; i++){
+                    for (int j = 0; j < 4; j++){
+
+                        //se le asigna la imagen a los primeros 6 game object
+                        if (cont < 6){
+                            options[i,j].GetComponent<SpriteRenderer>().sprite = sprites[iconNumber[cont]];
+                            cont++;
+                        }
+
+                        //se le asigna la imagen a los dos primeros game objects que se
+                        //repiten, los demas quedan en blanco
+                        else if (cont == 6 && aux < 2){
+                            options[i,j].GetComponent<SpriteRenderer>().sprite = sprites[iconNumber[aux]];
+                            aux ++;
+                        }
+
+                    }
+                }
+               
+            break;
+        }
     }
 
     //me llena la lista que contiene las repsuestas correctas del 
     //los juegos
     void GetListAnswer(){
 
-        for (int i = 2; i < iconNumber.Count; i++){
-            correctListAnswer.Add(iconNumber[i]);
+        switch (levelUser){
+
+            case 1:
+                for (int i = 1; i < iconNumber.Count; i++){
+                    correctListAnswer.Add(iconNumber[i]);
+
+                }
+            break;
+
+            case 2:
+                correctListAnswer.Add(iconNumber[2]);
+                correctListAnswer.Add(iconNumber[3]);
+            break;
+            
+            default:
+                for (int i = 2; i < iconNumber.Count; i++){
+                    correctListAnswer.Add(iconNumber[i]);
+                }
+            break;
         }
+
     }
 
     //metodo que llena una lista con las resouestas correctas y le 
@@ -138,8 +269,33 @@ public class SequenceGameController : Reference{
         for (int i = 0; i < correctListAnswer.Count; i++){
             possibleAnswer.Add(correctListAnswer[i]);
         }
-        int value = GetContainsNumber();
-        possibleAnswer.Add(value);
+
+        for (int j = correctListAnswer.Count; j < 5; j++){
+            int value = GetContainsNumberButton();
+            possibleAnswer.Add(value);
+        }
+
+    }
+    
+    int GetContainsNumberButton(){
+
+        int num = 0;
+        if (levelUser == 1){
+            num = 8;
+        }else if(levelUser == 2){
+            num = 12;
+        }else{
+            num = 22;
+        }
+
+        bool condition = true;
+        int number = 0;
+        while(condition){
+            number = Random.Range(0, num);
+            if (!possibleAnswer.Contains(number)) condition = false;
+        }
+
+        return number;
 
     }
 
@@ -162,11 +318,34 @@ public class SequenceGameController : Reference{
     public void PaintButtons(){
 
         List<int> answerToPaint = RandomList();
-        for (int i = 0; i < App.generalView.sequenceGameView.buttons.Count; i++){
-            App.generalView.sequenceGameView.buttons[i].image.sprite = sprites[answerToPaint[i]];
-            App.generalView.sequenceGameView.buttons[i].GetComponentInChildren<Text>().text = "" + answerToPaint[i];
-        }
         
+        switch (levelUser){
+            
+            case 1:
+                
+                for (int i = 0; i < App.generalView.sequenceGameView.buttons.Count; i++){
+                    App.generalView.sequenceGameView.buttons[i].image.sprite = spritesLevelOne[answerToPaint[i]];
+                    App.generalView.sequenceGameView.buttons[i].GetComponentInChildren<Text>().text = "" + answerToPaint[i];
+                }
+            break;
+
+            case 2:
+                
+                for (int i = 0; i < App.generalView.sequenceGameView.buttons.Count; i++){
+                    App.generalView.sequenceGameView.buttons[i].image.sprite = spritesLevelTwo[answerToPaint[i]];
+                    App.generalView.sequenceGameView.buttons[i].GetComponentInChildren<Text>().text = "" + answerToPaint[i];
+                }
+            break;
+
+            default:
+                
+                for (int i = 0; i < App.generalView.sequenceGameView.buttons.Count; i++){
+                    App.generalView.sequenceGameView.buttons[i].image.sprite = sprites[answerToPaint[i]];
+                    App.generalView.sequenceGameView.buttons[i].GetComponentInChildren<Text>().text = "" + answerToPaint[i];
+                }
+            break;
+        }
+
     }
 
     //metodo que verifica si la secuencia que selecciono el usuair
@@ -181,10 +360,28 @@ public class SequenceGameController : Reference{
                 break;
             }
         }
-        //indica que ganó
-        if (i == 4){
-            Debug.Log("You win");            
+        switch (levelUser){
+            
+            case 1: 
+                //indica que ganó
+                if (i == 3){
+                    Debug.Log("You win");            
+                }
+            break;
+
+            case 2:
+                if (i == 2){
+                    Debug.Log("You win");            
+                }
+            break;
+
+            default:
+                if (i == 4){
+                    Debug.Log("You win");            
+                }
+            break;
         }
+
 
     }
 
@@ -194,14 +391,46 @@ public class SequenceGameController : Reference{
 
         //posicion del caramelo que se escoge
         int position = FindChange(text);
+        //entero que me indica cuantos caramelos puede seleccionar
+        int contCandy = 0;
+
+        switch (levelUser){
+
+            case 1:
+                contCandy = 3;
+            break;
+
+            case 2:
+                contCandy = 2;
+            break;
+
+            default:
+                contCandy = 4;
+            break;
+        }
+
         //pasos que ocurren si se sellecciona el caramelo
-        if (auxState[position] == 1 && answerToUserButton.Count < 5 && contToPaint < 4){
+        if (auxState[position] == 1 && answerToUserButton.Count < contCandy+1 && contToPaint < contCandy){
             
             auxState[position] = 0; 
             ReturnPosition(position, 0);
             int value = int.Parse(text);
             answerToUserButton.Add(value);
-            options[2, contToPaint].GetComponent<SpriteRenderer>().sprite = sprites[value];
+            switch (levelUser){
+                
+                case 1:
+                    options[1, contToPaint + 1].GetComponent<SpriteRenderer>().sprite = spritesLevelOne[value];
+                break;
+
+                case 2:
+                    options[2, contToPaint].GetComponent<SpriteRenderer>().sprite = spritesLevelTwo[value];
+                break;
+
+                default:
+                    options[2, contToPaint].GetComponent<SpriteRenderer>().sprite = sprites[value];
+                break;
+            }
+            
             contToPaint++;
             centinela = true;
             
@@ -216,7 +445,21 @@ public class SequenceGameController : Reference{
                 int aux = int.Parse(App.generalView.sequenceGameView.buttons[position].GetComponentInChildren<Text>().text);
                 ReturnPosition(position, aux);
                 auxState[position] = 1;
-                options[2, contToPaint-1].GetComponent<SpriteRenderer>().sprite = objectRow.GetComponent<SpriteRenderer>().sprite;
+                switch (levelUser){
+                    
+                    case 1:
+                        options[1, contToPaint].GetComponent<SpriteRenderer>().sprite = objectRow.GetComponent<SpriteRenderer>().sprite;
+                    break;
+
+                    case 2:
+                        options[2, contToPaint-1].GetComponent<SpriteRenderer>().sprite = objectRow.GetComponent<SpriteRenderer>().sprite;
+                    break;
+
+                    default:
+                        options[2, contToPaint-1].GetComponent<SpriteRenderer>().sprite = objectRow.GetComponent<SpriteRenderer>().sprite;
+                    break;
+                }
+                
                 contToPaint--;
                 answerToUserButton.RemoveAt(answerToUserButton.Count-1);  
             }
@@ -249,8 +492,26 @@ public class SequenceGameController : Reference{
     //usuario que ya sleecciono el caramelo
     public void ActivePanel(GameObject panel){
 
+        int contCandy = 0;
+
+        switch (levelUser){
+            
+            
+            case 1:
+                contCandy = 3;
+            break;
+
+            case 2:
+                contCandy = 2;
+            break;
+
+            default:
+                contCandy = 4;
+            break;
+        }
+
         //pasos que pemriten activar el panel
-        if (auxState[auxPosition] == 0 && contToUnPaint < 4){
+        if (auxState[auxPosition] == 0 && contToUnPaint < contCandy){
             panel.GetComponent<Image>().enabled = true;
             contToUnPaint++;
 

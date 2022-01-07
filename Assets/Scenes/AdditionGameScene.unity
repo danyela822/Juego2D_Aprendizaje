@@ -1338,7 +1338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.15352085}
   m_AnchorMax: {x: 1, y: 0.25800002}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -4, y: -18}
   m_SizeDelta: {x: -80, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1080751378
@@ -2035,6 +2035,8 @@ MonoBehaviour:
   statsView: {fileID: 0}
   additionGameView: {fileID: 1787065382}
   equialityGameView: {fileID: 0}
+  sequenceGameView: {fileID: 0}
+  setsGameView: {fileID: 0}
 --- !u!4 &1348617992
 Transform:
   m_ObjectHideFlags: 0
@@ -2515,6 +2517,8 @@ MonoBehaviour:
   statsController: {fileID: 0}
   additionGameController: {fileID: 1787065383}
   equialityGameController: {fileID: 0}
+  sequenceGameController: {fileID: 0}
+  setsGameController: {fileID: 0}
 --- !u!4 &1578427936
 Transform:
   m_ObjectHideFlags: 0
@@ -2818,6 +2822,7 @@ MonoBehaviour:
   MistakeCanvas: {fileID: 0}
   WarningCanvas: {fileID: 0}
   imageWin: {fileID: 0}
+  correctAnswer: {fileID: 0}
   textMistake: {fileID: 0}
 --- !u!114 &1657985007
 MonoBehaviour:
@@ -3265,7 +3270,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c42afd546e704ea8c8c358342edb5262, type: 3}
   - {fileID: 21300000, guid: 8a6b05e93b9412437a47c2e5da81de55, type: 3}
   - {fileID: 21300000, guid: e41031e4ee5b1407d8a71fd4eeb24e07, type: 3}
+  signPlus: {fileID: 21300000, guid: 7f332f35512171228a36863da60e0c0e, type: 3}
+  signLess: {fileID: 21300000, guid: 37ad4559676e01cb5bd470f3ae256487, type: 3}
+  signEquals: {fileID: 21300000, guid: e0a1f622ce32278b9a0659821e611bfc, type: 3}
   objectRow: {fileID: 2829493682760209679, guid: 3cd29ecfb40441b3585ed947bbda1dce, type: 3}
+  objectSign: {fileID: 5244018779905500735, guid: 33d0d5e6f6e7a2b5589bcc46d01e135f, type: 3}
 --- !u!4 &1787065384
 Transform:
   m_ObjectHideFlags: 0
