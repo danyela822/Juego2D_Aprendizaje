@@ -63,6 +63,7 @@ public class CharacteristicsGameController : Reference
 
             //Obtener el numero del conjunto de imagenes
             number = App.generalModel.characteristicsGameModel.GetImagesSet();
+            //number = Random.Range(0, 5);
         }
 
         //Obtener el nivel actual
@@ -318,7 +319,7 @@ public class CharacteristicsGameController : Reference
     public void RestartAttempts()
     {
         App.generalModel.characteristicsGameModel.UpdateNumberAttempts(App.generalModel.characteristicsGameModel.GetNumberAttempts() - 3);
-        
+        //SceneManager.LoadScene("CharacteristicsGameScene");
         //Reestablecer la cantidad de intentos
         attempts = 3;
     }
