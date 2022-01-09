@@ -51,7 +51,7 @@ public class SequenceGameController : Reference{
     //activados
     int contToUnPaint = 0;
 
-    int levelUser = 2;
+    int levelUser = 1;
 
 
     // Start is called before the first frame update
@@ -354,8 +354,10 @@ public class SequenceGameController : Reference{
 
         //indica que perdio 
         int i = 0;
-        for (i = 0; i < answerToUserButton.Count; i++){
-            if (answerToUserButton[i] != correctListAnswer[i]){
+        for (i = 0; i < answerToUserButton.Count; i++)
+        {
+            if (answerToUserButton[i] != correctListAnswer[i])
+            {
                 Debug.Log("You lose");
                 break;
             }
@@ -365,19 +367,22 @@ public class SequenceGameController : Reference{
             case 1: 
                 //indica que ganó
                 if (i == 3){
-                    Debug.Log("You win");            
+                    Debug.Log("You win");
+                    App.generalView.gameOptionsView.ShowWinCanvas(3);
                 }
             break;
 
             case 2:
                 if (i == 2){
-                    Debug.Log("You win");            
+                    Debug.Log("You win");
+                    App.generalView.gameOptionsView.ShowWinCanvas(3);
                 }
             break;
 
             default:
                 if (i == 4){
-                    Debug.Log("You win");            
+                    Debug.Log("You win");
+                    App.generalView.gameOptionsView.ShowWinCanvas(3);
                 }
             break;
         }
@@ -477,9 +482,10 @@ public class SequenceGameController : Reference{
     public int FindChange(string text){
 
         int position = 0;
-        for (int i = 0; i < App.generalView.sequenceGameView.buttons.Count; i++){
-            if (int.Parse(text) == 
-            int.Parse(App.generalView.sequenceGameView.buttons[i].GetComponentInChildren<Text>().text)){
+        for (int i = 0; i < App.generalView.sequenceGameView.buttons.Count; i++)
+        {
+            if (int.Parse(text) == int.Parse(App.generalView.sequenceGameView.buttons[i].GetComponentInChildren<Text>().text))
+            {
                 position = i;
                 i = App.generalView.sequenceGameView.buttons.Count;
             }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EquialityGameController : Reference{
@@ -31,9 +32,8 @@ public class EquialityGameController : Reference{
     //respuestas del juego
     List<int> possibleAnswerGame = new List<int>();
 
-
     //nivel en que esta el usuario 
-    int levelUser = 3;
+    //int levelUser = 3;
     int level = 0;
 
     float y;
@@ -41,6 +41,12 @@ public class EquialityGameController : Reference{
 
     float signX;
     float signY;
+
+    //Numero de intentos que tiene el jugador para ganar el juego
+    int attempts = 3;
+
+    //Numero para indicar el numero de veces que verifica la respuesta correcta
+    public int counter;
 
     // Start is called before the first frame update
     void Start(){
@@ -59,13 +65,13 @@ public class EquialityGameController : Reference{
 
     void ChangeLevel(){
 
-        switch (levelUser){
+        switch (App.generalModel.equialityGameModel.GetLevel()){
             
             case 1: 
                 level = 2;
                 y = 0.35f;
                 x = -1.5f;
-                signX = -0.7f;
+                signX = -0.8f;
                 signY = 0.33f;
             break;
 
@@ -73,7 +79,7 @@ public class EquialityGameController : Reference{
                 level = 3;
                 y = 0.6f;
                 x = -1.5f;
-                signX = -0.7f;
+                signX = -0.8f;
                 signY = 0.63f;
             break;
 
@@ -81,7 +87,7 @@ public class EquialityGameController : Reference{
                 level = 4;
                 y = 1.25f;
                 x = -1.5f;
-                signX = -0.7f;
+                signX = -0.8f;
                 signY = 1.23f;
             break;
         }
@@ -184,43 +190,63 @@ public class EquialityGameController : Reference{
         GameObject sign;
         
         int icon = 0;
-
+        int p = 1;
         for (int i = 0; i < level; i++){
 
             int k = numOperation[i] + 1;
             int j = 0;
-            
-            sign = Instantiate(objSing,new Vector3(signX, signY - (0.9f*i), 0), objSing.transform.rotation);
-            sign.GetComponent<SpriteRenderer>().sprite = equialitySprite;
-            
 
-            while(j != k){
-        
-                if(j == 1){
-                    option = Instantiate(objRow,new Vector3(x + (1.6f*j),y - (0.9f*i), 0), objRow.transform.rotation);
+            
+            //sign = Instantiate(objSing,new Vector3(signX, signY - (0.9f*i), 0), objSing.transform.rotation);
+            sign = Instantiate(objSing, new Vector3(signX, signY - i*0.9f, 0), objSing.transform.rotation);
+            sign.GetComponent<SpriteRenderer>().sprite = equialitySprite;
+
+            //y = 1.25f;
+            //x = -1.5f;
+            while (j < k)
+            {
+
+                if (j == 0)
+                {
+                    option = Instantiate(objRow, new Vector3(x, y - i*0.9f, 0), objRow.transform.rotation);
+                    //option = Instantiate(objRow, new Vector3(x, y - (1f * i), 0), objRow.transform.rotation);
                     Sprite sprite = images[numPaint[icon]];
                     option.GetComponent<SpriteRenderer>().sprite = sprite;
+                    p += 1;
+                }
+                //if(j == 1){
+                    //KELLY
+                    //option = Instantiate(objRow,new Vector3(x + (1.6f*j),y - (0.9f*i), 0), objRow.transform.rotation);
+                    //DANY
+                    //option = Instantiate(objRow, new Vector3(x + (size.x * j), y - (0.9f * i), 0), objRow.transform.rotation);
+                    //Sprite sprite = images[numPaint[icon]];
+                    //option.GetComponent<SpriteRenderer>().sprite = sprite;
                     
-                }else{
-                    //option = Instantiate(objRow,new Vector3(x + (1.2f*j),y - (0.9f*i), 0), objRow.transform.rotation);
-                    option = Instantiate(objRow,new Vector3(x + ((size.x - 0.08f) * j),y - (0.9f*i), 0), objRow.transform.rotation);  
+                else{
+                    //KELLYoption = Instantiate(objRow,new Vector3(x + (1.2f*j),y - (0.9f*i), 0), objRow.transform.rotation);
+                    //KELLY
+                    //option = Instantiate(objRow,new Vector3(x + ((size.x - 0.08f) * j),y - (0.9f*i), 0), objRow.transform.rotation);
+                    //DANY
+                    //option = Instantiate(objRow,new Vector3((size.x/2 * j)-1f,y - (1f*i), 0), objRow.transform.rotation);
+                    option = Instantiate(objRow, new Vector3((size.x / 2 * j) - 1f, y - i*0.9f, 0), objRow.transform.rotation);
                     Sprite sprite = images[numPaint[icon]];
                     option.GetComponent<SpriteRenderer>().sprite = sprite;  
                 } 
                 
                 icon += 1;
                 j +=1 ;
+
             }
         }
 
         GameObject firstOption = Instantiate(objRow,
-        new Vector3(0f, -2.4f, 0), objRow.transform.rotation);
+        new Vector3(-0.2f, -2.6f, 0), objRow.transform.rotation);
         Sprite spriteF = images[numPaint[numPaint.Count - 1]];
         firstOption.GetComponent<SpriteRenderer>().sprite = spriteF;
         firstOption.transform.localScale = new Vector3(0.45f,0.45f,0);
 
         GameObject lastOption = Instantiate(objRow,
-        new Vector3(1f, -3.08f, 0), objRow.transform.rotation);
+        new Vector3(0.75f, -3.25f, 0), objRow.transform.rotation);
         Sprite spriteL = images[numPaint[0]];
         lastOption.GetComponent<SpriteRenderer>().sprite = spriteL;
         lastOption.transform.localScale = new Vector3(0.45f, 0.45f, 0);
@@ -293,10 +319,117 @@ public class EquialityGameController : Reference{
     public void CheckAnswer(string text){
 
         int auxAnswer = int.Parse(text);
-        if (auxAnswer == correctAnswerGame){
+        counter++;
+        if (auxAnswer == correctAnswerGame)
+        {
+
             Debug.Log("You win");
-        }else{
+            //Mostrar el canvas que indica cuantas estrellas gano
+            //App.generalView.gameOptionsView.ShowWinCanvas(canvasStars);
+
+            //Si ya paso el nivel 1 puede pasar al 2
+            if (App.generalModel.equialityGameModel.GetLevel() == 1)
+            {
+                App.generalModel.equialityGameModel.UpdateLevel(2);
+                //App.generalView.characteristicsGameView.transition.enabled = true;
+
+                //SetPointsAndStars();
+                SceneManager.LoadScene("EquialityGameScene");
+            }
+            //Si ya paso el nivel 2 puede pasar al 3
+            else if (App.generalModel.equialityGameModel.GetLevel() == 2)
+            {
+                App.generalModel.equialityGameModel.UpdateLevel(3);
+                //App.generalView.characteristicsGameView.transition.enabled = true;
+                //SetPointsAndStars();
+                SceneManager.LoadScene("EquialityGameScene");
+            }
+            //Si ya termino los 3 niveles de ese Set, se comienza de nuevo
+            else if (App.generalModel.equialityGameModel.GetLevel() == 3)
+            {
+                Debug.Log("Termino los 3");
+                //Actualizar el nivel a 1 para empezar otra nueva ronda
+                SetPointsAndStars();
+                App.generalModel.equialityGameModel.UpdateLevel(1);
+
+            }
+            Debug.Log("CONTADOR: "+counter);
+        }
+        else
+        {
             Debug.Log("You lose");
+            CheckAttempt();
+        }
+    }
+    /// <summary>
+    /// Metodo que asigna los puntos y estrellas que ha ganado el jugador
+    /// </summary>
+    public void SetPointsAndStars()
+    {
+        //Declaracion de los puntos y estrellas que ha ganado el juegador
+        int points, stars, canvasStars;
+
+        //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
+        if (counter == 3)
+        {
+            points = App.generalModel.equialityGameModel.GetPoints() + 30;
+            stars = App.generalModel.equialityGameModel.GetTotalStars() + 3;
+            canvasStars = 3;
+            //Actualizar las veces que ha ganado 3 estrellas
+            //App.generalModel.characteristicsGameModel.UpdatePerfectWins(App.generalModel.characteristicsGameModel.GetPerfectWins() + 1);
+
+            //Actualizar las veces que ha ganado sin errores
+            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
+        }
+        //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
+        else if (counter > 3 && counter < 9)
+        {
+            points = App.generalModel.equialityGameModel.GetPoints() + 20;
+            stars = App.generalModel.equialityGameModel.GetTotalStars() + 2;
+            canvasStars = 2;
+
+            //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
+            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(0);
+        }
+        //Si gana el juego con mas de 9 intentos suma 10 puntos y gana 1 estrella
+        else
+        {
+            points = App.generalModel.equialityGameModel.GetPoints() + 10;
+            stars = App.generalModel.equialityGameModel.GetTotalStars() + 1;
+            canvasStars = 1;
+
+            //Actualizar las veces que ha ganado sin errores
+            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(0);
+        }
+
+        //Actualiza los puntos y estrellas obtenidos
+        App.generalModel.equialityGameModel.UpdatePoints(points);
+        App.generalModel.equialityGameModel.UpdateTotalStars(stars);
+
+        //Mostrar el canvas que indica cuantas estrellas gano
+        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars);
+
+        //Actualizar el numero de veces que ha seleccionado una opcion a cero
+        //App.generalModel.equialityGameModel.UpdateNumberAttempts(0);
+    }
+    /// <summary>
+    /// Metodo para contar y verificar los errores
+    /// </summary>
+    void CheckAttempt()
+    {
+        //Dismuir la cantidad de intentos
+        attempts--;
+
+        //Si se queda sin intentos pierde el juego y se le muestra la respuesta (POR AHORA)
+        if (attempts == 0)
+        {
+            //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
+            App.generalView.gameOptionsView.ShowLoseCanvas();
+        }
+        //Si aun le quedan intentos se muestra un mensaje en pantalla
+        else
+        {
+            App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
         }
     }
 
