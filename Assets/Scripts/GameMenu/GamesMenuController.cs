@@ -24,7 +24,7 @@ public class GamesMenuController : Reference
                 }
                 break;
             case "¿Quien soy?":
-                if (file.characteristicsGameList.Count == 0)
+                if (file.imageListGame2_1.Count == 0 && file.imageListGame2_2.Count == 0 && file.imageListGame2_3.Count == 0)
                 {
                     App.generalView.gamesMenuView.playButtons[1].interactable = false;
                     App.generalView.gamesMenuView.finishedCanvas.enabled = true;

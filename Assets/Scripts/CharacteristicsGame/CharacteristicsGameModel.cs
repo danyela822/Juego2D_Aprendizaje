@@ -37,18 +37,46 @@ public class CharacteristicsGameModel : Reference
     /// <param name="number">Numero del conjunto de imagenes</param>
     /// <param name="level">Nivel del juego</param>
     /// <returns>Array de Sprites con las imagenes del nivel indicado</returns>
-    public Sprite[] LoadImages(int number,int level)
+    public Sprite[] LoadImages(int number, int level)
     {
-        //Crear array de imagenes
-        Sprite[] images = new Sprite[4];
+        //Cargar y guardar un set de imagenes en un array
+        Sprite[] images = Resources.LoadAll<Sprite>("Characteristics/Level_" + level + "/set_" + number);
 
-        //Verificar que el set de imagenes solicitado esta disponible
-        if (file.characteristicsGameList.Contains(number))
-        {
-            //Cargar y guardar un set de imagenes en un array
-            images = Resources.LoadAll<Sprite>("Characteristics/Level_"+level+"/set_" + number);
-        }
         return images;
+    }
+    public bool FileExist(int number, int level)
+    {
+        switch (level)
+        {
+            case 1:
+                if (file.imageListGame2_1.Contains(number))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            case 2:
+                if (file.imageListGame2_2.Contains(number))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            case 3:
+                if (file.imageListGame2_3.Contains(number))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            default: return false;
+        }
     }
     /// <summary>
     /// Metodo para cargar todos los enunciados que deben acompañar a cada nivel
@@ -63,16 +91,10 @@ public class CharacteristicsGameModel : Reference
 
         //Capturar el texto del archivo
         string text = textAsset.text;
-        
-        //Declarar el string que contendra el enunciado
-        string statement = "";
 
-        //Verificar que el enunciado solicitado esta disponible
-        if (file.characteristicsGameList.Contains(number))
-        {
-            //Seleccionar el enunciado indicado por el numero de representa el conjunto de imagenes
-            statement = text.Split('\n')[number];
-        }
+        //Seleccionar el enunciado indicado por el numero de representa el conjunto de imagenes
+        string statement = text.Split('\n')[number];
+
         return statement;
     }
     /// <summary>

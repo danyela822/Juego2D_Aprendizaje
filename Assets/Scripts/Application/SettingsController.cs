@@ -14,7 +14,10 @@ public class SettingsController : Reference
         Debug.Log("ESTADO CharacteristicsList: " + PlayerPrefs.GetInt("CharacteristicsList", 0));
         Debug.Log("ESTADO AchievementsList: " + PlayerPrefs.GetInt("AchievementsList", 0));*/
         file.classificationGameList = new List<int>();
-        file.characteristicsGameList = new List<int>();
+        //file.characteristicsGameList = new List<int>();
+        file.imageListGame2_1 = new List<int>();
+        file.imageListGame2_2 = new List<int>();
+        file.imageListGame2_3 = new List<int>();
         file.achievementsList = new List<int>();
         File.Delete(file.GetPath("P"));
         //SceneManager.LoadScene("MainMenuScene");

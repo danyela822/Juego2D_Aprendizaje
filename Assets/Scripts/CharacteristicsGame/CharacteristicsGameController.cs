@@ -34,50 +34,25 @@ public class CharacteristicsGameController : Reference
     //Imagen de la respuesta correcta
     Sprite correctAnswer;
 
+    //
+    bool isLastLevel;
+
     private void Start()
     {
-        SetLevel();
-    }
-    ///<summary>
-    ///Determina el nivel a jugar (1, 2 o 3) y el conjunto de imagenes y textos a mostrar
-    ///</summary>
-    public void SetLevel()
-    {
-        //Si es el primer nivel se debe selecionar aleatoriamente el cojunto de imagenes
-        if (App.generalModel.characteristicsGameModel.GetLevel() == 1)
-        {
-            //Numero random para seleccionar un conjunto de imagenes
-            number = Random.Range(0, 5);
-            
-            //Guardar el numero del conjunto selecionado
-            App.generalModel.characteristicsGameModel.ChangeImagesSet(number);
-            
-            //Iniciar el conteo de intentos en 0
-            App.generalModel.characteristicsGameModel.UpdateNumberAttempts(0);
-        }
-        //Si no es el primer nivel se debe recuperar el conjunto de imagenes establecido previamente
-        else
-        {
-            //Quitar el aviso
-            App.generalView.gameOptionsView.HideTutorialCanvas();
-
-            //Obtener el numero del conjunto de imagenes
-            //number = App.generalModel.characteristicsGameModel.GetImagesSet();
-            number = Random.Range(0, 5);
-        }
-
-        //Obtener el nivel actual
-        int level = App.generalModel.characteristicsGameModel.GetLevel();
-
-        //Construir el nivel
-        BuildLevel(level);
+        BuildLevel();
     }
     /// <summary>
     /// Busca e instancia la lista de imagenes y la lista de textos necesarias para crear el nivel
     /// </summary>
     /// <param name="level"> Nivel a crear </param>
-    public void BuildLevel(int level)
+    public void BuildLevel()
     {
+        //Obtener el nivel actual
+        int level = App.generalModel.characteristicsGameModel.GetLevel();
+
+        //Numero random para seleccionar un conjunto de imagenes
+        number = Random.Range(0, 5);
+
         //Variable que determina si existe el conjunto de imagenes y textos para ese nivel
         bool exists = false;
 
@@ -85,7 +60,7 @@ public class CharacteristicsGameController : Reference
         while (!exists)
         {
             //Se determina si es posible cargar el conjunto de imagenes y textos requeridos
-            if (App.generalModel.characteristicsGameModel.file.characteristicsGameList.Contains(number))
+            if (App.generalModel.characteristicsGameModel.FileExist(number, level))
             {
                 //Instaciar Lista que guardara todas las imagenes
                 images = App.generalModel.characteristicsGameModel.LoadImages(number, level);
@@ -101,9 +76,6 @@ public class CharacteristicsGameController : Reference
             {
                 //Numero random para seleccionar un conjunto de imagenes
                 number = Random.Range(0, 5);
-
-                //Guardar el numero del conjunto selecionado
-                App.generalModel.characteristicsGameModel.ChangeImagesSet(number);
             }
         }
 
@@ -148,6 +120,7 @@ public class CharacteristicsGameController : Reference
     /// <param name="selectedOption"> Respuesta selecionada por el jugador </param>
     public void CheckAnswer(string selectedOption)
     {
+        counter++;
         //Verificar si ya jugo un nivel de este juego
         if (App.generalModel.characteristicsGameModel.GetTimesPlayed() == 0)
         {
@@ -169,14 +142,18 @@ public class CharacteristicsGameController : Reference
             //Si ya paso el nivel 1 puede pasar al 2
             if (App.generalModel.characteristicsGameModel.GetLevel() == 1)
             {
+                //Eliminar el numero del conjunto de imagenes y textos
+                App.generalModel.characteristicsGameModel.file.imageListGame2_1.Remove(number);
+                //Actualizar el nivel del juego
                 App.generalModel.characteristicsGameModel.UpdateLevel(2);
-                //App.generalView.characteristicsGameView.transition.enabled = true;
             }
             //Si ya paso el nivel 2 puede pasar al 3
             else if (App.generalModel.characteristicsGameModel.GetLevel() == 2)
             {
+                //Eliminar el numero del conjunto de imagenes y textos
+                App.generalModel.characteristicsGameModel.file.imageListGame2_2.Remove(number);
+                //Actualizar el nivel del juego
                 App.generalModel.characteristicsGameModel.UpdateLevel(3);
-                //App.generalView.characteristicsGameView.transition.enabled = true;
  
             }
             //Si ya termino los 3 niveles de ese Set, se comienza de nuevo
@@ -185,20 +162,22 @@ public class CharacteristicsGameController : Reference
                 Debug.Log("Termino los 3");
 
                 //Eliminar el numero del conjunto de imagenes y textos
-                App.generalModel.characteristicsGameModel.file.characteristicsGameList.Remove(number);
-                //Guardar estado
-                App.generalModel.characteristicsGameModel.file.Save("P");
+                App.generalModel.characteristicsGameModel.file.imageListGame2_3.Remove(number);
+
+                isLastLevel = true;
 
                 //Actualizar el nivel a 1 para empezar otra nueva ronda
                 App.generalModel.characteristicsGameModel.UpdateLevel(1);
 
                 //Numero de veces (en total) que selecciono una opcion
-                counter = App.generalModel.characteristicsGameModel.GetNumberAttempts();
+                //counter = App.generalModel.characteristicsGameModel.GetNumberAttempts();
                 Debug.Log("LO HIZO EN: " + counter + " INTENTOS");
 
-                //Asignar Estrellas y Puntos obtenidos
-                //SetPointsAndStars();
             }
+            //Guardar estado
+            App.generalModel.characteristicsGameModel.file.Save("P");
+
+            //Asignar Estrellas y Puntos obtenidos
             SetPointsAndStars();
         }
         else
@@ -215,7 +194,7 @@ public class CharacteristicsGameController : Reference
         int points, stars, canvasStars;
         
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
-        if (counter == 3)
+        if (counter == 1)
         {
             points = App.generalModel.characteristicsGameModel.GetPoints() + 30;
             stars = App.generalModel.characteristicsGameModel.GetTotalStars() + 3;
@@ -227,7 +206,7 @@ public class CharacteristicsGameController : Reference
             //App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
         }
         //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
-        else if (counter > 3 && counter < 9)
+        else if (counter == 2)
         {
             points = App.generalModel.characteristicsGameModel.GetPoints() + 20;
             stars = App.generalModel.characteristicsGameModel.GetTotalStars() + 2;
@@ -253,7 +232,7 @@ public class CharacteristicsGameController : Reference
 
         //Mostrar el canvas que indica cuantas estrellas gano
         //App.generalView.gameOptionsView.ShowWinCanvas(canvasStars);
-        //App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
+        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
 
         //Actualizar el numero de veces que ha seleccionado una opcion a cero
         App.generalModel.characteristicsGameModel.UpdateNumberAttempts(0);

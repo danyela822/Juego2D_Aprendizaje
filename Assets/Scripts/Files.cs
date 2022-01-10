@@ -8,10 +8,10 @@ public class Files : Reference
         file.Load("P");
         if (PlayerPrefs.GetInt("CreateLists", 0) == 0)
         {
-            for (int j = 0; j < 5; j++)
+            /*for (int j = 0; j < 5; j++)
             {
                 file.characteristicsGameList.Add(j);
-            }
+            }*/
             for (int j = 0; j < 10; j++)
             {
                 file.classificationGameList.Add(j);
@@ -20,6 +20,14 @@ public class Files : Reference
             {
                 file.achievementsList.Add(j);
             }
+            for (int j = 0; j < 5; j++)
+            {
+                file.imageListGame2_1.Add(j);
+                file.imageListGame2_2.Add(j);
+                file.imageListGame2_3.Add(j);
+            }
+
+
             PlayerPrefs.SetInt("CreateLists", 1);
             PlayerPrefs.SetInt("Level", 1);
             Debug.Log("CAMBIO DE CreateLists: " + PlayerPrefs.GetInt("CreateLists", 0));

@@ -8,6 +8,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class FileLists : ScriptableObject
 {
     public List<int> classificationGameList;
+
+    public List<int> imageListGame2_1;
+    public List<int> imageListGame2_2;
+    public List<int> imageListGame2_3;
+
     public List<int> characteristicsGameList;
     public List<int> achievementsList;
 
