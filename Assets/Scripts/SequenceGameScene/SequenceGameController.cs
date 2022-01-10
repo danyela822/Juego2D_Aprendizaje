@@ -53,6 +53,11 @@ public class SequenceGameController : Reference{
 
     int levelUser = 1;
 
+    //Numero de intentos que tiene el jugador para ganar el juego
+    int attempts = 3;
+
+    //
+    int counter = 0;
 
     // Start is called before the first frame update
     void Start(){
@@ -368,25 +373,36 @@ public class SequenceGameController : Reference{
                 //indica que ganó
                 if (i == 3){
                     Debug.Log("You win");
-                    App.generalView.gameOptionsView.ShowWinCanvas(3);
+                    SetPointsAndStars();
+                }
+                else
+                {
+                    CheckAttempt();
                 }
             break;
 
             case 2:
                 if (i == 2){
                     Debug.Log("You win");
-                    App.generalView.gameOptionsView.ShowWinCanvas(3);
+                    SetPointsAndStars();
                 }
-            break;
+                else
+                {
+                    CheckAttempt();
+                }
+                break;
 
             default:
                 if (i == 4){
                     Debug.Log("You win");
-                    App.generalView.gameOptionsView.ShowWinCanvas(3);
+                    SetPointsAndStars();
                 }
-            break;
+                else
+                {
+                    CheckAttempt();
+                }
+                break;
         }
-
 
     }
 
@@ -528,6 +544,77 @@ public class SequenceGameController : Reference{
             panel.GetComponent<Image>().enabled = false;
             contToUnPaint--;
 
+        }
+    }
+    /// <summary>
+    /// Metodo que asigna los puntos y estrellas que ha ganado el jugador
+    /// </summary>
+    public void SetPointsAndStars()
+    {
+        //Declaracion de los puntos y estrellas que ha ganado el juegador
+        int points, stars, canvasStars;
+
+        //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
+        if (counter == 3)
+        {
+            points = App.generalModel.SequenceGameModel.GetPoints() + 30;
+            stars = App.generalModel.SequenceGameModel.GetTotalStars() + 3;
+            canvasStars = 3;
+            //Actualizar las veces que ha ganado 3 estrellas
+            //App.generalModel.characteristicsGameModel.UpdatePerfectWins(App.generalModel.characteristicsGameModel.GetPerfectWins() + 1);
+
+            //Actualizar las veces que ha ganado sin errores
+            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
+        }
+        //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
+        else if (counter > 3 && counter < 9)
+        {
+            points = App.generalModel.SequenceGameModel.GetPoints() + 20;
+            stars = App.generalModel.SequenceGameModel.GetTotalStars() + 2;
+            canvasStars = 2;
+
+            //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
+            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(0);
+        }
+        //Si gana el juego con mas de 9 intentos suma 10 puntos y gana 1 estrella
+        else
+        {
+            points = App.generalModel.SequenceGameModel.GetPoints() + 10;
+            stars = App.generalModel.SequenceGameModel.GetTotalStars() + 1;
+            canvasStars = 1;
+
+            //Actualizar las veces que ha ganado sin errores
+            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(0);
+        }
+
+        //Actualiza los puntos y estrellas obtenidos
+        App.generalModel.SequenceGameModel.UpdatePoints(points);
+        App.generalModel.SequenceGameModel.UpdateTotalStars(stars);
+
+        //Mostrar el canvas que indica cuantas estrellas gano
+        //App.generalView.gameOptionsView.ShowWinCanvas(canvasStars);
+
+        //Actualizar el numero de veces que ha seleccionado una opcion a cero
+        //App.generalModel.equialityGameModel.UpdateNumberAttempts(0);
+    }
+    /// <summary>
+    /// Metodo para contar y verificar los errores
+    /// </summary>
+    void CheckAttempt()
+    {
+        //Dismuir la cantidad de intentos
+        attempts--;
+
+        //Si se queda sin intentos pierde el juego y se le muestra la respuesta (POR AHORA)
+        if (attempts == 0)
+        {
+            //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
+            App.generalView.gameOptionsView.ShowLoseCanvas();
+        }
+        //Si aun le quedan intentos se muestra un mensaje en pantalla
+        else
+        {
+            App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
         }
     }
 }

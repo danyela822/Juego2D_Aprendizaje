@@ -62,8 +62,8 @@ public class CharacteristicsGameController : Reference
             App.generalView.gameOptionsView.HideTutorialCanvas();
 
             //Obtener el numero del conjunto de imagenes
-            number = App.generalModel.characteristicsGameModel.GetImagesSet();
-            //number = Random.Range(0, 5);
+            //number = App.generalModel.characteristicsGameModel.GetImagesSet();
+            number = Random.Range(0, 5);
         }
 
         //Obtener el nivel actual
@@ -170,13 +170,13 @@ public class CharacteristicsGameController : Reference
             if (App.generalModel.characteristicsGameModel.GetLevel() == 1)
             {
                 App.generalModel.characteristicsGameModel.UpdateLevel(2);
-                App.generalView.characteristicsGameView.transition.enabled = true;
+                //App.generalView.characteristicsGameView.transition.enabled = true;
             }
             //Si ya paso el nivel 2 puede pasar al 3
             else if (App.generalModel.characteristicsGameModel.GetLevel() == 2)
             {
                 App.generalModel.characteristicsGameModel.UpdateLevel(3);
-                App.generalView.characteristicsGameView.transition.enabled = true;
+                //App.generalView.characteristicsGameView.transition.enabled = true;
  
             }
             //Si ya termino los 3 niveles de ese Set, se comienza de nuevo
@@ -197,8 +197,9 @@ public class CharacteristicsGameController : Reference
                 Debug.Log("LO HIZO EN: " + counter + " INTENTOS");
 
                 //Asignar Estrellas y Puntos obtenidos
-                SetPointsAndStars();
+                //SetPointsAndStars();
             }
+            SetPointsAndStars();
         }
         else
         {
@@ -251,7 +252,8 @@ public class CharacteristicsGameController : Reference
         App.generalModel.characteristicsGameModel.UpdateTotalStars(stars);
 
         //Mostrar el canvas que indica cuantas estrellas gano
-        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars);
+        //App.generalView.gameOptionsView.ShowWinCanvas(canvasStars);
+        //App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
 
         //Actualizar el numero de veces que ha seleccionado una opcion a cero
         App.generalModel.characteristicsGameModel.UpdateNumberAttempts(0);

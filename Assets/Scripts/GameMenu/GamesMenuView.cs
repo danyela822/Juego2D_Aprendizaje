@@ -110,18 +110,18 @@ public class GamesMenuView : Reference
         /*starsTexts[2].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
         starsTexts[3].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
         starsTexts[4].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
-        starsTexts[5].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
-        starsTexts[6].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
-        starsTexts[7].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();*/
+        starsTexts[5].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();*/
+        starsTexts[6].text = "X " + App.generalModel.equialityGameModel.GetTotalStars().ToString();
+        //starsTexts[7].text = App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
 
         pointsTexts[0].text = "X " + App.generalModel.classificationGameModel.GetPoints().ToString(); ;
         pointsTexts[1].text = "X " + App.generalModel.characteristicsGameModel.GetPoints().ToString();
         /*pointsTexts[2].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
         pointsTexts[3].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
         pointsTexts[4].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
-        pointsTexts[5].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
-        pointsTexts[6].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
-        pointsTexts[7].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();*/
+        pointsTexts[5].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();*/
+        pointsTexts[6].text = "X " + App.generalModel.equialityGameModel.GetPoints().ToString();
+        //pointsTexts[7].text = App.generalModel.characteristicsGameModel.GetPoints().ToString();
     }
     /*
      * 

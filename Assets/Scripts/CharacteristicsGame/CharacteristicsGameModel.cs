@@ -152,7 +152,7 @@ public class CharacteristicsGameModel : Reference
     }
     public int GetLevel()
     {
-        level = PlayerPrefs.GetInt("Game2Levels", 0);
+        level = PlayerPrefs.GetInt("Game2Levels", 1);
         return level;
     }
     public void UpdateLevel(int level)

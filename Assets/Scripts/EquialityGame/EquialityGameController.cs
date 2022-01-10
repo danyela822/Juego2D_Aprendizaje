@@ -48,6 +48,9 @@ public class EquialityGameController : Reference{
     //Numero para indicar el numero de veces que verifica la respuesta correcta
     public int counter;
 
+    //
+    bool isLastLevel;
+
     // Start is called before the first frame update
     void Start(){
 
@@ -322,38 +325,28 @@ public class EquialityGameController : Reference{
         counter++;
         if (auxAnswer == correctAnswerGame)
         {
-
             Debug.Log("You win");
-            //Mostrar el canvas que indica cuantas estrellas gano
-            //App.generalView.gameOptionsView.ShowWinCanvas(canvasStars);
 
             //Si ya paso el nivel 1 puede pasar al 2
             if (App.generalModel.equialityGameModel.GetLevel() == 1)
             {
                 App.generalModel.equialityGameModel.UpdateLevel(2);
-                //App.generalView.characteristicsGameView.transition.enabled = true;
-
-                //SetPointsAndStars();
-                SceneManager.LoadScene("EquialityGameScene");
             }
             //Si ya paso el nivel 2 puede pasar al 3
             else if (App.generalModel.equialityGameModel.GetLevel() == 2)
             {
                 App.generalModel.equialityGameModel.UpdateLevel(3);
-                //App.generalView.characteristicsGameView.transition.enabled = true;
-                //SetPointsAndStars();
-                SceneManager.LoadScene("EquialityGameScene");
             }
             //Si ya termino los 3 niveles de ese Set, se comienza de nuevo
             else if (App.generalModel.equialityGameModel.GetLevel() == 3)
             {
                 Debug.Log("Termino los 3");
+                isLastLevel = true;
                 //Actualizar el nivel a 1 para empezar otra nueva ronda
-                SetPointsAndStars();
                 App.generalModel.equialityGameModel.UpdateLevel(1);
-
             }
             Debug.Log("CONTADOR: "+counter);
+            SetPointsAndStars();
         }
         else
         {
@@ -370,7 +363,7 @@ public class EquialityGameController : Reference{
         int points, stars, canvasStars;
 
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
-        if (counter == 3)
+        if (counter == 1)
         {
             points = App.generalModel.equialityGameModel.GetPoints() + 30;
             stars = App.generalModel.equialityGameModel.GetTotalStars() + 3;
@@ -382,7 +375,7 @@ public class EquialityGameController : Reference{
             //App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
         }
         //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
-        else if (counter > 3 && counter < 9)
+        else if (counter == 2)
         {
             points = App.generalModel.equialityGameModel.GetPoints() + 20;
             stars = App.generalModel.equialityGameModel.GetTotalStars() + 2;
@@ -407,7 +400,15 @@ public class EquialityGameController : Reference{
         App.generalModel.equialityGameModel.UpdateTotalStars(stars);
 
         //Mostrar el canvas que indica cuantas estrellas gano
-        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars);
+        if (isLastLevel)
+        {
+            Debug.Log("TERMINAMOS Y VAMOS A REGRESAR");
+            App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
+        }
+        else
+        {
+            App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
+        }
 
         //Actualizar el numero de veces que ha seleccionado una opcion a cero
         //App.generalModel.equialityGameModel.UpdateNumberAttempts(0);

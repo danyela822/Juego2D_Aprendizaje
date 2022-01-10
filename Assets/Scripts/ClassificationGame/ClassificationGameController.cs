@@ -150,7 +150,7 @@ public class ClassificationGameController : Reference
                     countPerfectGame = PlayerPrefs.GetInt("PerfectGame1", 0) + 1;
                     Debug.Log("Lleva: " + countPerfectGame);
                     PlayerPrefs.SetInt("PerfectGame1", countPerfectGame);
-                    App.generalView.gameOptionsView.ShowWinCanvas(3);
+                    //App.generalView.gameOptionsView.ShowWinCanvas(3);
                 }
                 else if (counter == 2)
                 {
@@ -158,7 +158,7 @@ public class ClassificationGameController : Reference
                     App.generalModel.classificationGameModel.SetTotalStars(App.generalModel.classificationGameModel.GetTotalStars() + 2);
                     countPerfectGame = 0;
                     PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
-                    App.generalView.gameOptionsView.ShowWinCanvas(2);
+                    //App.generalView.gameOptionsView.ShowWinCanvas(2);
                 }
                 else
                 {
@@ -166,7 +166,7 @@ public class ClassificationGameController : Reference
                     App.generalModel.classificationGameModel.SetTotalStars(App.generalModel.classificationGameModel.GetTotalStars() + 1);
                     countPerfectGame = 0;
                     PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
-                    App.generalView.gameOptionsView.ShowWinCanvas(1);
+                    //App.generalView.gameOptionsView.ShowWinCanvas(1);
                 }
             }
             else

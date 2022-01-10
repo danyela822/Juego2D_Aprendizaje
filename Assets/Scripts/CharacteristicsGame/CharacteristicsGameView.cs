@@ -21,7 +21,7 @@ public class CharacteristicsGameView : Reference
         string nameImage = button.image.sprite.name;
 
         //Desactivar el boton que se ha presionado
-        button.interactable = false;
+        //button.interactable = false;
 
         //Verificar si la respuesta es correcta
         App.generalController.characteristicsGameController.CheckAnswer(nameImage);

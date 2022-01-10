@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &41061524 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3903905433293968537, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+  m_PrefabInstance: {fileID: 1756826724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &127501229
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +985,7 @@ MonoBehaviour:
   classificationGameModel: {fileID: 0}
   statsModel: {fileID: 0}
   equialityGameModel: {fileID: 333964529}
+  SequenceGameModel: {fileID: 0}
 --- !u!1 &588690275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,6 +1377,17 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 5104195453408475388, guid: 90eda3cc528535d43b2999e7ad88342c, type: 3}
   m_PrefabInstance: {fileID: 831745026}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &847327294 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8188651228368014382, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+  m_PrefabInstance: {fileID: 1756826724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &883626198
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,6 +2682,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameOptionsView, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 8188651228368014382, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188651228368014382, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1759445233}
+    - target: {fileID: 8188651228368014382, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReloadGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188651228368014382, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOptionsView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188651228368014382, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188651228368014382, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: EquialityGameScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a27eeb02770264249bceefa19acc431e, type: 3}
 --- !u!114 &1756826725 stripped
@@ -2730,6 +2777,8 @@ MonoBehaviour:
   correctAnswer: {fileID: 0}
   mistakeText: {fileID: 1795119108}
   winText: {fileID: 1756826725}
+  backButton: {fileID: 41061524}
+  continueButton: {fileID: 847327294}
 --- !u!114 &1759445234
 MonoBehaviour:
   m_ObjectHideFlags: 0

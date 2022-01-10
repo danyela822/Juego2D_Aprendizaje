@@ -15,6 +15,19 @@ public class GameOptionsView: Reference
     public Image correctAnswer;
 
     public Text mistakeText, winText;
+
+    public Button backButton, continueButton;
+
+    private void Start()
+    {
+        Debug.Log("EMPEZAMOS CON CONTINUAR TRUE Y VOLVER FALSE");
+        continueButton.GetComponent<Image>().enabled = true;
+        continueButton.GetComponentInChildren<Text>().enabled = true;
+
+        backButton.GetComponent<Image>().enabled = false;
+        backButton.GetComponentInChildren<Text>().enabled = false;
+    }
+
     public void ShowPauseCanvas()
     {
         PauseCanvas.enabled = true;
@@ -31,7 +44,7 @@ public class GameOptionsView: Reference
     {
         TutorialCanvas.enabled = false;
     }
-    public void ShowWinCanvas(int totalStars)
+    public void ShowWinCanvas(int totalStars,bool isLastLevel)
     {
         //Image imageWin = GameObject.Find("ImageStars").GetComponent<Image>();
 
@@ -51,6 +64,16 @@ public class GameOptionsView: Reference
         {
             text = "¡Excelente!";
         }
+
+        if (isLastLevel)
+        {
+            backButton.GetComponent<Image>().enabled = true;
+            backButton.GetComponentInChildren<Text>().enabled = true;
+
+            continueButton.GetComponent<Image>().enabled = false;
+            continueButton.GetComponentInChildren<Text>().enabled = false;
+        }
+
         winText.text = text;
         WinCanvas.enabled = true;
     }

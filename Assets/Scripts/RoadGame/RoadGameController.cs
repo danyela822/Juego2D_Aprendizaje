@@ -186,7 +186,7 @@ public class RoadGameController : Reference
         App.generalModel.roadGameModel.SetPoints( App.generalModel.roadGameModel.GetPoints()+pointsLevel);
 
         //App.generalView.roadGameView.ActivateWinCanvas(totalStars);
-        App.generalView.gameOptionsView.ShowWinCanvas(totalStars);
+        //App.generalView.gameOptionsView.ShowWinCanvas(totalStars);
         print("Tiempo total "+App.generalModel.roadGameModel.GetTime());
     }
 
