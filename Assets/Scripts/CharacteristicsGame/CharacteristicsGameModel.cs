@@ -5,32 +5,53 @@ using UnityEngine;
 
 public class CharacteristicsGameModel : Reference
 {
-    int totalStars;
-    int totalPoints;
+    public int totalStars;
+    public int totalPoints;
     public FileLists file;
 
-    int level;
-    int imagesSet;
-
-    /*private void Start()
+    /// <summary>
+    /// Metodo para verificar si un elemento de un nivel en especifico existe
+    /// </summary>
+    /// <param name="number">Numero del elemento de imagenes</param>
+    /// <param name="level">Nivel del juego</param>
+    /// <returns>Bool que indica si exsite o no ese elemento</returns>
+    public bool FileExist(int number, int level)
     {
-        file.Load("P");
-        //Debug.Log("TAMAÑO LISTA Characteristics: " + file.characteristicsGameList.Count);
-        if (GetList() == 0)
+        switch (level)
         {
-            for (int j = 0; j < 6; j++)
-            {
-                file.characteristicsGameList.Add(j);
-            }
-            listaDeGuardado = file.characteristicsGameList;
-            Debug.Log("LISTA DE GUARDADO " + listaDeGuardado.Count);
-            SetList(1);
-            //Debug.Log("CAMBIO DE LISTA Characteristics: " + GetList());
-            App.generalView.gamesMenuView.playButtons[1].enabled = true;
-            file.Save("P");
+            case 1:
+                //Verificar si el elemento del nivel 1 se encuentra en la lista
+                if (file.imageListGame2_1.Contains(number))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            case 2:
+                //Verificar si el elemento del nivel 2 se encuentra en la lista
+                if (file.imageListGame2_2.Contains(number))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            case 3:
+                //Verificar si el elemento del nivel 3 se encuentra en la lista
+                if (file.imageListGame2_3.Contains(number))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            default: return false;
         }
-    }*/
-
+    }
     /// <summary>
     /// Metodo para cargar y guardar todas la imagnes que necesita el nivel
     /// </summary>
@@ -43,40 +64,6 @@ public class CharacteristicsGameModel : Reference
         Sprite[] images = Resources.LoadAll<Sprite>("Characteristics/Level_" + level + "/set_" + number);
 
         return images;
-    }
-    public bool FileExist(int number, int level)
-    {
-        switch (level)
-        {
-            case 1:
-                if (file.imageListGame2_1.Contains(number))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            case 2:
-                if (file.imageListGame2_2.Contains(number))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            case 3:
-                if (file.imageListGame2_3.Contains(number))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            default: return false;
-        }
     }
     /// <summary>
     /// Metodo para cargar todos los enunciados que deben acompañar a cada nivel
@@ -156,52 +143,49 @@ public class CharacteristicsGameModel : Reference
         PlayerPrefs.SetInt("GetThreeStars2", value);
     }
     /// <summary>
-    /// 
+    /// Metodo que devuelve la cantidad de veces que ha ganado un juego de forma perfecta
     /// </summary>
     /// <returns></returns>
     public int GetPerfectGame()
     {
-        Debug.Log("LLEVA: " + PlayerPrefs.GetInt("PerfectGame2", 0) + " JUEGO(S) PERFECTO(S)");
         return PlayerPrefs.GetInt("PerfectGame2", 0);
     }
     /// <summary>
-    /// 
+    /// Metodo que actualiza la cantidad de veces que ha ganado un juego de forma perfecta
     /// </summary>
     /// <param name="value"></param>
     public void UpdatePerfectGame(int value)
     {
         PlayerPrefs.SetInt("PerfectGame2", value);
     }
+    /// <summary>
+    /// Metodo que devuelve el nivel actual del juego
+    /// </summary>
+    /// <returns>Int del nivel del juego</returns>
     public int GetLevel()
     {
-        level = PlayerPrefs.GetInt("Game2Levels", 1);
-        return level;
+        return PlayerPrefs.GetInt("Game2Levels", 1);
     }
+    /// <summary>
+    /// Metodo que actualiza el nivel del juego
+    /// </summary>
+    /// <param name="level">Nivel del juego</param>
     public void UpdateLevel(int level)
     {
         PlayerPrefs.SetInt("Game2Levels", level);
     }
-    public int GetImagesSet()
-    {
-        imagesSet = PlayerPrefs.GetInt("SetOfImages", 0);
-        return imagesSet;
-    }
-    public void ChangeImagesSet(int number)
-    {
-        PlayerPrefs.SetInt("SetOfImages", number);
-    }
-    public void UpdateNumberAttempts(int number)
-    {
-        PlayerPrefs.SetInt("AttemptsGame2", number);
-    }
-    public int GetNumberAttempts()
-    {
-        return PlayerPrefs.GetInt("AttemptsGame2", 0);
-    }
+    /// <summary>
+    /// Metodo que devuelve la cantidad de veces que ha jugado
+    /// </summary>
+    /// <returns></returns>
     public int GetTimesPlayed()
     {
         return PlayerPrefs.GetInt("TimesPlayedGame2", 0);
     }
+    /// <summary>
+    /// Metodo que actualiza la cantidad de veces que ha jugado
+    /// </summary>
+    /// <param name="value"></param>
     public void UpdateTimesPlayed(int value)
     {
         PlayerPrefs.SetInt("TimesPlayedGame2", value);

@@ -13,7 +13,6 @@ public class FileLists : ScriptableObject
     public List<int> imageListGame2_2;
     public List<int> imageListGame2_3;
 
-    public List<int> characteristicsGameList;
     public List<int> achievementsList;
 
     public void Save(string fileName = null)
@@ -26,10 +25,9 @@ public class FileLists : ScriptableObject
 
         br.Serialize(file, json);
 
-        Debug.Log("SE CREO ARCHIVO: " + file.Name + ": " + File.Exists(GetPath(fileName)));
-        Debug.Log("LISTA CLASIFICACION EN GUARDAR: " + classificationGameList.Count);
-        Debug.Log("LISTA CHARACTERISTICS EN GUARDAR: " + characteristicsGameList.Count);
-        Debug.Log("LISTA LOGROS EN GUARDAR: " + achievementsList.Count);
+        //Debug.Log("SE CREO ARCHIVO: " + file.Name + ": " + File.Exists(GetPath(fileName)));
+        //Debug.Log("LISTA CLASIFICACION EN GUARDAR: " + classificationGameList.Count);
+        //Debug.Log("LISTA LOGROS EN GUARDAR: " + achievementsList.Count);
         file.Close();
     }
 
@@ -42,9 +40,8 @@ public class FileLists : ScriptableObject
             FileStream file = File.Open(GetPath(fileName), FileMode.Open);
 
             JsonUtility.FromJsonOverwrite((string)br.Deserialize(file), this);
-            Debug.Log("LISTA CLASIFICACION EN CARGAR: " + classificationGameList.Count);
-            Debug.Log("LISTA CHARACTERISTICS EN CARGAR: " + characteristicsGameList.Count);
-            Debug.Log("LISTA LOGROS EN CARGAR: " + achievementsList.Count);
+            //Debug.Log("LISTA CLASIFICACION EN CARGAR: " + classificationGameList.Count);
+            //Debug.Log("LISTA LOGROS EN CARGAR: " + achievementsList.Count);
             file.Close();
         }
         else

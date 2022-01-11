@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,7 +10,7 @@ public class GameOptionsView: Reference
 
     public Image imageWin;
 
-    public Image correctAnswer;
+    //public Image correctAnswer;
 
     public Text mistakeText, winText;
 
@@ -20,7 +18,7 @@ public class GameOptionsView: Reference
 
     private void Start()
     {
-        Debug.Log("EMPEZAMOS CON CONTINUAR TRUE Y VOLVER FALSE");
+        //Debug.Log("EMPEZAMOS CON CONTINUAR TRUE Y VOLVER FALSE");
         continueButton.GetComponent<Image>().enabled = true;
         continueButton.GetComponentInChildren<Text>().enabled = true;
 

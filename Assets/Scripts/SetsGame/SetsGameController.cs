@@ -162,7 +162,7 @@ public class SetsGameController : Reference
             //App.generalView.setsGameView.correctAnswer.sprite = correctAnswer;
             //App.generalView.setsGameView.loseCanvas.enabled = true;
 
-            App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
+            //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
             App.generalView.gameOptionsView.ShowLoseCanvas();
         }
         else{

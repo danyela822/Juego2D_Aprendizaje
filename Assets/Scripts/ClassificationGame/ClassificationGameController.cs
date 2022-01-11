@@ -184,7 +184,7 @@ public class ClassificationGameController : Reference
         attempts--;
         if (attempts == 0)
         {
-            App.generalView.gameOptionsView.correctAnswer.sprite = App.generalModel.classificationGameModel.LoadAnswerImages(number);
+            //App.generalView.gameOptionsView.correctAnswer.sprite = App.generalModel.classificationGameModel.LoadAnswerImages(number);
             App.generalView.gameOptionsView.ShowLoseCanvas();
         }
         else

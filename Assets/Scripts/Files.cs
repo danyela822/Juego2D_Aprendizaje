@@ -8,10 +8,6 @@ public class Files : Reference
         file.Load("P");
         if (PlayerPrefs.GetInt("CreateLists", 0) == 0)
         {
-            /*for (int j = 0; j < 5; j++)
-            {
-                file.characteristicsGameList.Add(j);
-            }*/
             for (int j = 0; j < 10; j++)
             {
                 file.classificationGameList.Add(j);

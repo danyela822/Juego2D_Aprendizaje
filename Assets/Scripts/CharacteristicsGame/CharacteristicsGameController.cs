@@ -122,20 +122,14 @@ public class CharacteristicsGameController : Reference
     {
         counter++;
         //Verificar si ya jugo un nivel de este juego
-        if (App.generalModel.characteristicsGameModel.GetTimesPlayed() == 0)
+        /*if (App.generalModel.characteristicsGameModel.GetTimesPlayed() == 0)
         {
             countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
             PlayerPrefs.SetInt("PlayOneLevel", countPlay);
 
             Debug.Log("A Jugado: " + countPlay);
             App.generalModel.characteristicsGameModel.UpdateTimesPlayed(App.generalModel.characteristicsGameModel.GetTimesPlayed() + 1);
-        }
-
-        //Actualizar el numero de veces que ha seleccionado una opcion
-        App.generalModel.characteristicsGameModel.UpdateNumberAttempts(App.generalModel.characteristicsGameModel.GetNumberAttempts() + 1);
-
-        Debug.Log("INTENTOS HASTA AHORA: "+ App.generalModel.characteristicsGameModel.GetNumberAttempts());
-
+        }*/
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
         if (selectedOption == "correct")
         {
@@ -144,6 +138,7 @@ public class CharacteristicsGameController : Reference
             {
                 //Eliminar el numero del conjunto de imagenes y textos
                 App.generalModel.characteristicsGameModel.file.imageListGame2_1.Remove(number);
+
                 //Actualizar el nivel del juego
                 App.generalModel.characteristicsGameModel.UpdateLevel(2);
             }
@@ -152,6 +147,7 @@ public class CharacteristicsGameController : Reference
             {
                 //Eliminar el numero del conjunto de imagenes y textos
                 App.generalModel.characteristicsGameModel.file.imageListGame2_2.Remove(number);
+
                 //Actualizar el nivel del juego
                 App.generalModel.characteristicsGameModel.UpdateLevel(3);
  
@@ -164,16 +160,16 @@ public class CharacteristicsGameController : Reference
                 //Eliminar el numero del conjunto de imagenes y textos
                 App.generalModel.characteristicsGameModel.file.imageListGame2_3.Remove(number);
 
-                isLastLevel = true;
-
                 //Actualizar el nivel a 1 para empezar otra nueva ronda
                 App.generalModel.characteristicsGameModel.UpdateLevel(1);
 
-                //Numero de veces (en total) que selecciono una opcion
-                //counter = App.generalModel.characteristicsGameModel.GetNumberAttempts();
-                Debug.Log("LO HIZO EN: " + counter + " INTENTOS");
+                //Indicar que este es el ultimo nivel
+                isLastLevel = true;
 
             }
+            //Numero de veces (en total) que selecciono una opcion
+            Debug.Log("LO HIZO EN: " + counter + " INTENTOS");
+
             //Guardar estado
             App.generalModel.characteristicsGameModel.file.Save("P");
 
@@ -203,7 +199,8 @@ public class CharacteristicsGameController : Reference
             App.generalModel.characteristicsGameModel.UpdatePerfectWins(App.generalModel.characteristicsGameModel.GetPerfectWins() + 1);
 
             //Actualizar las veces que ha ganado sin errores
-            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
+            App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
+            Debug.Log("LLEVA: " + PlayerPrefs.GetInt("PerfectGame2", 0) + " JUEGO(S) PERFECTO(S)");
         }
         //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
         else if (counter == 2)
@@ -231,11 +228,8 @@ public class CharacteristicsGameController : Reference
         App.generalModel.characteristicsGameModel.UpdateTotalStars(stars);
 
         //Mostrar el canvas que indica cuantas estrellas gano
-        //App.generalView.gameOptionsView.ShowWinCanvas(canvasStars);
         App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
 
-        //Actualizar el numero de veces que ha seleccionado una opcion a cero
-        App.generalModel.characteristicsGameModel.UpdateNumberAttempts(0);
     }
     /// <summary>
     /// Metodo para contar y verificar los errores
@@ -245,10 +239,10 @@ public class CharacteristicsGameController : Reference
         //Dismuir la cantidad de intentos
         attempts--;
 
-        //Si se queda sin intentos pierde el juego y se le muestra la respuesta (POR AHORA)
+        //Si se queda sin intentos pierde el juego (y se le muestra la respuesta)
         if (attempts == 0)
         {
-            App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
+            //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
             App.generalView.gameOptionsView.ShowLoseCanvas();
         }
         //Si aun le quedan intentos se muestra un mensaje en pantalla
@@ -282,26 +276,5 @@ public class CharacteristicsGameController : Reference
         }
 
         return newList;
-    }
-    /// <summary>
-    /// Metodo para recargar la escena y mostrar el siguiente nivel
-    /// </summary>
-    public void GoNextlevel()
-    {
-        //Mostrar una ventana de transicion hacia el siguiente nivel
-        App.generalView.characteristicsGameView.transition.enabled = false;
-
-        //Recargar la escena
-        SceneManager.LoadScene("CharacteristicsGameScene");
-    }
-    /// <summary>
-    /// Metodo resta los intentos de un nivel
-    /// </summary>
-    public void RestartAttempts()
-    {
-        App.generalModel.characteristicsGameModel.UpdateNumberAttempts(App.generalModel.characteristicsGameModel.GetNumberAttempts() - 3);
-        //SceneManager.LoadScene("CharacteristicsGameScene");
-        //Reestablecer la cantidad de intentos
-        attempts = 3;
     }
 }
