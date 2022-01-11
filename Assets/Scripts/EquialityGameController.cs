@@ -50,39 +50,34 @@ public class EquialityGameController : Reference{
 
         usedIntegers = new List<int>();
         Buid(level);
-        Debug.Log(PrintText());
+        //Debug.Log(PrintText());
         GetNumOperation();
         GetNum();
         DrawTable();
         FillAnswer();
     }
-
+    //metodo que verifica en que nivel entra el usuario y dependiendo de eso
+    //cambian las coorcenadas de los signos y objetos
     void ChangeLevel(){
 
         switch (levelUser){
-            
+            //nivel 1
             case 1: 
                 level = 2;
-                y = 0.35f;
-                x = -1.5f;
-                signX = -0.7f;
-                signY = 0.33f;
+                y = 0.35f; x = -1.5f;
+                signX = -0.7f; signY = 0.33f;
             break;
-
+            //nivel 2
             case 2:
                 level = 3;
-                y = 0.6f;
-                x = -1.5f;
-                signX = -0.7f;
-                signY = 0.63f;
+                y = 0.6f; x = -1.5f;
+                signX = -0.7f; signY = 0.63f;
             break;
-
+            //nivel 3
             default:
                 level = 4;
-                y = 1.25f;
-                x = -1.5f;
-                signX = -0.7f;
-                signY = 1.23f;
+                y = 1.25f; x = -1.5f;
+                signX = -0.7f; signY = 1.23f;
             break;
         }
 
@@ -171,11 +166,9 @@ public class EquialityGameController : Reference{
         string res = "";
         for (int i = 0; i < numPaint.Count; i++){
             res += numPaint[i];
-        }
-        
+        }   
         return res;
     }
-
 
     //metodo que permite la contrucción del tablero del juego
     private void DrawTable(){
@@ -213,12 +206,14 @@ public class EquialityGameController : Reference{
             }
         }
 
+        //pinta y crea el objeto
         GameObject firstOption = Instantiate(objRow,
         new Vector3(0f, -2.4f, 0), objRow.transform.rotation);
         Sprite spriteF = images[numPaint[numPaint.Count - 1]];
         firstOption.GetComponent<SpriteRenderer>().sprite = spriteF;
         firstOption.transform.localScale = new Vector3(0.45f,0.45f,0);
 
+        //pinta y crea el objeto por el que se esta preguntando
         GameObject lastOption = Instantiate(objRow,
         new Vector3(1f, -3.08f, 0), objRow.transform.rotation);
         Sprite spriteL = images[numPaint[0]];

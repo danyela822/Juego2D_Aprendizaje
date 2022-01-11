@@ -12,11 +12,13 @@ public class AdditionGameController : Reference{
     //lista de los posibles sprites que seran utilizados
     public List <Sprite> images = new List<Sprite>();
 
+    //sprite del +
     public Sprite signPlus;
-
+    //sprite del -
     public Sprite signLess;
-
+    //sprite del =
     public Sprite signEquals;
+
     //lista que permite colocar las imagenes
     List<Icon> icons = new List<Icon>();
     //lista que contiene id de iconos que permite que no se repitan
@@ -38,13 +40,23 @@ public class AdditionGameController : Reference{
 
     Vector2 sizeSign;
 
+    //lsitas que contienen los campos de textos en donde aparece
+    //si es mas, menos o igual
+    public List<Text> textListLevelOne = new List<Text>();
+    public List<Text> textListLevelTwo = new List<Text>();
+    public List<Text> textListLevelThree = new List<Text>();
+
+    //coordenadas en las que aparece los objetos
     float y;
     float x;
 
+    //coordenadas donde aparecen los signo
     float signX;
     float signY;
 
-    int levelUser = 2;
+    //nivel en el que el usuario aparece
+    int levelUser = 3;
+    //numero que me indica cuantos niveles tendra el juego
     int level = 0;
 
 
@@ -62,32 +74,42 @@ public class AdditionGameController : Reference{
        
     }
 
+    //metodo que verifica en que nivel entra el usuario y dependiendo de eso
+    //cambian las coorcenadas de los signos y objetos
     void chooseLevel(){
         switch (levelUser){
+            //nivel 1
             case 1: 
                 level = 2;
-                y = -0.1f;
-                x = -2f;
-                signX = -1.51f;
-                signY = -0.06f;
-            break;
+                y = -0.1f; x = -2f;
+                signX = -1.6f; signY = -0.06f;
+                //activa los campos de texto del nivel 1
+                for (int i = 0; i < textListLevelOne.Count; i++){
+                    textListLevelOne[i].enabled = true; 
+                }
 
+            break;
+            //nivel 2
             case 2:
                 level = 3;
-                y = 0.1f;
-                x = -2f;
-                signX = -1.44f;
-                signY = 0.04f;
-            break;
+                y = 0.1f; x = -2f;
+                signX = -1.6f; signY = 0.04f;
+                //activa los campos de texto del nivel 2
+                for (int i = 0; i < textListLevelTwo.Count; i++){
+                    textListLevelTwo[i].enabled = true; 
+                }
 
+            break;
+            //nivel 3
             default:
                 level = 4;
-                y = 0.7f;
-                x = -2f;
-                signX = -1.44f;
-                signY = 0.73f;
+                y = 0.7f; x = -2f;
+                signX = -1.6f; signY = 0.73f;
+                //activa los campos de texto del nivel 3
+                for (int i = 0; i < textListLevelThree.Count; i++){
+                    textListLevelThree[i].enabled = true; 
+                }
             break;
-            
         }
     }
 
@@ -144,7 +166,7 @@ public class AdditionGameController : Reference{
         bool condition = true;
 
         while (condition){
-            value = Random.Range(0, 30);
+            value = Random.Range(0, 20);
             if (!CheckRepeated(value)) condition = false;
         }
         valueReapetIcon.Add(value);
@@ -180,19 +202,24 @@ public class AdditionGameController : Reference{
 
         GameObject firstOption;
         GameObject sign;
+        GameObject signFirts;
         GameObject newOption;
 
         int cont = 2;
         int auxImage = 0;
         int auxSign = 0;
         
-        firstOption = Instantiate(objectRow,new Vector3(-2, 1.3f, 0), objectRow.transform.rotation);
+        firstOption = Instantiate(objectRow,new Vector3(-2, 1.6f, 0), objectRow.transform.rotation);
+        signFirts = Instantiate(objectRow,new Vector3(-1.4f, 1.6f, 0), objectRow.transform.rotation);
+        Sprite spriteFirst = images[icons[0].idIcon];
+        firstOption.GetComponent<SpriteRenderer>().sprite = spriteFirst;
+        signFirts.GetComponent<SpriteRenderer>().sprite = signEquals;
 
         for (int i = 0; i < level; i++){
                     
             for (int j = 0; j < cont; j++){
 
-                newOption = Instantiate(objectRow, new Vector3(x + ((size.x - 0.35f) * j), y - ((size.y - 0.5f)*i), 0), objectRow.transform.rotation);
+                newOption = Instantiate(objectRow, new Vector3(x + ((size.x - 0.53f) * j), y - ((size.y - 0.5f)*i), 0), objectRow.transform.rotation);
 
                 Sprite sprite = images[icons[auxImage].idIcon];
                 newOption.GetComponent<SpriteRenderer>().sprite = sprite;
@@ -200,7 +227,7 @@ public class AdditionGameController : Reference{
                 auxImage += 1;
 
 
-                sign = Instantiate(objectSign, new Vector3(signX +((sizeSign.x - 0.35f)* j), signY - ((sizeSign.y + 0.1f) * i), 0), objectSign.transform.rotation);
+                sign = Instantiate(objectSign, new Vector3(signX +((sizeSign.x - 0.53f)* j), signY - ((sizeSign.y + 0.1f) * i), 0), objectSign.transform.rotation);
 
                 switch (signs[auxSign]){
                                 
@@ -217,11 +244,8 @@ public class AdditionGameController : Reference{
                 auxSign++;
                         
             }
-            cont+= 1;
-                    
-        }
-
-        
+            cont+= 1;           
+        }       
     }
 
     //metodo que recorre la lista de operaciones y obtiene
@@ -233,24 +257,6 @@ public class AdditionGameController : Reference{
                 sign = operation.operands[i].operatorValue;
                 signs.Add(sign);
             }
-        }
-        //PaintSigns();
-    }
-
-    //metodo que coloca en la interzas los simbolos hallados en el 
-    //metodo getsign
-    public void PaintSigns(){
-
-        App.generalView.additionGameView.principalText.text =  "=   " + initial;
-        for(int i = 0; i < signs.Count; i++){
-            if (signs[i] == 1){
-                App.generalView.additionGameView.listText[i].text = "-";
-            }else if(signs[i] == 2){
-                App.generalView.additionGameView.listText[i].text = "+";
-            }else{
-                App.generalView.additionGameView.listText[i].text = "=";
-            }
-
         }
     }
 
@@ -315,19 +321,33 @@ public class AdditionGameController : Reference{
     //la interfax
     public void GetResult(){
 
+        results.Add(initial);
         foreach (Operation op in operationes){
             results.Add(op.resultado);
         }
-        //PaintResult();
+        PaintResult();
     }
 
     //metodo que permite colocar los resultados que cada una de las operaciones
     //en la pantalla
     void PaintResult(){
 
-        for (int i = 0; i < App.generalView.additionGameView.resultsText.Count; i++){
-            App.generalView.additionGameView.resultsText[i].text = "" + results[i];     
+        switch (levelUser){
+            case 1:
+                for (int i = 0; i < textListLevelOne.Count; i++){
+                    textListLevelOne[i].text = "" + results[i];     
+                }
+            break;
+            case 2:
+                for (int i = 0; i < textListLevelTwo.Count; i++){
+                    textListLevelTwo[i].text = "" + results[i];     
+                }
+            break;
+            default:
+                for (int i = 0; i < textListLevelThree.Count; i++){
+                    textListLevelThree[i].text = "" + results[i];     
+                }
+            break;
         }
-
     }
 }
