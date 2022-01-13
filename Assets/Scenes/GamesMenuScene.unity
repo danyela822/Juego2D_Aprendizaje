@@ -491,7 +491,7 @@ MonoBehaviour:
   roadGameModel: {fileID: 0}
   characteristicsGameModel: {fileID: 922245990}
   classificationGameModel: {fileID: 1450249641}
-  statsModel: {fileID: 0}
+  statsModel: {fileID: 1920922782}
   equialityGameModel: {fileID: 472235500}
   SequenceGameModel: {fileID: 0}
 --- !u!4 &33455100
@@ -5931,6 +5931,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a65dc1c14a22642a812ac918b3c049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalStars: 0
+  totalPoints: 0
   file: {fileID: 11400000, guid: 83f75b461f443af4ebe2b0eb4a4d15b8, type: 2}
 --- !u!4 &922245991
 Transform:
@@ -11631,6 +11633,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887428027}
   m_CullTransparentMesh: 1
+--- !u!1 &1920922781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1920922783}
+  - component: {fileID: 1920922782}
+  m_Layer: 0
+  m_Name: StatsModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1920922782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920922781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa51b567cabdaf4b83221225682945b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  file: {fileID: 11400000, guid: 83f75b461f443af4ebe2b0eb4a4d15b8, type: 2}
+  totalStars: 0
+  totalPoints: 0
+--- !u!4 &1920922783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920922781}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 519.0308, y: 595.15234, z: -31.672764}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1979846664
 GameObject:
   m_ObjectHideFlags: 0

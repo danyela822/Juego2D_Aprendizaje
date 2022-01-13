@@ -20,4 +20,8 @@ public class CharacteristicsGameView : Reference
         //Verificar si la respuesta es correcta
         App.generalController.characteristicsGameController.CheckAnswer(nameImage);
     }
+    public void ViewSolution()
+    {
+        App.generalController.characteristicsGameController.ShowSolution();
+    }
 }

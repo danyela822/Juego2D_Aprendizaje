@@ -7,6 +7,7 @@ public class CharacteristicsGameModel : Reference
 {
     public int totalStars;
     public int totalPoints;
+    public int countPerfectWins;
     public FileLists file;
 
     /// <summary>
@@ -100,6 +101,9 @@ public class CharacteristicsGameModel : Reference
     public void UpdateTotalStars(int stars)
     {
         PlayerPrefs.SetInt("TotalStarsGame2", stars);
+        //
+        totalStars = PlayerPrefs.GetInt("TotalStarsGame2", 0);
+        App.generalModel.statsModel.totalStars += GetTotalStars();
     }
     /// <summary>
     /// Metodo que devuelve la cantidad total de puntos que se han obtenido en este juego
@@ -110,12 +114,45 @@ public class CharacteristicsGameModel : Reference
         totalPoints = PlayerPrefs.GetInt("TotalPointsGame2", 0);
 
         //Verificar si ya cumplio con el logro de sumar mas de 300 puntos en este juego
-        if (totalPoints >= 200 && PlayerPrefs.GetInt("GamePoints2", 0) == 0)
+        /*if (totalPoints >= 200 && PlayerPrefs.GetInt("GamePoints2", 0) == 0)
         {
             //Una vez cumplido el logro se cambia el estado de este para no volver a contarlo
             PlayerPrefs.SetInt("GamePoints2", 1);
             PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
+            int logro8 = PlayerPrefs.GetInt("ThreeTundredPoints", 0);
+            
+            if(logro8 == 3)
+            {
+                if (!App.generalController.statsController.IsAchievements(8))
+                {
+                    App.generalController.statsController.DeleteAchievements(8);
+                }
+            }
+        }*/
+        //Verificar si ya cumplio con el logro de sumar mas de 300 puntos en este juego
+        /*if (totalPoints >= 100 && (App.generalModel.statsModel.totalPoints / 100 == 3))
+        {
+            //Una vez cumplido el logro se cambia el estado de este para no volver a contarlo
+            //PlayerPrefs.SetInt("GamePoints2", 1);
+            if (!App.generalController.statsController.IsAchievements(8))
+            {
+                App.generalController.statsController.DeleteAchievements(8);
+            }
+            
+            //PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
         }
+        if (totalPoints >= 100 && Files.achievements[8].conditionComplete == 3)
+        {
+           
+            //Una vez cumplido el logro se cambia el estado de este para no volver a contarlo
+            //PlayerPrefs.SetInt("GamePoints2", 1);
+            if (!App.generalController.statsController.IsAchievements(8))
+            {
+                App.generalController.statsController.DeleteAchievements(8);
+            }
+
+            //PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
+        }*/
         return totalPoints;
     }
     /// <summary>
@@ -124,7 +161,28 @@ public class CharacteristicsGameModel : Reference
     /// <param name="value">Cantidad de puntos a sumar</param>
     public void UpdatePoints(int value)
     {
-        PlayerPrefs.SetInt("TotalPointsGame2", value);
+        PlayerPrefs.SetInt("TotalPointsGame2", PlayerPrefs.GetInt("TotalPointsGame2", 0) + value);
+        totalPoints = PlayerPrefs.GetInt("TotalPointsGame2", 0);
+        Debug.Log("LLEVA ESTOS PUNTOS: " + totalPoints);
+        App.generalModel.statsModel.UpdateTotalPoints(App.generalModel.statsModel.GetTotalPoints()+totalPoints);
+
+        //Verificar si ya cumplio con el logro de sumar mas de 300 puntos en este juego
+        if (totalPoints >= 100 && PlayerPrefs.GetInt("GamePoints2", 0) == 0)
+        {
+            //Una vez cumplido el logro se cambia el estado de este para no volver a contarlo
+            PlayerPrefs.SetInt("GamePoints2", 1);
+            PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
+            int logro8 = PlayerPrefs.GetInt("ThreeTundredPoints", 0);
+
+            if (logro8 == 3)
+            {
+                if (!App.generalController.statsController.IsAchievements(8))
+                {
+                    App.generalController.statsController.DeleteAchievements(8);
+                }
+            }
+        }
+
     }
     /// <summary>
     /// Metodo que devuelve la cantidad de veces que ha ganado 3 estrellas
@@ -140,7 +198,25 @@ public class CharacteristicsGameModel : Reference
     /// <param name="value">Cantidad de veces que ha ganado 3 estrellas</param>
     public void UpdatePerfectWins(int value)
     {
-        PlayerPrefs.SetInt("GetThreeStars2", value);
+        PlayerPrefs.SetInt("GetThreeStars2", PlayerPrefs.GetInt("GetThreeStars2", 0) + value);
+        countPerfectWins = PlayerPrefs.GetInt("GetThreeStars2", 0);
+        Debug.Log("LLEVA: "+countPerfectWins+" PERFECTAS");
+
+        if (countPerfectWins == 3)
+        {
+            Debug.Log("SE PROCEDE A CUMPLIR EL LOGRO");
+            if (!App.generalController.statsController.IsAchievements(1))
+            {
+                App.generalController.statsController.DeleteAchievements(1);
+            }
+        }
+        else if (countPerfectWins == 6)
+        {
+            if (!App.generalController.statsController.IsAchievements(2))
+            {
+                App.generalController.statsController.DeleteAchievements(2);
+            }
+        }
     }
     /// <summary>
     /// Metodo que devuelve la cantidad de veces que ha ganado un juego de forma perfecta
@@ -188,6 +264,20 @@ public class CharacteristicsGameModel : Reference
     /// <param name="value"></param>
     public void UpdateTimesPlayed(int value)
     {
+       // countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
+        PlayerPrefs.SetInt("PlayOneLevel", PlayerPrefs.GetInt("PlayOneLevel", 0) + 1);
+
+        //Debug.Log("A Jugado: " + countPlay);
         PlayerPrefs.SetInt("TimesPlayedGame2", value);
+
+        int logro1 = PlayerPrefs.GetInt("PlayOneLevel", 0);
+
+        if (logro1 == 3)
+        {
+            if (!App.generalController.statsController.IsAchievements(0))
+            {
+                App.generalController.statsController.DeleteAchievements(0);
+            }
+        }
     }
 }

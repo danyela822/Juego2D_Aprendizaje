@@ -407,7 +407,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Desea ver la Soluci\xF3n"
+  m_Text: "\xBFDeseas ver la Soluci\xF3n?"
 --- !u!1 &8866424671080577821
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +486,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Canjear
+  m_Text: Usar pase
 --- !u!1 &8866424671385672131
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +565,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MiniJuego
+  m_Text: Comprar pase
 --- !u!1 &8866424671746723111
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +717,7 @@ GameObject:
   - component: {fileID: 8866424672212618193}
   - component: {fileID: 8866424672212618192}
   m_Layer: 5
-  m_Name: MiniGamesButton
+  m_Name: BuyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

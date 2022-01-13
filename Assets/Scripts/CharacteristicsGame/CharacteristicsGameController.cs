@@ -122,14 +122,15 @@ public class CharacteristicsGameController : Reference
     {
         counter++;
         //Verificar si ya jugo un nivel de este juego
-        /*if (App.generalModel.characteristicsGameModel.GetTimesPlayed() == 0)
+        if (App.generalModel.characteristicsGameModel.GetTimesPlayed() == 0)
         {
-            countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
+            /*countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
             PlayerPrefs.SetInt("PlayOneLevel", countPlay);
 
-            Debug.Log("A Jugado: " + countPlay);
-            App.generalModel.characteristicsGameModel.UpdateTimesPlayed(App.generalModel.characteristicsGameModel.GetTimesPlayed() + 1);
-        }*/
+            Debug.Log("A Jugado: " + countPlay);*/
+            //App.generalModel.characteristicsGameModel.UpdateTimesPlayed(App.generalModel.characteristicsGameModel.GetTimesPlayed() + 1);
+            App.generalModel.characteristicsGameModel.UpdateTimesPlayed(1);
+        }
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
         if (selectedOption == "correct")
         {
@@ -192,20 +193,20 @@ public class CharacteristicsGameController : Reference
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
         if (counter == 1)
         {
-            points = App.generalModel.characteristicsGameModel.GetPoints() + 30;
+            points = App.generalModel.characteristicsGameModel.totalPoints + 30;
             stars = App.generalModel.characteristicsGameModel.GetTotalStars() + 3;
             canvasStars = 3;
             //Actualizar las veces que ha ganado 3 estrellas
-            App.generalModel.characteristicsGameModel.UpdatePerfectWins(App.generalModel.characteristicsGameModel.GetPerfectWins() + 1);
+            App.generalModel.characteristicsGameModel.UpdatePerfectWins(App.generalModel.characteristicsGameModel.countPerfectWins + 1);
 
             //Actualizar las veces que ha ganado sin errores
-            App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
-            Debug.Log("LLEVA: " + PlayerPrefs.GetInt("PerfectGame2", 0) + " JUEGO(S) PERFECTO(S)");
+            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
+            //Debug.Log("LLEVA: " + PlayerPrefs.GetInt("PerfectGame2", 0) + " JUEGO(S) PERFECTO(S)");
         }
         //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
         else if (counter == 2)
         {
-            points = App.generalModel.characteristicsGameModel.GetPoints() + 20;
+            points = App.generalModel.characteristicsGameModel.totalPoints + 20;
             stars = App.generalModel.characteristicsGameModel.GetTotalStars() + 2;
             canvasStars = 2;
 
@@ -215,7 +216,7 @@ public class CharacteristicsGameController : Reference
         //Si gana el juego con mas de 9 intentos suma 10 puntos y gana 1 estrella
         else
         {
-            points = App.generalModel.characteristicsGameModel.GetPoints() + 10;
+            points = App.generalModel.characteristicsGameModel.totalPoints + 10;
             stars = App.generalModel.characteristicsGameModel.GetTotalStars() + 1;
             canvasStars = 1;
 
@@ -250,6 +251,20 @@ public class CharacteristicsGameController : Reference
         {
             App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
         }
+    }
+    public void ShowSolution()
+    {
+        //Si hay tickets muestra la solucion
+        if (App.generalController.ticketController.GetTickets() >= 1)
+        {
+            Debug.Log("HAS USADO UN PASE");
+            App.generalController.ticketController.DecraseTickets();
+        }
+        else
+        {
+            App.generalView.gameOptionsView.ShowTicketsCanvas(false);
+        }
+        //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
     }
     /// <summary>
     /// Metodo que permite desordenar la lista de imagenes seleccionada

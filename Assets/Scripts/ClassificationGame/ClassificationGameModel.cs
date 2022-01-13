@@ -5,8 +5,9 @@ public class ClassificationGameModel : Reference
     static string statement;
     static string[] answers;
 
-    int totalStars;
-    int totalPoints;
+    public int totalStars;
+    public int totalPoints;
+    public int countPerfectWins;
     public FileLists file;
 
     /*
@@ -88,10 +89,11 @@ public class ClassificationGameModel : Reference
     /*
      * 
      */
-    public void SetTotalStars(int stars)
+    public void UpdateTotalStars(int stars)
     {
         PlayerPrefs.SetInt("TotalStarsGame1", stars);
         //Debug.Log("STARS EN SET: " + stars);
+        App.generalModel.statsModel.totalStars += GetTotalStars();
     }
     /*
      * 
@@ -100,19 +102,99 @@ public class ClassificationGameModel : Reference
     {
         totalPoints = PlayerPrefs.GetInt("TotalPointsGame1", 0);
         //Debug.Log("PUNTOS HASTA AHORA CLASSIFICATION: "+totalPoints);
-        if(totalPoints >= 200 && PlayerPrefs.GetInt("GamePoints1",0) == 0)
+        /*if(totalPoints >= 200 && PlayerPrefs.GetInt("GamePoints1",0) == 0)
         {
             PlayerPrefs.SetInt("GamePoints1", 1);
             PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
+        }*/
+        if (totalPoints >= 100 && (App.generalModel.statsModel.totalPoints / 100 == 3))
+        {
+            //Una vez cumplido el logro se cambia el estado de este para no volver a contarlo
+            //PlayerPrefs.SetInt("GamePoints2", 1);
+            if (!App.generalController.statsController.IsAchievements(8))
+            {
+                App.generalController.statsController.DeleteAchievements(8);
+            }
+
+            //PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
         }
         return totalPoints;
     }
     /*
      * 
      */
-    public void SetPoints(int valor)
+    public void UpdatePoints(int value)
     {
-        PlayerPrefs.SetInt("TotalPointsGame1", valor);
-        //Debug.Log("PUNTOS EN SET: " + valor);
+        PlayerPrefs.SetInt("TotalPointsGame1", PlayerPrefs.GetInt("TotalPointsGame1", 0) + value);
+        totalPoints = PlayerPrefs.GetInt("TotalPointsGame1", 0);
+        Debug.Log("LLEVA ESTOS PUNTOS: " + totalPoints);
+
+        //Verificar si ya cumplio con el logro de sumar mas de 300 puntos en este juego
+        if (totalPoints >= 100 && PlayerPrefs.GetInt("GamePoints1", 0) == 0)
+        {
+            //Una vez cumplido el logro se cambia el estado de este para no volver a contarlo
+            PlayerPrefs.SetInt("GamePoints1", 1);
+            PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
+            int logro8 = PlayerPrefs.GetInt("ThreeTundredPoints", 0);
+
+            if (logro8 == 3)
+            {
+                if (!App.generalController.statsController.IsAchievements(8))
+                {
+                    App.generalController.statsController.DeleteAchievements(8);
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// Metodo que devuelve la cantidad de veces que ha jugado
+    /// </summary>
+    /// <returns></returns>
+    public int GetTimesPlayed()
+    {
+        return PlayerPrefs.GetInt("TimesPlayedGame1", 0);
+    }
+    public void UpdateTimesPlayed(int value)
+    {
+        // countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
+        PlayerPrefs.SetInt("PlayOneLevel", PlayerPrefs.GetInt("PlayOneLevel", 0) + 1);
+
+        //Debug.Log("A Jugado: " + countPlay);
+        PlayerPrefs.SetInt("TimesPlayedGame1", value);
+
+        int logro1 = PlayerPrefs.GetInt("PlayOneLevel", 0);
+
+        if (logro1 == 3)
+        {
+            if (!App.generalController.statsController.IsAchievements(0))
+            {
+                App.generalController.statsController.DeleteAchievements(0);
+            }
+        }
+    }
+    /// <summary>
+    /// Metodo que actualiza la cantidad de veces que ha ganado 3 estrellas
+    /// </summary>
+    /// <param name="value">Cantidad de veces que ha ganado 3 estrellas</param>
+    public void UpdatePerfectWins(int value)
+    {
+        PlayerPrefs.SetInt("GetThreeStars1", PlayerPrefs.GetInt("GetThreeStars1", 0) + value);
+        countPerfectWins = PlayerPrefs.GetInt("GetThreeStars1", 0);
+        Debug.Log("LLEVA: " + countPerfectWins + " PERFECTAS");
+
+        if (countPerfectWins == 3)
+        {
+            if (!App.generalController.statsController.IsAchievements(1))
+            {
+                App.generalController.statsController.DeleteAchievements(1);
+            }
+        }
+        else if (countPerfectWins == 6)
+        {
+            if (!App.generalController.statsController.IsAchievements(2))
+            {
+                App.generalController.statsController.DeleteAchievements(2);
+            }
+        }
     }
 }

@@ -21,6 +21,8 @@ public class SettingsController : Reference
         file.imageListGame2_1 = new List<int>();
         file.imageListGame2_2 = new List<int>();
         file.imageListGame2_3 = new List<int>();
+
+        //Lista de los logros
         file.achievementsList = new List<int>();
 
         //Borrar el archivo.data

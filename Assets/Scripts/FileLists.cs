@@ -27,7 +27,7 @@ public class FileLists : ScriptableObject
 
         //Debug.Log("SE CREO ARCHIVO: " + file.Name + ": " + File.Exists(GetPath(fileName)));
         //Debug.Log("LISTA CLASIFICACION EN GUARDAR: " + classificationGameList.Count);
-        //Debug.Log("LISTA LOGROS EN GUARDAR: " + achievementsList.Count);
+        Debug.Log("LISTA LOGROS EN GUARDAR: " + achievementsList.Count);
         file.Close();
     }
 
@@ -41,7 +41,7 @@ public class FileLists : ScriptableObject
 
             JsonUtility.FromJsonOverwrite((string)br.Deserialize(file), this);
             //Debug.Log("LISTA CLASIFICACION EN CARGAR: " + classificationGameList.Count);
-            //Debug.Log("LISTA LOGROS EN CARGAR: " + achievementsList.Count);
+            Debug.Log("LISTA LOGROS EN CARGAR: " + achievementsList.Count);
             file.Close();
         }
         else

@@ -323,6 +323,16 @@ public class EquialityGameController : Reference{
 
         int auxAnswer = int.Parse(text);
         counter++;
+
+        if (App.generalModel.equialityGameModel.GetTimesPlayed() == 0)
+        {
+            /*countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
+            PlayerPrefs.SetInt("PlayOneLevel", countPlay);
+            Debug.Log("A Jugado: " + countPlay);
+            PlayerPrefs.SetInt("PlayGame1", 1);*/
+            App.generalModel.equialityGameModel.UpdateTimesPlayed(1);
+        }
+
         if (auxAnswer == correctAnswerGame)
         {
             Debug.Log("You win");

@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 333964530}
   - component: {fileID: 333964529}
   - component: {fileID: 333964531}
+  - component: {fileID: 333964532}
   m_Layer: 0
   m_Name: GameModel
   m_TagString: Untagged
@@ -327,6 +328,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dad3f6bac0380f42b69247b8a19d507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &333964532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333964528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa51b567cabdaf4b83221225682945b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  file: {fileID: 11400000, guid: 83f75b461f443af4ebe2b0eb4a4d15b8, type: 2}
+  totalStars: 0
+  totalPoints: 0
 --- !u!1 &386347846
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 422743141}
   - component: {fileID: 422743140}
+  - component: {fileID: 422743139}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -760,6 +777,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &422743139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422743138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4f4ecc3072d4042b314dd256f7b533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievements: 
+  file: {fileID: 11400000, guid: 83f75b461f443af4ebe2b0eb4a4d15b8, type: 2}
 --- !u!114 &422743140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,7 +1014,7 @@ MonoBehaviour:
   roadGameModel: {fileID: 333964531}
   characteristicsGameModel: {fileID: 0}
   classificationGameModel: {fileID: 0}
-  statsModel: {fileID: 0}
+  statsModel: {fileID: 333964532}
   equialityGameModel: {fileID: 333964529}
   SequenceGameModel: {fileID: 0}
 --- !u!1 &588690275
@@ -2774,7 +2805,6 @@ MonoBehaviour:
   MistakeCanvas: {fileID: 1795119109}
   WarningCanvas: {fileID: 0}
   imageWin: {fileID: 1756826726}
-  correctAnswer: {fileID: 0}
   mistakeText: {fileID: 1795119108}
   winText: {fileID: 1756826725}
   backButton: {fileID: 41061524}
@@ -2857,7 +2887,7 @@ MonoBehaviour:
   gameOptionsController: {fileID: 0}
   gamesMenuController: {fileID: 0}
   settingsController: {fileID: 0}
-  statsController: {fileID: 0}
+  statsController: {fileID: 422743139}
   additionGameController: {fileID: 0}
   equialityGameController: {fileID: 422743140}
   sequenceGameController: {fileID: 0}

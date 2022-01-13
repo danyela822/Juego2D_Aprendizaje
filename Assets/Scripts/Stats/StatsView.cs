@@ -16,7 +16,7 @@ public class StatsView : Reference
     {
         ShowTotalStars();
         ShowLeague();
-        CheckAchievements();
+        //CheckAchievements();
     }
     void ShowTotalStars()
     {
@@ -48,7 +48,7 @@ public class StatsView : Reference
     /// <summary>
     /// Metodo para marcar los logros completados
     /// </summary>
-    public void CheckAchievements()
+    /*public void CheckAchievements()
     {
         for (int i = 0; i < checkAchievementsList.Count; i++)
         {
@@ -59,5 +59,5 @@ public class StatsView : Reference
                 checkAchievementsList[i].GetComponent<Image>().enabled = true;
             }    
         }
-    }
+    }*/
 }

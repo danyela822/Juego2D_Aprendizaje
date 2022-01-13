@@ -22,4 +22,5 @@ public class GeneralController : Reference
     public SequenceGameController sequenceGameController;
     
     public SetsGameController setsGameController;
+    public TicketController ticketController;
 }

@@ -6,13 +6,15 @@ public class GameOptionsView: Reference
 {
     //Declaracion de los canvas que contiene la vista del juego
     //Canvas que indica que debe seleccionar una opcion antes de verificar
-    public Canvas GameCanvas, PauseCanvas, SolutionCanvas, TutorialCanvas, WinCanvas, LoseCanvas, MistakeCanvas, WarningCanvas;
+    public Canvas GameCanvas, PauseCanvas, SolutionCanvas, TutorialCanvas, WinCanvas, LoseCanvas, MistakeCanvas, WarningCanvas, TicketsCanvas;
 
     public Image imageWin;
 
+    public GameObject BuyTicketsWindow, NoneTicketsWindow, UsedTicketsWindow;
+
     //public Image correctAnswer;
 
-    public Text mistakeText, winText;
+    public Text mistakeText, winText, ticketsText;
 
     public Button backButton, continueButton;
 
@@ -119,6 +121,46 @@ public class GameOptionsView: Reference
     public void HideWarningCanvas()
     {
         WarningCanvas.enabled = false;
+    }
+    
+    public void ShowTicketsCanvas(bool activateBuyWindow)
+    {
+        if (activateBuyWindow)
+        {
+            BuyTicketsWindow.SetActive(true);
+            NoneTicketsWindow.SetActive(false);
+        }
+        else
+        {
+            BuyTicketsWindow.SetActive(false);
+            NoneTicketsWindow.SetActive(true);
+            UsedTicketsWindow.SetActive(false);
+            //Debug.Log("DEBE AUMENTAR");
+            //App.generalController.ticketController.IncreaseTickets();
+            //ticketsText.text = "Has comprado un pase. Ahora tienes "+ App.generalController.ticketController.GetTickets()+" pase(s)";
+
+        }
+        TicketsCanvas.enabled = true;
+    }
+    public void BuyTickets()
+    {
+        Debug.Log("DEBE AUMENTAR");
+        if(App.generalController.ticketController.IncreaseTickets())
+        {
+
+        }
+        else
+        {
+            BuyTicketsWindow.SetActive(false);
+            //NoneTicketsWindow.SetActive(true);
+            UsedTicketsWindow.SetActive(true);
+        }
+
+
+    }
+    public void HideTicketsCanvas()
+    {
+        TicketsCanvas.enabled = false;
     }
     public void BackGameLeves()
     {
