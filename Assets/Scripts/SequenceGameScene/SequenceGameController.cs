@@ -51,6 +51,7 @@ public class SequenceGameController : Reference{
     //activados
     int contToUnPaint = 0;
 
+    //NIVEL EN QUE SE ENCUENTRA EL USUARIO 
     int levelUser = 1;
 
     //Numero de intentos que tiene el jugador para ganar el juego
@@ -64,6 +65,8 @@ public class SequenceGameController : Reference{
         size = objectRow.GetComponent<BoxCollider2D>().size;
         contToPaint = 0;
 
+        //ciclo auxiliar que me permite saber el estado de los caramelos
+        //si puedeser o no seleccionado 
         for (int i = 0; i < 5; i++){
             auxState.Add(1);
         }
@@ -80,21 +83,21 @@ public class SequenceGameController : Reference{
     void CreateListIcon(){
 
         switch (levelUser){
-            
+            //nivel 1
             case 1:
                 for (int i = 0; i < 4; i++){
                     int value = GetContainsNumber();
                     iconNumber.Add(value);
                 }
             break;
-
+            //nivel 2
             case 2:
                 for (int i = 0; i < 6; i++){
                     int value = GetContainsNumber();
                     iconNumber.Add(value);
                 }
             break;
-
+            //nivel 3
             default:
                 for (int i = 0; i < 6; i++){
                     int value = GetContainsNumber();
@@ -145,14 +148,13 @@ public class SequenceGameController : Reference{
                 sequence = Instantiate(objectRow, new Vector3(x + ((size.x - 0.25f) * j), y - (size.y * i), 0), objectRow.transform.rotation);
 
                 options[i,j] = sequence;
-            }
-            
+            }   
         }
-
         PaintTable();
-
     }
 
+    //Metodo que permite pintar el tablero de acuerdo al nivel que se 
+    //encuentra el usuario 
     void PaintTable(){
 
         int cont = 0;
@@ -160,6 +162,7 @@ public class SequenceGameController : Reference{
         
         switch (levelUser){
 
+            //Nivel uno 
             case 1: 
                 for (int i = 0; i < 3; i++){
                     for (int j = 0; j < 4; j++){
@@ -181,7 +184,7 @@ public class SequenceGameController : Reference{
                     
                 }
             break;
-
+            //nivel 2
             case 2:
 
                 for (int i = 0; i < 3; i++){
@@ -213,7 +216,7 @@ public class SequenceGameController : Reference{
                
 
             break;
-
+            //nivel 3
             default:
 
                 for (int i = 0; i < 3; i++){
@@ -233,8 +236,7 @@ public class SequenceGameController : Reference{
                         }
 
                     }
-                }
-               
+                } 
             break;
         }
     }
@@ -244,19 +246,19 @@ public class SequenceGameController : Reference{
     void GetListAnswer(){
 
         switch (levelUser){
-
+            //nivel 1
             case 1:
                 for (int i = 1; i < iconNumber.Count; i++){
                     correctListAnswer.Add(iconNumber[i]);
 
                 }
             break;
-
+            //nivel 2
             case 2:
                 correctListAnswer.Add(iconNumber[2]);
                 correctListAnswer.Add(iconNumber[3]);
             break;
-            
+            //nivel 3
             default:
                 for (int i = 2; i < iconNumber.Count; i++){
                     correctListAnswer.Add(iconNumber[i]);
@@ -271,10 +273,12 @@ public class SequenceGameController : Reference{
     //para que escoja la secuencia correcta
     void GetPossibleAnswer(){
 
+        //ciclo que agrega las respuestas correctas
         for (int i = 0; i < correctListAnswer.Count; i++){
             possibleAnswer.Add(correctListAnswer[i]);
         }
 
+        //ciclo que completa con numeros aleatorios
         for (int j = correctListAnswer.Count; j < 5; j++){
             int value = GetContainsNumberButton();
             possibleAnswer.Add(value);
@@ -282,6 +286,8 @@ public class SequenceGameController : Reference{
 
     }
     
+    //metodo que me permite obtener un numero aleatorio y agregarlo como
+    //opcion de seleccion para el usuario 
     int GetContainsNumberButton(){
 
         int num = 0;
@@ -299,9 +305,7 @@ public class SequenceGameController : Reference{
             number = Random.Range(0, num);
             if (!possibleAnswer.Contains(number)) condition = false;
         }
-
         return number;
-
     }
 
     //metodo que desordena la lista donde esta las repsuesta que 
@@ -367,8 +371,9 @@ public class SequenceGameController : Reference{
                 break;
             }
         }
+        //me indica que si selecciona correctamente los caramelos, gana el usuario
         switch (levelUser){
-            
+            //nivel 1
             case 1: 
                 //indica que ganó
                 if (i == 3){
@@ -380,7 +385,7 @@ public class SequenceGameController : Reference{
                     CheckAttempt();
                 }
             break;
-
+            //nivel 2
             case 2:
                 if (i == 2){
                     Debug.Log("You win");
@@ -391,7 +396,7 @@ public class SequenceGameController : Reference{
                     CheckAttempt();
                 }
                 break;
-
+            //nivel 3
             default:
                 if (i == 4){
                     Debug.Log("You win");
@@ -416,15 +421,15 @@ public class SequenceGameController : Reference{
         int contCandy = 0;
 
         switch (levelUser){
-
+            //nivel 1
             case 1:
                 contCandy = 3;
             break;
-
+            //nivel 2
             case 2:
                 contCandy = 2;
             break;
-
+            //nivel 3
             default:
                 contCandy = 4;
             break;
@@ -438,15 +443,15 @@ public class SequenceGameController : Reference{
             int value = int.Parse(text);
             answerToUserButton.Add(value);
             switch (levelUser){
-                
+                //nivel 1
                 case 1:
                     options[1, contToPaint + 1].GetComponent<SpriteRenderer>().sprite = spritesLevelOne[value];
                 break;
-
+                //nivel 2
                 case 2:
                     options[2, contToPaint].GetComponent<SpriteRenderer>().sprite = spritesLevelTwo[value];
                 break;
-
+                //nivel 3
                 default:
                     options[2, contToPaint].GetComponent<SpriteRenderer>().sprite = sprites[value];
                 break;
@@ -467,15 +472,15 @@ public class SequenceGameController : Reference{
                 ReturnPosition(position, aux);
                 auxState[position] = 1;
                 switch (levelUser){
-                    
+                    //nivel 1
                     case 1:
                         options[1, contToPaint].GetComponent<SpriteRenderer>().sprite = objectRow.GetComponent<SpriteRenderer>().sprite;
                     break;
-
+                    //nivel 2
                     case 2:
                         options[2, contToPaint-1].GetComponent<SpriteRenderer>().sprite = objectRow.GetComponent<SpriteRenderer>().sprite;
                     break;
-
+                    //nivel 3
                     default:
                         options[2, contToPaint-1].GetComponent<SpriteRenderer>().sprite = objectRow.GetComponent<SpriteRenderer>().sprite;
                     break;
@@ -505,7 +510,6 @@ public class SequenceGameController : Reference{
                 position = i;
                 i = App.generalView.sequenceGameView.buttons.Count;
             }
-            
         }
         return position;
     }
@@ -518,15 +522,15 @@ public class SequenceGameController : Reference{
 
         switch (levelUser){
             
-            
+            //nivel 1
             case 1:
                 contCandy = 3;
             break;
-
+            //nivel 2
             case 2:
                 contCandy = 2;
             break;
-
+            //nivel 3
             default:
                 contCandy = 4;
             break;

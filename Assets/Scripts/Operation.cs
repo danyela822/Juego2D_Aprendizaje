@@ -6,7 +6,7 @@ public class Operation
 {
     public List<Operand> operands;
     public int resultado;
-    int possible_num = 20;
+    int possible_num = 15;
     List<int> globalUsed = new List<int>();
 
     
@@ -17,7 +17,7 @@ public class Operation
         operands = new List<Operand>();
         Build(numberOperands, numUsed);
         resultado = DoOperation();
-
+        Debug.Log(OwnToString());
     }
 
     //contructor que permite realizar la primera operacion
@@ -32,16 +32,31 @@ public class Operation
         //0perador 0 => no hay operador porque es el ultimo elemento
         //Operador 1 => resta
         //Operador 2 => suma
+        int sign = 0;
+        int sum = 0;
+        bool centinela = false;
         for (int i = 0; i < numberOperands; i++){
             if (i == numberOperands -1){
-                int value = GetNewValue();
-                integersUsed.Add(value);
+                int value = 0;
+                while(centinela == false){
+                    value = GetNewValue();
+                    if (value < sum){
+                        integersUsed.Add(value);
+                        centinela = true;
+                    }
+                }                
                 AddOperand(new Operand(value, 0));               
             }
             else{
                 int usedValue = GetUsedValue();  
                 RemoveUsed(usedValue);
-                int sign = Random.Range(1, 3);
+                if(i == numberOperands - 2){
+                    sum += usedValue;
+                    sign = 1;
+                }else{
+                    sign = 2;
+                    sum += usedValue;
+                }
                 AddOperand(new Operand(usedValue, sign));
             }
 
@@ -51,16 +66,38 @@ public class Operation
     //metodo que permite la construccion de la primera operacion
     public void Build (int numberOperands, List<int> integersUsed, int initialValue){
 
+        bool centinelaSign = false;
         for (int i = 0; i < numberOperands; i++){
             if (i == 0){
                 int sign = Random.Range(1, 3);
+                if (sign == 1){
+                    centinelaSign = true;
+                }
                 AddOperand(new Operand(initialValue, sign));
                 integersUsed.Add(initialValue);
             }
             else{
+
+                bool centinela = true;
                 int value = GetNewValue();
-                AddOperand(new Operand(value, 0));
-                integersUsed.Add(value);
+                if (centinelaSign == true){
+
+                    while(centinela == true){                    
+
+                        if (initialValue - value >= 0){
+
+                            AddOperand(new Operand(value, 0));
+                            integersUsed.Add(value);
+                            centinela = false;
+                        }else{
+
+                            value = GetNewValue();
+                        }
+                    }
+                }else{
+                    AddOperand(new Operand(value, 0));
+                    integersUsed.Add(value);
+                }
             }
         }
     }
