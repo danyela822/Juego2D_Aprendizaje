@@ -33,7 +33,7 @@ public class EquialityGameController : Reference{
     List<int> possibleAnswerGame = new List<int>();
 
     //nivel en que esta el usuario 
-    //int levelUser = 3;
+    int levelUser;// = App.generalModel.equialityGameModel.GetLevel();
     int level = 0;
 
     float y;
@@ -53,7 +53,7 @@ public class EquialityGameController : Reference{
 
     // Start is called before the first frame update
     void Start(){
-
+        levelUser = App.generalModel.equialityGameModel.GetLevel();
         size = objRow.GetComponent<BoxCollider2D>().size;
         ChangeLevel();
 
