@@ -5,7 +5,7 @@ using UnityEngine;
 public class TicketModel : Reference
 {
     public int solutionTickets;
-    public void IncreaseTickets()
+    /*public void IncreaseTickets()
     {
         SetTickets(GetTickets() + 1);
     }
@@ -17,7 +17,7 @@ public class TicketModel : Reference
             SetTickets(GetTickets() - 1);
         }
 
-    }
+    }*/
     public int GetTickets()
     {
         solutionTickets = PlayerPrefs.GetInt("SolutionTickets", 0);

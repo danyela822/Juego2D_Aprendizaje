@@ -6,7 +6,7 @@ public class GameOptionsView: Reference
 {
     //Declaracion de los canvas que contiene la vista del juego
     //Canvas que indica que debe seleccionar una opcion antes de verificar
-    public Canvas GameCanvas, PauseCanvas, SolutionCanvas, TutorialCanvas, WinCanvas, LoseCanvas, MistakeCanvas, WarningCanvas, TicketsCanvas;
+    public Canvas GameCanvas, PauseCanvas, SolutionCanvas, TutorialCanvas, WinCanvas, LoseCanvas, MistakeCanvas, WarningCanvas, TicketsCanvas,BuyCanvas;
 
     public Image imageWin;
 
