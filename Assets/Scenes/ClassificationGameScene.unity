@@ -724,6 +724,22 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 5375704520838820172, guid: 70070fe55a9eeb24cb6314a1121b43cf, type: 3}
   m_PrefabInstance: {fileID: 111498889}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &111498891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 971298630170021309, guid: 70070fe55a9eeb24cb6314a1121b43cf, type: 3}
+  m_PrefabInstance: {fileID: 111498889}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &111498892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8440236568255472199, guid: 70070fe55a9eeb24cb6314a1121b43cf, type: 3}
+  m_PrefabInstance: {fileID: 111498889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &147332624
 GameObject:
   m_ObjectHideFlags: 0
@@ -3657,7 +3673,7 @@ MonoBehaviour:
   equialityGameController: {fileID: 0}
   sequenceGameController: {fileID: 0}
   setsGameController: {fileID: 0}
-  ticketController: {fileID: 0}
+  ticketController: {fileID: 1367954202}
 --- !u!1 &923487686
 GameObject:
   m_ObjectHideFlags: 0
@@ -4697,7 +4713,7 @@ MonoBehaviour:
   statsModel: {fileID: 1911148527}
   equialityGameModel: {fileID: 0}
   SequenceGameModel: {fileID: 0}
-  ticketModel: {fileID: 0}
+  ticketModel: {fileID: 1911148528}
 --- !u!1 &1367954198
 GameObject:
   m_ObjectHideFlags: 0
@@ -4709,6 +4725,7 @@ GameObject:
   - component: {fileID: 1367954200}
   - component: {fileID: 1367954199}
   - component: {fileID: 1367954201}
+  - component: {fileID: 1367954202}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -4729,6 +4746,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter: 0
+  characteristicsWindow: {fileID: 111498892}
+  solutionImage: {fileID: 111498891}
 --- !u!4 &1367954200
 Transform:
   m_ObjectHideFlags: 0
@@ -4755,6 +4774,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4f4ecc3072d4042b314dd256f7b533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1367954202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367954198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ed3af5d44cb4040a42b02ab0fd1641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solutionTickets: 0
 --- !u!1 &1386899158
 GameObject:
   m_ObjectHideFlags: 0
@@ -7094,7 +7126,7 @@ PrefabInstance:
       objectReference: {fileID: 335305798}
     - target: {fileID: 7112673241725323817, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowSolutionCanvas
+      value: ShowBuyCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 7112673241725323817, guid: b891b1cf5ced46946841e0b6c7511ece, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -7207,6 +7239,7 @@ GameObject:
   - component: {fileID: 1911148524}
   - component: {fileID: 1911148526}
   - component: {fileID: 1911148527}
+  - component: {fileID: 1911148528}
   m_Layer: 0
   m_Name: GameModel
   m_TagString: Untagged
@@ -7271,6 +7304,19 @@ MonoBehaviour:
   file: {fileID: 11400000, guid: 83f75b461f443af4ebe2b0eb4a4d15b8, type: 2}
   totalStars: 0
   totalPoints: 0
+--- !u!114 &1911148528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911148523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c8bc324e4480b6438e3826631c82399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solutionTickets: 0
 --- !u!1 &1925515442
 GameObject:
   m_ObjectHideFlags: 0
@@ -8096,6 +8142,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 345108081927189553, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 345108081927189553, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 345108081927189553, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 335305798}
+    - target: {fileID: 345108081927189553, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 345108081927189553, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HideBuyCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 345108081927189553, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOptionsView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 345108081927189553, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866424670951132816, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1367954199}
+    - target: {fileID: 8866424670951132816, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSolution
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866424670951132816, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ClassificationGameController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8866424672111637237, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
       propertyPath: m_Name
       value: BuyCanvas
@@ -8187,6 +8273,18 @@ PrefabInstance:
     - target: {fileID: 8866424672111637241, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866424672212618192, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 335305798}
+    - target: {fileID: 8866424672212618192, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyTickets
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866424672212618192, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOptionsView, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
@@ -8994,6 +9092,66 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5236775576011718247, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 335305798}
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HideTicketsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOptionsView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 335305798}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HideTicketsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOptionsView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5236775577146861981, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
       propertyPath: m_Name
       value: TicketsCanvas
@@ -9085,6 +9243,38 @@ PrefabInstance:
     - target: {fileID: 5236775577146861986, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775577681388643, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 335305798}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HideTicketsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOptionsView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db139446f5087b74d87f9d548a619bfa, type: 3}

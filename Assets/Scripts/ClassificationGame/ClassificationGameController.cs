@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class ClassificationGameController : Reference
 {
@@ -26,38 +27,60 @@ public class ClassificationGameController : Reference
     public static ClassificationGameController gameController;
 
     //Numero para saber cuantas veces ha ganado 3 estrella
-    int countPerfectWins = 0;
+    //int countPerfectWins = 0;
 
     //Numero de veces que ha jugado
-    int countPlay = 0;
+    //int countPlay = 0;
 
     //numero que cuenta las veces que ha completado niveles sin errores
-    int countPerfectGame = 0;
+    //int countPerfectGame = 0;
 
     //Numero de intentos que tiene el jugador para ganar el juego
     int attempts = 3;
 
     private void Start()
     {
+        if (App.generalModel.classificationGameModel.file.classificationGameList.Count == 0)
+        {
+
+        }
+        else
+        {
+            BuildLevel();
+        }
+    }
+    /// <summary>
+    /// Busca e instancia la lista de imagenes y la lista de textos necesarias para crear el nivel
+    /// </summary>
+    public void BuildLevel()
+    {
         //Numero random para seleccionar un conjunto de imagenes
         number = Random.Range(0, 10);
-        bool centinela = true;
-        while(centinela)
+
+        //Variable que determina si existe el conjunto de imagenes y textos
+        bool exists = false;
+
+        while (!exists)
         {
-            if (App.generalModel.classificationGameModel.file.classificationGameList.Contains(number))
+            if (App.generalModel.classificationGameModel.FileExist(number))
             {
                 //Instaciar Lista que guardara todas las imagenes
                 images = App.generalModel.classificationGameModel.LoadImages(number);
+
                 //Instaciar Lista que guardara todos los enunciados
                 statement = App.generalModel.classificationGameModel.LoadTexts(number);
+
                 //Instaciar Lista que guardara todas las respuestas
                 answers = App.generalModel.classificationGameModel.LoadAnswers(number);
-                centinela = false;
+
+                //Cuando se instancian las lista se acaba el ciclo
+                exists = true;
             }
             else
             {
                 number = Random.Range(0, 10);
-            }          
+            }
+
         }
         Debug.Log("ELIMINAR: " + number);
 
@@ -242,6 +265,28 @@ public class ClassificationGameController : Reference
         {
             App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
         }
+    }
+    public GameObject characteristicsWindow;
+    public Image solutionImage;
+    public void ShowSolution()
+    {
+        //Si hay tickets muestra la solucion
+        Debug.Log("HAY: " + App.generalModel.ticketModel.GetTickets() + " TICKETS");
+        if (App.generalModel.ticketModel.GetTickets() >= 1)
+        {
+            Debug.Log("HAS USADO UN PASE");
+
+            App.generalController.ticketController.DecraseTickets();
+            App.generalView.gameOptionsView.HideBuyCanvas();
+            App.generalView.gameOptionsView.ShowSolutionCanvas();
+            characteristicsWindow.SetActive(true);
+            solutionImage.sprite = App.generalModel.classificationGameModel.LoadAnswerImages(number);
+        }
+        else
+        {
+            App.generalView.gameOptionsView.ShowTicketsCanvas(3);
+        }
+        //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
     }
     /*
     * Metodo que permite desordenar la lista de imagenes seleccionada

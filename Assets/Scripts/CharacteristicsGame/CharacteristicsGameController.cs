@@ -24,7 +24,7 @@ public class CharacteristicsGameController : Reference
     //int countPerfectWins = 0;
 
     //Numero de veces que ha jugado
-    int countPlay = 0;
+    //int countPlay = 0;
 
     //numero que cuenta las veces que ha completado niveles sin errores
     //int countPerfectGame = 0;

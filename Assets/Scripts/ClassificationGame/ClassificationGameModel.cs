@@ -10,17 +10,31 @@ public class ClassificationGameModel : Reference
     public int countPerfectWins;
     public FileLists file;
 
+    /// <summary>
+    /// Metodo para verificar si un elemento en especifico existe
+    /// </summary>
+    /// <param name="number">Numero del elemento de imagenes</param>
+    /// <returns>Bool que indica si exsite o no ese elemento</returns>
+    public bool FileExist(int number)
+    {
+        if (file.classificationGameList.Contains(number))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     /*
     * Metodo para cargar y guardar todas la imagnes que necesita el juego
     */
     public Sprite[] LoadImages(int numero)
     {
-        if (file.classificationGameList.Contains(numero))
-        {
-            //Cargar y guardar un set de imagenes en un array
-            images = Resources.LoadAll<Sprite>("Classification/set_" + (numero));
-        }
-        file.Save("P");
+        //Cargar y guardar un set de imagenes en un array
+        images = Resources.LoadAll<Sprite>("Classification/set_" + (numero));
+
+        //file.Save("P");
         return images;
     }
     /*
@@ -32,10 +46,9 @@ public class ClassificationGameModel : Reference
         TextAsset textAsset = Resources.Load("Files/statements_sets") as TextAsset;
 
         string text = textAsset.text;
-        if (file.classificationGameList.Contains(numero))
-        {
-            statement = text.Split('\n')[numero];
-        }
+        
+        statement = text.Split('\n')[numero];
+
         return statement;
     }
     /*
@@ -51,17 +64,15 @@ public class ClassificationGameModel : Reference
         string[] values2;
 
 
-        if (file.classificationGameList.Contains(numero))
-        {
-            values = allAnswers.Split('.');
-            values2 = values[numero].Split(',');
+        values = allAnswers.Split('.');
+        values2 = values[numero].Split(',');
 
-            for (int j = 0; j < values2.Length; j++)
-            {
-                values2[j].TrimEnd('.');
-            }
-            answers = values2;
+        for (int j = 0; j < values2.Length; j++)
+        {
+            values2[j].TrimEnd('.');
         }
+        answers = values2;
+
 
         return answers;
     }
@@ -128,6 +139,7 @@ public class ClassificationGameModel : Reference
         PlayerPrefs.SetInt("TotalPointsGame1", PlayerPrefs.GetInt("TotalPointsGame1", 0) + value);
         totalPoints = PlayerPrefs.GetInt("TotalPointsGame1", 0);
         Debug.Log("LLEVA ESTOS PUNTOS: " + totalPoints);
+        App.generalModel.statsModel.UpdateTotalPoints(App.generalModel.statsModel.GetTotalPoints() + totalPoints);
 
         //Verificar si ya cumplio con el logro de sumar mas de 300 puntos en este juego
         if (totalPoints >= 100 && PlayerPrefs.GetInt("GamePoints1", 0) == 0)
