@@ -131,40 +131,42 @@ public class GameOptionsView: Reference
         WarningCanvas.enabled = false;
     }
     
-    public void ShowTicketsCanvas(bool activateBuyWindow)
+    public void ShowTicketsCanvas(int option)
     {
-        if (activateBuyWindow)
+        //Mostrar la ventana de que ha adquirido un pase
+        if (option == 1)
         {
             BuyTicketsWindow.SetActive(true);
             NoneTicketsWindow.SetActive(false);
+            UsedTicketsWindow.SetActive(false);
         }
+        //Mostrar la ventana de que indica que no puede adquirir un pase
+        else if (option == 2)
+        {
+            BuyTicketsWindow.SetActive(false);
+            NoneTicketsWindow.SetActive(false);
+            UsedTicketsWindow.SetActive(true);
+
+        }
+        //Mostrar la ventana de que indica que no tiene pases
         else
         {
             BuyTicketsWindow.SetActive(false);
             NoneTicketsWindow.SetActive(true);
             UsedTicketsWindow.SetActive(false);
-            //Debug.Log("DEBE AUMENTAR");
-            //App.generalController.ticketController.IncreaseTickets();
-            //ticketsText.text = "Has comprado un pase. Ahora tienes "+ App.generalController.ticketController.GetTickets()+" pase(s)";
-
         }
         TicketsCanvas.enabled = true;
     }
     public void BuyTickets()
     {
-        Debug.Log("DEBE AUMENTAR");
         if(App.generalController.ticketController.IncreaseTickets())
         {
-
+            ShowTicketsCanvas(1);
         }
         else
         {
-            BuyTicketsWindow.SetActive(false);
-            //NoneTicketsWindow.SetActive(true);
-            UsedTicketsWindow.SetActive(true);
+            ShowTicketsCanvas(2);
         }
-
-
     }
     public void HideTicketsCanvas()
     {

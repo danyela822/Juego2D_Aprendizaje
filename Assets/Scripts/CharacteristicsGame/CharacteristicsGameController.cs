@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CharacteristicsGameController : Reference
 {
@@ -252,17 +253,25 @@ public class CharacteristicsGameController : Reference
             App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
         }
     }
+    public GameObject characteristicsWindow;
+    public Image solutionImage;
     public void ShowSolution()
     {
         //Si hay tickets muestra la solucion
-        if (App.generalController.ticketController.GetTickets() >= 1)
+        Debug.Log("HAY: " + App.generalModel.ticketModel.GetTickets() + " TICKETS");
+        if (App.generalModel.ticketModel.GetTickets() >= 1)
         {
             Debug.Log("HAS USADO UN PASE");
+
             App.generalController.ticketController.DecraseTickets();
+            App.generalView.gameOptionsView.HideBuyCanvas();
+            App.generalView.gameOptionsView.ShowSolutionCanvas();
+            characteristicsWindow.SetActive(true);
+            solutionImage.sprite = correctAnswer;
         }
         else
         {
-            App.generalView.gameOptionsView.ShowTicketsCanvas(false);
+            App.generalView.gameOptionsView.ShowTicketsCanvas(3);
         }
         //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
     }

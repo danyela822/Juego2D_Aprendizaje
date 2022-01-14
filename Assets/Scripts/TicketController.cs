@@ -6,7 +6,6 @@ public class TicketController : Reference
 {
     public int solutionTickets;
 
-    
     public bool IncreaseTickets()
     {
         //SetTickets(GetTickets() + 1);
@@ -14,8 +13,7 @@ public class TicketController : Reference
 
         if (App.generalModel.statsModel.totalPoints >= 100)
         {
-            SetTickets(GetTickets() + 1);
-            Debug.Log("HAY: " + solutionTickets + " TICKETS");
+            App.generalModel.ticketModel.SetTickets(App.generalModel.ticketModel.GetTickets() + 1);
             return true;
         }
         else
@@ -26,20 +24,25 @@ public class TicketController : Reference
 
     public void DecraseTickets()
     {
-        if (GetTickets() > 0)
+        if (App.generalModel.ticketModel.GetTickets() > 0)
         {
-            SetTickets(GetTickets() - 1);
+            App.generalModel.ticketModel.SetTickets(App.generalModel.ticketModel.GetTickets() - 1);
+
+            //Cumplio el logro 6
+            if (!App.generalController.statsController.IsAchievements(6))
+            {
+                App.generalController.statsController.DeleteAchievements(6);
+            }
         }
 
     }
-    public int GetTickets()
+    /*public int GetTickets()
     {
         solutionTickets = PlayerPrefs.GetInt("SolutionTickets", 0);
-
         return solutionTickets;
     }
     public void SetTickets(int valor)
     {
         PlayerPrefs.SetInt("SolutionTickets", valor);
-    }
+    }*/
 }
