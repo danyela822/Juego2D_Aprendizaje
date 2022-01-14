@@ -60,6 +60,13 @@ public class AdditionGameController : Reference{
     int level = 0;
 
 
+    //--------------- mostrar el canvas de solucion -------------------//
+    public Text numberText;
+    public GameObject sequenceWindow;
+    public GameObject additionEqualityWindow;
+    //--------------- mostrar el canvas de solucion -------------------//
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -348,6 +355,21 @@ public class AdditionGameController : Reference{
                     textListLevelThree[i].text = "" + results[i];     
                 }
             break;
+        }
+    }
+
+    public void ShowSolution(){
+       
+        bool aux = true;
+        
+        if(aux){            
+            
+            App.generalView.gameOptionsView.ShowSolutionCanvas();
+            App.generalView.gameOptionsView.HideBuyCanvas();
+            sequenceWindow.SetActive(false);
+            additionEqualityWindow.SetActive(true);
+
+            numberText.text = "" + correctAnswer;
         }
     }
 }

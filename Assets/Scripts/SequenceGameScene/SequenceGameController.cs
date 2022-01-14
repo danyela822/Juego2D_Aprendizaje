@@ -11,6 +11,8 @@ public class SequenceGameController : Reference{
     public GameObject objectRow;
     //variable que me almacena el tamaño del objeto principal
     Vector2 size;
+
+    //-------------------------------Sprite---------------------------//
     //lista publica que contiene los sprites del juego
     public List<Sprite> sprites = new List<Sprite>();
 
@@ -19,6 +21,7 @@ public class SequenceGameController : Reference{
 
     //lista publica que contiene los sprites del juego nivel 1
     public List<Sprite> spritesLevelTwo = new List<Sprite>();
+    //-------------------------------Sprite---------------------------//
 
     //lista que contiene la respuesta correcta a cada escenario
     List<int> correctListAnswer = new List<int>();
@@ -59,6 +62,13 @@ public class SequenceGameController : Reference{
 
     //
     int counter = 0;
+
+    //--------------- mostrar el canvas de solucion -------------------//
+    public List<Image> imageList = new List<Image>();
+    public GameObject sequenceWindow;
+    public GameObject additionEqualityWindow;
+
+    //--------------- mostrar el canvas de solucion -------------------//
 
     // Start is called before the first frame update
     void Start(){
@@ -411,6 +421,7 @@ public class SequenceGameController : Reference{
 
     }
 
+
     //metodo que pemrite seleccionar y deseleccionar los caramelos
     //que escoge el usuario (pinta y despinta)
     public void AnswerForUser(string text){
@@ -621,4 +632,41 @@ public class SequenceGameController : Reference{
             App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
         }
     }
+
+    public void ShowSolution(){
+
+        bool aux = true;
+
+        if (aux){     
+            App.generalView.gameOptionsView.ShowSolutionCanvas();
+            sequenceWindow.SetActive(true);
+            additionEqualityWindow.SetActive(false);
+
+            switch (levelUser){
+        
+                case 1:
+                    for (int i = 0; i < imageList.Count-1; i++){
+                        imageList[i].enabled = true;
+                        imageList[i].GetComponent<Image>().sprite = spritesLevelOne[correctListAnswer[i]];
+                    } 
+                break;
+
+                case 2: 
+                    for (int i = 1; i < imageList.Count-1; i++){
+                        imageList[i].enabled = true;
+                        imageList[i].GetComponent<Image>().sprite = spritesLevelTwo[correctListAnswer[i-1]];            
+                    }
+                break;
+
+                default:
+                    for (int i = 0; i < imageList.Count; i++){
+                        imageList[i].enabled = true;
+                        imageList[i].GetComponent<Image>().sprite = sprites[correctListAnswer[i]];
+                    }
+                break;
+            }
+            
+        }
+    }
+
 }

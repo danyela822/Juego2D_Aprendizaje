@@ -51,6 +51,13 @@ public class EquialityGameController : Reference{
     //
     bool isLastLevel;
 
+    //--------------- mostrar el canvas de solucion -------------------//
+    public Text numberText;
+    public GameObject sequenceWindow;
+    public GameObject additionEqualityWindow;
+    //--------------- mostrar el canvas de solucion -------------------//
+
+
     // Start is called before the first frame update
     void Start(){
         levelUser = App.generalModel.equialityGameModel.GetLevel();
@@ -448,6 +455,21 @@ public class EquialityGameController : Reference{
         }
 
         return res;
+    }
+
+    public void ShowSolution(){
+
+        bool aux = true;
+        
+        if(aux){            
+            
+            App.generalView.gameOptionsView.ShowSolutionCanvas();
+            App.generalView.gameOptionsView.HideBuyCanvas();
+            sequenceWindow.SetActive(false);
+            additionEqualityWindow.SetActive(true);
+
+            numberText.text = "" + correctAnswerGame;
+        }
     }
 
 }

@@ -28,6 +28,14 @@ public class GameOptionsView: Reference
         backButton.GetComponentInChildren<Text>().enabled = false;
     }
 
+    public void ShowBuyCanvas(){
+        
+        BuyCanvas.enabled = true;
+    }
+    public void HideBuyCanvas(){
+
+        BuyCanvas.enabled = false;
+    }
     public void ShowPauseCanvas()
     {
         PauseCanvas.enabled = true;
@@ -58,11 +66,11 @@ public class GameOptionsView: Reference
         }
         else if (totalStars == 2)
         {
-            text = "¡Muy Bien!";
+            text = "ï¿½Muy Bien!";
         }
         else
         {
-            text = "¡Excelente!";
+            text = "ï¿½Excelente!";
         }
 
         if (isLastLevel)
@@ -96,7 +104,7 @@ public class GameOptionsView: Reference
         }
         else
         {
-            text = "Intentalo de nuevo. ¡Tu puedes!";
+            text = "Intentalo de nuevo. ï¿½Tu puedes!";
         }
         //mistakeText.text = "Upss.. Has fallado. Te quedan " + counter + " intento(s)";
         mistakeText.text = text;
