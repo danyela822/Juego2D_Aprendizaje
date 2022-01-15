@@ -809,6 +809,8 @@ GameObject:
   m_Component:
   - component: {fileID: 268221441}
   - component: {fileID: 268221442}
+  - component: {fileID: 268221444}
+  - component: {fileID: 268221443}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -888,6 +890,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 16e4c24507fa11fd488d8aa30b585b8c, type: 3}
   - {fileID: 21300000, guid: 77c3ca4b11427428ab3d29399478343a, type: 3}
   - {fileID: 21300000, guid: fe05f114b44e54c6a9986aa0131435a7, type: 3}
+  counter: 0
   imageList:
   - {fileID: 704685604}
   - {fileID: 614251448}
@@ -895,6 +898,31 @@ MonoBehaviour:
   - {fileID: 1239945575}
   sequenceWindow: {fileID: 219522470}
   additionEqualityWindow: {fileID: 772221032}
+--- !u!114 &268221443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268221440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ed3af5d44cb4040a42b02ab0fd1641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solutionTickets: 0
+--- !u!114 &268221444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268221440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4f4ecc3072d4042b314dd256f7b533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &281381631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1172,7 +1200,7 @@ GameObject:
   - component: {fileID: 431968742}
   - component: {fileID: 431968741}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: GameCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2358,12 +2386,12 @@ MonoBehaviour:
   gameOptionsController: {fileID: 1432134445}
   gamesMenuController: {fileID: 0}
   settingsController: {fileID: 0}
-  statsController: {fileID: 0}
+  statsController: {fileID: 268221444}
   additionGameController: {fileID: 0}
   equialityGameController: {fileID: 0}
   sequenceGameController: {fileID: 268221442}
   setsGameController: {fileID: 0}
-  ticketController: {fileID: 0}
+  ticketController: {fileID: 268221443}
 --- !u!4 &1079918538
 Transform:
   m_ObjectHideFlags: 0
@@ -3486,6 +3514,8 @@ GameObject:
   - component: {fileID: 1584197438}
   - component: {fileID: 1584197439}
   - component: {fileID: 1584197440}
+  - component: {fileID: 1584197442}
+  - component: {fileID: 1584197441}
   m_Layer: 0
   m_Name: GameModel
   m_TagString: Untagged
@@ -3531,6 +3561,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dad3f6bac0380f42b69247b8a19d507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1584197441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584197437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c8bc324e4480b6438e3826631c82399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solutionTickets: 0
+--- !u!114 &1584197442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584197437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa51b567cabdaf4b83221225682945b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  file: {fileID: 0}
+  totalStars: 0
+  totalPoints: 0
 --- !u!1 &1654532186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3861,22 +3919,22 @@ PrefabInstance:
     - target: {fileID: 345108081927189553, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1432134444}
     - target: {fileID: 345108081927189553, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 345108081927189553, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: HideBuyCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 345108081927189553, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: 
+      value: GameOptionsView, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 345108081927189553, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: 
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8866424670951132816, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3985,10 +4043,14 @@ PrefabInstance:
     - target: {fileID: 8866424672212618192, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1432134444}
     - target: {fileID: 8866424672212618192, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: BuyTickets
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866424672212618192, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOptionsView, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
@@ -4043,10 +4105,11 @@ MonoBehaviour:
   roadGameModel: {fileID: 1584197440}
   characteristicsGameModel: {fileID: 0}
   classificationGameModel: {fileID: 0}
-  statsModel: {fileID: 0}
+  statsModel: {fileID: 1584197442}
   equialityGameModel: {fileID: 0}
-  SequenceGameModel: {fileID: 1584197439}
-  ticketModel: {fileID: 0}
+  sequenceGameModel: {fileID: 1584197439}
+  additionGameModel: {fileID: 0}
+  ticketModel: {fileID: 1584197441}
 --- !u!1001 &1812698259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4380,6 +4443,22 @@ PrefabInstance:
     - target: {fileID: 3903905433293968537, guid: a27eeb02770264249bceefa19acc431e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameOptionsView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188651228368014382, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1432134444}
+    - target: {fileID: 8188651228368014382, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReloadGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188651228368014382, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOptionsView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188651228368014382, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: SequenceGameScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a27eeb02770264249bceefa19acc431e, type: 3}

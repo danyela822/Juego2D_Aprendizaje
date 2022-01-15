@@ -42,14 +42,14 @@ public class EquialityGameController : Reference{
     float signX;
     float signY;
 
-    //Numero de intentos que tiene el jugador para ganar el juego
-    int attempts = 3;
-
     //Numero para indicar el numero de veces que verifica la respuesta correcta
     public int counter;
 
     //
     bool isLastLevel;
+
+    //Numero de intentos que tiene el jugador para ganar el juego
+    int attempts = 3;
 
     //--------------- mostrar el canvas de solucion -------------------//
     public Text numberText;

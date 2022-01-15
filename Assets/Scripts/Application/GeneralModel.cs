@@ -10,6 +10,8 @@ public class GeneralModel : Reference
     public StatsModel statsModel;
 
     public EquialityGameModel equialityGameModel;
-    public SequenceGameModel SequenceGameModel;
+    public SequenceGameModel sequenceGameModel;
+    public AdditionGameModel additionGameModel;
+
     public TicketModel ticketModel;
 }

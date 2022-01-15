@@ -55,10 +55,19 @@ public class AdditionGameController : Reference{
     float signY;
 
     //nivel en el que el usuario aparece
-    int levelUser = 3;
+    int levelUser;
+
     //numero que me indica cuantos niveles tendra el juego
     int level = 0;
 
+    //Numero para indicar el numero de veces que verifica la respuesta correcta
+    public int counter;
+
+    //
+    bool isLastLevel;
+
+    //Numero de intentos que tiene el jugador para ganar el juego
+    int attempts = 3;
 
     //--------------- mostrar el canvas de solucion -------------------//
     public Text numberText;
@@ -84,6 +93,8 @@ public class AdditionGameController : Reference{
     //metodo que verifica en que nivel entra el usuario y dependiendo de eso
     //cambian las coorcenadas de los signos y objetos
     void chooseLevel(){
+
+        levelUser = App.generalModel.additionGameModel.GetLevel();
         switch (levelUser){
             //nivel 1
             case 1: 
@@ -141,8 +152,8 @@ public class AdditionGameController : Reference{
     public void GetImage(){
         
         int aux = 0;
-        int value = 0;
-        int image = 0;
+        int value;
+        int image;
         foreach (Operation operation in operationes){
             for(int i = 0; i < operation.operands.Count; i++){
                 if (aux < 2 || i == operation.operands.Count-1){
@@ -319,11 +330,113 @@ public class AdditionGameController : Reference{
         int auxAnswer = int.Parse(text);
         if (auxAnswer == correctAnswer){
             Debug.Log("You win");
-        }else{
+
+
+            //Si ya paso el nivel 1 puede pasar al 2
+            if (App.generalModel.additionGameModel.GetLevel() == 1)
+            {
+                App.generalModel.additionGameModel.UpdateLevel(2);
+            }
+            //Si ya paso el nivel 2 puede pasar al 3
+            else if (App.generalModel.additionGameModel.GetLevel() == 2)
+            {
+                App.generalModel.additionGameModel.UpdateLevel(3);
+            }
+            //Si ya termino los 3 niveles de ese Set, se comienza de nuevo
+            else if (App.generalModel.additionGameModel.GetLevel() == 3)
+            {
+                Debug.Log("Termino los 3");
+                isLastLevel = true;
+                //Actualizar el nivel a 1 para empezar otra nueva ronda
+                App.generalModel.additionGameModel.UpdateLevel(1);
+            }
+            SetPointsAndStars();
+        }
+        else
+        {
             Debug.Log("You lose");
+            CheckAttempt();
         }
     }
+    /// <summary>
+    /// Metodo que asigna los puntos y estrellas que ha ganado el jugador
+    /// </summary>
+    public void SetPointsAndStars()
+    {
+        //Declaracion de los puntos y estrellas que ha ganado el juegador
+        int points, stars, canvasStars;
 
+        //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
+        if (counter == 1)
+        {
+            points = App.generalModel.additionGameModel.GetPoints() + 30;
+            stars = App.generalModel.additionGameModel.GetTotalStars() + 3;
+            canvasStars = 3;
+            //Actualizar las veces que ha ganado 3 estrellas
+            //App.generalModel.characteristicsGameModel.UpdatePerfectWins(App.generalModel.characteristicsGameModel.GetPerfectWins() + 1);
+
+            //Actualizar las veces que ha ganado sin errores
+            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
+        }
+        //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
+        else if (counter == 2)
+        {
+            points = App.generalModel.additionGameModel.GetPoints() + 20;
+            stars = App.generalModel.additionGameModel.GetTotalStars() + 2;
+            canvasStars = 2;
+
+            //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
+            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(0);
+        }
+        //Si gana el juego con mas de 9 intentos suma 10 puntos y gana 1 estrella
+        else
+        {
+            points = App.generalModel.additionGameModel.GetPoints() + 10;
+            stars = App.generalModel.additionGameModel.GetTotalStars() + 1;
+            canvasStars = 1;
+
+            //Actualizar las veces que ha ganado sin errores
+            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(0);
+        }
+
+        //Actualiza los puntos y estrellas obtenidos
+        App.generalModel.additionGameModel.UpdatePoints(points);
+        App.generalModel.additionGameModel.UpdateTotalStars(stars);
+
+        //Mostrar el canvas que indica cuantas estrellas gano
+        if (isLastLevel)
+        {
+            Debug.Log("TERMINAMOS Y VAMOS A REGRESAR");
+            App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
+        }
+        else
+        {
+            App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
+        }
+
+        //Actualizar el numero de veces que ha seleccionado una opcion a cero
+        //App.generalModel.equialityGameModel.UpdateNumberAttempts(0);
+    }
+    /// <summary>
+    /// Metodo para contar y verificar los errores
+    /// </summary>
+    void CheckAttempt()
+    {
+        //Dismuir la cantidad de intentos
+        attempts--;
+
+        //Si se queda sin intentos pierde el juego y se le muestra la respuesta (POR AHORA)
+        if (attempts == 0)
+        {
+            //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
+            App.generalView.gameOptionsView.ShowLoseCanvas();
+        }
+        //Si aun le quedan intentos se muestra un mensaje en pantalla
+        else
+        {
+            App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
+        }
+    }
     //metodo que almacena los resultados para luego ser puestos en 
     //la interfax
     public void GetResult(){
