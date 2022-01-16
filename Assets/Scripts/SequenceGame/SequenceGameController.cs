@@ -55,7 +55,7 @@ public class SequenceGameController : Reference{
     int contToUnPaint = 0;
 
     //NIVEL EN QUE SE ENCUENTRA EL USUARIO 
-    int levelUser = 1;
+    int levelUser;
 
     //Numero de intentos que tiene el jugador para ganar el juego
     int attempts = 3;
@@ -78,6 +78,7 @@ public class SequenceGameController : Reference{
     void Start(){
 
         levelUser = App.generalModel.sequenceGameModel.GetLevel();
+        Debug.Log("NIVEL ACTUAL: " + levelUser);
         size = objectRow.GetComponent<BoxCollider2D>().size;
         contToPaint = 0;
 
@@ -377,6 +378,8 @@ public class SequenceGameController : Reference{
     //es la correcta
     public void CheckAnswerForUser(){
 
+        counter++;
+
         //indica que perdio 
         int i = 0;
         for (i = 0; i < answerToUserButton.Count; i++)
@@ -580,7 +583,7 @@ public class SequenceGameController : Reference{
         int points, stars, canvasStars;
 
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
-        if (counter == 3)
+        if (counter == 1)
         {
             points = App.generalModel.sequenceGameModel.GetPoints() + 30;
             stars = App.generalModel.sequenceGameModel.GetTotalStars() + 3;
@@ -592,7 +595,7 @@ public class SequenceGameController : Reference{
             //App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
         }
         //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
-        else if (counter > 3 && counter < 9)
+        else if (counter == 2)
         {
             points = App.generalModel.sequenceGameModel.GetPoints() + 20;
             stars = App.generalModel.sequenceGameModel.GetTotalStars() + 2;

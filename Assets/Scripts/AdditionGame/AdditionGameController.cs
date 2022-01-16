@@ -327,6 +327,8 @@ public class AdditionGameController : Reference{
     //sea la correcta
     public void CheckAnswer(string text){
 
+        counter++;
+
         int auxAnswer = int.Parse(text);
         if (auxAnswer == correctAnswer){
             Debug.Log("You win");

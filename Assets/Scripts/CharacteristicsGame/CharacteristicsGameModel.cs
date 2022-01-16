@@ -172,9 +172,9 @@ public class CharacteristicsGameModel : Reference
             //Una vez cumplido el logro se cambia el estado de este para no volver a contarlo
             PlayerPrefs.SetInt("GamePoints2", 1);
             PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
-            int logro8 = PlayerPrefs.GetInt("ThreeTundredPoints", 0);
+            int achievement = PlayerPrefs.GetInt("ThreeTundredPoints", 0);
 
-            if (logro8 == 3)
+            if (achievement == 3)
             {
                 if (!App.generalController.statsController.IsAchievements(8))
                 {
@@ -270,9 +270,9 @@ public class CharacteristicsGameModel : Reference
         //Debug.Log("A Jugado: " + countPlay);
         PlayerPrefs.SetInt("TimesPlayedGame2", value);
 
-        int logro1 = PlayerPrefs.GetInt("PlayOneLevel", 0);
+        int achievement = PlayerPrefs.GetInt("PlayOneLevel", 0);
 
-        if (logro1 == 3)
+        if (achievement == 3)
         {
             if (!App.generalController.statsController.IsAchievements(0))
             {

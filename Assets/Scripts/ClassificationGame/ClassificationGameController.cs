@@ -160,38 +160,6 @@ public class ClassificationGameController : Reference
                 App.generalModel.classificationGameModel.file.Save("P");
 
                 SetPointsAndStars();
-                /*if (counter == 1)
-                {
-                    App.generalModel.classificationGameModel.SetPoints(App.generalModel.classificationGameModel.GetPoints() + 30);
-                    App.generalModel.classificationGameModel.SetTotalStars(App.generalModel.classificationGameModel.GetTotalStars() + 3);
-
-                    //Veces que ha ganado 3 estrellas
-                    //countPerfectWins = PlayerPrefs.GetInt("GetThreeStars1", 0) + 1;
-                    //Debug.Log("GANO 3 ESTRELLAS: " + countPerfectWins);
-                    //PlayerPrefs.SetInt("GetThreeStars1", countPerfectWins);
-
-                    //Veces que ha ganadi sin errores
-                    //countPerfectGame = PlayerPrefs.GetInt("PerfectGame1", 0) + 1;
-                    //Debug.Log("Lleva: " + countPerfectGame);
-                    //PlayerPrefs.SetInt("PerfectGame1", countPerfectGame);
-                    //App.generalView.gameOptionsView.ShowWinCanvas(3);
-                }
-                else if (counter == 2)
-                {
-                    App.generalModel.classificationGameModel.SetPoints(App.generalModel.classificationGameModel.GetPoints() + 20);
-                    App.generalModel.classificationGameModel.SetTotalStars(App.generalModel.classificationGameModel.GetTotalStars() + 2);
-                    countPerfectGame = 0;
-                    //PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
-                    //App.generalView.gameOptionsView.ShowWinCanvas(2);
-                }
-                else
-                {
-                    App.generalModel.classificationGameModel.SetPoints(App.generalModel.classificationGameModel.GetPoints() + 10);
-                    App.generalModel.classificationGameModel.SetTotalStars(App.generalModel.classificationGameModel.GetTotalStars() + 1);
-                    countPerfectGame = 0;
-                    //PlayerPrefs.SetInt("PerfectGame2", countPerfectGame);
-                    //App.generalView.gameOptionsView.ShowWinCanvas(1);
-                }*/
             }
             else
             {
@@ -217,6 +185,7 @@ public class ClassificationGameController : Reference
             points = App.generalModel.classificationGameModel.totalPoints + 30;
             stars = App.generalModel.classificationGameModel.GetTotalStars() + 3;
             canvasStars = 3;
+
             //Actualizar las veces que ha ganado 3 estrellas
             App.generalModel.classificationGameModel.UpdatePerfectWins(App.generalModel.classificationGameModel.countPerfectWins + 1);
 

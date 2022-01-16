@@ -45,7 +45,7 @@ public class SequenceGameModel : Reference
     }
     public int GetLevel()
     {
-        level = PlayerPrefs.GetInt("Game3Levels", 0);
+        level = PlayerPrefs.GetInt("Game3Levels", 1);
         return level;
     }
     public void UpdateLevel(int level)

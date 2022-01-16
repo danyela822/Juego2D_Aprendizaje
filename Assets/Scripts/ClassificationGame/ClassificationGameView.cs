@@ -142,45 +142,10 @@ public class ClassificationGameView : Reference
         {
             //Determinar si el jugador gano o perdio
             App.generalController.classificationGameController.CheckAnswer();
-            //int numberStars = App.generalController.classificationGameController.CheckAnswer();
-
-            /*if (numberStars == 3)
-            {
-                App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
-            }
-            else if (numberStars == 2)
-            {
-                App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
-            }
-            else if (numberStars == 1)
-            {
-                App.generalView.gameOptionsView.ShowWinCanvas(numberStars);
-            }
-            else if (numberStars == -1)
-            {
-                App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
-                attempts--;
-            }
-            else
-            {
-                App.generalView.gameOptionsView.ShowLoseCanvas();
-            }*/
         }
     }
-    /*
-    * Metodo que oculta el canvas inicial del juego
-    */
-    public void StartGame()
+    public void ShowSolution()
     {
-        App.generalView.gameOptionsView.TutorialCanvas.enabled = false;
-    }
-
-    public void Click()
-    {
-        Debug.Log("ENTRO A CLICK");
-    }
-    public void UnClick()
-    {
-        Debug.Log("ENTRO A UNCLICK");
+        App.generalController.classificationGameController.ShowSolution();
     }
 }

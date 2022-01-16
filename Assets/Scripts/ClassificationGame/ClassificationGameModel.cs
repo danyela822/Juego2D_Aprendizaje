@@ -76,16 +76,17 @@ public class ClassificationGameModel : Reference
 
         return answers;
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="num"></param>
+    /// <returns></returns>
     public Sprite LoadAnswerImages(int num)
     {
-        Sprite correctAnswers = null;
-
         Debug.Log("CARGAR RESPUESTA DE SET: " + num);
-        if (file.classificationGameList.Contains(num))
-        {
-            Debug.Log("ENTRO A CARGAR RESPUESTA CORRECTA");
-            correctAnswers = Resources.Load<Sprite>("Classification/Correct_sets/correct_set_" + num);
-        }
+
+        Sprite correctAnswers = Resources.Load<Sprite>("Classification/Correct_sets/correct_set_" + num);
+        
         return correctAnswers;
     }
     /*
