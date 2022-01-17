@@ -372,7 +372,7 @@ public class AdditionGameController : Reference{
         if (counter == 1)
         {
             points = App.generalModel.additionGameModel.GetPoints() + 30;
-            stars = App.generalModel.additionGameModel.GetTotalStars() + 3;
+            stars = App.generalModel.additionGameModel.GetStars() + 3;
             canvasStars = 3;
             //Actualizar las veces que ha ganado 3 estrellas
             //App.generalModel.characteristicsGameModel.UpdatePerfectWins(App.generalModel.characteristicsGameModel.GetPerfectWins() + 1);
@@ -384,7 +384,7 @@ public class AdditionGameController : Reference{
         else if (counter == 2)
         {
             points = App.generalModel.additionGameModel.GetPoints() + 20;
-            stars = App.generalModel.additionGameModel.GetTotalStars() + 2;
+            stars = App.generalModel.additionGameModel.GetStars() + 2;
             canvasStars = 2;
 
             //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
@@ -394,7 +394,7 @@ public class AdditionGameController : Reference{
         else
         {
             points = App.generalModel.additionGameModel.GetPoints() + 10;
-            stars = App.generalModel.additionGameModel.GetTotalStars() + 1;
+            stars = App.generalModel.additionGameModel.GetStars() + 1;
             canvasStars = 1;
 
             //Actualizar las veces que ha ganado sin errores
@@ -403,7 +403,7 @@ public class AdditionGameController : Reference{
 
         //Actualiza los puntos y estrellas obtenidos
         App.generalModel.additionGameModel.UpdatePoints(points);
-        App.generalModel.additionGameModel.UpdateTotalStars(stars);
+        App.generalModel.additionGameModel.UpdateStars(stars);
 
         //Mostrar el canvas que indica cuantas estrellas gano
         if (isLastLevel)

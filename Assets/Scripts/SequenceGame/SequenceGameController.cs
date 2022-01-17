@@ -586,7 +586,7 @@ public class SequenceGameController : Reference{
         if (counter == 1)
         {
             points = App.generalModel.sequenceGameModel.GetPoints() + 30;
-            stars = App.generalModel.sequenceGameModel.GetTotalStars() + 3;
+            stars = App.generalModel.sequenceGameModel.GetStars() + 3;
             canvasStars = 3;
             //Actualizar las veces que ha ganado 3 estrellas
             //App.generalModel.characteristicsGameModel.UpdatePerfectWins(App.generalModel.characteristicsGameModel.GetPerfectWins() + 1);
@@ -598,7 +598,7 @@ public class SequenceGameController : Reference{
         else if (counter == 2)
         {
             points = App.generalModel.sequenceGameModel.GetPoints() + 20;
-            stars = App.generalModel.sequenceGameModel.GetTotalStars() + 2;
+            stars = App.generalModel.sequenceGameModel.GetStars() + 2;
             canvasStars = 2;
 
             //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
@@ -608,7 +608,7 @@ public class SequenceGameController : Reference{
         else
         {
             points = App.generalModel.sequenceGameModel.GetPoints() + 10;
-            stars = App.generalModel.sequenceGameModel.GetTotalStars() + 1;
+            stars = App.generalModel.sequenceGameModel.GetStars() + 1;
             canvasStars = 1;
 
             //Actualizar las veces que ha ganado sin errores
@@ -617,7 +617,7 @@ public class SequenceGameController : Reference{
 
         //Actualiza los puntos y estrellas obtenidos
         App.generalModel.sequenceGameModel.UpdatePoints(points);
-        App.generalModel.sequenceGameModel.UpdateTotalStars(stars);
+        App.generalModel.sequenceGameModel.UpdateStars(stars);
 
         //Mostrar el canvas que indica cuantas estrellas gano
         App.generalView.gameOptionsView.ShowWinCanvas(canvasStars,isLastLevel);

@@ -378,7 +378,7 @@ public class EquialityGameController : Reference{
         if (counter == 1)
         {
             points = App.generalModel.equialityGameModel.GetPoints() + 30;
-            stars = App.generalModel.equialityGameModel.GetTotalStars() + 3;
+            stars = App.generalModel.equialityGameModel.GetStars() + 3;
             canvasStars = 3;
             //Actualizar las veces que ha ganado 3 estrellas
             //App.generalModel.characteristicsGameModel.UpdatePerfectWins(App.generalModel.characteristicsGameModel.GetPerfectWins() + 1);
@@ -390,7 +390,7 @@ public class EquialityGameController : Reference{
         else if (counter == 2)
         {
             points = App.generalModel.equialityGameModel.GetPoints() + 20;
-            stars = App.generalModel.equialityGameModel.GetTotalStars() + 2;
+            stars = App.generalModel.equialityGameModel.GetStars() + 2;
             canvasStars = 2;
 
             //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
@@ -400,7 +400,7 @@ public class EquialityGameController : Reference{
         else
         {
             points = App.generalModel.equialityGameModel.GetPoints() + 10;
-            stars = App.generalModel.equialityGameModel.GetTotalStars() + 1;
+            stars = App.generalModel.equialityGameModel.GetStars() + 1;
             canvasStars = 1;
 
             //Actualizar las veces que ha ganado sin errores
@@ -409,7 +409,7 @@ public class EquialityGameController : Reference{
 
         //Actualiza los puntos y estrellas obtenidos
         App.generalModel.equialityGameModel.UpdatePoints(points);
-        App.generalModel.equialityGameModel.UpdateTotalStars(stars);
+        App.generalModel.equialityGameModel.UpdateStars(stars);
 
         //Mostrar el canvas que indica cuantas estrellas gano
         if (isLastLevel)

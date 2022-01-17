@@ -4,8 +4,8 @@ using UnityEngine;
 public class StatsModel : Reference
 {
     public FileLists file;
-    public int totalStars;
-    public int totalPoints;
+    //public int totalStars;
+    //public int totalPoints;
     string currentLeague;
 
     public Sprite LoadLeagueImage(string league)
@@ -42,18 +42,29 @@ public class StatsModel : Reference
     }
     public void UpdateTotalPoints(int value)
     {
-       PlayerPrefs.SetInt("TotalPointsGlobal",value);
+       PlayerPrefs.SetInt("TotalPoints",value);
        //totalPoints = PlayerPrefs.GetInt("TotalPointsGlobal", 0);
     }
     public int GetTotalPoints()
     {
-        totalPoints = PlayerPrefs.GetInt("TotalPointsGlobal", 0);
+        int totalPoints = PlayerPrefs.GetInt("TotalPoints", 0);
         return totalPoints;
     }
     public int GetTotalStars()
     {
-        int stars = PlayerPrefs.GetInt("TotalStarsGame1", 0) + PlayerPrefs.GetInt("TotalStarsGame2", 0);
-        return stars;
+        int totalStars = PlayerPrefs.GetInt("TotalStars", 0);
+
+        Debug.Log("TOTAL ESTRELLAS GETTOTALSTATS: " + totalStars);
+
+        return totalStars;
+    }
+    public void UpdateTotalStars(int stars)
+    {
+        PlayerPrefs.SetInt("TotalStars", PlayerPrefs.GetInt("TotalStars", 0) + stars);
+
+        //totalStars = PlayerPrefs.GetInt("TotalStars", 0);
+
+        //Debug.Log("TOTAL ESTRELLAS STATS: " + totalStars);
     }
     /*public List<int> CheckAchievements(int numero)
     {

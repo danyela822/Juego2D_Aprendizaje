@@ -20,6 +20,7 @@ public class StatsView : Reference
     }
     void ShowTotalStars()
     {
+        Debug.Log("ESTRELLAS EN VIEW: " + App.generalController.statsController.GetTotalStars().ToString());
         starsText.text = App.generalController.statsController.GetTotalStars().ToString();
     }
     /// <summary>

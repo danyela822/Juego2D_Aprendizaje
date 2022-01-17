@@ -11,7 +11,7 @@ public class TicketController : Reference
         //SetTickets(GetTickets() + 1);
         Debug.Log("HAY: " + App.generalModel.statsModel.GetTotalPoints() + " PUNTOS");
 
-        if (App.generalModel.statsModel.totalPoints >= 100)
+        if (App.generalModel.statsModel.GetTotalPoints() >= 100)
         {
             App.generalModel.ticketModel.SetTickets(App.generalModel.ticketModel.GetTickets() + 1);
             return true;

@@ -107,12 +107,12 @@ public class GamesMenuView : Reference
     public void ShowPoints()
     {
         starsTexts[0].text = "X " + App.generalModel.classificationGameModel.GetTotalStars().ToString();
-        starsTexts[1].text = "X " + App.generalModel.characteristicsGameModel.GetTotalStars().ToString();
-        starsTexts[2].text = "X " + App.generalModel.sequenceGameModel.GetTotalStars().ToString();
+        starsTexts[1].text = "X " + App.generalModel.characteristicsGameModel.GetStars().ToString();
+        starsTexts[2].text = "X " + App.generalModel.sequenceGameModel.GetStars().ToString();
         //starsTexts[3].text = "X " + App.generalModel.connected.GetTotalStars().ToString();
         //starsTexts[4].text = "X " + App.generalModel.roadGameModel.GetTotalStars().ToString();
-        starsTexts[5].text = "X " + App.generalModel.additionGameModel.GetTotalStars().ToString();
-        starsTexts[6].text = "X " + App.generalModel.equialityGameModel.GetTotalStars().ToString();
+        starsTexts[5].text = "X " + App.generalModel.additionGameModel.GetStars().ToString();
+        starsTexts[6].text = "X " + App.generalModel.equialityGameModel.GetStars().ToString();
         //starsTexts[7].text = "X " + App.generalModel.sets.GetTotalStars().ToString();
 
         pointsTexts[0].text = "X " + App.generalModel.classificationGameModel.GetPoints().ToString(); ;

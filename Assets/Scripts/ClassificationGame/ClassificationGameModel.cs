@@ -1,12 +1,6 @@
 using UnityEngine;
 public class ClassificationGameModel : Reference
 {
-    static Sprite[] images;
-    static string statement;
-    static string[] answers;
-
-    public int totalStars;
-    public int totalPoints;
     public int countPerfectWins;
     public FileLists file;
 
@@ -26,135 +20,134 @@ public class ClassificationGameModel : Reference
             return false;
         }
     }
-    /*
-    * Metodo para cargar y guardar todas la imagnes que necesita el juego
-    */
-    public Sprite[] LoadImages(int numero)
+    /// <summary>
+    /// Metodo para cargar todas la imagnes que necesita el juego
+    /// </summary>
+    /// <param name="number">Numero del conjunto de imagenes</param>
+    /// <returns>Array de Sprites con las imagenes de conjunto indicado</returns>
+    public Sprite[] LoadImages(int number)
     {
         //Cargar y guardar un set de imagenes en un array
-        images = Resources.LoadAll<Sprite>("Classification/set_" + (numero));
-
-        //file.Save("P");
-        return images;
+        return Resources.LoadAll<Sprite>("Classification/set_" + (number));
     }
-    /*
-    * Metodo para cargar todos los enunciados que deben acompañar a cada nivel
-    */
-    public string LoadTexts(int numero)
+    /// <summary>
+    /// Metodo para cargar todos los enunciados que deben acompañar a cada nivel
+    /// </summary>
+    /// <param name="number">Numero del conjunto de imagenes</param>
+    /// <returns>String con el enunciado del conjunto indicado</returns>
+    public string LoadTexts(int number)
     {
         //Pasar la ruta del archivo y el nombre del archivo que contiene los enunciados requeridos para cada nivel
         TextAsset textAsset = Resources.Load("Files/statements_sets") as TextAsset;
 
         string text = textAsset.text;
         
-        statement = text.Split('\n')[numero];
-
-        return statement;
+        //Seleccionar el enunciado
+        return text.Split('\n')[number]; ;
     }
-    /*
-    * Metodo para cargar y guardar las respuestas de cada nivel
-    */
-    public string[] LoadAnswers(int numero)
+    /// <summary>
+    /// Metodo para cargar las respuestas de cada nivel
+    /// </summary>
+    /// <param name="number">Numero del conjunto de imagenes</param>
+    /// <returns>Array de strings con las respuestas del juego</returns>
+    public string[] LoadAnswers(int number)
     {
         //Pasar la ruta del archivo y el nombre del archivo que contiene las respuestas requeridas para cada nivel
         TextAsset textAsset = Resources.Load("Files/correct_sets") as TextAsset;
 
         string allAnswers = textAsset.text;
         string[] values;
-        string[] values2;
-
+        string[] answers;
 
         values = allAnswers.Split('.');
-        values2 = values[numero].Split(',');
+        answers = values[number].Split(',');
 
-        for (int j = 0; j < values2.Length; j++)
+        for (int j = 0; j < answers.Length; j++)
         {
-            values2[j].TrimEnd('.');
+            answers[j].TrimEnd('.');
         }
-        answers = values2;
-
 
         return answers;
     }
     /// <summary>
-    /// 
+    /// Metodo para cargar la imagen de la respuesta correcta
     /// </summary>
-    /// <param name="num"></param>
-    /// <returns></returns>
-    public Sprite LoadAnswerImages(int num)
+    /// <param name="number">Numero del conjunto de imagenes</param>
+    /// <returns>Spritr de la respuesta correcta</returns>
+    public Sprite LoadAnswerImages(int number)
     {
-        Debug.Log("CARGAR RESPUESTA DE SET: " + num);
+        Debug.Log("CARGAR RESPUESTA DE SET: " + number);
 
-        Sprite correctAnswers = Resources.Load<Sprite>("Classification/Correct_sets/correct_set_" + num);
-        
-        return correctAnswers;
+        return Resources.Load<Sprite>("Classification/Correct_sets/correct_set_" + number); ;
     }
-    /*
-    * 
-    */
+    /// <summary>
+    /// Metodo que devuelve la cantidad total de estrellas que se han obtenido en este juego
+    /// </summary>
+    /// <returns> Int de la cantidad de estrellas </returns>
     public int GetTotalStars()
     {
-        totalStars = PlayerPrefs.GetInt("TotalStarsGame1", 0);
-        //Debug.Log("STARS HASTA AHORA: " + totalStars);
-        return totalStars;
+        return PlayerPrefs.GetInt("StarsGame1", 0); ;
     }
-    /*
-     * 
-     */
+    /// <summary>
+    /// Metodo que actualiza la cantidad de estrellas que han obtenido en este juego
+    /// </summary>
+    /// <param name="stars">Cantidad de estrellas para agregar</param>
     public void UpdateTotalStars(int stars)
     {
-        PlayerPrefs.SetInt("TotalStarsGame1", stars);
-        //Debug.Log("STARS EN SET: " + stars);
-        App.generalModel.statsModel.totalStars += GetTotalStars();
+        PlayerPrefs.SetInt("StarsGame1", stars);
+
+        //Actualizar la cantidad total de estrellas
+        App.generalModel.statsModel.UpdateTotalStars(stars);
     }
-    /*
-     * 
-     */
+    /// <summary>
+    /// Metodo que devuelve la cantidad total de puntos que se han obtenido en este juego
+    /// </summary>
+    /// <returns> Int de la cantidad de puntos </returns>
     public int GetPoints()
     {
-        totalPoints = PlayerPrefs.GetInt("TotalPointsGame1", 0);
-        //Debug.Log("PUNTOS HASTA AHORA CLASSIFICATION: "+totalPoints);
-        /*if(totalPoints >= 200 && PlayerPrefs.GetInt("GamePoints1",0) == 0)
-        {
-            PlayerPrefs.SetInt("GamePoints1", 1);
-            PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
-        }*/
-        if (totalPoints >= 100 && (App.generalModel.statsModel.totalPoints / 100 == 3))
-        {
-            //Una vez cumplido el logro se cambia el estado de este para no volver a contarlo
-            //PlayerPrefs.SetInt("GamePoints2", 1);
-            if (!App.generalController.statsController.IsAchievements(8))
-            {
-                App.generalController.statsController.DeleteAchievements(8);
-            }
-
-            //PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
-        }
-        return totalPoints;
+        return PlayerPrefs.GetInt("PointsGame1", 0);
     }
-    /*
-     * 
-     */
+    /// <summary>
+    /// Metodo que actualiza la cantidad de puntos que han obtenido en este juego
+    /// </summary>
+    /// <param name="value">Cantidad de puntos a sumar</param>
     public void UpdatePoints(int value)
     {
-        PlayerPrefs.SetInt("TotalPointsGame1", PlayerPrefs.GetInt("TotalPointsGame1", 0) + value);
-        totalPoints = PlayerPrefs.GetInt("TotalPointsGame1", 0);
-        Debug.Log("LLEVA ESTOS PUNTOS: " + totalPoints);
-        App.generalModel.statsModel.UpdateTotalPoints(App.generalModel.statsModel.GetTotalPoints() + totalPoints);
+        PlayerPrefs.SetInt("PointsGame1", value);
+        
+        App.generalModel.statsModel.UpdateTotalPoints(App.generalModel.statsModel.GetTotalPoints() + GetPoints());
 
         //Verificar si ya cumplio con el logro de sumar mas de 300 puntos en este juego
-        if (totalPoints >= 100 && PlayerPrefs.GetInt("GamePoints1", 0) == 0)
+        if (GetPoints() >= 30)
         {
-            //Una vez cumplido el logro se cambia el estado de este para no volver a contarlo
-            PlayerPrefs.SetInt("GamePoints1", 1);
-            PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
-            int logro8 = PlayerPrefs.GetInt("ThreeTundredPoints", 0);
-
-            if (logro8 == 3)
+            if(PlayerPrefs.GetInt("hola",0) == 0)
             {
-                if (!App.generalController.statsController.IsAchievements(8))
+                PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
+                PlayerPrefs.SetInt("hola", 1);
+
+            }
+
+            if (!App.generalController.statsController.IsAchievements(8))
+            {
+                //PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
+
+                Debug.Log("8 VAAAAAAAAAAA ENNNNNNNNNNNN: " + PlayerPrefs.GetInt("ThreeTundredPoints", 0));
+
+                if (PlayerPrefs.GetInt("ThreeTundredPoints", 0) == 2)
                 {
                     App.generalController.statsController.DeleteAchievements(8);
+                }
+
+            }
+            else if (!App.generalController.statsController.IsAchievements(9))
+            {
+                //PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
+
+                Debug.Log("9 VAAAAAAAAAAA ENNNNNNNNNNNN: " + PlayerPrefs.GetInt("ThreeTundredPoints", 0));
+
+                if (PlayerPrefs.GetInt("ThreeTundredPoints", 0) == 4)
+                {
+                    App.generalController.statsController.DeleteAchievements(9);
                 }
             }
         }
@@ -162,22 +155,24 @@ public class ClassificationGameModel : Reference
     /// <summary>
     /// Metodo que devuelve la cantidad de veces que ha jugado
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Int de la cantidad de veces que ha jugado este juego</returns>
     public int GetTimesPlayed()
     {
         return PlayerPrefs.GetInt("TimesPlayedGame1", 0);
     }
+    /// <summary>
+    /// Metodo que actuliza la cantidad de veces que ha jugado este juego
+    /// </summary>
+    /// <param name="value">valor a incrementar</param>
     public void UpdateTimesPlayed(int value)
     {
-        // countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
-        PlayerPrefs.SetInt("PlayOneLevel", PlayerPrefs.GetInt("PlayOneLevel", 0) + 1);
-
-        //Debug.Log("A Jugado: " + countPlay);
         PlayerPrefs.SetInt("TimesPlayedGame1", value);
 
-        int logro1 = PlayerPrefs.GetInt("PlayOneLevel", 0);
+        PlayerPrefs.SetInt("PlayOneLevel", PlayerPrefs.GetInt("PlayOneLevel", 0) + 1);
 
-        if (logro1 == 3)
+        int achievement_1 = PlayerPrefs.GetInt("PlayOneLevel", 0);
+
+        if (achievement_1 == 3)
         {
             if (!App.generalController.statsController.IsAchievements(0))
             {
@@ -186,14 +181,24 @@ public class ClassificationGameModel : Reference
         }
     }
     /// <summary>
+    /// Metodo que devuelve la cantidad de veces que ha ganado 3 estrellas
+    /// </summary>
+    /// <returns>Int de la cantidad de veces que ha obtenido 3 estrellas</returns>
+    public int GetPerfectWins()
+    {
+        return PlayerPrefs.GetInt("GetThreeStars1", 0);
+    }
+    /// <summary>
     /// Metodo que actualiza la cantidad de veces que ha ganado 3 estrellas
     /// </summary>
     /// <param name="value">Cantidad de veces que ha ganado 3 estrellas</param>
     public void UpdatePerfectWins(int value)
     {
         PlayerPrefs.SetInt("GetThreeStars1", PlayerPrefs.GetInt("GetThreeStars1", 0) + value);
+
         countPerfectWins = PlayerPrefs.GetInt("GetThreeStars1", 0);
-        Debug.Log("LLEVA: " + countPerfectWins + " PERFECTAS");
+
+        //Debug.Log("LLEVA: " + countPerfectWins + " PERFECTAS");
 
         if (countPerfectWins == 3)
         {
@@ -207,6 +212,37 @@ public class ClassificationGameModel : Reference
             if (!App.generalController.statsController.IsAchievements(2))
             {
                 App.generalController.statsController.DeleteAchievements(2);
+            }
+        }
+    }
+    /// <summary>
+    /// Metodo que devuelve la cantidad de veces que ha ganado un juego de forma perfecta
+    /// </summary>
+    /// <returns></returns>
+    public int GetPerfectGame()
+    {
+        return PlayerPrefs.GetInt("PerfectGame1", 0);
+    }
+    /// <summary>
+    /// Metodo que actualiza la cantidad de veces que ha ganado un juego de forma perfecta
+    /// </summary>
+    /// <param name="value"></param>
+    public void UpdatePerfectGame(int value)
+    {
+        PlayerPrefs.SetInt("PerfectGame1", value);
+
+        if (GetPerfectGame() == 3)
+        {
+            if (!App.generalController.statsController.IsAchievements(6))
+            {
+                App.generalController.statsController.DeleteAchievements(6);
+            }
+        }
+        if (GetPerfectGame() == 10)
+        {
+            if (!App.generalController.statsController.IsAchievements(7))
+            {
+                App.generalController.statsController.DeleteAchievements(7);
             }
         }
     }

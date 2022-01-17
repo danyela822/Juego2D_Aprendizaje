@@ -3549,6 +3549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f34c94d6796b54496afc521bc6ab03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countPerfectWins: 0
 --- !u!114 &1584197440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3586,9 +3587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa51b567cabdaf4b83221225682945b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  file: {fileID: 0}
-  totalStars: 0
-  totalPoints: 0
+  file: {fileID: 11400000, guid: 83f75b461f443af4ebe2b0eb4a4d15b8, type: 2}
 --- !u!1 &1654532186
 GameObject:
   m_ObjectHideFlags: 0

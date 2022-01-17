@@ -182,7 +182,7 @@ public class ClassificationGameController : Reference
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
         if (counter == 1)
         {
-            points = App.generalModel.classificationGameModel.totalPoints + 30;
+            points = App.generalModel.classificationGameModel.GetPoints() + 30;
             stars = App.generalModel.classificationGameModel.GetTotalStars() + 3;
             canvasStars = 3;
 
@@ -190,28 +190,28 @@ public class ClassificationGameController : Reference
             App.generalModel.classificationGameModel.UpdatePerfectWins(App.generalModel.classificationGameModel.countPerfectWins + 1);
 
             //Actualizar las veces que ha ganado sin errores
-            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
+            App.generalModel.classificationGameModel.UpdatePerfectGame(App.generalModel.classificationGameModel.GetPerfectGame() + 1);
             //Debug.Log("LLEVA: " + PlayerPrefs.GetInt("PerfectGame2", 0) + " JUEGO(S) PERFECTO(S)");
         }
         //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
         else if (counter == 2)
         {
-            points = App.generalModel.classificationGameModel.totalPoints + 20;
+            points = App.generalModel.classificationGameModel.GetPoints() + 20;
             stars = App.generalModel.classificationGameModel.GetTotalStars() + 2;
             canvasStars = 2;
 
             //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
-            //App.generalModel.classificationGameModel.UpdatePerfectGame(0);
+            App.generalModel.classificationGameModel.UpdatePerfectGame(0);
         }
         //Si gana el juego con mas de 9 intentos suma 10 puntos y gana 1 estrella
         else
         {
-            points = App.generalModel.classificationGameModel.totalPoints + 10;
+            points = App.generalModel.classificationGameModel.GetPoints() + 10;
             stars = App.generalModel.classificationGameModel.GetTotalStars() + 1;
             canvasStars = 1;
 
             //Actualizar las veces que ha ganado sin errores
-            //App.generalModel.classificationGameModel.UpdatePerfectGame(0);
+            App.generalModel.classificationGameModel.UpdatePerfectGame(0);
         }
 
         //Actualiza los puntos y estrellas obtenidos

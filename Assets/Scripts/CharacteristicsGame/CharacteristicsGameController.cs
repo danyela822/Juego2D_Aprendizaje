@@ -194,21 +194,21 @@ public class CharacteristicsGameController : Reference
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
         if (counter == 1)
         {
-            points = App.generalModel.characteristicsGameModel.totalPoints + 30;
-            stars = App.generalModel.characteristicsGameModel.GetTotalStars() + 3;
+            points = App.generalModel.characteristicsGameModel.GetPoints() + 30;
+            stars = App.generalModel.characteristicsGameModel.GetStars() + 3;
             canvasStars = 3;
             //Actualizar las veces que ha ganado 3 estrellas
             App.generalModel.characteristicsGameModel.UpdatePerfectWins(App.generalModel.characteristicsGameModel.countPerfectWins + 1);
 
             //Actualizar las veces que ha ganado sin errores
-            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
+            App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
             //Debug.Log("LLEVA: " + PlayerPrefs.GetInt("PerfectGame2", 0) + " JUEGO(S) PERFECTO(S)");
         }
         //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
         else if (counter == 2)
         {
-            points = App.generalModel.characteristicsGameModel.totalPoints + 20;
-            stars = App.generalModel.characteristicsGameModel.GetTotalStars() + 2;
+            points = App.generalModel.characteristicsGameModel.GetPoints() + 20;
+            stars = App.generalModel.characteristicsGameModel.GetStars() + 2;
             canvasStars = 2;
 
             //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
@@ -217,8 +217,8 @@ public class CharacteristicsGameController : Reference
         //Si gana el juego con mas de 9 intentos suma 10 puntos y gana 1 estrella
         else
         {
-            points = App.generalModel.characteristicsGameModel.totalPoints + 10;
-            stars = App.generalModel.characteristicsGameModel.GetTotalStars() + 1;
+            points = App.generalModel.characteristicsGameModel.GetPoints() + 10;
+            stars = App.generalModel.characteristicsGameModel.GetStars() + 1;
             canvasStars = 1;
 
             //Actualizar las veces que ha ganado sin errores
@@ -227,7 +227,7 @@ public class CharacteristicsGameController : Reference
 
         //Actualiza los puntos y estrellas obtenidos
         App.generalModel.characteristicsGameModel.UpdatePoints(points);
-        App.generalModel.characteristicsGameModel.UpdateTotalStars(stars);
+        App.generalModel.characteristicsGameModel.UpdateStars(stars);
 
         //Mostrar el canvas que indica cuantas estrellas gano
         App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
