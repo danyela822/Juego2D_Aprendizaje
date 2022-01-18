@@ -13,6 +13,8 @@ public class SetsGameView : Reference
 
     public Canvas tryCanvas;
 
+    public Canvas optionCanvas;
+
     public Canvas loseCanvas;
     //Canvas que muestra el contenido inicial del juego
     public Canvas startCanvas;
@@ -27,7 +29,7 @@ public class SetsGameView : Reference
         string nameImage = button.image.sprite.name;
 
         //Desactivar el boton que se ha presionado
-        button.interactable = false;
+        //button.interactable = false;
 
         //Guardar el nombre de la imagen
         App.generalController.setsGameController.CheckAnswer(nameImage);
@@ -41,6 +43,12 @@ public class SetsGameView : Reference
         startCanvas.GetComponent<Canvas>().enabled = false;
     }
 
+    public void TextGame(string text)
+    {
+        startCanvas.GetComponent<Canvas>().enabled = true;
+        message.text = text;
+    }
+
     public void LoseCanvas ()
     {
         loseCanvas.GetComponent<Canvas>().enabled = false;
@@ -50,4 +58,27 @@ public class SetsGameView : Reference
     {
         tryCanvas.GetComponent<Canvas>().enabled = false;
     }
+
+    public void ContinueGame ()
+    {
+        if(App.generalController.setsGameController.ReturnLevel() < 7)
+        {
+            App.generalView.gameOptionsView.WinCanvas.enabled = false;
+            loseCanvas.enabled = false;
+            App.generalController.setsGameController.DesativatePanels();
+            App.generalController.setsGameController.StartGame();
+        }
+        else
+        {
+            App.generalView.gameOptionsView.BackGameLeves();
+        }
+        
+    }
+
+    /*public void OptionCanvas()
+    {
+        optionCanvas.GetComponent<Canvas>().enabled = false;
+        App.generalController.setsGameController.SelectQuestionType();
+        startCanvas.enabled = true;
+    }*/
 }
