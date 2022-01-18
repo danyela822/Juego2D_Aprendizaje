@@ -999,6 +999,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145339699}
   m_CullTransparentMesh: 1
+--- !u!114 &167076816 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8188651228368014382, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+  m_PrefabInstance: {fileID: 588704194}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &176708282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,6 +1130,7 @@ MonoBehaviour:
   equialityGameController: {fileID: 0}
   sequenceGameController: {fileID: 0}
   setsGameController: {fileID: 66307567}
+  ticketController: {fileID: 0}
 --- !u!4 &180679321
 Transform:
   m_ObjectHideFlags: 0
@@ -2143,9 +2155,17 @@ MonoBehaviour:
   LoseCanvas: {fileID: 0}
   MistakeCanvas: {fileID: 611526331}
   WarningCanvas: {fileID: 0}
+  TicketsCanvas: {fileID: 0}
+  BuyCanvas: {fileID: 0}
   imageWin: {fileID: 0}
-  correctAnswer: {fileID: 0}
-  textMistake: {fileID: 1755027346}
+  BuyTicketsWindow: {fileID: 0}
+  NoneTicketsWindow: {fileID: 0}
+  UsedTicketsWindow: {fileID: 0}
+  mistakeText: {fileID: 0}
+  winText: {fileID: 0}
+  ticketsText: {fileID: 0}
+  backButton: {fileID: 1763177768}
+  continueButton: {fileID: 167076816}
 --- !u!114 &682534578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2912,6 +2932,11 @@ MonoBehaviour:
   characteristicsGameModel: {fileID: 0}
   classificationGameModel: {fileID: 0}
   statsModel: {fileID: 0}
+  equialityGameModel: {fileID: 0}
+  sequenceGameModel: {fileID: 0}
+  additionGameModel: {fileID: 0}
+  setsGameModel: {fileID: 1025752283}
+  ticketModel: {fileID: 0}
 --- !u!4 &966928270
 Transform:
   m_ObjectHideFlags: 0
@@ -3093,6 +3118,51 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!1 &1025752282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1025752284}
+  - component: {fileID: 1025752283}
+  m_Layer: 0
+  m_Name: GameModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1025752283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025752282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9b1c86aefb70142b03e3730b3c6c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countPerfectWins: 0
+  file: {fileID: 0}
+--- !u!4 &1025752284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025752282}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3823.644, y: 998.53235, z: -1224.9247}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1035825498
 GameObject:
   m_ObjectHideFlags: 0
@@ -3910,17 +3980,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1755027346 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6844951109670539795, guid: a2287e0ccb0fba24fa2d2daad4be0fe4, type: 3}
-  m_PrefabInstance: {fileID: 575178219}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1755965651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4180,6 +4239,17 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!114 &1763177768 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3903905433293968537, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+  m_PrefabInstance: {fileID: 588704194}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1782541636
 GameObject:
   m_ObjectHideFlags: 0

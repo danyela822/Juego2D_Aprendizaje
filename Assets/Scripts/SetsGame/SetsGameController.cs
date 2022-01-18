@@ -83,7 +83,7 @@ public class SetsGameController : Reference
     }
     public void StartGame()
     {
-        print("start game "+level);
+        print("start game "+App.generalModel.setsGameModel.GetLevel());
         
         panelImages = new List<Sprite>();
         buttonImages = new List<Sprite>();
@@ -370,6 +370,42 @@ public class SetsGameController : Reference
             numberTry = 3;
 
             print("Respuesta correcta");
+
+
+            //Si ya paso el nivel 1 puede pasar al 2
+           /*if (App.generalModel.characteristicsGameModel.GetLevel() == 1)
+            {
+                //Eliminar el numero del conjunto de imagenes y textos
+                //App.generalModel.characteristicsGameModel.file.imageListGame2_1.Remove(number);
+
+                //Actualizar el nivel del juego
+                App.generalModel.characteristicsGameModel.UpdateLevel(2);
+            }
+            //Si ya paso el nivel 2 puede pasar al 3
+            else if (App.generalModel.characteristicsGameModel.GetLevel() == 2)
+            {
+                //Eliminar el numero del conjunto de imagenes y textos
+                //App.generalModel.characteristicsGameModel.file.imageListGame2_2.Remove(number);
+
+                //Actualizar el nivel del juego
+                App.generalModel.characteristicsGameModel.UpdateLevel(3);
+
+            }
+            //Si ya termino los 3 niveles de ese Set, se comienza de nuevo
+            else if (App.generalModel.characteristicsGameModel.GetLevel() == 3)
+            {
+                Debug.Log("Termino los 3");
+
+                //Eliminar el numero del conjunto de imagenes y textos
+                //App.generalModel.characteristicsGameModel.file.imageListGame2_3.Remove(number);
+
+                //Actualizar el nivel a 1 para empezar otra nueva ronda
+                App.generalModel.characteristicsGameModel.UpdateLevel(1);
+
+                //Indicar que este es el ultimo nivel
+                //isLastLevel = true;
+
+            }*/
         }
         else{
             print("respuesta incorrecta");

@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacteristicsGameModel : Reference
+public class SetsGameModel : Reference
 {
     public int countPerfectWins;
     public FileLists file;
@@ -65,10 +67,10 @@ public class CharacteristicsGameModel : Reference
     /// <param name="number">Numero del conjunto de imagenes</param>
     /// <param name="level">Nivel del juego</param>
     /// <returns>String con el enunciado del nivel indicado</returns>
-    public string LoadTexts(int number,int level)
+    public string LoadTexts(int number, int level)
     {
         //Pasar la ruta del archivo y el nombre del archivo que contiene los enunciados requeridos para cada nivel
-        TextAsset textAsset = Resources.Load("Files/Characteristics/Texts/characteristics_level_"+level) as TextAsset;
+        TextAsset textAsset = Resources.Load("Files/Characteristics/Texts/characteristics_level_" + level) as TextAsset;
 
         //Capturar el texto del archivo
         string text = textAsset.text;
@@ -82,7 +84,7 @@ public class CharacteristicsGameModel : Reference
     /// <returns> Int de la cantidad de estrellas </returns>
     public int GetStars()
     {
-        return PlayerPrefs.GetInt("StarsGame2", 0);
+        return PlayerPrefs.GetInt("StarsGame8", 0);
     }
     /// <summary>
     /// Metodo que actualiza la cantidad de estrellas que han obtenido en este juego
@@ -90,7 +92,7 @@ public class CharacteristicsGameModel : Reference
     /// <param name="stars">Cantidad de estrellas para agregar</param>
     public void UpdateStars(int stars)
     {
-        PlayerPrefs.SetInt("StarsGame2", stars);
+        PlayerPrefs.SetInt("StarsGame8", stars);
 
         App.generalModel.statsModel.UpdateTotalStars(stars);
     }
@@ -100,7 +102,7 @@ public class CharacteristicsGameModel : Reference
     /// <returns> Int de la cantidad de puntos </returns>
     public int GetPoints()
     {
-        return PlayerPrefs.GetInt("PointsGame2", 0);
+        return PlayerPrefs.GetInt("PointsGame8", 0);
     }
     /// <summary>
     /// Metodo que actualiza la cantidad de puntos que han obtenido en este juego
@@ -108,7 +110,7 @@ public class CharacteristicsGameModel : Reference
     /// <param name="value">Cantidad de puntos a sumar</param>
     public void UpdatePoints(int value)
     {
-        PlayerPrefs.SetInt("PointsGame2", value);
+        PlayerPrefs.SetInt("PointsGame8", value);
 
         App.generalModel.statsModel.UpdateTotalPoints(App.generalModel.statsModel.GetTotalPoints() + GetPoints());
 
@@ -148,12 +150,12 @@ public class CharacteristicsGameModel : Reference
         }
     }
     /// <summary>
-     /// Metodo que devuelve la cantidad de veces que ha jugado
-     /// </summary>
-     /// <returns>Int de la cantidad de veces que ha jugado este juego</returns>
+    /// Metodo que devuelve la cantidad de veces que ha jugado
+    /// </summary>
+    /// <returns>Int de la cantidad de veces que ha jugado este juego</returns>
     public int GetTimesPlayed()
     {
-        return PlayerPrefs.GetInt("TimesPlayedGame2", 0);
+        return PlayerPrefs.GetInt("TimesPlayedGame8", 0);
     }
     /// <summary>
     /// Metodo que actuliza la cantidad de veces que ha jugado este juego
@@ -161,7 +163,7 @@ public class CharacteristicsGameModel : Reference
     /// <param name="value">valor a incrementar</param>
     public void UpdateTimesPlayed(int value)
     {
-        PlayerPrefs.SetInt("TimesPlayedGame2", value);
+        PlayerPrefs.SetInt("TimesPlayedGame8", value);
 
         PlayerPrefs.SetInt("PlayOneLevel", PlayerPrefs.GetInt("PlayOneLevel", 0) + 1);
 
@@ -181,7 +183,7 @@ public class CharacteristicsGameModel : Reference
     /// <returns>Int de la cantidad de veces que ha obtenido 3 estrellas</returns>
     public int GetPerfectWins()
     {
-        return PlayerPrefs.GetInt("GetThreeStars2", 0);
+        return PlayerPrefs.GetInt("GetThreeStars8", 0);
     }
     /// <summary>
     /// Metodo que actualiza la cantidad de veces que ha ganado 3 estrellas
@@ -189,7 +191,7 @@ public class CharacteristicsGameModel : Reference
     /// <param name="value">Cantidad de veces que ha ganado 3 estrellas</param>
     public void UpdatePerfectWins(int value)
     {
-        PlayerPrefs.SetInt("GetThreeStars2", PlayerPrefs.GetInt("GetThreeStars2", 0) + value);
+        PlayerPrefs.SetInt("GetThreeStars8", PlayerPrefs.GetInt("GetThreeStars8", 0) + value);
 
         countPerfectWins = PlayerPrefs.GetInt("GetThreeStars2", 0);
 
@@ -217,7 +219,7 @@ public class CharacteristicsGameModel : Reference
     /// <returns></returns>
     public int GetPerfectGame()
     {
-        return PlayerPrefs.GetInt("PerfectGame2", 0);
+        return PlayerPrefs.GetInt("PerfectGame8", 0);
     }
     /// <summary>
     /// Metodo que actualiza la cantidad de veces que ha ganado un juego de forma perfecta
@@ -225,9 +227,9 @@ public class CharacteristicsGameModel : Reference
     /// <param name="value"></param>
     public void UpdatePerfectGame(int value)
     {
-        PlayerPrefs.SetInt("PerfectGame2", value);
+        PlayerPrefs.SetInt("PerfectGame8", value);
 
-        Debug.Log("LLEVA: "+GetPerfectGame()+" PERFECTOS");
+        Debug.Log("LLEVA: " + GetPerfectGame() + " PERFECTOS");
 
         if (GetPerfectGame() == 3)
         {
@@ -250,7 +252,7 @@ public class CharacteristicsGameModel : Reference
     /// <returns>Int del nivel del juego</returns>
     public int GetLevel()
     {
-        return PlayerPrefs.GetInt("Game2Levels", 1);
+        return PlayerPrefs.GetInt("Game8Levels", 1);
     }
     /// <summary>
     /// Metodo que actualiza el nivel del juego
@@ -258,6 +260,6 @@ public class CharacteristicsGameModel : Reference
     /// <param name="level">Nivel del juego</param>
     public void UpdateLevel(int level)
     {
-        PlayerPrefs.SetInt("Game2Levels", level);
-    }    
+        PlayerPrefs.SetInt("Game8Levels", level);
+    }
 }

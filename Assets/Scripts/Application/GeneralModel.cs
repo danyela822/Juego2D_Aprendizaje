@@ -12,6 +12,7 @@ public class GeneralModel : Reference
     public EquialityGameModel equialityGameModel;
     public SequenceGameModel sequenceGameModel;
     public AdditionGameModel additionGameModel;
+    public SetsGameModel setsGameModel;
 
     public TicketModel ticketModel;
 }
