@@ -18,8 +18,17 @@ public class ConnectedGameController : Reference
     public  GameObject[,] matrix;
     //Variable que almacena las coordenadas del punto de llegada 
     int [] arrivalPoint = new int [2];
-    static int totalPoints = 0;
-    int totalSteps = 5;
+    //static int totalPoints = 0;
+    //int totalSteps = 5;
+
+    //Puntos con cada color 
+    static int totalStepsLevel1;
+
+    static int totalStepsLevel2;
+
+    static int totalStepsLevel3;
+
+    static int level = 1;
 
     //Variables que almacenan la ultima posicion en la que quedo ubicado el objeto, con el fin de seguir desde ahi los movimientos futuros
     static Objects startPoint;
@@ -28,18 +37,21 @@ public class ConnectedGameController : Reference
     static Objects startPoint3;
 
     //Variables en las que se almacena la cantidad de movimientos realizados depediendo el color
-    static int totalMove1 = 0;
-    static int totalMove2 = 0;
-    static int totalMove3 = 0;
+    int totalMove1 = 0;
+    int totalMove2 = 0;
+    int totalMove3 = 0;
 
     //Variables empleadas para verificar si llego al punto indicado
     static bool finish1 = false;
     static bool finish2 = false;
     static bool finish3 = false;
+
+    static Objects[] totalStartPoints = new Objects[3];
     
 
-    void Awake()
+    /*void Awake()
     {
+        print("Awake");
         if(connectedGameController == null)
         {
             connectedGameController = this;
@@ -49,8 +61,12 @@ public class ConnectedGameController : Reference
         {
             Destroy(gameObject);
         }
-    }
+    }*/
     
+    public int ReturnLevel()
+    {
+        return level;
+    }
     /*
      * Metodo que dibuja en la pantalla la matriz
      */
@@ -137,11 +153,44 @@ public class ConnectedGameController : Reference
     // Metodo principal encargado de hacer los llamados correspondientes para generar el nivel
     public void CreateLevel()
     {
+        print("Create level "+level);
         GenerateArray();
         GenerateArrivalPoint();
-        totalPoints = RamdonNumber(2,4);
-        CreatePoints(totalPoints);
+        CreatePoints();
         LocateStartPoints();
+        ReiniciarConteoMovimiento();
+       
+    }
+
+    void ReiniciarConteoMovimiento()
+    {
+        totalMove1 = 0;
+        totalMove2 = 0;
+        totalMove3 = 0;
+    }
+
+    //Metodo que carga el texto inicial dando indicaciones
+    public void LoadText ()
+    {
+        string message;
+        message = "Conectados\n\n Llegue al punto Verde de acuerdo a las siguientes indicaciones:\n";
+        switch (level)
+        {
+            case 1:
+                message += "- Punto Amarillo con "+totalStepsLevel1;
+                break;
+            case 2: 
+                message += "- Punto Amarillo con "+totalStepsLevel1+
+                "\n- Punto Azul con "+totalStepsLevel2;
+                break;
+            case 3: 
+                message += "- Punto Amarillo con "+totalStepsLevel1+
+                "\n- Punto Azul con "+totalStepsLevel2+
+                "\n- Punto Rojo con "+totalStepsLevel3;
+                break;
+        }
+
+        App.generalView.connectedGameView.message.text = message;
     }
 
     //Metodo encargado de inicializar los puntos de la matriz logica
@@ -175,23 +224,102 @@ public class ConnectedGameController : Reference
     }
 
     //Metodo encargado de generar los puntos (colores o personajes) dependiendo la cantidad indicada (2 o 3)
-    public void CreatePoints(int cant)
+    public void CreatePoints()
     {
-        for (int i = 1; i < cant+1; i++)
+        switch (level)
         {
-            int [] finalPoint = GenerateSolution(totalSteps,i);
-            arrayObjects[finalPoint[0],finalPoint[1]].type = finalPoint[2];
+            case 1:
+                totalStepsLevel1 = RamdonNumber(5,8);
+                print("Total pasos amarillo: "+totalStepsLevel1);
+                CreatePointsLevel(1, totalStepsLevel1, 0);
+                break;
+            case 2: 
+                totalStepsLevel1 = RamdonNumber(5,7);
+                print("Total pasos amarillo: "+totalStepsLevel1);
+                
+                CreatePointsLevel(1, totalStepsLevel1, 0);
+
+                totalStepsLevel2 = RamdonNumber(3,6);
+                print("Total pasos azul: "+totalStepsLevel2);
+                
+                CreatePointsLevel(2, totalStepsLevel1, 1);
+                break;
+            case 3: 
+                totalStepsLevel1 = RamdonNumber(5,7);
+                print("Total pasos amarillo: "+totalStepsLevel1);
+
+                CreatePointsLevel(1, totalStepsLevel1, 0);
+
+                totalStepsLevel2 = RamdonNumber(3,6);
+                print("Total pasos azul: "+totalStepsLevel2);
+
+                CreatePointsLevel(2, totalStepsLevel1, 1);
+
+                totalStepsLevel3 = RamdonNumber(3,6);
+                print("Total pasos rojo: "+totalStepsLevel3);
+                
+                CreatePointsLevel(3, totalStepsLevel1, 2);
+                break;
         }
+    }
+
+    public void CreatePointsLevel(int type, int totalSteps, int index)
+    {
+        int [] finalPoint = GenerateSolution(totalSteps, type);
+
+        if(finalPoint == null)
+        {
+            print("Null");
+            CreateLevel();
+        }
+        else
+        {        
+            //if(CheckDistancePoints(finalPoint[0], finalPoint[1], arrivalPoint[0], arrivalPoint[1]))
+            //{
+            arrayObjects[finalPoint[0],finalPoint[1]].type = finalPoint[2];
+
+            totalStartPoints[index] = new Objects(finalPoint[0], finalPoint[1], finalPoint[2]);
+            /*}
+            else
+            {
+                print("no cumple con el requisito ");
+                CreateLevel();
+            }*/
+        }
+        
+           
+    }
+
+    // Metodo encargado de verificar que el punto final no quede muy cerca del punto de inicio
+    bool CheckDistancePoints(int startX, int startY, int finalX, int finalY)
+    {
+        bool approved = false;
+
+        if((finalX > startX+3 || finalX < startX-3) || (finalY > startY+2 || finalY < startY-2))
+        {
+            approved = true;
+        }
+        print("Hello "+approved);
+        return approved;
     }
 
     //Metodo encargado de generar una solucion por cada punto(color o personaje) con la cantidad de movimientos especificados
     public int [] GenerateSolution(int cantMove, int type)
     {
+        //poner condicion de parada 
         int posX = arrivalPoint[0];
         int posY = arrivalPoint[1];
+        int stop = 0;
 
-        while(cantMove >= 0)
+        bool centinela = true;
+
+        while(cantMove >= 0 && centinela)
         {
+            if(stop == 15)
+            {
+                centinela = false;
+            }
+            
             int option = RamdonNumber(1,5);
             if(option == 1)
             {
@@ -228,11 +356,18 @@ public class ConnectedGameController : Reference
                     cantMove --;
                 } 
             }
+            stop ++;
+            
+            print("cantidad mov "+ cantMove+" stop "+stop);
         }
 
-        int [] finalPosition = new int [] {posX,posY,type};
-
-        return finalPosition;
+        if(cantMove < 0)
+        {
+            int [] finalPosition = new int [] {posX,posY,type};
+            return finalPosition;
+        }
+        
+        return null;
     }
 
     //Metodo que encuentra los puntos iniciales y inicializa las variables correspondientes de acuerdo al tipo
@@ -399,7 +534,11 @@ public class ConnectedGameController : Reference
 
     void CheckEndGame()
     {
-        if(totalPoints == 2) 
+        if(level == 1)
+        {
+            OneTotalPoints();
+        }
+        else if(level == 2) 
         {
             TwoTotalPoints();
         }
@@ -409,6 +548,58 @@ public class ConnectedGameController : Reference
         }
     }
 
+    public void ReturnMoves(int type)
+    {
+        print("tipo para borrar "+type);
+        for (int i = 0; i < arrayRow; i++)
+        {
+            for (int j = 0; j < arrayCol; j++)
+            {
+                if(type == arrayObjects[i,j].type)
+                {
+                    arrayObjects[i,j].type = 0;
+                    PaintMatrix(i,j,0);
+                }
+            }
+        }
+        PaintStartPoints(type);
+    }
+
+    void PaintStartPoints(int type)
+    {
+        if(type == 1)
+        {   
+            PaintMatrix(totalStartPoints[0].x,totalStartPoints[0].y,type);
+            startPoint1.x = totalStartPoints[0].x;
+            startPoint1.y = totalStartPoints[0].y;
+            totalMove1 = 0;
+        }
+        else if(type == 2)
+        {
+            PaintMatrix(totalStartPoints[1].x,totalStartPoints[1].y,type);
+            startPoint2.x = totalStartPoints[1].x;
+            startPoint2.y = totalStartPoints[1].y;
+            totalMove2 = 0;
+        }
+        else
+        {
+            PaintMatrix(totalStartPoints[2].x,totalStartPoints[2].y,type);
+            startPoint3.x = totalStartPoints[2].x;
+            startPoint3.y = totalStartPoints[2].y;
+            totalMove3 = 0;
+        }
+    }
+
+    bool OneTotalPoints()
+    {
+        if(finish1)
+        {
+            print("Finalizo llego al punto verde");
+            CheckTotalMoves();
+            return true;
+        }
+        return false;
+    }
     bool TwoTotalPoints()
     {
         if(finish1 && finish2)
@@ -461,21 +652,55 @@ public class ConnectedGameController : Reference
         return false;
     }
     
+    void WinLevel()
+    {
+        App.generalView.gameOptionsView.WinCanvas.enabled = true;
+        level++;
+    }
+
     void CheckTotalMoves ()
     {
-        if(totalMove1 == totalSteps)
+        if(level == 1)
         {
-            print("Cumplio los pasos con el color amarillo");
+            CheckMovesLevel1();
         }
-        if(totalMove2 == totalSteps)
+        else if(level == 2)
         {
-            print("Cumplio los pasos con el color azul");
+            CheckMovesLevel2();
         }
-        if(totalMove3 == totalSteps)
+        else        
         {
-            print("Cumplio los pasos con el color rojo");
+            CheckMovesLevel3();
         }
     }
+
+    void CheckMovesLevel1()
+    {
+        if(totalMove1 == totalStepsLevel1)
+        {
+            print("Cumplio los pasos con el color amarillo");
+            WinLevel();
+        }
+    }
+    
+    void CheckMovesLevel2()
+    {
+        if(totalMove1 == totalStepsLevel1 && totalMove2 == totalStepsLevel2)
+        {
+            print("Cumplio los pasos con el color amarillo y azul");
+            WinLevel();
+        }
+    }
+
+    void CheckMovesLevel3()
+    {
+        if(totalMove1 == totalStepsLevel1 && totalMove2 == totalStepsLevel2 && totalMove3 == totalStepsLevel3)
+        {
+            print("Cumplio los pasos con el color amarillo y azul");
+            WinLevel();
+        }
+    }
+
     bool CheckPositionVolver(Objects [,] array,int posX, int posY, int type)
     {
         // Verifica que no se vaya salir de los limites 
