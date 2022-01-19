@@ -13,6 +13,14 @@ public class FileLists : ScriptableObject
     public List<int> imageListGame2_2;
     public List<int> imageListGame2_3;
 
+    public List<int> imageListGame8_1_1;
+    public List<int> imageListGame8_1_2;
+    public List<int> imageListGame8_1_3;
+
+    public List<int> imageListGame8_2_1;
+    public List<int> imageListGame8_2_2;
+    public List<int> imageListGame8_2_3;
+
     public List<int> achievementsList;
 
     public void Save(string fileName = null)

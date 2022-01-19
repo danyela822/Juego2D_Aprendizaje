@@ -41,7 +41,18 @@ public class Files : Reference
                 file.imageListGame2_2.Add(j);
                 file.imageListGame2_3.Add(j);
             }
+            for (int j = 1; j <= 3; j++)
+            {
+                //union
+                file.imageListGame8_1_1.Add(j);
+                file.imageListGame8_1_2.Add(j);
+                file.imageListGame8_1_3.Add(j);
 
+                //interseccion
+                file.imageListGame8_2_1.Add(j);
+                file.imageListGame8_2_2.Add(j);
+                file.imageListGame8_2_3.Add(j);
+            }
             
             achievements.Add(new Achievement(0,1,false));
 

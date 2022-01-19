@@ -13,41 +13,81 @@ public class SetsGameModel : Reference
     /// <param name="number">Numero del elemento de imagenes</param>
     /// <param name="level">Nivel del juego</param>
     /// <returns>Bool que indica si exsite o no ese elemento</returns>
-    public bool FileExist(int number, int level)
+    public bool FileExist(int number, int level,int type)
     {
-        switch (level)
+        if (type == 1)
         {
-            case 1:
-                //Verificar si el elemento del nivel 1 se encuentra en la lista
-                if (file.imageListGame2_1.Contains(number))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            case 2:
-                //Verificar si el elemento del nivel 2 se encuentra en la lista
-                if (file.imageListGame2_2.Contains(number))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            case 3:
-                //Verificar si el elemento del nivel 3 se encuentra en la lista
-                if (file.imageListGame2_3.Contains(number))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            default: return false;
+            switch (level)
+            {
+                case 1:
+                    //Verificar si el elemento del nivel 1 se encuentra en la lista
+                    if (file.imageListGame8_1_1.Contains(number))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case 2:
+                    //Verificar si el elemento del nivel 2 se encuentra en la lista
+                    if (file.imageListGame8_1_2.Contains(number))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case 3:
+                    //Verificar si el elemento del nivel 3 se encuentra en la lista
+                    if (file.imageListGame8_1_3.Contains(number))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                default: return false;
+            }
+        }
+        else
+        {
+            switch (level)
+            {
+                case 1:
+                    //Verificar si el elemento del nivel 1 se encuentra en la lista
+                    if (file.imageListGame8_2_1.Contains(number))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case 2:
+                    //Verificar si el elemento del nivel 2 se encuentra en la lista
+                    if (file.imageListGame8_2_2.Contains(number))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case 3:
+                    //Verificar si el elemento del nivel 3 se encuentra en la lista
+                    if (file.imageListGame8_2_3.Contains(number))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                default: return false;
+            }
         }
     }
     /// <summary>
@@ -56,10 +96,10 @@ public class SetsGameModel : Reference
     /// <param name="number">Numero del conjunto de imagenes</param>
     /// <param name="level">Nivel del juego</param>
     /// <returns>Array de Sprites con las imagenes del nivel indicado</returns>
-    public Sprite[] LoadImages(int number, int level)
+    public Sprite[] LoadImages(int number, int level,int type)
     {
         //Cargar y guardar un set de imagenes en un array
-        return Resources.LoadAll<Sprite>("Characteristics/Level_" + level + "/set_" + number); ;
+        return Resources.LoadAll<Sprite>("SetsGame/"+type+"/Level"+level+"/" + number); ;
     }
     /// <summary>
     /// Metodo para cargar todos los enunciados que deben acompañar a cada nivel

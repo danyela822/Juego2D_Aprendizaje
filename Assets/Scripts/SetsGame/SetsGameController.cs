@@ -28,11 +28,21 @@ public class SetsGameController : Reference
 
     int numberTry = 3;
 
-    static int level = 1;
+    int level = 1;
 
     int numberSet = 0;
 
-    void Awake()
+    static Sprite[] images;
+
+    int type = 1;
+
+    //
+    bool isLastLevel;
+
+    //Numero para indicar el numero de veces que verifica la respuesta correcta
+    public int counter;
+
+    /*void Awake()
     {
         if(setsGameController == null)
         {
@@ -75,6 +85,67 @@ public class SetsGameController : Reference
         {
             StartGame();
         }
+    }*/
+
+    //Numero para acceder a un conjunto de imagenes en especifico
+    int number;
+
+    private void Start()
+    {
+        BuildLevel();
+    }
+
+    /// <summary>
+    /// Busca e instancia la lista de imagenes y la lista de textos necesarias para crear el nivel
+    /// </summary>
+    public void BuildLevel()
+    {
+        panelImages = new List<Sprite>();
+        buttonImages = new List<Sprite>();
+        
+        //Obtener el nivel actual
+        level = App.generalModel.setsGameModel.GetLevel();
+
+        print("BuildLevel" + level);
+
+        //Numero random para seleccionar un conjunto de imagenes
+        number = Random.Range(1, 4);
+
+        //Variable que determina si existe el conjunto de imagenes y textos para ese nivel
+        bool exists = false;
+
+        //Ciclo para buscar el conjunto de imagenes y textos para ese nivel
+        while (!exists)
+        {
+            //Se determina si es posible cargar el conjunto de imagenes y textos requeridos
+            if (App.generalModel.setsGameModel.FileExist(number, level,1))
+            {
+                //Instaciar Lista que guardara todas las imagenes
+                images = App.generalModel.setsGameModel.LoadImages(number, level,1);
+                Debug.Log("TAMAÑO IMAGENES: "+images.Length);
+                //Instaciar Lista que guardara todos los enunciados
+                //statement = App.generalModel.characteristicsGameModel.LoadTexts(number, level);
+
+                //Cuando se instancian las lista se acaba el ciclo
+                exists = true;
+            }
+            //Si no es posible se busca otro conjunto
+            else
+            {
+                //Numero random para seleccionar un conjunto de imagenes
+                number = Random.Range(1, 4);
+            }
+        }
+        ActivatePanels();
+        Debug.Log("NIVEL: " + level + " SET: " + number + "TIPO: "+1);
+
+        LoadText();
+
+        //Ubicar en la pantalla las imagenes seleccionadas
+        PutImages1();
+
+        //Ubicar el enunciado en la pantalla
+        //PutText();
     }
 
     public int ReturnLevel()
@@ -83,8 +154,9 @@ public class SetsGameController : Reference
     }
     public void StartGame()
     {
-        print("start game "+App.generalModel.setsGameModel.GetLevel());
-        
+        //print("start game "+App.generalModel.setsGameModel.GetLevel());
+        print("start game " + level);
+
         panelImages = new List<Sprite>();
         buttonImages = new List<Sprite>();
 
@@ -217,9 +289,9 @@ public class SetsGameController : Reference
 
     public void QuestionType()
     {
-        List<Sprite[]> listImages = new List<Sprite[]>();
+        //List<Sprite[]> listImages = new List<Sprite[]>();
         //Se cambia el 3 por un 4
-        listImages = ImageLevel();
+        List<Sprite[]>  listImages = ImageLevel();
         PutImages(listImages);
     }
 
@@ -280,6 +352,43 @@ public class SetsGameController : Reference
         
     }
 
+    public void PutImages1()
+    {
+        //Lista que guardara las imagenes seleccionadas pero cambiando su orden dentro de la lista
+        //numberSet = Random.Range(0, listImages.Count);
+        //print("Count " + listImages.Count + " numberSet " + numberSet);
+        LoadLists1();
+
+        int i = 0;
+        int limit = 2;
+
+        //Se cambia el 3 por un 4
+        if (level != 1 && level != 4)
+        {
+            i = 2;
+            limit = 5;
+        }
+
+        int k = 0;
+        for (int m = i; m < limit; m++)
+        {
+            //Asignar a cada boton de la vista una imagen diferente
+            App.generalView.setsGameView.panels[m].sprite = panelImages[k];
+            k++;
+        }
+
+        for (int j = 0; j < buttonImages.Count; j++)
+        {
+            if (buttonImages[j].name == "correct")
+            {
+                correctAnswer = buttonImages[j];
+            }
+            //Asignar a cada boton de la vista una imagen diferente
+            App.generalView.setsGameView.buttons[j].image.sprite = buttonImages[j];
+        }
+
+    }
+
     /*public void DeleteSet()
     {
         print("number set delete "+numberSet);
@@ -314,6 +423,24 @@ public class SetsGameController : Reference
                 panelImages.Add(list[i]);
             }
             else buttonImages.Add(list[i]);
+        }
+
+    }
+
+    public void LoadLists1()
+    {
+        int limit = 2;
+        // Se cambia el 3 por un 4
+        if (level != 1 && level != 4) limit = 3;
+
+        for (int i = 0; i < images.Length; i++)
+        {
+            if (i < limit)
+            {
+                panelImages.Add(images[i]);
+            }
+            //Cambiar el orden aqui
+            else buttonImages.Add(images[i]);
         }
 
     }
@@ -364,48 +491,80 @@ public class SetsGameController : Reference
         if(answer == correctAnswer.name)
         {
             //Activar el canvas de ganar
-            App.generalView.gameOptionsView.WinCanvas.enabled = true;
-            level++;
+            //App.generalView.gameOptionsView.WinCanvas.enabled = true;
+
+            //
+            //App.generalModel.setsGameModel.UpdateLevel(App.generalModel.setsGameModel.GetLevel()+1);
+
+            //level++;
+
+            counter++;
 
             numberTry = 3;
 
             print("Respuesta correcta");
 
-
             //Si ya paso el nivel 1 puede pasar al 2
-           /*if (App.generalModel.characteristicsGameModel.GetLevel() == 1)
+            if (App.generalModel.setsGameModel.GetLevel() == 1)
             {
-                //Eliminar el numero del conjunto de imagenes y textos
-                //App.generalModel.characteristicsGameModel.file.imageListGame2_1.Remove(number);
-
+                if (type == 1)
+                {
+                    //Eliminar el numero del conjunto de imagenes y textos
+                    App.generalModel.setsGameModel.file.imageListGame8_1_1.Remove(number);
+                }
+                else
+                {
+                    //Eliminar el numero del conjunto de imagenes y textos
+                    App.generalModel.setsGameModel.file.imageListGame8_2_1.Remove(number);
+                }
                 //Actualizar el nivel del juego
-                App.generalModel.characteristicsGameModel.UpdateLevel(2);
+                App.generalModel.setsGameModel.UpdateLevel(2);
             }
             //Si ya paso el nivel 2 puede pasar al 3
-            else if (App.generalModel.characteristicsGameModel.GetLevel() == 2)
+            else if (App.generalModel.setsGameModel.GetLevel() == 2)
             {
-                //Eliminar el numero del conjunto de imagenes y textos
-                //App.generalModel.characteristicsGameModel.file.imageListGame2_2.Remove(number);
+                if (type == 1)
+                {
+                    //Eliminar el numero del conjunto de imagenes y textos
+                    App.generalModel.setsGameModel.file.imageListGame8_1_2.Remove(number);
+                }
+                else
+                {
+                    App.generalModel.setsGameModel.file.imageListGame8_2_2.Remove(number);
+                }
+                
 
                 //Actualizar el nivel del juego
-                App.generalModel.characteristicsGameModel.UpdateLevel(3);
+                App.generalModel.setsGameModel.UpdateLevel(3);
 
             }
             //Si ya termino los 3 niveles de ese Set, se comienza de nuevo
-            else if (App.generalModel.characteristicsGameModel.GetLevel() == 3)
+            else if (App.generalModel.setsGameModel.GetLevel() == 3)
             {
+
+                if(type == 1)
+                {
+                    App.generalModel.setsGameModel.file.imageListGame8_1_3.Remove(number);
+                }
+                else
+                {
+                    App.generalModel.setsGameModel.file.imageListGame8_2_3.Remove(number);
+                }
+
                 Debug.Log("Termino los 3");
 
                 //Eliminar el numero del conjunto de imagenes y textos
-                //App.generalModel.characteristicsGameModel.file.imageListGame2_3.Remove(number);
+                //App.generalModel.setsGameModel.file.imageListGame8_1_3.Remove(number);
 
                 //Actualizar el nivel a 1 para empezar otra nueva ronda
-                App.generalModel.characteristicsGameModel.UpdateLevel(1);
+                //App.generalModel.setsGameModel.UpdateLevel(1);
 
                 //Indicar que este es el ultimo nivel
-                //isLastLevel = true;
+                isLastLevel = true;
 
-            }*/
+            }
+            SetPointsAndStars();
+            App.generalModel.setsGameModel.file.Save("P");
         }
         else{
             print("respuesta incorrecta");
@@ -413,6 +572,56 @@ public class SetsGameController : Reference
         }
     }
 
+    /// <summary>
+    /// Metodo que asigna los puntos y estrellas que ha ganado el jugador
+    /// </summary>
+    public void SetPointsAndStars()
+    {
+        //Declaracion de los puntos y estrellas que ha ganado el juegador
+        int points, stars, canvasStars;
+
+        //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
+        if (counter == 1)
+        {
+            points = App.generalModel.setsGameModel.GetPoints() + 30;
+            stars = App.generalModel.setsGameModel.GetStars() + 3;
+            canvasStars = 3;
+            //Actualizar las veces que ha ganado 3 estrellas
+            App.generalModel.setsGameModel.UpdatePerfectWins(App.generalModel.setsGameModel.countPerfectWins + 1);
+
+            //Actualizar las veces que ha ganado sin errores
+            App.generalModel.setsGameModel.UpdatePerfectGame(App.generalModel.setsGameModel.GetPerfectGame() + 1);
+            //Debug.Log("LLEVA: " + PlayerPrefs.GetInt("PerfectGame2", 0) + " JUEGO(S) PERFECTO(S)");
+        }
+        //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
+        else if (counter == 2)
+        {
+            points = App.generalModel.setsGameModel.GetPoints() + 20;
+            stars = App.generalModel.setsGameModel.GetStars() + 2;
+            canvasStars = 2;
+
+            //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
+            App.generalModel.setsGameModel.UpdatePerfectGame(0);
+        }
+        //Si gana el juego con mas de 9 intentos suma 10 puntos y gana 1 estrella
+        else
+        {
+            points = App.generalModel.setsGameModel.GetPoints() + 10;
+            stars = App.generalModel.setsGameModel.GetStars() + 1;
+            canvasStars = 1;
+
+            //Actualizar las veces que ha ganado sin errores
+            App.generalModel.setsGameModel.UpdatePerfectGame(0);
+        }
+
+        //Actualiza los puntos y estrellas obtenidos
+        App.generalModel.setsGameModel.UpdatePoints(points);
+        App.generalModel.setsGameModel.UpdateStars(stars);
+
+        //Mostrar el canvas que indica cuantas estrellas gano
+        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
+
+    }
 
     void CheckAttempt ()
     {
@@ -433,5 +642,25 @@ public class SetsGameController : Reference
 
         
     }
+    public List<Sprite> ChangeOrderList(Sprite[] list)
+    {
+        List<Sprite> originalList = new List<Sprite>();
 
+        for (int i = 0; i < list.Length; i++)
+        {
+            originalList.Add(list[i]);
+        }
+
+        List<Sprite> newList = new List<Sprite>();
+
+
+        while (originalList.Count > 0)
+        {
+            int index = Random.Range(0, originalList.Count - 1);
+            newList.Add(originalList[index]);
+            originalList.RemoveAt(index);
+        }
+
+        return newList;
+    }
 }
