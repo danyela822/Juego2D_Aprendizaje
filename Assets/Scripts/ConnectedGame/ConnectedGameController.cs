@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class ConnectedGameController : Reference
 {
-    public static ConnectedGameController connectedGameController;
+    //Objeto que representa cada uno de los bloques que conforman la matriz
+    public GameObject initialBlock;
+
+    //Objeto que representa la zona del juego (Matriz)
+    public GameObject gameZone;
 
     // Se crea una matriz de objetos
     static Objects [,] arrayObjects;
@@ -47,7 +51,8 @@ public class ConnectedGameController : Reference
     static bool finish3 = false;
 
     static Objects[] totalStartPoints = new Objects[3];
-    
+
+
 
     /*void Awake()
     {
@@ -62,7 +67,18 @@ public class ConnectedGameController : Reference
             Destroy(gameObject);
         }
     }*/
-    
+
+
+
+
+
+
+
+    void Start()
+    {
+        CreateLevel();
+    }
+
     public int ReturnLevel()
     {
         return level;
@@ -159,7 +175,10 @@ public class ConnectedGameController : Reference
         CreatePoints();
         LocateStartPoints();
         ReiniciarConteoMovimiento();
-       
+
+        Objects[,] matrix = ReturnArray();
+        DrawMatrix(matrix,initialBlock,gameZone);
+        LoadText();
     }
 
     void ReiniciarConteoMovimiento()

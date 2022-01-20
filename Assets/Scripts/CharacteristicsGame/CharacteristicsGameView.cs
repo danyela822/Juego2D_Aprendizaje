@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.UI;
 
 public class CharacteristicsGameView : Reference
@@ -7,6 +8,10 @@ public class CharacteristicsGameView : Reference
 
     //Texto para mostrar el eunciado del juego
     public Text statement;
+
+    public GameObject solutionPanel;
+
+    public Image solutionImage;
 
     /// <summary>
     /// Metodo que captura el nombre de la imagen que posee un boton para su posterior analisis
@@ -20,7 +25,7 @@ public class CharacteristicsGameView : Reference
         //Verificar si la respuesta es correcta
         App.generalController.characteristicsGameController.CheckAnswer(nameImage);
     }
-    public void ViewSolution()
+    public void ShowSolution()
     {
         App.generalController.characteristicsGameController.ShowSolution();
     }

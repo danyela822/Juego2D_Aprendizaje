@@ -235,8 +235,6 @@ public class ClassificationGameController : Reference
             App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
         }
     }
-    public GameObject characteristicsWindow;
-    public Image solutionImage;
     public void ShowSolution()
     {
         //Si hay tickets muestra la solucion
@@ -248,8 +246,9 @@ public class ClassificationGameController : Reference
             App.generalController.ticketController.DecraseTickets();
             App.generalView.gameOptionsView.HideBuyCanvas();
             App.generalView.gameOptionsView.ShowSolutionCanvas();
-            characteristicsWindow.SetActive(true);
-            solutionImage.sprite = App.generalModel.classificationGameModel.LoadAnswerImages(number);
+
+            App.generalView.classificationGameView.solutionPanel.SetActive(true);
+            App.generalView.classificationGameView.solutionImage.sprite = App.generalModel.classificationGameModel.LoadAnswerImages(number);
         }
         else
         {

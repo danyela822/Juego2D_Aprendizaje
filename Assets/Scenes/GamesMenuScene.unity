@@ -494,6 +494,7 @@ MonoBehaviour:
   equialityGameModel: {fileID: 1624167630}
   sequenceGameModel: {fileID: 1624167628}
   additionGameModel: {fileID: 1624167634}
+  setsGameModel: {fileID: 1624167635}
   ticketModel: {fileID: 0}
 --- !u!4 &33455100
 Transform:
@@ -9237,6 +9238,7 @@ GameObject:
   - component: {fileID: 1624167628}
   - component: {fileID: 1624167627}
   - component: {fileID: 1624167634}
+  - component: {fileID: 1624167635}
   m_Layer: 0
   m_Name: GamesModels
   m_TagString: Untagged
@@ -9257,8 +9259,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   file: {fileID: 0}
-  totalStars: 0
-  totalPoints: 0
 --- !u!114 &1624167628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9271,6 +9271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f34c94d6796b54496afc521bc6ab03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countPerfectWins: 0
 --- !u!114 &1624167629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9295,6 +9296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6fa3cd4c5c31f4e87423334f883a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countPerfectWins: 0
 --- !u!114 &1624167631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9307,8 +9309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ec42625506630438830f536205fe8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalStars: 0
-  totalPoints: 0
   countPerfectWins: 0
   file: {fileID: 0}
 --- !u!114 &1624167632
@@ -9323,8 +9323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a65dc1c14a22642a812ac918b3c049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalStars: 0
-  totalPoints: 0
   countPerfectWins: 0
   file: {fileID: 0}
 --- !u!4 &1624167633
@@ -9353,6 +9351,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b557bb1392cb39e4b9bc24a5112aa9cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countPerfectWins: 0
+--- !u!114 &1624167635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624167626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9b1c86aefb70142b03e3730b3c6c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countPerfectWins: 0
+  file: {fileID: 0}
 --- !u!1 &1694392922
 GameObject:
   m_ObjectHideFlags: 0

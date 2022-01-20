@@ -1099,8 +1099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e40640d98c61c40ab8a875c2441efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialBlock: {fileID: 669214918620480103, guid: 20ba473f47c7bc941b87aef0d81e5385, type: 3}
-  gameZone: {fileID: 2040974483}
   buttons:
   - {fileID: 279152913}
   - {fileID: 1578635972}
@@ -1353,9 +1351,17 @@ MonoBehaviour:
   LoseCanvas: {fileID: 0}
   MistakeCanvas: {fileID: 0}
   WarningCanvas: {fileID: 0}
+  TicketsCanvas: {fileID: 0}
+  BuyCanvas: {fileID: 0}
   imageWin: {fileID: 0}
-  correctAnswer: {fileID: 0}
-  textMistake: {fileID: 0}
+  BuyTicketsWindow: {fileID: 0}
+  NoneTicketsWindow: {fileID: 0}
+  UsedTicketsWindow: {fileID: 0}
+  mistakeText: {fileID: 0}
+  winText: {fileID: 0}
+  ticketsText: {fileID: 0}
+  backButton: {fileID: 0}
+  continueButton: {fileID: 0}
 --- !u!4 &633315277
 Transform:
   m_ObjectHideFlags: 0
@@ -3402,6 +3408,7 @@ MonoBehaviour:
   equialityGameController: {fileID: 0}
   sequenceGameController: {fileID: 0}
   setsGameController: {fileID: 0}
+  ticketController: {fileID: 0}
 --- !u!4 &1602271052
 Transform:
   m_ObjectHideFlags: 0
@@ -4098,6 +4105,11 @@ MonoBehaviour:
   characteristicsGameModel: {fileID: 0}
   classificationGameModel: {fileID: 0}
   statsModel: {fileID: 0}
+  equialityGameModel: {fileID: 0}
+  sequenceGameModel: {fileID: 0}
+  additionGameModel: {fileID: 0}
+  setsGameModel: {fileID: 0}
+  ticketModel: {fileID: 0}
 --- !u!4 &2076699099
 Transform:
   m_ObjectHideFlags: 0
@@ -4274,6 +4286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152272389dcece641aee84063d522404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialBlock: {fileID: 669214918620480103, guid: 20ba473f47c7bc941b87aef0d81e5385, type: 3}
+  gameZone: {fileID: 2040974483}
 --- !u!4 &2121701602
 Transform:
   m_ObjectHideFlags: 0

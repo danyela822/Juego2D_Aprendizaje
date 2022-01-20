@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CharacteristicsGameController : Reference
@@ -11,20 +10,20 @@ public class CharacteristicsGameController : Reference
     //Lista para guardar todos los enunciados del juego
     static string statement;
 
+    //Nivel del juego
+    int level;
+
     //Numero para acceder a un conjunto de imagenes en especifico
     int number;
 
     //Numero para indicar el numero de veces que verifica la respuesta correcta
-    public int counter;
-
-    //Objeto que contiene el controlador del juego
-    public static CharacteristicsGameController gameController;
+    int counter;
 
     //Numero para saber cuantas veces ha ganado 3 estrella
     //int countPerfectWins = 0;
 
     //Numero de veces que ha jugado
-    //int countPlay = 0;
+    int countPlay;
 
     //numero que cuenta las veces que ha completado niveles sin errores
     //int countPerfectGame = 0;
@@ -49,7 +48,7 @@ public class CharacteristicsGameController : Reference
     public void BuildLevel()
     {
         //Obtener el nivel actual
-        int level = App.generalModel.characteristicsGameModel.GetLevel();
+        level = App.generalModel.characteristicsGameModel.GetLevel();
 
         //Numero random para seleccionar un conjunto de imagenes
         number = Random.Range(0, 5);
@@ -122,21 +121,26 @@ public class CharacteristicsGameController : Reference
     public void CheckAnswer(string selectedOption)
     {
         counter++;
+
         //Verificar si ya jugo un nivel de este juego
-        if (App.generalModel.characteristicsGameModel.GetTimesPlayed() == 0)
+        countPlay = App.generalModel.characteristicsGameModel.GetTimesPlayed();
+
+        App.generalModel.characteristicsGameModel.UpdateTimesPlayed(++countPlay);
+        print("HA JUGADO: " + countPlay);
+        /*if (countPlay == 0)
         {
-            /*countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
+            countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
             PlayerPrefs.SetInt("PlayOneLevel", countPlay);
 
-            Debug.Log("A Jugado: " + countPlay);*/
+            Debug.Log("A Jugado: " + countPlay);
             //App.generalModel.characteristicsGameModel.UpdateTimesPlayed(App.generalModel.characteristicsGameModel.GetTimesPlayed() + 1);
-            App.generalModel.characteristicsGameModel.UpdateTimesPlayed(1);
-        }
+            //App.generalModel.characteristicsGameModel.UpdateTimesPlayed(++countPlay);
+        }*/
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
         if (selectedOption == "correct")
         {
             //Si ya paso el nivel 1 puede pasar al 2
-            if (App.generalModel.characteristicsGameModel.GetLevel() == 1)
+            if (level == 1)
             {
                 //Eliminar el numero del conjunto de imagenes y textos
                 App.generalModel.characteristicsGameModel.file.imageListGame2_1.Remove(number);
@@ -145,7 +149,7 @@ public class CharacteristicsGameController : Reference
                 App.generalModel.characteristicsGameModel.UpdateLevel(2);
             }
             //Si ya paso el nivel 2 puede pasar al 3
-            else if (App.generalModel.characteristicsGameModel.GetLevel() == 2)
+            else if (level == 2)
             {
                 //Eliminar el numero del conjunto de imagenes y textos
                 App.generalModel.characteristicsGameModel.file.imageListGame2_2.Remove(number);
@@ -155,7 +159,7 @@ public class CharacteristicsGameController : Reference
  
             }
             //Si ya termino los 3 niveles de ese Set, se comienza de nuevo
-            else if(App.generalModel.characteristicsGameModel.GetLevel() == 3)
+            else
             {
                 Debug.Log("Termino los 3");
 
@@ -253,8 +257,7 @@ public class CharacteristicsGameController : Reference
             App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
         }
     }
-    public GameObject characteristicsWindow;
-    public Image solutionImage;
+    
     public void ShowSolution()
     {
         //Si hay tickets muestra la solucion
@@ -266,8 +269,9 @@ public class CharacteristicsGameController : Reference
             App.generalController.ticketController.DecraseTickets();
             App.generalView.gameOptionsView.HideBuyCanvas();
             App.generalView.gameOptionsView.ShowSolutionCanvas();
-            characteristicsWindow.SetActive(true);
-            solutionImage.sprite = correctAnswer;
+
+            App.generalView.characteristicsGameView.solutionPanel.SetActive(true);
+            App.generalView.characteristicsGameView.solutionImage.sprite = correctAnswer;
         }
         else
         {

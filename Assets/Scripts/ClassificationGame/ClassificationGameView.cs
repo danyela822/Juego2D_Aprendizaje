@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,6 +28,10 @@ public class ClassificationGameView : Reference
 
     //Lista de items que aparecen en la pantalla al seleccionar un boton
     List<GameObject> items;
+
+    public Image solutionImage;
+
+    public GameObject solutionPanel;
 
     void Start()
     {

@@ -862,9 +862,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37a60153b62bc24fa3d3030ad118ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counter: 0
-  characteristicsWindow: {fileID: 458956751}
-  solutionImage: {fileID: 458956752}
 --- !u!4 &414755306
 Transform:
   m_ObjectHideFlags: 0
@@ -980,6 +977,8 @@ MonoBehaviour:
   - {fileID: 10239024}
   - {fileID: 542031884}
   statement: {fileID: 978509974}
+  solutionPanel: {fileID: 458956751}
+  solutionImage: {fileID: 458956752}
 --- !u!4 &453225137
 Transform:
   m_ObjectHideFlags: 0
@@ -1001,6 +1000,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4589137148413157786, guid: 70070fe55a9eeb24cb6314a1121b43cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5375704520838820171, guid: 70070fe55a9eeb24cb6314a1121b43cf, type: 3}
       propertyPath: m_Name
       value: SolutionCanvas
@@ -2491,8 +2494,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a65dc1c14a22642a812ac918b3c049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalStars: 0
-  totalPoints: 0
   countPerfectWins: 0
   file: {fileID: 11400000, guid: 83f75b461f443af4ebe2b0eb4a4d15b8, type: 2}
 --- !u!4 &1018726329
@@ -2534,8 +2535,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   file: {fileID: 11400000, guid: 83f75b461f443af4ebe2b0eb4a4d15b8, type: 2}
-  totalStars: 0
-  totalPoints: 0
 --- !u!114 &1018726332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2667,6 +2666,10 @@ PrefabInstance:
     - target: {fileID: 1835843944077864750, guid: 1ed37d141d895a84b9b74f8b08a2997d, type: 3}
       propertyPath: m_OverridePixelPerfect
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835843944077864751, guid: 1ed37d141d895a84b9b74f8b08a2997d, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1835843944137190433, guid: 1ed37d141d895a84b9b74f8b08a2997d, type: 3}
       propertyPath: m_Text
@@ -3103,7 +3106,9 @@ MonoBehaviour:
   classificationGameModel: {fileID: 0}
   statsModel: {fileID: 1018726331}
   equialityGameModel: {fileID: 0}
-  SequenceGameModel: {fileID: 0}
+  sequenceGameModel: {fileID: 0}
+  additionGameModel: {fileID: 0}
+  setsGameModel: {fileID: 0}
   ticketModel: {fileID: 1018726332}
 --- !u!1 &1497670600
 GameObject:
@@ -3221,7 +3226,7 @@ PrefabInstance:
       objectReference: {fileID: 453225136}
     - target: {fileID: 8866424670951132816, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ViewSolution
+      value: ShowSolution
       objectReference: {fileID: 0}
     - target: {fileID: 8866424670951132816, guid: b30a5abbc36eb63448024fc27a74a159, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

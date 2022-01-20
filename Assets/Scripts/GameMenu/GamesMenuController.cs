@@ -21,7 +21,7 @@ public class GamesMenuController : Reference
                 }
                 break;
             case "¿Quien soy?":
-                if (file.imageListGame2_1.Count == 0 && file.imageListGame2_2.Count == 0 && file.imageListGame2_3.Count == 0)
+                if (file.imageListGame2_3.Count == 0)
                 {
                     App.generalView.gamesMenuView.playButtons[1].interactable = false;
                     App.generalView.gamesMenuView.finishedCanvas.enabled = true;
@@ -37,7 +37,6 @@ public class GamesMenuController : Reference
 
             case "Conectados":
                 SceneManager.LoadScene("ConnectedGameScene");
-                App.generalController.connectedGameController.CreateLevel();
 
                 break;
 
@@ -51,15 +50,19 @@ public class GamesMenuController : Reference
                 break;
 
             case "Union e Interseccion":
-                SceneManager.LoadScene("SetsGameScene");
+                if (file.imageListGame8_2_3.Count == 0)
+                {
+                    App.generalView.gamesMenuView.playButtons[6].interactable = false;
+                    App.generalView.gamesMenuView.finishedCanvas.enabled = true;
+                }
+                else
+                {
+                    SceneManager.LoadScene("SetsGameScene");
+                }
                 break;
 
             case "Juego de equivalencias":
                 SceneManager.LoadScene("EquialityGameScene");
-                break;
-
-            case "Nombre del Juego 8":
-
                 break;
             default:
                 Debug.Log("Escena no encontrada");

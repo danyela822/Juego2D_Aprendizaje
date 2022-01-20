@@ -163,8 +163,12 @@ public class CharacteristicsGameModel : Reference
     {
         PlayerPrefs.SetInt("TimesPlayedGame2", value);
 
-        PlayerPrefs.SetInt("PlayOneLevel", PlayerPrefs.GetInt("PlayOneLevel", 0) + 1);
-
+        if (value == 1)
+        {
+            PlayerPrefs.SetInt("PlayOneLevel", PlayerPrefs.GetInt("PlayOneLevel", 0) + 1);
+            print("ENTRO A SUMAR AL LOGRO");
+        }
+        
         int achievement_1 = PlayerPrefs.GetInt("PlayOneLevel", 0);
 
         if (achievement_1 == 3)

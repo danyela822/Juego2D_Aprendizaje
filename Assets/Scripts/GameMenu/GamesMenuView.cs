@@ -113,7 +113,7 @@ public class GamesMenuView : Reference
         //starsTexts[4].text = "X " + App.generalModel.roadGameModel.GetTotalStars().ToString();
         starsTexts[5].text = "X " + App.generalModel.additionGameModel.GetStars().ToString();
         starsTexts[6].text = "X " + App.generalModel.equialityGameModel.GetStars().ToString();
-        //starsTexts[7].text = "X " + App.generalModel.sets.GetTotalStars().ToString();
+        starsTexts[7].text = "X " + App.generalModel.setsGameModel.GetStars().ToString();
 
         pointsTexts[0].text = "X " + App.generalModel.classificationGameModel.GetPoints().ToString(); ;
         pointsTexts[1].text = "X " + App.generalModel.characteristicsGameModel.GetPoints().ToString();
@@ -122,7 +122,7 @@ public class GamesMenuView : Reference
         //pointsTexts[4].text = "X " + App.generalModel.roadGameModel.GetPoints().ToString();
         pointsTexts[5].text = "X " + App.generalModel.additionGameModel.GetPoints().ToString();
         pointsTexts[6].text = "X " + App.generalModel.equialityGameModel.GetPoints().ToString();
-        //pointsTexts[7].text = "X " + App.generalModel.sets.GetPoints().ToString();
+        pointsTexts[7].text = "X " + App.generalModel.setsGameModel.GetPoints().ToString();
     }
     /*
      * 

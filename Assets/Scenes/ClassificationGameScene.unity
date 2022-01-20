@@ -625,6 +625,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4589137148413157786, guid: 70070fe55a9eeb24cb6314a1121b43cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5375704520838820171, guid: 70070fe55a9eeb24cb6314a1121b43cf, type: 3}
       propertyPath: m_Name
       value: SolutionCanvas
@@ -1458,6 +1462,8 @@ MonoBehaviour:
   statement: {fileID: 326243878}
   choise: {fileID: 7397352701690573615, guid: 58ece72a8cf16794d8e98d7c08f3ab4f, type: 3}
   box: {fileID: 1743407729}
+  solutionImage: {fileID: 111498891}
+  solutionPanel: {fileID: 111498892}
 --- !u!4 &276030288
 Transform:
   m_ObjectHideFlags: 0
@@ -4714,6 +4720,7 @@ MonoBehaviour:
   equialityGameModel: {fileID: 0}
   sequenceGameModel: {fileID: 0}
   additionGameModel: {fileID: 0}
+  setsGameModel: {fileID: 0}
   ticketModel: {fileID: 1911148528}
 --- !u!1 &1367954198
 GameObject:
@@ -4747,8 +4754,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter: 0
-  characteristicsWindow: {fileID: 111498892}
-  solutionImage: {fileID: 111498891}
 --- !u!4 &1367954200
 Transform:
   m_ObjectHideFlags: 0
@@ -7260,8 +7265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ec42625506630438830f536205fe8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalStars: 0
-  totalPoints: 0
   countPerfectWins: 0
   file: {fileID: 11400000, guid: 83f75b461f443af4ebe2b0eb4a4d15b8, type: 2}
 --- !u!4 &1911148525
@@ -7303,8 +7306,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   file: {fileID: 11400000, guid: 83f75b461f443af4ebe2b0eb4a4d15b8, type: 2}
-  totalStars: 0
-  totalPoints: 0
 --- !u!114 &1911148528
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,11 +3,6 @@ using UnityEngine.UI;
 
 public class ConnectedGameView : Reference
 {
-    //Objeto que representa cada uno de los bloques que conforman la matriz
-    public GameObject initialBlock;
-
-    //Objeto que representa la zona del juego (Matriz)
-    public GameObject gameZone;
 
     public Button[] buttons;
 
@@ -32,9 +27,9 @@ public class ConnectedGameView : Reference
         //GameObject [,] Matrix = new GameObject[8,6];
 
         //App.generalController.gameController.LevelData("Principiante");
-        Objects[,] matrix = App.generalController.connectedGameController.ReturnArray();
+        //Objects[,] matrix = App.generalController.connectedGameController.ReturnArray();
         //Llamada al metodo para dibujar la matriz en la escena
-        App.generalController.connectedGameController.DrawMatrix(matrix,initialBlock,gameZone);
+        //App.generalController.connectedGameController.DrawMatrix(matrix,initialBlock,gameZone);
         
         int level = App.generalController.connectedGameController.ReturnLevel();
 

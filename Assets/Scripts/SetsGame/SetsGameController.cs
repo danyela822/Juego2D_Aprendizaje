@@ -3,20 +3,7 @@ using UnityEngine;
 
 public class SetsGameController : Reference
 {
-    public static SetsGameController setsGameController;
-
-    static List<Sprite[]> allUnionImages;
-    static List<Sprite[]> allIntersectionImages;
-
-    // Nuevo codigo 
-
-    static List<Sprite[]> allUnionLevel1Images;
-    static List<Sprite[]> allUnionLevel2Images;
-    static List<Sprite[]> allUnionLevel3Images;
-
-    static List<Sprite[]> allIntersectionLevel1Images;
-    static List<Sprite[]> allIntersectionLevel2Images;
-    static List<Sprite[]> allIntersectionLevel3Images;
+    static Sprite[] images;
 
     static List<Sprite> panelImages;
     
@@ -24,16 +11,13 @@ public class SetsGameController : Reference
 
     Sprite correctAnswer;
 
-    bool isUnion;
+    //Numero de intentos que tiene el jugador para ganar el juego
+    int attempts = 3;
 
-    int numberTry = 3;
+    //
+    int level;
 
-    int level = 1;
-
-    int numberSet = 0;
-
-    static Sprite[] images;
-
+    //
     int type = 1;
 
     //
@@ -42,53 +26,11 @@ public class SetsGameController : Reference
     //Numero para indicar el numero de veces que verifica la respuesta correcta
     public int counter;
 
-    /*void Awake()
-    {
-        if(setsGameController == null)
-        {
-            setsGameController = this;
-            DontDestroyOnLoad(gameObject);
-
-            allUnionImages = new List<Sprite[]>();
-
-            allIntersectionImages = new List<Sprite[]>();
-
-            //Codigo nuevo 
-
-            allUnionLevel1Images = new List<Sprite[]>();
-
-            allUnionLevel2Images = new List<Sprite[]>();
-
-            allUnionLevel3Images = new List<Sprite[]>();
-
-            allIntersectionLevel1Images = new List<Sprite[]>();
-
-            allIntersectionLevel2Images = new List<Sprite[]>();
-
-            allIntersectionLevel3Images = new List<Sprite[]>();
-
-            //panelImages = new List<Sprite>();
-
-            //buttonImages = new List<Sprite>();
-
-            LoadImages();
-
-            StartGame();
-
-            //ActivatePanels();
-
-            //PutImages(SelectQuestionType());
-
-            //LoadText();
-        }
-        else
-        {
-            StartGame();
-        }
-    }*/
-
     //Numero para acceder a un conjunto de imagenes en especifico
     int number;
+
+    //Numero de veces que ha jugado
+    int countPlay;
 
     private void Start()
     {
@@ -96,7 +38,7 @@ public class SetsGameController : Reference
     }
 
     /// <summary>
-    /// Busca e instancia la lista de imagenes y la lista de textos necesarias para crear el nivel
+    /// Busca e instancia la lista de imagenes necesarias para crear el nivel
     /// </summary>
     public void BuildLevel()
     {
@@ -106,27 +48,25 @@ public class SetsGameController : Reference
         //Obtener el nivel actual
         level = App.generalModel.setsGameModel.GetLevel();
 
-        print("BuildLevel" + level);
+        type = App.generalModel.setsGameModel.GetTypeOfSet();
 
         //Numero random para seleccionar un conjunto de imagenes
         number = Random.Range(1, 4);
 
-        //Variable que determina si existe el conjunto de imagenes y textos para ese nivel
+        //Variable que determina si existe el conjunto de imagenes para ese nivel
         bool exists = false;
 
-        //Ciclo para buscar el conjunto de imagenes y textos para ese nivel
+        //Ciclo para buscar el conjunto de imagenes para ese nivel
         while (!exists)
         {
-            //Se determina si es posible cargar el conjunto de imagenes y textos requeridos
-            if (App.generalModel.setsGameModel.FileExist(number, level,1))
+            //Se determina si es posible cargar el conjunto de imagenes requeridos
+            if (App.generalModel.setsGameModel.FileExist(number, level, type))
             {
                 //Instaciar Lista que guardara todas las imagenes
-                images = App.generalModel.setsGameModel.LoadImages(number, level,1);
+                images = App.generalModel.setsGameModel.LoadImages(number, level, type);
                 Debug.Log("TAMAÑO IMAGENES: "+images.Length);
-                //Instaciar Lista que guardara todos los enunciados
-                //statement = App.generalModel.characteristicsGameModel.LoadTexts(number, level);
 
-                //Cuando se instancian las lista se acaba el ciclo
+                //Cuando se instancian la lista se acaba el ciclo
                 exists = true;
             }
             //Si no es posible se busca otro conjunto
@@ -137,74 +77,15 @@ public class SetsGameController : Reference
             }
         }
         ActivatePanels();
-        Debug.Log("NIVEL: " + level + " SET: " + number + "TIPO: "+1);
+        Debug.Log("NIVEL: " + level + " SET: " + number + "TIPO: "+ type);
 
-        LoadText();
+        LoadText1();
 
         //Ubicar en la pantalla las imagenes seleccionadas
         PutImages1();
 
         //Ubicar el enunciado en la pantalla
         //PutText();
-    }
-
-    public int ReturnLevel()
-    {
-        return level;
-    }
-    public void StartGame()
-    {
-        //print("start game "+App.generalModel.setsGameModel.GetLevel());
-        print("start game " + level);
-
-        panelImages = new List<Sprite>();
-        buttonImages = new List<Sprite>();
-
-        ActivatePanels();
-        LoadText();
-        QuestionType();
-    }
-
-    public void LoadImages()
-    {
-        //Este numero representa la cantidad de conjuntos que hay en este caso solo 1
-        int setOfImages = 3;
-
-        Sprite[] spriteslist;
-
-        for (int i = 1; i <= setOfImages; i++)
-        {
-            //Cargar y guardar un set de imagenes en un array
-            //Guardar el array de imagenes en la lista
-
-            //UNION
-            spriteslist = Resources.LoadAll<Sprite>("SetsGame/1/Level1/"+(i));
-
-            allUnionLevel1Images.Add(spriteslist);
-
-            spriteslist = Resources.LoadAll<Sprite>("SetsGame/1/Level2/"+(i));
-
-            allUnionLevel2Images.Add(spriteslist);
-
-            spriteslist = Resources.LoadAll<Sprite>("SetsGame/1/Level3/"+(i));
-
-            allUnionLevel3Images.Add(spriteslist);
-
-            //INTERSECCION
-            spriteslist = Resources.LoadAll<Sprite>("SetsGame/2/Level1/"+(i));
-
-            allIntersectionLevel1Images.Add(spriteslist);
-            
-            spriteslist = Resources.LoadAll<Sprite>("SetsGame/2/Level2/"+(i));
-
-            allIntersectionLevel2Images.Add(spriteslist);
-
-            spriteslist = Resources.LoadAll<Sprite>("SetsGame/2/Level3/"+(i));
-
-            allIntersectionLevel3Images.Add(spriteslist);
-
-        }
-
     }
 
     public void ActivatePanels()
@@ -235,128 +116,8 @@ public class SetsGameController : Reference
         }
         
     }
-
-    public List<Sprite[]> ImageLevel ()
-    {
-        List<Sprite[]> imageLevel = new List<Sprite[]>();
-        switch (level)
-        {
-            case 1:
-                imageLevel = allUnionLevel1Images;
-                break;
-            case 2: 
-                imageLevel = allUnionLevel2Images;
-                break;
-            case 3: 
-                imageLevel = allUnionLevel3Images;
-                break;
-            case 4: 
-                imageLevel = allIntersectionLevel1Images;
-                break;
-            case 5: 
-                imageLevel = allIntersectionLevel2Images;
-                break;
-            case 6: 
-                imageLevel = allIntersectionLevel3Images;
-                break;
-        }
-        
-        return imageLevel;
-    }
-    /*public List<Sprite[]> ImageUnionLevel ()
-    {
-        if (level== 1)
-        {
-            return allUnionLevel1Images;
-        }
-        else //if(level == 2)
-        {
-            return allUnionLevel2Images;
-        }
-    }
-
-    public List<Sprite[]> ImageIntersectionLevel ()
-    {
-        if (level == 1)
-        {
-            return allIntersectionLevel1Images;
-        }
-        else //if(level == 2)
-        {
-            return allIntersectionLevel2Images;
-        }
-    }*/
-
-    public void QuestionType()
-    {
-        //List<Sprite[]> listImages = new List<Sprite[]>();
-        //Se cambia el 3 por un 4
-        List<Sprite[]>  listImages = ImageLevel();
-        PutImages(listImages);
-    }
-
-    /*public void SelectQuestionType(int numberType)
-    {
-        print("number "+numberType);
-
-        List<Sprite[]> listImages = new List<Sprite[]>();
-        if(numberType == 1)
-        {
-            print("union");
-            isUnion = true;
-            listImages = ImageLevel();
-        }
-        else
-        {
-            print("Interseccion");
-            isUnion = false;
-            listImages = ImageLevel();
-        }
-        LoadText();
-        PutImages(listImages);
-    }*/
-
-    public void PutImages(List<Sprite[]> listImages)
-    {
-        //Lista que guardara las imagenes seleccionadas pero cambiando su orden dentro de la lista
-        numberSet = Random.Range(0, listImages.Count);
-        print("Count "+listImages.Count+" numberSet "+numberSet);
-        LoadLists(listImages[numberSet]);
-        int i = 0; 
-        int limit = 2;
-
-        //Se cambia el 3 por un 4
-        if(level != 1 && level !=4) 
-        {
-            i = 2; 
-            limit = 5;
-        }
-        
-        int k = 0;
-        for (int m = i; m < limit; m++)
-        {
-            //Asignar a cada boton de la vista una imagen diferente
-            App.generalView.setsGameView.panels[m].sprite = panelImages[k];
-            k++;
-        }
-
-        for (int j = 0; j < buttonImages.Count; j++)
-        {
-            if(buttonImages[j].name == "correct")
-            {
-                correctAnswer = buttonImages[j];
-            }
-            //Asignar a cada boton de la vista una imagen diferente
-            App.generalView.setsGameView.buttons[j].image.sprite = buttonImages[j];
-        }
-        
-    }
-
     public void PutImages1()
     {
-        //Lista que guardara las imagenes seleccionadas pero cambiando su orden dentro de la lista
-        //numberSet = Random.Range(0, listImages.Count);
-        //print("Count " + listImages.Count + " numberSet " + numberSet);
         LoadLists1();
 
         int i = 0;
@@ -376,57 +137,19 @@ public class SetsGameController : Reference
             App.generalView.setsGameView.panels[m].sprite = panelImages[k];
             k++;
         }
+        List<Sprite> options = ChangeOrderList(buttonImages);
 
-        for (int j = 0; j < buttonImages.Count; j++)
+        for (int j = 0; j < options.Count; j++)
         {
-            if (buttonImages[j].name == "correct")
+            if (options[j].name == "correct")
             {
-                correctAnswer = buttonImages[j];
+                correctAnswer = options[j];
             }
             //Asignar a cada boton de la vista una imagen diferente
-            App.generalView.setsGameView.buttons[j].image.sprite = buttonImages[j];
+            App.generalView.setsGameView.buttons[j].image.sprite = options[j];
         }
 
     }
-
-    /*public void DeleteSet()
-    {
-        print("number set delete "+numberSet);
-        switch (level)
-        {
-            case 1:
-                allUnionLevel1Images.RemoveAt(numberSet);
-                break;
-            case 2: 
-                allUnionLevel2Images.RemoveAt(numberSet);
-                break;
-            case 3: 
-                allIntersectionLevel1Images.RemoveAt(numberSet);
-                break;
-
-            case 4: 
-                allIntersectionLevel2Images.RemoveAt(numberSet);
-                break;
-        }
-    }*/
-
-    public void LoadLists(Sprite[] list)
-    {
-        int limit = 2;
-        // Se cambia el 3 por un 4
-        if(level != 1 && level != 4) limit = 3;
-
-        for (int i = 0; i < list.Length; i++)
-        { 
-            if(i < limit) 
-            {
-                panelImages.Add(list[i]);
-            }
-            else buttonImages.Add(list[i]);
-        }
-
-    }
-
     public void LoadLists1()
     {
         int limit = 2;
@@ -439,97 +162,83 @@ public class SetsGameController : Reference
             {
                 panelImages.Add(images[i]);
             }
-            //Cambiar el orden aqui
             else buttonImages.Add(images[i]);
         }
-
     }
-
-    public void LoadText ()
+    public void LoadText1()
     {
-        string message ="";
-        switch (level)
+        string message = "";
+        if (type == 1)
         {
-            case 1:
-                message = "Unión\n\nRealice la unión entre las cartas presentadas y elija la respuesta correcta.";
-                break;
-            case 2: 
-                message = "Unión\n\nRealice la unión entre las cartas presentadas y elija la respuesta correcta";
-                break;
-            case 3: 
-                message = "Unión\n\nRealice la unión entre las cartas y elija la respuesta correcta, no se fije en el orden";
-                break;
-            case 4: 
-                message = "Intersección\n\nRealice la intersección entre las cartas presentadas y elija la respuesta correcta";
-                break;
-            case 5: 
-                message = "Intersección\n\nRealice la intersección entre las cartas presentadas y elija la respuesta correcta";
-                break;
-            case 6: 
-                message = "Intersección\n\nRealice la intersección entre las cartas y elija la respuesta correcta, no se fije en el orden";
-                break;
-        }
-        App.generalView.setsGameView.TextGame(message);
-    }
-
-    /*public void LoadText ()
-    {
-        string message;
-        if (isUnion)
-        {
-            message = "Unión\n\nRealice la unión entre las cartas presentadas y elija la respuesta correcta";
+            switch (level)
+            {
+                case 1:
+                    message = "Unión\n\nRealice la unión entre las cartas presentadas y elija la respuesta correcta";
+                    break;
+                case 2:
+                    message = "Unión\n\nRealice la unión entre las cartas presentadas y elija la respuesta correcta";
+                    break;
+                case 3:
+                    message = "Unión\n\nRealice la unión entre las cartas y elija la respuesta correcta, no se fije en el orden";
+                    break;
+            }
         }
         else
         {
-            message = "Intersección\n\nRealice la intersección entre las cartas presentadas y elija la respuesta correcta";
+            switch (level)
+            {
+                case 1:
+                    message = "Intersección\n\nRealice la intersección entre las cartas presentadas y elija la respuesta correcta";
+                    break;
+                case 2:
+                    message = "Intersección\n\nRealice la intersección entre las cartas presentadas y elija la respuesta correcta";
+                    break;
+                case 3:
+                    message = "Intersección\n\nRealice la intersección entre las cartas y elija la respuesta correcta, no se fije en el orden";
+                    break;
+            }
         }
-        App.generalView.setsGameView.message.text = message;
-    }*/
 
+        App.generalView.setsGameView.message.text = message;
+    }
     public void CheckAnswer(string answer)
     {
-        if(answer == correctAnswer.name)
+        counter++;
+
+        //Verificar si ya jugo un nivel de este juego
+        countPlay = App.generalModel.characteristicsGameModel.GetTimesPlayed();
+
+        App.generalModel.characteristicsGameModel.UpdateTimesPlayed(++countPlay);
+
+        if (answer == correctAnswer.name)
         {
-            //Activar el canvas de ganar
-            //App.generalView.gameOptionsView.WinCanvas.enabled = true;
-
-            //
-            //App.generalModel.setsGameModel.UpdateLevel(App.generalModel.setsGameModel.GetLevel()+1);
-
-            //level++;
-
-            counter++;
-
-            numberTry = 3;
-
-            print("Respuesta correcta");
-
             //Si ya paso el nivel 1 puede pasar al 2
-            if (App.generalModel.setsGameModel.GetLevel() == 1)
+            if (level == 1)
             {
                 if (type == 1)
                 {
-                    //Eliminar el numero del conjunto de imagenes y textos
+                    //Eliminar el numero del conjunto de imagenes de union
                     App.generalModel.setsGameModel.file.imageListGame8_1_1.Remove(number);
                 }
                 else
                 {
-                    //Eliminar el numero del conjunto de imagenes y textos
+                    //Eliminar el numero del conjunto de imagenes de interseccion
                     App.generalModel.setsGameModel.file.imageListGame8_2_1.Remove(number);
                 }
                 //Actualizar el nivel del juego
                 App.generalModel.setsGameModel.UpdateLevel(2);
             }
             //Si ya paso el nivel 2 puede pasar al 3
-            else if (App.generalModel.setsGameModel.GetLevel() == 2)
+            else if (level == 2)
             {
                 if (type == 1)
                 {
-                    //Eliminar el numero del conjunto de imagenes y textos
+                    //Eliminar el numero del conjunto de imagenes de union
                     App.generalModel.setsGameModel.file.imageListGame8_1_2.Remove(number);
                 }
                 else
                 {
+                    //Eliminar el numero del conjunto de imagenes de interseccion
                     App.generalModel.setsGameModel.file.imageListGame8_2_2.Remove(number);
                 }
                 
@@ -538,36 +247,39 @@ public class SetsGameController : Reference
                 App.generalModel.setsGameModel.UpdateLevel(3);
 
             }
-            //Si ya termino los 3 niveles de ese Set, se comienza de nuevo
-            else if (App.generalModel.setsGameModel.GetLevel() == 3)
+            else
             {
-
                 if(type == 1)
                 {
+                    //Eliminar el numero del conjunto de imagenes de union
                     App.generalModel.setsGameModel.file.imageListGame8_1_3.Remove(number);
+
+                    //Si ya termino los 3 niveles de union, se comienzan con los niveles de interseccion
+                    App.generalModel.setsGameModel.UpdateTypeOfSet(2);
                 }
                 else
                 {
+                    //Eliminar el numero del conjunto de imagenes de interseccion
                     App.generalModel.setsGameModel.file.imageListGame8_2_3.Remove(number);
+
+                    //Si ya termino los 3 niveles de interseccion, se comienza nuevamente con los de union en una nueva partida
+                    App.generalModel.setsGameModel.UpdateTypeOfSet(1);
+
+                    //Indicar que este es el ultimo nivel
+                    isLastLevel = true;
                 }
 
-                Debug.Log("Termino los 3");
-
-                //Eliminar el numero del conjunto de imagenes y textos
-                //App.generalModel.setsGameModel.file.imageListGame8_1_3.Remove(number);
-
                 //Actualizar el nivel a 1 para empezar otra nueva ronda
-                //App.generalModel.setsGameModel.UpdateLevel(1);
-
-                //Indicar que este es el ultimo nivel
-                isLastLevel = true;
-
+                App.generalModel.setsGameModel.UpdateLevel(1);
             }
-            SetPointsAndStars();
+
+            //Guardar estado
             App.generalModel.setsGameModel.file.Save("P");
+
+            //Asignar Estrellas y Puntos obtenidos
+            SetPointsAndStars();
         }
         else{
-            print("respuesta incorrecta");
             CheckAttempt();
         }
     }
@@ -618,35 +330,56 @@ public class SetsGameController : Reference
         App.generalModel.setsGameModel.UpdatePoints(points);
         App.generalModel.setsGameModel.UpdateStars(stars);
 
+        Debug.Log("ESTRELLAS: " + canvasStars);
         //Mostrar el canvas que indica cuantas estrellas gano
         App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
 
     }
-
+    /// <summary>
+    /// Metodo para contar y verificar los errores
+    /// </summary>
     void CheckAttempt ()
     {
-        numberTry--;
-        if(numberTry == 0)
+        //Dismuir la cantidad de intentos
+        attempts--;
+
+        //Si se queda sin intentos pierde el juego (y se le muestra la respuesta)
+        if (attempts == 0)
         {
-            App.generalView.setsGameView.loseCanvas.enabled = true;
-            numberTry = 3;
-            print("Lose canvas");
+            //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
+            App.generalView.gameOptionsView.ShowLoseCanvas();
         }
-        else{
-
-            //string messageLose = "Lo siento :( la respuesta  no es correcta \n le quedan "+numberTry+ " intentos";
-            //App.generalView.setsGameView.messageLoseCanvas.text = messageLose;
-            App.generalView.gameOptionsView.ShowMistakeCanvas(numberTry);
-            //App.generalView.setsGameView.tryCanvas.enabled = true;  
+        //Si aun le quedan intentos se muestra un mensaje en pantalla
+        else
+        {
+            App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
         }
-
-        
     }
-    public List<Sprite> ChangeOrderList(Sprite[] list)
+    public void ShowSolution()
+    {
+        //Si hay tickets muestra la solucion
+        Debug.Log("HAY: " + App.generalModel.ticketModel.GetTickets() + " TICKETS");
+        if (App.generalModel.ticketModel.GetTickets() >= 1)
+        {
+            Debug.Log("HAS USADO UN PASE");
+
+            App.generalController.ticketController.DecraseTickets();
+            App.generalView.gameOptionsView.HideBuyCanvas();
+            App.generalView.gameOptionsView.ShowSolutionCanvas();
+
+            App.generalView.setsGameView.solutionPanel.SetActive(true);
+            App.generalView.setsGameView.solutionImage.sprite = correctAnswer;
+        }
+        else
+        {
+            App.generalView.gameOptionsView.ShowTicketsCanvas(3);
+        }
+    }
+    public List<Sprite> ChangeOrderList(List<Sprite> list)
     {
         List<Sprite> originalList = new List<Sprite>();
 
-        for (int i = 0; i < list.Length; i++)
+        for (int i = 0; i < list.Count; i++)
         {
             originalList.Add(list[i]);
         }

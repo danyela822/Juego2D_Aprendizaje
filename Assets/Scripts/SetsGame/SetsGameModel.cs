@@ -302,4 +302,34 @@ public class SetsGameModel : Reference
     {
         PlayerPrefs.SetInt("Game8Levels", level);
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public int GetTypeOfSet()
+    {
+        return PlayerPrefs.GetInt("Type", 1);
+    }
+    /// <summary>
+    /// </summary>
+    /// <param name="type"></param>
+    public void UpdateTypeOfSet(int type)
+    {
+        PlayerPrefs.SetInt("Type", type);
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public int GetNumber()
+    {
+        return PlayerPrefs.GetInt("Number", 1);
+    }
+    /// <summary>
+    /// </summary>
+    /// <param name="type"></param>
+    public void UpdateNumber(int number)
+    {
+        PlayerPrefs.SetInt("Number", number);
+    }
 }
