@@ -109,7 +109,7 @@ public class GamesMenuView : Reference
         starsTexts[0].text = "X " + App.generalModel.classificationGameModel.GetTotalStars().ToString();
         starsTexts[1].text = "X " + App.generalModel.characteristicsGameModel.GetStars().ToString();
         starsTexts[2].text = "X " + App.generalModel.sequenceGameModel.GetStars().ToString();
-        //starsTexts[3].text = "X " + App.generalModel.connected.GetTotalStars().ToString();
+        starsTexts[3].text = "X " + App.generalModel.connectedGameModel.GetTotalStars().ToString();
         //starsTexts[4].text = "X " + App.generalModel.roadGameModel.GetTotalStars().ToString();
         starsTexts[5].text = "X " + App.generalModel.additionGameModel.GetStars().ToString();
         starsTexts[6].text = "X " + App.generalModel.equialityGameModel.GetStars().ToString();
@@ -118,7 +118,7 @@ public class GamesMenuView : Reference
         pointsTexts[0].text = "X " + App.generalModel.classificationGameModel.GetPoints().ToString(); ;
         pointsTexts[1].text = "X " + App.generalModel.characteristicsGameModel.GetPoints().ToString();
         pointsTexts[2].text = "X " + App.generalModel.sequenceGameModel.GetPoints().ToString();
-        //pointsTexts[3].text = "X " + App.generalModel.connected.GetPoints().ToString();
+        pointsTexts[3].text = "X " + App.generalModel.connectedGameModel.GetPoints().ToString();
         //pointsTexts[4].text = "X " + App.generalModel.roadGameModel.GetPoints().ToString();
         pointsTexts[5].text = "X " + App.generalModel.additionGameModel.GetPoints().ToString();
         pointsTexts[6].text = "X " + App.generalModel.equialityGameModel.GetPoints().ToString();

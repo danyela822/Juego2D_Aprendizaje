@@ -3,19 +3,17 @@ using UnityEngine.UI;
 
 public class ConnectedGameView : Reference
 {
-
+    
     public Button[] buttons;
 
-    //Canvas que muestra el contenido inicial del juego
-    public Canvas startCanvas;
-
-    public Canvas returnCanvas;
+    public Canvas colorsCanvas;
 
     public Text message;
 
     private void Awake()
     {
-        BuildMatrix();
+        //App.generalController.connectedGameController.CreateLevel();
+        //BuildMatrix();
     }
 
     /*
@@ -38,63 +36,29 @@ public class ConnectedGameView : Reference
             buttons[i].interactable = true;
         }
 
-        App.generalController.connectedGameController.LoadText();
-    }
-
-    /*
-     * Metodo que oculta el canvas inicial del juego
-     */
-    public void StartGame()
-    {
-        startCanvas.GetComponent<Canvas>().enabled = false;
-    }
-
-    public void HelpButton()
-    {
-        startCanvas.GetComponent<Canvas>().enabled = true;
-        App.generalController.connectedGameController.LoadText();
-    }
-
-    public void ContinueGame()
-    {
-        App.generalView.gameOptionsView.WinCanvas.enabled = false;
-        
-        App.generalController.connectedGameController.CreateLevel();
-        BuildMatrix();
-        
-        //App.generalView.gameOptionsView.BackGameLeves();
-    }
-
+        //App.generalController.connectedGameController.LoadText();
+    }   
     public void ReturnButton()
     {
-        returnCanvas.GetComponent<Canvas>().enabled = true;
+        colorsCanvas.enabled = true;
         //App.generalController.connectedGameController.LoadText();
     }
 
     public void ReturnMoves (int type)
     {
         App.generalController.connectedGameController.ReturnMoves(type);
-        returnCanvas.GetComponent<Canvas>().enabled = false;
+        colorsCanvas.enabled = false;
     }
-
-    public void OnClickButtons(string name_button)
+    public void SelectColor(int tipo)
     {
-        //El boton solution abre un canvas para ir a los minijuegos
-        if (name_button == "Solution Button")
-        {
-            App.generalController.connectedGameController.MostrarSolucion();
-            BuildMatrix();
-        }
-    }
-
-    public void ColorEscogido(int tipo)
-    {
-        App.generalController.connectedGameController.SelectedObject(tipo);
+        App.generalController.connectedGameController.SelectColor(tipo);
     }
     public void Move(string direction)
     {
         App.generalController.connectedGameController.Move(direction);
     }
-
-    
+    public void ShowSolution()
+    {
+        App.generalController.connectedGameController.ShowSolution();
+    }
 }

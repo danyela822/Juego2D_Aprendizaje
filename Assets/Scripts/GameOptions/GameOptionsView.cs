@@ -72,7 +72,7 @@ public class GameOptionsView: Reference
         {
             text = "�Excelente!";
         }
-
+        Debug.Log("IS LAST LEVEL: "+isLastLevel);
         if (isLastLevel)
         {
             backButton.GetComponent<Image>().enabled = true;

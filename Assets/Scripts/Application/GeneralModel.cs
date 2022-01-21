@@ -15,4 +15,5 @@ public class GeneralModel : Reference
     public SetsGameModel setsGameModel;
 
     public TicketModel ticketModel;
+    public ConnectedGameModel connectedGameModel;
 }

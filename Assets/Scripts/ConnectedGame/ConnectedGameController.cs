@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ConnectedGameController : Reference
 {
+
     //Objeto que representa cada uno de los bloques que conforman la matriz
     public GameObject initialBlock;
 
@@ -32,7 +34,7 @@ public class ConnectedGameController : Reference
 
     static int totalStepsLevel3;
 
-    static int level = 1;
+    static int level;
 
     //Variables que almacenan la ultima posicion en la que quedo ubicado el objeto, con el fin de seguir desde ahi los movimientos futuros
     static Objects startPoint;
@@ -50,10 +52,13 @@ public class ConnectedGameController : Reference
     static bool finish2 = false;
     static bool finish3 = false;
 
+    //Prueba centinelas
+    bool level1 = false;
+    bool level2 = false;
+    bool level3 = false;
+
     static Objects[] totalStartPoints = new Objects[3];
-
-
-
+    
     /*void Awake()
     {
         print("Awake");
@@ -68,17 +73,12 @@ public class ConnectedGameController : Reference
         }
     }*/
 
-
-
-
-
-
-
+    // Start is called before the first frame update
     void Start()
     {
         CreateLevel();
     }
-
+    
     public int ReturnLevel()
     {
         return level;
@@ -169,19 +169,26 @@ public class ConnectedGameController : Reference
     // Metodo principal encargado de hacer los llamados correspondientes para generar el nivel
     public void CreateLevel()
     {
+        finish1 = false;
+        finish2 = false;
+        finish3 = false;
+
+        level = App.generalModel.connectedGameModel.GetLevel();
         print("Create level "+level);
         GenerateArray();
         GenerateArrivalPoint();
         CreatePoints();
         LocateStartPoints();
-        ReiniciarConteoMovimiento();
+        RestartCountingMovements();
 
+        
         Objects[,] matrix = ReturnArray();
         DrawMatrix(matrix,initialBlock,gameZone);
         LoadText();
+       
     }
 
-    void ReiniciarConteoMovimiento()
+    void RestartCountingMovements()
     {
         totalMove1 = 0;
         totalMove2 = 0;
@@ -248,65 +255,113 @@ public class ConnectedGameController : Reference
         switch (level)
         {
             case 1:
-                totalStepsLevel1 = RamdonNumber(5,8);
+                totalStepsLevel1 = RamdonNumber(3,7);
                 print("Total pasos amarillo: "+totalStepsLevel1);
                 CreatePointsLevel(1, totalStepsLevel1, 0);
                 break;
             case 2: 
-                totalStepsLevel1 = RamdonNumber(5,7);
+                totalStepsLevel1 = RamdonNumber(6,8);
                 print("Total pasos amarillo: "+totalStepsLevel1);
                 
                 CreatePointsLevel(1, totalStepsLevel1, 0);
 
-                totalStepsLevel2 = RamdonNumber(3,6);
+                totalStepsLevel2 = RamdonNumber(3,7);
                 print("Total pasos azul: "+totalStepsLevel2);
                 
-                CreatePointsLevel(2, totalStepsLevel1, 1);
+                CreatePointsLevel(2, totalStepsLevel2, 1);
                 break;
             case 3: 
-                totalStepsLevel1 = RamdonNumber(5,7);
+                totalStepsLevel1 = RamdonNumber(6,8);
                 print("Total pasos amarillo: "+totalStepsLevel1);
 
                 CreatePointsLevel(1, totalStepsLevel1, 0);
 
-                totalStepsLevel2 = RamdonNumber(3,6);
+                totalStepsLevel2 = RamdonNumber(4,7);
                 print("Total pasos azul: "+totalStepsLevel2);
 
-                CreatePointsLevel(2, totalStepsLevel1, 1);
+                CreatePointsLevel(2, totalStepsLevel2, 1);
 
-                totalStepsLevel3 = RamdonNumber(3,6);
+                totalStepsLevel3 = RamdonNumber(3,7);
                 print("Total pasos rojo: "+totalStepsLevel3);
                 
-                CreatePointsLevel(3, totalStepsLevel1, 2);
+                CreatePointsLevel(3, totalStepsLevel3, 2);
+
                 break;
         }
+
+        CheckLevel();
+    }
+
+    // Metodo encargado de verificar si el nivel cumple con las condiciones 
+    public void CheckLevel ()
+    {
+        bool isCorrect = false;
+        if(level == 1) isCorrect = CheckLevel1();
+        else if(level == 2) isCorrect = CheckLevel2();
+        else isCorrect = CheckLevel3();
+
+        //print("level 1 "+level1+" Level 2 "+level2+" level 3 "+level3);
+        if(isCorrect)
+        {
+            print("Cumplio con la condicion de parada y la distancia");
+        }
+        else{
+            print("Algun punto no cumplio con la condicion de parada y la distancia");
+            CreateLevel();
+            //SceneManager.LoadScene("ConnectedGameScene");
+        }
+    }
+
+    bool CheckLevel1()
+    {
+        return level1;
+    }
+
+    bool CheckLevel2()
+    {
+        return level1 && level2;
+    }
+
+    bool CheckLevel3()
+    {
+        return level1 && level2 && level3;
+    }
+
+    // Metodo encargado de verificar si el color ya cumplio con las condiciones
+    void CheckConditions (int type, bool value)
+    {
+        if(type == 1) level1 = value;
+        else if(type == 2) level2 = value;
+        else level3 = value;
     }
 
     public void CreatePointsLevel(int type, int totalSteps, int index)
     {
         int [] finalPoint = GenerateSolution(totalSteps, type);
-
+        
         if(finalPoint == null)
         {
-            print("Null");
-            CreateLevel();
+            print("Es null para el punto "+type);
+            CheckConditions(type, false);
         }
         else
-        {        
-            //if(CheckDistancePoints(finalPoint[0], finalPoint[1], arrivalPoint[0], arrivalPoint[1]))
-            //{
-            arrayObjects[finalPoint[0],finalPoint[1]].type = finalPoint[2];
+        {
+            if(CheckDistancePoints(finalPoint[0], finalPoint[1], arrivalPoint[0], arrivalPoint[1]))
+            {
+                arrayObjects[finalPoint[0],finalPoint[1]].type = finalPoint[2];
 
-            totalStartPoints[index] = new Objects(finalPoint[0], finalPoint[1], finalPoint[2]);
-            /*}
+                totalStartPoints[index] = new Objects(finalPoint[0], finalPoint[1], finalPoint[2]);
+
+                CheckConditions(type, true);
+
+                //print("Cumplio con la distacia social");
+            }
             else
             {
-                print("no cumple con el requisito ");
-                CreateLevel();
-            }*/
-        }
-        
-           
+                //print("Nooooo cumplio con la distacia social");
+                CheckConditions(type, false);
+            }
+        }      
     }
 
     // Metodo encargado de verificar que el punto final no quede muy cerca del punto de inicio
@@ -314,11 +369,10 @@ public class ConnectedGameController : Reference
     {
         bool approved = false;
 
-        if((finalX > startX+3 || finalX < startX-3) || (finalY > startY+2 || finalY < startY-2))
+        if((finalX > startX+2 || finalX < startX-2) || (finalY > startY+2 || finalY < startY-2))
         {
             approved = true;
         }
-        print("Hello "+approved);
         return approved;
     }
 
@@ -334,7 +388,7 @@ public class ConnectedGameController : Reference
 
         while(cantMove >= 0 && centinela)
         {
-            if(stop == 15)
+            if(stop == 50)
             {
                 centinela = false;
             }
@@ -377,7 +431,7 @@ public class ConnectedGameController : Reference
             }
             stop ++;
             
-            print("cantidad mov "+ cantMove+" stop "+stop);
+            //print("cantidad mov "+ cantMove+" Stop "+stop);
         }
 
         if(cantMove < 0)
@@ -385,7 +439,7 @@ public class ConnectedGameController : Reference
             int [] finalPosition = new int [] {posX,posY,type};
             return finalPosition;
         }
-        
+
         return null;
     }
 
@@ -413,7 +467,7 @@ public class ConnectedGameController : Reference
     }
 
     //Metodo empleado para verificar que objeto eligio mover el jugador
-    public void SelectedObject(int type)
+    public void SelectColor(int type)
     {
         if(type == 1)
         {
@@ -581,6 +635,17 @@ public class ConnectedGameController : Reference
                 }
             }
         }
+        if (type == 1)
+        {
+            finish1 = false;
+        }else if (type == 2)
+        {
+            finish2 = false;
+        }
+        else
+        {
+            finish3 = false;
+        }
         PaintStartPoints(type);
     }
 
@@ -629,7 +694,6 @@ public class ConnectedGameController : Reference
         }
         return false;
     }
-
     bool ThreeTotalPoints()
     {
         if(finish1 && finish2 && finish3)
@@ -640,9 +704,6 @@ public class ConnectedGameController : Reference
         }
         return false;
     }
-
-
-    
 
     /* Metodo encargado de verificar que la posicion donde se va a 
     * ubicar la figura no este ya ocupada y que no se salga de los limites
@@ -695,29 +756,107 @@ public class ConnectedGameController : Reference
 
     void CheckMovesLevel1()
     {
-        if(totalMove1 == totalStepsLevel1)
+        int difference = totalMove1 - totalStepsLevel1;
+
+        Debug.Log("LA RESTA ES: " + difference);
+
+        /*if (totalMove1 == totalStepsLevel1)
         {
             print("Cumplio los pasos con el color amarillo");
             WinLevel();
         }
+        else
+        {
+            print("No Cumplio los pasos con el color amarillo");
+        }*/
+
+        if(difference == 0)
+        {
+            print("Cumplio los pasos con el color amarillo");
+            //WinLevel();
+            SetPointsAndStars(1);
+        }
+        else if(difference > 0 && difference < 4)
+        {
+            print("No Cumplio los pasos con el color amarillo");
+            SetPointsAndStars(2);
+        }
+        else
+        {
+            print("No Cumplio los pasos con el color amarillo 2");
+            SetPointsAndStars(3);
+        }
+        App.generalModel.connectedGameModel.UpdateLevel(2);
     }
     
     void CheckMovesLevel2()
     {
-        if(totalMove1 == totalStepsLevel1 && totalMove2 == totalStepsLevel2)
+        int difference = totalMove1 - totalStepsLevel1;
+        int difference2 = totalMove2 - totalStepsLevel2;
+
+        if (difference == 0 && difference2 == 0)
+        {
+            print("Cumplio los pasos con el color amarillo y azul");
+            SetPointsAndStars(1);
+            //WinLevel();
+        }else if ((difference == 0 && (difference2 > 0 && difference2 < 4)) || (difference2 == 0 && (difference > 0 && difference < 4)))
+        {
+            print("NO Cumplio los pasos con el color amarillo y azul");
+            SetPointsAndStars(2);
+        }
+        else
+        {
+            print("NO Cumplio los pasos con el color amarillo y azul 2");
+            SetPointsAndStars(3);
+        }
+
+        App.generalModel.connectedGameModel.UpdateLevel(3);
+        /*if (totalMove1 == totalStepsLevel1 && totalMove2 == totalStepsLevel2)
         {
             print("Cumplio los pasos con el color amarillo y azul");
             WinLevel();
-        }
+        }*/
     }
 
     void CheckMovesLevel3()
     {
-        if(totalMove1 == totalStepsLevel1 && totalMove2 == totalStepsLevel2 && totalMove3 == totalStepsLevel3)
+        int difference = totalMove1 - totalStepsLevel1;
+        int difference2 = totalMove2 - totalStepsLevel2;
+        int difference3 = totalMove3 - totalStepsLevel3;
+
+        Debug.Log("LA RESTA 1 ES: " + difference);
+        Debug.Log("LA RESTA 2 ES: " + difference2);
+        Debug.Log("LA RESTA 3 ES: " + difference3);
+
+        isLastLevel = true;
+        if (difference == 0 && difference2 == 0 && difference3 == 0)
+        {
+            print("Cumplio los pasos con el color amarillo, azul y rojo");
+            SetPointsAndStars(1);
+            //WinLevel();
+        }
+        else if ((difference == 0 && difference2 == 0 && (difference3 > 0 && difference3 < 4)) || (difference2 == 0 && difference3 == 0 && (difference > 0 && difference < 4)) || (difference == 0 && difference3 == 0 && (difference2 > 0 && difference2 < 4)))
+        {
+            print("NO Cumplio los pasos con el color amarillo, azul y rojo 1");
+            SetPointsAndStars(2);
+        }
+        else if((difference == 0 && (difference2 > 0 && difference2 < 4) && (difference3 > 0 && difference3 < 4)) || (difference3 == 0 && (difference2 > 0 && difference2 < 4) && (difference > 0 && difference < 4)) || (difference2 == 0 && (difference > 0 && difference < 4) && (difference3 > 0 && difference3 < 4)))
+        {
+            print("NO Cumplio los pasos con el color amarillo, azul y rojo 2");
+            SetPointsAndStars(2);
+        }
+        else
+        {
+            print("NO Cumplio los pasos con el color amarillo, azul y rojo 8");
+            SetPointsAndStars(3);
+        }
+
+        App.generalModel.connectedGameModel.UpdateLevel(1);
+        /*if (totalMove1 == totalStepsLevel1 && totalMove2 == totalStepsLevel2 && totalMove3 == totalStepsLevel3)
         {
             print("Cumplio los pasos con el color amarillo y azul");
             WinLevel();
-        }
+        }*/
     }
 
     bool CheckPositionVolver(Objects [,] array,int posX, int posY, int type)
@@ -730,9 +869,24 @@ public class ConnectedGameController : Reference
         }
         return false;
     }
-    public void MostrarSolucion()
+    public void ShowSolution()
     {
-        arrayObjects = Clone(arraySolution);
+        //Si hay tickets muestra la solucion
+        Debug.Log("HAY: " + App.generalModel.ticketModel.GetTickets() + " TICKETS");
+        if (App.generalModel.ticketModel.GetTickets() >= 1)
+        {
+            Debug.Log("HAS USADO UN PASE");
+
+            App.generalController.ticketController.DecraseTickets();
+            App.generalView.gameOptionsView.HideBuyCanvas();
+                       
+            arrayObjects = Clone(arraySolution);
+            DrawMatrix(arrayObjects, initialBlock, gameZone);
+        }
+        else
+        {
+            App.generalView.gameOptionsView.ShowTicketsCanvas(3);
+        }
     }
     
     // Metodo auxiliar para duplicar la matriz
@@ -773,5 +927,62 @@ public class ConnectedGameController : Reference
             imprimir = imprimir + "\n";
         }
         Debug.Log(imprimir);
+    }
+    //
+    bool isLastLevel;
+
+
+    /// <summary>
+    /// Metodo que asigna los puntos y estrellas que ha ganado el jugador
+    /// </summary>
+    /// <param name="rating">Int rating que indica los puntos que deben ser asignados</param>
+    public void SetPointsAndStars(int rating)
+    {
+        //Declaracion de los puntos y estrellas que ha ganado el juegador
+        int points, stars, canvasStars;
+
+        //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
+        if (rating == 1)
+        {
+            points = App.generalModel.connectedGameModel.GetPoints() + 30;
+            stars = App.generalModel.connectedGameModel.GetTotalStars() + 3;
+            canvasStars = 3;
+
+            //Actualizar las veces que ha ganado 3 estrellas
+            //App.generalModel.connectedGameModel.UpdatePerfectWins(App.generalModel.connectedGameModel.countPerfectWins + 1);
+
+            //Actualizar las veces que ha ganado sin errores
+            //App.generalModel.connectedGameModel.UpdatePerfectGame(App.generalModel.connectedGameModel.GetPerfectGame() + 1);
+            //Debug.Log("LLEVA: " + PlayerPrefs.GetInt("PerfectGame2", 0) + " JUEGO(S) PERFECTO(S)");
+        }
+        //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
+        else if (rating == 2)
+        {
+            points = App.generalModel.connectedGameModel.GetPoints() + 20;
+            stars = App.generalModel.connectedGameModel.GetTotalStars() + 2;
+            canvasStars = 2;
+
+            //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
+            App.generalModel.connectedGameModel.UpdatePerfectGame(0);
+        }
+        //Si gana el juego con mas de 9 intentos suma 10 puntos y gana 1 estrella
+        else
+        {
+            points = App.generalModel.connectedGameModel.GetPoints() + 10;
+            stars = App.generalModel.connectedGameModel.GetTotalStars() + 1;
+            canvasStars = 1;
+
+            //Actualizar las veces que ha ganado sin errores
+            App.generalModel.connectedGameModel.UpdatePerfectGame(0);
+        }
+
+        //Actualiza los puntos y estrellas obtenidos
+        App.generalModel.connectedGameModel.UpdatePoints(points);
+        App.generalModel.connectedGameModel.UpdateTotalStars(stars);
+
+        Debug.Log("IS LAST LEVEL: " + isLastLevel);
+        //Mostrar el canvas que indica cuantas estrellas gano
+        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
+
     }
 }

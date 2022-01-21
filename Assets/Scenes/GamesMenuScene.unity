@@ -496,6 +496,7 @@ MonoBehaviour:
   additionGameModel: {fileID: 1624167634}
   setsGameModel: {fileID: 1624167635}
   ticketModel: {fileID: 0}
+  connectedGameModel: {fileID: 1624167636}
 --- !u!4 &33455100
 Transform:
   m_ObjectHideFlags: 0
@@ -2052,6 +2053,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152272389dcece641aee84063d522404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialBlock: {fileID: 0}
+  gameZone: {fileID: 0}
 --- !u!4 &346605345
 Transform:
   m_ObjectHideFlags: 0
@@ -9239,6 +9242,7 @@ GameObject:
   - component: {fileID: 1624167627}
   - component: {fileID: 1624167634}
   - component: {fileID: 1624167635}
+  - component: {fileID: 1624167636}
   m_Layer: 0
   m_Name: GamesModels
   m_TagString: Untagged
@@ -9366,6 +9370,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countPerfectWins: 0
   file: {fileID: 0}
+--- !u!114 &1624167636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624167626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8856234eb2a3144d830340f9721a159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countPerfectWins: 0
 --- !u!1 &1694392922
 GameObject:
   m_ObjectHideFlags: 0
