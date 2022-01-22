@@ -43,12 +43,12 @@ public class EquialityGameModel : Reference
         App.generalModel.statsModel.UpdateTotalPoints(App.generalModel.statsModel.GetTotalPoints() + GetPoints());
 
         //Verificar si ya cumplio con el logro de sumar mas de 300 puntos en este juego
-        if (GetPoints() >= 30)
+        if (GetPoints() >= 300)
         {
-            if (PlayerPrefs.GetInt("hola2", 0) == 0)
+            if (PlayerPrefs.GetInt("AchievementUnlocked_7", 0) == 0)
             {
                 PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
-                PlayerPrefs.SetInt("hola2", 1);
+                PlayerPrefs.SetInt("AchievementUnlocked_7", 1);
 
             }
 
@@ -58,7 +58,7 @@ public class EquialityGameModel : Reference
 
                 Debug.Log("8 VAAAAAAAAAAA ENNNNNNNNNNNN: " + PlayerPrefs.GetInt("ThreeTundredPoints", 0));
 
-                if (PlayerPrefs.GetInt("ThreeTundredPoints", 0) == 2)
+                if (PlayerPrefs.GetInt("ThreeTundredPoints", 0) == 3)
                 {
                     App.generalController.statsController.DeleteAchievements(8);
                 }
@@ -70,7 +70,7 @@ public class EquialityGameModel : Reference
 
                 Debug.Log("9 VAAAAAAAAAAA ENNNNNNNNNNNN: " + PlayerPrefs.GetInt("ThreeTundredPoints", 0));
 
-                if (PlayerPrefs.GetInt("ThreeTundredPoints", 0) == 4)
+                if (PlayerPrefs.GetInt("ThreeTundredPoints", 0) == 6)
                 {
                     App.generalController.statsController.DeleteAchievements(9);
                 }
@@ -94,11 +94,14 @@ public class EquialityGameModel : Reference
     {
         PlayerPrefs.SetInt("TimesPlayedGame7", value);
 
-        PlayerPrefs.SetInt("PlayOneLevel", PlayerPrefs.GetInt("PlayOneLevel", 0) + 1);
+        if (value == 1)
+        {
+            PlayerPrefs.SetInt("PlayOneLevel", PlayerPrefs.GetInt("PlayOneLevel", 0) + 1);
+            print("ENTRO A SUMAR AL LOGRO");
+        }
 
-        int achievement_1 = PlayerPrefs.GetInt("PlayOneLevel", 0);
-
-        if (achievement_1 == 3)
+        // Verificar si consiguio el logro 1: Juega un nivel de cada juego
+        if (PlayerPrefs.GetInt("PlayOneLevel", 0) == 7)
         {
             if (!App.generalController.statsController.IsAchievements(0))
             {
@@ -120,12 +123,13 @@ public class EquialityGameModel : Reference
     /// <param name="value">Cantidad de veces que ha ganado 3 estrellas</param>
     public void UpdatePerfectWins(int value)
     {
-        PlayerPrefs.SetInt("GetThreeStars7", PlayerPrefs.GetInt("GetThreeStars7", 0) + value);
+        PlayerPrefs.SetInt("GetThreeStars7", value);
 
         countPerfectWins = PlayerPrefs.GetInt("GetThreeStars7", 0);
 
         //Debug.Log("LLEVA: "+countPerfectWins+" PERFECTAS");
 
+        //Verificar si cumplio el logro 2: Obtén 3 estrellas en 3 niveles de un juego
         if (countPerfectWins == 3)
         {
             Debug.Log("SE PROCEDE A CUMPLIR EL LOGRO");
@@ -134,6 +138,7 @@ public class EquialityGameModel : Reference
                 App.generalController.statsController.DeleteAchievements(1);
             }
         }
+        //Verificar si cumplio el logro 3: Obtén 3 estrellas en 6 niveles de un juego
         else if (countPerfectWins == 6)
         {
             if (!App.generalController.statsController.IsAchievements(2))
@@ -160,6 +165,7 @@ public class EquialityGameModel : Reference
 
         Debug.Log("LLEVA: " + GetPerfectGame() + " PERFECTOS");
 
+        //Verificar si cumplio el logro 7: Completa 3 niveles seguidos sin errores
         if (GetPerfectGame() == 3)
         {
             if (!App.generalController.statsController.IsAchievements(6))
@@ -167,6 +173,7 @@ public class EquialityGameModel : Reference
                 App.generalController.statsController.DeleteAchievements(6);
             }
         }
+        //Verificar si cumplio el logro 8:  Completa 10 niveles seguidos sin errores
         if (GetPerfectGame() == 10)
         {
             if (!App.generalController.statsController.IsAchievements(7))

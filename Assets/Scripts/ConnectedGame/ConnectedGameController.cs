@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ConnectedGameController : Reference
 {
@@ -58,31 +55,18 @@ public class ConnectedGameController : Reference
     bool level3 = false;
 
     static Objects[] totalStartPoints = new Objects[3];
-    
-    /*void Awake()
-    {
-        print("Awake");
-        if(connectedGameController == null)
-        {
-            connectedGameController = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (connectedGameController != this)
-        {
-            Destroy(gameObject);
-        }
-    }*/
+
+    //
+    bool isLastLevel;
+
+    //
+    int countPlay;
 
     // Start is called before the first frame update
     void Start()
     {
         CreateLevel();
-    }
-    
-    public int ReturnLevel()
-    {
-        return level;
-    }
+    }    
     /*
      * Metodo que dibuja en la pantalla la matriz
      */
@@ -127,7 +111,6 @@ public class ConnectedGameController : Reference
             }
         }
     }
-
     /* 
     * Metodo que pinta la matriz dependiendo el id indicado (cada id representa un color diferente)
     */
@@ -159,13 +142,11 @@ public class ConnectedGameController : Reference
             matrix[i, j].GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
-
     // Metodo que retorna la matriz logica
     public Objects[,] ReturnArray ()
     {
         return arrayObjects;
     }
-    
     // Metodo principal encargado de hacer los llamados correspondientes para generar el nivel
     public void CreateLevel()
     {
@@ -175,6 +156,7 @@ public class ConnectedGameController : Reference
 
         level = App.generalModel.connectedGameModel.GetLevel();
         print("Create level "+level);
+        ActivateButtons();
         GenerateArray();
         GenerateArrivalPoint();
         CreatePoints();
@@ -187,14 +169,20 @@ public class ConnectedGameController : Reference
         LoadText();
        
     }
-
+    public void ActivateButtons()
+    {
+        for (int i = 0; i < level; i++)
+        {
+            App.generalView.connectedGameView.colorButtons[i].interactable = true;
+            App.generalView.connectedGameView.resetButtons[i].interactable = true;
+        }
+    }
     void RestartCountingMovements()
     {
         totalMove1 = 0;
         totalMove2 = 0;
         totalMove3 = 0;
     }
-
     //Metodo que carga el texto inicial dando indicaciones
     public void LoadText ()
     {
@@ -218,7 +206,6 @@ public class ConnectedGameController : Reference
 
         App.generalView.connectedGameView.message.text = message;
     }
-
     //Metodo encargado de inicializar los puntos de la matriz logica
     public void GenerateArray ()
     {
@@ -232,7 +219,6 @@ public class ConnectedGameController : Reference
             }
         }
     }
-
     //Metodo encargado de generar el punto de llegada 
     public void GenerateArrivalPoint()
     {
@@ -248,7 +234,6 @@ public class ConnectedGameController : Reference
         //Se clona la matriz con el fin de  tener una donde se genera automaticamente una solucion en caso de no ser resuelto
         arraySolution = Clone(arrayObjects);
     }
-
     //Metodo encargado de generar los puntos (colores o personajes) dependiendo la cantidad indicada (2 o 3)
     public void CreatePoints()
     {
@@ -291,7 +276,6 @@ public class ConnectedGameController : Reference
 
         CheckLevel();
     }
-
     // Metodo encargado de verificar si el nivel cumple con las condiciones 
     public void CheckLevel ()
     {
@@ -311,22 +295,18 @@ public class ConnectedGameController : Reference
             //SceneManager.LoadScene("ConnectedGameScene");
         }
     }
-
     bool CheckLevel1()
     {
         return level1;
     }
-
     bool CheckLevel2()
     {
         return level1 && level2;
     }
-
     bool CheckLevel3()
     {
         return level1 && level2 && level3;
     }
-
     // Metodo encargado de verificar si el color ya cumplio con las condiciones
     void CheckConditions (int type, bool value)
     {
@@ -334,7 +314,6 @@ public class ConnectedGameController : Reference
         else if(type == 2) level2 = value;
         else level3 = value;
     }
-
     public void CreatePointsLevel(int type, int totalSteps, int index)
     {
         int [] finalPoint = GenerateSolution(totalSteps, type);
@@ -363,7 +342,6 @@ public class ConnectedGameController : Reference
             }
         }      
     }
-
     // Metodo encargado de verificar que el punto final no quede muy cerca del punto de inicio
     bool CheckDistancePoints(int startX, int startY, int finalX, int finalY)
     {
@@ -375,7 +353,6 @@ public class ConnectedGameController : Reference
         }
         return approved;
     }
-
     //Metodo encargado de generar una solucion por cada punto(color o personaje) con la cantidad de movimientos especificados
     public int [] GenerateSolution(int cantMove, int type)
     {
@@ -442,7 +419,6 @@ public class ConnectedGameController : Reference
 
         return null;
     }
-
     //Metodo que encuentra los puntos iniciales y inicializa las variables correspondientes de acuerdo al tipo
     public void LocateStartPoints ()
     {
@@ -465,7 +441,6 @@ public class ConnectedGameController : Reference
             }
         }
     }
-
     //Metodo empleado para verificar que objeto eligio mover el jugador
     public void SelectColor(int type)
     {
@@ -482,95 +457,100 @@ public class ConnectedGameController : Reference
             startPoint = startPoint3;
         }
     }
-
     //Metodo encargado de toda la parte del movimiento que realiza el jugador tanto logica y visual
     public void Move(string direction)
     {
-        if (direction == "up")
+        if(startPoint == null)
         {
-            if(CheckPosition(arrayObjects, startPoint.x-1, startPoint.y))
-            {
-                arrayObjects[startPoint.x-1,startPoint.y].type = startPoint.type;
-                PaintMatrix(startPoint.x-1,startPoint.y, startPoint.type);
-                CountMoves(startPoint.type);
-                startPoint.x = startPoint.x-1;
-            }
-            else if(CheckArrival(arrayObjects, startPoint.x-1, startPoint.y))
-            {
-                CheckArrivalOption(startPoint.type);
-            }
-            /*else if(CheckPositionVolver(arrayObjects, puntoInicial.x-1, puntoInicial.y, puntoInicial.type))
-            {
-                arrayObjects[puntoInicial.x,puntoInicial.y].type = 0;
-                PintarColores(puntoInicial.x,puntoInicial.y, 0);
-                puntoInicial.x = puntoInicial.x-1;
-            }*/
+            App.generalView.gameOptionsView.ShowWarningCanvas();
         }
-        else if (direction == "down")
+        else
         {
-            if(CheckPosition(arrayObjects, startPoint.x+1, startPoint.y))
+            if (direction == "up")
             {
-                arrayObjects[startPoint.x+1,startPoint.y].type = startPoint.type;
-                PaintMatrix(startPoint.x+1,startPoint.y, startPoint.type);
-                CountMoves(startPoint.type);
-                startPoint.x = startPoint.x+1;
+                if (CheckPosition(arrayObjects, startPoint.x - 1, startPoint.y))
+                {
+                    arrayObjects[startPoint.x - 1, startPoint.y].type = startPoint.type;
+                    PaintMatrix(startPoint.x - 1, startPoint.y, startPoint.type);
+                    CountMoves(startPoint.type);
+                    startPoint.x = startPoint.x - 1;
+                }
+                else if (CheckArrival(arrayObjects, startPoint.x - 1, startPoint.y))
+                {
+                    CheckArrivalOption(startPoint.type);
+                }
+                /*else if(CheckPositionVolver(arrayObjects, puntoInicial.x-1, puntoInicial.y, puntoInicial.type))
+                {
+                    arrayObjects[puntoInicial.x,puntoInicial.y].type = 0;
+                    PintarColores(puntoInicial.x,puntoInicial.y, 0);
+                    puntoInicial.x = puntoInicial.x-1;
+                }*/
             }
-            else if(CheckArrival(arrayObjects, startPoint.x+1, startPoint.y))
+            else if (direction == "down")
             {
-                CheckArrivalOption(startPoint.type);
-            }
-            /*else if(CheckPositionVolver(arrayObjects, puntoInicial.x+1, puntoInicial.y, puntoInicial.type))
-            {   
-                arrayObjects[puntoInicial.x,puntoInicial.y].type = 0;
-                PintarColores(puntoInicial.x,puntoInicial.y, 0);
-                puntoInicial.x = puntoInicial.x+1;
-            }*/
+                if (CheckPosition(arrayObjects, startPoint.x + 1, startPoint.y))
+                {
+                    arrayObjects[startPoint.x + 1, startPoint.y].type = startPoint.type;
+                    PaintMatrix(startPoint.x + 1, startPoint.y, startPoint.type);
+                    CountMoves(startPoint.type);
+                    startPoint.x = startPoint.x + 1;
+                }
+                else if (CheckArrival(arrayObjects, startPoint.x + 1, startPoint.y))
+                {
+                    CheckArrivalOption(startPoint.type);
+                }
+                /*else if(CheckPositionVolver(arrayObjects, puntoInicial.x+1, puntoInicial.y, puntoInicial.type))
+                {   
+                    arrayObjects[puntoInicial.x,puntoInicial.y].type = 0;
+                    PintarColores(puntoInicial.x,puntoInicial.y, 0);
+                    puntoInicial.x = puntoInicial.x+1;
+                }*/
 
+            }
+            else if (direction == "right")
+            {
+                if (CheckPosition(arrayObjects, startPoint.x, startPoint.y + 1))
+                {
+                    arrayObjects[startPoint.x, startPoint.y + 1].type = startPoint.type;
+                    PaintMatrix(startPoint.x, startPoint.y + 1, startPoint.type);
+                    CountMoves(startPoint.type);
+                    startPoint.y = startPoint.y + 1;
+                }
+                else if (CheckArrival(arrayObjects, startPoint.x, startPoint.y + 1))
+                {
+                    CheckArrivalOption(startPoint.type);
+                }
+                /*else if(CheckPositionVolver(arrayObjects, puntoInicial.x, puntoInicial.y+1, puntoInicial.type))
+                {
+                    arrayObjects[puntoInicial.x,puntoInicial.y].type = 0;
+                    PintarColores(puntoInicial.x,puntoInicial.y, 0);
+                    puntoInicial.y = puntoInicial.y+1;
+                }*/
+            }
+            else if (direction == "left")
+            {
+                if (CheckPosition(arrayObjects, startPoint.x, startPoint.y - 1))
+                {
+                    arrayObjects[startPoint.x, startPoint.y - 1].type = startPoint.type;
+                    PaintMatrix(startPoint.x, startPoint.y - 1, startPoint.type);
+                    CountMoves(startPoint.type);
+                    startPoint.y = startPoint.y - 1;
+                }
+                else if (CheckArrival(arrayObjects, startPoint.x, startPoint.y - 1))
+                {
+                    CheckArrivalOption(startPoint.type);
+                }
+                /*else if(CheckPositionVolver(arrayObjects, puntoInicial.x, puntoInicial.y-1, puntoInicial.type))
+                {
+                    arrayObjects[puntoInicial.x,puntoInicial.y].type = 0;
+                    PintarColores(puntoInicial.x,puntoInicial.y, 0);
+                    puntoInicial.y = puntoInicial.y+1;
+                }*/
+            }
+            print(totalMove1 + " - " + totalMove2);
+            CheckEndGame();
         }
-        else if (direction == "right")
-        {
-            if(CheckPosition(arrayObjects, startPoint.x, startPoint.y+1))
-            {
-                arrayObjects[startPoint.x,startPoint.y+1].type = startPoint.type;
-                PaintMatrix(startPoint.x,startPoint.y+1, startPoint.type);
-                CountMoves(startPoint.type);
-                startPoint.y = startPoint.y+1;
-            }
-            else if(CheckArrival(arrayObjects, startPoint.x, startPoint.y+1))
-            {
-                CheckArrivalOption(startPoint.type);
-            }
-            /*else if(CheckPositionVolver(arrayObjects, puntoInicial.x, puntoInicial.y+1, puntoInicial.type))
-            {
-                arrayObjects[puntoInicial.x,puntoInicial.y].type = 0;
-                PintarColores(puntoInicial.x,puntoInicial.y, 0);
-                puntoInicial.y = puntoInicial.y+1;
-            }*/
-        }
-        else if (direction == "left")
-        {
-            if(CheckPosition(arrayObjects, startPoint.x, startPoint.y-1))
-            {
-                arrayObjects[startPoint.x,startPoint.y-1].type = startPoint.type;
-                PaintMatrix(startPoint.x,startPoint.y-1, startPoint.type);
-                CountMoves(startPoint.type);
-                startPoint.y = startPoint.y-1;
-            }
-            else if(CheckArrival(arrayObjects, startPoint.x, startPoint.y-1))
-            {
-                CheckArrivalOption(startPoint.type);
-            }
-            /*else if(CheckPositionVolver(arrayObjects, puntoInicial.x, puntoInicial.y-1, puntoInicial.type))
-            {
-                arrayObjects[puntoInicial.x,puntoInicial.y].type = 0;
-                PintarColores(puntoInicial.x,puntoInicial.y, 0);
-                puntoInicial.y = puntoInicial.y+1;
-            }*/
-        }
-        print(totalMove1+" - "+totalMove2);
-        CheckEndGame();
     }
-
     //Metodo que cuenta la cantidad de movimientos que el jugador a realizado dependiendo el objeto que selecciono 
     public void CountMoves (int type)
     {
@@ -587,7 +567,6 @@ public class ConnectedGameController : Reference
             totalMove3++;
         }
     }
-
     //Metodo que dependiendo la opcion indica cual fue el objeto que ya llego al punto final
     public void CheckArrivalOption (int tipo)
     {
@@ -604,7 +583,6 @@ public class ConnectedGameController : Reference
             finish3 = true;
         }
     }
-
     void CheckEndGame()
     {
         if(level == 1)
@@ -620,8 +598,7 @@ public class ConnectedGameController : Reference
             ThreeTotalPoints();
         }
     }
-
-    public void ReturnMoves(int type)
+    public void ResetMoves(int type)
     {
         print("tipo para borrar "+type);
         for (int i = 0; i < arrayRow; i++)
@@ -648,7 +625,6 @@ public class ConnectedGameController : Reference
         }
         PaintStartPoints(type);
     }
-
     void PaintStartPoints(int type)
     {
         if(type == 1)
@@ -673,7 +649,6 @@ public class ConnectedGameController : Reference
             totalMove3 = 0;
         }
     }
-
     bool OneTotalPoints()
     {
         if(finish1)
@@ -704,7 +679,6 @@ public class ConnectedGameController : Reference
         }
         return false;
     }
-
     /* Metodo encargado de verificar que la posicion donde se va a 
     * ubicar la figura no este ya ocupada y que no se salga de los limites
     * de la matriz
@@ -719,7 +693,6 @@ public class ConnectedGameController : Reference
         }
         return false;
     }
-
     //Metodo que verifica si la posicion a la que se va a mover corresponde al punto de llegada
     bool CheckArrival(Objects [,] array,int posX, int posY)
     {
@@ -730,17 +703,16 @@ public class ConnectedGameController : Reference
             if(array[posX,posY].type == 9) return true;
         }
         return false;
-    }
-    
-    void WinLevel()
-    {
-        App.generalView.gameOptionsView.WinCanvas.enabled = true;
-        level++;
-    }
-
+    }    
     void CheckTotalMoves ()
     {
-        if(level == 1)
+        //Verificar si ya jugo un nivel de este juego
+        countPlay = App.generalModel.connectedGameModel.GetTimesPlayed();
+
+        App.generalModel.connectedGameModel.UpdateTimesPlayed(++countPlay);
+        print("HA JUGADO: " + countPlay);
+
+        if (level == 1)
         {
             CheckMovesLevel1();
         }
@@ -753,7 +725,6 @@ public class ConnectedGameController : Reference
             CheckMovesLevel3();
         }
     }
-
     void CheckMovesLevel1()
     {
         int difference = totalMove1 - totalStepsLevel1;
@@ -787,8 +758,7 @@ public class ConnectedGameController : Reference
             SetPointsAndStars(3);
         }
         App.generalModel.connectedGameModel.UpdateLevel(2);
-    }
-    
+    }    
     void CheckMovesLevel2()
     {
         int difference = totalMove1 - totalStepsLevel1;
@@ -817,7 +787,6 @@ public class ConnectedGameController : Reference
             WinLevel();
         }*/
     }
-
     void CheckMovesLevel3()
     {
         int difference = totalMove1 - totalStepsLevel1;
@@ -858,17 +827,6 @@ public class ConnectedGameController : Reference
             WinLevel();
         }*/
     }
-
-    bool CheckPositionVolver(Objects [,] array,int posX, int posY, int type)
-    {
-        // Verifica que no se vaya salir de los limites 
-        if(posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)
-        {
-            // Verifica si la posicion indicada esta libre
-            if(array[posX,posY].type == type) return true;
-        }
-        return false;
-    }
     public void ShowSolution()
     {
         //Si hay tickets muestra la solucion
@@ -888,7 +846,6 @@ public class ConnectedGameController : Reference
             App.generalView.gameOptionsView.ShowTicketsCanvas(3);
         }
     }
-    
     // Metodo auxiliar para duplicar la matriz
     Objects [,] Clone (Objects [,] array)
     {
@@ -913,25 +870,6 @@ public class ConnectedGameController : Reference
         int number = UnityEngine.Random.Range (min, max);
         return number;
     }
-
-    // Metodo que imprime en consola la matriz y sus valores correspondientes
-    void ShowArray (Objects [,] array)
-    {
-        string imprimir = "\n";
-        for (int i = 0; i < arrayRow; i++)
-        {
-            for (int j = 0; j < arrayCol; j++)
-            {
-                imprimir = imprimir + array[i, j].type + " ";
-            }
-            imprimir = imprimir + "\n";
-        }
-        Debug.Log(imprimir);
-    }
-    //
-    bool isLastLevel;
-
-
     /// <summary>
     /// Metodo que asigna los puntos y estrellas que ha ganado el jugador
     /// </summary>
@@ -949,10 +887,10 @@ public class ConnectedGameController : Reference
             canvasStars = 3;
 
             //Actualizar las veces que ha ganado 3 estrellas
-            //App.generalModel.connectedGameModel.UpdatePerfectWins(App.generalModel.connectedGameModel.countPerfectWins + 1);
+            App.generalModel.connectedGameModel.UpdatePerfectWins(App.generalModel.connectedGameModel.GetPerfectWins() + 1);
 
             //Actualizar las veces que ha ganado sin errores
-            //App.generalModel.connectedGameModel.UpdatePerfectGame(App.generalModel.connectedGameModel.GetPerfectGame() + 1);
+            App.generalModel.connectedGameModel.UpdatePerfectGame(App.generalModel.connectedGameModel.GetPerfectGame() + 1);
             //Debug.Log("LLEVA: " + PlayerPrefs.GetInt("PerfectGame2", 0) + " JUEGO(S) PERFECTO(S)");
         }
         //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas

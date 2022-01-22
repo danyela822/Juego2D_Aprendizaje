@@ -118,12 +118,12 @@ public class ClassificationGameModel : Reference
         App.generalModel.statsModel.UpdateTotalPoints(App.generalModel.statsModel.GetTotalPoints() + GetPoints());
 
         //Verificar si ya cumplio con el logro de sumar mas de 300 puntos en este juego
-        if (GetPoints() >= 30)
+        if (GetPoints() >= 300)
         {
-            if(PlayerPrefs.GetInt("hola",0) == 0)
+            if(PlayerPrefs.GetInt("AchievementUnlocked_1", 0) == 0)
             {
                 PlayerPrefs.SetInt("ThreeTundredPoints", PlayerPrefs.GetInt("ThreeTundredPoints", 0) + 1);
-                PlayerPrefs.SetInt("hola", 1);
+                PlayerPrefs.SetInt("AchievementUnlocked_1", 1);
 
             }
 
@@ -133,7 +133,7 @@ public class ClassificationGameModel : Reference
 
                 Debug.Log("8 VAAAAAAAAAAA ENNNNNNNNNNNN: " + PlayerPrefs.GetInt("ThreeTundredPoints", 0));
 
-                if (PlayerPrefs.GetInt("ThreeTundredPoints", 0) == 2)
+                if (PlayerPrefs.GetInt("ThreeTundredPoints", 0) == 3)
                 {
                     App.generalController.statsController.DeleteAchievements(8);
                 }
@@ -145,7 +145,7 @@ public class ClassificationGameModel : Reference
 
                 Debug.Log("9 VAAAAAAAAAAA ENNNNNNNNNNNN: " + PlayerPrefs.GetInt("ThreeTundredPoints", 0));
 
-                if (PlayerPrefs.GetInt("ThreeTundredPoints", 0) == 4)
+                if (PlayerPrefs.GetInt("ThreeTundredPoints", 0) == 6)
                 {
                     App.generalController.statsController.DeleteAchievements(9);
                 }
@@ -168,11 +168,14 @@ public class ClassificationGameModel : Reference
     {
         PlayerPrefs.SetInt("TimesPlayedGame1", value);
 
-        PlayerPrefs.SetInt("PlayOneLevel", PlayerPrefs.GetInt("PlayOneLevel", 0) + 1);
+        if (value == 1)
+        {
+            PlayerPrefs.SetInt("PlayOneLevel", PlayerPrefs.GetInt("PlayOneLevel", 0) + 1);
+            print("ENTRO A SUMAR AL LOGRO");
+        }
 
-        int achievement_1 = PlayerPrefs.GetInt("PlayOneLevel", 0);
-
-        if (achievement_1 == 3)
+        // Verificar si consiguio el logro 1: Juega un nivel de cada juego
+        if (PlayerPrefs.GetInt("PlayOneLevel", 0) == 7)
         {
             if (!App.generalController.statsController.IsAchievements(0))
             {
@@ -194,12 +197,13 @@ public class ClassificationGameModel : Reference
     /// <param name="value">Cantidad de veces que ha ganado 3 estrellas</param>
     public void UpdatePerfectWins(int value)
     {
-        PlayerPrefs.SetInt("GetThreeStars1", PlayerPrefs.GetInt("GetThreeStars1", 0) + value);
+        PlayerPrefs.SetInt("GetThreeStars1", value);
 
         countPerfectWins = PlayerPrefs.GetInt("GetThreeStars1", 0);
 
         //Debug.Log("LLEVA: " + countPerfectWins + " PERFECTAS");
 
+        //Verificar si cumplio el logro 2: Obtén 3 estrellas en 3 niveles de un juego
         if (countPerfectWins == 3)
         {
             if (!App.generalController.statsController.IsAchievements(1))
@@ -207,6 +211,7 @@ public class ClassificationGameModel : Reference
                 App.generalController.statsController.DeleteAchievements(1);
             }
         }
+        //Verificar si cumplio el logro 3: Obtén 3 estrellas en 6 niveles de un juego
         else if (countPerfectWins == 6)
         {
             if (!App.generalController.statsController.IsAchievements(2))
@@ -231,6 +236,7 @@ public class ClassificationGameModel : Reference
     {
         PlayerPrefs.SetInt("PerfectGame1", value);
 
+        //Verificar si cumplio el logro 7: Completa 3 niveles seguidos sin errores
         if (GetPerfectGame() == 3)
         {
             if (!App.generalController.statsController.IsAchievements(6))
@@ -238,6 +244,7 @@ public class ClassificationGameModel : Reference
                 App.generalController.statsController.DeleteAchievements(6);
             }
         }
+        //Verificar si cumplio el logro 8:  Completa 10 niveles seguidos sin errores
         if (GetPerfectGame() == 10)
         {
             if (!App.generalController.statsController.IsAchievements(7))

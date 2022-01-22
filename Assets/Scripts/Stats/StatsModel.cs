@@ -4,8 +4,6 @@ using UnityEngine;
 public class StatsModel : Reference
 {
     public FileLists file;
-    //public int totalStars;
-    //public int totalPoints;
     string currentLeague;
 
     public Sprite LoadLeagueImage(string league)
@@ -14,200 +12,81 @@ public class StatsModel : Reference
     }
     public string GetLeague()
     {
-        currentLeague = "Sin liga";
-
-        int stars = GetTotalStars();
-
-        if (stars >= 15 && stars < 45)
+        if (currentLeague == null)
         {
-            currentLeague = "hierro";
+            return "Sin liga";
         }
-        else if (stars >= 45 && stars < 85)
+        else
         {
-            currentLeague = "bronce";
+            return currentLeague;
         }
-        else if (stars >= 85 && stars < 145)
-        {
-            currentLeague = "plata";
-        }
-        else if (stars >= 145 && stars < 215)
-        {
-            currentLeague = "oro";
-        }
-        else if (stars >= 215)
-        {
-            currentLeague = "diamante";
-        }
-        return currentLeague;
     }
     public void UpdateTotalPoints(int value)
     {
        PlayerPrefs.SetInt("TotalPoints",value);
-       //totalPoints = PlayerPrefs.GetInt("TotalPointsGlobal", 0);
     }
     public int GetTotalPoints()
     {
-        int totalPoints = PlayerPrefs.GetInt("TotalPoints", 0);
-        return totalPoints;
+        return PlayerPrefs.GetInt("TotalPoints", 0); ;
     }
     public int GetTotalStars()
     {
-        int totalStars = PlayerPrefs.GetInt("TotalStars", 0);
-
-        Debug.Log("TOTAL ESTRELLAS GETTOTALSTATS: " + totalStars);
-
-        return totalStars;
+        return PlayerPrefs.GetInt("TotalStars", 0); ;
     }
     public void UpdateTotalStars(int stars)
     {
         PlayerPrefs.SetInt("TotalStars", PlayerPrefs.GetInt("TotalStars", 0) + stars);
 
-        //totalStars = PlayerPrefs.GetInt("TotalStars", 0);
+        int totalStars = GetTotalStars();
 
-        //Debug.Log("TOTAL ESTRELLAS STATS: " + totalStars);
-    }
-    /*public List<int> CheckAchievements(int numero)
-    {
-        if (file.achievementsList.Contains(numero))
+        if (totalStars < 15)
         {
-            switch (numero)
+            currentLeague = "Sin liga";
+        }
+        else if (totalStars >= 15 && totalStars < 45)
+        {
+            currentLeague = "hierro";
+
+            if (!App.generalController.statsController.IsAchievements(10))
             {
-                case 0:
-                    if (PlayerPrefs.GetInt("PlayOneLevel", 0) == 2)
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO: Juega un nivel de cada juego");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                case 1:
-                    if (PlayerPrefs.GetInt("GetThreeStars1", 0) >= 3 || PlayerPrefs.GetInt("GetThreeStars2", 0) >= 3)
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO: Obtén 3 estrellas en 3 niveles de un juego");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                case 2:
-                    if (PlayerPrefs.GetInt("GetThreeStars1", 0) >= 6 || PlayerPrefs.GetInt("GetThreeStars2", 0) >= 6)
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO: Obtén 3 estrellas en 6 niveles de un juego");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                case 3:
-                    if (PlayerPrefs.GetInt("GetThreeStars1", 0) >= 10 && PlayerPrefs.GetInt("GetThreeStars2", 0) >= 10)
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO: Obtén 3 estrellas en todos los niveles de un juego");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }   
-                    break;
-                case 4:
-                    //Obtener un pase de solucion
-                    if (PlayerPrefs.GetInt("GetTicket", 0) == 1)
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO: Obtén un pase de solución");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                case 5:
-                    //Usar un pase de solucion
-                    if (PlayerPrefs.GetInt("UseTicket", 0) == 1)
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO: Usa un pase de solución");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                case 6:
-                    //3 niveles seguidos
-                    if (PlayerPrefs.GetInt("PerfectGame1", 0) >= 3 || PlayerPrefs.GetInt("PerfectGame2", 0) >= 3)
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO: Completa 3 niveles seguidos sin errores");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                case 7:
-                    //10 niveles seguidos
-                    if (PlayerPrefs.GetInt("PerfectGame1", 0) >= 10 || PlayerPrefs.GetInt("PerfectGame2", 0) >= 10)
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO: Completa 10 niveles seguidos sin errores");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                case 8:
-                    //300 puntos en 3 juegos
-                    if (PlayerPrefs.GetInt("ThreeTundredPoints", 0) == 2)
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO: Alcanza 300 puntos en 3 juegos");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                case 9:
-                    //300 puntos en 6 juegos
-                    if (PlayerPrefs.GetInt("ThreeTundredPoints", 0) == 6)
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                case 10:
-                    //Liga hierro
-                    if (currentLeague == "hierro")
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                case 11:
-                    //Liga bronce
-                    if (currentLeague == "bronce")
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                case 12:
-                    //Liga plata
-                    if (currentLeague == "plata")
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                case 13:
-                    //Liga oro
-                    if (currentLeague == "oro")
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                case 14:
-                    //Liga Diamante
-                    if (currentLeague == "diamante")
-                    {
-                        Debug.Log("CONSIGUIO EL LOGRO");
-                        file.achievementsList.Remove(numero);
-                        file.Save("P");
-                    }
-                    break;
-                default:
-                    break;
+                App.generalController.statsController.DeleteAchievements(10);
             }
         }
-        return file.achievementsList;
-    }*/
+        else if (totalStars >= 45 && totalStars < 85)
+        {
+            currentLeague = "bronce";
 
+            if (!App.generalController.statsController.IsAchievements(11))
+            {
+                App.generalController.statsController.DeleteAchievements(11);
+            }
+        }
+        else if (totalStars >= 85 && totalStars < 145)
+        {
+            currentLeague = "plata";
+
+            if (!App.generalController.statsController.IsAchievements(12))
+            {
+                App.generalController.statsController.DeleteAchievements(12);
+            }
+        }
+        else if (totalStars >= 145 && totalStars < 215)
+        {
+            currentLeague = "oro";
+
+            if (!App.generalController.statsController.IsAchievements(13))
+            {
+                App.generalController.statsController.DeleteAchievements(13);
+            }
+        }
+        else if (totalStars >= 215)
+        {
+            currentLeague = "diamante";
+
+            if (!App.generalController.statsController.IsAchievements(14))
+            {
+                App.generalController.statsController.DeleteAchievements(14);
+            }
+        }
+    }
 }

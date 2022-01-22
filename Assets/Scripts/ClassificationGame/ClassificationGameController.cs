@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using UnityEngine.UI;
 
 public class ClassificationGameController : Reference
 {
@@ -34,6 +33,9 @@ public class ClassificationGameController : Reference
 
     //numero que cuenta las veces que ha completado niveles sin errores
     //int countPerfectGame = 0;
+
+    //Numero de veces que ha jugado
+    int countPlay;
 
     //Numero de intentos que tiene el jugador para ganar el juego
     int attempts = 3;
@@ -142,14 +144,12 @@ public class ClassificationGameController : Reference
     public void CheckAnswer()
     {
         counter++;
-        if (App.generalModel.classificationGameModel.GetTimesPlayed() == 0)
-        {
-            /*countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
-            PlayerPrefs.SetInt("PlayOneLevel", countPlay);
-            Debug.Log("A Jugado: " + countPlay);
-            PlayerPrefs.SetInt("PlayGame1", 1);*/
-            App.generalModel.classificationGameModel.UpdateTimesPlayed(1);
-        }
+
+        //Verificar si ya jugo un nivel de este juego
+        countPlay = App.generalModel.classificationGameModel.GetTimesPlayed();
+
+        App.generalModel.classificationGameModel.UpdateTimesPlayed(++countPlay);
+        print("HA JUGADO: " + countPlay);
 
         if (answers.Length == choises.Count)
         {
@@ -187,7 +187,7 @@ public class ClassificationGameController : Reference
             canvasStars = 3;
 
             //Actualizar las veces que ha ganado 3 estrellas
-            App.generalModel.classificationGameModel.UpdatePerfectWins(App.generalModel.classificationGameModel.countPerfectWins + 1);
+            App.generalModel.classificationGameModel.UpdatePerfectWins(App.generalModel.classificationGameModel.GetPerfectWins() + 1);
 
             //Actualizar las veces que ha ganado sin errores
             App.generalModel.classificationGameModel.UpdatePerfectGame(App.generalModel.classificationGameModel.GetPerfectGame() + 1);

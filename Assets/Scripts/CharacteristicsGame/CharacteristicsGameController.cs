@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CharacteristicsGameController : Reference
 {
@@ -127,15 +126,7 @@ public class CharacteristicsGameController : Reference
 
         App.generalModel.characteristicsGameModel.UpdateTimesPlayed(++countPlay);
         print("HA JUGADO: " + countPlay);
-        /*if (countPlay == 0)
-        {
-            countPlay = PlayerPrefs.GetInt("PlayOneLevel", 0) + 1;
-            PlayerPrefs.SetInt("PlayOneLevel", countPlay);
 
-            Debug.Log("A Jugado: " + countPlay);
-            //App.generalModel.characteristicsGameModel.UpdateTimesPlayed(App.generalModel.characteristicsGameModel.GetTimesPlayed() + 1);
-            //App.generalModel.characteristicsGameModel.UpdateTimesPlayed(++countPlay);
-        }*/
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
         if (selectedOption == "correct")
         {
@@ -202,7 +193,7 @@ public class CharacteristicsGameController : Reference
             stars = App.generalModel.characteristicsGameModel.GetStars() + 3;
             canvasStars = 3;
             //Actualizar las veces que ha ganado 3 estrellas
-            App.generalModel.characteristicsGameModel.UpdatePerfectWins(App.generalModel.characteristicsGameModel.countPerfectWins + 1);
+            App.generalModel.characteristicsGameModel.UpdatePerfectWins(App.generalModel.characteristicsGameModel.GetPerfectWins() + 1);
 
             //Actualizar las veces que ha ganado sin errores
             App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);

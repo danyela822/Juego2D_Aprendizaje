@@ -206,9 +206,9 @@ public class SetsGameController : Reference
         counter++;
 
         //Verificar si ya jugo un nivel de este juego
-        countPlay = App.generalModel.characteristicsGameModel.GetTimesPlayed();
+        countPlay = App.generalModel.setsGameModel.GetTimesPlayed();
 
-        App.generalModel.characteristicsGameModel.UpdateTimesPlayed(++countPlay);
+        App.generalModel.setsGameModel.UpdateTimesPlayed(++countPlay);
 
         if (answer == correctAnswer.name)
         {
@@ -299,7 +299,7 @@ public class SetsGameController : Reference
             stars = App.generalModel.setsGameModel.GetStars() + 3;
             canvasStars = 3;
             //Actualizar las veces que ha ganado 3 estrellas
-            App.generalModel.setsGameModel.UpdatePerfectWins(App.generalModel.setsGameModel.countPerfectWins + 1);
+            App.generalModel.setsGameModel.UpdatePerfectWins(App.generalModel.setsGameModel.GetPerfectWins() + 1);
 
             //Actualizar las veces que ha ganado sin errores
             App.generalModel.setsGameModel.UpdatePerfectGame(App.generalModel.setsGameModel.GetPerfectGame() + 1);
@@ -330,7 +330,6 @@ public class SetsGameController : Reference
         App.generalModel.setsGameModel.UpdatePoints(points);
         App.generalModel.setsGameModel.UpdateStars(stars);
 
-        Debug.Log("ESTRELLAS: " + canvasStars);
         //Mostrar el canvas que indica cuantas estrellas gano
         App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
 

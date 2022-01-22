@@ -1288,7 +1288,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1095525345}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.2580396
+  m_Size: 0.31874427
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1862,7 +1862,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5537816766817973940, guid: 10d7d1dc006ac2746b126d7f4bc06a0e, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5537816766817973940, guid: 10d7d1dc006ac2746b126d7f4bc06a0e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1939,7 +1939,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &655412053
 MonoBehaviour:
@@ -1958,7 +1958,11 @@ MonoBehaviour:
   classificationGameModel: {fileID: 0}
   statsModel: {fileID: 965692671}
   equialityGameModel: {fileID: 0}
-  SequenceGameModel: {fileID: 0}
+  sequenceGameModel: {fileID: 0}
+  additionGameModel: {fileID: 0}
+  setsGameModel: {fileID: 0}
+  ticketModel: {fileID: 0}
+  connectedGameModel: {fileID: 0}
 --- !u!1 &659707459
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,15 +2939,10 @@ MonoBehaviour:
   - {fileID: 371460131}
   - {fileID: 1207696049}
   - {fileID: 375503853}
-  starsText: {fileID: 193527803}
   leagueText: {fileID: 1240177875}
-  imageLeague: {fileID: 827963881}
-  leagueImages:
-  - {fileID: 21300000, guid: c40e65656ecb93a4bbfef162b755fcf0, type: 3}
-  - {fileID: 21300000, guid: 9bfdc1e97fdb6214189e89280ca4f56a, type: 3}
-  - {fileID: 21300000, guid: 06ecfeec4600b3b47aaa3d1319c01f11, type: 3}
-  - {fileID: 21300000, guid: d7f7d7d9b15ef644fb74a68a9e8c6c81, type: 3}
-  - {fileID: 21300000, guid: 3d912560a8a63e74585bb7347524ea87, type: 3}
+  pointsText: {fileID: 1338406221}
+  starsText: {fileID: 193527803}
+  leagueImage: {fileID: 827963881}
 --- !u!114 &965692670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2956,6 +2955,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4f4ecc3072d4042b314dd256f7b533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leagueText: {fileID: 1240177875}
+  pointsText: {fileID: 1338406221}
+  starsText: {fileID: 193527803}
+  leagueImage: {fileID: 827963881}
+  achievements:
+  - {fileID: 2060979680}
+  - {fileID: 950207303}
+  - {fileID: 885205039}
+  - {fileID: 854813178}
+  - {fileID: 1720523852}
+  - {fileID: 2087523240}
+  - {fileID: 1171662593}
+  - {fileID: 1841475244}
+  - {fileID: 246720474}
+  - {fileID: 1471693143}
+  - {fileID: 927110051}
+  - {fileID: 168183234}
+  - {fileID: 523253229}
+  - {fileID: 1242405645}
+  - {fileID: 1986501058}
 --- !u!114 &965692671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2969,8 +2988,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   file: {fileID: 11400000, guid: 83f75b461f443af4ebe2b0eb4a4d15b8, type: 2}
-  totalStars: 0
-  totalPoints: 0
 --- !u!114 &965692672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5525,7 +5542,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1534454974
 MonoBehaviour:
@@ -5553,6 +5570,7 @@ MonoBehaviour:
   equialityGameController: {fileID: 0}
   sequenceGameController: {fileID: 0}
   setsGameController: {fileID: 0}
+  ticketController: {fileID: 0}
 --- !u!1 &1537026744
 GameObject:
   m_ObjectHideFlags: 0
@@ -5657,7 +5675,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1541955843
 MonoBehaviour:
@@ -5787,7 +5805,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1632029884
 MonoBehaviour:
@@ -6311,7 +6329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 450, y: -934.15985}
+  m_AnchoredPosition: {x: 450, y: -861.7885}
   m_SizeDelta: {x: 900, y: 2530}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1748374201
@@ -6934,7 +6952,7 @@ RectTransform:
   - {fileID: 422942423}
   - {fileID: 1319211804}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7108,7 +7126,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2020976052
 GameObject:

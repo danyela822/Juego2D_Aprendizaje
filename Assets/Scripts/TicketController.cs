@@ -28,7 +28,7 @@ public class TicketController : Reference
         {
             App.generalModel.ticketModel.SetTickets(App.generalModel.ticketModel.GetTickets() - 1);
 
-            //Cumplio el logro 6
+            //Verificar si cumplio el logro 6: Usar un pase de solucion
             if (!App.generalController.statsController.IsAchievements(6))
             {
                 App.generalController.statsController.DeleteAchievements(6);

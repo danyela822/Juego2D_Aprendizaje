@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -62,6 +61,9 @@ public class AdditionGameController : Reference{
 
     //Numero para indicar el numero de veces que verifica la respuesta correcta
     public int counter;
+
+    //Numero de veces que ha jugado
+    int countPlay;
 
     //
     bool isLastLevel;
@@ -329,6 +331,12 @@ public class AdditionGameController : Reference{
 
         counter++;
 
+        //Verificar si ya jugo un nivel de este juego
+        countPlay = App.generalModel.additionGameModel.GetTimesPlayed();
+
+        App.generalModel.additionGameModel.UpdateTimesPlayed(++countPlay);
+        print("HA JUGADO: " + countPlay);
+
         int auxAnswer = int.Parse(text);
         if (auxAnswer == correctAnswer){
             Debug.Log("You win");
@@ -375,10 +383,10 @@ public class AdditionGameController : Reference{
             stars = App.generalModel.additionGameModel.GetStars() + 3;
             canvasStars = 3;
             //Actualizar las veces que ha ganado 3 estrellas
-            //App.generalModel.characteristicsGameModel.UpdatePerfectWins(App.generalModel.characteristicsGameModel.GetPerfectWins() + 1);
+            App.generalModel.additionGameModel.UpdatePerfectWins(App.generalModel.additionGameModel.GetPerfectWins() + 1);
 
             //Actualizar las veces que ha ganado sin errores
-            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(App.generalModel.characteristicsGameModel.GetPerfectGame() + 1);
+            App.generalModel.additionGameModel.UpdatePerfectGame(App.generalModel.additionGameModel.GetPerfectGame() + 1);
         }
         //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
         else if (counter == 2)
@@ -388,7 +396,7 @@ public class AdditionGameController : Reference{
             canvasStars = 2;
 
             //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
-            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(0);
+            App.generalModel.additionGameModel.UpdatePerfectGame(0);
         }
         //Si gana el juego con mas de 9 intentos suma 10 puntos y gana 1 estrella
         else
@@ -398,7 +406,7 @@ public class AdditionGameController : Reference{
             canvasStars = 1;
 
             //Actualizar las veces que ha ganado sin errores
-            //App.generalModel.characteristicsGameModel.UpdatePerfectGame(0);
+            App.generalModel.additionGameModel.UpdatePerfectGame(0);
         }
 
         //Actualiza los puntos y estrellas obtenidos
@@ -408,16 +416,12 @@ public class AdditionGameController : Reference{
         //Mostrar el canvas que indica cuantas estrellas gano
         if (isLastLevel)
         {
-            Debug.Log("TERMINAMOS Y VAMOS A REGRESAR");
             App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
         }
         else
         {
             App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
         }
-
-        //Actualizar el numero de veces que ha seleccionado una opcion a cero
-        //App.generalModel.equialityGameModel.UpdateNumberAttempts(0);
     }
     /// <summary>
     /// Metodo para contar y verificar los errores

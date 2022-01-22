@@ -6,59 +6,63 @@ public class StatsView : Reference
 {
     public List<GameObject> checkAchievementsList;
 
-    public Text starsText, leagueText;
+    public Text leagueText, pointsText, starsText;
 
-    public Image imageLeague;
+    public Image leagueImage;
 
-    public List<Sprite> leagueImages;
+    string league;
 
     void Start()
     {
-        ShowTotalStars();
         ShowLeague();
-        //CheckAchievements();
-    }
-    void ShowTotalStars()
-    {
-        Debug.Log("ESTRELLAS EN VIEW: " + App.generalController.statsController.GetTotalStars().ToString());
-        starsText.text = App.generalController.statsController.GetTotalStars().ToString();
+        ShowTotalStars();
+        ShowTotalPoints();
+        ShowLeagueImage();
+        ShowAchievements();
     }
     /// <summary>
     /// Metodo para mostar la liga actual del jugador
     /// </summary>
-    void ShowLeague()
+    public void ShowLeague()
     {
-        string league = App.generalController.statsController.GetLeague();
-
-        //Sprite imageLeague = App.generalController.statsController.GetLeagueImage(league);
-
-        imageLeague.sprite = App.generalController.statsController.GetLeagueImage(league);
-
+        league = App.generalModel.statsModel.GetLeague();
         leagueText.text = league;
-
-        /*for(int i = 0; i < leagueImages.Count; i++)
-        {
-            Sprite currentImage = leagueImages[i];
-            if (currentImage.name == league.ToLower())
-            {
-                leagueImage.sprite = currentImage;
-            }
-        }*/
-
+    }
+    /// <summary>
+    /// Metodo para mostrar todas las estrellas obtenidas por el jugador
+    /// </summary>
+    public void ShowTotalStars()
+    {
+        starsText.text = App.generalModel.statsModel.GetTotalStars().ToString();
+    }
+    /// <summary>
+    /// Metodo para mostrar todos los puntos obtenidos por el jugador
+    /// </summary>
+    public void ShowTotalPoints()
+    {
+        pointsText.text = App.generalModel.statsModel.GetTotalPoints().ToString();
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="league"></param>
+    public void ShowLeagueImage()
+    {
+        leagueImage.sprite = App.generalModel.statsModel.LoadLeagueImage(league);
     }
     /// <summary>
     /// Metodo para marcar los logros completados
     /// </summary>
-    /*public void CheckAchievements()
+    public void ShowAchievements()
     {
         for (int i = 0; i < checkAchievementsList.Count; i++)
         {
             //Verificar si el logro ya ha sido alcanzado
-            if (!(App.generalController.statsController.GetAchievementsList(i).Contains(i)))
+            if (!(App.generalModel.statsModel.file.achievementsList.Contains(i)))
             {
                 //Si el logro ya se completo muestra en la pantala
                 checkAchievementsList[i].GetComponent<Image>().enabled = true;
-            }    
+            }
         }
-    }*/
+    }
 }
