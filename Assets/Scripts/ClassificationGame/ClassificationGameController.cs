@@ -22,9 +22,6 @@ public class ClassificationGameController : Reference
     //Numero para indicar el numero de veces que verifica la respuesta correcta
     public int counter;
 
-    //Objeto que contiene el controlador del juego
-    public static ClassificationGameController gameController;
-
     //Numero para saber cuantas veces ha ganado 3 estrella
     //int countPerfectWins = 0;
 
@@ -179,12 +176,16 @@ public class ClassificationGameController : Reference
         //Declaracion de los puntos y estrellas que ha ganado el juegador
         int points, stars, canvasStars;
 
+        //Declaracion del mensaje a mostrar
+        string winMessage;
+
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
         if (counter == 1)
         {
             points = App.generalModel.classificationGameModel.GetPoints() + 30;
             stars = App.generalModel.classificationGameModel.GetTotalStars() + 3;
             canvasStars = 3;
+            winMessage = App.generalController.gameOptionsController.winMessages[2];
 
             //Actualizar las veces que ha ganado 3 estrellas
             App.generalModel.classificationGameModel.UpdatePerfectWins(App.generalModel.classificationGameModel.GetPerfectWins() + 1);
@@ -199,6 +200,7 @@ public class ClassificationGameController : Reference
             points = App.generalModel.classificationGameModel.GetPoints() + 20;
             stars = App.generalModel.classificationGameModel.GetTotalStars() + 2;
             canvasStars = 2;
+            winMessage = App.generalController.gameOptionsController.winMessages[1];
 
             //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
             App.generalModel.classificationGameModel.UpdatePerfectGame(0);
@@ -209,6 +211,7 @@ public class ClassificationGameController : Reference
             points = App.generalModel.classificationGameModel.GetPoints() + 10;
             stars = App.generalModel.classificationGameModel.GetTotalStars() + 1;
             canvasStars = 1;
+            winMessage = App.generalController.gameOptionsController.winMessages[0];
 
             //Actualizar las veces que ha ganado sin errores
             App.generalModel.classificationGameModel.UpdatePerfectGame(0);
@@ -219,20 +222,22 @@ public class ClassificationGameController : Reference
         App.generalModel.classificationGameModel.UpdateTotalStars(stars);
 
         //Mostrar el canvas que indica cuantas estrellas gano
-        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, true);
+        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage,true);
 
     }
     void CheckAttempt()
     {
         attempts--;
+
         if (attempts == 0)
         {
-            //App.generalView.gameOptionsView.correctAnswer.sprite = App.generalModel.classificationGameModel.LoadAnswerImages(number);
             App.generalView.gameOptionsView.ShowLoseCanvas();
         }
         else
         {
-            App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
+            //Obtener el mensaje de intento
+            string attemptMessages = App.generalController.gameOptionsController.attemptMessages[attempts - 1];
+            App.generalView.gameOptionsView.ShowMistakeCanvas(attemptMessages);
         }
     }
     public void ShowSolution()

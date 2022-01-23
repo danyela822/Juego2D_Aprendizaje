@@ -5,9 +5,10 @@ using UnityEngine.UI;
 public class AdditionGameController : Reference{
 
     //lista que contienen las respuestas a mostrar en desorden
-    List<int> possibleAnswer = new List<int>();
+    readonly List<int> possibleAnswer = new List<int>();
+
     //lista que tiene los resultaods a pintar
-    List<int> results = new List<int>();
+    readonly List<int> results = new List<int>();
     //lista de los posibles sprites que seran utilizados
     public List <Sprite> images = new List<Sprite>();
 
@@ -19,15 +20,19 @@ public class AdditionGameController : Reference{
     public Sprite signEquals;
 
     //lista que permite colocar las imagenes
-    List<Icon> icons = new List<Icon>();
+    readonly List<Icon> icons = new List<Icon>();
+
     //lista que contiene id de iconos que permite que no se repitan
-    List<int> valueReapetIcon = new List<int>();
+    readonly List<int> valueReapetIcon = new List<int>();
+
     //Lista de las operaciones del juego
-    List<Operation> operationes = new List<Operation>();
+    readonly List<Operation> operationes = new List<Operation>();
+
     //lista de los signos que se van a pintar
-    List<int> signs = new List<int>();
+    readonly List<int> signs = new List<int>();
+
     //numero incial para las operaciones
-    int initial = 8;
+    readonly int initial = 8;
     //varibale que almacena la respuesta correcta
     int correctAnswer;
     //objeto que contiene el prefab
@@ -72,9 +77,9 @@ public class AdditionGameController : Reference{
     int attempts = 3;
 
     //--------------- mostrar el canvas de solucion -------------------//
-    public Text numberText;
-    public GameObject sequenceWindow;
-    public GameObject additionEqualityWindow;
+    //public Text numberText;
+    //public GameObject sequenceWindow;
+    //public GameObject additionEqualityWindow;
     //--------------- mostrar el canvas de solucion -------------------//
 
 
@@ -84,7 +89,7 @@ public class AdditionGameController : Reference{
         sizeSign = objectSign.GetComponent<BoxCollider2D>().size;
 
         size = objectRow.GetComponent<BoxCollider2D>().size;
-        chooseLevel();
+        ChooseLevel();
         Build(level, initial);
         //Debug.Log(OwnToString());
         GetResult();
@@ -94,7 +99,7 @@ public class AdditionGameController : Reference{
 
     //metodo que verifica en que nivel entra el usuario y dependiendo de eso
     //cambian las coorcenadas de los signos y objetos
-    void chooseLevel(){
+    void ChooseLevel(){
 
         levelUser = App.generalModel.additionGameModel.GetLevel();
         switch (levelUser){
@@ -216,7 +221,7 @@ public class AdditionGameController : Reference{
         return aux;
     }
 
-
+    public GameObject gameZone;
     //metodo que crea la estructura visual del juego 
     public void CreateTable(){
 
@@ -231,9 +236,14 @@ public class AdditionGameController : Reference{
         
         firstOption = Instantiate(objectRow,new Vector3(-2, 1.6f, 0), objectRow.transform.rotation);
         signFirts = Instantiate(objectRow,new Vector3(-1.4f, 1.6f, 0), objectRow.transform.rotation);
+
         Sprite spriteFirst = images[icons[0].idIcon];
+
         firstOption.GetComponent<SpriteRenderer>().sprite = spriteFirst;
         signFirts.GetComponent<SpriteRenderer>().sprite = signEquals;
+
+        firstOption.transform.parent = gameZone.transform;
+        signFirts.transform.parent = gameZone.transform;
 
         for (int i = 0; i < level; i++){
                     
@@ -244,23 +254,21 @@ public class AdditionGameController : Reference{
                 Sprite sprite = images[icons[auxImage].idIcon];
                 newOption.GetComponent<SpriteRenderer>().sprite = sprite;
 
+                newOption.transform.parent = gameZone.transform;
+
                 auxImage += 1;
 
 
                 sign = Instantiate(objectSign, new Vector3(signX +((sizeSign.x - 0.53f)* j), signY - ((sizeSign.y + 0.1f) * i), 0), objectSign.transform.rotation);
 
-                switch (signs[auxSign]){
-                                
-                    case 1: 
-                        sign.GetComponent<SpriteRenderer>().sprite = signLess;
-                    break;
-                    case 2:
-                        sign.GetComponent<SpriteRenderer>().sprite = signPlus;
-                    break;
-                    default:
-                        sign.GetComponent<SpriteRenderer>().sprite = signEquals;
-                    break;
-                } 
+                sign.transform.parent = gameZone.transform;
+
+                sign.GetComponent<SpriteRenderer>().sprite = signs[auxSign] switch
+                {
+                    1 => signLess,
+                    2 => signPlus,
+                    _ => signEquals,
+                };
                 auxSign++;
                         
             }
@@ -271,10 +279,10 @@ public class AdditionGameController : Reference{
     //metodo que recorre la lista de operaciones y obtiene
     //los simbolos de "+" o "-"
     public void GetSign(){
-        int sign = 0;
+        //int sign = 0;
         foreach (Operation operation in operationes){
             for(int i = 0; i < operation.operands.Count; i++){
-                sign = operation.operands[i].operatorValue;
+                int sign = operation.operands[i].operatorValue;
                 signs.Add(sign);
             }
         }
@@ -376,12 +384,17 @@ public class AdditionGameController : Reference{
         //Declaracion de los puntos y estrellas que ha ganado el juegador
         int points, stars, canvasStars;
 
+        //Declaracion del mensaje a mostrar
+        string winMessage;
+
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
         if (counter == 1)
         {
             points = App.generalModel.additionGameModel.GetPoints() + 30;
             stars = App.generalModel.additionGameModel.GetStars() + 3;
             canvasStars = 3;
+            winMessage = App.generalController.gameOptionsController.winMessages[2];
+
             //Actualizar las veces que ha ganado 3 estrellas
             App.generalModel.additionGameModel.UpdatePerfectWins(App.generalModel.additionGameModel.GetPerfectWins() + 1);
 
@@ -394,6 +407,7 @@ public class AdditionGameController : Reference{
             points = App.generalModel.additionGameModel.GetPoints() + 20;
             stars = App.generalModel.additionGameModel.GetStars() + 2;
             canvasStars = 2;
+            winMessage = App.generalController.gameOptionsController.winMessages[1];
 
             //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
             App.generalModel.additionGameModel.UpdatePerfectGame(0);
@@ -404,6 +418,7 @@ public class AdditionGameController : Reference{
             points = App.generalModel.additionGameModel.GetPoints() + 10;
             stars = App.generalModel.additionGameModel.GetStars() + 1;
             canvasStars = 1;
+            winMessage = App.generalController.gameOptionsController.winMessages[0];
 
             //Actualizar las veces que ha ganado sin errores
             App.generalModel.additionGameModel.UpdatePerfectGame(0);
@@ -414,14 +429,8 @@ public class AdditionGameController : Reference{
         App.generalModel.additionGameModel.UpdateStars(stars);
 
         //Mostrar el canvas que indica cuantas estrellas gano
-        if (isLastLevel)
-        {
-            App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
-        }
-        else
-        {
-            App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
-        }
+        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage, isLastLevel);
+
     }
     /// <summary>
     /// Metodo para contar y verificar los errores
@@ -431,16 +440,17 @@ public class AdditionGameController : Reference{
         //Dismuir la cantidad de intentos
         attempts--;
 
-        //Si se queda sin intentos pierde el juego y se le muestra la respuesta (POR AHORA)
+        //Si se queda sin intentos pierde el juego
         if (attempts == 0)
         {
-            //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
             App.generalView.gameOptionsView.ShowLoseCanvas();
         }
         //Si aun le quedan intentos se muestra un mensaje en pantalla
         else
         {
-            App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
+            //Obtener el mensaje de intento
+            string attemptMessages = App.generalController.gameOptionsController.attemptMessages[attempts - 1];
+            App.generalView.gameOptionsView.ShowMistakeCanvas(attemptMessages);
         }
     }
     //metodo que almacena los resultados para luego ser puestos en 
@@ -479,7 +489,7 @@ public class AdditionGameController : Reference{
 
     public void ShowSolution(){
        
-        bool aux = true;
+        /*bool aux = true;
         
         if(aux){            
             
@@ -489,6 +499,24 @@ public class AdditionGameController : Reference{
             additionEqualityWindow.SetActive(true);
 
             numberText.text = "" + correctAnswer;
+        }*/
+
+        //Si hay tickets muestra la solucion
+        Debug.Log("HAY: " + App.generalModel.ticketModel.GetTickets() + " TICKETS");
+        if (App.generalModel.ticketModel.GetTickets() >= 1)
+        {
+            Debug.Log("HAS USADO UN PASE");
+
+            App.generalController.ticketController.DecraseTickets();
+            App.generalView.gameOptionsView.HideBuyCanvas();
+            App.generalView.gameOptionsView.ShowSolutionCanvas();
+
+            App.generalView.additionGameView.solutionPanel.SetActive(true);
+            App.generalView.additionGameView.solutionText.text = " " + correctAnswer;
+        }
+        else
+        {
+            App.generalView.gameOptionsView.ShowTicketsCanvas(3);
         }
     }
 }

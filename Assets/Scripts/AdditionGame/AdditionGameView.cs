@@ -14,6 +14,10 @@ public class AdditionGameView : Reference
     //lista que muestra los resultados de las operaciones
     public List<Text> resultsText = new List<Text>();
 
+    //
+    public Text solutionText;
+    //
+    public GameObject solutionPanel;
 
     //metodo que recibe la repsuesta del usuario y verifica si es 
     //la correcta
@@ -22,5 +26,8 @@ public class AdditionGameView : Reference
         string answer = text.GetComponent<Text>().text;
         App.generalController.additionGameController.CheckAnswer(answer);
     }
-
+    public void ShowSolution()
+    {
+        App.generalController.additionGameController.ShowSolution();
+    }
 }

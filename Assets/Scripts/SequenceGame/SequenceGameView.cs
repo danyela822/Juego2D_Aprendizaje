@@ -23,8 +23,8 @@ public class SequenceGameView : Reference{
 
         App.generalController.sequenceGameController.ActivePanel(panel);
     }
-
-//     public void ViewSolution(){
-//         App.generalView.gameOptionsView.ShowSolutionCanvas();
-//     }
- }
+        public void ShowSolution()
+    {
+        App.generalController.sequenceGameController.ShowSolution();
+    }
+}

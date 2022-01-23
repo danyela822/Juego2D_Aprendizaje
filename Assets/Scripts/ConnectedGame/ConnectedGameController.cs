@@ -878,6 +878,9 @@ public class ConnectedGameController : Reference
     {
         //Declaracion de los puntos y estrellas que ha ganado el juegador
         int points, stars, canvasStars;
+        
+        //Declaracion del mensaje a mostrar
+        string winMessage;
 
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
         if (rating == 1)
@@ -885,6 +888,7 @@ public class ConnectedGameController : Reference
             points = App.generalModel.connectedGameModel.GetPoints() + 30;
             stars = App.generalModel.connectedGameModel.GetTotalStars() + 3;
             canvasStars = 3;
+            winMessage = App.generalController.gameOptionsController.winMessages[2];
 
             //Actualizar las veces que ha ganado 3 estrellas
             App.generalModel.connectedGameModel.UpdatePerfectWins(App.generalModel.connectedGameModel.GetPerfectWins() + 1);
@@ -899,6 +903,7 @@ public class ConnectedGameController : Reference
             points = App.generalModel.connectedGameModel.GetPoints() + 20;
             stars = App.generalModel.connectedGameModel.GetTotalStars() + 2;
             canvasStars = 2;
+            winMessage = App.generalController.gameOptionsController.winMessages[1];
 
             //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
             App.generalModel.connectedGameModel.UpdatePerfectGame(0);
@@ -909,6 +914,7 @@ public class ConnectedGameController : Reference
             points = App.generalModel.connectedGameModel.GetPoints() + 10;
             stars = App.generalModel.connectedGameModel.GetTotalStars() + 1;
             canvasStars = 1;
+            winMessage = App.generalController.gameOptionsController.winMessages[0];
 
             //Actualizar las veces que ha ganado sin errores
             App.generalModel.connectedGameModel.UpdatePerfectGame(0);
@@ -920,7 +926,7 @@ public class ConnectedGameController : Reference
 
         Debug.Log("IS LAST LEVEL: " + isLastLevel);
         //Mostrar el canvas que indica cuantas estrellas gano
-        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
+        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage,isLastLevel);
 
     }
 }

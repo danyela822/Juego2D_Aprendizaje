@@ -9,6 +9,11 @@ public class EquialityGameView : Reference
     //botones que contienen la posible respuesta al problema
     public List<Button> answerButtonsGame = new List<Button>();
 
+    //
+    public Text solutionText;
+    //
+    public GameObject solutionPanel;
+
     //metodo que recibe la respuesta del usuario y verifica si
     //es la correcta
     public void CheckAnswer(GameObject text){
@@ -16,5 +21,8 @@ public class EquialityGameView : Reference
         string answer = text.GetComponent<Text>().text;
         App.generalController.equialityGameController.CheckAnswer(answer);
     }
-
+    public void ShowSolution()
+    {
+        App.generalController.equialityGameController.ShowSolution();
+    }
 }

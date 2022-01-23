@@ -292,12 +292,17 @@ public class SetsGameController : Reference
         //Declaracion de los puntos y estrellas que ha ganado el juegador
         int points, stars, canvasStars;
 
+        //Declaracion del mensaje a mostrar
+        string winMessage;
+
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
         if (counter == 1)
         {
             points = App.generalModel.setsGameModel.GetPoints() + 30;
             stars = App.generalModel.setsGameModel.GetStars() + 3;
             canvasStars = 3;
+            winMessage = App.generalController.gameOptionsController.winMessages[2];
+
             //Actualizar las veces que ha ganado 3 estrellas
             App.generalModel.setsGameModel.UpdatePerfectWins(App.generalModel.setsGameModel.GetPerfectWins() + 1);
 
@@ -311,6 +316,7 @@ public class SetsGameController : Reference
             points = App.generalModel.setsGameModel.GetPoints() + 20;
             stars = App.generalModel.setsGameModel.GetStars() + 2;
             canvasStars = 2;
+            winMessage = App.generalController.gameOptionsController.winMessages[1];
 
             //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
             App.generalModel.setsGameModel.UpdatePerfectGame(0);
@@ -321,6 +327,7 @@ public class SetsGameController : Reference
             points = App.generalModel.setsGameModel.GetPoints() + 10;
             stars = App.generalModel.setsGameModel.GetStars() + 1;
             canvasStars = 1;
+            winMessage = App.generalController.gameOptionsController.winMessages[0];
 
             //Actualizar las veces que ha ganado sin errores
             App.generalModel.setsGameModel.UpdatePerfectGame(0);
@@ -331,7 +338,7 @@ public class SetsGameController : Reference
         App.generalModel.setsGameModel.UpdateStars(stars);
 
         //Mostrar el canvas que indica cuantas estrellas gano
-        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
+        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage,isLastLevel);
 
     }
     /// <summary>
@@ -345,13 +352,14 @@ public class SetsGameController : Reference
         //Si se queda sin intentos pierde el juego (y se le muestra la respuesta)
         if (attempts == 0)
         {
-            //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
             App.generalView.gameOptionsView.ShowLoseCanvas();
         }
         //Si aun le quedan intentos se muestra un mensaje en pantalla
         else
         {
-            App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
+            //Obtener el mensaje de intento
+            string attemptMessages = App.generalController.gameOptionsController.attemptMessages[attempts - 1];
+            App.generalView.gameOptionsView.ShowMistakeCanvas(attemptMessages);
         }
     }
     public void ShowSolution()

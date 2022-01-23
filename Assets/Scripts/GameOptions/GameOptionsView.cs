@@ -52,26 +52,12 @@ public class GameOptionsView: Reference
     {
         TutorialCanvas.enabled = false;
     }
-    public void ShowWinCanvas(int totalStars,bool isLastLevel)
+    public void ShowWinCanvas(int totalStars,string message,bool isLastLevel)
     {
-        //Image imageWin = GameObject.Find("ImageStars").GetComponent<Image>();
+        imageWin.sprite = App.generalModel.statsModel.GetStartsImage(totalStars);
 
-        imageWin.sprite = App.generalModel.roadGameModel.GetStartsImage(totalStars);
+        winText.text = message;
 
-        string text;
-
-        if (totalStars == 1)
-        {
-            text = "Sigue adelante";
-        }
-        else if (totalStars == 2)
-        {
-            text = "�Muy Bien!";
-        }
-        else
-        {
-            text = "�Excelente!";
-        }
         Debug.Log("IS LAST LEVEL: "+isLastLevel);
         if (isLastLevel)
         {
@@ -82,7 +68,6 @@ public class GameOptionsView: Reference
             continueButton.GetComponentInChildren<Text>().enabled = false;
         }
 
-        winText.text = text;
         WinCanvas.enabled = true;
     }
     public void HidePauseCanvas()
@@ -93,22 +78,10 @@ public class GameOptionsView: Reference
     {
         SolutionCanvas.enabled = false;
     }
-    public void ShowMistakeCanvas(int counter)
+    public void ShowMistakeCanvas(string message)
     {
         MistakeCanvas.enabled = true;
-        string text;
-
-        if (counter == 1)
-        {
-            text = "Ya estas cerca, vamos!";
-        }
-        else
-        {
-            text = "Intentalo de nuevo. �Tu puedes!";
-        }
-        //mistakeText.text = "Upss.. Has fallado. Te quedan " + counter + " intento(s)";
-        mistakeText.text = text;
-
+        mistakeText.text = message;
     }
     public void HideMistakeCanvas()
     {

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TicketModel : Reference
@@ -22,9 +20,9 @@ public class TicketModel : Reference
             //Verificar si cumplio el logro 5: Obtener un pase de solucion
             if (PlayerPrefs.GetInt("GetTicket", 0) == 1)
             {
-                if (!App.generalController.statsController.IsAchievements(5))
+                if (!App.generalController.statsController.IsAchievements(4))
                 {
-                    App.generalController.statsController.DeleteAchievements(5);
+                    App.generalController.statsController.DeleteAchievements(4);
                 }
             }
         }

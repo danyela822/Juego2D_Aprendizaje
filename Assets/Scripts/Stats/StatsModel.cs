@@ -4,22 +4,28 @@ using UnityEngine;
 public class StatsModel : Reference
 {
     public FileLists file;
-    string currentLeague;
+    //string currentLeague;
 
+    public Sprite GetStartsImage(int totalStarts)
+    {
+        return Resources.Load<Sprite>("Stars/" + totalStarts); ;
+    }
     public Sprite LoadLeagueImage(string league)
     {
+        Debug.Log("CARGAR LIGA: "+league);
         return Resources.Load<Sprite>("LeaguesImages/" + league);
     }
     public string GetLeague()
     {
-        if (currentLeague == null)
+        /*if (currentLeague == null)
         {
             return "Sin liga";
         }
         else
         {
             return currentLeague;
-        }
+        }*/
+        return PlayerPrefs.GetString("League", "Sin liga");
     }
     public void UpdateTotalPoints(int value)
     {
@@ -41,11 +47,13 @@ public class StatsModel : Reference
 
         if (totalStars < 15)
         {
-            currentLeague = "Sin liga";
+            //currentLeague = "Sin liga";
+            PlayerPrefs.SetString("League", "Sin liga");
         }
         else if (totalStars >= 15 && totalStars < 45)
         {
-            currentLeague = "hierro";
+            //currentLeague = "hierro";
+            PlayerPrefs.SetString("League", "hierro");
 
             if (!App.generalController.statsController.IsAchievements(10))
             {
@@ -54,7 +62,8 @@ public class StatsModel : Reference
         }
         else if (totalStars >= 45 && totalStars < 85)
         {
-            currentLeague = "bronce";
+            //currentLeague = "bronce";
+            PlayerPrefs.SetString("League", "bronce");
 
             if (!App.generalController.statsController.IsAchievements(11))
             {
@@ -63,7 +72,8 @@ public class StatsModel : Reference
         }
         else if (totalStars >= 85 && totalStars < 145)
         {
-            currentLeague = "plata";
+            //currentLeague = "plata";
+            PlayerPrefs.SetString("League", "plata");
 
             if (!App.generalController.statsController.IsAchievements(12))
             {
@@ -72,7 +82,8 @@ public class StatsModel : Reference
         }
         else if (totalStars >= 145 && totalStars < 215)
         {
-            currentLeague = "oro";
+            //currentLeague = "oro";
+            PlayerPrefs.SetString("League", "oro");
 
             if (!App.generalController.statsController.IsAchievements(13))
             {
@@ -81,7 +92,8 @@ public class StatsModel : Reference
         }
         else if (totalStars >= 215)
         {
-            currentLeague = "diamante";
+            //currentLeague = "diamante";
+            PlayerPrefs.SetString("League", "diamante");
 
             if (!App.generalController.statsController.IsAchievements(14))
             {

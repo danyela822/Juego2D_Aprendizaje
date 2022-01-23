@@ -53,9 +53,9 @@ public class EquialityGameController : Reference{
     int attempts = 3;
 
     //--------------- mostrar el canvas de solucion -------------------//
-    public Text numberText;
-    public GameObject sequenceWindow;
-    public GameObject additionEqualityWindow;
+    //public Text numberText;
+    //public GameObject sequenceWindow;
+    //public GameObject additionEqualityWindow;
     //--------------- mostrar el canvas de solucion -------------------//
 
 
@@ -371,12 +371,17 @@ public class EquialityGameController : Reference{
         //Declaracion de los puntos y estrellas que ha ganado el juegador
         int points, stars, canvasStars;
 
+        //Declaracion del mensaje a mostrar
+        string winMessage;
+
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
         if (counter == 1)
         {
             points = App.generalModel.equialityGameModel.GetPoints() + 30;
             stars = App.generalModel.equialityGameModel.GetStars() + 3;
             canvasStars = 3;
+            winMessage = App.generalController.gameOptionsController.winMessages[2];
+
             //Actualizar las veces que ha ganado 3 estrellas
             App.generalModel.equialityGameModel.UpdatePerfectWins(App.generalModel.equialityGameModel.GetPerfectWins() + 1);
 
@@ -389,6 +394,7 @@ public class EquialityGameController : Reference{
             points = App.generalModel.equialityGameModel.GetPoints() + 20;
             stars = App.generalModel.equialityGameModel.GetStars() + 2;
             canvasStars = 2;
+            winMessage = App.generalController.gameOptionsController.winMessages[1];
 
             //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
             App.generalModel.equialityGameModel.UpdatePerfectGame(0);
@@ -399,6 +405,7 @@ public class EquialityGameController : Reference{
             points = App.generalModel.equialityGameModel.GetPoints() + 10;
             stars = App.generalModel.equialityGameModel.GetStars() + 1;
             canvasStars = 1;
+            winMessage = App.generalController.gameOptionsController.winMessages[0];
 
             //Actualizar las veces que ha ganado sin errores
             App.generalModel.equialityGameModel.UpdatePerfectGame(0);
@@ -409,14 +416,8 @@ public class EquialityGameController : Reference{
         App.generalModel.equialityGameModel.UpdateStars(stars);
 
         //Mostrar el canvas que indica cuantas estrellas gano
-        if (isLastLevel)
-        {
-            App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
-        }
-        else
-        {
-            App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, isLastLevel);
-        }
+        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage,isLastLevel);
+
     }
     /// <summary>
     /// Metodo para contar y verificar los errores
@@ -426,16 +427,17 @@ public class EquialityGameController : Reference{
         //Dismuir la cantidad de intentos
         attempts--;
 
-        //Si se queda sin intentos pierde el juego y se le muestra la respuesta (POR AHORA)
+        //Si se queda sin intentos pierde el juego
         if (attempts == 0)
         {
-            //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
             App.generalView.gameOptionsView.ShowLoseCanvas();
         }
         //Si aun le quedan intentos se muestra un mensaje en pantalla
         else
         {
-            App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
+            //Obtener el mensaje de intento
+            string attemptMessages = App.generalController.gameOptionsController.attemptMessages[attempts - 1];
+            App.generalView.gameOptionsView.ShowMistakeCanvas(attemptMessages);
         }
     }
 
@@ -452,7 +454,7 @@ public class EquialityGameController : Reference{
 
     public void ShowSolution(){
 
-        bool aux = true;
+        /*bool aux = true;
         
         if(aux){            
             
@@ -462,6 +464,24 @@ public class EquialityGameController : Reference{
             additionEqualityWindow.SetActive(true);
 
             numberText.text = "" + correctAnswerGame;
+        }*/
+
+        //Si hay tickets muestra la solucion
+        Debug.Log("HAY: " + App.generalModel.ticketModel.GetTickets() + " TICKETS");
+        if (App.generalModel.ticketModel.GetTickets() >= 1)
+        {
+            Debug.Log("HAS USADO UN PASE");
+
+            App.generalController.ticketController.DecraseTickets();
+            App.generalView.gameOptionsView.HideBuyCanvas();
+            App.generalView.gameOptionsView.ShowSolutionCanvas();
+
+            App.generalView.equialityGameView.solutionPanel.SetActive(true);
+            App.generalView.equialityGameView.solutionText.text = " " + correctAnswerGame;
+        }
+        else
+        {
+            App.generalView.gameOptionsView.ShowTicketsCanvas(3);
         }
     }
 

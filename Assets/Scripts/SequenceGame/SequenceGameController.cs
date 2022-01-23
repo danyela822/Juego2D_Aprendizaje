@@ -589,12 +589,17 @@ public class SequenceGameController : Reference{
         //Declaracion de los puntos y estrellas que ha ganado el juegador
         int points, stars, canvasStars;
 
+        //Declaracion del mensaje a mostrar
+        string winMessage;
+
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
         if (counter == 1)
         {
             points = App.generalModel.sequenceGameModel.GetPoints() + 30;
             stars = App.generalModel.sequenceGameModel.GetStars() + 3;
             canvasStars = 3;
+            winMessage = App.generalController.gameOptionsController.winMessages[2];
+
             //Actualizar las veces que ha ganado 3 estrellas
             App.generalModel.sequenceGameModel.UpdatePerfectWins(App.generalModel.sequenceGameModel.GetPerfectWins() + 1);
 
@@ -607,6 +612,7 @@ public class SequenceGameController : Reference{
             points = App.generalModel.sequenceGameModel.GetPoints() + 20;
             stars = App.generalModel.sequenceGameModel.GetStars() + 2;
             canvasStars = 2;
+            winMessage = App.generalController.gameOptionsController.winMessages[1];
 
             //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
             App.generalModel.sequenceGameModel.UpdatePerfectGame(0);
@@ -617,6 +623,7 @@ public class SequenceGameController : Reference{
             points = App.generalModel.sequenceGameModel.GetPoints() + 10;
             stars = App.generalModel.sequenceGameModel.GetStars() + 1;
             canvasStars = 1;
+            winMessage = App.generalController.gameOptionsController.winMessages[0];
 
             //Actualizar las veces que ha ganado sin errores
             App.generalModel.sequenceGameModel.UpdatePerfectGame(0);
@@ -627,7 +634,7 @@ public class SequenceGameController : Reference{
         App.generalModel.sequenceGameModel.UpdateStars(stars);
 
         //Mostrar el canvas que indica cuantas estrellas gano
-        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars,isLastLevel);
+        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars,winMessage,isLastLevel);
     }
     /// <summary>
     /// Metodo para contar y verificar los errores
@@ -637,22 +644,70 @@ public class SequenceGameController : Reference{
         //Dismuir la cantidad de intentos
         attempts--;
 
-        //Si se queda sin intentos pierde el juego y se le muestra la respuesta (POR AHORA)
+        //Si se queda sin intentos pierde el juego
         if (attempts == 0)
         {
-            //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
             App.generalView.gameOptionsView.ShowLoseCanvas();
         }
         //Si aun le quedan intentos se muestra un mensaje en pantalla
         else
         {
-            App.generalView.gameOptionsView.ShowMistakeCanvas(attempts);
+            //Obtener el mensaje de intento
+            string attemptMessages = App.generalController.gameOptionsController.attemptMessages[attempts - 1];
+            App.generalView.gameOptionsView.ShowMistakeCanvas(attemptMessages);
         }
     }
 
     public void ShowSolution(){
 
-        bool aux = true;
+        //Si hay tickets muestra la solucion
+        Debug.Log("HAY: " + App.generalModel.ticketModel.GetTickets() + " TICKETS");
+        if (App.generalModel.ticketModel.GetTickets() >= 1)
+        {
+            Debug.Log("HAS USADO UN PASE");
+
+            App.generalController.ticketController.DecraseTickets();
+            App.generalView.gameOptionsView.HideBuyCanvas();
+            App.generalView.gameOptionsView.ShowSolutionCanvas();
+
+            //App.generalView.setsGameView.solutionPanel.SetActive(true);
+            //App.generalView.setsGameView.solutionImage.sprite = correctAnswer;
+            sequenceWindow.SetActive(true);
+
+            switch (levelUser)
+            {
+
+                case 1:
+                    for (int i = 0; i < imageList.Count - 1; i++)
+                    {
+                        imageList[i].enabled = true;
+                        imageList[i].GetComponent<Image>().sprite = spritesLevelOne[correctListAnswer[i]];
+                    }
+                    break;
+
+                case 2:
+                    for (int i = 1; i < imageList.Count - 1; i++)
+                    {
+                        imageList[i].enabled = true;
+                        imageList[i].GetComponent<Image>().sprite = spritesLevelTwo[correctListAnswer[i - 1]];
+                    }
+                    break;
+
+                default:
+                    for (int i = 0; i < imageList.Count; i++)
+                    {
+                        imageList[i].enabled = true;
+                        imageList[i].GetComponent<Image>().sprite = sprites[correctListAnswer[i]];
+                    }
+                    break;
+            }
+        }
+        else
+        {
+            App.generalView.gameOptionsView.ShowTicketsCanvas(3);
+        }
+
+        /*bool aux = true;
 
         if (aux){     
             App.generalView.gameOptionsView.ShowSolutionCanvas();
@@ -683,7 +738,7 @@ public class SequenceGameController : Reference{
                 break;
             }
             
-        }
+        }*/
     }
 
 }

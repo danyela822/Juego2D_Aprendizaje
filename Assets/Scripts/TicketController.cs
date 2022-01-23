@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TicketController : Reference
@@ -29,9 +27,9 @@ public class TicketController : Reference
             App.generalModel.ticketModel.SetTickets(App.generalModel.ticketModel.GetTickets() - 1);
 
             //Verificar si cumplio el logro 6: Usar un pase de solucion
-            if (!App.generalController.statsController.IsAchievements(6))
+            if (!App.generalController.statsController.IsAchievements(5))
             {
-                App.generalController.statsController.DeleteAchievements(6);
+                App.generalController.statsController.DeleteAchievements(5);
             }
         }
 

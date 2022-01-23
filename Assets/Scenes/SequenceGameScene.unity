@@ -923,6 +923,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4f4ecc3072d4042b314dd256f7b533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leagueText: {fileID: 0}
+  pointsText: {fileID: 0}
+  starsText: {fileID: 0}
+  leagueImage: {fileID: 0}
+  achievements: []
 --- !u!1001 &281381631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3199,6 +3204,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13bf55021e0a56145b92c7d890e9d479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winMessages:
+  - Sigue adelante
+  - "\xA1Muy Bien!"
+  - "\xA1Excelente!"
+  attemptMessages:
+  - Ya estas cerca, vamos!
+  - "Intentalo de nuevo. \xA1Tu puedes!"
 --- !u!4 &1432134446
 Transform:
   m_ObjectHideFlags: 0
@@ -3220,6 +3232,62 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1432134444}
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HideTicketsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOptionsView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576109030197, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1432134444}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HideTicketsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOptionsView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775576801499545, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5236775577146861981, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
       propertyPath: m_Name
       value: TicketsCanvas
@@ -3311,6 +3379,34 @@ PrefabInstance:
     - target: {fileID: 5236775577146861986, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1432134444}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HideTicketsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOptionsView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236775577938363064, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db139446f5087b74d87f9d548a619bfa, type: 3}
@@ -3574,7 +3670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c8bc324e4480b6438e3826631c82399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  solutionTickets: 0
 --- !u!114 &1584197442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4108,7 +4203,9 @@ MonoBehaviour:
   equialityGameModel: {fileID: 0}
   sequenceGameModel: {fileID: 1584197439}
   additionGameModel: {fileID: 0}
+  setsGameModel: {fileID: 0}
   ticketModel: {fileID: 1584197441}
+  connectedGameModel: {fileID: 0}
 --- !u!1001 &1812698259
 PrefabInstance:
   m_ObjectHideFlags: 0
