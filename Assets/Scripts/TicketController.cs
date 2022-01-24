@@ -12,6 +12,7 @@ public class TicketController : Reference
         if (App.generalModel.statsModel.GetTotalPoints() >= 100)
         {
             App.generalModel.ticketModel.SetTickets(App.generalModel.ticketModel.GetTickets() + 1);
+            SoundManager.soundManager.PlaySound(3);
             return true;
         }
         else

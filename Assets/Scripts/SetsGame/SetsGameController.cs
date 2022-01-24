@@ -212,6 +212,8 @@ public class SetsGameController : Reference
 
         if (answer == correctAnswer.name)
         {
+            SoundManager.soundManager.PlaySound(4);
+
             //Si ya paso el nivel 1 puede pasar al 2
             if (level == 1)
             {

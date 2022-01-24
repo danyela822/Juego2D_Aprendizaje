@@ -130,6 +130,8 @@ public class CharacteristicsGameController : Reference
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
         if (selectedOption == "correct")
         {
+            SoundManager.soundManager.PlaySound(4);
+
             //Si ya paso el nivel 1 puede pasar al 2
             if (level == 1)
             {

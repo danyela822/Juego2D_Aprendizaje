@@ -153,6 +153,8 @@ public class ClassificationGameController : Reference
             var result = answers.Except(choises);
             if (result.Count() == 0)
             {
+                SoundManager.soundManager.PlaySound(4);
+
                 App.generalModel.classificationGameModel.file.classificationGameList.Remove(number);
                 App.generalModel.classificationGameModel.file.Save("P");
 

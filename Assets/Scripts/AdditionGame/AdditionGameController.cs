@@ -349,6 +349,7 @@ public class AdditionGameController : Reference{
         if (auxAnswer == correctAnswer){
             Debug.Log("You win");
 
+            SoundManager.soundManager.PlaySound(4);
 
             //Si ya paso el nivel 1 puede pasar al 2
             if (App.generalModel.additionGameModel.GetLevel() == 1)

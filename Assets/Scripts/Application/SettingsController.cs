@@ -36,4 +36,40 @@ public class SettingsController : Reference
         //Borrar el archivo.data
         File.Delete(file.GetPath("P"));
     }
+    public void ChangeMusicStatus()
+    {
+        Debug.Log("Muscia: "+ PlayerPrefs.GetInt("Music", 1));
+        if (PlayerPrefs.GetInt("Music",1) == 1)
+        {
+            MusicManager.audioManager.DisableMusic();
+            App.generalView.settingsView.musicOn.enabled = false;
+            App.generalView.settingsView.musicOff.enabled = true;
+            PlayerPrefs.SetInt("Music", 0);
+        }
+        else
+        {
+            MusicManager.audioManager.ActivateMusic();
+            App.generalView.settingsView.musicOn.enabled = true;
+            App.generalView.settingsView.musicOff.enabled = false;
+            PlayerPrefs.SetInt("Music", 1);
+        }
+    }
+    public void ChangeEffectsStatus()
+    {
+        Debug.Log("Efectos: " + PlayerPrefs.GetInt("Effects", 1));
+        if (PlayerPrefs.GetInt("Effects", 1) == 1)
+        {
+            SoundManager.soundManager.DisableSoundEffects();
+            App.generalView.settingsView.effectsOn.enabled = false;
+            App.generalView.settingsView.effectsOff.enabled = true;
+            PlayerPrefs.SetInt("Effects", 0);
+        }
+        else
+        {
+            SoundManager.soundManager.ActivateSoundEffects();
+            App.generalView.settingsView.effectsOn.enabled = true;
+            App.generalView.settingsView.effectsOff.enabled = false;
+            PlayerPrefs.SetInt("Effects", 1);
+        }
+    }
 }

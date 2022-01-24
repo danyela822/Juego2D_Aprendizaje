@@ -876,6 +876,8 @@ public class ConnectedGameController : Reference
     /// <param name="rating">Int rating que indica los puntos que deben ser asignados</param>
     public void SetPointsAndStars(int rating)
     {
+        SoundManager.soundManager.PlaySound(4);
+
         //Declaracion de los puntos y estrellas que ha ganado el juegador
         int points, stars, canvasStars;
         

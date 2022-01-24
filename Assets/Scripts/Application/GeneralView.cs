@@ -18,4 +18,5 @@ public class GeneralView : Reference
     public EquialityGameView equialityGameView;
     public SequenceGameView sequenceGameView;
     public SetsGameView setsGameView;
+    public SettingsView settingsView;
 }

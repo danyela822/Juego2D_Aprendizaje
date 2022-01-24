@@ -89,6 +89,7 @@ public class GameOptionsView: Reference
     }
     public void ShowLoseCanvas()
     {
+        SoundManager.soundManager.PlaySound(2);
         LoseCanvas.enabled = true;
     }
     public void HideLoseCanvas()

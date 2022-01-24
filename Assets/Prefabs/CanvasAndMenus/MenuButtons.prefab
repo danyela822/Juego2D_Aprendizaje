@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 7112673240060928970}
   - component: {fileID: 7112673240060928969}
   - component: {fileID: 7112673240060928968}
+  - component: {fileID: 7666408426024518113}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -228,6 +229,35 @@ MonoBehaviour:
           m_StringArgument: Pause Button
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7666408426024518113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112673240060928982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6632555757371889815, guid: 2d0ea172a0b5213429fbacbd4ee18957, type: 3}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7112673240460592517
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +345,7 @@ GameObject:
   - component: {fileID: 7112673240772609330}
   - component: {fileID: 7112673240772609329}
   - component: {fileID: 7112673240772609328}
+  - component: {fileID: 3428644169923784302}
   m_Layer: 5
   m_Name: HelpButton
   m_TagString: Untagged
@@ -436,6 +467,35 @@ MonoBehaviour:
           m_StringArgument: Help Button
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3428644169923784302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112673240772609342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6632555757371889815, guid: 2d0ea172a0b5213429fbacbd4ee18957, type: 3}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7112673241297674689
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +583,7 @@ GameObject:
   - component: {fileID: 7112673241725323819}
   - component: {fileID: 7112673241725323818}
   - component: {fileID: 7112673241725323817}
+  - component: {fileID: 4475159459375658507}
   m_Layer: 5
   m_Name: SolutionButton
   m_TagString: Untagged
@@ -644,6 +705,35 @@ MonoBehaviour:
           m_StringArgument: Solution Button
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4475159459375658507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112673241725323831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6632555757371889815, guid: 2d0ea172a0b5213429fbacbd4ee18957, type: 3}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7112673241787379409
 GameObject:
   m_ObjectHideFlags: 0
