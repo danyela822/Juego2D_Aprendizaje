@@ -194,6 +194,7 @@ public class CharactersController : Reference
                 ActivateComponents(type);
                 //Activar movimiento en todas la direcciones
                 walkAllDirection = true;
+                Debug.Log("Movimiento personaje 1");
                 break;
             case 2:
                 //Activar componentes para los personajes que caminan hacia arriba y hacia abajo
@@ -202,6 +203,7 @@ public class CharactersController : Reference
                 walkUpDown = true;
                 walkRightLeft = false;
                 walkAllDirection = false;
+                Debug.Log("Movimiento personaje 2");
                 break;
             case 3:
                 //Activar componentes para los personajes que caminan hacia la derecha y hacia la izquierda
@@ -210,6 +212,7 @@ public class CharactersController : Reference
                 walkRightLeft = true;
                 walkUpDown = false;
                 walkAllDirection = false;
+                Debug.Log("Movimiento personaje 3");
                 break;
             default:
                 break;
@@ -226,6 +229,7 @@ public class CharactersController : Reference
             {
                 character = characters[i];
                 characterTransform = screenCharacters[i].transform;
+                Debug.Log("CHARACTER: "+character.nameCharacter+" UBICACION: "+characterTransform.position);
             }
         }
     }
@@ -233,6 +237,7 @@ public class CharactersController : Reference
     //Metodo que indica hacia que direccion debe moverse el personaje
     public void Move(string direction)
     {
+        Debug.Log("MOVIMIENTO: "+direction);
         //Verficar que se esta mandando una direccion para mover al personaje
         if (direction != null)
         {
@@ -258,11 +263,12 @@ public class CharactersController : Reference
 
         if (direction == "up")
         {
+            Debug.Log("MOVIMIENTO: " + direction);
             if (App.generalController.roadGameController.CheckFigurePosition(character.posArrayX - 1, character.posArrayY))
             {
                 characterTransform.position = characterTransform.position + vectorUp;
                 character.posArrayX = character.posArrayX - 1;
-                //Debug.Log("POS CHARACTER UP X: " + character.posArrayX + " Y: " + character.posArrayY);
+                Debug.Log("POS CHARACTER UP X: " + character.posArrayX + " Y: " + character.posArrayY);
             }
         }
         else if (direction == "down")
@@ -271,7 +277,7 @@ public class CharactersController : Reference
             {
                 characterTransform.position = characterTransform.position + vectorDown;
                 character.posArrayX = character.posArrayX + 1;
-                //Debug.Log("POS CHARACTER DOWN X: " + character.posArrayX + " Y: " + character.posArrayY);
+                Debug.Log("POS CHARACTER DOWN X: " + character.posArrayX + " Y: " + character.posArrayY);
             }
         }
     }
@@ -284,7 +290,7 @@ public class CharactersController : Reference
             {
                 characterTransform.position = characterTransform.position + vectorRigth;
                 character.posArrayY = character.posArrayY + 1;
-                //Debug.Log("POS CHARACTER RIGTH X: " + character.posArrayX + " Y: " + character.posArrayY);
+                Debug.Log("POS CHARACTER RIGTH X: " + character.posArrayX + " Y: " + character.posArrayY);
             }
         }
         else if (direction == "left")
@@ -293,7 +299,7 @@ public class CharactersController : Reference
             {
                 characterTransform.position = characterTransform.position + vectorLetf;
                 character.posArrayY = character.posArrayY - 1;
-                //Debug.Log("POS CHARACTER LEFT X: " + character.posArrayX + " Y: " + character.posArrayY);
+                Debug.Log("POS CHARACTER LEFT X: " + character.posArrayX + " Y: " + character.posArrayY);
             }
         }
     }

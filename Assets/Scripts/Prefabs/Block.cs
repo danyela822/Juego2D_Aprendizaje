@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Block : Reference
 {
-    private int id;
+    public int id;
     public bool visited = false;
     public int numVisited = 0;
     public void SetId(int newId)
