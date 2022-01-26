@@ -1288,7 +1288,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1095525345}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.2505297
+  m_Size: 0.2615337
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1497,10 +1497,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1921618876}
         m_TargetAssemblyTypeName: UIView, Assembly-CSharp
         m_MethodName: OnClickButtons
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 424943348}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Back Button

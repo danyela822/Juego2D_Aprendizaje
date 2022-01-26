@@ -106,8 +106,10 @@ public class AdditionGameController : Reference{
             //nivel 1
             case 1: 
                 level = 2;
-                y = -0.1f; x = -2f;
-                signX = -1.6f; signY = -0.06f;
+                //= -0.1f; x = -2f;
+                //gnX = -1.63f; signY = -0.06f;
+                y = 0f; x=-1.2f;                  
+                signX = -0.83f; signY = 0f;
                 //activa los campos de texto del nivel 1
                 for (int i = 0; i < textListLevelOne.Count; i++){
                     textListLevelOne[i].enabled = true; 
@@ -117,8 +119,8 @@ public class AdditionGameController : Reference{
             //nivel 2
             case 2:
                 level = 3;
-                y = 0.1f; x = -2f;
-                signX = -1.6f; signY = 0.04f;
+                y = 0.1f; x = -1.72f;
+                signX = -1.35f; signY = 0.1f;
                 //activa los campos de texto del nivel 2
                 for (int i = 0; i < textListLevelTwo.Count; i++){
                     textListLevelTwo[i].enabled = true; 
@@ -129,7 +131,7 @@ public class AdditionGameController : Reference{
             default:
                 level = 4;
                 y = 0.7f; x = -2f;
-                signX = -1.6f; signY = 0.73f;
+                signX = -1.63f; signY = 0.7f;
                 //activa los campos de texto del nivel 3
                 for (int i = 0; i < textListLevelThree.Count; i++){
                     textListLevelThree[i].enabled = true; 
@@ -233,9 +235,12 @@ public class AdditionGameController : Reference{
         int cont = 2;
         int auxImage = 0;
         int auxSign = 0;
-        
-        firstOption = Instantiate(objectRow,new Vector3(-2, 1.6f, 0), objectRow.transform.rotation);
-        signFirts = Instantiate(objectRow,new Vector3(-1.4f, 1.6f, 0), objectRow.transform.rotation);
+
+        /*firstOption = Instantiate(objectRow,new Vector3(-2, 1.6f, 0), objectRow.transform.rotation);
+        signFirts = Instantiate(objectRow,new Vector3(-1.4f, 1.6f, 0), objectRow.transform.rotation);*/
+
+        firstOption = Instantiate(objectRow, new Vector3(x, y+0.9f, 0), objectRow.transform.rotation);
+        signFirts = Instantiate(objectSign, new Vector3(signX+0.08f, signY+0.9f, 0), objectSign.transform.rotation);
 
         Sprite spriteFirst = images[icons[0].idIcon];
 
@@ -249,7 +254,14 @@ public class AdditionGameController : Reference{
                     
             for (int j = 0; j < cont; j++){
 
-                newOption = Instantiate(objectRow, new Vector3(x + ((size.x - 0.53f) * j), y - ((size.y - 0.5f)*i), 0), objectRow.transform.rotation);
+                /*newOption = Instantiate(objectRow, new Vector3(x + ((size.x - 0.53f) * j), y - ((size.y - 0.5f)*i), 0), objectRow.transform.rotation);
+
+                Sprite sprite = images[icons[auxImage].idIcon];
+                newOption.GetComponent<SpriteRenderer>().sprite = sprite;
+
+                newOption.transform.parent = gameZone.transform;*/
+
+                newOption = Instantiate(objectRow, new Vector3(x + (0.75f * j), y + (-0.9f* i), 0), objectRow.transform.rotation);
 
                 Sprite sprite = images[icons[auxImage].idIcon];
                 newOption.GetComponent<SpriteRenderer>().sprite = sprite;
@@ -259,7 +271,11 @@ public class AdditionGameController : Reference{
                 auxImage += 1;
 
 
-                sign = Instantiate(objectSign, new Vector3(signX +((sizeSign.x - 0.53f)* j), signY - ((sizeSign.y + 0.1f) * i), 0), objectSign.transform.rotation);
+                /*sign = Instantiate(objectSign, new Vector3(signX +((sizeSign.x - 0.53f)* j), signY - ((sizeSign.y + 0.1f) * i), 0), objectSign.transform.rotation);
+
+                sign.transform.parent = gameZone.transform;*/
+
+                sign = Instantiate(objectSign, new Vector3(signX + (0.75f* j), signY + (-0.9f * i), 0), objectSign.transform.rotation);
 
                 sign.transform.parent = gameZone.transform;
 
