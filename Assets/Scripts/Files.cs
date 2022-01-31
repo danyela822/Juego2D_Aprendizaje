@@ -38,7 +38,6 @@ public class Files : Reference
             }
 
             PlayerPrefs.SetInt("CreateLists", 1);
-            PlayerPrefs.SetInt("Level", 1);
             Debug.Log("CAMBIO DE CreateLists: " + PlayerPrefs.GetInt("CreateLists", 0));
             file.Save("P");
         }

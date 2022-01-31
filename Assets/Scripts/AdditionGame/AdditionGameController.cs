@@ -65,7 +65,7 @@ public class AdditionGameController : Reference{
     int level = 0;
 
     //Numero para indicar el numero de veces que verifica la respuesta correcta
-    public int counter;
+    int counter;
 
     //Numero de veces que ha jugado
     int countPlay;
@@ -363,6 +363,9 @@ public class AdditionGameController : Reference{
 
         int auxAnswer = int.Parse(text);
         if (auxAnswer == correctAnswer){
+
+            Debug.Log("COUNTER: "+counter);
+
             Debug.Log("You win");
 
             SoundManager.soundManager.PlaySound(4);
@@ -407,6 +410,7 @@ public class AdditionGameController : Reference{
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
         if (counter == 1)
         {
+            Debug.Log("COUNTER: " + counter);
             points = App.generalModel.additionGameModel.GetPoints() + 30;
             stars = App.generalModel.additionGameModel.GetStars() + 3;
             canvasStars = 3;
@@ -421,6 +425,7 @@ public class AdditionGameController : Reference{
         //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
         else if (counter == 2)
         {
+            Debug.Log("COUNTER: " + counter);
             points = App.generalModel.additionGameModel.GetPoints() + 20;
             stars = App.generalModel.additionGameModel.GetStars() + 2;
             canvasStars = 2;
@@ -432,6 +437,7 @@ public class AdditionGameController : Reference{
         //Si gana el juego con mas de 9 intentos suma 10 puntos y gana 1 estrella
         else
         {
+            Debug.Log("COUNTER: " + counter);
             points = App.generalModel.additionGameModel.GetPoints() + 10;
             stars = App.generalModel.additionGameModel.GetStars() + 1;
             canvasStars = 1;
@@ -445,6 +451,7 @@ public class AdditionGameController : Reference{
         App.generalModel.additionGameModel.UpdatePoints(points);
         App.generalModel.additionGameModel.UpdateStars(stars);
 
+        Debug.Log("CANVAS: " + canvasStars);
         //Mostrar el canvas que indica cuantas estrellas gano
         App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage, isLastLevel);
 

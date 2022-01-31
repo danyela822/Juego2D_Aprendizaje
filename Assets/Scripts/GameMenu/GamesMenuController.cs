@@ -12,7 +12,7 @@ public class GamesMenuController : Reference
             case "Descubre el conjunto":
                 if(file.classificationGameList.Count==0)
                 {
-                    App.generalView.gamesMenuView.playButtons[0].interactable = false;
+                    //App.generalView.gamesMenuView.playButtons[0].interactable = false;
                     App.generalView.gamesMenuView.finishedCanvas.enabled = true;
                 }
                 else
@@ -23,7 +23,7 @@ public class GamesMenuController : Reference
             case "¿Quien soy?":
                 if (file.imageListGame2_3.Count == 0)
                 {
-                    App.generalView.gamesMenuView.playButtons[1].interactable = false;
+                    //App.generalView.gamesMenuView.playButtons[1].interactable = false;
                     App.generalView.gamesMenuView.finishedCanvas.enabled = true;
                 }
                 else
@@ -41,7 +41,7 @@ public class GamesMenuController : Reference
                 break;
 
             case "Encuentra el camino":
-                SceneManager.LoadScene("CategoriesScene");
+                SceneManager.LoadScene("RoadGameScene");
 
                 break;
 
@@ -52,7 +52,7 @@ public class GamesMenuController : Reference
             case "Union e Interseccion":
                 if (file.imageListGame8_2_3.Count == 0)
                 {
-                    App.generalView.gamesMenuView.playButtons[6].interactable = false;
+                    //App.generalView.gamesMenuView.playButtons[6].interactable = false;
                     App.generalView.gamesMenuView.finishedCanvas.enabled = true;
                 }
                 else

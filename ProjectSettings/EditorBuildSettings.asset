@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CategoriesScene.unity
     guid: bb32bbf76db24ef40b767ac732ebe2f6
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/Scenes/RoadGameScene.unity
     guid: e6ba3c101514e5f45b167dc4d03d9330
   - enabled: 1
     path: Assets/Scenes/InfoScene.unity
@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StatsScene.unity
     guid: b253fda7059503a43929f27573e96b64
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/Scenes/RoadGameScene.unity
     guid: e6ba3c101514e5f45b167dc4d03d9330
   - enabled: 0
     path: 

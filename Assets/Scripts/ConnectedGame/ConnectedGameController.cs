@@ -839,6 +839,12 @@ public class ConnectedGameController : Reference
             App.generalView.gameOptionsView.HideBuyCanvas();
                        
             arrayObjects = Clone(arraySolution);
+
+            App.generalView.connectedGameView.continueButton.interactable = true;
+            for (int i = 0; i < 3; i++)
+            {
+                App.generalView.connectedGameView.colorButtons[i].interactable = false;
+            }
             DrawMatrix(arrayObjects, initialBlock, gameZone);
         }
         else

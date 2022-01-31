@@ -1383,9 +1383,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9936d14f9cc360d41816c9a956e99bc2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.01
+  m_Volume: 0.05
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1995,7 +1995,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasCategories: {fileID: 0}
-  canvasLevels: {fileID: 0}
+  canvasLevel: {fileID: 0}
+  infoCanvas: {fileID: 0}
+  imagesCanvas: {fileID: 0}
+  musicCanvas: {fileID: 0}
+  creatorsCanvas: {fileID: 0}
 --- !u!114 &1436182246
 MonoBehaviour:
   m_ObjectHideFlags: 0

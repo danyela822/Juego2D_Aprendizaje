@@ -12,6 +12,14 @@ public class SoundManager : MonoBehaviour
         if (soundManager == null)
         {
             soundManager = this;
+            if (PlayerPrefs.GetInt("Effects", 1) == 0)
+            {
+                DisableSoundEffects();
+            }
+            else
+            {
+                ActivateSoundEffects();
+            }
         }
         else
         {

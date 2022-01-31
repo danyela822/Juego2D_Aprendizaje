@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 public class RoadGameView : Reference
 {
     //Botones para especificar que personaje se va a mover
@@ -10,11 +7,14 @@ public class RoadGameView : Reference
 
     public Text cointsText, solutionTickets;
 
-    bool isGameStarted;
     private void Awake()
     {
-        isGameStarted = true;
         PointsLevel();
+    }
+    public void StartGame()
+    {
+        App.generalView.gameOptionsView.HideTutorialCanvas();
+        App.generalController.roadGameController.DrawMatrix();
     }
     public void PointsLevel()
     {
@@ -29,17 +29,6 @@ public class RoadGameView : Reference
 
         App.generalView.gameOptionsView.WinCanvas.enabled = true;
     }*/
-    /*
-     * Metodo que captura el nombre del boton el cual se esta pulsando
-     */
-    /*public void OnClickButtons(string name_button)
-    {
-        App.generalController.roadGameController.OnClickButtons(name_button);
-    }*/
-    public void MiniGame()
-    {
-        SceneManager.LoadScene("MiniGamesScene");
-    }
     public void DrawSolution()
     {
         if( App.generalModel.roadGameModel.GetTickets() > 0)
@@ -53,20 +42,11 @@ public class RoadGameView : Reference
     }
     public void ActivateMovement(int type)
     {
-        App.generalController.charactersController.ActivateMovement(type);
+        //App.generalController.charactersController.ActivateMovement(type);
+        App.generalController.charactersController.ActivateComponents(type);
     }
     public void MoveCharacter(string direction)
     {
         App.generalController.charactersController.Move(direction);
-    }
-    public void StartGame()
-    {
-        App.generalView.gameOptionsView.TutorialCanvas.enabled = false;
-
-        if(isGameStarted)
-        {
-            App.generalController.roadGameController.DrawMatrix();
-            isGameStarted = false;
-        }
     }
 }

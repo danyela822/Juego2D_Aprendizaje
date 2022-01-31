@@ -5680,6 +5680,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 335
       objectReference: {fileID: 0}
+    - target: {fileID: 5375704521894224669, guid: 70070fe55a9eeb24cb6314a1121b43cf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1432134444}
+    - target: {fileID: 5375704521894224669, guid: 70070fe55a9eeb24cb6314a1121b43cf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackGameLeves
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375704521894224669, guid: 70070fe55a9eeb24cb6314a1121b43cf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOptionsView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375704521894224669, guid: 70070fe55a9eeb24cb6314a1121b43cf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5375704521955629729, guid: 70070fe55a9eeb24cb6314a1121b43cf, type: 3}
       propertyPath: m_Sprite
       value: 

@@ -14,7 +14,7 @@ public class UIController : Reference
         {
             SceneManager.LoadScene("GamesMenuScene");
         }
-        if (name_button == "Settings Button")
+        if (name_button == "SettingsButton")
         {
             SceneManager.LoadScene("SettingsScene");
         }

@@ -50,6 +50,9 @@ public class FileLists : ScriptableObject
             JsonUtility.FromJsonOverwrite((string)br.Deserialize(file), this);
             //Debug.Log("LISTA CLASIFICACION EN CARGAR: " + classificationGameList.Count);
             Debug.Log("LISTA LOGROS EN CARGAR: " + achievementsList.Count);
+            Debug.Log("LISTA U/I EN CARGAR: " + imageListGame8_2_3.Count);
+            Debug.Log("LISTA CARACTERISTICAS EN CARGAR: " + imageListGame2_3.Count);
+            Debug.Log("LISTA CLASIFICACION EN CARGAR: " + classificationGameList.Count);
             file.Close();
         }
         else

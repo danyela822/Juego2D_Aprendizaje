@@ -9,6 +9,8 @@ public class ConnectedGameView : Reference
 
     public Text message;
 
+    public Button continueButton;
+
     public void ReturnButton()
     {
         colorsCanvas.enabled = true;

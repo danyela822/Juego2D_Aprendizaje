@@ -35,6 +35,8 @@ public class SettingsController : Reference
 
         //Borrar el archivo.data
         File.Delete(file.GetPath("P"));
+
+        MusicManager.audioManager.ActivateMusic();
     }
     public void ChangeMusicStatus()
     {

@@ -96,15 +96,15 @@ public class RoadGameModel : Reference
 
         if (theme == "Castle")
         {
-            spriteslist = Resources.LoadAll<Sprite>("Map/dirt");
+            spriteslist = Resources.LoadAll<Sprite>("Map/Castle/dirt");
         }
         else if (theme == "Forest")
         {
-            spriteslist = Resources.LoadAll<Sprite>("Map/grass");
+            spriteslist = Resources.LoadAll<Sprite>("Map/Forest/grass");
         }
         else
         {
-            spriteslist = Resources.LoadAll<Sprite>("Map/sand");
+            spriteslist = Resources.LoadAll<Sprite>("Map/Sea/sand");
         }
 
         for (int i = 0; i < mapFloor.GetLength(0); i++)
@@ -128,15 +128,15 @@ public class RoadGameModel : Reference
 
         if (theme == "Castle")
         {
-            spriteslist = Resources.LoadAll<Sprite>("Map/valla_2");
+            spriteslist = Resources.LoadAll<Sprite>("Map/Castle/fence");
         }
         else if (theme == "Forest")
         {
-            spriteslist = Resources.LoadAll<Sprite>("Map/rocks");
+            spriteslist = Resources.LoadAll<Sprite>("Map/Forest/rocks");
         }
         else
         {
-            spriteslist = Resources.LoadAll<Sprite>("Map/water");
+            spriteslist = Resources.LoadAll<Sprite>("Map/Sea/water");
         }
 
         for (int i = 0; i < mapLock.GetLength(0); i++)
@@ -150,7 +150,45 @@ public class RoadGameModel : Reference
         }
         return mapLock;
     }
+    public Sprite GetMapFinish(string theme)
+    {
+        Sprite mapFinish;
+        if (theme == "Castle")
+        {
+            mapFinish = Resources.Load<Sprite>("Map/Castle/fence");
+        }
+        else if (theme == "Forest")
+        {
+            mapFinish = Resources.Load<Sprite>("Map/Forest/rocks");
+        }
+        else
+        {
+            mapFinish = Resources.Load<Sprite>("Map/Sea/water");
+        }
+        return mapFinish;
+    }
+    /// <summary>
+    /// Metodo que devuelve el nivel actual del juego
+    /// </summary>
+    /// <returns>Int del nivel del juego</returns>
+    public int GetLevel()
+    {
+        return PlayerPrefs.GetInt("Game5Levels", 1);
+    }
+    /// <summary>
+    /// Metodo que actualiza el nivel del juego
+    /// </summary>
+    /// <param name="level">Nivel del juego</param>
+    public void UpdateLevel(int level)
+    {
+        PlayerPrefs.SetInt("Game5Levels", level);
+    }
 }
+
+
+
+
+
 
 
 public class Objects
