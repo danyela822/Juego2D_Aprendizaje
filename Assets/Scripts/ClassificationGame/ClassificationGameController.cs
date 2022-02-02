@@ -22,15 +22,6 @@ public class ClassificationGameController : Reference
     //Numero para indicar el numero de veces que verifica la respuesta correcta
     public int counter;
 
-    //Numero para saber cuantas veces ha ganado 3 estrella
-    //int countPerfectWins = 0;
-
-    //Numero de veces que ha jugado
-    //int countPlay = 0;
-
-    //numero que cuenta las veces que ha completado niveles sin errores
-    //int countPerfectGame = 0;
-
     //Numero de veces que ha jugado
     int countPlay;
 

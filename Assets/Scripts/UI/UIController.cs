@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIController : Reference
 {
-    public Canvas canvasCategories, canvasLevel, infoCanvas, imagesCanvas, musicCanvas, creatorsCanvas;
+    public Canvas infoCanvas, imagesCanvas, musicCanvas, creatorsCanvas;
 
     public void OnClickButtons(string name_button)
     {
@@ -68,80 +66,5 @@ public class UIController : Reference
         {
             SceneManager.LoadScene("MainMenuScene");
         }
-
-
-        /*
-        if (name_button == "BackButton_N")
-        {
-            canvasLevels.enabled = false;
-            canvasCategories.enabled = true;
-            App.generalView.UIView.category.text = "Categorias";
-        }
-
-        if (name_button == "HomeButton")
-        {
-            SceneManager.LoadScene("MainMenuScene");
-        }
-
-        //Botones de la vista de categorias
-        if(name_button == "BegginerButton")
-        {
-            //SceneManager.LoadScene("ConnectedGameScene");
-            //App.generalController.connectedGameController.CreateLevel();
-            canvasCategories.enabled = false;
-            canvasLevels.enabled = true;
-            ChangeCategory("principiante");
-        }
-        if (name_button == "MediumButton")
-        {
-            canvasCategories.enabled = false;
-            canvasLevels.enabled = true;
-            ChangeCategory("moderado");
-        }
-        if (name_button == "AdvancedButton")
-        {
-            canvasCategories.enabled = false;
-            canvasLevels.enabled = true;
-            ChangeCategory("avanzado");
-        }
-        if (name_button == "RandomButton")
-        {
-            //Escena del nivel aleatorio
-            SceneManager.LoadScene("GameScene");
-            App.generalController.roadGameController.RamdonLevel();
-        }
-
-        //Botones de Niveles
-        if(name_button == "LevelButton")
-        {
-            SceneManager.LoadScene("GameScene");
-            string categoryName = App.generalView.UIView.NameCategory();
-            App.generalController.roadGameController.LevelData(categoryName);
-        }
-        */
-    }
-    private string nameCategory;
-    public void ChangeCategory(string category)
-    {
-        nameCategory = "";
-        switch (category)
-        {
-            case "principiante":
-                nameCategory = "Principiante";
-                break;
-
-            case "moderado":
-                nameCategory = "Medio";
-                break;
-
-            case "avanzado":
-                nameCategory = "Avanzado";
-                break;
-
-            default:
-                break;
-        }
-
-        App.generalView.UIView.ChangeTextCategory(nameCategory);
     }
 }

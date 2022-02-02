@@ -4,8 +4,6 @@ using UnityEngine;
 public class StatsModel : Reference
 {
     public FileLists file;
-    //string currentLeague;
-
     public Sprite GetStartsImage(int totalStarts)
     {
         return Resources.Load<Sprite>("Stars/" + totalStarts); ;
@@ -17,14 +15,6 @@ public class StatsModel : Reference
     }
     public string GetLeague()
     {
-        /*if (currentLeague == null)
-        {
-            return "Sin liga";
-        }
-        else
-        {
-            return currentLeague;
-        }*/
         return PlayerPrefs.GetString("League", "Sin liga");
     }
     public void UpdateTotalPoints(int value)

@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityEngine.UI;
 public class RoadGameView : Reference
 {
@@ -7,10 +6,10 @@ public class RoadGameView : Reference
 
     public Text cointsText, solutionTickets;
 
-    private void Awake()
+    /*private void Awake()
     {
         PointsLevel();
-    }
+    }*/
     public void StartGame()
     {
         App.generalView.gameOptionsView.HideTutorialCanvas();

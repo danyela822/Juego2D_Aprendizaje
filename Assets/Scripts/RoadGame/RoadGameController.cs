@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class RoadGameController : Reference
 {
@@ -10,16 +8,14 @@ public class RoadGameController : Reference
     public List<GameObject> obstables;
     public List<GameObject> goals;
 
-    int numCharacters = 0;
-
     //Variable para almacenar los pasos que da el jugador en la partida
     public int numberSteps = 0;
     // Se crea una matriz de objetos
     static Objects[,] arrayObjects;
     // Indica la cantidad de filas de la matriz
-    int arrayRow = 8;
+    readonly int arrayRow = 8;
     // Cantidad de columnas de la matriz
-    int arrayCol = 6;
+    readonly int arrayCol = 6;
     // Matriz de GameObject
     static GameObject[,] matrix;
 
@@ -28,11 +24,11 @@ public class RoadGameController : Reference
     static int numLlamadas; // Numero de llamadas rercursivas
     static Objects[,] arraySolution = null; // Camino a seguir
 
-    static int level = 3;
+    int level;
     int[] arrivalPoint = new int[2];
     int[] startPoint = new int[2];
-    int[] obstaclePoint1 = new int[2];
-    int[] obstaclePoint2 = new int[2];
+    readonly int[] obstaclePoint1 = new int[2];
+    readonly int[] obstaclePoint2 = new int[2];
     int[] character2Point = new int[3];
     int[] character3Point = new int[3];
 
@@ -119,8 +115,8 @@ public class RoadGameController : Reference
     void GenerateLevel3()
     {
         LocateObstacleLevel3();
-        arraySolution[obstaclePoint1[0], obstaclePoint1[1]].type = 4;
-        arraySolution[obstaclePoint2[0], obstaclePoint2[1]].type = 10;
+        arraySolution[obstaclePoint1[0], obstaclePoint1[1]].Type = 4;
+        arraySolution[obstaclePoint2[0], obstaclePoint2[1]].Type = 10;
 
         // Llamado a los metodos necesarios para crear la ruta entre el punto de llegada y el obstaculo 1
         GenerateSolution(obstaclePoint1[0], obstaclePoint1[1], 9, 2, 3);
@@ -208,9 +204,9 @@ public class RoadGameController : Reference
     public void InvisibleRoute()
     {
         int[] coordinates = InvisibleLocation();
-        if (arrayObjects[coordinates[0], coordinates[1]].type == 0)
+        if (arrayObjects[coordinates[0], coordinates[1]].Type == 0)
         {
-            arrayObjects[coordinates[0], coordinates[1]].type = 6;
+            arrayObjects[coordinates[0], coordinates[1]].Type = 6;
             GenerateSolution(startPoint[0], startPoint[1], 6, 7, 7);
             LocateSolutionArray();
         }
@@ -226,14 +222,14 @@ public class RoadGameController : Reference
         {
             for (int j = 0; j < arrayCol; j++)
             {
-                if (arrayObjects[i, j].type == 7)
+                if (arrayObjects[i, j].Type == 7)
                 {
-                    arrayObjects[i, j].type = 0;
-                    arraySolution[i, j].type = 0;
+                    arrayObjects[i, j].Type = 0;
+                    arraySolution[i, j].Type = 0;
                 }
             }
         }
-        arraySolution[startPoint[0], startPoint[1]].type = 3;
+        arraySolution[startPoint[0], startPoint[1]].Type = 3;
     }
 
     // Metodo que se encarga de crear la matriz llenarla de 0
@@ -255,7 +251,7 @@ public class RoadGameController : Reference
     {
         arrivalPoint = Coordinates(RamdonNumber(1, 5));
         LocatePoints(arrivalPoint, 9);
-        int type = 0;
+        int type;
 
         if (arrivalPoint[0] == 0 && arrivalPoint[1] == 0) type = 4;
 
@@ -296,7 +292,7 @@ public class RoadGameController : Reference
     public void LocatePoints(int[] pos, int type)
     {
         // Se establece en la matriz el punto de partida (llegada del personaje) y se cambia el valor en type
-        arrayObjects[pos[0], pos[1]].type = type;
+        arrayObjects[pos[0], pos[1]].Type = type;
 
         //Se clona la matriz con el fin de  tener una donde se genera automaticamente una solucion en caso de no ser resuelto
         arraySolution = Clone(arrayObjects);
@@ -307,7 +303,7 @@ public class RoadGameController : Reference
     {
         //obstaclePoint1[0] = x;
         //obstaclePoint1[1] = y;
-        arrayObjects[x, y].type = type;
+        arrayObjects[x, y].Type = type;
     }
 
     void LocateObstacleLevel(int option, int type, int x, int y)
@@ -361,10 +357,10 @@ public class RoadGameController : Reference
     {
         numLlamadas++;
         // Caso base
-        if (map[row, col].type == type)
+        if (map[row, col].Type == type)
         {
             // Se pone la posicion en 2 ya que este numero indica que es la ruta
-            map[row, col].type = numRoute;
+            map[row, col].Type = numRoute;
 
             if (numSteps == 0 || nSteps < numSteps)
             {
@@ -372,9 +368,9 @@ public class RoadGameController : Reference
                 numSteps = nSteps;
             }
         }
-        else if ((numSteps == 0 || nSteps < numSteps) && map[row, col].type != 1 && map[row, col].type != 2 && map[row, col].type != num)
+        else if ((numSteps == 0 || nSteps < numSteps) && map[row, col].Type != 1 && map[row, col].Type != 2 && map[row, col].Type != num)
         {
-            map[row, col].type = numRoute;
+            map[row, col].Type = numRoute;
 
             if (row > 0)
                 Backtracking(Clone(map), row - 1, col, type, numRoute, num, nSteps + 1);
@@ -394,7 +390,7 @@ public class RoadGameController : Reference
         {
             for (int j = 0; j < arrayCol; j++)
             {
-                arrayObjects[i, j].type = arraySolution[i, j].type;
+                arrayObjects[i, j].Type = arraySolution[i, j].Type;
             }
         }
 
@@ -404,22 +400,22 @@ public class RoadGameController : Reference
     //Ubica los puntos principales en el array indicado
     void LocateMainPointsLevel1(Objects[,] array)
     {
-        array[obstaclePoint1[0], obstaclePoint1[1]].type = 2;
+        array[obstaclePoint1[0], obstaclePoint1[1]].Type = 2;
     }
 
     //Ubica los puntos principales en el array indicado
     void LocateMainPointsLevel3(Objects[,] array, int[] obstacle, int type)
     {
-        array[obstacle[0], obstacle[1]].type = type;
+        array[obstacle[0], obstacle[1]].Type = type;
     }
 
 
     //Ubica los puntos principales en el array indicado
     void LocateMainPoints(Objects[,] array)
     {
-        array[obstaclePoint1[0], obstaclePoint1[1]].type = 4;
-        array[arrivalPoint[0], arrivalPoint[1]].type = 9;
-        array[startPoint[0], startPoint[1]].type = 3;
+        array[obstaclePoint1[0], obstaclePoint1[1]].Type = 4;
+        array[arrivalPoint[0], arrivalPoint[1]].Type = 9;
+        array[startPoint[0], startPoint[1]].Type = 3;
     }
 
     // Metodo que ubica las figuras en los puntos libres de la matriz
@@ -493,9 +489,9 @@ public class RoadGameController : Reference
         if (CheckFigurePosition(x, y) && CheckFigurePosition(x + 1, y) && CheckFigurePosition(x + 2, y))
         {
             // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
-            arraySolution[x, y].type = 1;
-            arraySolution[x + 1, y].type = 1;
-            arraySolution[x + 2, y].type = 1;
+            arraySolution[x, y].Type = 1;
+            arraySolution[x + 1, y].Type = 1;
+            arraySolution[x + 2, y].Type = 1;
             approved = true;
         }
         return approved;
@@ -511,9 +507,9 @@ public class RoadGameController : Reference
         if (CheckFigurePosition(x, y) && CheckFigurePosition(x, y + 1) && CheckFigurePosition(x, y + 2))
         {
             // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
-            arraySolution[x, y].type = 1;
-            arraySolution[x, y + 1].type = 1;
-            arraySolution[x, y + 2].type = 1;
+            arraySolution[x, y].Type = 1;
+            arraySolution[x, y + 1].Type = 1;
+            arraySolution[x, y + 2].Type = 1;
             approved = true;
         }
 
@@ -530,9 +526,9 @@ public class RoadGameController : Reference
         if (CheckFigurePosition(x, y) && CheckFigurePosition(x + 1, y) && CheckFigurePosition(x + 1, y + 1))
         {
             // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
-            arraySolution[x, y].type = 1;
-            arraySolution[x + 1, y].type = 1;
-            arraySolution[x + 1, y + 1].type = 1;
+            arraySolution[x, y].Type = 1;
+            arraySolution[x + 1, y].Type = 1;
+            arraySolution[x + 1, y + 1].Type = 1;
             approved = true;
         }
 
@@ -549,10 +545,10 @@ public class RoadGameController : Reference
         if (CheckFigurePosition(x, y) && CheckFigurePosition(x + 1, y) && CheckFigurePosition(x, y + 1) && CheckFigurePosition(x + 1, y + 1))
         {
             // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
-            arraySolution[x, y].type = 1;
-            arraySolution[x + 1, y].type = 1;
-            arraySolution[x, y + 1].type = 1;
-            arraySolution[x + 1, y + 1].type = 1;
+            arraySolution[x, y].Type = 1;
+            arraySolution[x + 1, y].Type = 1;
+            arraySolution[x, y + 1].Type = 1;
+            arraySolution[x + 1, y + 1].Type = 1;
             approved = true;
         }
 
@@ -569,10 +565,10 @@ public class RoadGameController : Reference
         if (CheckFigurePosition(x, y) && CheckFigurePosition(x + 1, y) && CheckFigurePosition(x + 1, y + 1) && CheckFigurePosition(x + 2, y))
         {
             // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
-            arraySolution[x, y].type = 1;
-            arraySolution[x + 1, y].type = 1;
-            arraySolution[x + 1, y + 1].type = 1;
-            arraySolution[x + 2, y].type = 1;
+            arraySolution[x, y].Type = 1;
+            arraySolution[x + 1, y].Type = 1;
+            arraySolution[x + 1, y + 1].Type = 1;
+            arraySolution[x + 2, y].Type = 1;
             // Como se pudo generar la figura se retorna verdadero
             approved = true;
         }
@@ -590,10 +586,10 @@ public class RoadGameController : Reference
         if (CheckFigurePosition(x, y) && CheckFigurePosition(x + 1, y) && CheckFigurePosition(x, y + 1) && CheckFigurePosition(x, y + 2))
         {
             // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
-            arraySolution[x, y].type = 1;
-            arraySolution[x + 1, y].type = 1;
-            arraySolution[x, y + 1].type = 1;
-            arraySolution[x, y + 2].type = 1;
+            arraySolution[x, y].Type = 1;
+            arraySolution[x + 1, y].Type = 1;
+            arraySolution[x, y + 1].Type = 1;
+            arraySolution[x, y + 2].Type = 1;
             approved = true;
         }
 
@@ -610,11 +606,11 @@ public class RoadGameController : Reference
         if (CheckFigurePosition(x, y) && CheckFigurePosition(x + 1, y - 1) && CheckFigurePosition(x + 1, y) && CheckFigurePosition(x + 1, y + 1) && CheckFigurePosition(x + 2, y))
         {
             // Si todas las posiciones se pueden utilizar se procede a cambiar en la matriz dichas posiciones por sus nuevos valores
-            arraySolution[x, y].type = 1;
-            arraySolution[x + 1, y - 1].type = 1;
-            arraySolution[x + 1, y].type = 1;
-            arraySolution[x + 1, y + 1].type = 1;
-            arraySolution[x + 2, y].type = 1;
+            arraySolution[x, y].Type = 1;
+            arraySolution[x + 1, y - 1].Type = 1;
+            arraySolution[x + 1, y].Type = 1;
+            arraySolution[x + 1, y + 1].Type = 1;
+            arraySolution[x + 2, y].Type = 1;
             approved = true;
         }
 
@@ -632,7 +628,7 @@ public class RoadGameController : Reference
         {
             // Verifica si la posicion indicada esta libre
             //if(arrayObjects[posX,posY].type == 0) return true;
-            if (arraySolution[posX, posY].type == 0) return true;
+            if (arraySolution[posX, posY].Type == 0) return true;
         }
         return false;
     }
@@ -649,15 +645,15 @@ public class RoadGameController : Reference
             if (posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)
             {
                 // Verifica si la posicion indicada esta libre
-                if ((arrayObjects[posX, posY].type == 0 || arrayObjects[posX, posY].type == 5 || arrayObjects[posX, posY].type == 11) && matrix[posX, posY].GetComponent<Block>().visited ==  false)
+                if ((arrayObjects[posX, posY].Type == 0 || arrayObjects[posX, posY].Type == 5 || arrayObjects[posX, posY].Type == 11) && matrix[posX, posY].GetComponent<Block>().visited ==  false)
                 {
                   
-                    Debug.Log("No ESTA OCUPADO: " + arrayObjects[posX, posY].x + " Y: " + arrayObjects[posX, posY].y + " TYPE: " + type);
+                    Debug.Log("No ESTA OCUPADO: " + arrayObjects[posX, posY].X + " Y: " + arrayObjects[posX, posY].Y + " TYPE: " + type);
                         return true;
                 }
-                else if (arrayObjects[posX, posY].type == 9)
+                else if (arrayObjects[posX, posY].Type == 9)
                 {
-                    Debug.Log("GANASTE: " + arrayObjects[posX, posY].type + " TYPE: " + type);
+                    Debug.Log("GANASTE: " + arrayObjects[posX, posY].Type + " TYPE: " + type);
                     PuntoFinal();
 
                     return true;
@@ -671,14 +667,14 @@ public class RoadGameController : Reference
             if (posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)
             {
                 // Verifica si la posicion indicada esta libre
-                if ((arrayObjects[posX, posY].type == 0 || arrayObjects[posX, posY].type == 5 || arrayObjects[posX, posY].type == 4 || arrayObjects[posX, posY].type == 11) && matrix[posX, posY].GetComponent<Block>().visited == false) 
+                if ((arrayObjects[posX, posY].Type == 0 || arrayObjects[posX, posY].Type == 5 || arrayObjects[posX, posY].Type == 4 || arrayObjects[posX, posY].Type == 11) && matrix[posX, posY].GetComponent<Block>().visited == false) 
                 {
-                    Debug.Log("No ESTA OCUPADO: " + arrayObjects[posX, posY].x + " Y: " + arrayObjects[posX, posY].y + " TYPE: " + type);
+                    Debug.Log("No ESTA OCUPADO: " + arrayObjects[posX, posY].X + " Y: " + arrayObjects[posX, posY].Y + " TYPE: " + type);
 
-                    if (arrayObjects[posX, posY].type == 4)
+                    if (arrayObjects[posX, posY].Type == 4)
                     {
-                        arrayObjects[posX, posY].type = 0;
-                        Debug.Log("SE CAMBIO X: "+ arrayObjects[posX, posY].x+" Y: "+ arrayObjects[posX, posY].y);
+                        arrayObjects[posX, posY].Type = 0;
+                        Debug.Log("SE CAMBIO X: "+ arrayObjects[posX, posY].X+" Y: "+ arrayObjects[posX, posY].Y);
                     }
                     return true;
                 }
@@ -691,13 +687,13 @@ public class RoadGameController : Reference
             if (posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)
             {
                 // Verifica si la posicion indicada esta libre
-                if ((arrayObjects[posX, posY].type == 0 || arrayObjects[posX, posY].type == 11 || arrayObjects[posX, posY].type == 10 || arrayObjects[posX, posY].type == 5) && matrix[posX, posY].GetComponent<Block>().visited == false)
+                if ((arrayObjects[posX, posY].Type == 0 || arrayObjects[posX, posY].Type == 11 || arrayObjects[posX, posY].Type == 10 || arrayObjects[posX, posY].Type == 5) && matrix[posX, posY].GetComponent<Block>().visited == false)
                 {
-                    Debug.Log("No ESTA OCUPADO: " + arrayObjects[posX, posY].x + " Y: " + arrayObjects[posX, posY].y + " TYPE: " + type);
-                    if (arrayObjects[posX, posY].type == 10)
+                    Debug.Log("No ESTA OCUPADO: " + arrayObjects[posX, posY].X + " Y: " + arrayObjects[posX, posY].Y + " TYPE: " + type);
+                    if (arrayObjects[posX, posY].Type == 10)
                     {
-                        arrayObjects[posX, posY].type = 0;
-                        Debug.Log("SE CAMBIO X: " + arrayObjects[posX, posY].x + " Y: " + arrayObjects[posX, posY].y);
+                        arrayObjects[posX, posY].Type = 0;
+                        Debug.Log("SE CAMBIO X: " + arrayObjects[posX, posY].X + " Y: " + arrayObjects[posX, posY].Y);
                     }
                     return true;
                 }
@@ -713,9 +709,9 @@ public class RoadGameController : Reference
         {
             for (int j = 0; j < arrayCol; j++)
             {
-                if (arraySolution[i, j].type == 1)
+                if (arraySolution[i, j].Type == 1)
                 {
-                    arrayObjects[i, j].type = 1;
+                    arrayObjects[i, j].Type = 1;
                 }
             }
         }
@@ -728,7 +724,7 @@ public class RoadGameController : Reference
 
         if (character != null)
         {
-            arrayObjects[character[0], character[1]].type = character[2];
+            arrayObjects[character[0], character[1]].Type = character[2];
         }
         else
         {
@@ -803,7 +799,7 @@ public class RoadGameController : Reference
 
     int TipoMovimiento(int movimiento)
     {
-        int type = 0;
+        int type;
 
         // se puede mover a cualquier direccion
         if (movimiento == 1) type = RamdonNumber(1, 5);
@@ -828,7 +824,7 @@ public class RoadGameController : Reference
         if (posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)
         {
             // Verifica si la posicion indicada esta libre
-            if (array[posX, posY].type == 2) return true;
+            if (array[posX, posY].Type == 2) return true;
         }
         return false;
     }
@@ -857,7 +853,7 @@ public class RoadGameController : Reference
         {
             for (int j = 0; j < arrayCol; j++)
             {
-                if (arrayObjects[i, j].type == 2) arrayObjects[i, j].type = 0;
+                if (arrayObjects[i, j].Type == 2) arrayObjects[i, j].Type = 0;
             }
         }
     }
@@ -872,7 +868,7 @@ public class RoadGameController : Reference
         {
             for (int j = 0; j < arrayCol; j++)
             {
-                arrayClone[i, j] = new Objects(array[i, j].x, array[i, j].y, array[i, j].type);
+                arrayClone[i, j] = new Objects(array[i, j].X, array[i, j].Y, array[i, j].Type);
             }
         }
         return arrayClone;
@@ -885,9 +881,9 @@ public class RoadGameController : Reference
         {
             for (int j = 0; j < arrayCol; j++)
             {
-                if (arrayObjects[i, j].type != 3 && arrayObjects[i, j].type != 4)
+                if (arrayObjects[i, j].Type != 3 && arrayObjects[i, j].Type != 4)
                 {
-                    arrayObjects[i, j].type = arraySolution[i, j].type;
+                    arrayObjects[i, j].Type = arraySolution[i, j].Type;
                 }
             }
         }
@@ -901,9 +897,9 @@ public class RoadGameController : Reference
         {
             for (int j = 0; j < arrayCol; j++)
             {
-                imprimir = imprimir + array[i, j].type + " ";
+                imprimir = imprimir + array[i, j].Type + " ";
             }
-            imprimir = imprimir + "\n";
+            imprimir += "\n";
         }
         Debug.Log(imprimir);
     }
@@ -913,9 +909,6 @@ public class RoadGameController : Reference
   */
     public void DrawMatrix()
     {
-        //
-        //GameObject initialBlock = App.generalView.roadGameView.initialBlock;
-
         //Posicion inicial del bloque
         float posStarX = initialBlock.transform.position.x;
         float posStarY = initialBlock.transform.position.y;
@@ -924,7 +917,8 @@ public class RoadGameController : Reference
         Vector2 blockSize = initialBlock.GetComponent<BoxCollider2D>().size;
 
         //
-        Objects[,] matrix1 = ReturnArray();
+        //Objects[,] matrix1 = ReturnArray();
+        Objects[,] matrix1 = arrayObjects;
 
         //Matriz de objetos que representara el mapa en la pantalla
         matrix = new GameObject[matrix1.GetLength(0), matrix1.GetLength(1)];
@@ -954,7 +948,7 @@ public class RoadGameController : Reference
                 matrix[i, j].name = string.Format("Block[{0}][{1}]", i, j);
 
                 //Temporal - se asigna un 0 para indicar que es bloque disponible o 1 para indicar que es bloque obstaculo
-                matrix[i, j].GetComponent<Block>().SetId(matrix1[i, j].type);
+                matrix[i, j].GetComponent<Block>().Id=(matrix1[i, j].Type);
 
                 matrix[i, j].GetComponent<Block>().visited = false;
 
@@ -962,138 +956,99 @@ public class RoadGameController : Reference
                 matrix[i, j].transform.parent = gameZone.transform;
 
                 //Si es 0 se pinta de gris
-                if (matrix1[i, j].type == 0 || matrix1[i, j].type == 11 || matrix1[i, j].type == 3 || matrix1[i, j].type == 5)
+                if (matrix1[i, j].Type == 0 || matrix1[i, j].Type == 11 || matrix1[i, j].Type == 3 || matrix1[i, j].Type == 5)
                 {
                     //matrix[i, j].GetComponent<SpriteRenderer>().color = Color.gray;
                     matrix[i, j].GetComponent<SpriteRenderer>().sprite = floorMatrix[i, j];
                 }
                 //Si es 1 se pinta de negro - bloqueo
-                else if (matrix1[i, j].type == 1)
+                else if (matrix1[i, j].Type == 1)
                 {
                     //matrix[i, j].GetComponent<SpriteRenderer>().color = Color.black;
                     matrix[i, j].GetComponent<SpriteRenderer>().sprite = lockMatrix[i, j];
                     //matrix[i, j].GetComponent<Collider2D>().isTrigger = false;
                 }
                 //Si es 4 se pinta de rojo (obstaculo)
-                else if (matrix1[i, j].type == 4)
+                else if (matrix1[i, j].Type == 4)
                 {
                     matrix[i, j].GetComponent<SpriteRenderer>().sprite = floorMatrix[i, j];
-
-                    if(theme == "Sea")
-                    {
-                        GameObject obj = Instantiate(obstables[4],new Vector3(matrix[i, j].transform.position.x, matrix[i, j].transform.position.y, matrix[i, j].transform.position.z),obstables[4].transform.rotation);
-
-                        obj.transform.parent = matrix[i, j].transform;
-                        obj.transform.position = Vector3.zero;
-                        obj.transform.position = matrix[i, j].transform.position;
-
-                        //matrix[i, j].GetComponent<SpriteRenderer>().color = Color.red;
-                    }
-                    else if (theme == "Castle")
-                    {
-                        GameObject obj = Instantiate(obstables[0], new Vector3(matrix[i, j].transform.position.x, matrix[i, j].transform.position.y, matrix[i, j].transform.position.z), obstables[0].transform.rotation);
-
-                        obj.transform.parent = matrix[i, j].transform;
-                        obj.transform.position = Vector3.zero;
-                        obj.transform.position = matrix[i, j].transform.position;
-
-                        //matrix[i, j].GetComponent<SpriteRenderer>().color = Color.red;
-                    }
-                    else 
-                    {
-                        GameObject obj = Instantiate(obstables[2], new Vector3(matrix[i, j].transform.position.x, matrix[i, j].transform.position.y, matrix[i, j].transform.position.z), obstables[2].transform.rotation);
-
-                        obj.transform.parent = matrix[i, j].transform;
-                        obj.transform.position = Vector3.zero;
-                        obj.transform.position = matrix[i, j].transform.position;
-
-                        //matrix[i, j].GetComponent<SpriteRenderer>().color = Color.red;
-                    }
-                    
+                    DrawObstacle(matrix1[i, j], matrix[i, j], theme);
                 }
                 //Si es 9 se pinta de azul (Puntp Llegada)
-                else if (matrix1[i, j].type == 9)
+                else if (matrix1[i, j].Type == 9)
                 {
                     matrix[i, j].GetComponent<SpriteRenderer>().sprite = floorMatrix[i, j];
-                    //matrix[i, j].GetComponent<SpriteRenderer>().color = Color.green;
-
-                    if (theme == "Sea")
-                    {
-                        GameObject obj = Instantiate(goals[0], new Vector3(matrix[i, j].transform.position.x, matrix[i, j].transform.position.y, matrix[i, j].transform.position.z), goals[0].transform.rotation);
-
-                        obj.transform.parent = matrix[i, j].transform;
-                        obj.transform.position = Vector3.zero;
-                        obj.transform.position = matrix[i, j].transform.position;
-
-                        //matrix[i, j].GetComponent<SpriteRenderer>().color = Color.red;
-                    }
-                    else if (theme == "Castle")
-                    {
-                        GameObject obj = Instantiate(goals[1], new Vector3(matrix[i, j].transform.position.x, matrix[i, j].transform.position.y, matrix[i, j].transform.position.z), obstables[1].transform.rotation);
-
-                        obj.transform.parent = matrix[i, j].transform;
-                        obj.transform.position = Vector3.zero;
-                        obj.transform.position = matrix[i, j].transform.position;
-
-                        //matrix[i, j].GetComponent<SpriteRenderer>().color = Color.red;
-                    }
-                    else
-                    {
-                        GameObject obj = Instantiate(goals[2], new Vector3(matrix[i, j].transform.position.x, matrix[i, j].transform.position.y, matrix[i, j].transform.position.z), goals[2].transform.rotation);
-
-                        obj.transform.parent = matrix[i, j].transform;
-                        obj.transform.position = Vector3.zero;
-                        obj.transform.position = matrix[i, j].transform.position;
-
-                        //matrix[i, j].GetComponent<SpriteRenderer>().color = Color.red;
-                    }
-
+                    DrawObstacle(matrix1[i, j], matrix[i, j], theme);
                 }
                 //Si es 10 se pinta de cyan (Obstaculo 2)
-                else if (matrix1[i, j].type == 10)
+                else if (matrix1[i, j].Type == 10)
                 {
                     matrix[i, j].GetComponent<SpriteRenderer>().sprite = floorMatrix[i, j];
-
-                    if (theme == "Sea")
-                    {
-                        GameObject obj  = Instantiate(obstables[4], new Vector3(matrix[i, j].transform.position.x, matrix[i, j].transform.position.y, matrix[i, j].transform.position.z), obstables[4].transform.rotation);
-
-                        obj.transform.parent = matrix[i, j].transform;
-                        obj.transform.position = Vector3.zero;
-                        obj.transform.position = matrix[i, j].transform.position;
-
-                        //matrix[i, j].GetComponent<SpriteRenderer>().color = Color.red;
-                    }
-                    else if (theme == "Castle")
-                    {
-                        GameObject obj = Instantiate(obstables[1], new Vector3(matrix[i, j].transform.position.x, matrix[i, j].transform.position.y, matrix[i, j].transform.position.z), obstables[1].transform.rotation);
-
-                        obj.transform.parent = matrix[i, j].transform;
-                        obj.transform.position = Vector3.zero;
-                        obj.transform.position = matrix[i, j].transform.position;
-
-                        //matrix[i, j].GetComponent<SpriteRenderer>().color = Color.red;
-                    }
-                    else
-                    {
-                        GameObject obj  = Instantiate(obstables[3], new Vector3(matrix[i, j].transform.position.x, matrix[i, j].transform.position.y, matrix[i, j].transform.position.z), obstables[3].transform.rotation);
-
-                        obj.transform.parent = matrix[i, j].transform;
-                        obj.transform.position = Vector3.zero;
-                        obj.transform.position = matrix[i, j].transform.position;
-
-                        //matrix[i, j].GetComponent<SpriteRenderer>().color = Color.red;
-                    }
+                    DrawObstacle(matrix1[i, j], matrix[i, j], theme);
                 }
             }
         }
-        //numCharacters = Random.Range(2, 4);
         App.generalController.charactersController.CreateCharacters(theme, level);
         App.generalController.charactersController.SelectCharactersLevel(allCharacters);
     }
 
+    public void DrawObstacle(Objects logicBox,GameObject box,string theme)
+    {
+        GameObject obstacle = null;
+
+        if (logicBox.Type == 4)
+        {
+            switch (theme)
+            {
+                case "Sea":
+                    obstacle = Instantiate(obstables[4], new Vector3(box.transform.position.x, box.transform.position.y, box.transform.position.z), obstables[4].transform.rotation);
+                    break;
+                case "Castle":
+                    obstacle = Instantiate(obstables[0], new Vector3(box.transform.position.x, box.transform.position.y, box.transform.position.z), obstables[0].transform.rotation);
+                    break;
+                case "Forest":
+                    obstacle = Instantiate(obstables[2], new Vector3(box.transform.position.x, box.transform.position.y, box.transform.position.z), obstables[2].transform.rotation);
+                    break;
+            }
+        }
+        if (logicBox.Type == 10)
+        {
+            switch (theme)
+            {
+                case "Sea":
+                    obstacle = Instantiate(obstables[4], new Vector3(box.transform.position.x, box.transform.position.y, box.transform.position.z), obstables[4].transform.rotation);
+                    break;
+                case "Castle":
+                    obstacle = Instantiate(obstables[1], new Vector3(box.transform.position.x, box.transform.position.y, box.transform.position.z), obstables[1].transform.rotation);
+                    break;
+                case "Forest":
+                    obstacle = Instantiate(obstables[3], new Vector3(box.transform.position.x, box.transform.position.y, box.transform.position.z), obstables[3].transform.rotation);
+                    break;
+            }
+        }
+        if(logicBox.Type == 9)
+        {
+            switch (theme)
+            {
+                case "Sea":
+                    obstacle = Instantiate(goals[0], new Vector3(box.transform.position.x, box.transform.position.y, box.transform.position.z), goals[0].transform.rotation);
+                    break;
+                case "Castle":
+                    obstacle = Instantiate(goals[1], new Vector3(box.transform.position.x, box.transform.position.y, box.transform.position.z), goals[1].transform.rotation);
+                    break;
+                case "Forest":
+                    obstacle = Instantiate(goals[2], new Vector3(box.transform.position.x, box.transform.position.y, box.transform.position.z), goals[2].transform.rotation);
+                    break;
+            }
+        }
+
+        obstacle.transform.parent = box.transform;
+        obstacle.transform.position = Vector3.zero;
+        obstacle.transform.position = box.transform.position;
+    }
+
     //Metodo para contar los pasos que dio el jugador en la partida
-    public int countSteps()
+    public int CountSteps()
     {
         //Ciclo que recorrer toda la matriz para obtener los pasos que dio el jugador sobre cada una de las casillas
         for (int i = 0; i < matrix.GetLength(0); i++)
@@ -1101,19 +1056,19 @@ public class RoadGameController : Reference
             for (int j = 0; j < matrix.GetLength(1); j++)
             {
                 //Sumar los pasos de cada casilla en una sola variable
-                numberSteps += matrix[i, j].GetComponent<Block>().getNumVisited();
+                numberSteps += matrix[i, j].GetComponent<Block>().NumVisited;
             }
         }
         //Eliminar los pasos que da el personaje sobre la casilla donde es ubicado al inicio de la partida
-        if (numCharacters == 2)
+        if (level == 2)
         {
             print("DOS PERSONAJEES: " + numberSteps);
-            numberSteps = numberSteps - 3;
+            numberSteps -= 3;
         }
         else
         {
             print("TRES PERSONAJEES: " + numberSteps);
-            numberSteps = numberSteps - 4;
+            numberSteps -= 4;
         }
         print("TOTAL: " + numberSteps);
         return numberSteps;
@@ -1122,7 +1077,7 @@ public class RoadGameController : Reference
     ////////////////////////////////////////////////////////////////////CAMILA//////////////////////////////////////////////////////////////
     public void PuntoFinal()
     {
-        int totalSteps = countSteps();
+        int totalSteps = CountSteps();
 
         int totalStars = Coints(totalSteps);
 
@@ -1165,7 +1120,7 @@ public class RoadGameController : Reference
 
     public int Coints(int totalSteps)
     {
-        int totalStars = 0;
+        int totalStars;
         //Si los pasos realizados por el usuario son menor o igual a los pasos del algoritmo tiene 3 estrellas
         //Si los pasos realizados por el usuario son mayores a los pasos del algoritmo por maximo 3 pasos son 2 estrellas
         //Si son mayores por mas de 3 pasos extras tiene una estrella
@@ -1198,9 +1153,9 @@ public class RoadGameController : Reference
         {
             for (int j = 0; j < matrix.GetLength(1); j++)
             {
-                if (arrayObjects[i, j].type == 2)
+                if (arrayObjects[i, j].Type == 2)
                 {
-                    matrix[i, j].GetComponent<Block>().SetId(arrayObjects[i, j].type);
+                    matrix[i, j].GetComponent<Block>().Id=(arrayObjects[i, j].Type);
 
                     matrix[i, j].GetComponent<SpriteRenderer>().color = Color.grey;
                 }

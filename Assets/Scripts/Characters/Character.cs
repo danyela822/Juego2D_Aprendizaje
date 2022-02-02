@@ -1,26 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Character
 {
-    public string nameCharacter { get; set; }
-    public string theme { get; set; }
-    public int type { get; set; }
-    public float x { get; set; }
-    public float y { get; set; }
-    public int posArrayX { get; set; }
-    public int posArrayY { get; set; }
-    public int numCharacter { get; set; }
+    public string NameCharacter { get; set; }
+    public string Theme { get; set; }
+    public int Type { get; set; }
+    public float X { get; set; }
+    public float Y { get; set; }
+    public int PosArrayX { get; set; }
+    public int PosArrayY { get; set; }
+    public int NumCharacter { get; set; }
     public Character(string nameCharacter, string theme, int type, float x, float y,int posArrayX, int posArrayY, int numCharacter)
     {
-        this.nameCharacter = nameCharacter;
-        this.theme = theme;
-        this.type = type;
-        this.x = x;
-        this.y = y;
-        this.posArrayX = posArrayX;
-        this.posArrayY = posArrayY;
-        this.numCharacter = numCharacter;
+        this.NameCharacter = nameCharacter;
+        this.Theme = theme;
+        this.Type = type;
+        this.X = x;
+        this.Y = y;
+        this.PosArrayX = posArrayX;
+        this.PosArrayY = posArrayY;
+        this.NumCharacter = numCharacter;
     }
 }

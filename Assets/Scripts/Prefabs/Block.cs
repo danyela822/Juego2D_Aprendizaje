@@ -1,25 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class Block : Reference
 {
-    public int id;
-    public bool visited = false;
-    public int numVisited = 0;
-    public void SetId(int newId)
-    {
-        id = newId;
-    }
-    public int GetID()
-    {
-        return this.id;
-    }
+    public int Id { get; set; }
+    public int NumVisited { get; set; }
 
-    public int getNumVisited()
-    {
-        return this.numVisited;
-    }
+    public bool visited = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

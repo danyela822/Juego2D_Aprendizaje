@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class SequenceGameController : Reference{
 
     //lista que contiene los id de los objetos 
-    List<int> iconNumber = new List<int>();    
+    readonly List<int> iconNumber = new List<int>();    
     //objeto que contiene el prefab
     public GameObject objectRow;
     //variable que me almacena el tamaño del objeto principal
@@ -20,20 +19,24 @@ public class SequenceGameController : Reference{
 
     //lista publica que contiene los sprites del juego nivel 1
     public List<Sprite> spritesLevelTwo = new List<Sprite>();
+
     //-------------------------------Sprite---------------------------//
 
     //lista que contiene la respuesta correcta a cada escenario
-    List<int> correctListAnswer = new List<int>();
+    readonly List<int> correctListAnswer = new List<int>();
+
     //lista que contiene las posibles respuestas que tiene el 
     //usuario para escoger
-    List<int> possibleAnswer = new List<int>();
+    readonly List<int> possibleAnswer = new List<int>();
+
     //lista auxiliar que contiene las repsutas que escoge el usuario
-    List<int> answerToUserButton = new List<int>();
+    readonly List<int> answerToUserButton = new List<int>();
     //matriz que dibuja el escenario
     public GameObject [,] options = new GameObject[3, 4];
+
     //lista auxiliar que me indica si se puede pintar o despintar
     //la respuesta que da el usuario
-    List<int> auxState = new List<int>();
+    readonly List<int> auxState = new List<int>();
     //contador que me permite saber cuantas opciones a seleccionado
     //el usuario 
     int contToPaint;
@@ -132,7 +135,7 @@ public class SequenceGameController : Reference{
     //retorna el numero a almacenar
     int GetContainsNumber(){
 
-        int num = 0;
+        int num;
         if (levelUser == 1){
             num = 8;
         }else if(levelUser == 2){
@@ -308,7 +311,7 @@ public class SequenceGameController : Reference{
     //opcion de seleccion para el usuario 
     int GetContainsNumberButton(){
 
-        int num = 0;
+        int num;
         if (levelUser == 1){
             num = 8;
         }else if(levelUser == 2){
@@ -448,23 +451,16 @@ public class SequenceGameController : Reference{
 
         //posicion del caramelo que se escoge
         int position = FindChange(text);
-        //entero que me indica cuantos caramelos puede seleccionar
-        int contCandy = 0;
 
-        switch (levelUser){
+        var contCandy = levelUser switch
+        {
             //nivel 1
-            case 1:
-                contCandy = 3;
-            break;
+            1 => 3,
             //nivel 2
-            case 2:
-                contCandy = 2;
-            break;
+            2 => 2,
             //nivel 3
-            default:
-                contCandy = 4;
-            break;
-        }
+            _ => 4,
+        };
 
         //pasos que ocurren si se sellecciona el caramelo
         if (auxState[position] == 1 && answerToUserButton.Count < contCandy+1 && contToPaint < contCandy){
@@ -549,23 +545,15 @@ public class SequenceGameController : Reference{
     //usuario que ya sleecciono el caramelo
     public void ActivePanel(GameObject panel){
 
-        int contCandy = 0;
-
-        switch (levelUser){
-            
+        var contCandy = levelUser switch
+        {
             //nivel 1
-            case 1:
-                contCandy = 3;
-            break;
+            1 => 3,
             //nivel 2
-            case 2:
-                contCandy = 2;
-            break;
+            2 => 2,
             //nivel 3
-            default:
-                contCandy = 4;
-            break;
-        }
+            _ => 4,
+        };
 
         //pasos que pemriten activar el panel
         if (auxState[auxPosition] == 0 && contToUnPaint < contCandy){
