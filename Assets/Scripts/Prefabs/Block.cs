@@ -1,34 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class Block : Reference
+public class Block : MonoBehaviour
 {
-    public int id;
+    public int Id { get; set; }
+    public int NumVisited { get; set; }
+
     public bool visited = false;
-    public int numVisited = 0;
-    public void SetId(int newId)
-    {
-        id = newId;
-    }
-    public int GetID()
-    {
-        return this.id;
-    }
 
-    public int getNumVisited()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        return this.numVisited;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("ENTRO");
+        //Debug.Log("ENTRO");
         visited = true;
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("SALIO");
+        //Debug.Log("SALIO");
         visited = false;
     }
 }

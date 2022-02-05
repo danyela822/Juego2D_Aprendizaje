@@ -18,14 +18,8 @@ public class CharacteristicsGameController : Reference
     //Numero para indicar el numero de veces que verifica la respuesta correcta
     int counter;
 
-    //Numero para saber cuantas veces ha ganado 3 estrella
-    //int countPerfectWins = 0;
-
     //Numero de veces que ha jugado
     int countPlay;
-
-    //numero que cuenta las veces que ha completado niveles sin errores
-    //int countPerfectGame = 0;
 
     //Numero de intentos que tiene el jugador para ganar el juego
     int attempts = 3;
@@ -177,6 +171,7 @@ public class CharacteristicsGameController : Reference
         }
         else
         {
+            //Contar un error
             CheckAttempt();
         }
     }
@@ -258,7 +253,9 @@ public class CharacteristicsGameController : Reference
             App.generalView.gameOptionsView.ShowMistakeCanvas(attemptMessages);
         }
     }
-    
+    /// <summary>
+    /// Metodo para mostrar la solucion del nivel actual
+    /// </summary>
     public void ShowSolution()
     {
         //Si hay tickets muestra la solucion
@@ -283,7 +280,7 @@ public class CharacteristicsGameController : Reference
     /// <summary>
     /// Metodo que permite desordenar la lista de imagenes seleccionada
     /// </summary>
-    /// <param name="list"> Lista de imagenes </param>
+    /// <param name="list"> Array de imagenes </param>
     /// <returns> Lista de imagenes desordenada </returns>
     public List<Sprite> ChangeOrderList(Sprite[] list)
     {

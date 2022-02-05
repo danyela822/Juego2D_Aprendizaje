@@ -22,34 +22,18 @@ public class ClassificationGameController : Reference
     //Numero para indicar el numero de veces que verifica la respuesta correcta
     public int counter;
 
-    //Numero para saber cuantas veces ha ganado 3 estrella
-    //int countPerfectWins = 0;
-
-    //Numero de veces que ha jugado
-    //int countPlay = 0;
-
-    //numero que cuenta las veces que ha completado niveles sin errores
-    //int countPerfectGame = 0;
-
     //Numero de veces que ha jugado
     int countPlay;
 
     //Numero de intentos que tiene el jugador para ganar el juego
     int attempts = 3;
 
-    private void Start()
+    void Start()
     {
-        if (App.generalModel.classificationGameModel.file.classificationGameList.Count == 0)
-        {
-
-        }
-        else
-        {
-            BuildLevel();
-        }
+        BuildLevel();
     }
     /// <summary>
-    /// Busca e instancia la lista de imagenes y la lista de textos necesarias para crear el nivel
+    /// Metodo que busca e instancia la lista de imagenes y la lista de textos necesarias para crear el nivel
     /// </summary>
     public void BuildLevel()
     {
@@ -61,6 +45,7 @@ public class ClassificationGameController : Reference
 
         while (!exists)
         {
+            //Verificar si existe si existe ese conjunto de imagenes y textos en especifico
             if (App.generalModel.classificationGameModel.FileExist(number))
             {
                 //Instaciar Lista que guardara todas las imagenes
@@ -77,13 +62,14 @@ public class ClassificationGameController : Reference
             }
             else
             {
+                //Si no existe ese conjunto de imagenes y textos se seleciona otro
                 number = Random.Range(0, 10);
             }
 
         }
         Debug.Log("ELIMINAR: " + number);
 
-        //Ubicar en la pantalla las imagenes seleccionadas
+        //Ubicar las imagenes en los botones
         PutImages();
 
         //Ubicar el enunciado en la pantalla
@@ -92,12 +78,12 @@ public class ClassificationGameController : Reference
         //Variable para guardar las opciones marcadas por el jugador
         choises = new List<string>();
     }
-    /*
-    * Metodo para ubicar todas las imagenes seleccionas en la pantalla
-    */
+    /// <summary>
+    /// Metodo para ubicar todas las imagenes en los botones
+    /// </summary>
     void PutImages()
     {
-        //Lista que guardara las imagenes seleccionadas pero cambiando su orden dentro de la lista
+        //Lista que guardara las imagenes pero cambiando su orden dentro de la lista
         List<Sprite> newList = ChangeOrderList(images);
 
         for (int i = 0; i < newList.Count; i++)
@@ -106,38 +92,45 @@ public class ClassificationGameController : Reference
             App.generalView.classificationGameView.buttons[i].image.sprite = newList[i];
         }
     }
-    /*
-    * Metodo para ubicar el texto en la pantalla del jugador
-    */
+    /// <summary>
+    /// Metodo para ubicar el texto en la pantalla del jugador
+    /// </summary>
     void PutText()
     {
         //Asignar el enunciado seleccionado al texto de la vista
         App.generalView.classificationGameView.statement.text = statement;
     }
-    /*
-    * Metodo para guardar en una lista cada opcion seleccionada por el jugador
-    */
+    /// <summary>
+    /// Metodo para guardar en una lista cada opcion seleccionada por el jugador
+    /// </summary>
+    /// <param name="choise">Opcion seleccionada</param>
+    /// <param name="pressed">Estado del boton (Presionado o no Presionado)</param>
     public void SaveChoise(string choise,bool pressed)
     {
+        //Verificar si la opcion esta guardada en la lista y si el boton esta o no presionado
         if(pressed && !choises.Contains(choise))
         {
             //Guardar cada opcion en la lista
             choises.Add(choise);
-            //Debug.Log("SE AÑADIO A LA LISTA: "+choise);
         }
     }
+    /// <summary>
+    /// Metodo para eliminar una de una lista la opcion seleccionada por el jugador
+    /// </summary>
+    /// <param name="choise">Opcion seleccionada</param>
+    /// <param name="pressed">Estado del boton (Presionado o no Presionado)</param>
     public void DeleteChoise(string choise, bool pressed)
     {
+        //Verificar si el boton esta o no presionado
         if (!pressed)
         {
             //Eliminar la opcion de la lista
             choises.Remove(choise);
-            //Debug.Log("SE ELIMINO DE LA LISTA: " + choise);
         }
     }
-    /*
-    * Metodo para verificar si la respuesta final de jugador es correcta o incorrecta
-    */
+    /// <summary>
+    /// Metodo para verificar si la respuesta final de jugador es correcta o incorrecta
+    /// </summary>
     public void CheckAnswer()
     {
         counter++;
@@ -148,25 +141,34 @@ public class ClassificationGameController : Reference
         App.generalModel.classificationGameModel.UpdateTimesPlayed(++countPlay);
         print("HA JUGADO: " + countPlay);
 
+        //Verificar si la cantidad de opciones del jugador es igual a la cantidad de opciones guardadas en answers
         if (answers.Length == choises.Count)
         {
+            //Verificar si las opciones del jugador son iguales a las opciones guardadas en answers
             var result = answers.Except(choises);
             if (result.Count() == 0)
             {
+                //Activar el sonido de ganar
                 SoundManager.soundManager.PlaySound(4);
 
-                App.generalModel.classificationGameModel.file.classificationGameList.Remove(number);
+                //Eliminar el numero del conjunto de imagenes y textos
+                App.generalModel.classificationGameModel.file.imageListGame1.Remove(number);
+
+                //Guardar estado
                 App.generalModel.classificationGameModel.file.Save("P");
 
+                //Asignar Estrellas y Puntos obtenidos
                 SetPointsAndStars();
             }
             else
             {
+                //Contar un error
                 CheckAttempt();
             }
         }
         else
         {
+            //Contar un error
             CheckAttempt();
         }
     }
@@ -227,14 +229,20 @@ public class ClassificationGameController : Reference
         App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage,true);
 
     }
+    /// <summary>
+    /// Metodo para contar y verificar los errores
+    /// </summary>
     void CheckAttempt()
     {
+        //Dismuir la cantidad de intentos
         attempts--;
 
+        //Si se queda sin intentos pierde el juego
         if (attempts == 0)
         {
             App.generalView.gameOptionsView.ShowLoseCanvas();
         }
+        //Si aun le quedan intentos se muestra un mensaje en pantalla
         else
         {
             //Obtener el mensaje de intento
@@ -242,6 +250,9 @@ public class ClassificationGameController : Reference
             App.generalView.gameOptionsView.ShowMistakeCanvas(attemptMessages);
         }
     }
+    /// <summary>
+    /// Metodo para mostrar la solucion del nivel actual
+    /// </summary>
     public void ShowSolution()
     {
         //Si hay tickets muestra la solucion
@@ -261,11 +272,12 @@ public class ClassificationGameController : Reference
         {
             App.generalView.gameOptionsView.ShowTicketsCanvas(3);
         }
-        //App.generalView.gameOptionsView.correctAnswer.sprite = correctAnswer;
     }
-    /*
-    * Metodo que permite desordenar la lista de imagenes seleccionada
-    */
+    /// <summary>
+    /// Metodo que permite desordenar la lista de imagenes seleccionada
+    /// </summary>
+    /// <param name="list"> Array de imagenes </param>
+    /// <returns> Lista de imagenes desordenada </returns>
     List<Sprite> ChangeOrderList (Sprite[] list)
     {
         List<Sprite> originalList = new List<Sprite>();

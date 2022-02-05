@@ -12,8 +12,6 @@ public class GameOptionsView: Reference
 
     public GameObject BuyTicketsWindow, NoneTicketsWindow, UsedTicketsWindow;
 
-    //public Image correctAnswer;
-
     public Text mistakeText, winText, ticketsText;
 
     public Button backButton, continueButton;
@@ -27,7 +25,6 @@ public class GameOptionsView: Reference
         backButton.GetComponent<Image>().enabled = false;
         backButton.GetComponentInChildren<Text>().enabled = false;
     }
-
     public void ShowBuyCanvas(){
         
         BuyCanvas.enabled = true;
@@ -103,8 +100,7 @@ public class GameOptionsView: Reference
     public void HideWarningCanvas()
     {
         WarningCanvas.enabled = false;
-    }
-    
+    }    
     public void ShowTicketsCanvas(int option)
     {
         //Mostrar la ventana de que ha adquirido un pase

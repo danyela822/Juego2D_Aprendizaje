@@ -51,7 +51,7 @@ public class SetsGameController : Reference
         type = App.generalModel.setsGameModel.GetTypeOfSet();
 
         //Numero random para seleccionar un conjunto de imagenes
-        number = Random.Range(1, 4);
+        number = Random.Range(1, 5);
 
         //Variable que determina si existe el conjunto de imagenes para ese nivel
         bool exists = false;

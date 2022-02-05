@@ -13,14 +13,17 @@ public class ConnectedGameController : Reference
     static Objects [,] arrayObjects;
     // Se crea una matriz que contendra la solucion
     static Objects [,] arraySolution;
+
     // Indica la cantidad de filas de la matriz
-    int arrayRow = 8;
+    readonly int arrayRow = 8;
+
     // Cantidad de columnas de la matriz
-    int arrayCol = 6;
+    readonly int arrayCol = 6;
     // Matriz de GameObject
     public  GameObject[,] matrix;
+
     //Variable que almacena las coordenadas del punto de llegada 
-    int [] arrivalPoint = new int [2];
+    readonly int [] arrivalPoint = new int [2];
     //static int totalPoints = 0;
     //int totalSteps = 5;
 
@@ -54,7 +57,7 @@ public class ConnectedGameController : Reference
     bool level2 = false;
     bool level3 = false;
 
-    static Objects[] totalStartPoints = new Objects[3];
+    static readonly Objects[] totalStartPoints = new Objects[3];
 
     //
     bool isLastLevel;
@@ -100,14 +103,14 @@ public class ConnectedGameController : Reference
                 matrix[i,j].name = string.Format("Block[{0}][{1}]", i, j);
 
                 //Temporal - se asigna un 0 para indicar que es bloque disponible o 1 para indicar que es bloque obstaculo
-                matrix[i, j].GetComponent<Block>().SetId(matrix1[i,j].type);
+                matrix[i, j].GetComponent<Block>().Id=(matrix1[i,j].Type);
 
                 //Asignar la matriz al objeto de GameZone
                 matrix[i, j].transform.parent = gameZone.transform;
 
                 index += 1;
 
-                PaintMatrix(i,j,matrix[i, j].GetComponent<Block>().GetID());
+                PaintMatrix(i,j,matrix[i, j].GetComponent<Block>().Id);
             }
         }
         PaintStartPoints();
@@ -183,8 +186,7 @@ public class ConnectedGameController : Reference
         LocateStartPoints();
         RestartCountingMovements();
 
-        
-        Objects[,] matrix = ReturnArray();
+        Objects[,] matrix = arrayObjects;
         DrawMatrix(matrix,initialBlock,gameZone);
         LoadText();
        
@@ -246,7 +248,7 @@ public class ConnectedGameController : Reference
         int posStarY = RamdonNumber(0, arrayCol);
 
         // Se establece en la matriz el punto de partida y se cambia el valor en type
-        arrayObjects[posStarX,posStarY].type = 9;
+        arrayObjects[posStarX,posStarY].Type = 9;
 
         arrivalPoint[0] = posStarX;
         arrivalPoint[1] = posStarY;
@@ -299,7 +301,7 @@ public class ConnectedGameController : Reference
     // Metodo encargado de verificar si el nivel cumple con las condiciones 
     public void CheckLevel ()
     {
-        bool isCorrect = false;
+        bool isCorrect;
         if(level == 1) isCorrect = CheckLevel1();
         else if(level == 2) isCorrect = CheckLevel2();
         else isCorrect = CheckLevel3();
@@ -347,7 +349,7 @@ public class ConnectedGameController : Reference
         {
             if(CheckDistancePoints(finalPoint[0], finalPoint[1], arrivalPoint[0], arrivalPoint[1]))
             {
-                arrayObjects[finalPoint[0],finalPoint[1]].type = finalPoint[2];
+                arrayObjects[finalPoint[0],finalPoint[1]].Type = finalPoint[2];
 
                 totalStartPoints[index] = new Objects(finalPoint[0], finalPoint[1], finalPoint[2]);
 
@@ -396,7 +398,7 @@ public class ConnectedGameController : Reference
                 if(CheckPosition(arraySolution,posX-1,posY))
                 {
                     posX--;
-                    arraySolution[posX,posY].type = type;
+                    arraySolution[posX,posY].Type = type;
                     cantMove --;
                 } 
             }
@@ -405,7 +407,7 @@ public class ConnectedGameController : Reference
                 if(CheckPosition(arraySolution,posX+1,posY))
                 {
                     posX++;
-                    arraySolution[posX,posY].type = type;
+                    arraySolution[posX,posY].Type = type;
                     cantMove --;
                 } 
             }
@@ -414,7 +416,7 @@ public class ConnectedGameController : Reference
                 if(CheckPosition(arraySolution,posX,posY-1))
                 {
                     posY--;
-                    arraySolution[posX,posY].type = type;
+                    arraySolution[posX,posY].Type = type;
                     cantMove --;
                 } 
             }
@@ -422,7 +424,7 @@ public class ConnectedGameController : Reference
                 if(CheckPosition(arraySolution,posX,posY+1))
                 {
                     posY++;
-                    arraySolution[posX,posY].type = type;
+                    arraySolution[posX,posY].Type = type;
                     cantMove --;
                 } 
             }
@@ -446,15 +448,15 @@ public class ConnectedGameController : Reference
         {
             for (int j = 0; j < arrayCol; j++)
             {
-                if(arrayObjects[i,j].type == 1)
+                if(arrayObjects[i,j].Type == 1)
                 {
                     startPoint1= new Objects(i,j,1);
                 }
-                else if(arrayObjects[i,j].type == 2)
+                else if(arrayObjects[i,j].Type == 2)
                 {
                     startPoint2= new Objects(i,j,2);
                 }
-                else if(arrayObjects[i,j].type == 3)
+                else if(arrayObjects[i,j].Type == 3)
                 {
                     startPoint3= new Objects(i,j,3);
                 }
@@ -488,14 +490,14 @@ public class ConnectedGameController : Reference
         {
             if (direction == "up")
             {
-                if (CheckPosition(arrayObjects, startPoint.x - 1, startPoint.y))
+                if (CheckPosition(arrayObjects, startPoint.X - 1, startPoint.Y))
                 {
-                    arrayObjects[startPoint.x - 1, startPoint.y].type = startPoint.type;
-                    PaintMatrix(startPoint.x - 1, startPoint.y, startPoint.type);
-                    CountMoves(startPoint.type);
-                    startPoint.x = startPoint.x - 1;
+                    arrayObjects[startPoint.X - 1, startPoint.Y].Type = startPoint.Type;
+                    PaintMatrix(startPoint.X - 1, startPoint.Y, startPoint.Type);
+                    CountMoves(startPoint.Type);
+                    startPoint.X--;
                 }
-                else if (CheckArrival(arrayObjects, startPoint.x - 1, startPoint.y))
+                else if (CheckArrival(arrayObjects, startPoint.X - 1, startPoint.Y))
                 {
                     CheckArrivalOption(startPoint.type);
                     CountMoves(startPoint.type);
@@ -503,14 +505,14 @@ public class ConnectedGameController : Reference
             }
             else if (direction == "down")
             {
-                if (CheckPosition(arrayObjects, startPoint.x + 1, startPoint.y))
+                if (CheckPosition(arrayObjects, startPoint.X + 1, startPoint.Y))
                 {
-                    arrayObjects[startPoint.x + 1, startPoint.y].type = startPoint.type;
-                    PaintMatrix(startPoint.x + 1, startPoint.y, startPoint.type);
-                    CountMoves(startPoint.type);
-                    startPoint.x = startPoint.x + 1;
+                    arrayObjects[startPoint.X + 1, startPoint.Y].Type = startPoint.Type;
+                    PaintMatrix(startPoint.X + 1, startPoint.Y, startPoint.Type);
+                    CountMoves(startPoint.Type);
+                    startPoint.X++;
                 }
-                else if (CheckArrival(arrayObjects, startPoint.x + 1, startPoint.y))
+                else if (CheckArrival(arrayObjects, startPoint.X + 1, startPoint.Y))
                 {
                     CheckArrivalOption(startPoint.type);
                     CountMoves(startPoint.type);
@@ -519,14 +521,14 @@ public class ConnectedGameController : Reference
             }
             else if (direction == "right")
             {
-                if (CheckPosition(arrayObjects, startPoint.x, startPoint.y + 1))
+                if (CheckPosition(arrayObjects, startPoint.X, startPoint.Y + 1))
                 {
-                    arrayObjects[startPoint.x, startPoint.y + 1].type = startPoint.type;
-                    PaintMatrix(startPoint.x, startPoint.y + 1, startPoint.type);
-                    CountMoves(startPoint.type);
-                    startPoint.y = startPoint.y + 1;
+                    arrayObjects[startPoint.X, startPoint.Y + 1].Type = startPoint.Type;
+                    PaintMatrix(startPoint.X, startPoint.Y + 1, startPoint.Type);
+                    CountMoves(startPoint.Type);
+                    startPoint.Y++;
                 }
-                else if (CheckArrival(arrayObjects, startPoint.x, startPoint.y + 1))
+                else if (CheckArrival(arrayObjects, startPoint.X, startPoint.Y + 1))
                 {
                     CheckArrivalOption(startPoint.type);
                     CountMoves(startPoint.type);
@@ -534,14 +536,14 @@ public class ConnectedGameController : Reference
             }
             else if (direction == "left")
             {
-                if (CheckPosition(arrayObjects, startPoint.x, startPoint.y - 1))
+                if (CheckPosition(arrayObjects, startPoint.X, startPoint.Y - 1))
                 {
-                    arrayObjects[startPoint.x, startPoint.y - 1].type = startPoint.type;
-                    PaintMatrix(startPoint.x, startPoint.y - 1, startPoint.type);
-                    CountMoves(startPoint.type);
-                    startPoint.y = startPoint.y - 1;
+                    arrayObjects[startPoint.X, startPoint.Y - 1].Type = startPoint.Type;
+                    PaintMatrix(startPoint.X, startPoint.Y - 1, startPoint.Type);
+                    CountMoves(startPoint.Type);
+                    startPoint.Y--;
                 }
-                else if (CheckArrival(arrayObjects, startPoint.x, startPoint.y - 1))
+                else if (CheckArrival(arrayObjects, startPoint.X, startPoint.Y - 1))
                 {
                     CheckArrivalOption(startPoint.type);
                     CountMoves(startPoint.type);
@@ -605,9 +607,9 @@ public class ConnectedGameController : Reference
         {
             for (int j = 0; j < arrayCol; j++)
             {
-                if(type == arrayObjects[i,j].type)
+                if(type == arrayObjects[i,j].Type)
                 {
-                    arrayObjects[i,j].type = 0;
+                    arrayObjects[i,j].Type = 0;
                     PaintMatrix(i,j,0);
                 }
             }
@@ -629,23 +631,23 @@ public class ConnectedGameController : Reference
     {
         if(type == 1)
         {   
-            PaintMatrix(totalStartPoints[0].x,totalStartPoints[0].y,type);
-            startPoint1.x = totalStartPoints[0].x;
-            startPoint1.y = totalStartPoints[0].y;
+            PaintMatrix(totalStartPoints[0].X,totalStartPoints[0].Y,type);
+            startPoint1.X = totalStartPoints[0].X;
+            startPoint1.Y = totalStartPoints[0].Y;
             totalMove1 = 0;
         }
         else if(type == 2)
         {
-            PaintMatrix(totalStartPoints[1].x,totalStartPoints[1].y,type);
-            startPoint2.x = totalStartPoints[1].x;
-            startPoint2.y = totalStartPoints[1].y;
+            PaintMatrix(totalStartPoints[1].X,totalStartPoints[1].Y,type);
+            startPoint2.X = totalStartPoints[1].X;
+            startPoint2.Y = totalStartPoints[1].Y;
             totalMove2 = 0;
         }
         else
         {
-            PaintMatrix(totalStartPoints[2].x,totalStartPoints[2].y,type);
-            startPoint3.x = totalStartPoints[2].x;
-            startPoint3.y = totalStartPoints[2].y;
+            PaintMatrix(totalStartPoints[2].X,totalStartPoints[2].Y,type);
+            startPoint3.X = totalStartPoints[2].X;
+            startPoint3.Y = totalStartPoints[2].Y;
             totalMove3 = 0;
         }
     }
@@ -689,7 +691,7 @@ public class ConnectedGameController : Reference
         if(posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)
         {
             // Verifica si la posicion indicada esta libre
-            if(array[posX,posY].type == 0) return true;
+            if(array[posX,posY].Type == 0) return true;
         }
         return false;
     }
@@ -700,7 +702,7 @@ public class ConnectedGameController : Reference
         if(posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)
         {
             // Verifica si la posicion indicada esta libre
-            if(array[posX,posY].type == 9) return true;
+            if(array[posX,posY].Type == 9) return true;
         }
         return false;
     }    
@@ -821,11 +823,6 @@ public class ConnectedGameController : Reference
         }
 
         App.generalModel.connectedGameModel.UpdateLevel(1);
-        /*if (totalMove1 == totalStepsLevel1 && totalMove2 == totalStepsLevel2 && totalMove3 == totalStepsLevel3)
-        {
-            print("Cumplio los pasos con el color amarillo y azul");
-            WinLevel();
-        }*/
     }
     public void ShowSolution()
     {
@@ -861,7 +858,7 @@ public class ConnectedGameController : Reference
         {
             for (int j = 0; j < arrayCol; j++)
             {
-                arrayClone[i,j] = new Objects(array[i,j].x, array[i,j].y, array[i,j].type);
+                arrayClone[i,j] = new Objects(array[i,j].X, array[i,j].Y, array[i,j].Type);
             }
         }
         return arrayClone;

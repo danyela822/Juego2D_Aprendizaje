@@ -8,7 +8,6 @@ public class EquialityGameView : Reference
     public List<Text> listTextNum = new List<Text>();
     //botones que contienen la posible respuesta al problema
     public List<Button> answerButtonsGame = new List<Button>();
-
     //
     public Text solutionText;
     //

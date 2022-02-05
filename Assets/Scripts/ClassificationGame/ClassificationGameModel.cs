@@ -11,7 +11,7 @@ public class ClassificationGameModel : Reference
     /// <returns>Bool que indica si exsite o no ese elemento</returns>
     public bool FileExist(int number)
     {
-        if (file.classificationGameList.Contains(number))
+        if (file.imageListGame1.Contains(number))
         {
             return true;
         }
@@ -31,14 +31,14 @@ public class ClassificationGameModel : Reference
         return Resources.LoadAll<Sprite>("Classification/set_" + (number));
     }
     /// <summary>
-    /// Metodo para cargar todos los enunciados que deben acompañar a cada nivel
+    /// Metodo para cargar todos los enunciados que deben acompaï¿½ar a cada nivel
     /// </summary>
     /// <param name="number">Numero del conjunto de imagenes</param>
     /// <returns>String con el enunciado del conjunto indicado</returns>
     public string LoadTexts(int number)
     {
         //Pasar la ruta del archivo y el nombre del archivo que contiene los enunciados requeridos para cada nivel
-        TextAsset textAsset = Resources.Load("Files/statements_sets") as TextAsset;
+        TextAsset textAsset = Resources.Load("Files/Classification/Classification_Texts") as TextAsset;
 
         string text = textAsset.text;
         
@@ -53,7 +53,7 @@ public class ClassificationGameModel : Reference
     public string[] LoadAnswers(int number)
     {
         //Pasar la ruta del archivo y el nombre del archivo que contiene las respuestas requeridas para cada nivel
-        TextAsset textAsset = Resources.Load("Files/correct_sets") as TextAsset;
+        TextAsset textAsset = Resources.Load("Files/Classification/Answers") as TextAsset;
 
         string allAnswers = textAsset.text;
         string[] values;
@@ -203,7 +203,7 @@ public class ClassificationGameModel : Reference
 
         //Debug.Log("LLEVA: " + countPerfectWins + " PERFECTAS");
 
-        //Verificar si cumplio el logro 2: Obtén 3 estrellas en 3 niveles de un juego
+        //Verificar si cumplio el logro 2: Obtï¿½n 3 estrellas en 3 niveles de un juego
         if (countPerfectWins == 3)
         {
             if (!App.generalController.statsController.IsAchievements(1))
@@ -211,7 +211,7 @@ public class ClassificationGameModel : Reference
                 App.generalController.statsController.DeleteAchievements(1);
             }
         }
-        //Verificar si cumplio el logro 3: Obtén 3 estrellas en 6 niveles de un juego
+        //Verificar si cumplio el logro 3: Obtï¿½n 3 estrellas en 6 niveles de un juego
         else if (countPerfectWins == 6)
         {
             if (!App.generalController.statsController.IsAchievements(2))

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class EquialityGameController : Reference{
     //id maximo que puede tomar una figura
-    int NUM_POSIBLES = 10;
+    readonly int NUM_POSIBLES = 10;
     //lista de figuras (niveles) que cintiene el juego
     List<Figure> figures;
     //lista que evita tener numeros repetidos en los objetos
@@ -13,8 +13,9 @@ public class EquialityGameController : Reference{
     public List<Sprite> images;
     //
     public Sprite equialitySprite;
+
     //permite almacenar los id de las figuras izquierda derecha
-    List<int> numPaint = new List<int>();
+    readonly List<int> numPaint = new List<int>();
     //objeto que contiene el prefab
     public GameObject objRow;
     //objeto que contiene el prefab del signo
@@ -26,9 +27,10 @@ public class EquialityGameController : Reference{
     //lista que almacena los valores que pemriten hallar la 
     //respuesta correcta
     List<int> numOperation;
+
     //lista que almacena los numeros que se muestran como posible
     //respuestas del juego
-    List<int> possibleAnswerGame = new List<int>();
+    readonly List<int> possibleAnswerGame = new List<int>();
 
     //nivel en que esta el usuario 
     int levelUser;// = App.generalModel.equialityGameModel.GetLevel();
@@ -51,13 +53,6 @@ public class EquialityGameController : Reference{
 
     //Numero de intentos que tiene el jugador para ganar el juego
     int attempts = 3;
-
-    //--------------- mostrar el canvas de solucion -------------------//
-    //public Text numberText;
-    //public GameObject sequenceWindow;
-    //public GameObject additionEqualityWindow;
-    //--------------- mostrar el canvas de solucion -------------------//
-
 
     // Start is called before the first frame update
     void Start(){
@@ -102,16 +97,24 @@ public class EquialityGameController : Reference{
 
     //metodo que pemrite la construccion de cada uno de los niveles
     public void Buid(int levels){
+
+        int numberThree = 0;
         figures = new List<Figure>();
+        int value = 0;
 
         for (int i = 0; i < levels; i++){
             
             switch (i){
                 case 0:
+
                     int principal = Random.Range(1, NUM_POSIBLES);
                     usedIntegers.Add(principal);
 
-                    int value = Random.Range(1, 4);
+                    value = Random.Range(1, 4);
+                    if (value == 3){
+                        numberThree++;
+                    }  
+
                     int figure = GetNewValue();
                     usedIntegers.Add(figure);
 
@@ -119,9 +122,20 @@ public class EquialityGameController : Reference{
                     break;
 
                 default:
+
+                    int val = 0;
                     int valueP = usedIntegers[usedIntegers.Count -1];
 
-                    int val = Random.Range(1, 4);
+                    if (numberThree == 1){
+                        val = Random.Range(1, 3);
+                    }else{
+                        
+                        val = Random.Range(1, 4);
+                        if (val == 3){
+                            numberThree++;
+                        }
+                    }
+                    
                     int fig = GetNewValue();
                     usedIntegers.Add(fig);
  
@@ -169,15 +183,15 @@ public class EquialityGameController : Reference{
         // numPaint = new List<int>();
         
         foreach (Figure figure in figures){
-            numPaint.Add(figure.principal);
-            for (int i = 0; i < figure.valueC; i++){
-                numPaint.Add(figure.fig);
+            numPaint.Add(figure.Principal);
+            for (int i = 0; i < figure.ValueC; i++){
+                numPaint.Add(figure.Fig);
             }
             
         }
     }
     
-    private string PrintNumbers(){
+    /*private string PrintNumbers(){
 
         GetNum();
         string res = "";
@@ -185,7 +199,7 @@ public class EquialityGameController : Reference{
             res += numPaint[i];
         }   
         return res;
-    }
+    }*/
 
     //metodo que permite la contrucción del tablero del juego
     private void DrawTable(){
@@ -268,8 +282,8 @@ public class EquialityGameController : Reference{
         correctAnswerGame = 1;
 
         foreach (Figure figure in figures){
-            numOperation.Add(figure.valueC);
-            correctAnswerGame*=figure.valueC;
+            numOperation.Add(figure.ValueC);
+            correctAnswerGame*=figure.ValueC;
         }
     }
 
@@ -447,8 +461,8 @@ public class EquialityGameController : Reference{
 
         string res = "";
         foreach (Figure fig in figures){
-            res += "figuraUno " + fig.principal + " cantidad " +
-            fig.valueC + " figuraDos " + fig.fig + "\n";
+            res += "figuraUno " + fig.Principal + " cantidad " +
+            fig.ValueC + " figuraDos " + fig.Fig + "\n";
         }
 
         return res;

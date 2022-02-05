@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+
 
 public class RoadGameModel : Reference
 {
@@ -185,17 +183,11 @@ public class RoadGameModel : Reference
     }
 }
 
-
-
-
-
-
-
 public class Objects
 {
-    public int x { get; set; }
-    public int y { get; set; }
-    public int type { get; set; }
+    public int X { get; set; }
+    public int Y { get; set; }
+    public int Type { get; set; }
 
     /*Metodo constructor de la clase objetos que recibe tres parametros
     * row -> posicion en X donde esta ubicado el Objeto
@@ -204,9 +196,9 @@ public class Objects
     */
     public Objects (int row, int col, int t)
     {
-        this.x = row;
-        this.y = col;
-        this.type = t;
+        this.X = row;
+        this.Y = col;
+        this.Type = t;
     }
 
 }

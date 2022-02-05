@@ -39,10 +39,8 @@ public class AdditionGameController : Reference{
     public GameObject objectRow;
 
     public GameObject objectSign;
-    //variable que me almacena el tamaño del objeto principal
-    Vector2 size;
 
-    Vector2 sizeSign;
+
 
     //lsitas que contienen los campos de textos en donde aparece
     //si es mas, menos o igual
@@ -76,19 +74,14 @@ public class AdditionGameController : Reference{
     //Numero de intentos que tiene el jugador para ganar el juego
     int attempts = 3;
 
-    //--------------- mostrar el canvas de solucion -------------------//
-    //public Text numberText;
-    //public GameObject sequenceWindow;
-    //public GameObject additionEqualityWindow;
-    //--------------- mostrar el canvas de solucion -------------------//
-
-
     // Start is called before the first frame update
     void Start()
     {
-        sizeSign = objectSign.GetComponent<BoxCollider2D>().size;
+        //variable que me almacena el tamaño del objeto principal
 
-        size = objectRow.GetComponent<BoxCollider2D>().size;
+        //Vector2 sizeSign = objectSign.GetComponent<BoxCollider2D>().size;
+
+        //Vector2 size = objectRow.GetComponent<BoxCollider2D>().size;
         ChooseLevel();
         Build(level, initial);
         //Debug.Log(OwnToString());
@@ -179,7 +172,7 @@ public class AdditionGameController : Reference{
                 }   
             }
         }
-        correctAnswer = icons[icons.Count -1].idValue;
+        correctAnswer = icons[icons.Count -1].IdValue;
         
         GetSign();
         CreateTable();
@@ -216,8 +209,8 @@ public class AdditionGameController : Reference{
         
         int aux = 0;
         foreach (Icon icon in icons){
-            if (value == icon.idValue){
-                aux = icon.idIcon;
+            if (value == icon.IdValue){
+                aux = icon.IdIcon;
             }
         }
         return aux;
@@ -242,7 +235,7 @@ public class AdditionGameController : Reference{
         firstOption = Instantiate(objectRow, new Vector3(x, y+0.9f, 0), objectRow.transform.rotation);
         signFirts = Instantiate(objectSign, new Vector3(signX+0.08f, signY+0.9f, 0), objectSign.transform.rotation);
 
-        Sprite spriteFirst = images[icons[0].idIcon];
+        Sprite spriteFirst = images[icons[0].IdIcon];
 
         firstOption.GetComponent<SpriteRenderer>().sprite = spriteFirst;
         signFirts.GetComponent<SpriteRenderer>().sprite = signEquals;
@@ -263,7 +256,7 @@ public class AdditionGameController : Reference{
 
                 newOption = Instantiate(objectRow, new Vector3(x + (0.75f * j), y + (-0.9f* i), 0), objectRow.transform.rotation);
 
-                Sprite sprite = images[icons[auxImage].idIcon];
+                Sprite sprite = images[icons[auxImage].IdIcon];
                 newOption.GetComponent<SpriteRenderer>().sprite = sprite;
 
                 newOption.transform.parent = gameZone.transform;

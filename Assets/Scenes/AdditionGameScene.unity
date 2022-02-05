@@ -937,6 +937,17 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 3903905432184318108, guid: a27eeb02770264249bceefa19acc431e, type: 3}
   m_PrefabInstance: {fileID: 462298379}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &462298383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5264803119725994627, guid: a27eeb02770264249bceefa19acc431e, type: 3}
+  m_PrefabInstance: {fileID: 462298379}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &491245551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3349,7 +3360,7 @@ MonoBehaviour:
   NoneTicketsWindow: {fileID: 1098124274}
   UsedTicketsWindow: {fileID: 1098124273}
   mistakeText: {fileID: 1152405487}
-  winText: {fileID: 0}
+  winText: {fileID: 462298383}
   ticketsText: {fileID: 1098124277}
   backButton: {fileID: 462298381}
   continueButton: {fileID: 462298380}
