@@ -200,7 +200,7 @@ public class CharactersController : Reference
     {
         Debug.Log("MOVIMIENTO: " + direction);
         //Verficar que se esta mandando una direccion para mover al personaje
-        if (direction != null)
+        if (direction != null && characterTransform != null)
         {
             if (direction == "up")
             {
@@ -240,6 +240,9 @@ public class CharactersController : Reference
                 }
             }
         }
-
+        else
+        {
+            App.generalView.gameOptionsView.ShowWarningCanvas();
+        }
     }
 }

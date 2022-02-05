@@ -29,8 +29,10 @@ public class ClassificationGameView : Reference
     //Lista de items que aparecen en la pantalla al seleccionar un boton
     List<GameObject> items;
 
+    //Imagen para mostar la solucion del nivel actual
     public Image solutionImage;
 
+    //Objeto que representa la ventana que muestra la solucion del nivel actual
     public GameObject solutionPanel;
 
     void Start()
@@ -41,9 +43,10 @@ public class ClassificationGameView : Reference
             checkArray[i] = true;
         }
     }
-    /*
-    * Metodo que captura el boton que oprimio el jugador y captura el nombre de la imagen que posee ese boton
-    */
+    /// <summary>
+    /// Metodo que captura el boton que oprimio el jugador y captura el nombre de la imagen que posee ese boton
+    /// </summary>
+    /// <param name="button">Boton que oprimio</param>
     public void OnClickButtons(Button button)
     {
         //Nombre de la imagen que tiene el boton
@@ -52,6 +55,7 @@ public class ClassificationGameView : Reference
         //Numero del boton
         buttonNumber = Int32.Parse(button.name);
 
+        //Verificar si el nombre de ese boton esta agregado en la lista
         if(checkArray[buttonNumber])
         {
             //Agregar el nombre de la imagen en el panel del boton
@@ -63,7 +67,7 @@ public class ClassificationGameView : Reference
             //Guardar el nombre de la imagen de la lista
             App.generalController.classificationGameController.SaveChoise(nameImage, checkArray[buttonNumber]);
 
-            //Debug.Log("Presiono: " + counter);
+            //Cambiar el estado -> Agregado en la lista
             checkArray[buttonNumber] = false;
         }
         else
@@ -77,12 +81,15 @@ public class ClassificationGameView : Reference
             //Agregar el nombre de la imagen en el panel del boton
             button.GetComponentInChildren<Text>().text = "";
 
+            //Cambiar el estado -> Eliminado de la lista
             checkArray[buttonNumber] = true;
         }
     }
-    /*
-     * Metodo para agregar los nombres de los elementos seleccionados a una lista en pantalla
-     */
+    /// <summary>
+    /// Metodo para instanciar los nombres de los elementos seleccionados a una lista en pantalla
+    /// </summary>
+    /// <param name="name">Nombre del elemento</param>
+    /// <returns>GameObject del elemento que se va a agregar a la lista</returns>
     public GameObject AddItemsToTheList(string name)
     {
         //Crear cada elemento de la lista en un posicion determinada en la pantalla
@@ -102,9 +109,11 @@ public class ClassificationGameView : Reference
 
         return text;
     }
-    /*
-     * Metodo para eliminar los nombres de los elementos seleccionados de la lista en la pantalla
-     */
+    /// <summary>
+    /// Metodo para eliminar los nombres de los elementos seleccionados de la lista en la pantalla
+    /// </summary>
+    /// <param name="name">Nombre del elemento</param>
+    /// <returns>GameObject del elemento que se va a eliminar a la lista</returns>
     public GameObject DeleteItemsFromList(string name)
     {
         //Buscar el elemento a eliminar
@@ -118,9 +127,10 @@ public class ClassificationGameView : Reference
 
         return item;
     }
-    /*
-    * Metodo para activar un panel en cada boton seleccionado
-    */
+    /// <summary>
+    /// Metodo para activar un panel en cada boton seleccionado
+    /// </summary>
+    /// <param name="panel">Panel seleccionado</param>
     public void ActivatedPanel(GameObject panel)
     {
         if (panel.GetComponent<Image>().enabled)
@@ -132,11 +142,12 @@ public class ClassificationGameView : Reference
             panel.GetComponent<Image>().enabled = true;
         }
     }
-    /*
-    * Metodo para activar los canvas que indican si el jugador gano o perdio el juego
-    */
+    /// <summary>
+    /// Metodo para activar los canvas que indican si el jugador gano o perdio el juego
+    /// </summary>
     public void CheckAnswer()
     {
+        //Si no ha seleccionado ninguna opcion se muestra un canvas de advertencia
         if (items.Count == 0)
         {
             App.generalView.gameOptionsView.ShowWarningCanvas();
@@ -147,6 +158,9 @@ public class ClassificationGameView : Reference
             App.generalController.classificationGameController.CheckAnswer();
         }
     }
+    /// <summary>
+    /// Metodo que muestra la solucion del juego
+    /// </summary>
     public void ShowSolution()
     {
         App.generalController.classificationGameController.ShowSolution();

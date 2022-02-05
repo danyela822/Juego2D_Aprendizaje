@@ -52,7 +52,7 @@ public class UIController : Reference
             creatorsCanvas.enabled = true;
         }
 
-        //Boton de regreso (Puede servir para cualquier escena menos para la escena de los niveles)
+        //Boton de regreso de la paggina de informacion
         if (name_button == "InfoBackButton")
         {
             infoCanvas.enabled = true;
@@ -61,7 +61,7 @@ public class UIController : Reference
             creatorsCanvas.enabled = false;
         }
 
-        //Boton de regreso (Puede servir para cualquier escena menos para la escena de los niveles)
+        //Boton de regreso al nivel principal
         if (name_button == "BackButton")
         {
             SceneManager.LoadScene("MainMenuScene");

@@ -32,6 +32,7 @@ public class RoadGameController : Reference
     int[] character2Point = new int[3];
     int[] character3Point = new int[3];
 
+    int prueba;
     private void Start()
     {
         level =  App.generalModel.roadGameModel.GetLevel();
@@ -72,6 +73,13 @@ public class RoadGameController : Reference
 
         print("Array solution");
         ShowArray(arraySolution);
+
+        prueba++;
+        if (prueba == 1)
+        {
+            DrawMatrix();
+        }
+        
     }
 
     void GenerateLevel1()
@@ -340,7 +348,7 @@ public class RoadGameController : Reference
         // Si el numero de pasos es mayor a 0 esto indica que se encontro una solucion 
         if (numSteps > 0)
         {
-            Debug.Log("Se encontro una solucion con " + numSteps + " pasos");
+            //Debug.Log("Se encontro una solucion con " + numSteps + " pasos");
             ShowArray(arraySolution);
             Debug.Log("Llamadas recursivas realizadas " + numLlamadas);
         }
@@ -667,7 +675,7 @@ public class RoadGameController : Reference
             if (posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)
             {
                 // Verifica si la posicion indicada esta libre
-                if ((arrayObjects[posX, posY].Type == 0 || arrayObjects[posX, posY].Type == 5 || arrayObjects[posX, posY].Type == 4 || arrayObjects[posX, posY].Type == 11) && matrix[posX, posY].GetComponent<Block>().visited == false) 
+                if ((arrayObjects[posX, posY].Type == 0 || arrayObjects[posX, posY].Type == 5 || arrayObjects[posX, posY].Type == 4 || arrayObjects[posX, posY].Type == 11 || arrayObjects[posX, posY].Type == 3) && matrix[posX, posY].GetComponent<Block>().visited == false) 
                 {
                     Debug.Log("No ESTA OCUPADO: " + arrayObjects[posX, posY].X + " Y: " + arrayObjects[posX, posY].Y + " TYPE: " + type);
 
@@ -687,7 +695,7 @@ public class RoadGameController : Reference
             if (posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)
             {
                 // Verifica si la posicion indicada esta libre
-                if ((arrayObjects[posX, posY].Type == 0 || arrayObjects[posX, posY].Type == 11 || arrayObjects[posX, posY].Type == 10 || arrayObjects[posX, posY].Type == 5) && matrix[posX, posY].GetComponent<Block>().visited == false)
+                if ((arrayObjects[posX, posY].Type == 0 || arrayObjects[posX, posY].Type == 11 || arrayObjects[posX, posY].Type == 10 || arrayObjects[posX, posY].Type == 5 || arrayObjects[posX, posY].Type == 3) && matrix[posX, posY].GetComponent<Block>().visited == false)
                 {
                     Debug.Log("No ESTA OCUPADO: " + arrayObjects[posX, posY].X + " Y: " + arrayObjects[posX, posY].Y + " TYPE: " + type);
                     if (arrayObjects[posX, posY].Type == 10)
@@ -1145,7 +1153,7 @@ public class RoadGameController : Reference
     // Metodo encargado de Pintar la ruta de solucion
     public void DrawSolution()
     {
-        LocateSolucion();
+        /*LocateSolucion();
         App.generalModel.roadGameModel.DecraseTickets();
         App.generalView.gameOptionsView.SolutionCanvas.enabled = false;
 
@@ -1160,6 +1168,35 @@ public class RoadGameController : Reference
                     matrix[i, j].GetComponent<SpriteRenderer>().color = Color.grey;
                 }
             }
+        }*/
+
+        //Si hay tickets muestra la solucion
+        Debug.Log("HAY: " + App.generalModel.ticketModel.GetTickets() + " TICKETS");
+        if (App.generalModel.ticketModel.GetTickets() >= 1)
+        {
+            Debug.Log("HAS USADO UN PASE");
+
+            App.generalController.ticketController.DecraseTickets();
+            App.generalView.gameOptionsView.HideBuyCanvas();
+
+            LocateSolucion();
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    if (arrayObjects[i, j].Type == 2)
+                    {
+                        matrix[i, j].GetComponent<Block>().Id = (arrayObjects[i, j].Type);
+
+                        matrix[i, j].GetComponent<SpriteRenderer>().color = Color.grey;
+                    }
+                }
+            }
+        }
+        else
+        {
+            App.generalView.gameOptionsView.ShowTicketsCanvas(3);
         }
     }
 

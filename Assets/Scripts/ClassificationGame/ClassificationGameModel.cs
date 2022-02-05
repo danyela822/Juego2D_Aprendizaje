@@ -11,7 +11,7 @@ public class ClassificationGameModel : Reference
     /// <returns>Bool que indica si exsite o no ese elemento</returns>
     public bool FileExist(int number)
     {
-        if (file.classificationGameList.Contains(number))
+        if (file.imageListGame1.Contains(number))
         {
             return true;
         }

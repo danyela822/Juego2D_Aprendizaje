@@ -171,6 +171,7 @@ public class CharacteristicsGameController : Reference
         }
         else
         {
+            //Contar un error
             CheckAttempt();
         }
     }
@@ -252,7 +253,9 @@ public class CharacteristicsGameController : Reference
             App.generalView.gameOptionsView.ShowMistakeCanvas(attemptMessages);
         }
     }
-    
+    /// <summary>
+    /// Metodo para mostrar la solucion del nivel actual
+    /// </summary>
     public void ShowSolution()
     {
         //Si hay tickets muestra la solucion
@@ -277,7 +280,7 @@ public class CharacteristicsGameController : Reference
     /// <summary>
     /// Metodo que permite desordenar la lista de imagenes seleccionada
     /// </summary>
-    /// <param name="list"> Lista de imagenes </param>
+    /// <param name="list"> Array de imagenes </param>
     /// <returns> Lista de imagenes desordenada </returns>
     public List<Sprite> ChangeOrderList(Sprite[] list)
     {

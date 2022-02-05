@@ -3,14 +3,17 @@ using UnityEngine.SceneManagement;
 public class GamesMenuController : Reference
 {
     public FileLists file;
+
+    /// <summary>
+    /// Metodo para cargar la escena de un juego en especifico
+    /// </summary>
+    /// <param name="gameName">Nombre del juego</param>
     public void Play(string gameName)
     {
-        //Debug.Log("Nombre del juego: " + gameName);
-
         switch (gameName)
         {
             case "Descubre el conjunto":
-                if(file.classificationGameList.Count==0)
+                if(file.imageListGame1.Count==0)
                 {
                     //App.generalView.gamesMenuView.playButtons[0].interactable = false;
                     App.generalView.gamesMenuView.finishedCanvas.enabled = true;
@@ -69,6 +72,9 @@ public class GamesMenuController : Reference
                 break;
         }
     }
+    /// <summary>
+    /// Metodo para cargar la escena del menu principal
+    /// </summary>
     public void BackToMainMenu()
     {
         SceneManager.LoadScene("MainMenuScene");

@@ -4,52 +4,52 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 2864977535551872477
-    second: 1
+    second: uno
   - first:
       213: 7015102838018008653
-    second: 2
+    second: dos
   - first:
       213: 7437612069084044863
-    second: 3
+    second: tres
   - first:
       213: -6579081942884177172
-    second: 4
+    second: cuatro
   - first:
       213: 8185588812350208355
-    second: 5
+    second: cinco
   - first:
       213: 4677860806627210714
-    second: 6
+    second: seis
   - first:
       213: -1727185010361184311
-    second: 7
+    second: siete
   - first:
       213: -1826862115502867151
-    second: 8
+    second: ocho
   - first:
       213: -780444946460754946
-    second: 9
+    second: nueve
   - first:
       213: 3477438167126509283
-    second: 10
+    second: diez
   - first:
       213: 7809230220990195906
-    second: 11
+    second: once
   - first:
       213: 73045169888848739
-    second: 12
+    second: doce
   - first:
       213: -8769748974807861168
-    second: 13
+    second: trece
   - first:
       213: 2287144153837291087
-    second: 14
+    second: catorce
   - first:
       213: 7221701411894439918
-    second: 15
+    second: quince
   - first:
       213: 7325178533573951397
-    second: 16
+    second: dieciseis
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,12 +163,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1
+      name: uno
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 436
-        width: 49
+        width: 66
         height: 77
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -184,12 +184,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2
+      name: dos
       rect:
         serializedVersion: 2
-        x: 138
+        x: 125
         y: 435
-        width: 62
+        width: 87
         height: 76
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -205,12 +205,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3
+      name: tres
       rect:
         serializedVersion: 2
-        x: 286
-        y: 435
-        width: 57
+        x: 265
+        y: 436
+        width: 93
         height: 76
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -226,12 +226,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4
+      name: cuatro
       rect:
         serializedVersion: 2
-        x: 428
-        y: 436
-        width: 66
+        x: 410
+        y: 437
+        width: 96
         height: 77
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -247,12 +247,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5
+      name: cinco
       rect:
         serializedVersion: 2
-        x: 14
+        x: 5
         y: 296
-        width: 59
+        width: 79
         height: 76
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -268,12 +268,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6
+      name: seis
       rect:
         serializedVersion: 2
-        x: 132
+        x: 124
         y: 296
-        width: 64
+        width: 79
         height: 77
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -289,12 +289,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 7
+      name: siete
       rect:
         serializedVersion: 2
-        x: 280
+        x: 269
         y: 296
-        width: 58
+        width: 79
         height: 76
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -310,12 +310,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 8
+      name: ocho
       rect:
         serializedVersion: 2
-        x: 424
+        x: 412
         y: 296
-        width: 59
+        width: 84
         height: 77
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -331,12 +331,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 9
+      name: nueve
       rect:
         serializedVersion: 2
-        x: 16
+        x: 1
         y: 149
-        width: 63
+        width: 95
         height: 77
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -352,7 +352,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10
+      name: diez
       rect:
         serializedVersion: 2
         x: 166
@@ -373,12 +373,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 11
+      name: once
       rect:
         serializedVersion: 2
-        x: 392
+        x: 378
         y: 151
-        width: 72
+        width: 107
         height: 76
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -394,7 +394,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 12
+      name: doce
       rect:
         serializedVersion: 2
         x: 582
@@ -415,10 +415,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 13
+      name: trece
       rect:
         serializedVersion: 2
-        x: 13
+        x: 12
         y: 12
         width: 95
         height: 76
@@ -436,10 +436,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 14
+      name: catorce
       rect:
         serializedVersion: 2
-        x: 165
+        x: 164
         y: 12
         width: 103
         height: 76
@@ -457,7 +457,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 15
+      name: quince
       rect:
         serializedVersion: 2
         x: 382
@@ -478,7 +478,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 16
+      name: dieciseis
       rect:
         serializedVersion: 2
         x: 594

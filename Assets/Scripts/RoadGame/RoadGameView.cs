@@ -10,11 +10,6 @@ public class RoadGameView : Reference
     {
         PointsLevel();
     }*/
-    public void StartGame()
-    {
-        App.generalView.gameOptionsView.HideTutorialCanvas();
-        App.generalController.roadGameController.DrawMatrix();
-    }
     public void PointsLevel()
     {
         cointsText.text = " x " + App.generalModel.roadGameModel.GetPoints();
@@ -30,14 +25,15 @@ public class RoadGameView : Reference
     }*/
     public void DrawSolution()
     {
-        if( App.generalModel.roadGameModel.GetTickets() > 0)
+        App.generalController.roadGameController.DrawSolution();
+        /*if( App.generalModel.roadGameModel.GetTickets() > 0)
         {
             App.generalController.roadGameController.DrawSolution();
             PointsLevel();
         }
         else{
             print("no tienes tickets de solucion");
-        }
+        }*/
     }
     public void ActivateMovement(int type)
     {
