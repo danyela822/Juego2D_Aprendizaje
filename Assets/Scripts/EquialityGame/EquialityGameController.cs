@@ -97,16 +97,24 @@ public class EquialityGameController : Reference{
 
     //metodo que pemrite la construccion de cada uno de los niveles
     public void Buid(int levels){
+
+        int numberThree = 0;
         figures = new List<Figure>();
+        int value = 0;
 
         for (int i = 0; i < levels; i++){
             
             switch (i){
                 case 0:
+
                     int principal = Random.Range(1, NUM_POSIBLES);
                     usedIntegers.Add(principal);
 
-                    int value = Random.Range(1, 4);
+                    value = Random.Range(1, 4);
+                    if (value == 3){
+                        numberThree++;
+                    }  
+
                     int figure = GetNewValue();
                     usedIntegers.Add(figure);
 
@@ -114,9 +122,20 @@ public class EquialityGameController : Reference{
                     break;
 
                 default:
+
+                    int val = 0;
                     int valueP = usedIntegers[usedIntegers.Count -1];
 
-                    int val = Random.Range(1, 4);
+                    if (numberThree == 1){
+                        val = Random.Range(1, 3);
+                    }else{
+                        
+                        val = Random.Range(1, 4);
+                        if (val == 3){
+                            numberThree++;
+                        }
+                    }
+                    
                     int fig = GetNewValue();
                     usedIntegers.Add(fig);
  
