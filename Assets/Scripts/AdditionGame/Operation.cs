@@ -5,7 +5,7 @@ public class Operation
 {
     public List<Operand> operands;
     public int resultado;
-    readonly int possible_num = 9;
+    readonly int possible_num = 8;
     readonly List<int> globalUsed = new List<int>();
 
     //contructor que permite realizar las demas operacions

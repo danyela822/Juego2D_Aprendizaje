@@ -32,7 +32,9 @@ public class AdditionGameController : Reference{
     readonly List<int> signs = new List<int>();
 
     //numero incial para las operaciones
-    readonly int initial = 8;
+    //readonly int initial = Random.Range(0, 5);// 8;
+    int initial;
+
     //varibale que almacena la respuesta correcta
     int correctAnswer;
     //objeto que contiene el prefab
@@ -82,6 +84,7 @@ public class AdditionGameController : Reference{
         //Vector2 sizeSign = objectSign.GetComponent<BoxCollider2D>().size;
 
         //Vector2 size = objectRow.GetComponent<BoxCollider2D>().size;
+        initial = Random.Range(1, 6);
         ChooseLevel();
         Build(level, initial);
         //Debug.Log(OwnToString());
