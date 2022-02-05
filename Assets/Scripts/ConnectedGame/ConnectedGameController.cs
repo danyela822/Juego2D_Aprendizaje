@@ -110,6 +110,26 @@ public class ConnectedGameController : Reference
                 PaintMatrix(i,j,matrix[i, j].GetComponent<Block>().GetID());
             }
         }
+        PaintStartPoints();
+    }
+
+    public void PaintStartPoints()
+    {
+        if(level == 1)
+        {
+            matrix[startPoint1.x, startPoint1.y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
+        }
+        else if(level == 2)
+        {
+            matrix[startPoint1.x, startPoint1.y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
+            matrix[startPoint2.x, startPoint2.y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
+        }
+        else
+        {
+            matrix[startPoint1.x, startPoint1.y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
+            matrix[startPoint2.x, startPoint2.y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
+            matrix[startPoint3.x, startPoint3.y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
+        }
     }
     /* 
     * Metodo que pinta la matriz dependiendo el id indicado (cada id representa un color diferente)
@@ -242,34 +262,34 @@ public class ConnectedGameController : Reference
             case 1:
                 totalStepsLevel1 = RamdonNumber(3,7);
                 print("Total pasos amarillo: "+totalStepsLevel1);
-                CreatePointsLevel(1, totalStepsLevel1, 0);
+                CreatePointsLevel(1, totalStepsLevel1-1, 0);
                 break;
             case 2: 
                 totalStepsLevel1 = RamdonNumber(6,8);
                 print("Total pasos amarillo: "+totalStepsLevel1);
                 
-                CreatePointsLevel(1, totalStepsLevel1, 0);
+                CreatePointsLevel(1, totalStepsLevel1-1, 0);
 
                 totalStepsLevel2 = RamdonNumber(3,7);
                 print("Total pasos azul: "+totalStepsLevel2);
                 
-                CreatePointsLevel(2, totalStepsLevel2, 1);
+                CreatePointsLevel(2, totalStepsLevel2-1, 1);
                 break;
             case 3: 
                 totalStepsLevel1 = RamdonNumber(6,8);
                 print("Total pasos amarillo: "+totalStepsLevel1);
 
-                CreatePointsLevel(1, totalStepsLevel1, 0);
+                CreatePointsLevel(1, totalStepsLevel1-1, 0);
 
                 totalStepsLevel2 = RamdonNumber(4,7);
                 print("Total pasos azul: "+totalStepsLevel2);
 
-                CreatePointsLevel(2, totalStepsLevel2, 1);
+                CreatePointsLevel(2, totalStepsLevel2-1, 1);
 
                 totalStepsLevel3 = RamdonNumber(3,7);
                 print("Total pasos rojo: "+totalStepsLevel3);
                 
-                CreatePointsLevel(3, totalStepsLevel3, 2);
+                CreatePointsLevel(3, totalStepsLevel3-1, 2);
 
                 break;
         }
@@ -478,13 +498,8 @@ public class ConnectedGameController : Reference
                 else if (CheckArrival(arrayObjects, startPoint.x - 1, startPoint.y))
                 {
                     CheckArrivalOption(startPoint.type);
+                    CountMoves(startPoint.type);
                 }
-                /*else if(CheckPositionVolver(arrayObjects, puntoInicial.x-1, puntoInicial.y, puntoInicial.type))
-                {
-                    arrayObjects[puntoInicial.x,puntoInicial.y].type = 0;
-                    PintarColores(puntoInicial.x,puntoInicial.y, 0);
-                    puntoInicial.x = puntoInicial.x-1;
-                }*/
             }
             else if (direction == "down")
             {
@@ -498,13 +513,8 @@ public class ConnectedGameController : Reference
                 else if (CheckArrival(arrayObjects, startPoint.x + 1, startPoint.y))
                 {
                     CheckArrivalOption(startPoint.type);
+                    CountMoves(startPoint.type);
                 }
-                /*else if(CheckPositionVolver(arrayObjects, puntoInicial.x+1, puntoInicial.y, puntoInicial.type))
-                {   
-                    arrayObjects[puntoInicial.x,puntoInicial.y].type = 0;
-                    PintarColores(puntoInicial.x,puntoInicial.y, 0);
-                    puntoInicial.x = puntoInicial.x+1;
-                }*/
 
             }
             else if (direction == "right")
@@ -519,13 +529,8 @@ public class ConnectedGameController : Reference
                 else if (CheckArrival(arrayObjects, startPoint.x, startPoint.y + 1))
                 {
                     CheckArrivalOption(startPoint.type);
+                    CountMoves(startPoint.type);
                 }
-                /*else if(CheckPositionVolver(arrayObjects, puntoInicial.x, puntoInicial.y+1, puntoInicial.type))
-                {
-                    arrayObjects[puntoInicial.x,puntoInicial.y].type = 0;
-                    PintarColores(puntoInicial.x,puntoInicial.y, 0);
-                    puntoInicial.y = puntoInicial.y+1;
-                }*/
             }
             else if (direction == "left")
             {
@@ -539,13 +544,8 @@ public class ConnectedGameController : Reference
                 else if (CheckArrival(arrayObjects, startPoint.x, startPoint.y - 1))
                 {
                     CheckArrivalOption(startPoint.type);
+                    CountMoves(startPoint.type);
                 }
-                /*else if(CheckPositionVolver(arrayObjects, puntoInicial.x, puntoInicial.y-1, puntoInicial.type))
-                {
-                    arrayObjects[puntoInicial.x,puntoInicial.y].type = 0;
-                    PintarColores(puntoInicial.x,puntoInicial.y, 0);
-                    puntoInicial.y = puntoInicial.y+1;
-                }*/
             }
             print(totalMove1 + " - " + totalMove2);
             CheckEndGame();
