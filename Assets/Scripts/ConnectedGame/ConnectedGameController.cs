@@ -178,7 +178,7 @@ public class ConnectedGameController : Reference
         finish3 = false;
 
         level = App.generalModel.connectedGameModel.GetLevel();
-        print("Create level "+level);
+        //print("Create level "+level);
         ActivateButtons();
         GenerateArray();
         GenerateArrivalPoint();
@@ -209,20 +209,20 @@ public class ConnectedGameController : Reference
     public void LoadText ()
     {
         string message;
-        message = "Conectados\n\n Llegue al punto Verde de acuerdo a las siguientes indicaciones:\n";
+        message = "Conectados\n\n Llegua al punto Verde de acuerdo a las siguientes indicaciones:\n\n";
         switch (level)
         {
             case 1:
-                message += "- Punto Amarillo con "+totalStepsLevel1;
+                message += "- Desde el Punto Amarillo con "+totalStepsLevel1+" pasos.";
                 break;
             case 2: 
-                message += "- Punto Amarillo con "+totalStepsLevel1+
-                "\n- Punto Azul con "+totalStepsLevel2;
+                message += "- Desde el Punto Amarillo con "+totalStepsLevel1+" pasos."+
+                "\n- Desde el Punto Azul con "+totalStepsLevel2+" pasos.";
                 break;
             case 3: 
-                message += "- Punto Amarillo con "+totalStepsLevel1+
-                "\n- Punto Azul con "+totalStepsLevel2+
-                "\n- Punto Rojo con "+totalStepsLevel3;
+                message += "- Desde el Punto Amarillo con "+totalStepsLevel1+" pasos."+
+                "\n- Desde el Punto Azul con "+totalStepsLevel2+" pasos."+
+                "\n- Desde el Punto Rojo con "+totalStepsLevel3+" pasos.";
                 break;
         }
 
@@ -263,33 +263,33 @@ public class ConnectedGameController : Reference
         {
             case 1:
                 totalStepsLevel1 = RamdonNumber(3,7);
-                print("Total pasos amarillo: "+totalStepsLevel1);
+                //print("Total pasos amarillo: "+totalStepsLevel1);
                 CreatePointsLevel(1, totalStepsLevel1-1, 0);
                 break;
             case 2: 
                 totalStepsLevel1 = RamdonNumber(6,8);
-                print("Total pasos amarillo: "+totalStepsLevel1);
+                //print("Total pasos amarillo: "+totalStepsLevel1);
                 
                 CreatePointsLevel(1, totalStepsLevel1-1, 0);
 
                 totalStepsLevel2 = RamdonNumber(3,7);
-                print("Total pasos azul: "+totalStepsLevel2);
+                //print("Total pasos azul: "+totalStepsLevel2);
                 
                 CreatePointsLevel(2, totalStepsLevel2-1, 1);
                 break;
             case 3: 
                 totalStepsLevel1 = RamdonNumber(6,8);
-                print("Total pasos amarillo: "+totalStepsLevel1);
+                //print("Total pasos amarillo: "+totalStepsLevel1);
 
                 CreatePointsLevel(1, totalStepsLevel1-1, 0);
 
                 totalStepsLevel2 = RamdonNumber(4,7);
-                print("Total pasos azul: "+totalStepsLevel2);
+                //print("Total pasos azul: "+totalStepsLevel2);
 
                 CreatePointsLevel(2, totalStepsLevel2-1, 1);
 
                 totalStepsLevel3 = RamdonNumber(3,7);
-                print("Total pasos rojo: "+totalStepsLevel3);
+                //print("Total pasos rojo: "+totalStepsLevel3);
                 
                 CreatePointsLevel(3, totalStepsLevel3-1, 2);
 
@@ -309,10 +309,10 @@ public class ConnectedGameController : Reference
         //print("level 1 "+level1+" Level 2 "+level2+" level 3 "+level3);
         if(isCorrect)
         {
-            print("Cumplio con la condicion de parada y la distancia");
+            //print("Cumplio con la condicion de parada y la distancia");
         }
         else{
-            print("Algun punto no cumplio con la condicion de parada y la distancia");
+            //print("Algun punto no cumplio con la condicion de parada y la distancia");
             CreateLevel();
             //SceneManager.LoadScene("ConnectedGameScene");
         }
@@ -342,7 +342,7 @@ public class ConnectedGameController : Reference
         
         if(finalPoint == null)
         {
-            print("Es null para el punto "+type);
+            //print("Es null para el punto "+type);
             CheckConditions(type, false);
         }
         else
@@ -549,7 +549,7 @@ public class ConnectedGameController : Reference
                     CountMoves(startPoint.Type);
                 }
             }
-            print(totalMove1 + " - " + totalMove2);
+            //print(totalMove1 + " - " + totalMove2);
             CheckEndGame();
         }
     }
@@ -610,7 +610,7 @@ public class ConnectedGameController : Reference
     }
     public void ResetMoves(int type)
     {
-        print("tipo para borrar "+type);
+        //print("tipo para borrar "+type);
         for (int i = 0; i < arrayRow; i++)
         {
             for (int j = 0; j < arrayCol; j++)
@@ -663,7 +663,7 @@ public class ConnectedGameController : Reference
     {
         if(finish1)
         {
-            print("Finalizo llego al punto verde");
+            //print("Finalizo llego al punto verde");
             CheckTotalMoves();
             return true;
         }
@@ -673,7 +673,7 @@ public class ConnectedGameController : Reference
     {
         if(finish1 && finish2)
         {
-            print("Finalizo llego con todos los tipos al final");
+            //print("Finalizo llego con todos los tipos al final");
             CheckTotalMoves();
             return true;
         }
@@ -683,7 +683,7 @@ public class ConnectedGameController : Reference
     {
         if(finish1 && finish2 && finish3)
         {
-            print("Finalizo llego con todos los tipos al final");
+            //print("Finalizo llego con todos los tipos al final");
             CheckTotalMoves();
             return true;
         }
@@ -720,7 +720,7 @@ public class ConnectedGameController : Reference
         countPlay = App.generalModel.connectedGameModel.GetTimesPlayed();
 
         App.generalModel.connectedGameModel.UpdateTimesPlayed(++countPlay);
-        print("HA JUGADO: " + countPlay);
+        //print("HA JUGADO: " + countPlay);
 
         if (level == 1)
         {
@@ -753,18 +753,18 @@ public class ConnectedGameController : Reference
 
         if(difference == 0)
         {
-            print("Cumplio los pasos con el color amarillo");
+            //print("Cumplio los pasos con el color amarillo");
             //WinLevel();
             SetPointsAndStars(1);
         }
         else if(difference > 0 && difference < 4)
         {
-            print("No Cumplio los pasos con el color amarillo");
+            //print("No Cumplio los pasos con el color amarillo");
             SetPointsAndStars(2);
         }
         else
         {
-            print("No Cumplio los pasos con el color amarillo 2");
+            //print("No Cumplio los pasos con el color amarillo 2");
             SetPointsAndStars(3);
         }
         App.generalModel.connectedGameModel.UpdateLevel(2);
@@ -776,17 +776,17 @@ public class ConnectedGameController : Reference
 
         if (difference == 0 && difference2 == 0)
         {
-            print("Cumplio los pasos con el color amarillo y azul");
+            //print("Cumplio los pasos con el color amarillo y azul");
             SetPointsAndStars(1);
             //WinLevel();
         }else if ((difference == 0 && (difference2 > 0 && difference2 < 4)) || (difference2 == 0 && (difference > 0 && difference < 4)))
         {
-            print("NO Cumplio los pasos con el color amarillo y azul");
+            //print("NO Cumplio los pasos con el color amarillo y azul");
             SetPointsAndStars(2);
         }
         else
         {
-            print("NO Cumplio los pasos con el color amarillo y azul 2");
+            //print("NO Cumplio los pasos con el color amarillo y azul 2");
             SetPointsAndStars(3);
         }
 
@@ -810,23 +810,23 @@ public class ConnectedGameController : Reference
         isLastLevel = true;
         if (difference == 0 && difference2 == 0 && difference3 == 0)
         {
-            print("Cumplio los pasos con el color amarillo, azul y rojo");
+            //print("Cumplio los pasos con el color amarillo, azul y rojo");
             SetPointsAndStars(1);
             //WinLevel();
         }
         else if ((difference == 0 && difference2 == 0 && (difference3 > 0 && difference3 < 4)) || (difference2 == 0 && difference3 == 0 && (difference > 0 && difference < 4)) || (difference == 0 && difference3 == 0 && (difference2 > 0 && difference2 < 4)))
         {
-            print("NO Cumplio los pasos con el color amarillo, azul y rojo 1");
+            //print("NO Cumplio los pasos con el color amarillo, azul y rojo 1");
             SetPointsAndStars(2);
         }
         else if((difference == 0 && (difference2 > 0 && difference2 < 4) && (difference3 > 0 && difference3 < 4)) || (difference3 == 0 && (difference2 > 0 && difference2 < 4) && (difference > 0 && difference < 4)) || (difference2 == 0 && (difference > 0 && difference < 4) && (difference3 > 0 && difference3 < 4)))
         {
-            print("NO Cumplio los pasos con el color amarillo, azul y rojo 2");
+            //print("NO Cumplio los pasos con el color amarillo, azul y rojo 2");
             SetPointsAndStars(2);
         }
         else
         {
-            print("NO Cumplio los pasos con el color amarillo, azul y rojo 8");
+            //print("NO Cumplio los pasos con el color amarillo, azul y rojo 8");
             SetPointsAndStars(3);
         }
 

@@ -21,6 +21,8 @@ public class CharactersController : Reference
     Vector3 vectorRigth;
     Vector3 vectorLetf;
 
+    public int steps;
+
     private void Start()
     {
         vectorUp = new Vector3(0, 0.64f, 0);
@@ -209,6 +211,7 @@ public class CharactersController : Reference
                 {
                     characterTransform.position += vectorUp;
                     character.PosArrayX--;
+                    if(character.Type == 1) steps++;
                     Debug.Log("POS CHARACTER UP X: " + character.PosArrayX + " Y: " + character.PosArrayY);
                 }
             }
@@ -218,6 +221,7 @@ public class CharactersController : Reference
                 {
                     characterTransform.position += vectorDown;
                     character.PosArrayX++;
+                    if(character.Type == 1) steps++;
                     Debug.Log("POS CHARACTER DOWN X: " + character.PosArrayX + " Y: " + character.PosArrayY);
                 }
             }
@@ -227,6 +231,7 @@ public class CharactersController : Reference
                 {
                     characterTransform.position += vectorRigth;
                     character.PosArrayY++;
+                    if(character.Type == 1) steps++;
                     Debug.Log("POS CHARACTER RIGTH X: " + character.PosArrayX + " Y: " + character.PosArrayY);
                 }
             }
@@ -236,6 +241,7 @@ public class CharactersController : Reference
                 {
                     characterTransform.position += vectorLetf;
                     character.PosArrayY--;
+                    if(character.Type == 1) steps++;
                     Debug.Log("POS CHARACTER LEFT X: " + character.PosArrayX + " Y: " + character.PosArrayY);
                 }
             }
