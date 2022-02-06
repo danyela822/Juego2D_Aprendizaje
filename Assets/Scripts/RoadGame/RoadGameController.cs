@@ -24,6 +24,8 @@ public class RoadGameController : Reference
     static int numLlamadas; // Numero de llamadas rercursivas
     static Objects[,] arraySolution = null; // Camino a seguir
 
+    int numFinalSteps;
+
     int level;
     int[] arrivalPoint = new int[2];
     int[] startPoint = new int[2];
@@ -42,14 +44,7 @@ public class RoadGameController : Reference
         CreateLevel();
     }
 
-    public void RamdonLevel()
-    {
-        //int ramdonCategory = RamdonNumber(1,4);
-        //level = ramdonCategory;
-        //Obtener el nivel actual
-        //level = App.generalModel.characteristicsGameModel.GetLevel();
-        //CreateLevel();
-    }
+    
     // Metodo encargado de llamar todos los metodos necesarios para generar un nivel 
     public void CreateLevel()
     {
@@ -89,9 +84,13 @@ public class RoadGameController : Reference
 
         // Llamado a los metodos encargados de generar la solucion mas corta entre los puntos
         GenerateSolution(obstaclePoint1[0], obstaclePoint1[1], 9, 2, 3);
+        numFinalSteps = numSteps;
         LocateSolutionArray();
+        
         GenerateSolution(startPoint[0], startPoint[1], 4, 2, 9);
+        numFinalSteps += numSteps;
         LocateSolutionArray();
+
         LocateMainPoints(arraySolution);
 
         //Ruta invisible
@@ -108,9 +107,13 @@ public class RoadGameController : Reference
 
         // Llamado a los metodos encargados de generar la solucion mas corta entre los puntos
         GenerateSolution(obstaclePoint1[0], obstaclePoint1[1], 9, 2, 3);
+        numFinalSteps = numSteps;
         LocateSolutionArray();
+
         GenerateSolution(startPoint[0], startPoint[1], 4, 2, 9);
+        numFinalSteps += numSteps;
         LocateSolutionArray();
+
         LocateMainPoints(arraySolution);
 
         //Ruta invisible
@@ -128,17 +131,21 @@ public class RoadGameController : Reference
 
         // Llamado a los metodos necesarios para crear la ruta entre el punto de llegada y el obstaculo 1
         GenerateSolution(obstaclePoint1[0], obstaclePoint1[1], 9, 2, 3);
+        numFinalSteps = numSteps;
         LocateSolutionArray();
 
         //Llama a los metodos necesarios para crear la ruta entre el obstaculo 1 y obstaculo 2
         GenerateSolution(obstaclePoint1[0], obstaclePoint1[1], 10, 2, 3);
+        numFinalSteps += numSteps;
         LocateSolutionArray();
         LocateMainPointsLevel3(arrayObjects, obstaclePoint2, 10);
         LocateMainPointsLevel3(arraySolution, obstaclePoint2, 10);
 
         //Llama a los metodos necesarios para crear la ruta entre el obstaculo 2 y el punto de inicio
         GenerateSolution(startPoint[0], startPoint[1], 10, 2, 9);
+        numFinalSteps += numSteps;
         LocateSolutionArray();
+
         LocateMainPointsLevel3(arrayObjects, obstaclePoint2, 10);
         LocateMainPointsLevel3(arraySolution, obstaclePoint2, 10);
         LocateMainPoints(arraySolution);
@@ -1085,8 +1092,10 @@ public class RoadGameController : Reference
     ////////////////////////////////////////////////////////////////////CAMILA//////////////////////////////////////////////////////////////
     public void PuntoFinal()
     {
-        int totalSteps = CountSteps();
+        //int totalSteps = CountSteps();
 
+        int totalSteps = App.generalController.charactersController.steps;
+        
         int totalStars = Coints(totalSteps);
 
         PointsLevel(totalStars);
@@ -1099,12 +1108,7 @@ public class RoadGameController : Reference
 
         //SetPointsAndStars();
     }
-    //Metodos para calcular los puntajes y etc
 
-    public void IncreaseTickets()
-    {
-        //App.generalModel.roadGameModel.IncreaseTickets();
-    }
     //Declaracion del mensaje a mostrar
     string winMessage;
     bool isLastLevel = false;
@@ -1141,12 +1145,12 @@ public class RoadGameController : Reference
         //Si los pasos realizados por el usuario son menor o igual a los pasos del algoritmo tiene 3 estrellas
         //Si los pasos realizados por el usuario son mayores a los pasos del algoritmo por maximo 3 pasos son 2 estrellas
         //Si son mayores por mas de 3 pasos extras tiene una estrella
-        if (totalSteps <= numSteps)
+        if (totalSteps <= numFinalSteps)
         {
             totalStars = 3;
             winMessage = App.generalController.gameOptionsController.winMessages[2];
         }
-        else if (totalSteps > numSteps && totalSteps <= numSteps + 3)
+        else if (totalSteps > numFinalSteps && totalSteps <= numFinalSteps + 3)
         {
             totalStars = 2;
             winMessage = App.generalController.gameOptionsController.winMessages[1];

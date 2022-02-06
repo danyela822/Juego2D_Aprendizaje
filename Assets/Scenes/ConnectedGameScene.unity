@@ -1046,6 +1046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dad3f6bac0380f42b69247b8a19d507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countPerfectWins: 0
 --- !u!114 &328515910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3034,7 +3035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1835843944077864750, guid: 1ed37d141d895a84b9b74f8b08a2997d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1835843944137190433, guid: 1ed37d141d895a84b9b74f8b08a2997d, type: 3}
       propertyPath: m_FontData.m_MaxSize
@@ -3042,11 +3043,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1835843944137190434, guid: 1ed37d141d895a84b9b74f8b08a2997d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 744.5276
+      value: 1029.3888
       objectReference: {fileID: 0}
     - target: {fileID: 1835843944137190434, guid: 1ed37d141d895a84b9b74f8b08a2997d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -530.30457
+      value: -651.63434
       objectReference: {fileID: 0}
     - target: {fileID: 1835843944433692956, guid: 1ed37d141d895a84b9b74f8b08a2997d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -3090,11 +3091,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1835843944882899849, guid: 1ed37d141d895a84b9b74f8b08a2997d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1161.0144
+      value: 1387.8484
       objectReference: {fileID: 0}
     - target: {fileID: 1835843944882899849, guid: 1ed37d141d895a84b9b74f8b08a2997d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -33.8177
+      value: 11.0218
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ed37d141d895a84b9b74f8b08a2997d, type: 3}
