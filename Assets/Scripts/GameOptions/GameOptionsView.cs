@@ -55,7 +55,7 @@ public class GameOptionsView: Reference
 
         winText.text = message;
 
-        Debug.Log("IS LAST LEVEL: "+isLastLevel);
+        //Debug.Log("IS LAST LEVEL: "+isLastLevel);
         if (isLastLevel)
         {
             backButton.GetComponent<Image>().enabled = true;

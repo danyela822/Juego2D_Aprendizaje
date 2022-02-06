@@ -10,11 +10,11 @@ public class RoadGameView : Reference
     {
         PointsLevel();
     }*/
-    public void PointsLevel()
+    /*public void PointsLevel()
     {
         cointsText.text = " x " + App.generalModel.roadGameModel.GetPoints();
         solutionTickets.text = " x " + App.generalModel.roadGameModel.GetTickets();
-    }
+    }*/
     /*public void ActivateWinCanvas(int totalStars)
     {
         Image imageWin = GameObject.Find("ImageStars").GetComponent<Image>();

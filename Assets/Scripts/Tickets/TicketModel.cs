@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class TicketModel : Reference
 {
-    //public int solutionTickets;
     public int GetTickets()
     {
-        //solutionTickets = PlayerPrefs.GetInt("SolutionTickets", 0);
-
         return PlayerPrefs.GetInt("SolutionTickets", 0); ;
     }
     public void SetTickets(int valor)

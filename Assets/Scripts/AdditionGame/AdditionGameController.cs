@@ -84,7 +84,7 @@ public class AdditionGameController : Reference{
         //Vector2 sizeSign = objectSign.GetComponent<BoxCollider2D>().size;
 
         //Vector2 size = objectRow.GetComponent<BoxCollider2D>().size;
-        initial = Random.Range(1, 6);
+        initial = Random.Range(1, 8);
         ChooseLevel();
         Build(level, initial);
         //Debug.Log(OwnToString());
@@ -398,7 +398,7 @@ public class AdditionGameController : Reference{
     public void SetPointsAndStars()
     {
         //Declaracion de los puntos y estrellas que ha ganado el juegador
-        int points, stars, canvasStars;
+        int points, stars, totalStars, totalPoints, canvasStars;
 
         //Declaracion del mensaje a mostrar
         string winMessage;
@@ -406,9 +406,12 @@ public class AdditionGameController : Reference{
         //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
         if (counter == 1)
         {
-            Debug.Log("COUNTER: " + counter);
             points = App.generalModel.additionGameModel.GetPoints() + 30;
             stars = App.generalModel.additionGameModel.GetStars() + 3;
+
+            totalPoints = App.generalModel.statsModel.GetTotalPoints() + 30;
+            totalStars = App.generalModel.statsModel.GetTotalStars() + 3;
+
             canvasStars = 3;
             winMessage = App.generalController.gameOptionsController.winMessages[2];
 
@@ -421,9 +424,12 @@ public class AdditionGameController : Reference{
         //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
         else if (counter == 2)
         {
-            Debug.Log("COUNTER: " + counter);
             points = App.generalModel.additionGameModel.GetPoints() + 20;
             stars = App.generalModel.additionGameModel.GetStars() + 2;
+
+            totalPoints = App.generalModel.statsModel.GetTotalPoints() + 20;
+            totalStars = App.generalModel.statsModel.GetTotalStars() + 2;
+
             canvasStars = 2;
             winMessage = App.generalController.gameOptionsController.winMessages[1];
 
@@ -433,9 +439,12 @@ public class AdditionGameController : Reference{
         //Si gana el juego con mas de 9 intentos suma 10 puntos y gana 1 estrella
         else
         {
-            Debug.Log("COUNTER: " + counter);
             points = App.generalModel.additionGameModel.GetPoints() + 10;
             stars = App.generalModel.additionGameModel.GetStars() + 1;
+
+            totalPoints = App.generalModel.statsModel.GetTotalPoints() + 10;
+            totalStars = App.generalModel.statsModel.GetTotalStars() + 1;
+
             canvasStars = 1;
             winMessage = App.generalController.gameOptionsController.winMessages[0];
 
@@ -447,7 +456,9 @@ public class AdditionGameController : Reference{
         App.generalModel.additionGameModel.UpdatePoints(points);
         App.generalModel.additionGameModel.UpdateStars(stars);
 
-        Debug.Log("CANVAS: " + canvasStars);
+        App.generalModel.statsModel.UpdateTotalStars(totalStars);
+        App.generalModel.statsModel.UpdateTotalPoints(totalPoints);
+
         //Mostrar el canvas que indica cuantas estrellas gano
         App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage, isLastLevel);
 

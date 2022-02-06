@@ -43,7 +43,7 @@ public class FileLists : ScriptableObject
 
         //Debug.Log("SE CREO ARCHIVO: " + file.Name + ": " + File.Exists(GetPath(fileName)));
         //Debug.Log("LISTA CLASIFICACION EN GUARDAR: " + classificationGameList.Count);
-        Debug.Log("LISTA LOGROS EN GUARDAR: " + achievementsList.Count);
+        //Debug.Log("LISTA LOGROS EN GUARDAR: " + achievementsList.Count);
         file.Close();
     }
     /// <summary>

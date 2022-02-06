@@ -95,9 +95,6 @@ public class ClassificationGameModel : Reference
     public void UpdateTotalStars(int stars)
     {
         PlayerPrefs.SetInt("StarsGame1", stars);
-
-        //Actualizar la cantidad total de estrellas
-        App.generalModel.statsModel.UpdateTotalStars(stars);
     }
     /// <summary>
     /// Metodo que devuelve la cantidad total de puntos que se han obtenido en este juego
@@ -114,8 +111,6 @@ public class ClassificationGameModel : Reference
     public void UpdatePoints(int value)
     {
         PlayerPrefs.SetInt("PointsGame1", value);
-        
-        App.generalModel.statsModel.UpdateTotalPoints(App.generalModel.statsModel.GetTotalPoints() + GetPoints());
 
         //Verificar si ya cumplio con el logro de sumar mas de 300 puntos en este juego
         if (GetPoints() >= 300)
@@ -171,11 +166,11 @@ public class ClassificationGameModel : Reference
         if (value == 1)
         {
             PlayerPrefs.SetInt("PlayOneLevel", PlayerPrefs.GetInt("PlayOneLevel", 0) + 1);
-            print("ENTRO A SUMAR AL LOGRO");
+            print("ENTRO A SUMAR AL LOGRO DE JUGAR UN NIVEL");
         }
 
         // Verificar si consiguio el logro 1: Juega un nivel de cada juego
-        if (PlayerPrefs.GetInt("PlayOneLevel", 0) == 7)
+        if (PlayerPrefs.GetInt("PlayOneLevel", 0) == 8)
         {
             if (!App.generalController.statsController.IsAchievements(0))
             {

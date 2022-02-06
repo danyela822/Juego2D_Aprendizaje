@@ -8,10 +8,6 @@ public class StatsController : Reference
     public Image leagueImage;
     public List<GameObject> achievements;
 
-    private void Start()
-    {
-        Debug.Log("START STATS");
-    }
     /// <summary>
     /// Metodo para verificar si el un logo ya ha sido completado
     /// </summary>

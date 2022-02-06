@@ -119,7 +119,7 @@ public class CharacteristicsGameController : Reference
         countPlay = App.generalModel.characteristicsGameModel.GetTimesPlayed();
 
         App.generalModel.characteristicsGameModel.UpdateTimesPlayed(++countPlay);
-        print("HA JUGADO: " + countPlay);
+        //print("HA JUGADO: " + countPlay);
 
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
         if (selectedOption == "correct")
@@ -148,8 +148,6 @@ public class CharacteristicsGameController : Reference
             //Si ya termino los 3 niveles de ese Set, se comienza de nuevo
             else
             {
-                Debug.Log("Termino los 3");
-
                 //Eliminar el numero del conjunto de imagenes y textos
                 App.generalModel.characteristicsGameModel.file.imageListGame2_3.Remove(number);
 
@@ -161,7 +159,7 @@ public class CharacteristicsGameController : Reference
 
             }
             //Numero de veces (en total) que selecciono una opcion
-            Debug.Log("LO HIZO EN: " + counter + " INTENTOS");
+            //Debug.Log("LO HIZO EN: " + counter + " INTENTOS");
 
             //Guardar estado
             App.generalModel.characteristicsGameModel.file.Save("P");
@@ -181,7 +179,7 @@ public class CharacteristicsGameController : Reference
     public void SetPointsAndStars()
     {
         //Declaracion de los puntos y estrellas que ha ganado el juegador
-        int points, stars, canvasStars;
+        int points, stars, totalStars, totalPoints, canvasStars;
 
         //Declaracion del mensaje a mostrar
         string winMessage;
@@ -191,6 +189,10 @@ public class CharacteristicsGameController : Reference
         {
             points = App.generalModel.characteristicsGameModel.GetPoints() + 30;
             stars = App.generalModel.characteristicsGameModel.GetStars() + 3;
+
+            totalPoints = App.generalModel.statsModel.GetTotalPoints() + 30;
+            totalStars = App.generalModel.statsModel.GetTotalStars() + 3;
+
             canvasStars = 3;
             winMessage = App.generalController.gameOptionsController.winMessages[2];
 
@@ -206,6 +208,10 @@ public class CharacteristicsGameController : Reference
         {
             points = App.generalModel.characteristicsGameModel.GetPoints() + 20;
             stars = App.generalModel.characteristicsGameModel.GetStars() + 2;
+
+            totalPoints = App.generalModel.statsModel.GetTotalPoints() + 20;
+            totalStars = App.generalModel.statsModel.GetTotalStars() + 2;
+
             canvasStars = 2;
             winMessage = App.generalController.gameOptionsController.winMessages[1];
 
@@ -217,6 +223,10 @@ public class CharacteristicsGameController : Reference
         {
             points = App.generalModel.characteristicsGameModel.GetPoints() + 10;
             stars = App.generalModel.characteristicsGameModel.GetStars() + 1;
+
+            totalPoints = App.generalModel.statsModel.GetTotalPoints() + 10;
+            totalStars = App.generalModel.statsModel.GetTotalStars() + 1;
+
             canvasStars = 1;
             winMessage = App.generalController.gameOptionsController.winMessages[0];
 
@@ -227,6 +237,9 @@ public class CharacteristicsGameController : Reference
         //Actualiza los puntos y estrellas obtenidos
         App.generalModel.characteristicsGameModel.UpdatePoints(points);
         App.generalModel.characteristicsGameModel.UpdateStars(stars);
+        
+        App.generalModel.statsModel.UpdateTotalStars(totalStars);
+        App.generalModel.statsModel.UpdateTotalPoints(totalPoints);
 
         //Mostrar el canvas que indica cuantas estrellas gano
         App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage, isLastLevel);

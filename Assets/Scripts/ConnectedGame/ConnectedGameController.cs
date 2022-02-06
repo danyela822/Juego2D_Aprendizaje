@@ -120,18 +120,18 @@ public class ConnectedGameController : Reference
     {
         if(level == 1)
         {
-            matrix[startPoint1.x, startPoint1.y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
+            matrix[startPoint1.X, startPoint1.Y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
         }
         else if(level == 2)
         {
-            matrix[startPoint1.x, startPoint1.y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
-            matrix[startPoint2.x, startPoint2.y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
+            matrix[startPoint1.X, startPoint1.Y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
+            matrix[startPoint2.X, startPoint2.Y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
         }
         else
         {
-            matrix[startPoint1.x, startPoint1.y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
-            matrix[startPoint2.x, startPoint2.y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
-            matrix[startPoint3.x, startPoint3.y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
+            matrix[startPoint1.X, startPoint1.Y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
+            matrix[startPoint2.X, startPoint2.Y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
+            matrix[startPoint3.X, startPoint3.Y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Map/cuadroPunto");
         }
     }
     /* 
@@ -482,7 +482,7 @@ public class ConnectedGameController : Reference
     //Metodo encargado de toda la parte del movimiento que realiza el jugador tanto logica y visual
     public void Move(string direction)
     {
-        if(startPoint == null)
+        if (startPoint == null)
         {
             App.generalView.gameOptionsView.ShowWarningCanvas();
         }
@@ -497,10 +497,10 @@ public class ConnectedGameController : Reference
                     CountMoves(startPoint.Type);
                     startPoint.X--;
                 }
-                else if (CheckArrival(arrayObjects, startPoint.X - 1, startPoint.Y))
+                else if (CheckArrival(arrayObjects, startPoint.X - 1, startPoint.Y) && !CheckFinishOption(startPoint.Type))
                 {
-                    CheckArrivalOption(startPoint.type);
-                    CountMoves(startPoint.type);
+                    CheckArrivalOption(startPoint.Type);
+                    CountMoves(startPoint.Type);
                 }
             }
             else if (direction == "down")
@@ -512,10 +512,10 @@ public class ConnectedGameController : Reference
                     CountMoves(startPoint.Type);
                     startPoint.X++;
                 }
-                else if (CheckArrival(arrayObjects, startPoint.X + 1, startPoint.Y))
+                else if (CheckArrival(arrayObjects, startPoint.X + 1, startPoint.Y) && !CheckFinishOption(startPoint.Type))
                 {
-                    CheckArrivalOption(startPoint.type);
-                    CountMoves(startPoint.type);
+                    CheckArrivalOption(startPoint.Type);
+                    CountMoves(startPoint.Type);
                 }
 
             }
@@ -528,10 +528,10 @@ public class ConnectedGameController : Reference
                     CountMoves(startPoint.Type);
                     startPoint.Y++;
                 }
-                else if (CheckArrival(arrayObjects, startPoint.X, startPoint.Y + 1))
+                else if (CheckArrival(arrayObjects, startPoint.X, startPoint.Y + 1) && !CheckFinishOption(startPoint.Type))
                 {
-                    CheckArrivalOption(startPoint.type);
-                    CountMoves(startPoint.type);
+                    CheckArrivalOption(startPoint.Type);
+                    CountMoves(startPoint.Type);
                 }
             }
             else if (direction == "left")
@@ -543,10 +543,10 @@ public class ConnectedGameController : Reference
                     CountMoves(startPoint.Type);
                     startPoint.Y--;
                 }
-                else if (CheckArrival(arrayObjects, startPoint.X, startPoint.Y - 1))
+                else if (CheckArrival(arrayObjects, startPoint.X, startPoint.Y - 1) && !CheckFinishOption(startPoint.Type))
                 {
-                    CheckArrivalOption(startPoint.type);
-                    CountMoves(startPoint.type);
+                    CheckArrivalOption(startPoint.Type);
+                    CountMoves(startPoint.Type);
                 }
             }
             print(totalMove1 + " - " + totalMove2);
@@ -568,6 +568,14 @@ public class ConnectedGameController : Reference
         {
             totalMove3++;
         }
+    }
+    public bool CheckFinishOption(int tipo)
+    {
+        if (tipo == 1) return finish1;
+
+        else if (tipo == 2) return finish2;
+
+        else return finish3;
     }
     //Metodo que dependiendo la opcion indica cual fue el objeto que ya llego al punto final
     public void CheckArrivalOption (int tipo)
@@ -882,8 +890,8 @@ public class ConnectedGameController : Reference
         SoundManager.soundManager.PlaySound(4);
 
         //Declaracion de los puntos y estrellas que ha ganado el juegador
-        int points, stars, canvasStars;
-        
+        int points, stars, totalStars, totalPoints, canvasStars;
+
         //Declaracion del mensaje a mostrar
         string winMessage;
 
@@ -892,6 +900,10 @@ public class ConnectedGameController : Reference
         {
             points = App.generalModel.connectedGameModel.GetPoints() + 30;
             stars = App.generalModel.connectedGameModel.GetTotalStars() + 3;
+
+            totalPoints = App.generalModel.statsModel.GetTotalPoints() + 30;
+            totalStars = App.generalModel.statsModel.GetTotalStars() + 3;
+
             canvasStars = 3;
             winMessage = App.generalController.gameOptionsController.winMessages[2];
 
@@ -907,6 +919,10 @@ public class ConnectedGameController : Reference
         {
             points = App.generalModel.connectedGameModel.GetPoints() + 20;
             stars = App.generalModel.connectedGameModel.GetTotalStars() + 2;
+
+            totalPoints = App.generalModel.statsModel.GetTotalPoints() + 20;
+            totalStars = App.generalModel.statsModel.GetTotalStars() + 2;
+
             canvasStars = 2;
             winMessage = App.generalController.gameOptionsController.winMessages[1];
 
@@ -918,6 +934,10 @@ public class ConnectedGameController : Reference
         {
             points = App.generalModel.connectedGameModel.GetPoints() + 10;
             stars = App.generalModel.connectedGameModel.GetTotalStars() + 1;
+
+            totalPoints = App.generalModel.statsModel.GetTotalPoints() + 10;
+            totalStars = App.generalModel.statsModel.GetTotalStars() + 1;
+
             canvasStars = 1;
             winMessage = App.generalController.gameOptionsController.winMessages[0];
 
@@ -929,7 +949,10 @@ public class ConnectedGameController : Reference
         App.generalModel.connectedGameModel.UpdatePoints(points);
         App.generalModel.connectedGameModel.UpdateTotalStars(stars);
 
-        Debug.Log("IS LAST LEVEL: " + isLastLevel);
+        App.generalModel.statsModel.UpdateTotalStars(totalStars);
+        App.generalModel.statsModel.UpdateTotalPoints(totalPoints);
+
+        //Debug.Log("IS LAST LEVEL: " + isLastLevel);
         //Mostrar el canvas que indica cuantas estrellas gano
         App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage,isLastLevel);
 

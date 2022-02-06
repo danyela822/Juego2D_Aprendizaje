@@ -33,6 +33,8 @@ public class RoadGameController : Reference
     int[] character3Point = new int[3];
 
     int prueba;
+    //
+    int countPlay;
     private void Start()
     {
         level =  App.generalModel.roadGameModel.GetLevel();
@@ -78,10 +80,8 @@ public class RoadGameController : Reference
         if (prueba == 1)
         {
             DrawMatrix();
-        }
-        
+        }  
     }
-
     void GenerateLevel1()
     {
         LocateObstacleLevel(1, 4, RamdonNumber(3, 5), RamdonNumber(1, 5));
@@ -1090,23 +1090,32 @@ public class RoadGameController : Reference
         int totalStars = Coints(totalSteps);
 
         PointsLevel(totalStars);
+
+        //Verificar si ya jugo un nivel de este juego
+        countPlay = App.generalModel.roadGameModel.GetTimesPlayed();
+
+        App.generalModel.roadGameModel.UpdateTimesPlayed(++countPlay);
+        print("HA JUGADO: " + countPlay);
+
+        //SetPointsAndStars();
     }
     //Metodos para calcular los puntajes y etc
 
     public void IncreaseTickets()
     {
-        App.generalModel.roadGameModel.IncreaseTickets();
+        //App.generalModel.roadGameModel.IncreaseTickets();
     }
     //Declaracion del mensaje a mostrar
     string winMessage;
+    bool isLastLevel = false;
     public void PointsLevel(int totalStars)
     {
         int pointsPerStar = 10;
         int pointsLevel = totalStars * pointsPerStar;
 
-        App.generalModel.roadGameModel.SetPoints(App.generalModel.roadGameModel.GetPoints() + pointsLevel);
+       // App.generalModel.roadGameModel.SetPoints(App.generalModel.roadGameModel.GetPoints() + pointsLevel);
 
-        bool isLastLevel = false;
+        
         if (level==1)
         {
             App.generalModel.roadGameModel.UpdateLevel(2);
@@ -1148,6 +1157,68 @@ public class RoadGameController : Reference
             winMessage = App.generalController.gameOptionsController.winMessages[0];
         }
         return totalStars;
+    }
+
+    /// <summary>
+    /// Metodo que asigna los puntos y estrellas que ha ganado el jugador
+    /// </summary>
+    /// <param name="rating">Int rating que indica los puntos que deben ser asignados</param>
+    public void SetPointsAndStars(int rating)
+    {
+        SoundManager.soundManager.PlaySound(4);
+
+        //Declaracion de los puntos y estrellas que ha ganado el juegador
+        int points, stars, canvasStars;
+
+        //Declaracion del mensaje a mostrar
+        string winMessage;
+
+        //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
+        if (rating == 1)
+        {
+            points = App.generalModel.roadGameModel.GetPoints() + 30;
+            stars = App.generalModel.roadGameModel.GetTotalStars() + 3;
+            canvasStars = 3;
+            winMessage = App.generalController.gameOptionsController.winMessages[2];
+
+            //Actualizar las veces que ha ganado 3 estrellas
+            App.generalModel.roadGameModel.UpdatePerfectWins(App.generalModel.roadGameModel.GetPerfectWins() + 1);
+
+            //Actualizar las veces que ha ganado sin errores
+            App.generalModel.roadGameModel.UpdatePerfectGame(App.generalModel.roadGameModel.GetPerfectGame() + 1);
+            //Debug.Log("LLEVA: " + PlayerPrefs.GetInt("PerfectGame2", 0) + " JUEGO(S) PERFECTO(S)");
+        }
+        //Si gana el juego mas de 3 y menos de 9 intentos suma 20 puntos y gana 2 estrellas
+        else if (rating == 2)
+        {
+            points = App.generalModel.roadGameModel.GetPoints() + 20;
+            stars = App.generalModel.roadGameModel.GetTotalStars() + 2;
+            canvasStars = 2;
+            winMessage = App.generalController.gameOptionsController.winMessages[1];
+
+            //Actualizar las veces que ha ganado sin errores -LE FALTAN DETALLES
+            App.generalModel.roadGameModel.UpdatePerfectGame(0);
+        }
+        //Si gana el juego con mas de 9 intentos suma 10 puntos y gana 1 estrella
+        else
+        {
+            points = App.generalModel.roadGameModel.GetPoints() + 10;
+            stars = App.generalModel.roadGameModel.GetTotalStars() + 1;
+            canvasStars = 1;
+            winMessage = App.generalController.gameOptionsController.winMessages[0];
+
+            //Actualizar las veces que ha ganado sin errores
+            App.generalModel.roadGameModel.UpdatePerfectGame(0);
+        }
+
+        //Actualiza los puntos y estrellas obtenidos
+        App.generalModel.roadGameModel.UpdatePoints(points);
+        App.generalModel.roadGameModel.UpdateTotalStars(stars);
+
+        Debug.Log("IS LAST LEVEL: " + isLastLevel);
+        //Mostrar el canvas que indica cuantas estrellas gano
+        App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage, isLastLevel);
+
     }
 
     // Metodo encargado de Pintar la ruta de solucion

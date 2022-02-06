@@ -178,7 +178,7 @@ public class ClassificationGameController : Reference
     public void SetPointsAndStars()
     {
         //Declaracion de los puntos y estrellas que ha ganado el juegador
-        int points, stars, canvasStars;
+        int points, stars, totalStars, totalPoints, canvasStars;
 
         //Declaracion del mensaje a mostrar
         string winMessage;
@@ -188,6 +188,10 @@ public class ClassificationGameController : Reference
         {
             points = App.generalModel.classificationGameModel.GetPoints() + 30;
             stars = App.generalModel.classificationGameModel.GetTotalStars() + 3;
+
+            totalPoints = App.generalModel.statsModel.GetTotalPoints() + 30;
+            totalStars = App.generalModel.statsModel.GetTotalStars() + 3;
+
             canvasStars = 3;
             winMessage = App.generalController.gameOptionsController.winMessages[2];
 
@@ -203,6 +207,10 @@ public class ClassificationGameController : Reference
         {
             points = App.generalModel.classificationGameModel.GetPoints() + 20;
             stars = App.generalModel.classificationGameModel.GetTotalStars() + 2;
+
+            totalPoints = App.generalModel.statsModel.GetTotalPoints() + 20;
+            totalStars = App.generalModel.statsModel.GetTotalStars() + 2;
+
             canvasStars = 2;
             winMessage = App.generalController.gameOptionsController.winMessages[1];
 
@@ -214,6 +222,10 @@ public class ClassificationGameController : Reference
         {
             points = App.generalModel.classificationGameModel.GetPoints() + 10;
             stars = App.generalModel.classificationGameModel.GetTotalStars() + 1;
+            
+            totalPoints = App.generalModel.statsModel.GetTotalPoints() + 10;
+            totalStars = App.generalModel.statsModel.GetTotalStars() + 1;
+
             canvasStars = 1;
             winMessage = App.generalController.gameOptionsController.winMessages[0];
 
@@ -224,6 +236,9 @@ public class ClassificationGameController : Reference
         //Actualiza los puntos y estrellas obtenidos
         App.generalModel.classificationGameModel.UpdatePoints(points);
         App.generalModel.classificationGameModel.UpdateTotalStars(stars);
+
+        App.generalModel.statsModel.UpdateTotalStars(totalStars);
+        App.generalModel.statsModel.UpdateTotalPoints(totalPoints);
 
         //Mostrar el canvas que indica cuantas estrellas gano
         App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage,true);

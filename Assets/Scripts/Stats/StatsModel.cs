@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StatsModel : Reference
@@ -19,21 +18,26 @@ public class StatsModel : Reference
     }
     public void UpdateTotalPoints(int value)
     {
-       PlayerPrefs.SetInt("TotalPoints",value);
+        PlayerPrefs.SetInt("TotalPoints", value);
+        Debug.Log("PUNTOS EN ACTUALIZACION: " + PlayerPrefs.GetInt("TotalPoints", 0));
     }
     public int GetTotalPoints()
     {
-        return PlayerPrefs.GetInt("TotalPoints", 0); ;
+        Debug.Log("PUNTOS: " + PlayerPrefs.GetInt("TotalPoints", 0));
+        return PlayerPrefs.GetInt("TotalPoints", 0);
     }
     public int GetTotalStars()
     {
-        return PlayerPrefs.GetInt("TotalStars", 0); ;
+        Debug.Log("STARS: " + PlayerPrefs.GetInt("TotalStars", 0));
+        return PlayerPrefs.GetInt("TotalStars", 0);
     }
     public void UpdateTotalStars(int stars)
     {
-        PlayerPrefs.SetInt("TotalStars", PlayerPrefs.GetInt("TotalStars", 0) + stars);
+        PlayerPrefs.SetInt("TotalStars", stars);
+        Debug.Log("STARS EN ACTUALIZACION: " + PlayerPrefs.GetInt("TotalStars", 0));
 
         int totalStars = GetTotalStars();
+        
 
         if (totalStars < 15)
         {
