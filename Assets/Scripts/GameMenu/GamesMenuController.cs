@@ -52,7 +52,7 @@ public class GamesMenuController : Reference
                 SceneManager.LoadScene("AdditionGameScene");
                 break;
 
-            case "Union e Interseccion":
+            case "Unintersectados":
                 if (file.imageListGame8_2_3.Count == 0)
                 {
                     //App.generalView.gamesMenuView.playButtons[6].interactable = false;
