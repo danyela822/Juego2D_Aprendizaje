@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -76,6 +77,30 @@ public class AdditionGameController : Reference{
     //Numero de intentos que tiene el jugador para ganar el juego
     int attempts = 3;
 
+    ///////////////////////////////////////// ENVIAR DATOS A HOJA DE CALCULO////////////////////////////////
+    [SerializeField]
+    private string BASE_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdU6bBmCxM0PGy-BvXyBCtf0KuJC-plKK4cg-ftAWyemridOA/formResponse";
+    
+    IEnumerator Post(string personAnswer)
+    {
+        print("Form Data");
+        WWWForm form = new WWWForm();
+        form.AddField("entry.261870550", "Addition Game");
+        form.AddField("entry.38797705", levelUser+"");
+        form.AddField("entry.1366155114",counter+"");
+        form.AddField("entry.1240552379",correctAnswer+"");
+        form.AddField("entry.1634103878",personAnswer+"");
+
+        byte[] rawData = form.data;
+        WWW www = new WWW(BASE_URL,rawData);
+        yield return www;
+    }
+
+    public void Send(string personAnswer)
+    {
+        print("Metodo send");
+        StartCoroutine(Post(personAnswer));
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -358,6 +383,9 @@ public class AdditionGameController : Reference{
         print("HA JUGADO: " + countPlay);
 
         int auxAnswer = int.Parse(text);
+
+        Send(text);
+
         if (auxAnswer == correctAnswer){
 
             Debug.Log("COUNTER: "+counter);

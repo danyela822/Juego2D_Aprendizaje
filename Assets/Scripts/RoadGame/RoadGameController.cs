@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class RoadGameController : Reference
@@ -37,6 +38,32 @@ public class RoadGameController : Reference
     int prueba;
     //
     int countPlay;
+
+
+    [SerializeField]
+    private string BASE_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScqB4zla9KJYoouFvzU2dVA58BMFk2emP7r5IkXvQ8LcjRkQg/formResponse";
+    
+    IEnumerator Post()
+    {
+        print("Form Data");
+        WWWForm form = new WWWForm();
+        form.AddField("entry.1874038654", "Road Game");
+        form.AddField("entry.1072500869", level+"");
+        form.AddField("entry.1041397496",numFinalSteps+"");
+        form.AddField("entry.360365649",App.generalController.charactersController.steps+"");
+
+        byte[] rawData = form.data;
+        WWW www = new WWW(BASE_URL,rawData);
+        yield return www;
+    }
+
+    public void Send()
+    {
+        print("Metodo send");
+        StartCoroutine(Post());
+    }
+
+    
     private void Start()
     {
         level =  App.generalModel.roadGameModel.GetLevel();
@@ -1100,6 +1127,7 @@ public class RoadGameController : Reference
 
         PointsLevel(totalStars);
 
+        Send();
         //Verificar si ya jugo un nivel de este juego
         countPlay = App.generalModel.roadGameModel.GetTimesPlayed();
 
@@ -1222,6 +1250,7 @@ public class RoadGameController : Reference
         Debug.Log("IS LAST LEVEL: " + isLastLevel);
         //Mostrar el canvas que indica cuantas estrellas gano
         App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage, isLastLevel);
+        
 
     }
 

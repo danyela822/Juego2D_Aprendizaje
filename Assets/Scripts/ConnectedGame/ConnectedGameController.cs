@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ConnectedGameController : Reference
@@ -64,6 +65,73 @@ public class ConnectedGameController : Reference
 
     //
     int countPlay;
+
+
+    ////////////////////// CONECCION AL FORMULARIO DE GOOGLE ///////////////////////////
+    
+   [SerializeField]
+    private string BASE_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScqB4zla9KJYoouFvzU2dVA58BMFk2emP7r5IkXvQ8LcjRkQg/formResponse";
+    
+    IEnumerator Datalevel1()
+    {
+        print("Form Data");
+        WWWForm form = new WWWForm();
+        form.AddField("entry.1874038654", "Connected Game");
+        form.AddField("entry.1072500869", level+"");
+        form.AddField("entry.1041397496",totalStepsLevel1+"");
+        form.AddField("entry.360365649",totalMove1+"");
+
+        byte[] rawData = form.data;
+        WWW www = new WWW(BASE_URL,rawData);
+        yield return www;
+    }
+
+    IEnumerator Datalevel2()
+    {
+        print("Form Data");
+        WWWForm form = new WWWForm();
+        form.AddField("entry.1874038654", "Connected Game");
+        form.AddField("entry.1072500869", level+"");
+
+        form.AddField("entry.1041397496",totalStepsLevel1+"");
+        form.AddField("entry.360365649",totalMove1+"");
+
+        form.AddField("entry.711965212",totalStepsLevel2+"");
+        form.AddField("entry.771439438",totalMove2+"");
+
+        byte[] rawData = form.data;
+        WWW www = new WWW(BASE_URL,rawData);
+        yield return www;
+    }
+
+    IEnumerator Datalevel3()
+    {
+        print("Form Data");
+        WWWForm form = new WWWForm();
+        form.AddField("entry.1874038654", "Connected Game");
+        form.AddField("entry.1072500869", level+"");
+
+        form.AddField("entry.1041397496",totalStepsLevel1+"");
+        form.AddField("entry.360365649",totalMove1+"");
+
+        form.AddField("entry.711965212",totalStepsLevel2+"");
+        form.AddField("entry.771439438",totalMove2+"");
+
+        form.AddField("entry.441134612",totalStepsLevel3+"");
+        form.AddField("entry.2062053967",totalMove3+"");
+
+        byte[] rawData = form.data;
+        WWW www = new WWW(BASE_URL,rawData);
+        yield return www;
+    }
+
+    public void Send()
+    {
+        print("Metodo send");
+        if(level == 1) StartCoroutine(Datalevel1());
+        else if(level == 2) StartCoroutine(Datalevel2());
+        else StartCoroutine(Datalevel3());
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -956,5 +1024,6 @@ public class ConnectedGameController : Reference
         //Mostrar el canvas que indica cuantas estrellas gano
         App.generalView.gameOptionsView.ShowWinCanvas(canvasStars, winMessage,isLastLevel);
 
+        Send();
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 public class SequenceGameController : Reference{
@@ -77,7 +78,46 @@ public class SequenceGameController : Reference{
     public GameObject additionEqualityWindow;
 
     //--------------- mostrar el canvas de solucion -------------------//
+    ///////////////////////////////////////// ENVIAR DATOS A HOJA DE CALCULO////////////////////////////////
+    [SerializeField]
+    private string BASE_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSea82gFv0hoJ0GEqBVM0xo3FWcLpzB4Gd4pd3SZPgpqyjTisQ/formResponse";
+    
+    IEnumerator DataChoise(string personChoise)
+    {
+        print("Form Data");
+        WWWForm form = new WWWForm();
+        form.AddField("entry.1913480834", "Sequence Game");
+        form.AddField("entry.1172942235",levelUser+"");
+        form.AddField("entry.1025191224",personChoise);
 
+
+        byte[] rawData = form.data;
+        WWW www = new WWW(BASE_URL,rawData);
+        yield return www;
+    }
+
+    IEnumerator DataAnswer(string correctAnswer, string personAnswer)
+    {
+        print("Form Data");
+        WWWForm form = new WWWForm();
+        form.AddField("entry.1913480834", "Sequence Game");
+        form.AddField("entry.1172942235",levelUser+"");
+        form.AddField("entry.2111097562",counter+"");
+        form.AddField("entry.1733596609",correctAnswer);
+        form.AddField("entry.1876414124",personAnswer);
+
+
+        byte[] rawData = form.data;
+        WWW www = new WWW(BASE_URL,rawData);
+        yield return www;
+    }
+
+    public void Send(int type, string personChoise, string correctAnswer, string personAnswer)
+    {
+        print("Metodo send");
+        if(type == 1) StartCoroutine(DataChoise(personChoise));
+        else StartCoroutine(DataAnswer(correctAnswer, personAnswer));
+    }
     // Start is called before the first frame update
     void Start(){
 
@@ -390,6 +430,8 @@ public class SequenceGameController : Reference{
         App.generalModel.sequenceGameModel.UpdateTimesPlayed(++countPlay);
         print("HA JUGADO: " + countPlay);
 
+        Send(2,"", string.Join(" ,", correctListAnswer), string.Join(" ,", answerToUserButton));
+
         //indica que perdio 
         int i;
         for (i = 0; i < answerToUserButton.Count; i++)
@@ -451,7 +493,7 @@ public class SequenceGameController : Reference{
 
         //posicion del caramelo que se escoge
         int position = FindChange(text);
-
+        
         var contCandy = levelUser switch
         {
             //nivel 1
@@ -465,6 +507,7 @@ public class SequenceGameController : Reference{
         //pasos que ocurren si se sellecciona el caramelo
         if (auxState[position] == 1 && answerToUserButton.Count < contCandy+1 && contToPaint < contCandy){
             
+            Send(1,text,"","");
             auxState[position] = 0; 
             ReturnPosition(position, 0);
             int value = int.Parse(text);

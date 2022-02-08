@@ -1994,8 +1994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848743376228ae543b75743ee046e7d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasCategories: {fileID: 0}
-  canvasLevel: {fileID: 0}
   infoCanvas: {fileID: 0}
   imagesCanvas: {fileID: 0}
   musicCanvas: {fileID: 0}
@@ -2012,7 +2010,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7163b51bd9b5d34a98b1f5d266364ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: {fileID: 0}
 --- !u!1001 &1448261755
 PrefabInstance:
   m_ObjectHideFlags: 0

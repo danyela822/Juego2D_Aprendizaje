@@ -4514,8 +4514,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2018607063}
   m_HandleRect: {fileID: 2018607062}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.22057495
+  m_Value: 1.0000001
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4985,6 +4985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter: 0
+  BASE_URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSea82gFv0hoJ0GEqBVM0xo3FWcLpzB4Gd4pd3SZPgpqyjTisQ/formResponse
 --- !u!4 &1367954200
 Transform:
   m_ObjectHideFlags: 0
@@ -7740,6 +7741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dad3f6bac0380f42b69247b8a19d507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countPerfectWins: 0
 --- !u!114 &1911148527
 MonoBehaviour:
   m_ObjectHideFlags: 0
