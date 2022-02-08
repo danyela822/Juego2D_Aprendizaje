@@ -1489,7 +1489,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xBFCual es el valor de la ultima figura de acuerdo a las operaciones
+  m_Text: "\xBFCu\xE1l es el valor de la \xFAltima figura de acuerdo a las operaciones
     anteriores?"
 --- !u!222 &1080751379
 CanvasRenderer:

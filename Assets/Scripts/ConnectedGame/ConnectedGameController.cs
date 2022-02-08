@@ -757,7 +757,7 @@ public class ConnectedGameController : Reference
             //WinLevel();
             SetPointsAndStars(1);
         }
-        else if(difference > 0 && difference < 4)
+        else if(difference > 0 && difference < 4 || (difference < 0))
         {
             //print("No Cumplio los pasos con el color amarillo");
             SetPointsAndStars(2);
@@ -779,8 +779,9 @@ public class ConnectedGameController : Reference
             //print("Cumplio los pasos con el color amarillo y azul");
             SetPointsAndStars(1);
             //WinLevel();
-        }else if ((difference == 0 && (difference2 > 0 && difference2 < 4)) || (difference2 == 0 && (difference > 0 && difference < 4)))
+        }else if ((difference == 0 && (difference2 > 0 && difference2 < 4)) || (difference2 == 0 && (difference > 0 && difference < 4)) || (difference == 0 && (difference2 < 0)) || (difference2 == 0 && difference < 0))
         {
+            //difference == 0 && (difference2 < 0) || difference2 == 0 && difference < 0
             //print("NO Cumplio los pasos con el color amarillo y azul");
             SetPointsAndStars(2);
         }
@@ -814,13 +815,20 @@ public class ConnectedGameController : Reference
             SetPointsAndStars(1);
             //WinLevel();
         }
-        else if ((difference == 0 && difference2 == 0 && (difference3 > 0 && difference3 < 4)) || (difference2 == 0 && difference3 == 0 && (difference > 0 && difference < 4)) || (difference == 0 && difference3 == 0 && (difference2 > 0 && difference2 < 4)))
+        else if ((difference == 0 && difference2 == 0 && (difference3 > 0 && difference3 < 4)) || (difference2 == 0 && difference3 == 0 && (difference > 0 && difference < 4)) || (difference == 0 && difference3 == 0 && (difference2 > 0 && difference2 < 4)) || (difference == 0 && difference2 == 0 && (difference3 < 0)) || (difference2 == 0 && difference3 == 0 && (difference < 0)) || (difference3 == 0 && difference == 0 && (difference2 < 0)))
         {
+            //(difference == 0 && difference2 == 0 && (difference3 < 0))
+            //(difference2 == 0 && difference3 == 0 && (difference < 0))
+            //(difference3 == 0 && difference == 0 && (difference2 < 0))
+
             //print("NO Cumplio los pasos con el color amarillo, azul y rojo 1");
             SetPointsAndStars(2);
         }
-        else if((difference == 0 && (difference2 > 0 && difference2 < 4) && (difference3 > 0 && difference3 < 4)) || (difference3 == 0 && (difference2 > 0 && difference2 < 4) && (difference > 0 && difference < 4)) || (difference2 == 0 && (difference > 0 && difference < 4) && (difference3 > 0 && difference3 < 4)))
+        else if((difference == 0 && (difference2 > 0 && difference2 < 4) && (difference3 > 0 && difference3 < 4)) || (difference3 == 0 && (difference2 > 0 && difference2 < 4) && (difference > 0 && difference < 4)) || (difference2 == 0 && (difference > 0 && difference < 4) && (difference3 > 0 && difference3 < 4)) || (difference == 0 && (difference2 < 0) && (difference3 < 0)) || (difference3 == 0 && (difference2 < 0) && (difference < 0)) || (difference2 == 0 && (difference < 0) && (difference3 < 0)))
         {
+            //(difference == 0 && (difference2 < 0) && (difference3 < 0))
+            //(difference3 == 0 && (difference2 < 0) && (difference < 0))
+            //(difference2 == 0 && (difference < 0) && (difference3 < 0))
             //print("NO Cumplio los pasos con el color amarillo, azul y rojo 2");
             SetPointsAndStars(2);
         }

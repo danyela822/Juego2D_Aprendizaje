@@ -309,7 +309,7 @@ public class AdditionGameController : Reference{
         bool condition = true;
         for (int i = 0; i < 4; i++){
             while (condition){
-                int value = Random.Range(0, 40);
+                int value = Random.Range(0, 10);
                 if (!possibleAnswer.Contains(value)){
                     possibleAnswer.Add(value);
                     condition = false;

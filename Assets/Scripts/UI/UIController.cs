@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIController : Reference
 {
-    public Canvas infoCanvas, imagesCanvas, musicCanvas, creatorsCanvas;
+    public Canvas infoCanvas, imagesCanvas, musicCanvas, creatorsCanvas, loginCanvas, mainMenuCanvas;
+    public Text userName, userAge;
 
     public void OnClickButtons(string name_button)
     {
@@ -65,6 +67,29 @@ public class UIController : Reference
         if (name_button == "BackButton")
         {
             SceneManager.LoadScene("MainMenuScene");
+        }
+
+        //Boton de regreso al nivel principal
+        if (name_button == "LoginButton")
+        {
+            if (IsInputEmpty())
+            {
+                loginCanvas.enabled = false;
+                mainMenuCanvas.enabled = true;
+                PlayerPrefs.SetInt("Login",1);
+            }
+            
+        }
+    }
+    bool IsInputEmpty()
+    {
+        if (userName.text == "" || userAge.text == "")
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 }
