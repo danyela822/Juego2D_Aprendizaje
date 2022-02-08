@@ -41,6 +41,8 @@ public class ClassificationGameController : Reference
         form.AddField("entry.1172942235",number+"");
         form.AddField("entry.1147120928",statement+"");
         form.AddField("entry.1025191224",personChoise);
+        form.AddField("entry.1351127637",UserData.userData.userName);
+        form.AddField("entry.818409536",UserData.userData.userAge);
 
 
         byte[] rawData = form.data;
@@ -58,6 +60,9 @@ public class ClassificationGameController : Reference
         form.AddField("entry.2111097562",counter+"");
         form.AddField("entry.1733596609",correctAnswer);
         form.AddField("entry.1876414124",personAnswer);
+        form.AddField("entry.1351127637",UserData.userData.userName);
+        form.AddField("entry.818409536",UserData.userData.userAge);
+        
 
 
         byte[] rawData = form.data;

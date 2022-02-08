@@ -81,6 +81,7 @@ public class AdditionGameController : Reference{
     [SerializeField]
     private string BASE_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdU6bBmCxM0PGy-BvXyBCtf0KuJC-plKK4cg-ftAWyemridOA/formResponse";
     
+    
     IEnumerator Post(string personAnswer)
     {
         print("Form Data");
@@ -90,6 +91,8 @@ public class AdditionGameController : Reference{
         form.AddField("entry.1366155114",counter+"");
         form.AddField("entry.1240552379",correctAnswer+"");
         form.AddField("entry.1634103878",personAnswer+"");
+        form.AddField("entry.1225517837",UserData.userData.userName);
+        form.AddField("entry.398533453",UserData.userData.userAge);
 
         byte[] rawData = form.data;
         WWW www = new WWW(BASE_URL,rawData);

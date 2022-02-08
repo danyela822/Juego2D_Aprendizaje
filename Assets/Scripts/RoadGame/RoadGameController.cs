@@ -51,6 +51,9 @@ public class RoadGameController : Reference
         form.AddField("entry.1072500869", level+"");
         form.AddField("entry.1041397496",numFinalSteps+"");
         form.AddField("entry.360365649",App.generalController.charactersController.steps+"");
+        form.AddField("entry.1007421043",UserData.userData.userName);
+        form.AddField("entry.1520719802",UserData.userData.userAge);
+
 
         byte[] rawData = form.data;
         WWW www = new WWW(BASE_URL,rawData);
@@ -1121,19 +1124,6 @@ public class RoadGameController : Reference
     {
         //int totalSteps = CountSteps();
 
-        int totalSteps = App.generalController.charactersController.steps;
-
-        //int totalStars = CheckSteps(totalSteps);
-        CheckSteps(totalSteps);
-        //PointsLevel(totalStars);
-
-        Send();
-        //Verificar si ya jugo un nivel de este juego
-        countPlay = App.generalModel.roadGameModel.GetTimesPlayed();
-
-        App.generalModel.roadGameModel.UpdateTimesPlayed(++countPlay);
-        print("HA JUGADO: " + countPlay);
-
         //SetPointsAndStars();
         if (level == 1)
         {
@@ -1148,6 +1138,21 @@ public class RoadGameController : Reference
             App.generalModel.roadGameModel.UpdateLevel(1);
             isLastLevel = true;
         }
+
+        int totalSteps = App.generalController.charactersController.steps;
+
+        //int totalStars = CheckSteps(totalSteps);
+        CheckSteps(totalSteps);
+        //PointsLevel(totalStars);
+
+        Send();
+        //Verificar si ya jugo un nivel de este juego
+        countPlay = App.generalModel.roadGameModel.GetTimesPlayed();
+
+        App.generalModel.roadGameModel.UpdateTimesPlayed(++countPlay);
+        print("HA JUGADO: " + countPlay);
+
+        
     }
 
     //Declaracion del mensaje a mostrar

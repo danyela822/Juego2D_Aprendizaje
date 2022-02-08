@@ -67,6 +67,8 @@ public class EquialityGameController : Reference{
         form.AddField("entry.1366155114",counter+"");
         form.AddField("entry.1240552379",correctAnswerGame+"");
         form.AddField("entry.1634103878",personAnswer+"");
+        form.AddField("entry.1225517837",UserData.userData.userName);
+        form.AddField("entry.398533453",UserData.userData.userAge);
 
         byte[] rawData = form.data;
         WWW www = new WWW(BASE_URL,rawData);

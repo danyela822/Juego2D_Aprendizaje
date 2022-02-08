@@ -81,6 +81,9 @@ public class ConnectedGameController : Reference
         form.AddField("entry.1041397496",totalStepsLevel1+"");
         form.AddField("entry.360365649",totalMove1+"");
 
+        form.AddField("entry.1007421043",UserData.userData.userName);
+        form.AddField("entry.1520719802",UserData.userData.userAge);
+
         byte[] rawData = form.data;
         WWW www = new WWW(BASE_URL,rawData);
         yield return www;
@@ -98,6 +101,9 @@ public class ConnectedGameController : Reference
 
         form.AddField("entry.711965212",totalStepsLevel2+"");
         form.AddField("entry.771439438",totalMove2+"");
+
+        form.AddField("entry.1007421043",UserData.userData.userName);
+        form.AddField("entry.1520719802",UserData.userData.userAge);
 
         byte[] rawData = form.data;
         WWW www = new WWW(BASE_URL,rawData);
@@ -119,6 +125,9 @@ public class ConnectedGameController : Reference
 
         form.AddField("entry.441134612",totalStepsLevel3+"");
         form.AddField("entry.2062053967",totalMove3+"");
+
+        form.AddField("entry.1007421043",UserData.userData.userName);
+        form.AddField("entry.1520719802",UserData.userData.userAge);
 
         byte[] rawData = form.data;
         WWW www = new WWW(BASE_URL,rawData);
