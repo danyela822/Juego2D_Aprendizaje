@@ -660,7 +660,7 @@ public class RoadGameController : Reference
             if (posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)
             {
                 // Verifica si la posicion indicada esta libre
-                if ((arrayObjects[posX, posY].Type == 0 || arrayObjects[posX, posY].Type == 5 || arrayObjects[posX, posY].Type == 11) && matrix[posX, posY].GetComponent<Block>().visited ==  false)
+                if ((arrayObjects[posX, posY].Type == 0 || arrayObjects[posX, posY].Type == 5 || arrayObjects[posX, posY].Type == 11 || arrayObjects[posX, posY].Type == 3 || arrayObjects[posX, posY].Type == 6) && matrix[posX, posY].GetComponent<Block>().visited ==  false)
                 {
                   
                     Debug.Log("No ESTA OCUPADO: " + arrayObjects[posX, posY].X + " Y: " + arrayObjects[posX, posY].Y + " TYPE: " + type);
@@ -682,7 +682,7 @@ public class RoadGameController : Reference
             if (posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)
             {
                 // Verifica si la posicion indicada esta libre
-                if ((arrayObjects[posX, posY].Type == 0 || arrayObjects[posX, posY].Type == 5 || arrayObjects[posX, posY].Type == 4 || arrayObjects[posX, posY].Type == 11 || arrayObjects[posX, posY].Type == 3) && matrix[posX, posY].GetComponent<Block>().visited == false) 
+                if ((arrayObjects[posX, posY].Type == 0 || arrayObjects[posX, posY].Type == 5 || arrayObjects[posX, posY].Type == 4 || arrayObjects[posX, posY].Type == 11 || arrayObjects[posX, posY].Type == 3 || arrayObjects[posX, posY].Type == 6) && matrix[posX, posY].GetComponent<Block>().visited == false) 
                 {
                     Debug.Log("No ESTA OCUPADO: " + arrayObjects[posX, posY].X + " Y: " + arrayObjects[posX, posY].Y + " TYPE: " + type);
 
@@ -702,7 +702,7 @@ public class RoadGameController : Reference
             if (posX >= 0 && posY >= 0 && posX < arrayRow && posY < arrayCol)
             {
                 // Verifica si la posicion indicada esta libre
-                if ((arrayObjects[posX, posY].Type == 0 || arrayObjects[posX, posY].Type == 11 || arrayObjects[posX, posY].Type == 10 || arrayObjects[posX, posY].Type == 5 || arrayObjects[posX, posY].Type == 3) && matrix[posX, posY].GetComponent<Block>().visited == false)
+                if ((arrayObjects[posX, posY].Type == 0 || arrayObjects[posX, posY].Type == 11 || arrayObjects[posX, posY].Type == 10 || arrayObjects[posX, posY].Type == 5 || arrayObjects[posX, posY].Type == 3 || arrayObjects[posX, posY].Type == 6) && matrix[posX, posY].GetComponent<Block>().visited == false)
                 {
                     Debug.Log("No ESTA OCUPADO: " + arrayObjects[posX, posY].X + " Y: " + arrayObjects[posX, posY].Y + " TYPE: " + type);
                     if (arrayObjects[posX, posY].Type == 10)
@@ -1095,10 +1095,10 @@ public class RoadGameController : Reference
         //int totalSteps = CountSteps();
 
         int totalSteps = App.generalController.charactersController.steps;
-        
-        int totalStars = Coints(totalSteps);
 
-        PointsLevel(totalStars);
+        //int totalStars = CheckSteps(totalSteps);
+        CheckSteps(totalSteps);
+        //PointsLevel(totalStars);
 
         //Verificar si ya jugo un nivel de este juego
         countPlay = App.generalModel.roadGameModel.GetTimesPlayed();
@@ -1107,10 +1107,23 @@ public class RoadGameController : Reference
         print("HA JUGADO: " + countPlay);
 
         //SetPointsAndStars();
+        if (level == 1)
+        {
+            App.generalModel.roadGameModel.UpdateLevel(2);
+        }
+        else if (level == 2)
+        {
+            App.generalModel.roadGameModel.UpdateLevel(3);
+        }
+        else
+        {
+            App.generalModel.roadGameModel.UpdateLevel(1);
+            isLastLevel = true;
+        }
     }
 
     //Declaracion del mensaje a mostrar
-    string winMessage;
+    //string winMessage;
     bool isLastLevel = false;
     public void PointsLevel(int totalStars)
     {
@@ -1134,33 +1147,36 @@ public class RoadGameController : Reference
             isLastLevel = true;
         }
         //App.generalView.roadGameView.ActivateWinCanvas(totalStars);
-        App.generalView.gameOptionsView.ShowWinCanvas(totalStars,winMessage, isLastLevel);
+        //App.generalView.gameOptionsView.ShowWinCanvas(totalStars,winMessage, isLastLevel);
         //Debug.Log("GANASTE");
         //print("Tiempo total " + App.generalModel.roadGameModel.GetTime());
     }
 
-    public int Coints(int totalSteps)
+    public void CheckSteps(int totalSteps)
     {
-        int totalStars;
+        //int totalStars;
         //Si los pasos realizados por el usuario son menor o igual a los pasos del algoritmo tiene 3 estrellas
         //Si los pasos realizados por el usuario son mayores a los pasos del algoritmo por maximo 3 pasos son 2 estrellas
         //Si son mayores por mas de 3 pasos extras tiene una estrella
         if (totalSteps <= numFinalSteps)
         {
-            totalStars = 3;
-            winMessage = App.generalController.gameOptionsController.winMessages[2];
+            //totalStars = 3;
+            //winMessage = App.generalController.gameOptionsController.winMessages[2];
+            SetPointsAndStars(1);
         }
         else if (totalSteps > numFinalSteps && totalSteps <= numFinalSteps + 3)
         {
-            totalStars = 2;
-            winMessage = App.generalController.gameOptionsController.winMessages[1];
+            //totalStars = 2;
+            //winMessage = App.generalController.gameOptionsController.winMessages[1];
+            SetPointsAndStars(2);
         }
         else
         {
-            totalStars = 1;
-            winMessage = App.generalController.gameOptionsController.winMessages[0];
+            //totalStars = 1;
+            //winMessage = App.generalController.gameOptionsController.winMessages[0];
+            SetPointsAndStars(3);
         }
-        return totalStars;
+        //return totalStars;
     }
 
     /// <summary>
@@ -1177,7 +1193,6 @@ public class RoadGameController : Reference
         //Declaracion del mensaje a mostrar
         string winMessage;
 
-        //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
         if (rating == 1)
         {
             points = App.generalModel.roadGameModel.GetPoints() + 30;

@@ -28,10 +28,6 @@ public class UserData : Reference
                 App.generalController.uiController.mainMenuCanvas.enabled = true;
 
             }
-            else
-            {
-                //ActivateSoundEffects();
-            }
         }
         else
         {

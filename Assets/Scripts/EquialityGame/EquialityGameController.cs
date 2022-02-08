@@ -296,7 +296,7 @@ public class EquialityGameController : Reference{
         bool condition = true;
         for (int i = 0; i < 4; i++){
             while (condition){
-                int value = Random.Range(0, 20);
+                int value = Random.Range(1, 10);
                 if (!possibleAnswerGame.Contains(value)){
                     possibleAnswerGame.Add(value);
                     condition = false;

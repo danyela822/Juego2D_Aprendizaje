@@ -903,7 +903,6 @@ public class ConnectedGameController : Reference
         //Declaracion del mensaje a mostrar
         string winMessage;
 
-        //Si gana el juego con 3 intentos suma 30 puntos y gana 3 estrellas
         if (rating == 1)
         {
             points = App.generalModel.connectedGameModel.GetPoints() + 30;
