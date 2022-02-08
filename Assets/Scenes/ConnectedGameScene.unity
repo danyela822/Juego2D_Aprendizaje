@@ -4899,6 +4899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialBlock: {fileID: 3841077332538666641, guid: 2df12237de8668b49a415bcf284d8601, type: 3}
   gameZone: {fileID: 2040974483}
+  BASE_URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLScqB4zla9KJYoouFvzU2dVA58BMFk2emP7r5IkXvQ8LcjRkQg/formResponse
 --- !u!4 &2121701602
 Transform:
   m_ObjectHideFlags: 0

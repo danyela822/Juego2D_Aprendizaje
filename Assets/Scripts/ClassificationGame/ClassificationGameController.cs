@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using System.Linq;
 
@@ -27,6 +28,49 @@ public class ClassificationGameController : Reference
 
     //Numero de intentos que tiene el jugador para ganar el juego
     int attempts = 3;
+
+    ///////////////////////////////////////// ENVIAR DATOS A HOJA DE CALCULO////////////////////////////////
+    [SerializeField]
+    private string BASE_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSea82gFv0hoJ0GEqBVM0xo3FWcLpzB4Gd4pd3SZPgpqyjTisQ/formResponse";
+    
+    IEnumerator DataChoise(string personChoise)
+    {
+        print("Form Data");
+        WWWForm form = new WWWForm();
+        form.AddField("entry.1913480834", "Classification Game");
+        form.AddField("entry.1172942235",number+"");
+        form.AddField("entry.1147120928",statement+"");
+        form.AddField("entry.1025191224",personChoise);
+
+
+        byte[] rawData = form.data;
+        WWW www = new WWW(BASE_URL,rawData);
+        yield return www;
+    }
+
+    IEnumerator DataAnswer(string correctAnswer, string personAnswer)
+    {
+        print("Form Data");
+        WWWForm form = new WWWForm();
+        form.AddField("entry.1913480834", "Classification Game");
+        form.AddField("entry.1172942235",number+"");
+        form.AddField("entry.1147120928",statement+"");
+        form.AddField("entry.2111097562",counter+"");
+        form.AddField("entry.1733596609",correctAnswer);
+        form.AddField("entry.1876414124",personAnswer);
+
+
+        byte[] rawData = form.data;
+        WWW www = new WWW(BASE_URL,rawData);
+        yield return www;
+    }
+
+    public void Send(int type, string personChoise, string correctAnswer, string personAnswer)
+    {
+        print("Metodo send");
+        if(type == 1) StartCoroutine(DataChoise(personChoise));
+        else StartCoroutine(DataAnswer(correctAnswer, personAnswer));
+    }
 
     void Start()
     {
@@ -107,6 +151,7 @@ public class ClassificationGameController : Reference
     /// <param name="pressed">Estado del boton (Presionado o no Presionado)</param>
     public void SaveChoise(string choise,bool pressed)
     {
+        Send(1, choise, "", "");
         //Verificar si la opcion esta guardada en la lista y si el boton esta o no presionado
         if(pressed && !choises.Contains(choise))
         {
@@ -140,6 +185,8 @@ public class ClassificationGameController : Reference
 
         App.generalModel.classificationGameModel.UpdateTimesPlayed(++countPlay);
         print("HA JUGADO: " + countPlay);
+
+        Send(2, "", string.Join(" ,", answers), string.Join(" ,", choises));
 
         //Verificar si la cantidad de opciones del jugador es igual a la cantidad de opciones guardadas en answers
         if (answers.Length == choises.Count)

@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650ddb5f23ef91143a87be1fac06d467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  steps: 0
 --- !u!4 &159724140
 Transform:
   m_ObjectHideFlags: 0
@@ -1738,6 +1739,7 @@ MonoBehaviour:
   - {fileID: 2934318688271393268, guid: 9396064efa758074a82db58bdf1fd96f, type: 3}
   - {fileID: 3382098876427946231, guid: becb2282f1ef2f04da42aa180535e887, type: 3}
   numberSteps: 0
+  BASE_URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLScqB4zla9KJYoouFvzU2dVA58BMFk2emP7r5IkXvQ8LcjRkQg/formResponse
 --- !u!114 &1235144675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3191,6 +3193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dad3f6bac0380f42b69247b8a19d507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countPerfectWins: 0
 --- !u!4 &1876716833
 Transform:
   m_ObjectHideFlags: 0

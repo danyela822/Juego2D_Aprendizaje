@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class CharacteristicsGameController : Reference
@@ -29,6 +30,32 @@ public class CharacteristicsGameController : Reference
 
     //
     bool isLastLevel;
+
+    ///////////////////////////////////////// ENVIAR DATOS A HOJA DE CALCULO////////////////////////////////
+    [SerializeField]
+    private string BASE_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdU6bBmCxM0PGy-BvXyBCtf0KuJC-plKK4cg-ftAWyemridOA/formResponse";
+    
+    IEnumerator Post(string personAnswer)
+    {
+        print("Form Data");
+        WWWForm form = new WWWForm();
+        form.AddField("entry.261870550", "Characteristics Game");
+        form.AddField("entry.38797705", level+"");        
+        form.AddField("entry.90938399",number+"");
+        form.AddField("entry.1366155114",counter+"");
+        form.AddField("entry.1240552379",correctAnswer.name+"");
+        form.AddField("entry.1634103878",personAnswer+"");
+
+        byte[] rawData = form.data;
+        WWW www = new WWW(BASE_URL,rawData);
+        yield return www;
+    }
+
+    public void Send(string personAnswer)
+    {
+        print("Metodo send");
+        StartCoroutine(Post(personAnswer));
+    }
 
     private void Start()
     {
@@ -120,7 +147,7 @@ public class CharacteristicsGameController : Reference
 
         App.generalModel.characteristicsGameModel.UpdateTimesPlayed(++countPlay);
         //print("HA JUGADO: " + countPlay);
-
+        Send(selectedOption);
         //Si la respuesta del jugador a la respuesta que corresponde al enunciado en pantalla, el jugador gana el juego
         if (selectedOption == "correct")
         {
